@@ -1,0 +1,125 @@
+{
+  "manifest_version": "1.1.0",
+  "pack_id": "DELFTSTUDY_Q1_CONTENT_PACK_2026",
+  "pack_version": "1.0.1",
+  "schema_version": "1.1.0",
+  "generated_at_utc": "2026-09-08T22:41:12.417260+00:00",
+  "content_pack_status": "READY_FOR_CODEX",
+  "source_corpus": {
+    "expected_documents": 90,
+    "verified_documents": 90,
+    "by_subject": {
+      "IP": 28,
+      "CO": 29,
+      "R&L": 33
+    },
+    "source_hash_algorithm": "SHA-256",
+    "binary_duplicate_groups": [],
+    "source_document_records_embedded_in_handoff": true,
+    "source_pdf_hashes_embedded_in_handoff": true,
+    "source_pdf_binaries_embedded_in_handoff": false,
+    "source_pdf_full_text_embedded_in_handoff": false
+  },
+  "data_counts": {
+    "documents_total": 90,
+    "documents_by_subject": {
+      "CSE1100_IP": 28,
+      "CSE1400_CO": 29,
+      "CSE1300_RL": 33
+    },
+    "topics": 43,
+    "subtopics": 105,
+    "atomic_skills": 147,
+    "assessments": 37,
+    "mapped_question_records": 489,
+    "question_types": 17,
+    "exam_patterns": 22,
+    "common_error_tags": 29
+  },
+  "relation_counts": {
+    "topic_prerequisites": 62,
+    "skill_prerequisites": 69,
+    "topic_to_subtopics": 105,
+    "subtopic_to_skills": 147,
+    "document_to_topics": 306,
+    "assessment_to_document": 37,
+    "question_to_topics": 538,
+    "question_to_skills": 2005
+  },
+  "provenance_metrics": {
+    "question_PDF_PAGE_RANGE": 7,
+    "question_UNKNOWN": 38,
+    "question_PDF_PAGE": 444,
+    "topic_PDF_PAGE_RANGE": 60,
+    "skill_PDF_PAGE_RANGE": 224
+  },
+  "files": [
+    {
+      "path": "DelftStudy_Master_Content_Pack.md",
+      "role": "human_master_content",
+      "size_bytes": 228108,
+      "sha256": "2d4817d1a32b36565d884b58e66e1bc7ffed8d73075dd29a0bb48698fae5131e"
+    },
+    {
+      "path": "DelftStudy_Codex_Handoff_Pack.json",
+      "role": "codex_handoff",
+      "size_bytes": 4276378,
+      "sha256": "0290897dea04a92aeecee0e449baabcf781e91ead1577469e10a08700965a36e"
+    },
+    {
+      "path": "DelftStudy_Content_Pack.schema.json",
+      "role": "json_schema",
+      "size_bytes": 240424,
+      "sha256": "e13352039639ee60468026728933f1d6917c0c44fb327105f25e8d7da2c84521"
+    },
+    {
+      "path": "INSTRUCTIONS_FOR_CODEX.md",
+      "role": "codex_instructions",
+      "size_bytes": 4432,
+      "sha256": "13196ba214edd60b1abb42277a3c2a4bd5c374efa3b997416385303ea2b7b5a3"
+    },
+    {
+      "path": "FINAL_VALIDATION_REPORT.json",
+      "role": "validation_report_machine",
+      "size_bytes": 6053,
+      "sha256": "158974522505a75c9aacc3f20dda71a340a182e6e90c906778fe5bd6306c5af0"
+    },
+    {
+      "path": "FINAL_VALIDATION_REPORT.md",
+      "role": "validation_report_human",
+      "size_bytes": 3048,
+      "sha256": "6f3820be2b8e6ffa1bd47f3ebb73f7fe306ef94e965d452a5b3527f24c35a71b"
+    },
+    {
+      "path": "ADVERSARIAL_REAUDIT_REPORT.json",
+      "role": "adversarial_reaudit_machine",
+      "size_bytes": 5870,
+      "sha256": "a62e5297b2bda4b891f7307566d61c936910d58f8ea4189b72d7bd213dcc5391"
+    },
+    {
+      "path": "ADVERSARIAL_REAUDIT_REPORT.md",
+      "role": "adversarial_reaudit_human",
+      "size_bytes": 1201,
+      "sha256": "2241588fd3f604e403244796c4fbd89d4d8e630d37f99ef03099b9da68e3f686"
+    },
+    {
+      "path": "manifest.json",
+      "role": "manifest",
+      "size_bytes": "SELF",
+      "sha256": null,
+      "checksum_policy": "Self-hash omitted to avoid recursion."
+    }
+  ],
+  "relationship_contract": {
+    "question_to_topics": "Unique canonical question/topic edges; exact duplicate relation entries forbidden.",
+    "question_to_skills": "Canonical question/skill edges preserve mastery/readiness eligibility.",
+    "historical_frequency": "Counts unique eligible assessment documents, including by_assessment_type."
+  },
+  "uncertainty_policy": {
+    "unknown_is_valid_state": true,
+    "unverified_or_drill_only_generation_allowed": false,
+    "unverified_or_drill_only_mastery_allowed": false,
+    "unverified_or_drill_only_exam_readiness_allowed": false
+  },
+  "distribution_note": "The ZIP wrapper is created after manifest finalization and is verified separately to avoid circular self-hashing."
+}

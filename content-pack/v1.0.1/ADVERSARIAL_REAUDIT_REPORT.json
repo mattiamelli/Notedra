@@ -1,0 +1,246 @@
+{
+  "audit_id": "ADVERSARIAL_REAUDIT_REPORT",
+  "pack_version": "1.0.1",
+  "generated_at_utc": "2026-09-08T22:41:11.884874+00:00",
+  "method": "Direct semantic and schema audit of regenerated artifacts; does not trust FINAL_VALIDATION_REPORT assertions.",
+  "checks": [
+    {
+      "check": "duplicate_question_references",
+      "status": "PASS",
+      "actual": 0,
+      "details": []
+    },
+    {
+      "check": "duplicate_relation_edges",
+      "status": "PASS",
+      "actual": 0,
+      "details": {
+        "topic_prerequisites": 0,
+        "skill_prerequisites": 0,
+        "topic_to_subtopics": 0,
+        "subtopic_to_skills": 0,
+        "document_to_topics": 0,
+        "assessment_to_document": 0,
+        "question_to_topics": 0,
+        "question_to_skills": 0
+      }
+    },
+    {
+      "check": "uncertainty_policy_conflicts",
+      "status": "PASS",
+      "actual": 0,
+      "details": []
+    },
+    {
+      "check": "historical_frequency_unique_document_consistency",
+      "status": "PASS",
+      "actual": 0,
+      "details": []
+    },
+    {
+      "check": "RL_solution_included_verified",
+      "status": "PASS",
+      "expected": 16,
+      "actual": 16,
+      "details": []
+    },
+    {
+      "check": "schema_baseline_validation",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "check": "schema_mutation_tests",
+      "status": "PASS",
+      "details": [
+        {
+          "test": "duplicate_topic_object",
+          "status": "PASS",
+          "reason": "Invalid mutation rejected by schema."
+        },
+        {
+          "test": "invalid_confidence_enum",
+          "status": "PASS",
+          "reason": "Invalid mutation rejected by schema."
+        },
+        {
+          "test": "invalid_prerequisite_reference",
+          "status": "PASS",
+          "reason": "Invalid mutation rejected by schema."
+        },
+        {
+          "test": "corrupt_relations_type",
+          "status": "PASS",
+          "reason": "Invalid mutation rejected by schema."
+        },
+        {
+          "test": "empty_counts",
+          "status": "PASS",
+          "reason": "Invalid mutation rejected by schema."
+        },
+        {
+          "test": "duplicate_91st_document",
+          "status": "PASS",
+          "reason": "Invalid mutation rejected by schema."
+        }
+      ]
+    },
+    {
+      "check": "prerequisite_cycles",
+      "status": "PASS",
+      "details": {
+        "topic": [],
+        "subtopic": [],
+        "skill": []
+      }
+    },
+    {
+      "check": "cross_course_prerequisites",
+      "status": "PASS",
+      "actual": 0,
+      "details": []
+    },
+    {
+      "check": "source_pdf_hashes",
+      "status": "PASS",
+      "details": {
+        "hash_fail": [],
+        "binary_duplicate_groups": []
+      }
+    },
+    {
+      "check": "provenance_reporting",
+      "status": "PASS",
+      "details": {
+        "question_PDF_PAGE_RANGE": 7,
+        "question_UNKNOWN": 38,
+        "question_PDF_PAGE": 444,
+        "topic_PDF_PAGE_RANGE": 60,
+        "skill_PDF_PAGE_RANGE": 224
+      },
+      "note": "UNKNOWN is retained for unresolved analytical components; document-range locators are explicitly labeled as ranges rather than exact pages."
+    },
+    {
+      "check": "expected_documents",
+      "expected": 90,
+      "actual": 90,
+      "status": "PASS"
+    },
+    {
+      "check": "IP_documents",
+      "expected": 28,
+      "actual": 28,
+      "status": "PASS"
+    },
+    {
+      "check": "CO_documents",
+      "expected": 29,
+      "actual": 29,
+      "status": "PASS"
+    },
+    {
+      "check": "RL_documents",
+      "expected": 33,
+      "actual": 33,
+      "status": "PASS"
+    },
+    {
+      "check": "topics",
+      "expected": 43,
+      "actual": 43,
+      "status": "PASS"
+    },
+    {
+      "check": "atomic_skills",
+      "expected": 147,
+      "actual": 147,
+      "status": "PASS"
+    },
+    {
+      "check": "assessments",
+      "expected": 37,
+      "actual": 37,
+      "status": "PASS"
+    },
+    {
+      "check": "broken_references",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "orphan_skills",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "duplicate_IDs",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "invalid_prerequisite_references",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "manifest_checksums_direct",
+      "status": "PASS"
+    },
+    {
+      "check": "zip_integrity_direct",
+      "status": "PASS"
+    }
+  ],
+  "mutation_tests": [
+    {
+      "test": "duplicate_topic_object",
+      "status": "PASS",
+      "reason": "Invalid mutation rejected by schema."
+    },
+    {
+      "test": "invalid_confidence_enum",
+      "status": "PASS",
+      "reason": "Invalid mutation rejected by schema."
+    },
+    {
+      "test": "invalid_prerequisite_reference",
+      "status": "PASS",
+      "reason": "Invalid mutation rejected by schema."
+    },
+    {
+      "test": "corrupt_relations_type",
+      "status": "PASS",
+      "reason": "Invalid mutation rejected by schema."
+    },
+    {
+      "test": "empty_counts",
+      "status": "PASS",
+      "reason": "Invalid mutation rejected by schema."
+    },
+    {
+      "test": "duplicate_91st_document",
+      "status": "PASS",
+      "reason": "Invalid mutation rejected by schema."
+    }
+  ],
+  "finding_summary": {
+    "duplicate_reference_count": 0,
+    "duplicate_relation_edge_count": 0,
+    "uncertainty_policy_conflicts": 0,
+    "frequency_mismatches": 0,
+    "RL_solution_verification_failures": 0,
+    "schema_mutation_failures": 0,
+    "provenance": {
+      "question_PDF_PAGE_RANGE": 7,
+      "question_UNKNOWN": 38,
+      "question_PDF_PAGE": 444,
+      "topic_PDF_PAGE_RANGE": 60,
+      "skill_PDF_PAGE_RANGE": 224
+    }
+  },
+  "verdict": "PASS"
+}
