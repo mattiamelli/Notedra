@@ -42,6 +42,12 @@ describe('stack instructions', () => {
   });
   it('reads old RSP before push', () => expect(run('pushq %rsp').memory[0xff8]).toBe(0x1000n));
   it('reads RSP-relative memory before push', () => expect(run('movq $3, (%rsp)\npushq (%rsp)').memory[0xff8]).toBe(3n));
+  it('explains the original address of an RSP-relative push source', () => {
+    const program = parseProgram('movq $3, (%rsp)\npushq (%rsp)');
+    const first = executeStep(program, createCPU());
+    const pushed = executeStep(program, first.state);
+    expect(pushed.explanation[1]).toBe('Memory at 0x1000 (3) was stored at 0x0FF8.');
+  });
   it('pop RSP leaves the popped value as RSP', () => expect(run('pushq $512\npopq %rsp').registers.rsp).toBe(512n));
   it('pop resolves an RSP-relative destination after increment', () => {
     const state = run('pushq $17\npopq (%rsp)');

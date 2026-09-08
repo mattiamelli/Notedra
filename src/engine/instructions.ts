@@ -43,9 +43,10 @@ export function applyInstruction(before: CPUState, instruction: Instruction, pro
     }
     case 'pushq': {
       const value = read(source);
+      const sourceDescription = describe(source);
       registers.rsp = word(registers.rsp - 8n);
       pushedAddress = store(registers.rsp, value);
-      explanation.push(`RSP moved from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`, `${describe(source)} (${value}) was stored at ${addressHex(registers.rsp)}.`);
+      explanation.push(`RSP moved from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`, `${sourceDescription} (${value}) was stored at ${addressHex(registers.rsp)}.`);
       if (source.kind === 'register' && source.name === 'rbp') explanation.push('This preserves the caller’s frame pointer at the beginning of a function.');
       else explanation.push('The stack grows downward: pushing one 64-bit value uses 8 bytes.');
       break;
