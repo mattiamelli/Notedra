@@ -1,8 +1,21 @@
 # DelftStudy — Topic Learning, Practice & x86-64 Assembly Visualizer
 
-A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation and nine Reasoning & Logic topics plus the existing Java pilot, review 154 flashcards, practise 61 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation and nine Reasoning & Logic topics plus the existing Java pilot, review 166 flashcards, practise 67 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
+
+## Supplemental learning and explanatory feedback
+
+The maintenance patch adds 12 targeted cards (CO 79→85; R&L 67→73), six original controlled exercises, six optional skill-map cues and two open reasoning self-checks. Sixteen selected exercises have version-bound, answer-specific explanations with a reference, worked reasoning and concept reminder. An authored error pattern is shown only when supported by the submitted answer; other wrong responses get a verified explanation without a diagnosis. Retry creates a new attempt and preserves the submitted answer.
+
+Proofs and other open answers remain unscored. Supplemental notes are temporary, and no learner mistake history, mastery or adaptive study system is stored. The trusted pack, existing published content and all Assembly behavior remain unchanged. Raw PDFs and source-review artifacts are not shipped to browsers. See the [maintenance acceptance report](docs/supplemental-learning-enrichment-status.md) for source verification, before/after inventories, tests and browser limitations.
+
+```bash
+pnpm run validate:enrichment
+pnpm run check:enrichment-bundle
+```
+
+The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Steps 8 and later remain future work.
 
 ## Application navigation
 

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "ds.enrichment.card.carry",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "prompt": "Can a carry out occur without signed overflow?",
+    "answer": "Yes. In four bits, 1111+0001 yields 0000 with carry 1. Signed −1+1=0 fits. Carry checks the unsigned range; signed overflow checks the two’s-complement range.",
+    "reason": "Separate two independent interpretations of the same bit addition."
+  },
+  {
+    "id": "ds.enrichment.card.minimum",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-range"
+    ],
+    "prompt": "Why does two’s complement represent one more negative value than positive?",
+    "answer": "Zero uses one of the nonnegative patterns. The n-bit range is −2^(n −1) through 2^(n −1)−1. For six bits it is −32 through 31, not −31 through 31.",
+    "reason": "Blocks the incorrect lower bound found in CO Notes."
+  },
+  {
+    "id": "ds.enrichment.card.extension",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "prompt": "What must be preserved when widening a signed two’s-complement value?",
+    "answer": "Its integer value. Repeat the sign bit: five-bit 10110 (−10) becomes eight-bit 11110110. Zero-extending it to 00010110 would represent+22.",
+    "reason": "Shows why copying bits with the wrong extension changes meaning."
+  },
+  {
+    "id": "ds.enrichment.card.address",
+    "version": "1",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "skillIds": [
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "subtopicIds": [
+      "CO_ST06_02_STACK_CALL"
+    ],
+    "sourceIds": [
+      "ref-d0b36bb837af8280"
+    ],
+    "evidenceIds": [
+      "co-address"
+    ],
+    "prompt": "How do LEA and a memory-source MOV differ at the same displacement?",
+    "answer": "LEA returns base+displacement. MOV reads the stored value at that address. Compute the address first, then decide whether the instruction dereferences it. Neither address calculation alone nor LEA reveals uninitialized memory.",
+    "reason": "Targets the address-versus-value distinction without extending the simulator."
+  },
+  {
+    "id": "ds.enrichment.card.cache-fields",
+    "version": "1",
+    "topicId": "CO_T11_CACHE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS"
+    ],
+    "subtopicIds": [
+      "CO_ST11_01_ADDRESS"
+    ],
+    "sourceIds": [
+      "ref-bdab95d59474f2ad"
+    ],
+    "evidenceIds": [
+      "co-cache"
+    ],
+    "prompt": "Do cache ways consume additional set-index bits?",
+    "answer": "No. The index selects a set; all ways in that set are candidates for tag comparison. With capacity C bytes, block size B and W ways: sets=C/(B×W), offset bits=log₂B, index bits=log₂sets.",
+    "reason": "Distinguishes number of sets from total cache lines."
+  },
+  {
+    "id": "ds.enrichment.card.pipeline",
+    "version": "1",
+    "topicId": "CO_T12_PIPELINE",
+    "skillIds": [
+      "CO_SK12_01_PIPE_PERF"
+    ],
+    "subtopicIds": [
+      "CO_ST12_01_THROUGHPUT"
+    ],
+    "sourceIds": [
+      "ref-295298f11ae42c8a"
+    ],
+    "evidenceIds": [
+      "co-pipeline"
+    ],
+    "prompt": "Why can a pipeline complete one instruction per cycle without one-cycle instruction latency?",
+    "answer": "Different instructions occupy different stages. In an ideal k-stage, one-cycle-per-stage pipeline, each instruction still takes k cycles. N instructions take k+N−1 cycles from first start to final completion, before extra stalls.",
+    "reason": "Separates latency, steady-state throughput and fill/drain cost."
+  },
+  {
+    "id": "ds.enrichment.card.necessary",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_02_NEC_SUFF"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "prompt": "If q is necessary for p, may q be true while p is false?",
+    "answer": "Yes. The requirement is p→q: p cannot be true without q. It does not require q→p. The valuation p=false, q=true satisfies the original requirement.",
+    "reason": "Blocks the reversed parenthetical claim in R&L Notes."
+  },
+  {
+    "id": "ds.enrichment.card.contrapositive",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_05_EQUIV"
+    ],
+    "subtopicIds": [
+      "RL_ST01_02_TRUTH_VALID"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "prompt": "What changes when forming a contrapositive rather than a converse?",
+    "answer": "For p→q, reverse the direction AND negate both parts to get ¬q→¬p. Reversing alone gives the converse q→p, which need not be equivalent. Verify equivalence over all valuations.",
+    "reason": "Uses operation-level recall rather than memorizing one story."
+  },
+  {
+    "id": "ds.enrichment.card.quantifier",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_03_NEGATE_FOL"
+    ],
+    "subtopicIds": [
+      "RL_ST02_02_NEGATE_QUANT"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "prompt": "Does “not everyone has P” require that nobody has P?",
+    "answer": "No. ¬∀x P(x) means ∃x ¬P(x): one counterexample suffices. “Nobody has P” is ∀x ¬P(x), a different claim. Keep the quantifier’s scope explicit.",
+    "reason": "Separates one counterexample from failure at every object."
+  },
+  {
+    "id": "ds.enrichment.card.assignment",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ],
+    "subtopicIds": [
+      "RL_ST02_03_MODELS"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "prompt": "Can an open formula P(x) be evaluated without adding a quantifier?",
+    "answer": "Yes, when a structure and an assignment for free x are supplied. A quantifier binds x and ranges over the domain; an assignment chooses its current object. Constants get their meanings from the structure.",
+    "reason": "Corrects the summary’s overstatement that unquantified variables have no meaning."
+  },
+  {
+    "id": "ds.enrichment.card.nested",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_01_SET_CALC"
+    ],
+    "subtopicIds": [
+      "RL_ST06_01_SET_OPS"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "evidenceIds": [
+      "rl-sets"
+    ],
+    "prompt": "What distinguishes ∅, {∅} and 𝒫(∅)?",
+    "answer": "∅ has no elements. {∅} has one element, which is the empty set. 𝒫(∅)={∅}, because the empty set has exactly one subset: itself. Count objects at the outer brace level.",
+    "reason": "Adds an explicit nested-set boundary case."
+  },
+  {
+    "id": "ds.enrichment.card.proof",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_04_CONTRADICTION"
+    ],
+    "subtopicIds": [
+      "RL_ST03_03_CONTRA"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3"
+    ],
+    "evidenceIds": [
+      "rl-proof"
+    ],
+    "prompt": "For a contradiction proof of P→Q, which assumptions do you keep and add?",
+    "answer": "Keep the hypotheses, including P, and temporarily assume ¬Q. Derive a contradiction from these together and justify every step. Do not negate a known hypothesis instead of the target.",
+    "reason": "Blocks a misleading proof-method note without scoring proof text."
+  }
+]

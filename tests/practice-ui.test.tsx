@@ -28,8 +28,8 @@ async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
   it('browsing/filtering the expanded catalog creates no attempts',async()=>{
-    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(61);
-    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(29);expect((await load(repo)).data.attempts).toEqual([]);
+    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(67);
+    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(32);expect((await load(repo)).data.attempts).toEqual([]);
   });
   it.each([catalog[0],catalog[2],catalog[4]])('completes the $subjectId flow without exposing a solution early',async exercise=>{
     const repo=repository();await mount(repo,exercisePath(exercise));expect(container.textContent).not.toContain('Reference answer');await click('Start exercise');

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "ds.practice.enrich-carry-overflow",
+    "version": "1",
+    "title": "Carry and overflow are different",
+    "prompt": "Add the four-bit patterns 1011 and 1101. Keep only four result bits. Give, in order: the carry out; signed two’s-complement overflow (1=yes, 0=no).",
+    "rules": "Enter 2 comma-separated integers in the stated order. Spaces and leading zeroes are accepted. No units or formulas.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_02_SIGNED_INTEGER",
+    "skillId": "CO_SK04_04_OVERFLOW",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,0"
+    },
+    "explanation": "Unsigned 11+13=24=16+8, so the four-bit result is 1000 and the carry out is 1. As signed operands, −5+(−3)=−8, exactly the four-bit lower bound. Both inputs and the result are negative, so signed overflow is 0."
+  },
+  {
+    "id": "ds.practice.enrich-address-load",
+    "version": "1",
+    "title": "An address is not its contents",
+    "prompt": "RBP=4096 and the qword at address 4080 contains 37. Execute leaq -16(%rbp), %rax, then movq -16(%rbp), %rbx. Give final RAX, then RBX, in decimal. No other writes occur.",
+    "rules": "Enter 2 comma-separated integers in the stated order. Spaces and leading zeroes are accepted. No units or formulas.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4080,37"
+    },
+    "explanation": "RBP−16=4080. LEA computes that address without reading memory, so RAX=4080. MOV reads the qword stored at 4080, so RBX=37. RBP and memory stay unchanged."
+  },
+  {
+    "id": "ds.practice.enrich-cache-fields",
+    "version": "1",
+    "title": "Split an address into cache fields",
+    "prompt": "A cache uses eight-bit byte addresses, eight-byte blocks, four sets and two ways. Split address 0xB6 into its tag, set index and byte offset. Give the three field VALUES as decimal integers, in that order.",
+    "rules": "Enter 3 comma-separated integers in the stated order. Spaces and leading zeroes are accepted. No units or formulas.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_01_ADDRESS",
+    "skillId": "CO_SK11_01_CACHE_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "5,2,6"
+    },
+    "explanation": "0xB6 is 182, or binary 10110110. Eight bytes per block need 3 offset bits; four sets need 2 index bits. Split as 101 | 10 | 110: tag 5, index 2, offset 6. The two ways share a set and add no address-index bit."
+  },
+  {
+    "id": "ds.practice.enrich-implication-directions",
+    "version": "1",
+    "title": "Test implication directions",
+    "prompt": "At the single valuation p=false, q=true, evaluate in order: p→q; q→p; ¬q→¬p. Use 1 for true and 0 for false. This is a fixed evaluation; one agreeing row alone does not prove equivalence.",
+    "rules": "Enter 3 comma-separated integers in the stated order. Spaces and leading zeroes are accepted. No units or formulas.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_05_EQUIV",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,0,1"
+    },
+    "explanation": "With p=false and q=true, p→q is true because its antecedent is false. q→p is false because it has a true antecedent and false consequent. ¬q→¬p is true. The converse differs; the contrapositive agrees on every valuation, not just this one."
+  },
+  {
+    "id": "ds.practice.enrich-constant-assignment",
+    "version": "1",
+    "title": "Constant, assignment and quantifier",
+    "prompt": "D={a,b} with a and b distinct; constant c denotes a; P is true exactly on {a}. A free variable x is assigned b. Evaluate in order: P(c); P(x) under that assignment; ∀x P(x). Use 1 for true and 0 for false.",
+    "rules": "Enter 3 comma-separated integers in the stated order. Spaces and leading zeroes are accepted. No units or formulas.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_03_MODELS",
+    "skillId": "RL_SK02_05_FORMAL_STRUCTURE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,0,0"
+    },
+    "explanation": "The structure fixes c as a, and P(a) is true. The supplied assignment gives free x the object b, so P(x) is false. ∀x checks both objects independently of that free-variable assignment and fails at b. A named constant and a free variable are different roles."
+  },
+  {
+    "id": "ds.practice.enrich-empty-set-layers",
+    "version": "1",
+    "title": "Count objects at the right level",
+    "prompt": "Let A={∅}. Give, in order: the number of elements of A; the number of elements of its powerset 𝒫(A); the number of ordered pairs in A×∅.",
+    "rules": "Enter 3 comma-separated integers in the stated order. Spaces and leading zeroes are accepted. No units or formulas.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_03_POWER_CART",
+    "skillId": "RL_SK06_03_POWER_CART",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_10",
+      "filename": "R&L Lecture 10 - Set Theory Part 2.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,2,0"
+    },
+    "explanation": "A contains one object: the empty set. Its subsets are ∅ and {∅}, so 𝒫(A) has 2 elements. A×∅ has no ordered pairs because a second coordinate cannot be chosen from the empty set."
+  }
+]

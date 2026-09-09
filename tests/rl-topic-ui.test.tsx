@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import enrichment from '../src/enrichment/capabilities.json';
 import {act} from 'react';
 import {createRoot, type Root} from 'react-dom/client';
 import {MemoryRouter} from 'react-router';
@@ -92,7 +93,7 @@ describe('complete R&L topic learning routes', () => {
 
     await render('practice');
     expect(host.querySelectorAll('.ds-practice-card')).toHaveLength(expectedExercises.length);
-    expect(expectedExercises.length).toBe(capability.exerciseCount);
+    expect(expectedExercises.filter(e=>e.task.kind!=='enrichment-exact').length).toBe(capability.exerciseCount);expect(expectedExercises.length).toBe(capability.exerciseCount+(enrichment.find(e=>e.topicId===topic.id)?.exercises??0));
     expect(host.querySelectorAll('.ds-rl-guided')).toHaveLength(content.guided.length);
     expect(content.guided.length).toBe(capability.guidedCount);
     for (const exercise of expectedExercises) {
@@ -160,7 +161,7 @@ describe('complete R&L topic learning routes', () => {
       const exerciseCount = allExercises.filter(exercise => exercise.topicId === topic.id).length;
       expect(row.querySelector(':scope > a')?.getAttribute('href')).toBe(studyPath(topic));
       expect(row.querySelector('.ds-topic-order')?.textContent).toBe(String(canonical[index].order).padStart(2, '0'));
-      expect(row.querySelector('.ds-rl-capability')?.textContent).toContain(`Guided lesson available · ${content.cards.length} flashcards · ${exerciseCount} graded exercises · ${content.guided.length} unscored activities`);
+      expect(row.querySelector('.ds-rl-capability')?.textContent).toContain(`Guided lesson available · ${content.cards.length+(enrichment.find(e=>e.topicId===topic.id)?.cards??0)} flashcards · ${exerciseCount} graded exercises · ${content.guided.length+(enrichment.find(e=>e.topicId===topic.id)?.guides??0)} unscored activities`);
       if (tool) expect(row.textContent).toContain(`${tool.name} available`);
       for (const prerequisite of topic.prerequisites) {
         const target = topics.find(item => item.id === prerequisite)!;

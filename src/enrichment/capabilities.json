@@ -1,0 +1,50 @@
+[
+  {
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "cards": 3,
+    "exercises": 1,
+    "guides": 0
+  },
+  {
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "cards": 1,
+    "exercises": 1,
+    "guides": 1
+  },
+  {
+    "topicId": "CO_T11_CACHE",
+    "cards": 1,
+    "exercises": 1,
+    "guides": 0
+  },
+  {
+    "topicId": "CO_T12_PIPELINE",
+    "cards": 1,
+    "exercises": 0,
+    "guides": 0
+  },
+  {
+    "topicId": "RL_T01_PROP_LOGIC",
+    "cards": 2,
+    "exercises": 1,
+    "guides": 0
+  },
+  {
+    "topicId": "RL_T02_FOL",
+    "cards": 2,
+    "exercises": 1,
+    "guides": 0
+  },
+  {
+    "topicId": "RL_T03_PROOF_METHODS",
+    "cards": 1,
+    "exercises": 0,
+    "guides": 1
+  },
+  {
+    "topicId": "RL_T06_SET_THEORY",
+    "cards": 1,
+    "exercises": 1,
+    "guides": 0
+  }
+]

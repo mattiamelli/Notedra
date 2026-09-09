@@ -1,0 +1,6 @@
+.ds-enrichment{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--ds-border,#303847)}
+.ds-enrichment h2,.ds-enrichment h3,.ds-practice-feedback h2,.ds-practice-feedback h3{white-space:normal;overflow-wrap:anywhere}
+.ds-enrichment p,.ds-enrichment li,.ds-enrichment small,.ds-practice-feedback p,.ds-practice-feedback pre{overflow-wrap:anywhere;white-space:pre-wrap;min-width:0}
+.ds-enrichment textarea{display:block;width:100%;box-sizing:border-box;margin:.6rem 0;padding:.8rem;color:#e4eaf3;background:#101722;border:1px solid #526073;border-radius:8px;font:inherit}
+.ds-enrichment summary{cursor:pointer;font-weight:600;padding:.6rem 0}.ds-enrichment details>p{padding:.5rem 0}
+.ds-feedback-pattern{border-left:3px solid #d4a55d;padding-left:.8rem;color:#edd4ab}.ds-practice-feedback pre{max-height:18rem;overflow:auto}

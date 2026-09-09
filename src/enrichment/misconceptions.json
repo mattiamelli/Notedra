@@ -1,0 +1,268 @@
+[
+  {
+    "id": "ds.enrichment.misconception.carry-overflow",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "label": "Carry versus signed overflow",
+    "rule": "Check carry out and signed representability separately."
+  },
+  {
+    "id": "ds.enrichment.misconception.ones-complement",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "label": "Missing two’s-complement increment",
+    "rule": "After inverting the positive representation, add 1 at the chosen width."
+  },
+  {
+    "id": "ds.enrichment.misconception.byte-order",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_06_ENDIAN"
+    ],
+    "subtopicIds": [
+      "CO_ST04_03_OTHER_ENCODINGS"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-endian"
+    ],
+    "label": "Reversed byte order",
+    "rule": "Little-endian places the least-significant byte at the lowest address."
+  },
+  {
+    "id": "ds.enrichment.misconception.address-value",
+    "version": "1",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "skillIds": [
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "subtopicIds": [
+      "CO_ST06_02_STACK_CALL"
+    ],
+    "sourceIds": [
+      "ref-d0b36bb837af8280"
+    ],
+    "evidenceIds": [
+      "co-address"
+    ],
+    "label": "Address versus stored value",
+    "rule": "Address arithmetic locates memory; only a load reads its contents."
+  },
+  {
+    "id": "ds.enrichment.misconception.cache-index",
+    "version": "1",
+    "topicId": "CO_T11_CACHE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS"
+    ],
+    "subtopicIds": [
+      "CO_ST11_01_ADDRESS"
+    ],
+    "sourceIds": [
+      "ref-bdab95d59474f2ad"
+    ],
+    "evidenceIds": [
+      "co-cache"
+    ],
+    "label": "Sets versus ways",
+    "rule": "Index bits select sets, not individual ways."
+  },
+  {
+    "id": "ds.enrichment.misconception.pipeline-fill",
+    "version": "1",
+    "topicId": "CO_T12_PIPELINE",
+    "skillIds": [
+      "CO_SK12_01_PIPE_PERF"
+    ],
+    "subtopicIds": [
+      "CO_ST12_01_THROUGHPUT"
+    ],
+    "sourceIds": [
+      "ref-295298f11ae42c8a"
+    ],
+    "evidenceIds": [
+      "co-pipeline"
+    ],
+    "label": "Pipeline fill and drain",
+    "rule": "Ideal total cycles=k+N−1; then add the stated extra stalls."
+  },
+  {
+    "id": "ds.enrichment.misconception.converse",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_05_EQUIV"
+    ],
+    "subtopicIds": [
+      "RL_ST01_02_TRUTH_VALID"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "label": "Converse versus contrapositive",
+    "rule": "p→q is equivalent to ¬q→¬p, not generally q→p."
+  },
+  {
+    "id": "ds.enrichment.misconception.necessary",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_02_NEC_SUFF"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "label": "Necessary versus sufficient",
+    "rule": "If r is necessary for s, the direction is s→r."
+  },
+  {
+    "id": "ds.enrichment.misconception.implication",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "label": "Implication false row",
+    "rule": "Only a true antecedent with false consequent makes an implication false."
+  },
+  {
+    "id": "ds.enrichment.misconception.quantifier-order",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ],
+    "subtopicIds": [
+      "RL_ST02_03_MODELS"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "label": "Shared versus dependent witness",
+    "rule": "∃y∀x requires one common y; ∀x∃y permits a different y for each x."
+  },
+  {
+    "id": "ds.enrichment.misconception.quantifier-negation",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_03_NEGATE_FOL"
+    ],
+    "subtopicIds": [
+      "RL_ST02_02_NEGATE_QUANT"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "label": "Quantified negation",
+    "rule": "A witness for ∃x¬P(x) must make P false, not true."
+  },
+  {
+    "id": "ds.enrichment.misconception.constant-assignment",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ],
+    "subtopicIds": [
+      "RL_ST02_03_MODELS"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "label": "Constant versus free variable",
+    "rule": "Interpret constants in the structure; assign objects to free variables."
+  },
+  {
+    "id": "ds.enrichment.misconception.nested-membership",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_01_SET_CALC"
+    ],
+    "subtopicIds": [
+      "RL_ST06_01_SET_OPS"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "evidenceIds": [
+      "rl-sets"
+    ],
+    "label": "Element versus singleton",
+    "rule": "A set containing {2} need not contain the integer 2."
+  },
+  {
+    "id": "ds.enrichment.misconception.empty-layers",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_03_POWER_CART"
+    ],
+    "subtopicIds": [
+      "RL_ST06_03_POWER_CART"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "evidenceIds": [
+      "rl-sets"
+    ],
+    "label": "Empty set versus singleton",
+    "rule": "{∅} has one element, so its powerset has two elements."
+  }
+]

@@ -1,0 +1,226 @@
+{
+  "uploads": [
+    {
+      "file": "CSE 11C Computer Organisation (CO).zip",
+      "bytes": 42903986,
+      "sha256": "bd54442880c609b84677e5f6509659163dd75ffd78f0dbc6d745c85e3497729b"
+    },
+    {
+      "file": "Delftse Foundations of Computation.pdf",
+      "bytes": 6253854,
+      "sha256": "8ff955e9ed8f020464f11117f7f9deb5a5414d07ce431363ef6fdf4b74176b66"
+    },
+    {
+      "file": "Delftse Foundations of Computation Summary.pdf",
+      "bytes": 2204506,
+      "sha256": "e3ce4ed7600742f6b1374bde7481cebc013187a4643d94c6da36e7027f5845ad"
+    },
+    {
+      "file": "R&L Notes.pdf",
+      "bytes": 131669,
+      "sha256": "4f73ed3cb886dcbfc527cfc3da0dbc801463ec09ab6306135033f27d7f5f4cb4"
+    }
+  ],
+  "coArchiveMembers": [
+    {
+      "file": "CO Exams/CO Endterms/CO Endterm 2020.pdf",
+      "bytes": 592178,
+      "sha256": "ecabb69d11dc36afcfe2bbbe8e731301b2e431d7c68ce68db5c539f0a5c7f04f"
+    },
+    {
+      "file": "CO Exams/CO Endterms/CO Endterm 2021.pdf",
+      "bytes": 365583,
+      "sha256": "370cedb36b6f294449d396cfaeb8e21f6b6a24b7efb84d63bfdbe6e625ef83dc"
+    },
+    {
+      "file": "CO Exams/CO Endterms/CO Endterm 2022.pdf",
+      "bytes": 729198,
+      "sha256": "d760d40fdb891a1920f91c3b3dc18049de6fe68656b51f8491d241721809f3f6"
+    },
+    {
+      "file": "CO Exams/CO Endterms/CO Endterm 2023.pdf",
+      "bytes": 613453,
+      "sha256": "94b570a818088e835a8d3b7937b9c0057c8fa01cf6beb3951757c3769f52aa8a"
+    },
+    {
+      "file": "CO Exams/CO Endterms/CO Endterm 2024.pdf",
+      "bytes": 729340,
+      "sha256": "31cf60bb621f4bad3fb3f450c8cde44bfbe93d0306d3ec098b524a48a7b3ef3a"
+    },
+    {
+      "file": "CO Exams/CO Endterms/CO Endterm 2025 Solutions.pdf",
+      "bytes": 442441,
+      "sha256": "550c7e720cea6adf1965145f7bd44a7d2f11fe919abc9891b78b97dc4c255757"
+    },
+    {
+      "file": "CO Exams/CO Midterms/CO Midterm 2020.pdf",
+      "bytes": 1037919,
+      "sha256": "8c64287117501b0b16195529896c36235e254ad3749342d23bba657d8e8d3182"
+    },
+    {
+      "file": "CO Exams/CO Midterms/CO Midterm 2021.pdf",
+      "bytes": 425866,
+      "sha256": "4d69457785a50debafec35bba6deff3f37a75776b028d899187aa1ead3df5320"
+    },
+    {
+      "file": "CO Exams/CO Midterms/CO Midterm 2022.pdf",
+      "bytes": 1334613,
+      "sha256": "8e862bdb5c65edbc066fabc75806137c52596402fc83266b66c8611189159a47"
+    },
+    {
+      "file": "CO Exams/CO Midterms/CO Midterm 2024.pdf",
+      "bytes": 575403,
+      "sha256": "c6449d04a15d832fca37350846461ae87129619b1c28519bfb439c403f585606"
+    },
+    {
+      "file": "CO Exams/CO Midterms/CO Midterm 2025 Solutions.pdf",
+      "bytes": 554717,
+      "sha256": "9c78643694f2b6dea0431c58899c43be0266b8c932d020a264ed073f60e29d1a"
+    },
+    {
+      "file": "CO Exams/CO Resits/CO Resit 2023.pdf",
+      "bytes": 4903425,
+      "sha256": "cbc98c58a1470254dbe17ae5e8fa1d01b5fec84ee8bba1e759d27c60be8ee0c0"
+    },
+    {
+      "file": "CO Exams/CO Resits/CO Resit 2024.pdf",
+      "bytes": 1023115,
+      "sha256": "3afd1447a8d11e4f90a919a97ada6f852797f14f2bcac925519f42202e47c39e"
+    },
+    {
+      "file": "CO Exams/CO Resits/CO Resit 2025 Solutions.pdf",
+      "bytes": 1397329,
+      "sha256": "c6e3e6713267777072d3080aad22414aa7bf639c63974834394a5f5769d38fab"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 0 - Introduction.pdf",
+      "bytes": 1212791,
+      "sha256": "1ec016af9f2eb6b78779b1707bee1f806cb3e34e026e4d0a4d719c3a2e11b36a"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 1 - History.pdf",
+      "bytes": 1971107,
+      "sha256": "0b13c9143f123b68923a66e1ba55947a887e39b9fbad80cf17eab1d86751b581"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 10 - BPU Part 2.pdf",
+      "bytes": 584376,
+      "sha256": "9992ad49bd29ff56dc5c5e7ea85c16a2e442485ccdecbaa9bb0dcd2fe4868d80"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 11 - IO.pdf",
+      "bytes": 3524600,
+      "sha256": "fec6ffcc2a70a736f42007715ea1abec8d4716409cea8807c67a8270c5850a74"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 12 - Memory.pdf",
+      "bytes": 961625,
+      "sha256": "b29615f566ce169efee58faa4d213c4c1bd0c83e43300afc622cb73a497914f6"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 13 - Caching.pdf",
+      "bytes": 514252,
+      "sha256": "716aa3b2e850c2d3f52fe90bf6bd03e5a65cb02fd1450e4e6516ee255c37ce68"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 14 - Pipelining.pdf",
+      "bytes": 1380359,
+      "sha256": "2eeeb6fdb1df87bb8b9698651ff67ec0663f6110fbbb3e590b406fb626e36782"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "bytes": 542695,
+      "sha256": "9a32a821b3fa7d9084b718799654c095342dbde57a1e8e99e8283551aaa349d1"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 2 - Assembly.pdf",
+      "bytes": 2844160,
+      "sha256": "a4412b3ce78ab402d2e2d616538044e3282ee4425f3309f402abf0f1a52dacd2"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "bytes": 825245,
+      "sha256": "a43e8e11995b7b8ae2c0c0a4e17d9ed1343224e0af5e6309ab61ae9d5fcf2c08"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 4 - Logic Circuits Part 2.pdf",
+      "bytes": 2796985,
+      "sha256": "3c9f10594770de3bf92e305d1aaf630cb86d3389c849a509f461ac6095075647"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 5 - Data Representation Part 1.pdf",
+      "bytes": 421021,
+      "sha256": "f2925011ac37e0e62ed26a7fd489de7ddcda7b662b704a40b60e29e7a2c02fad"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 6 - Data Representation Part 2.pdf",
+      "bytes": 397246,
+      "sha256": "4511ee2a4ce753c6826db1290f17155d05b4312940a9238cb8080d0734ebf88a"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 7 - ISA Part 1.pdf",
+      "bytes": 853206,
+      "sha256": "145765ac18f2094d7f6c9ccd6de467f4eb6001513ae6b1487f4d992ab00b142d"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 8 - ISA Part 2.pdf",
+      "bytes": 371578,
+      "sha256": "a950add7679539b7b88918875b17b7082f94c6104c1fec8f9622f98d924e5c77"
+    },
+    {
+      "file": "CO Lectures/CO Lecture 9 - BPU Part 1.pdf",
+      "bytes": 642329,
+      "sha256": "c2fb7e418c4803a92a6e8809f1ad22e21960f3e74bd14f80c7aeaea0e6d2f101"
+    },
+    {
+      "file": "CO LLM Files/Instructions.md",
+      "bytes": 4828,
+      "sha256": "4760c05e88fe23acac1de18563c3e84fe7dcef5262bc4cd1cc6eca2875fae34f"
+    },
+    {
+      "file": "CO LLM Files/Knowledge Files/Computer Organization and Embedded Systems.md",
+      "bytes": 2152498,
+      "sha256": "af90ef748e120874f198ffa3907487a5bfd3c1588b13a2d202d875cbfa3cf715"
+    },
+    {
+      "file": "CO LLM Files/Knowledge Files/Course Overview.md",
+      "bytes": 84943,
+      "sha256": "a3ca88e6116a777ef3201111f0a8367fc902970be879f02ee7e4ea919eb281d1"
+    },
+    {
+      "file": "CO LLM Files/Knowledge Files/Exams.md",
+      "bytes": 450216,
+      "sha256": "29e7859cad6ec79a0f4f3131b9fa566a41bc87ada88654e87faf21940ce97721"
+    },
+    {
+      "file": "CO LLM Files/Knowledge Files/Lab Manual.md",
+      "bytes": 174395,
+      "sha256": "520becce880849303b129614f5dc24c60858c1ca8391d53223a9eebbec3c6891"
+    },
+    {
+      "file": "CO LLM Files/Knowledge Files/Lectures.md",
+      "bytes": 423907,
+      "sha256": "c5b4ab64f42de19b3ec70b54db59775aaa4107f130b54edc35c0e79ef708c5ae"
+    },
+    {
+      "file": "CO LLM Files/Knowledge Files/Self Studies.md",
+      "bytes": 53449,
+      "sha256": "b822d2f7bcebe07418c30fca2a8f19b82497bbccc5579d6ec06273dc6eca2363"
+    },
+    {
+      "file": "CO Notes.pdf",
+      "bytes": 2013841,
+      "sha256": "41d1c0917b0bec111c96123c3b36f6bd3ecc5e6c8127bb53ec5cd72c6bdb96f7"
+    },
+    {
+      "file": "Computer Organization and Embedded Systems.pdf",
+      "bytes": 2968198,
+      "sha256": "e928fe61014f6855bbf13a59ba78df50f6d74495fc75ba9cc490eb143a3b804c"
+    },
+    {
+      "file": "README.md",
+      "bytes": 2514,
+      "sha256": "1fd05e9556fea4237b4fc02abe63441d645c2a5392b595c73fb6512593b7421e"
+    }
+  ]
+}

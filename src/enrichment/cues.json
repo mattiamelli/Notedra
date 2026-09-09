@@ -1,0 +1,110 @@
+[
+  {
+    "id": "ds.enrichment.cue.carry",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "text": "Yes. In four bits, 1111+0001 yields 0000 with carry 1. Signed −1+1=0 fits. Carry checks the unsigned range; signed overflow checks the two’s-complement range."
+  },
+  {
+    "id": "ds.enrichment.cue.address",
+    "version": "1",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "skillIds": [
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "subtopicIds": [
+      "CO_ST06_02_STACK_CALL"
+    ],
+    "sourceIds": [
+      "ref-d0b36bb837af8280"
+    ],
+    "evidenceIds": [
+      "co-address"
+    ],
+    "text": "LEA returns base+displacement. MOV reads the stored value at that address. Compute the address first, then decide whether the instruction dereferences it. Neither address calculation alone nor LEA reveals uninitialized memory."
+  },
+  {
+    "id": "ds.enrichment.cue.cache-fields",
+    "version": "1",
+    "topicId": "CO_T11_CACHE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS"
+    ],
+    "subtopicIds": [
+      "CO_ST11_01_ADDRESS"
+    ],
+    "sourceIds": [
+      "ref-bdab95d59474f2ad"
+    ],
+    "evidenceIds": [
+      "co-cache"
+    ],
+    "text": "No. The index selects a set; all ways in that set are candidates for tag comparison. With capacity C bytes, block size B and W ways: sets=C/(B×W), offset bits=log₂B, index bits=log₂sets."
+  },
+  {
+    "id": "ds.enrichment.cue.necessary",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_02_NEC_SUFF"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "text": "Yes. The requirement is p→q: p cannot be true without q. It does not require q→p. The valuation p=false, q=true satisfies the original requirement."
+  },
+  {
+    "id": "ds.enrichment.cue.quantifier",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_03_NEGATE_FOL"
+    ],
+    "subtopicIds": [
+      "RL_ST02_02_NEGATE_QUANT"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "text": "No. ¬∀x P(x) means ∃x ¬P(x): one counterexample suffices. “Nobody has P” is ∀x ¬P(x), a different claim. Keep the quantifier’s scope explicit."
+  },
+  {
+    "id": "ds.enrichment.cue.nested",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_01_SET_CALC"
+    ],
+    "subtopicIds": [
+      "RL_ST06_01_SET_OPS"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "evidenceIds": [
+      "rl-sets"
+    ],
+    "text": "∅ has no elements. {∅} has one element, which is the empty set. 𝒫(∅)={∅}, because the empty set has exactly one subset: itself. Count objects at the outer brace level."
+  }
+]

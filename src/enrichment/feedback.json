@@ -1,0 +1,476 @@
+[
+  {
+    "id": "ds.enrichment.feedback.enrich-carry-overflow",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "exerciseId": "ds.practice.enrich-carry-overflow",
+    "binding": "1:sha256:807c76d394a08660c631b47fc9520d0fc94d93a3d62e5401fc709254f37d0793:grader:3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+    "reasoning": "Unsigned 11+13=24=16+8, so the four-bit result is 1000 and the carry out is 1. As signed operands, −5+(−3)=−8, exactly the four-bit lower bound. Both inputs and the result are negative, so signed overflow is 0.",
+    "remember": "Carry tracks unsigned range; signed overflow tracks −8 through 7 here.",
+    "fallback": "Check both output fields separately: the carry is 1 while the signed sum still fits.",
+    "paths": [
+      {
+        "answer": "1,1",
+        "misconceptionId": "ds.enrichment.misconception.carry-overflow",
+        "why": "Your second 1 marks signed overflow. That matches using the carry as an overflow flag, but −5−3=−8 is representable. The carry 1 is correct; the overflow field must be 0."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.enrich-address-load",
+    "version": "1",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "skillIds": [
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "subtopicIds": [
+      "CO_ST06_02_STACK_CALL"
+    ],
+    "sourceIds": [
+      "ref-d0b36bb837af8280"
+    ],
+    "evidenceIds": [
+      "co-address"
+    ],
+    "exerciseId": "ds.practice.enrich-address-load",
+    "binding": "1:sha256:63934f8a448b223f1551ddb007db706c1bfe3bd9e6d28ce8fdca67b9e3eb7d3f:grader:3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+    "reasoning": "RBP−16=4080. LEA computes that address without reading memory, so RAX=4080. MOV reads the qword stored at 4080, so RBX=37. RBP and memory stay unchanged.",
+    "remember": "LEA computes an address; MOV from memory reads its stored value.",
+    "fallback": "Check whether each result is the computed address 4080 or the stored qword 37.",
+    "paths": [
+      {
+        "answer": "37,37",
+        "misconceptionId": "ds.enrichment.misconception.address-value",
+        "why": "Both results are 37. That matches dereferencing both operands, but LEA does not load the qword; RAX must contain its address 4080."
+      },
+      {
+        "answer": "4080,4080",
+        "misconceptionId": "ds.enrichment.misconception.address-value",
+        "why": "Both results are 4080. That matches stopping at address calculation for both instructions, but MOV must read 37 from memory into RBX."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.enrich-cache-fields",
+    "version": "1",
+    "topicId": "CO_T11_CACHE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS"
+    ],
+    "subtopicIds": [
+      "CO_ST11_01_ADDRESS"
+    ],
+    "sourceIds": [
+      "ref-bdab95d59474f2ad"
+    ],
+    "evidenceIds": [
+      "co-cache"
+    ],
+    "exerciseId": "ds.practice.enrich-cache-fields",
+    "binding": "1:sha256:a7e12264a60bf591c9f67c1635b6b2455190b82d5621ee749a8b6c8a130afbc9:grader:3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+    "reasoning": "0xB6 is 182, or binary 10110110. Eight bytes per block need 3 offset bits; four sets need 2 index bits. Split as 101 | 10 | 110: tag 5, index 2, offset 6. The two ways share a set and add no address-index bit.",
+    "remember": "Split address bits as tag | set | byte offset; ways share a set.",
+    "fallback": "Reconstruct 182 from your fields as tag×32+index×8+offset and check the field widths.",
+    "paths": [
+      {
+        "answer": "2,6,6",
+        "misconceptionId": "ds.enrichment.misconception.cache-index",
+        "why": "Those values split the address into 2 tag bits, 3 index bits and 3 offset bits. Indexing eight lines counts the ways as separate sets; there are only four sets, so the index has 2 bits."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.enrich-implication-directions",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_05_EQUIV"
+    ],
+    "subtopicIds": [
+      "RL_ST01_02_TRUTH_VALID"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "exerciseId": "ds.practice.enrich-implication-directions",
+    "binding": "1:sha256:f086aa32a248a6e07beb0e166a01f67f3d74de237b7fe870f7910f00b263a3b5:grader:3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+    "reasoning": "With p=false and q=true, p→q is true because its antecedent is false. q→p is false because it has a true antecedent and false consequent. ¬q→¬p is true. The converse differs; the contrapositive agrees on every valuation, not just this one.",
+    "remember": "Contrapositive: reverse AND negate; converse: reverse only.",
+    "fallback": "Re-evaluate each implication: it is false only for true→false.",
+    "paths": [
+      {
+        "answer": "1,1,1",
+        "misconceptionId": "ds.enrichment.misconception.converse",
+        "why": "Your middle 1 makes the converse agree here. But q→p is true→false in this valuation, so that field must be 0. The two outer 1s are correct."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.enrich-constant-assignment",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ],
+    "subtopicIds": [
+      "RL_ST02_03_MODELS"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "exerciseId": "ds.practice.enrich-constant-assignment",
+    "binding": "1:sha256:aebe3f67074b8357dd92aa242f7bbde123d4cb077a50064ee2b1d0070240e6d9:grader:3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+    "reasoning": "The structure fixes c as a, and P(a) is true. The supplied assignment gives free x the object b, so P(x) is false. ∀x checks both objects independently of that free-variable assignment and fails at b. A named constant and a free variable are different roles.",
+    "remember": "A constant’s interpretation is not replaced by a free-variable assignment.",
+    "fallback": "Resolve c and free x separately, then test every object for ∀x.",
+    "paths": [
+      {
+        "answer": "1,1,0",
+        "misconceptionId": "ds.enrichment.misconception.constant-assignment",
+        "why": "Your middle 1 agrees with P(c), but this field asks for P(x) under x=b. P(b) is false; c still denotes a."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.enrich-empty-set-layers",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_03_POWER_CART"
+    ],
+    "subtopicIds": [
+      "RL_ST06_03_POWER_CART"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "evidenceIds": [
+      "rl-sets"
+    ],
+    "exerciseId": "ds.practice.enrich-empty-set-layers",
+    "binding": "1:sha256:d30625c364c63fa25d6b90f541ae47afb59194c4b7da4cbb8db9ab51a90d2a8d:grader:3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+    "reasoning": "A contains one object: the empty set. Its subsets are ∅ and {∅}, so 𝒫(A) has 2 elements. A×∅ has no ordered pairs because a second coordinate cannot be chosen from the empty set.",
+    "remember": "Count elements at each brace level; an empty product has no pairs.",
+    "fallback": "List A’s elements, then its subsets, then attempt to choose a second coordinate from ∅.",
+    "paths": [
+      {
+        "answer": "0,1,0",
+        "misconceptionId": "ds.enrichment.misconception.empty-layers",
+        "why": "Your first two values are the counts for A=∅, but A={∅} contains one object. Its two subsets are ∅ and {∅}. Your empty-product count 0 is correct."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.co-overflow-four",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "exerciseId": "ds.practice.co-overflow-four",
+    "binding": "1:sha256:9dd90846b62d2f96e2bb77b30635bdcdfcea8071e860d74ca0ec4ab5369d2f2b:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+    "reasoning": "6+3=9 exceeds the four-bit signed maximum 7. Low result 1001 denotes −7, so signed overflow occurs.",
+    "remember": "Same-sign inputs plus opposite-sign result mean signed overflow.",
+    "fallback": "The signed sum is 9, outside the four-bit range −8 through 7.",
+    "paths": [
+      {
+        "answer": "0",
+        "misconceptionId": "ds.enrichment.misconception.carry-overflow",
+        "why": "There is no carry out, but that does not make the signed result safe. 0110+0011=1001 represents −7 instead of 9; signed overflow is 1."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.co-signed-five",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-integers"
+    ],
+    "exerciseId": "ds.practice.co-signed-five",
+    "binding": "1:sha256:5adbd23ccf867d5346f41fae2acdc65d3f8aecf1c52d140df577aa844628933b:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+    "reasoning": "The five-bit code is 32−6=26, or 11010. Decoding its negative top weight gives −16+8+2=−6.",
+    "remember": "Invert the fixed-width positive representation, then add 1.",
+    "fallback": "At five bits, −6 must encode a value congruent to 26 modulo 32.",
+    "paths": [
+      {
+        "answer": "11001",
+        "misconceptionId": "ds.enrichment.misconception.ones-complement",
+        "why": "11001 is the bitwise inversion of 00110. That is the one’s-complement step; adding 1 gives the required two’s-complement 11010."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.co-little-byte",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_06_ENDIAN"
+    ],
+    "subtopicIds": [
+      "CO_ST04_03_OTHER_ENCODINGS"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74"
+    ],
+    "evidenceIds": [
+      "co-endian"
+    ],
+    "exerciseId": "ds.practice.co-little-byte",
+    "binding": "1:sha256:a56809683faf8943fbcc22ca4dab36411d82a43a4ca7b22120f15062054bee82:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+    "reasoning": "Little-endian puts the least significant byte at the lowest address. For 0xA1B2 that byte is B2.",
+    "remember": "Little-endian stores the least-significant byte first.",
+    "fallback": "Separate the bytes A1 and B2; address order does not reverse bits within a byte.",
+    "paths": [
+      {
+        "answer": "A1",
+        "misconceptionId": "ds.enrichment.misconception.byte-order",
+        "why": "A1 is the most-significant byte. It would be at the lower address in big-endian order; little-endian puts B2 there."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.co-cache-tag-width",
+    "version": "1",
+    "topicId": "CO_T11_CACHE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS"
+    ],
+    "subtopicIds": [
+      "CO_ST11_01_ADDRESS"
+    ],
+    "sourceIds": [
+      "ref-bdab95d59474f2ad"
+    ],
+    "evidenceIds": [
+      "co-cache"
+    ],
+    "exerciseId": "ds.practice.co-cache-tag-width",
+    "binding": "1:sha256:11de9130524e0174d2be2fbd417a1b1b23ca9c6a85130c60fcc18bea2ce053b8:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+    "reasoning": "Offset=4 bits, set index=3 bits, leaving 16−4−3=9 tag bits. Ways do not add an address field.",
+    "remember": "Tag bits=address bits −offset bits −set-index bits.",
+    "fallback": "Use 4 offset bits and 3 set bits. The two ways do not need an extra index bit.",
+    "paths": [
+      {
+        "answer": "8",
+        "misconceptionId": "ds.enrichment.misconception.cache-index",
+        "why": "Eight tag bits matches allocating an extra index bit for the two ways. The address selects one of eight sets with 3 bits, leaving 16−4−3=9 tag bits."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.co-pipeline-total",
+    "version": "1",
+    "topicId": "CO_T12_PIPELINE",
+    "skillIds": [
+      "CO_SK12_01_PIPE_PERF"
+    ],
+    "subtopicIds": [
+      "CO_ST12_01_THROUGHPUT"
+    ],
+    "sourceIds": [
+      "ref-295298f11ae42c8a"
+    ],
+    "evidenceIds": [
+      "co-pipeline"
+    ],
+    "exerciseId": "ds.practice.co-pipeline-total",
+    "binding": "1:sha256:8825a7a5fc1addb2702f428828aad08f3d6894f44a52f24428927eee4087ed08:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+    "reasoning": "Ideal total is 5+6−1=10 cycles. Add the two stated stalls: 12.",
+    "remember": "N instructions in k ideal stages take N+k −1 cycles before extra stalls.",
+    "fallback": "Count from the first stage start through the final stage completion, then add both stalls.",
+    "paths": [
+      {
+        "answer": "8",
+        "misconceptionId": "ds.enrichment.misconception.pipeline-fill",
+        "why": "Eight counts six issue cycles and two stalls, omitting the four remaining stage advances after the last issue. Total: 6+5−1+2=12."
+      },
+      {
+        "answer": "13",
+        "misconceptionId": "ds.enrichment.misconception.pipeline-fill",
+        "why": "Thirteen matches adding N+k+stalls. The first instruction already occupies the first of the N issue cycles; use N+k −1+stalls=12."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.rl-implication-rows",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "exerciseId": "ds.practice.rl-implication-rows",
+    "binding": "1:sha256:a4028d29bce1ccee5f4dabc6449dc1caf18cd405a37a816bb115a5593118dae5:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+    "reasoning": "An implication is false precisely when its antecedent is true and its consequent is false. Only row (1,0) has that shape.",
+    "remember": "Only the (true,false) row makes p→q false.",
+    "fallback": "Compare each bit with the stated row order, including both false-antecedent rows.",
+    "paths": [
+      {
+        "answer": "0001",
+        "misconceptionId": "ds.enrichment.misconception.implication",
+        "why": "0001 is the truth table of p∧q, not p→q. An implication is true on both rows where p is false; those first two bits must be 1."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.rl-necessary-rows",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_02_NEC_SUFF"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "evidenceIds": [
+      "rl-implication"
+    ],
+    "exerciseId": "ds.practice.rl-necessary-rows",
+    "binding": "1:sha256:20c3cf3a3c9a30c1a55c3f436006d61d336125f557e7ff1aa826304a5da358b5:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+    "reasoning": "“r is necessary for s” means s → r. It rules out s holding while r fails, namely row (r,s)=(0,1). It does not assert that r alone guarantees s.",
+    "remember": "r necessary for s means s→r.",
+    "fallback": "The failing case is s=true while r=false, which is the second listed row.",
+    "paths": [
+      {
+        "answer": "1101",
+        "misconceptionId": "ds.enrichment.misconception.necessary",
+        "why": "1101 evaluates r→s in this row order. That reverses the requirement: s needs r, so the intended implication is s→r, giving 1011."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.rl-exists-forall",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ],
+    "subtopicIds": [
+      "RL_ST02_03_MODELS"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "exerciseId": "ds.practice.rl-exists-forall",
+    "binding": "1:sha256:c69d88febb30326e419c341b8033b3af225802edd8deb9322e7371991d1b87db:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+    "reasoning": "No common witness exists: y=1 has no incoming pair, y=2 fails for x=2, and y=3 fails for x=1. Swapping the quantifiers changes the obligation.",
+    "remember": "One y must work for every x when ∃y is outside ∀x.",
+    "fallback": "Intersect the permitted y choices for x=1,2,3; there is no common choice.",
+    "paths": [
+      {
+        "answer": "1",
+        "misconceptionId": "ds.enrichment.misconception.quantifier-order",
+        "why": "Each x does have some outgoing pair, but those witnesses do not establish one shared y. x=1 requires y=2, while x=2 requires y=3. No single y satisfies every x."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.rl-negation-witnesses",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_03_NEGATE_FOL"
+    ],
+    "subtopicIds": [
+      "RL_ST02_02_NEGATE_QUANT"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "evidenceIds": [
+      "rl-fol"
+    ],
+    "exerciseId": "ds.practice.rl-negation-witnesses",
+    "binding": "1:sha256:1085843dabf8055ede94b720cc3f6e2dba456c59c748d98f0e9e9a9e9a544549:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+    "reasoning": "Negating a universal statement asks for a counterexample. Only 2 lies outside the interpretation of P, so the witness set is {2}.",
+    "remember": "Negate the predicate as well as changing ∀ to ∃.",
+    "fallback": "A witness must belong to D and make P false; only 2 does.",
+    "paths": [
+      {
+        "answer": "{1,3}",
+        "misconceptionId": "ds.enrichment.misconception.quantifier-negation",
+        "why": "{1,3} lists the objects where P is true. The negated claim needs objects where P is false, so its witness set is {2}."
+      }
+    ]
+  },
+  {
+    "id": "ds.enrichment.feedback.rl-nested-membership",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_01_SET_CALC"
+    ],
+    "subtopicIds": [
+      "RL_ST06_01_SET_OPS"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "evidenceIds": [
+      "rl-sets"
+    ],
+    "exerciseId": "ds.practice.rl-nested-membership",
+    "binding": "1:sha256:ae3f22eaa89b6b996055ab543d5976ae4605ce48481b500b275f3eaebb914e55:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+    "reasoning": "The set {2} is one element of A, but its member 2 is not automatically an element of A. The empty set is a subset of every set, and here it is also explicitly listed as an element.",
+    "remember": "An object and a singleton containing it are distinct.",
+    "fallback": "A’s elements are the integer 1, the set {2}, and the empty set.",
+    "paths": [
+      {
+        "answer": "1111",
+        "misconceptionId": "ds.enrichment.misconception.nested-membership",
+        "why": "Your first 1 treats the element {2} as if it placed 2 itself in A. The integer 2 is not an element of A, so the first bit is 0; the remaining three bits are 1."
+      }
+    ]
+  }
+]

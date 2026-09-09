@@ -46,7 +46,7 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
       <p role="status" className="ds-practice-save">{message}</p>{error&&<p role="alert" className="ds-storage-error">{error}</p>}
       {attempt.status==='DRAFT'&&<div className="ds-storage-actions"><button type="button" className="ds-button" disabled={busy||!editable||!dirty} onClick={()=>void write(false)}>Save draft</button><button type="submit" className="ds-button ds-practice-primary" disabled={busy||!editable}>Submit answer</button></div>}
     </form>
-    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>Retry as new attempt</button></>}
+    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>Retry as new attempt</button></>}
     {attempt.status==='ABANDONED'&&<p>This attempt was abandoned. Its saved answer is preserved.</p>}
     <p className="ds-storage-note">Attempt {attempt.attemptId} · Revision {attempt.revision}. Hint use: {attempt.hintsUsed===null?'unknown':attempt.hintsUsed}. Prior solution exposure: {attempt.solutionViewed===null?'unknown':attempt.solutionViewed?'recorded':'not recorded'}. No learning score is calculated.</p></>;
 }

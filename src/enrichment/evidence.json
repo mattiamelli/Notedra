@@ -1,0 +1,166 @@
+[
+  {
+    "id": "co-integers",
+    "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+    "pages": [
+      3,
+      9
+    ],
+    "section": "Sign extension; overflow detection (printed slides 3 and 10)",
+    "authority": "OFFICIAL_LECTURE",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE",
+      "CO_SK04_04_OVERFLOW"
+    ]
+  },
+  {
+    "id": "co-range",
+    "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+    "pages": [
+      29
+    ],
+    "section": "Two’s complement (printed slide 30)",
+    "authority": "OFFICIAL_LECTURE",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE",
+      "CO_SK04_04_OVERFLOW"
+    ]
+  },
+  {
+    "id": "co-endian",
+    "filename": "CO Lecture 7 - ISA Part 1.pdf",
+    "pages": [
+      14
+    ],
+    "section": "Memory organisation: byte ordering",
+    "authority": "OFFICIAL_LECTURE",
+    "skillIds": [
+      "CO_SK04_06_ENDIAN"
+    ]
+  },
+  {
+    "id": "co-address",
+    "filename": "CO Lecture 2 - Assembly.pdf",
+    "pages": [
+      36,
+      37,
+      39,
+      44,
+      45,
+      48,
+      57,
+      58
+    ],
+    "section": "Address versus contents, AT&T and stack frames; pseudo-LEA return-address calculation",
+    "authority": "OFFICIAL_LECTURE",
+    "skillIds": [
+      "CO_SK06_01_ASM_READ",
+      "CO_SK06_03_STACK_TRACE",
+      "CO_SK06_04_ASM_DEBUG"
+    ]
+  },
+  {
+    "id": "co-cache",
+    "filename": "CO Lecture 13 - Caching.pdf",
+    "pages": [
+      25,
+      26,
+      29
+    ],
+    "section": "Set-associative fields and LRU (printed slides31,32,36)",
+    "authority": "OFFICIAL_LECTURE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS",
+      "CO_SK11_02_CACHE_TRACE"
+    ]
+  },
+  {
+    "id": "co-cache-assessment",
+    "filename": "CO Endterm 2025 Solutions.pdf",
+    "pages": [
+      7,
+      8
+    ],
+    "section": "Question6 cache decomposition; exam dated2024-11-08; current pack identity retained",
+    "authority": "OFFICIAL_ASSESSMENT",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS"
+    ]
+  },
+  {
+    "id": "co-pipeline",
+    "filename": "CO Lecture 14 - Pipelining.pdf",
+    "pages": [
+      5,
+      6,
+      11,
+      12
+    ],
+    "section": "Latency, throughput and explicit stage schedule",
+    "authority": "OFFICIAL_LECTURE",
+    "skillIds": [
+      "CO_SK12_01_PIPE_PERF",
+      "CO_SK12_03_PIPE_SCHEDULE"
+    ]
+  },
+  {
+    "id": "rl-implication",
+    "filename": "Delftse Foundations of Computation.pdf",
+    "pages": [
+      24
+    ],
+    "section": "2.1.7: converse, inverse, contrapositive; printed14",
+    "authority": "COURSE_TEXTBOOK",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE",
+      "RL_SK01_02_NEC_SUFF",
+      "RL_SK01_05_EQUIV"
+    ]
+  },
+  {
+    "id": "rl-fol",
+    "filename": "Delftse Foundations of Computation.pdf",
+    "pages": [
+      53,
+      54,
+      56,
+      59
+    ],
+    "section": "2.4: variables, scope, witness dependency and quantified negation",
+    "authority": "COURSE_TEXTBOOK",
+    "skillIds": [
+      "RL_SK02_03_NEGATE_FOL",
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ]
+  },
+  {
+    "id": "rl-sets",
+    "filename": "Delftse Foundations of Computation.pdf",
+    "pages": [
+      120,
+      121,
+      123,
+      124
+    ],
+    "section": "4.1: membership, subsets, powersets, ordered pairs and Cartesian product",
+    "authority": "COURSE_TEXTBOOK",
+    "skillIds": [
+      "RL_SK06_01_SET_CALC",
+      "RL_SK06_03_POWER_CART"
+    ]
+  },
+  {
+    "id": "rl-proof",
+    "filename": "Delftse Foundations of Computation.pdf",
+    "pages": [
+      83,
+      84
+    ],
+    "section": "3.2–3.3: assumptions, targets and contradiction",
+    "authority": "COURSE_TEXTBOOK",
+    "skillIds": [
+      "RL_SK03_04_CONTRADICTION",
+      "RL_SK03_07_DEBUG_PROOF"
+    ]
+  }
+]

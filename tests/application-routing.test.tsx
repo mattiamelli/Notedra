@@ -69,7 +69,7 @@ describe('application routes and canonical navigation', () => {
     expect(heading()).toBe(area.title);
     // Step 4 intentionally replaces only the Practice placeholder with authored items, expanded for CO in Step 6.
     if (area.path === '/practice') {
-      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(61);
+      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(67);
       expect(container.textContent).toContain('Authored practice');
     } else {
       expect(container.querySelector('.ds-empty')?.textContent).toContain(area.emptyTitle);

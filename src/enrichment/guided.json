@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ds.enrichment.guided.proof-obligations",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_04_CONTRADICTION"
+    ],
+    "subtopicIds": [
+      "RL_ST03_03_CONTRA"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3"
+    ],
+    "evidenceIds": [
+      "rl-proof"
+    ],
+    "title": "Keep hypotheses; negate the target",
+    "prompt": "Let n be an integer. Plan a contradiction proof that if n² is divisible by 5, then n is divisible by 5. State assumptions, explain why your cases exhaust the possibilities, and close the contradiction. Write your own approach before revealing a reference.",
+    "conditions": [
+      "Keep the hypothesis 5 divides n²; temporarily assume 5 does not divide n.",
+      "Justify all possible nonzero residue classes modulo 5, or another complete argument.",
+      "Derive an explicit contradiction with a retained assumption; conclude the implication."
+    ],
+    "pitfalls": [
+      "Negating the hypothesis instead of the conclusion changes the obligation.",
+      "Testing finitely many integers does not cover all integers; residue classes must represent every case.",
+      "A different complete proof is valid even if it does not use this reference layout."
+    ],
+    "reference": [
+      "Every integer not divisible by 5 is congruent to 1,2,3 or 4 modulo 5. Squaring gives residues 1,4,4,1, none zero. Thus 5 cannot divide n², contradicting the retained hypothesis. Discharging the temporary assumption establishes the implication.",
+      "A direct contrapositive using the same exhaustive residues is also valid. This display cannot verify whether a submitted proof meets the obligations."
+    ]
+  },
+  {
+    "id": "ds.enrichment.guided.stack-locations",
+    "version": "1",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "skillIds": [
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "subtopicIds": [
+      "CO_ST06_02_STACK_CALL"
+    ],
+    "sourceIds": [
+      "ref-d0b36bb837af8280"
+    ],
+    "evidenceIds": [
+      "co-address"
+    ],
+    "title": "Explain a frame-relative load",
+    "prompt": "Before these instructions, RSP=RBP=4096. Execute pushq %rbp; movq %rsp,%rbp; subq $24,%rsp; movq $19,-16(%rbp). Explain both pointers, the write address and the three allocated local slots. Do not assume unwritten slots contain zero.",
+    "conditions": [
+      "Apply the eight-byte decrement before the push store.",
+      "After the frame-pointer copy, hold RBP stable while RSP moves.",
+      "Compute the memory address from the stated base and displacement, and distinguish unwritten cells from known values."
+    ],
+    "pitfalls": [
+      "Using final RSP as the base of an RBP-relative operand addresses another location.",
+      "Space reservation is not initialization.",
+      "A stack diagram may use a different layout; consistent addresses and effects determine correctness."
+    ],
+    "reference": [
+      "PUSH stores the old 4096 at 4088 and sets RSP=4088. MOV copies 4088 to RBP. SUB sets RSP=4064 while RBP stays 4088. The local qword slots start at 4080,4072 and 4064. The final MOV writes 19 at 4088−16=4072. The other two local slots have not been initialized by this sequence.",
+      "The simulator’s eight-byte-cell model applies here. This is an explanation self-check, not a scored diagram comparison."
+    ]
+  }
+]

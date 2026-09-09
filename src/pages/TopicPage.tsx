@@ -9,6 +9,7 @@ import { MentalMap,TopicOverview,studyPath } from '../topic-study/AcademicViews'
 import { FlashcardMode,LearnMode } from '../topic-study/AuthoredViews';
 import { RLStudyMode } from '../rl/RLStudyMode';
 import { COStudyMode } from '../co/COStudyMode';
+const TopicEnrichment=lazy(()=>import('../enrichment/TopicEnrichment'));
 const TopicPractice=lazy(()=>import('../topic-study/TopicPractice').then(m=>({default:m.TopicPractice})));
 
 import '../topic-study/topic-study.css';
@@ -32,5 +33,6 @@ function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:S
  {mode==='learn'&&(rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<LearnMode topic={topic}/>)}{mode==='mental-map'&&<MentalMap topic={topic}/>}{mode==='flashcards'&&(rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<FlashcardMode key={topic.id} topic={topic}/>)}{mode==='practice'&&(rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<Suspense fallback={<p role="status">Loading Practice…</p>}><TopicPractice topicId={topic.id}/></Suspense>)}
  {mode==='exam-style'&&<EmptyState title="Exam-style practice is not available yet"><p>Exam-style exercises have not been authored for this topic. The shared Practice items are introductory authored study exercises.</p></EmptyState>}
  {mode==='mistakes'&&<EmptyState title="Topic mistake review is not available yet"><p>Saved answers are not used to infer a mistake profile. Topic mistake review is not available.</p></EmptyState>}
+ {['flashcards','mental-map','practice'].includes(mode)&&!topic.id.startsWith('IP_')&&<Suspense fallback={<p role="status">Loading supplemental study…</p>}><TopicEnrichment key={topic.id+mode} topicId={topic.id} mode={mode}/></Suspense>}
  </section></div>;
 }
