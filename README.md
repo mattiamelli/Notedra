@@ -1,6 +1,6 @@
 # DelftStudy — Topic Learning, Practice & x86-64 Assembly Visualizer
 
-A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study three guided pilot lessons and 24 flashcards, practise six authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation topics plus the existing Logic/Java pilots, review 95 flashcards, practise 34 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
@@ -17,14 +17,14 @@ The Dashboard links to three courses, all 43 canonical topics, the Assembly work
 | `/co/:topicId`, `/rl/:topicId`, `/ip/:topicId` | Canonical Overview; IDs are case-sensitive and must belong to the course |
 | Append `/learn`, `/mental-map`, `/flashcards`, `/practice`, `/exam-style` or `/mistakes` | Stable topic study mode; explicit `/overview` also works |
 | `/co/CO_T06_ASSEMBLY_X86_64/visualizer` | Full Assembly workbench |
-| `/practice` | Six authored exercises, course filter and actual saved attempts |
+| `/practice` | 34 authored exercises, course filter and actual saved attempts |
 | `/practice/:exerciseId` | Exercise preview and explicit Start |
 | `/practice/:exerciseId/attempts/:attemptId` | Saved draft or immutable submitted-answer review |
 | `/exams`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
 | `/progress` | Unassessed progress placeholder plus local student backup/restore controls |
 | Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
 
-React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. All topics have seven study modes; authored lessons and cards are available for the three pilots described below. Arrow keys and Home/End navigate the mode tabs. Canonical map links focus their target academic section.
+React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. All topics have seven study modes; authored lessons and cards cover all CO topics plus the preserved RL/IP pilots described below. Arrow keys and Home/End navigate the mode tabs. Canonical map links focus their target academic section.
 
 The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. Student records use the separate IndexedDB repository described below; the Assembly namespace and format are unchanged.
 
@@ -75,7 +75,7 @@ npm run build
 npm run preview
 ```
 
-`npm run dev` generates the academic navigation, student-reference and topic-study projections and validates authored practice/learning content before starting Vite. `npm run build` validates the trusted Content Pack, regenerates the three projections, checks exercise/grader and lesson/card locks, type-checks the project, and creates a static application in `dist/`. Direct Vite production builds independently enforce every content gate and projection consistency check. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
+`npm run dev` generates the academic navigation, student-reference and topic-study projections and validates authored practice/learning content before starting Vite. `npm run build` validates the trusted Content Pack, regenerates the three projections, checks exercise/grader, pilot and complete CO content locks, type-checks the project, and creates a static application in `dist/`. Direct Vite production builds independently enforce every content gate and projection consistency check. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
 
 ## Academic Content Source of Truth
 
@@ -88,7 +88,7 @@ The supported academic source is **DelftStudy Content Pack v1.0.1**, using **sch
 - `UNKNOWN`, `UNVERIFIED`, `PARTIALLY_UNVERIFIED`, and `LOW` values must remain unresolved unless verified against an original source. Uncertain mappings cannot generate source-derived variants, update individual skill mastery, contribute weighted exam readiness, or count as verified historical evidence. Uncertainty in a source locator or difficulty component remains distinct from mapping confidence.
 - Source-document records and PDF hashes are embedded; the **90 original PDF binaries and full PDF text are not**. The validator does not open or hash those PDFs.
 
-Step 1 established the trusted source and development safeguards. Step 2 added navigation and page shells. Step 3 added local student storage and a resume link. Step 4 added six separately authored exercises and deterministic item feedback. Step 5 adds the shared Topic Learning Experience with three authored pilots. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
+Step 1 established the trusted source and development safeguards. Step 2 added navigation and page shells. Step 3 added local student storage and a resume link. Step 4 added six separately authored exercises and deterministic item feedback. Step 5 added the shared Topic Learning Experience with three authored pilots. Step 6 completes CO with 14 lessons, 79 CO cards, 30 CO exercises, 17 unscored activities and nine new workspaces. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
 
 ```bash
 npm run validate:content
@@ -173,7 +173,7 @@ Exams, Mistakes and Study Planner remain placeholders. Topic visits only update 
 
 Open **Practice**, filter by course if needed, choose an exercise, then press **Start exercise**. Browsing alone creates no attempt. Use **Save draft** before leaving; unsaved changes are clearly labelled. **Submit answer** saves the exact final response through the existing IndexedDB transaction and shows feedback only after it completes. Saved attempts have stable deep links. **Retry as new attempt** preserves the submitted record and marks prior solution exposure as known.
 
-The catalog contains exactly six authored study items, two per course:
+The original Step 4 catalog retains these six immutable study items, two per course. Step 6 adds 28 CO items to the shared runner:
 
 | Course | Exercises | Response format |
 | --- | --- | --- |
@@ -198,11 +198,11 @@ pnpm run build
 
 The [Step 4 acceptance report](docs/practice-engine-status.md) records its 370-test baseline, native-browser checks, source and version contracts, bundle sizes, self-review findings and intentionally untested environments.
 
-## Topic learning — Step 5
+## Topic learning foundation — Step 5
 
 Every canonical topic has **Overview, Learn, Mental Map, Flashcards, Practice, Exam-style and Mistakes**. Overview and Mental Map cover all 43 topics, grouped into 105 subtopics and 147 atomic skills. The map shows only canonical containment and verified prerequisites, with a keyboard-accessible text outline. Base topic URLs continue to open Overview; each mode supports direct links, reload and Back/Forward.
 
-Three pilots have guided lessons and eight cards each:
+The three published pilots retain their guided lessons and eight cards each:
 
 | Pilot | Lesson scope | Cards |
 | --- | --- | --- |
@@ -212,7 +212,7 @@ Three pilots have guided lessons and eight cards each:
 
 Lessons use safe typed blocks with stable IDs, versions, canonical skill/subtopic associations and source references. These are authored DelftStudy explanations, not official TU Delft wording. Source disclosures preserve broad document ranges and UNKNOWN precision; no exact supporting slide or downloadable PDF is invented. All pilot examples have independent arithmetic, logical or Java-trace checks.
 
-Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Topic Practice reuses the six existing definitions and the same Start/Resume/Review runner. Other topics have honest empty Learn, Flashcard and Practice states. Exam-style and Mistakes contain no engines or inferred profiles.
+Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Step 5 Topic Practice reused the six original definitions and the same Start/Resume/Review runner; Step 6 expands this shared catalog for CO. Non-pilot RL/IP topics retain honest empty Learn, Flashcard and Practice states. Exam-style and Mistakes contain no engines or inferred profiles.
 
 The deterministic `src/generated/topic-study.json` is **84,049 bytes** and contains only topic-page academic fields plus 106 deduplicated source references. Authored lessons are **27,195 bytes** (3 lessons, 27 blocks); flashcards are **12,214 bytes** (24 cards). The separate content lock has 54 SHA-256 entries for lessons, blocks and cards. Published educational text cannot change silently: use a new content version and an explicitly reviewed lock. Normal builds never regenerate locks. The academic pack, existing Practice locks and student/database schema remain unchanged.
 
@@ -222,7 +222,7 @@ pnpm run check:topics
 pnpm run validate:topics
 ```
 
-Generation validates the trusted release and writes atomically; `check:topics` rejects missing or stale output. Direct Vite builds check academic ownership, source precision, full pilot skill coverage, exact inventories and immutable versions. See the [Step 5 acceptance report](docs/topic-learning-experience-status.md) for the complete inventories, 469-test results, real Chromium checks, bundle inspection and limitations. Steps 6–14 are not implemented.
+Generation validates the trusted release and writes atomically; `check:topics` rejects missing or stale output. Direct Vite builds check academic ownership, source precision, full pilot skill coverage, exact inventories and immutable versions. See the [Step 5 acceptance report](docs/topic-learning-experience-status.md) for the complete inventories, 469-test results, real Chromium checks, bundle inspection and limitations. Step 6 is documented below; Steps 7–14 are not implemented.
 
 ## Using the workbench
 
@@ -306,6 +306,33 @@ Invalid forms are rejected rather than silently accepted. Examples include immed
 
 The function example takes its input in RDI and returns its result in RAX. Its helper is placed **before** `main`: execution starts at `main`, calls the helper, returns, and then reaches the end cleanly. Placing a helper immediately after the caller would otherwise fall through into the helper again; jumps are outside this MVP.
 
+
+## Complete Computer Organisation — Step 6
+
+All 14 canonical CO topics now have Learn and Flashcards, covering all 32 subtopics and 46 skills. The course page shows factual lesson/card/Practice/tool availability and canonical prerequisites. It never marks a topic complete from a visit.
+
+- **14 CO lessons, 90 blocks, 79 cards**, preserving the published radix/integer lesson and cards.
+- **30 CO exact-answer exercises** (2 preserved, 28 added), through the existing immutable PracticeService/StudentRepository runner.
+- **17 unscored guided activities** for history, design, nonunique grouping/scheduling and architectural explanations. Criteria replace automatic scores where a unique oracle is inappropriate.
+- **Nine new workspaces:** Boolean truth, fixed/custom floating representation, ISA bit budgets, I/O aliases, memory organization/interleaving, cache LRU tracing, pipeline timing, Amdahl and VM translation. Every model states its assumptions and has reset, accessible results and reference/boundary tests.
+- **Existing Assembly Visualizer** remains the CO Assembly execution tool. New partial-register lesson examples are explicitly reading-only.
+
+New topic JSON is lazy-loaded by topic. Shared workspaces and Practice definitions load on demand; Assembly remains lazy. No dependencies, backend, storage schema or trusted evidence fields were added. Student schema and IndexedDB version remain 1. Published content and grader changes require deliberate new versions and locks; builds never silently regenerate them.
+
+```bash
+pnpm run validate:co
+pnpm run check:co-bundle
+pnpm test
+pnpm run typecheck
+pnpm run build
+```
+
+`validate:co` checks complete skill coverage, canonical ownership, lecture provenance, strict shapes, classification links, immutable hashes and the generated capability index. It is mandatory during development/prebuild and direct Vite builds. `check:co-bundle` runs a direct production build and records final emitted sizes and module boundaries in `docs/co-bundle-report.json`.
+
+Final Step 6 verification: **614 passing tests in 25 files**, strict typecheck, production build and all content/lock gates. Actual Chromium 152.0.7977.64 checks covered all 14 topics, five saved graded flows with reload, all three Assembly examples, native storage regressions and 390/768/1280 layouts. Safari/Firefox were not run. No original CO lecture PDFs were supplied; all new references retain broad document precision, and no source-dependent diagrams were reconstructed. K-map grouping and open design grading remain deliberately unscored.
+
+The [complete Step 6 acceptance report](docs/computer-organisation-status.md) contains all lesson/skill/card/Practice/tool inventories, source limits, test evidence, self-review findings and payload sizes. [Production module inventory](docs/co-bundle-report.json). **Step 7 and later are not started.**
+
 ## Project structure
 
 ```text
@@ -327,6 +354,22 @@ src/
     flashcards.json
     content-lock.json   # Explicit immutable lesson/block/card fingerprints
     topic-study.css
+  co/
+    topics/            # 13 new topic bundles; T04 remains in published pilot files
+    COStudyMode.tsx     # Topic-level lazy loading
+    TopicContent.tsx    # Shared Learn/cards/Practice composition
+    Workspace.tsx      # Accessible teaching-model controls and results
+    models.ts          # Pure bounded calculators and state transitions
+    grading.ts         # Locked exact-reference grader for new Practice items
+    practice.json      # 28 new definitions; existing six remain unchanged
+    coverage.json      # Every CO skill → deliberate Practice classification
+    tools.json
+    capabilities.json  # Build-checked factual course inventory
+    content-lock.json
+    practice-lock.json
+    grader-lock.json
+    types.ts
+    co.css
   learning/
     contracts.ts       # Bounded runtime validation and unassessed policy
     repository.ts      # Native IndexedDB, revisions, epochs and atomic restore
@@ -336,7 +379,8 @@ src/
     catalog.json       # Six authored definitions; immutable definition/grader locks
     catalog.ts
     validation.ts
-    grading.ts         # Pure bounded graders; no code execution
+    grading.ts         # Preserved original bounded graders; no code execution
+    runtime.ts         # Dispatches old/new types through the same runner
     service.ts         # Adapter over the existing StudentRepository
     PracticePage.tsx
     ExercisePage.tsx

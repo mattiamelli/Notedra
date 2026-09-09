@@ -22,7 +22,8 @@
     "generate:topics": "node --import tsx scripts/generate-topic-study.ts",
     "check:topics": "node --import tsx scripts/generate-topic-study.ts --check",
     "validate:topics": "node --import tsx scripts/validate-topic-content.ts",
-    "validate:co": "node --import tsx scripts/validate-co.ts"
+    "validate:co": "node --import tsx scripts/validate-co.ts",
+    "check:co-bundle": "node --import tsx scripts/inspect-co-build.ts"
   },
   "dependencies": {
     "react": "19.2.6",

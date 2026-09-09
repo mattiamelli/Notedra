@@ -1,0 +1,414 @@
+{
+  "initialChunks": [
+    "assets/index-BdAB0elM.js"
+  ],
+  "initialJSBytes": 470777,
+  "initialJSGzipBytes": 124236,
+  "authoredCOLazyBytes": 104952,
+  "totalAssetBytes": 733654,
+  "totalAssetGzipBytes": 206857,
+  "chunks": [
+    {
+      "file": "assets/index-BdAB0elM.js",
+      "bytes": 470777,
+      "gzipBytes": 124236,
+      "entry": true,
+      "imports": [],
+      "dynamicImports": [
+        "assets/CO_T01_HISTORY-D8bfk0pi.js",
+        "assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js",
+        "assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js",
+        "assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js",
+        "assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js",
+        "assets/CO_T07_ISA-CGiPsZmf.js",
+        "assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js",
+        "assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js",
+        "assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js",
+        "assets/CO_T11_CACHE-iPa6VChI.js",
+        "assets/CO_T12_PIPELINE-BFgDPOAQ.js",
+        "assets/CO_T13_PARALLELISM-kuJ2Wedj.js",
+        "assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js",
+        "assets/TopicContent-DdRYeGyw.js",
+        "assets/TopicPractice-B7jFCu_l.js",
+        "assets/PracticePage-05k4z31T.js",
+        "assets/ExercisePage-D7Oapn5M.js",
+        "assets/AttemptPage-CBEgnwf6.js",
+        "assets/AssemblyWorkbench-CgNwYNIf.js"
+      ],
+      "modules": [
+        "\u0000vite/modulepreload-polyfill.js",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react@19.2.6/node_modules/react/jsx-runtime.js?commonjs-module",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react@19.2.6/node_modules/react/cjs/react-jsx-runtime.production.js?commonjs-exports",
+        "node_modules/.pnpm/react@19.2.6/node_modules/react/cjs/react-jsx-runtime.production.js",
+        "node_modules/.pnpm/react@19.2.6/node_modules/react/jsx-runtime.js",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react@19.2.6/node_modules/react/jsx-runtime.js?commonjs-es-import",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react@19.2.6/node_modules/react/index.js?commonjs-module",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react@19.2.6/node_modules/react/cjs/react.production.js?commonjs-exports",
+        "node_modules/.pnpm/react@19.2.6/node_modules/react/cjs/react.production.js",
+        "node_modules/.pnpm/react@19.2.6/node_modules/react/index.js",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react@19.2.6/node_modules/react/index.js?commonjs-es-import",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/client.js?commonjs-module",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/cjs/react-dom-client.production.js?commonjs-exports",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/scheduler@0.27.0/node_modules/scheduler/index.js?commonjs-module",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/scheduler@0.27.0/node_modules/scheduler/cjs/scheduler.production.js?commonjs-exports",
+        "node_modules/.pnpm/scheduler@0.27.0/node_modules/scheduler/cjs/scheduler.production.js",
+        "node_modules/.pnpm/scheduler@0.27.0/node_modules/scheduler/index.js",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/index.js?commonjs-module",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/cjs/react-dom.production.js?commonjs-exports",
+        "node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/cjs/react-dom.production.js",
+        "node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/index.js",
+        "node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/client.js",
+        "\u0000/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/node_modules/.pnpm/react-dom@19.2.6_react@19.2.6/node_modules/react-dom/client.js?commonjs-es-import",
+        "\u0000vite/preload-helper.js",
+        "src/practice/practice.css",
+        "node_modules/.pnpm/react-router@7.18.3_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/react-router/dist/development/chunk-BV7QT456.mjs",
+        "src/topic-study/types.ts",
+        "src/generated/academic-index.json",
+        "src/academic/navigation.ts",
+        "src/generated/student-references.json",
+        "src/learning/contracts.ts",
+        "src/learning/repository.ts",
+        "src/learning/LearningProvider.tsx",
+        "src/shell/ShellIcon.tsx",
+        "src/shell/AppShell.tsx",
+        "src/shell/PageParts.tsx",
+        "src/pages/DashboardPage.tsx",
+        "src/co/co.css",
+        "src/co/capabilities.json",
+        "src/generated/topic-study.json",
+        "src/topic-study/lessons.json",
+        "src/topic-study/flashcards.json",
+        "src/topic-study/content.ts",
+        "src/topic-study/AcademicViews.tsx",
+        "src/pages/CoursePage.tsx",
+        "src/pages/NotFoundPage.tsx",
+        "src/topic-study/AuthoredViews.tsx",
+        "src/co/COStudyMode.tsx",
+        "src/topic-study/topic-study.css",
+        "src/pages/TopicPage.tsx",
+        "src/learning/StudentDataPanel.tsx",
+        "src/pages/ProductAreaPage.tsx",
+        "src/shell/shell.css",
+        "src/App.tsx",
+        "src/index.css",
+        "src/main.tsx",
+        "index.html"
+      ]
+    },
+    {
+      "file": "assets/PracticePage-05k4z31T.js",
+      "bytes": 2911,
+      "gzipBytes": 1297,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js",
+        "assets/service-DMGqow7i.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/practice/PracticePage.tsx"
+      ]
+    },
+    {
+      "file": "assets/ExercisePage-D7Oapn5M.js",
+      "bytes": 1572,
+      "gzipBytes": 842,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js",
+        "assets/service-DMGqow7i.js",
+        "assets/ExerciseParts-B48sBlEH.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/practice/ExercisePage.tsx"
+      ]
+    },
+    {
+      "file": "assets/AttemptPage-CBEgnwf6.js",
+      "bytes": 4724,
+      "gzipBytes": 1954,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js",
+        "assets/service-DMGqow7i.js",
+        "assets/ExerciseParts-B48sBlEH.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/practice/AttemptPage.tsx"
+      ]
+    },
+    {
+      "file": "assets/ExerciseParts-B48sBlEH.js",
+      "bytes": 4047,
+      "gzipBytes": 1578,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/practice/ExerciseParts.tsx"
+      ]
+    },
+    {
+      "file": "assets/AssemblyWorkbench-CgNwYNIf.js",
+      "bytes": 29502,
+      "gzipBytes": 10203,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/components/Icon.tsx",
+        "src/components/ControlPanel.tsx",
+        "src/examples/examplePrograms.ts",
+        "src/components/CodeEditor.tsx",
+        "src/engine/types.ts",
+        "src/engine/memory.ts",
+        "src/utils/storage.ts",
+        "src/components/RegisterPanel.tsx",
+        "src/utils/stackRows.ts",
+        "src/components/StackVisualizer.tsx",
+        "src/components/InstructionExplanation.tsx",
+        "src/components/ExecutionHistory.tsx",
+        "src/engine/parser.ts",
+        "src/engine/cpu.ts",
+        "src/engine/instructions.ts",
+        "src/engine/executor.ts",
+        "src/engine/session.ts",
+        "src/utils/useSimulator.ts",
+        "src/AssemblyWorkbench.tsx"
+      ]
+    },
+    {
+      "file": "assets/TopicPractice-B7jFCu_l.js",
+      "bytes": 1676,
+      "gzipBytes": 818,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js",
+        "assets/service-DMGqow7i.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/topic-study/TopicPractice.tsx"
+      ]
+    },
+    {
+      "file": "assets/service-DMGqow7i.js",
+      "bytes": 48125,
+      "gzipBytes": 13247,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/practice.json",
+        "src/co/practice-lock.json",
+        "src/co/grader-lock.json",
+        "src/practice/catalog.json",
+        "src/practice/catalog-lock.json",
+        "src/practice/grader-lock.json",
+        "src/practice/grading.ts",
+        "src/practice/validation.ts",
+        "src/practice/catalog.ts",
+        "src/co/grading.ts",
+        "src/practice/runtime.ts",
+        "src/practice/service.ts"
+      ]
+    },
+    {
+      "file": "assets/CO_T01_HISTORY-D8bfk0pi.js",
+      "bytes": 6587,
+      "gzipBytes": 2101,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T01_HISTORY.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js",
+      "bytes": 9319,
+      "gzipBytes": 3001,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T02_BOOLEAN_KMAP.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js",
+      "bytes": 9445,
+      "gzipBytes": 2990,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T03_DIGITAL_CMOS_SEQUENTIAL.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js",
+      "bytes": 6940,
+      "gzipBytes": 2177,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T05_DATA_REP_FIXED_FLOAT.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js",
+      "bytes": 9118,
+      "gzipBytes": 2963,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T06_ASSEMBLY_X86_64.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T07_ISA-CGiPsZmf.js",
+      "bytes": 8073,
+      "gzipBytes": 2575,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T07_ISA.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js",
+      "bytes": 11299,
+      "gzipBytes": 3394,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T08_BPU_MICROCODE.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js",
+      "bytes": 7533,
+      "gzipBytes": 2496,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T09_IO_INTERRUPTS.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js",
+      "bytes": 7253,
+      "gzipBytes": 2385,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T10_DMA_MEMORY.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T11_CACHE-iPa6VChI.js",
+      "bytes": 7748,
+      "gzipBytes": 2638,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T11_CACHE.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T12_PIPELINE-BFgDPOAQ.js",
+      "bytes": 8385,
+      "gzipBytes": 2754,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T12_PIPELINE.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T13_PARALLELISM-kuJ2Wedj.js",
+      "bytes": 6454,
+      "gzipBytes": 2098,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T13_PARALLELISM.json"
+      ]
+    },
+    {
+      "file": "assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js",
+      "bytes": 6798,
+      "gzipBytes": 2102,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/topics/CO_T14_VIRTUAL_MEMORY.json"
+      ]
+    },
+    {
+      "file": "assets/TopicContent-DdRYeGyw.js",
+      "bytes": 5951,
+      "gzipBytes": 2675,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js"
+      ],
+      "dynamicImports": [
+        "assets/TopicPractice-B7jFCu_l.js",
+        "assets/Workspace-Zm5jAuTS.js"
+      ],
+      "modules": [
+        "src/co/tools.json",
+        "src/co/TopicContent.tsx"
+      ]
+    },
+    {
+      "file": "assets/Workspace-Zm5jAuTS.js",
+      "bytes": 13507,
+      "gzipBytes": 5480,
+      "entry": false,
+      "imports": [
+        "assets/index-BdAB0elM.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/co/models.ts",
+        "src/co/Workspace.tsx"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "file": "assets/index-P2Argt9Y.css",
+      "bytes": 45910,
+      "gzipBytes": 10853
+    }
+  ],
+  "checks": [
+    "all production gates executed directly by Vite",
+    "13 CO topic chunks",
+    "CO models/workspace/Practice definitions and Assembly absent from initial graph",
+    "full pack, validators, CO content locks/coverage and pilot locks absent from browser",
+    "sizes measured from final emitted assets after Vite preload rewriting"
+  ]
+}
