@@ -127,3 +127,19 @@
   .ds-tool-back { padding-inline: 16px; }
   .ds-shortcuts a { flex-basis: 145px; padding: 14px 12px; }
 }
+
+.ds-resume, .ds-storage { padding: 24px; background: #151d25; border: 1px solid var(--ds-border); border-radius: 8px; }
+.ds-resume { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.ds-resume h2 { margin: 0; font-size: 18px; }
+.ds-resume p, .ds-storage p { color: #aebac9; line-height: 1.65; }
+.ds-storage-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0; }
+.ds-storage button:disabled, .ds-storage input:disabled { opacity: .5; cursor: not-allowed; }
+.ds-backup-input { display: grid; gap: 6px; min-width: 0; font-size: 13px; }
+.ds-backup-input input { max-width: 100%; font: inherit; }
+.ds-storage input:focus-visible { outline: 2px solid var(--ds-accent); outline-offset: 3px; }
+.ds-storage input[type=checkbox] { accent-color: #65ddc6; }
+.ds-restore-confirm { padding: 20px; border: 1px solid #bd9a53; border-radius: 6px; overflow-wrap: anywhere; }
+.ds-storage-error { padding: 14px; border: 1px solid #b87070; border-radius: 6px; color: #ffcccc !important; overflow-wrap: anywhere; }
+.ds-storage-error a { color: #a4f1df; text-decoration: underline; }
+.ds-storage-note { font-size: 12px; }
+@media (max-width: 650px) { .ds-resume { align-items: flex-start; flex-direction: column; } .ds-storage, .ds-resume { padding: 18px; } }

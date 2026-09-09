@@ -7,15 +7,17 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "node --import tsx scripts/generate-academic-index.ts && vite --host 127.0.0.1",
-    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && tsc --noEmit && vite build",
+    "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && vite --host 127.0.0.1",
+    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "validate:content": "node --import tsx scripts/validate-content.ts",
     "generate:academic": "node --import tsx scripts/generate-academic-index.ts",
-    "check:academic": "node --import tsx scripts/generate-academic-index.ts --check"
+    "check:academic": "node --import tsx scripts/generate-academic-index.ts --check",
+    "generate:references": "node --import tsx scripts/generate-student-references.ts",
+    "check:references": "node --import tsx scripts/generate-student-references.ts --check"
   },
   "dependencies": {
     "react": "19.2.6",
@@ -29,6 +31,7 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.4",
     "ajv": "8.17.1",
+    "fake-indexeddb": "6.2.5",
     "jsdom": "26.1.0",
     "tailwindcss": "4.2.1",
     "tsx": "4.20.6",

@@ -1,3 +1,4 @@
+import { LearningNotice } from '../learning/LearningProvider';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router';
 import { ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext, productAreas } from '../academic/navigation';
@@ -52,7 +53,7 @@ export function AppShell() {
     </aside>
     <Content ref={element => {content.current = element;}} id="ds-content" tabIndex={-1} className={tool ? 'ds-tool-content' : 'ds-main'}>
       {tool && <Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> Back to Assembly topic</Link>}
-      <Outlet/>
+      <LearningNotice/><Outlet/>
     </Content>
   </div>;
 }

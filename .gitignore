@@ -11,3 +11,5 @@ coverage/
 .vscode/
 *.log
 *.swp
+
+.verification-dist/

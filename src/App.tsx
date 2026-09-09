@@ -8,6 +8,7 @@ import { TopicPage } from './pages/TopicPage';
 import { ProductAreaPage } from './pages/ProductAreaPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import './shell/shell.css';
+import { LearningProvider } from './learning/LearningProvider';
 
 const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbench'));
 
@@ -26,5 +27,5 @@ export function AppRoutes() {
 }
 
 export default function App() {
-  return <BrowserRouter><AppRoutes/></BrowserRouter>;
+  return <BrowserRouter><LearningProvider><AppRoutes/></LearningProvider></BrowserRouter>;
 }
