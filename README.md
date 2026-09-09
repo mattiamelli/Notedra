@@ -2,7 +2,7 @@
 
 A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Browse the canonical Computer Organisation, Reasoning and Logic, and Introduction to Programming topics, then open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
-DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, database, account, or login is needed to run the application.
+DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
 ## Application navigation
 
@@ -16,14 +16,15 @@ The Dashboard links to three courses, all 43 canonical topics, the Assembly work
 | `/ip` | CSE1100 — Introduction to Programming; 20 topics |
 | `/co/:topicId`, `/rl/:topicId`, `/ip/:topicId` | Canonical topic shell; IDs are case-sensitive and must belong to the course |
 | `/co/CO_T06_ASSEMBLY_X86_64/visualizer` | Full Assembly workbench |
-| `/practice`, `/exams`, `/progress`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
+| `/practice`, `/exams`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
+| `/progress` | Unassessed progress placeholder plus local student backup/restore controls |
 | Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
 
 React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. Topic tabs expose future study modes and clearly state that their study materials/tools are not available yet.
 
-The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. No learning-state persistence engine was added.
+The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. Student records use the separate IndexedDB repository described below; the Assembly namespace and format are unchanged.
 
-Vite development and production-preview servers support refreshing deep links. A different static host must serve `index.html` for application routes (SPA fallback); no backend is required. Hosting configuration/deployment is outside Step 2.
+Vite development and production-preview servers support refreshing deep links. A different static host must serve `index.html` for application routes (SPA fallback); no backend is required. Hosting configuration/deployment is outside this local-only task.
 
 ## Assembly features
 
@@ -70,7 +71,7 @@ npm run build
 npm run preview
 ```
 
-`npm run dev` generates the academic navigation index before starting Vite. `npm run build` validates the trusted Content Pack, regenerates navigation, type-checks the project, and creates a static application in `dist/`. Vite independently enforces content validation and index consistency for direct production builds. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
+`npm run dev` generates the academic navigation and student-reference projections before starting Vite. `npm run build` validates the trusted Content Pack, regenerates both projections, type-checks the project, and creates a static application in `dist/`. Vite independently enforces content validation and index consistency for direct production builds. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
 
 ## Academic Content Source of Truth
 
@@ -83,7 +84,7 @@ The supported academic source is **DelftStudy Content Pack v1.0.1**, using **sch
 - `UNKNOWN`, `UNVERIFIED`, `PARTIALLY_UNVERIFIED`, and `LOW` values must remain unresolved unless verified against an original source. Uncertain mappings cannot generate source-derived variants, update individual skill mastery, contribute weighted exam readiness, or count as verified historical evidence. Uncertainty in a source locator or difficulty component remains distinct from mapping confidence.
 - Source-document records and PDF hashes are embedded; the **90 original PDF binaries and full PDF text are not**. The validator does not open or hash those PDFs.
 
-Step 1 established the trusted source and development safeguards. Step 2 adds navigation and page shells only. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
+Step 1 established the trusted source and development safeguards. Step 2 added navigation and page shells. Step 3 adds local student storage and a resume link; it does not add study or grading engines. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
 
 ```bash
 npm run validate:content
@@ -115,7 +116,54 @@ npm run check:academic
 
 `check:academic` verifies the trusted source and fails if the artifact is missing, stale or edited. Direct `vite build` also checks freshness. Academic navigation types and selectors are separate from the Assembly engine. Only the generated projection is imported by browser code; the Assembly component is loaded as a separate chunk when its route is opened.
 
-See the [Step 2 verification report](docs/application-shell-status.md) for the full file inventory, route/UI tests, bundle analysis and responsive checks. Step 3 and all study engines remain outside this implementation.
+See the [Step 2 verification report](docs/application-shell-status.md) for the full file inventory, route/UI tests, bundle analysis and responsive checks. The Step 3 storage foundation is documented below; all study/grading engines remain outside this implementation.
+
+## Local student data — Step 3
+
+Visiting a valid topic saves a **Resume last topic** link on the Dashboard. It stores canonical course/topic identity and a timestamp, never an arbitrary URL. It does not redirect automatically or count visits as learning evidence. The Progress page contains the storage status, student backup export, validated restore preview, explicit replacement confirmation and recovery export.
+
+Three independent layers remain separate:
+
+1. Immutable Content Pack **1.0.1**, academic schema **1.1.0**.
+2. Generated navigation and minimal canonical reference projections.
+3. Mutable student schema **1**, in native IndexedDB database `delftstudy-student-v1` (database version 1).
+
+The new **69,985-byte** student projection contains pack version/SHA-256, 3 subject IDs, 43 topic/course associations, 105 subtopic/topic associations, 147 skill/subtopic associations, and 489 source mapping locators with their owning course/topic IDs. Source locators are used only to validate optional attempt references; they are not runnable exercises. No assessment content, mapping-confidence payloads, provenance or historical-frequency tables are included. The existing navigation projection remains 7,462 bytes. Both artifacts are deterministic and checked during direct Vite builds.
+
+```bash
+pnpm run generate:references
+pnpm run check:references
+```
+
+`StudentRepository` is a small asynchronous interface. The native implementation provides `load`, `saveResume`, `createDraft`, `editDraft`, `submit`, `abandon`, `exportBackup`, `exportRecovery` and `restore`. The UI has no exercise/attempt-entry or grading feature yet. Tests use isolated fixtures; real student storage is never seeded with demonstration attempts.
+
+Drafts have canonical identity, explicit targeted skills, optional exercise identity/version and source/template references, bounded text/choice/code answers, timestamps, revisions, and nullable hint/solution exposure. Unknown exposure stays unknown. Code is stored as text and never executed. Draft edits require the current revision; submitted/abandoned attempts cannot be edited. Repeating an identical submission operation is idempotent; conflicting reuse rejects. Retrying creates a new attempt ID. Future evaluation must use a separate evidence contract/store without rewriting original submissions.
+
+No trusted evaluator exists, so **every raw attempt remains UNASSESSED and ineligible for derived evidence**, including ungraded submissions, uncertain mappings, broad topic mappings and integrated IP work. There is no numeric score, readiness estimate or skill-credit calculation. Imported confidence, correctness, eligibility and mastery fields are rejected. Unknown source-page locators/difficulty are not reinterpreted as mapping confidence.
+
+### Local saving, conflicts and backups
+
+- Essential student writes happen immediately through IndexedDB transactions; no unload/beforeunload handler is required. Save success is reported only after transaction completion. Aborts, quota/permission failures, corruption and incompatible versions are surfaced; storage errors never silently reset data or return a successful empty dataset.
+- The bounded dataset (at most 1,000 attempts and 4 MB per backup) is stored as one active record in a small object store. Transactions serialize read/validate/write operations. Distinct concurrent attempts are preserved; stale record revisions conflict. This favors straightforward correctness over a generalized synchronization system.
+- Backup replacement validates everything before mutation, checks the persisted dataset generation and revision inside the write transaction, retains the prior snapshot, and replaces active data atomically. A fresh generation rejects pre-restore tabs even without cross-tab notifications. Use **Reload saved data** after a conflict. Blocked upgrades require closing other tabs; connection/permission failures may require a full page reload.
+- **Export student backup**, then keep the downloaded JSON somewhere safe. To transfer or restore, choose that file, review the contents, check the replacement confirmation and press **Replace student data**. Cancellation changes nothing. No automatic merge occurs.
+- **Export pre-restore recovery** downloads the immediately preceding dataset. Choose that file through the same confirmed restore flow to recover it. Each successful restore replaces the previous recovery snapshot; export an older recovery file before another restore if you need to retain it.
+- Backups cover only the student namespace. Assembly editor/preferences remain under `delftstudy:v1:` in localStorage; CPU execution history remains in memory. No blanket clear-browser-storage action exists.
+- Browser, device, hostname and port each define separate local storage. This is not cloud synchronization. Browser-data deletion, device failure and some crashes can lose local data even after a completed save. Exported backups provide a separate recovery copy.
+- Only the actual new schema is supported. Unknown student/database versions, different academic fingerprints and malformed persisted data are preserved and refused; no speculative migrations or automatic corruption repair are implemented. Preserve existing browser data and use a compatible application/backup when incompatibility is reported.
+
+The only new dependency is **fake-indexeddb 6.2.5**, development-only for reproducible storage tests. Runtime dependencies remain React, React DOM and React Router. The existing deprecated **whatwg-encoding 3.1.1** is transitive through development-only jsdom 26.1.0 (also through html-encoding-sniffer 4.0.0); no broad upgrade was performed.
+
+The [Step 3 acceptance report](docs/learning-state-status.md) records exact tests, browser versions, the separate adversarial self-review, limitations and final verification. Native-browser checks can be reproduced with:
+
+```bash
+node --import tsx scripts/build-learning-browser-check.ts
+pnpm exec vite preview --outDir .verification-dist --host 127.0.0.1 --port 4186 --strictPort
+```
+
+Open the printed URL, press **Run native storage checks**, reload the page, then press **Verify committed record after reload**. This is a separate production-mode test artifact with uniquely named test databases; it is never shipped in `dist/`. For actual UI tests, serve the application preview on an unused port and keep that origin isolated from your own data.
+
+Step 4 was not started. Practice, Exams, Mistakes and Study Planner remain placeholders.
 
 ## Using the workbench
 
@@ -208,6 +256,12 @@ src/
     navigation.ts     # Canonical selectors, stable course routes and page context
   generated/
     academic-index.json
+    student-references.json
+  learning/
+    contracts.ts       # Bounded runtime validation and unassessed policy
+    repository.ts      # Native IndexedDB, revisions, epochs and atomic restore
+    LearningProvider.tsx
+    StudentDataPanel.tsx
   shell/
     AppShell.tsx
     PageParts.tsx
@@ -255,17 +309,27 @@ tests/
   content-build.test.ts
   academic-index.test.ts
   application-routing.test.tsx
+  learning-contracts.test.ts
+  learning-repository.test.ts
+  learning-ui.test.tsx
+  student-references.test.ts
+  browser/             # Separate production-mode native browser acceptance harness
 scripts/
   validate-content.ts
   generate-academic-index.ts
   academic-index.ts
   academic-index-guard.ts
+  generate-student-references.ts
+  student-references.ts
+  student-references-guard.ts
+  build-learning-browser-check.ts
   content/           # Development-only schema, integrity, policy, frequency and build checks
 content-pack/
   v1.0.1/            # Nine immutable audited release files
 docs/
   content-integration-status.md
   application-shell-status.md
+  learning-state-status.md
 ```
 
 The engine imports no React or browser APIs. The UI renders engine snapshots; it never implements instruction behavior. Runtime dependencies are React, React DOM and React Router. Vite, strict TypeScript, Tailwind CSS, Vitest, and jsdom provide development/testing tooling; Ajv and tsx support content validation and generation only.
