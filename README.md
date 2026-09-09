@@ -1,6 +1,6 @@
 # DelftStudy — Topic Learning, Practice & x86-64 Assembly Visualizer
 
-A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation topics plus the existing Logic/Java pilots, review 95 flashcards, practise 34 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation and nine Reasoning & Logic topics plus the existing Java pilot, review 154 flashcards, practise 61 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
@@ -17,18 +17,35 @@ The Dashboard links to three courses, all 43 canonical topics, the Assembly work
 | `/co/:topicId`, `/rl/:topicId`, `/ip/:topicId` | Canonical Overview; IDs are case-sensitive and must belong to the course |
 | Append `/learn`, `/mental-map`, `/flashcards`, `/practice`, `/exam-style` or `/mistakes` | Stable topic study mode; explicit `/overview` also works |
 | `/co/CO_T06_ASSEMBLY_X86_64/visualizer` | Full Assembly workbench |
-| `/practice` | 34 authored exercises, course filter and actual saved attempts |
+| `/practice` | 61 authored exercises, course filter and actual saved attempts |
 | `/practice/:exerciseId` | Exercise preview and explicit Start |
 | `/practice/:exerciseId/attempts/:attemptId` | Saved draft or immutable submitted-answer review |
 | `/exams`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
 | `/progress` | Unassessed progress placeholder plus local student backup/restore controls |
 | Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
 
-React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. All topics have seven study modes; authored lessons and cards cover all CO topics plus the preserved RL/IP pilots described below. Arrow keys and Home/End navigate the mode tabs. Canonical map links focus their target academic section.
+React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. All topics have seven study modes; authored lessons and cards cover all CO and R&L topics plus the preserved IP pilot described below. Arrow keys and Home/End navigate the mode tabs. Canonical map links focus their target academic section.
 
 The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. Student records use the separate IndexedDB repository described below; the Assembly namespace and format are unchanged.
 
 Vite development and production-preview servers support refreshing deep links. A different static host must serve `index.html` for application routes (SPA fallback); no backend is required. Hosting configuration/deployment is outside this local-only task.
+
+## Reasoning & Logic — Step 7
+
+All nine canonical R&L topics now have lessons and flashcards: 45 skills, 67 cards, 29 graded items (including the two preserved introductory items), and 23 guided activities. Course pages show factual capabilities and prerequisites. The published propositional-logic pilot remains unchanged.
+
+Six calculation workspaces cover propositional truth/equivalence/validity, finite first-order structures, recursive numeric evaluation, ordered binary trees and directed graphs, finite sets, and finite functions/relations. The proof-planning workspace uses structured writing fields and unscored criteria. All formulas use bounded typed models and text notation; no arbitrary formula parser, JavaScript evaluation, math/graph dependency or AI grader was added.
+
+Proofs, translations and open constructions accept multiple valid approaches. Write working notes, then reveal the rubric and reference reasoning. These notes are temporary page state, not saved attempts, and never receive an automatic correctness score. Fixed exact-answer exercises use the existing immutable Practice service and IndexedDB transactions. Finite checks do not establish infinite theorems or learning mastery.
+
+New content and tools load on demand. Academic taxonomy/projections, all CO content, Assembly and student schema/database version 1 remain unchanged. All 99 uncertain R&L mappings stay blocked; broad evidence remains topic-only. The new bounded puzzle uses a verified current mechanism and a separately exhaustive uniqueness check. Source references honestly identify normalized lecture ranges: no original PDFs were supplied or directly inspected.
+
+```bash
+pnpm run validate:rl
+pnpm run check:rl-bundle
+```
+
+See [Step 7 acceptance evidence](docs/reasoning-logic-status.md) and the [production module inventory](docs/rl-bundle-report.json). Complete IP, global exams, mastery/readiness, adaptive learning, and all later steps remain outside this implementation.
 
 ## Assembly features
 
@@ -75,7 +92,7 @@ npm run build
 npm run preview
 ```
 
-`npm run dev` generates the academic navigation, student-reference and topic-study projections and validates authored practice/learning content before starting Vite. `npm run build` validates the trusted Content Pack, regenerates the three projections, checks exercise/grader, pilot and complete CO content locks, type-checks the project, and creates a static application in `dist/`. Direct Vite production builds independently enforce every content gate and projection consistency check. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
+`npm run dev` generates the academic navigation, student-reference and topic-study projections and validates authored practice/learning content before starting Vite. `npm run build` validates the trusted Content Pack, regenerates the three projections, checks exercise/grader, pilot, complete CO and R&L content locks, type-checks the project, and creates a static application in `dist/`. Direct Vite production builds independently enforce every content gate and projection consistency check. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
 
 ## Academic Content Source of Truth
 
@@ -370,6 +387,25 @@ src/
     grader-lock.json
     types.ts
     co.css
+  rl/
+    topics/            # Eight new lazy bundles; published T01 is reused
+    RLStudyMode.tsx
+    TopicContent.tsx
+    IntroTopicContent.tsx
+    GuidedPractice.tsx # Temporary writing and unscored rubric/reference reveal
+    Workspace.tsx      # Loads bounded calculation workspaces on demand
+    logic.ts           # Typed propositional/FOL semantics; no arbitrary parser
+    models.ts          # Exact recurrences, trees, graphs, finite sets/relations
+    grading.ts         # Version-locked direct-response exact grader
+    practice.json
+    coverage.json      # All 45 skills classified with explicit practice links
+    tools.json
+    capabilities.json
+    source-policy.json # Build-only verified puzzle-mechanism authorization
+    content-lock.json
+    practice-lock.json
+    grader-lock.json
+    rl.css
   learning/
     contracts.ts       # Bounded runtime validation and unassessed policy
     repository.ts      # Native IndexedDB, revisions, epochs and atomic restore
@@ -462,6 +498,10 @@ scripts/
   topic-content.ts
   validate-topic-content.ts
   build-learning-browser-check.ts
+  validate-rl.ts
+  rl-content.ts
+  rl-source-policy.ts
+  inspect-rl-build.ts
   content/           # Development-only schema, integrity, policy, frequency and build checks
 content-pack/
   v1.0.1/            # Nine immutable audited release files
@@ -471,6 +511,9 @@ docs/
   learning-state-status.md
   practice-engine-status.md
   topic-learning-experience-status.md
+  computer-organisation-status.md
+  reasoning-logic-status.md
+  rl-bundle-report.json
 ```
 
 The engine imports no React or browser APIs. The UI renders engine snapshots; it never implements instruction behavior. Runtime dependencies are React, React DOM and React Router. Vite, strict TypeScript, Tailwind CSS, Vitest, and jsdom provide development/testing tooling; Ajv and tsx support content validation and generation only.

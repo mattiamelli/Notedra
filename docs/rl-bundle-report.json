@@ -1,4 +1,323 @@
 {
+  "emittedFiles": [
+    {
+      "file": "favicon.svg",
+      "bytes": 252,
+      "gzipBytes": 191
+    },
+    {
+      "file": "index.html",
+      "bytes": 744,
+      "gzipBytes": 459
+    },
+    {
+      "file": "assets/AssemblyWorkbench-0vd0c9wi.js",
+      "bytes": 29502,
+      "gzipBytes": 10204
+    },
+    {
+      "file": "assets/AttemptPage-CVhzqCu-.js",
+      "bytes": 4724,
+      "gzipBytes": 1954
+    },
+    {
+      "file": "assets/CO_T01_HISTORY-D8bfk0pi.js",
+      "bytes": 6587,
+      "gzipBytes": 2101
+    },
+    {
+      "file": "assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js",
+      "bytes": 9319,
+      "gzipBytes": 3001
+    },
+    {
+      "file": "assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js",
+      "bytes": 9445,
+      "gzipBytes": 2990
+    },
+    {
+      "file": "assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js",
+      "bytes": 6940,
+      "gzipBytes": 2177
+    },
+    {
+      "file": "assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js",
+      "bytes": 9118,
+      "gzipBytes": 2963
+    },
+    {
+      "file": "assets/CO_T07_ISA-CGiPsZmf.js",
+      "bytes": 8073,
+      "gzipBytes": 2575
+    },
+    {
+      "file": "assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js",
+      "bytes": 11299,
+      "gzipBytes": 3394
+    },
+    {
+      "file": "assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js",
+      "bytes": 7533,
+      "gzipBytes": 2496
+    },
+    {
+      "file": "assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js",
+      "bytes": 7253,
+      "gzipBytes": 2385
+    },
+    {
+      "file": "assets/CO_T11_CACHE-iPa6VChI.js",
+      "bytes": 7748,
+      "gzipBytes": 2638
+    },
+    {
+      "file": "assets/CO_T12_PIPELINE-BFgDPOAQ.js",
+      "bytes": 8385,
+      "gzipBytes": 2754
+    },
+    {
+      "file": "assets/CO_T13_PARALLELISM-kuJ2Wedj.js",
+      "bytes": 6454,
+      "gzipBytes": 2098
+    },
+    {
+      "file": "assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js",
+      "bytes": 6798,
+      "gzipBytes": 2102
+    },
+    {
+      "file": "assets/ExercisePage-iXVCcv6G.js",
+      "bytes": 1572,
+      "gzipBytes": 841
+    },
+    {
+      "file": "assets/ExerciseParts-CadDz_TG.js",
+      "bytes": 4068,
+      "gzipBytes": 1587
+    },
+    {
+      "file": "assets/FolWorkspace-B9JvJkJt.js",
+      "bytes": 4077,
+      "gzipBytes": 1661
+    },
+    {
+      "file": "assets/IntroTopicContent-Bd7GqZH8.js",
+      "bytes": 2927,
+      "gzipBytes": 1335
+    },
+    {
+      "file": "assets/PracticePage-B5izZi_x.js",
+      "bytes": 3165,
+      "gzipBytes": 1405
+    },
+    {
+      "file": "assets/PropositionWorkspace-BUItmxhf.js",
+      "bytes": 5150,
+      "gzipBytes": 1803
+    },
+    {
+      "file": "assets/RL_T02_FOL-CPbVtDo6.js",
+      "bytes": 15292,
+      "gzipBytes": 4506
+    },
+    {
+      "file": "assets/RL_T03_PROOF_METHODS-Dyog5d7L.js",
+      "bytes": 15936,
+      "gzipBytes": 4289
+    },
+    {
+      "file": "assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js",
+      "bytes": 17916,
+      "gzipBytes": 5101
+    },
+    {
+      "file": "assets/RL_T05_TREES_GRAPHS-CIHz8klu.js",
+      "bytes": 13625,
+      "gzipBytes": 4050
+    },
+    {
+      "file": "assets/RL_T06_SET_THEORY-Cvt6P7Nr.js",
+      "bytes": 12356,
+      "gzipBytes": 3535
+    },
+    {
+      "file": "assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js",
+      "bytes": 11902,
+      "gzipBytes": 3460
+    },
+    {
+      "file": "assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js",
+      "bytes": 10869,
+      "gzipBytes": 3529
+    },
+    {
+      "file": "assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js",
+      "bytes": 8140,
+      "gzipBytes": 2725
+    },
+    {
+      "file": "assets/RecurrenceWorkspace-tAjROSeJ.js",
+      "bytes": 2531,
+      "gzipBytes": 1146
+    },
+    {
+      "file": "assets/RelationsWorkspace-CuBtZ12t.js",
+      "bytes": 3125,
+      "gzipBytes": 1263
+    },
+    {
+      "file": "assets/SetsWorkspace-BjhcxWHw.js",
+      "bytes": 2348,
+      "gzipBytes": 1021
+    },
+    {
+      "file": "assets/TopicContent-B-tRKlKl.js",
+      "bytes": 7543,
+      "gzipBytes": 3265
+    },
+    {
+      "file": "assets/TopicContent-tAJqtuXK.js",
+      "bytes": 5946,
+      "gzipBytes": 2674
+    },
+    {
+      "file": "assets/TopicPractice-CBvZVRKq.js",
+      "bytes": 1676,
+      "gzipBytes": 821
+    },
+    {
+      "file": "assets/TreeGraphWorkspace-Ce-jmiI1.js",
+      "bytes": 3912,
+      "gzipBytes": 1642
+    },
+    {
+      "file": "assets/Workspace-B1qlT9am.js",
+      "bytes": 2025,
+      "gzipBytes": 835
+    },
+    {
+      "file": "assets/Workspace-Dpux_IDd.js",
+      "bytes": 13507,
+      "gzipBytes": 5482
+    },
+    {
+      "file": "assets/index-BfSCG0gr.css",
+      "bytes": 49206,
+      "gzipBytes": 11487
+    },
+    {
+      "file": "assets/index-D0zKPMSw.js",
+      "bytes": 474089,
+      "gzipBytes": 124886
+    },
+    {
+      "file": "assets/logic-DTFjvJ0t.js",
+      "bytes": 8365,
+      "gzipBytes": 3053
+    },
+    {
+      "file": "assets/models-8GyK5YA1.js",
+      "bytes": 7879,
+      "gzipBytes": 3021
+    },
+    {
+      "file": "assets/service-C1Ilb6_U.js",
+      "bytes": 83753,
+      "gzipBytes": 21017
+    }
+  ],
+  "totalProductionBytes": 933074,
+  "totalProductionGzipBytes": 267922,
+  "authoredRLLazyBytes": 106036,
+  "rlTopicChunks": [
+    {
+      "file": "assets/RL_T02_FOL-CPbVtDo6.js",
+      "bytes": 15292,
+      "gzipBytes": 4506
+    },
+    {
+      "file": "assets/RL_T03_PROOF_METHODS-Dyog5d7L.js",
+      "bytes": 15936,
+      "gzipBytes": 4289
+    },
+    {
+      "file": "assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js",
+      "bytes": 17916,
+      "gzipBytes": 5101
+    },
+    {
+      "file": "assets/RL_T05_TREES_GRAPHS-CIHz8klu.js",
+      "bytes": 13625,
+      "gzipBytes": 4050
+    },
+    {
+      "file": "assets/RL_T06_SET_THEORY-Cvt6P7Nr.js",
+      "bytes": 12356,
+      "gzipBytes": 3535
+    },
+    {
+      "file": "assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js",
+      "bytes": 11902,
+      "gzipBytes": 3460
+    },
+    {
+      "file": "assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js",
+      "bytes": 10869,
+      "gzipBytes": 3529
+    },
+    {
+      "file": "assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js",
+      "bytes": 8140,
+      "gzipBytes": 2725
+    }
+  ],
+  "rlToolChunks": [
+    {
+      "file": "assets/Workspace-B1qlT9am.js",
+      "bytes": 2025,
+      "gzipBytes": 835
+    },
+    {
+      "file": "assets/PropositionWorkspace-BUItmxhf.js",
+      "bytes": 5150,
+      "gzipBytes": 1803
+    },
+    {
+      "file": "assets/logic-DTFjvJ0t.js",
+      "bytes": 8365,
+      "gzipBytes": 3053
+    },
+    {
+      "file": "assets/FolWorkspace-B9JvJkJt.js",
+      "bytes": 4077,
+      "gzipBytes": 1661
+    },
+    {
+      "file": "assets/RecurrenceWorkspace-tAjROSeJ.js",
+      "bytes": 2531,
+      "gzipBytes": 1146
+    },
+    {
+      "file": "assets/models-8GyK5YA1.js",
+      "bytes": 7879,
+      "gzipBytes": 3021
+    },
+    {
+      "file": "assets/TreeGraphWorkspace-Ce-jmiI1.js",
+      "bytes": 3912,
+      "gzipBytes": 1642
+    },
+    {
+      "file": "assets/SetsWorkspace-BjhcxWHw.js",
+      "bytes": 2348,
+      "gzipBytes": 1021
+    },
+    {
+      "file": "assets/RelationsWorkspace-CuBtZ12t.js",
+      "bytes": 3125,
+      "gzipBytes": 1263
+    }
+  ],
   "initialChunks": [
     "assets/index-D0zKPMSw.js"
   ],
@@ -669,6 +988,10 @@
     }
   ],
   "checks": [
+    "eight R&L topic chunks; published pilot content preserved",
+    "six R&L calculation workspace chunks plus shared bounded model modules",
+    "R&L topic content/tools/Practice definitions absent from initial graph",
+    "R&L full build-only locks/coverage/source-policy absent from all runtime chunks",
     "all production gates executed directly by Vite",
     "13 CO topic chunks",
     "CO models/workspace/Practice definitions and Assembly absent from initial graph",
