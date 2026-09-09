@@ -1,0 +1,496 @@
+[
+  {
+    "skillId": "RL_SK01_01_CONNECTIVE",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-implication-rows",
+      "ds.practice.rl-biconditional-rows"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.normal-form"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK01_02_NEC_SUFF",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-necessary-rows"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.argument"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK01_03_TRUTH_TABLE",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-conjunction",
+      "ds.practice.rl-not-or"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.normal-form"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK01_04_PROP_VALIDITY",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-argument-counterrows"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.argument"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK01_05_EQUIV",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-equivalence-rows"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.normal-form"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK01_06_NORMAL_FORM",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-normal-form-check"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.normal-form"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK01_07_SAT_PROP",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-satisfying-rows"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t01.argument"
+    ],
+    "toolId": "proposition"
+  },
+  {
+    "skillId": "RL_SK02_01_NL_TO_FOL",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t02.translation"
+    ],
+    "toolId": "finite-model"
+  },
+  {
+    "skillId": "RL_SK02_02_FOL_TO_NL",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t02.translation"
+    ],
+    "toolId": "finite-model"
+  },
+  {
+    "skillId": "RL_SK02_03_NEGATE_FOL",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-negation-witnesses"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t02.translation"
+    ],
+    "toolId": "finite-model"
+  },
+  {
+    "skillId": "RL_SK02_04_TARSKI",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t02.world"
+    ],
+    "toolId": "finite-model"
+  },
+  {
+    "skillId": "RL_SK02_05_FORMAL_STRUCTURE",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-forall-exists",
+      "ds.practice.rl-exists-forall"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t02.world"
+    ],
+    "toolId": "finite-model"
+  },
+  {
+    "skillId": "RL_SK02_06_COUNTERMODEL",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-finite-countermodel"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t02.countermodel"
+    ],
+    "toolId": "finite-model"
+  },
+  {
+    "skillId": "RL_SK03_01_GENERALIZE",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t03.direct"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK03_02_DIRECT",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t03.direct"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK03_03_CASES",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t03.cases"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK03_04_CONTRADICTION",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t03.contradiction"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK03_05_CONTRAPOSITIVE",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t03.contrapositive"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK03_06_IDENTIFY_PROOF",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t03.cases",
+      "ds.guided.rl.t03.contrapositive"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK03_07_DEBUG_PROOF",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [
+      "ds.practice.rl-arbitrary-step"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t03.contradiction"
+    ],
+    "toolId": "proof"
+  },
+  {
+    "skillId": "RL_SK04_01_DEFINE_RECURSIVE",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t04.recursion"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK04_02_EVAL_RECURSIVE",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-recurrence-affine",
+      "ds.practice.rl-recurrence-two-base"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t04.recursion"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK04_03_INDUCTION",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t04.induction"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK04_04_INDUCTION_SETUP",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t04.induction"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK04_05_RECURSIVE_SET",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t04.structural"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK04_06_STRUCT_INDUCTION",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t04.structural"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK04_07_INVARIANT",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t04.invariant"
+    ],
+    "toolId": "induction"
+  },
+  {
+    "skillId": "RL_SK05_01_TREE_CONSTRUCT",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t05.tree"
+    ],
+    "toolId": "tree-graph"
+  },
+  {
+    "skillId": "RL_SK05_02_TREE_TRAVERSE",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-preorder-third"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t05.tree"
+    ],
+    "toolId": "tree-graph"
+  },
+  {
+    "skillId": "RL_SK05_03_TREE_FUNC",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-recursive-tree-cost"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t05.function"
+    ],
+    "toolId": "tree-graph"
+  },
+  {
+    "skillId": "RL_SK05_04_GRAPH_CONSTRUCT",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t05.graph"
+    ],
+    "toolId": "tree-graph"
+  },
+  {
+    "skillId": "RL_SK05_05_TOPO",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-topological-count"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t05.graph"
+    ],
+    "toolId": "tree-graph"
+  },
+  {
+    "skillId": "RL_SK06_01_SET_CALC",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-set-difference",
+      "ds.practice.rl-nested-membership"
+    ],
+    "guidedIds": [],
+    "toolId": "sets"
+  },
+  {
+    "skillId": "RL_SK06_02_VENN",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-venn-region"
+    ],
+    "guidedIds": [],
+    "toolId": "sets"
+  },
+  {
+    "skillId": "RL_SK06_03_POWER_CART",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-power-product",
+      "ds.practice.rl-cartesian-filter"
+    ],
+    "guidedIds": [],
+    "toolId": "sets"
+  },
+  {
+    "skillId": "RL_SK06_04_SET_PROOF",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t06.proof"
+    ],
+    "toolId": "sets"
+  },
+  {
+    "skillId": "RL_SK06_05_SET_COUNTER",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t06.counterexample"
+    ],
+    "toolId": "sets"
+  },
+  {
+    "skillId": "RL_SK07_01_WELL_DEFINED",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-finite-function-total"
+    ],
+    "guidedIds": [],
+    "toolId": "functions-relations"
+  },
+  {
+    "skillId": "RL_SK07_02_CONSTRUCT_FUNC",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t07.construct"
+    ],
+    "toolId": "functions-relations"
+  },
+  {
+    "skillId": "RL_SK07_03_INJ_SURJ",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-mapping-properties"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t07.construct"
+    ],
+    "toolId": "functions-relations"
+  },
+  {
+    "skillId": "RL_SK07_04_REL_PROPS",
+    "category": "B",
+    "reason": "Constructions, equivalent representations or broader property justifications can have multiple valid answers. Check requirements with an unscored rubric; linked bounded drills or tools check only their declared finite subproblem.",
+    "exerciseIds": [
+      "ds.practice.rl-relation-properties"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.t07.relations"
+    ],
+    "toolId": "functions-relations"
+  },
+  {
+    "skillId": "RL_SK08_01_NUMBER_SETS",
+    "category": "A",
+    "reason": "Fixed, explicitly bounded instances have unique independently checked answers. Automatic feedback covers the stated item, not aggregate mastery or every possible task in this skill.",
+    "exerciseIds": [
+      "ds.practice.rl-number-membership"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "RL_SK08_02_COUNTABLE",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t08.listing",
+      "ds.guided.rl.t08.diagonal"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "RL_SK08_03_LIMITS",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.rl.t08.diagonal"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "RL_SK09_01_TRANSFER",
+    "category": "C",
+    "reason": "The central skill requires open reasoning, a proof or an explanation. Guided work is unscored and not stored as academic evidence; any linked bounded answer check does not grade the justification.",
+    "exerciseIds": [
+      "ds.practice.rl-dock-setting"
+    ],
+    "guidedIds": [
+      "ds.guided.rl.constraint-docks"
+    ],
+    "toolId": null
+  }
+]

@@ -1,0 +1,893 @@
+[
+  {
+    "id": "ds.practice.rl-implication-rows",
+    "version": "1",
+    "title": "Evaluate implication over every row",
+    "prompt": "Evaluate p → q. Enter its truth values in explicit (p,q) row order (0,0), (0,1), (1,0), (1,1).",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_01_CONNECTIVES",
+    "skillId": "RL_SK01_01_CONNECTIVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1101"
+    },
+    "explanation": "An implication is false precisely when its antecedent is true and its consequent is false. Only row (1,0) has that shape."
+  },
+  {
+    "id": "ds.practice.rl-biconditional-rows",
+    "version": "1",
+    "title": "Evaluate a biconditional",
+    "prompt": "Evaluate p ↔ q. Enter its truth values in explicit (p,q) row order (0,0), (0,1), (1,0), (1,1).",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_01_CONNECTIVES",
+    "skillId": "RL_SK01_01_CONNECTIVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1001"
+    },
+    "explanation": "A biconditional is true when its two sides agree: both false in the first row, both true in the last row."
+  },
+  {
+    "id": "ds.practice.rl-necessary-rows",
+    "version": "1",
+    "title": "Keep necessary conditions in the right direction",
+    "prompt": "The statement is “r is necessary for s”. Evaluate the statement in explicit (r,s) row order (0,0), (0,1), (1,0), (1,1).",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_01_CONNECTIVES",
+    "skillId": "RL_SK01_02_NEC_SUFF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1011"
+    },
+    "explanation": "“r is necessary for s” means s → r. It rules out s holding while r fails, namely row (r,s)=(0,1). It does not assert that r alone guarantees s."
+  },
+  {
+    "id": "ds.practice.rl-argument-counterrows",
+    "version": "1",
+    "title": "Find counterexample rows for an argument",
+    "prompt": "Premises: p → q and q. Conclusion: p. For explicit (p,q) row order (0,0), (0,1), (1,0), (1,1), enter 1 exactly when BOTH premises are true and the conclusion is false; enter 0 otherwise.",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_04_PROP_VALIDITY",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0100"
+    },
+    "explanation": "At p=0,q=1, p → q and q are both true while p is false. This row refutes validity. Other rows fail the counterexample condition."
+  },
+  {
+    "id": "ds.practice.rl-equivalence-rows",
+    "version": "1",
+    "title": "Compare meanings across all valuations",
+    "prompt": "Compare formulas p → q and q → p. For explicit (p,q) row order (0,0), (0,1), (1,0), (1,1), enter 1 when the two formulas have the same truth value, and 0 when they differ.",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_05_EQUIV",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1001"
+    },
+    "explanation": "The formulas disagree in rows (0,1) and (1,0), so they are not logically equivalent. Agreement must hold in EVERY valuation, regardless of how formulas are written."
+  },
+  {
+    "id": "ds.practice.rl-normal-form-check",
+    "version": "1",
+    "title": "Check a supplied normal form semantically",
+    "prompt": "Compare the supplied DNF (p ∧ ¬q) ∨ (¬p ∧ q) with the supplied CNF (p ∨ q) ∧ (¬p ∨ ¬q). In explicit (p,q) row order (0,0), (0,1), (1,0), (1,1), enter 1 where they agree and 0 where they differ. This checks these two fixed formulas; constructing a normal form remains guided work.",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_03_NORMAL_FORMS",
+    "skillId": "RL_SK01_06_NORMAL_FORM",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1111"
+    },
+    "explanation": "Both formulas are false when p and q agree, and true when exactly one is true. Their own truth values are 0110, and their row-by-row agreement is 1111."
+  },
+  {
+    "id": "ds.practice.rl-satisfying-rows",
+    "version": "1",
+    "title": "Locate satisfying valuations",
+    "prompt": "For (p ∨ q) ∧ ¬p, enter 1 exactly on satisfying rows. Use explicit (p,q) row order (0,0), (0,1), (1,0), (1,1).",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_04_SAT_EXPLOSION",
+    "skillId": "RL_SK01_07_SAT_PROP",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0100"
+    },
+    "explanation": "The conjunct ¬p forces p=0; then p ∨ q forces q=1. Thus (0,1) is the only satisfying valuation. One such valuation suffices for satisfiability."
+  },
+  {
+    "id": "ds.practice.rl-forall-exists",
+    "version": "1",
+    "title": "Evaluate dependent existential witnesses",
+    "prompt": "Use the nonempty domain D={1,2,3}. The binary relation R consists of exactly (1,2), (2,3), (3,3); every unlisted pair is false. Evaluate ∀x ∃y R(x,y). Enter 1 for true or 0 for false.",
+    "rules": "Enter exactly 1 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_03_MODELS",
+    "skillId": "RL_SK02_05_FORMAL_STRUCTURE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 1
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1"
+    },
+    "explanation": "For x=1 choose y=2; for x=2 choose y=3; for x=3 choose y=3. A different witness may be chosen for each x. This is evaluation in the supplied finite structure, not a general theorem."
+  },
+  {
+    "id": "ds.practice.rl-exists-forall",
+    "version": "1",
+    "title": "Check whether one witness works for everyone",
+    "prompt": "Use the nonempty domain D={1,2,3}. The binary relation R consists of exactly (1,2), (2,3), (3,3); every unlisted pair is false. Evaluate ∃y ∀x R(x,y). Enter 1 for true or 0 for false.",
+    "rules": "Enter exactly 1 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_03_MODELS",
+    "skillId": "RL_SK02_05_FORMAL_STRUCTURE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 1
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0"
+    },
+    "explanation": "No common witness exists: y=1 has no incoming pair, y=2 fails for x=2, and y=3 fails for x=1. Swapping the quantifiers changes the obligation."
+  },
+  {
+    "id": "ds.practice.rl-negation-witnesses",
+    "version": "1",
+    "title": "Find witnesses to a quantified negation",
+    "prompt": "Use nonempty D={1,2,3} with unary predicate P true exactly on {1,3}. The negation of ∀x P(x) is ∃x ¬P(x). List ALL domain elements that witness the negated claim. This checks the supplied structured negation; it does not score free-form formula text.",
+    "rules": "Enter a flat set of integers in braces, for example {-2,0,3}; use {} for the empty set. Order and repeated elements do not matter. Spaces around elements are allowed. At most 32 entries, each with at most 64 digits; no nested sets, tuples, ranges or exponent notation.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_02_NEGATE_QUANT",
+    "skillId": "RL_SK02_03_NEGATE_FOL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{2}"
+    },
+    "explanation": "Negating a universal statement asks for a counterexample. Only 2 lies outside the interpretation of P, so the witness set is {2}."
+  },
+  {
+    "id": "ds.practice.rl-finite-countermodel",
+    "version": "1",
+    "title": "Check a supplied countermodel",
+    "prompt": "Use nonempty D={1,2,3}; P={1,3} and Q={1,3}, with all unlisted predicate instances false. Evaluate, in this explicit order: premise 1, ∃x P(x); premise 2, ∀x (P(x) → Q(x)); conclusion, ∀x Q(x). Enter the three truth bits. The construction and justification of countermodels remain guided tasks.",
+    "rules": "Enter exactly 3 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_04_COUNTERMODEL",
+    "skillId": "RL_SK02_06_COUNTERMODEL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "110"
+    },
+    "explanation": "P has witnesses 1 and 3, and every P-object is a Q-object. But object 2 refutes ∀x Q(x). All premises are true while the conclusion is false, which is the countermodel condition."
+  },
+  {
+    "id": "ds.practice.rl-arbitrary-step",
+    "version": "1",
+    "title": "Check the scope of an arbitrary choice",
+    "prompt": "An attempted argument starts: “Let n be arbitrary in D={0,1,2,3,4,5}. Write n=2k+1 for some integer k.” List every n in D for which this stated step is impossible. Only this finite counterexample set is scored; explaining the proof error remains a guided self-check.",
+    "rules": "Enter a flat set of integers in braces, for example {-2,0,3}; use {} for the empty set. Order and repeated elements do not matter. Spaces around elements are allowed. At most 32 entries, each with at most 64 digits; no nested sets, tuples, ranges or exponent notation.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "subtopicId": "RL_ST03_04_IDENTIFY_DEBUG",
+    "skillId": "RL_SK03_07_DEBUG_PROOF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_04",
+      "filename": "R&L Lecture 4 - Methods of Proof Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{0,2,4}"
+    },
+    "explanation": "The expression 2k+1 is always odd for integer k, so it cannot represent 0, 2 or 4. An arbitrary element of D was silently restricted to odd elements. Detecting the failed step does not itself prove a replacement argument."
+  },
+  {
+    "id": "ds.practice.rl-recurrence-affine",
+    "version": "1",
+    "title": "Evaluate from the declared base index",
+    "prompt": "A sequence is defined for integer n≥0 by a₀=3 and aₙ₊₁=2aₙ+1. Calculate a₄.",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subtopicId": "RL_ST04_01_RECURRENCE",
+    "skillId": "RL_SK04_02_EVAL_RECURSIVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_06",
+      "filename": "R&L Lecture 6 - Induction and Recursion Part 1.pdf",
+      "locator": "PDF_PAGES_1-40",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "63"
+    },
+    "explanation": "Starting at index 0 gives a₁=7, a₂=15, a₃=31 and a₄=63. Four recursive steps follow the base value."
+  },
+  {
+    "id": "ds.practice.rl-recurrence-two-base",
+    "version": "1",
+    "title": "Use both base values",
+    "prompt": "A sequence has b₀=1, b₁=4 and bₙ=bₙ₋₁+2bₙ₋₂ for integer n≥2. Calculate b₄.",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subtopicId": "RL_ST04_01_RECURRENCE",
+    "skillId": "RL_SK04_02_EVAL_RECURSIVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_06",
+      "filename": "R&L Lecture 6 - Induction and Recursion Part 1.pdf",
+      "locator": "PDF_PAGES_1-40",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "26"
+    },
+    "explanation": "Use both supplied bases: b₂=4+2·1=6; b₃=6+2·4=14; b₄=14+2·6=26."
+  },
+  {
+    "id": "ds.practice.rl-preorder-third",
+    "version": "1",
+    "title": "Trace an ordered traversal",
+    "prompt": "An ordered full binary tree has root 5; its left child is 2 and right child is 8. Node 2 has left leaf 1 and right leaf 4. Node 8 has left leaf 7 and right leaf 9. There are no other nodes. Preorder means visit the node, then its entire left subtree, then its entire right subtree. Which node label is visited THIRD, counting the root as first?",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_01_TREES",
+    "skillId": "RL_SK05_02_TREE_TRAVERSE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_14",
+      "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1"
+    },
+    "explanation": "The preorder is 5,2,1,4,8,7,9. The third visited node is 1. Left and right refer to the stated child relationships, not an inferred drawing."
+  },
+  {
+    "id": "ds.practice.rl-recursive-tree-cost",
+    "version": "1",
+    "title": "Evaluate a recursive tree function",
+    "prompt": "An ordered full binary tree has root 5; its left child is 2 and right child is 8. Node 2 has left leaf 1 and right leaf 4. Node 8 has left leaf 7 and right leaf 9. There are no other nodes. Define F(leaf)=2 and F(internal node)=3+F(left child)+F(right child). Calculate F(root).",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_02_TREE_FUNCTION",
+    "skillId": "RL_SK05_03_TREE_FUNC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_14",
+      "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "17"
+    },
+    "explanation": "Each of the four leaves contributes 2. Each of the three internal nodes contributes 3. Equivalently F(2)=7, F(8)=7, and F(5)=3+7+7=17."
+  },
+  {
+    "id": "ds.practice.rl-topological-count",
+    "version": "1",
+    "title": "Count the valid orders of a fixed DAG",
+    "prompt": "A directed graph has distinct vertices A,B,C,D and exactly edges A→C, B→C, C→D. How many different topological vertex orders does it have? An order must list every vertex once and place each edge source before its target.",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_03_GRAPHS",
+    "skillId": "RL_SK05_05_TOPO",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_14",
+      "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2"
+    },
+    "explanation": "A and B must both precede C, and C must precede D. The two valid orders are A,B,C,D and B,A,C,D. Multiple constructions are possible; this item scores their total count, not equality to one chosen ordering."
+  },
+  {
+    "id": "ds.practice.rl-set-difference",
+    "version": "1",
+    "title": "Compute an explicitly grouped set expression",
+    "prompt": "Let A={−2,0,3,5}, B={0,2,5,7} and C={−2,2,7}. Compute (A ∪ B) ∖ C.",
+    "rules": "Enter a flat set of integers in braces, for example {-2,0,3}; use {} for the empty set. Order and repeated elements do not matter. Spaces around elements are allowed. At most 32 entries, each with at most 64 digits; no nested sets, tuples, ranges or exponent notation.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_01_SET_OPS",
+    "skillId": "RL_SK06_01_SET_CALC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{0,3,5}"
+    },
+    "explanation": "The union is {−2,0,2,3,5,7}. Removing every element of C leaves {0,3,5}. Repeated membership in the original operands has no effect."
+  },
+  {
+    "id": "ds.practice.rl-nested-membership",
+    "version": "1",
+    "title": "Distinguish elements from subsets",
+    "prompt": "Let A={1,{2},∅}. Integers and sets are distinct objects. Evaluate in this explicit order: 2∈A; {2}∈A; ∅⊆A; ∅∈A. Enter four truth bits.",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_01_SET_OPS",
+    "skillId": "RL_SK06_01_SET_CALC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0111"
+    },
+    "explanation": "The set {2} is one element of A, but its member 2 is not automatically an element of A. The empty set is a subset of every set, and here it is also explicitly listed as an element."
+  },
+  {
+    "id": "ds.practice.rl-venn-region",
+    "version": "1",
+    "title": "Identify a region by membership",
+    "prompt": "Use universe U={0,1,2,3,4,5,6,7}; A={0,1,2,3}, B={2,3,4,5}, C={1,3,5,7}. List the elements in the region inside BOTH A and B but OUTSIDE C.",
+    "rules": "Enter a flat set of integers in braces, for example {-2,0,3}; use {} for the empty set. Order and repeated elements do not matter. Spaces around elements are allowed. At most 32 entries, each with at most 64 digits; no nested sets, tuples, ranges or exponent notation.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_02_VENN",
+    "skillId": "RL_SK06_02_VENN",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{2}"
+    },
+    "explanation": "The region is (A ∩ B) ∖ C. First A ∩ B={2,3}; excluding C removes 3 and leaves {2}."
+  },
+  {
+    "id": "ds.practice.rl-power-product",
+    "version": "1",
+    "title": "Count ordered pairs with a subset component",
+    "prompt": "Let A={1,2,3} and B={4,5}. How many elements belong to 𝒫(A) × B? Each element is an ordered pair (S,b), where S is a subset of A and b is an element of B.",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_03_POWER_CART",
+    "skillId": "RL_SK06_03_POWER_CART",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "16"
+    },
+    "explanation": "A has 2³=8 subsets, including ∅ and A itself. Each subset can be paired with either of the two elements of B, giving 8·2=16 ordered pairs."
+  },
+  {
+    "id": "ds.practice.rl-cartesian-filter",
+    "version": "1",
+    "title": "Filter a Cartesian product",
+    "prompt": "Let A={−1,2} and B={0,3,5}. How many ordered pairs (a,b)∈A×B satisfy a<b? The first coordinate must come from A and the second from B.",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_03_POWER_CART",
+    "skillId": "RL_SK06_03_POWER_CART",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "5"
+    },
+    "explanation": "All three pairs beginning with −1 qualify. Of the pairs beginning with 2, only (2,3) and (2,5) qualify. There are five qualifying ordered pairs in total."
+  },
+  {
+    "id": "ds.practice.rl-finite-function-total",
+    "version": "1",
+    "title": "Check all function obligations",
+    "prompt": "A proposed function has domain D={1,2,3}, codomain C={4,5}, and exactly the input-output pairs (1,4),(2,5). Does this define a total function D→C? Enter 1 for yes or 0 for no.",
+    "rules": "Enter exactly 1 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subtopicId": "RL_ST07_01_FUNCTION",
+    "skillId": "RL_SK07_01_WELL_DEFINED",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_12",
+      "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+      "locator": "PDF_PAGES_1-50",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 1
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0"
+    },
+    "explanation": "Input 3 has no output. Although the listed outputs are in the codomain and the listed inputs do not conflict, every domain element must have exactly one output."
+  },
+  {
+    "id": "ds.practice.rl-mapping-properties",
+    "version": "1",
+    "title": "Respect the declared codomain",
+    "prompt": "The total function f:D→C has D={1,2,3}, C={4,5,6,7}, f(1)=4, f(2)=5, f(3)=6. Enter three bits in this explicit order: injective; surjective onto C; bijective.",
+    "rules": "Enter exactly 3 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subtopicId": "RL_ST07_02_INJ_SURJ",
+    "skillId": "RL_SK07_03_INJ_SURJ",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_12",
+      "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+      "locator": "PDF_PAGES_1-50",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "100"
+    },
+    "explanation": "Distinct inputs have distinct outputs, so f is injective. Codomain element 7 is not reached, so f is not surjective onto C and consequently not bijective."
+  },
+  {
+    "id": "ds.practice.rl-relation-properties",
+    "version": "1",
+    "title": "Check a finite relation",
+    "prompt": "On D={0,1,2}, relation R contains exactly (0,0),(1,1),(2,2),(0,1),(1,0),(1,2),(2,1). Enter three bits in this explicit order: reflexive; symmetric; transitive.",
+    "rules": "Enter exactly 3 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subtopicId": "RL_ST07_03_REL_PROPS",
+    "skillId": "RL_SK07_04_REL_PROPS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_12",
+      "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+      "locator": "PDF_PAGES_1-50",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "110"
+    },
+    "explanation": "All three diagonal pairs occur, and every listed pair has its reverse. Transitivity fails because (0,1) and (1,2) occur but (0,2) does not. Thus R is not an equivalence relation."
+  },
+  {
+    "id": "ds.practice.rl-number-membership",
+    "version": "1",
+    "title": "Classify one number precisely",
+    "prompt": "Take ℕ={0,1,2,…}, ℤ the integers, ℚ the rational numbers and ℝ the real numbers. For the number −7/3, enter membership bits in this explicit order: ℕ, ℤ, ℚ, ℝ. This classifies one number; it is not a proof about infinite countability.",
+    "rules": "Enter exactly 4 binary digits in the order stated in the prompt. 1 means true/yes and 0 means false/no. No prefix or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "subtopicId": "RL_ST08_01_NUMBER_SETS",
+    "skillId": "RL_SK08_01_NUMBER_SETS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_13",
+      "filename": "R&L Lecture 13 - The limitations of Set Theory.pdf",
+      "locator": "PDF_PAGES_1-45",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0011"
+    },
+    "explanation": "−7/3 is negative and nonintegral, so it is neither natural nor an integer. It is a ratio of integers with nonzero denominator and therefore rational; rational numbers are real."
+  },
+  {
+    "id": "ds.practice.rl-dock-setting",
+    "version": "1",
+    "title": "Resolve a new finite constraint puzzle",
+    "prompt": "Four calibration docks A,B,C,D receive distinct pulse settings from {1,2,3,4}, using each setting exactly once. Their settings satisfy A+B=5, B+C=6 and C>D. What is the setting of D? Only the final setting is automatically checked. The elimination argument belongs in the companion guided puzzle self-check. This is a new DelftStudy instance.",
+    "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "subtopicId": "RL_ST09_01_CONSTRAINT",
+    "skillId": "RL_SK09_01_TRANSFER",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_00",
+      "filename": "R&L Lecture 0 - Introduction.pdf",
+      "locator": "PDF_PAGES_1-90",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1"
+    },
+    "explanation": "Subtracting A+B=5 from B+C=6 gives C=A+1. A=1 forces (A,B,C,D)=(1,4,2,3), which fails C>D. A=2 repeats setting 3. A=4 puts C outside the allowed set. A=3 gives (3,2,4,1), satisfying every constraint. Thus the full assignment is unique and D=1; this exact-item result does not grade your justification."
+  }
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "id": "ds.guided.rl.t01.normal-form",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE",
+      "RL_SK01_03_TRUTH_TABLE",
+      "RL_SK01_05_EQUIV",
+      "RL_SK01_06_NORMAL_FORM"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES",
+      "RL_ST01_02_TRUTH_VALID",
+      "RL_ST01_03_NORMAL_FORMS"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "title": "Build and justify a normal form",
+    "prompt": "In explicit row order (p,q)=FF,FT,TF,TT, a function has outputs F,T,T,F. Construct an equivalent DNF and CNF, then justify both on every valuation.",
+    "fields": [
+      {
+        "id": "step1",
+        "label": "DNF and construction reasoning"
+      },
+      {
+        "id": "step2",
+        "label": "CNF and construction reasoning"
+      },
+      {
+        "id": "step3",
+        "label": "Row-by-row equivalence check"
+      }
+    ],
+    "rubric": [
+      "The DNF includes exactly the two true rows.",
+      "The CNF excludes exactly the two false rows.",
+      "Both formulas agree with F,T,T,F in the declared row order.",
+      "Equivalent reordered or redundant forms are not rejected solely for their spelling."
+    ],
+    "reference": [
+      "A DNF is (¬p∧q)∨(p∧¬q). A CNF is (p∨q)∧(¬p∨¬q).",
+      "For FF both formulas are false; FT and TF make both true; TT makes both false. Equivalent formulas may have a different appearance."
+    ]
+  },
+  {
+    "id": "ds.guided.rl.t01.argument",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_02_NEC_SUFF",
+      "RL_SK01_04_PROP_VALIDITY",
+      "RL_SK01_07_SAT_PROP"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES",
+      "RL_ST01_02_TRUTH_VALID",
+      "RL_ST01_04_SAT_EXPLOSION"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "title": "Explain validity and satisfiability separately",
+    "prompt": "For p→q, identify which condition is sufficient and which is necessary. Explain why premises p→q and p entail q. Then explain why premises p and ¬p entail q vacuously, and whether those second premises are jointly satisfiable.",
+    "fields": [
+      {
+        "id": "step1",
+        "label": "Counterexample-row obligation"
+      },
+      {
+        "id": "step2",
+        "label": "First argument"
+      },
+      {
+        "id": "step3",
+        "label": "Second argument and satisfiability"
+      }
+    ],
+    "rubric": [
+      "In p→q, p is sufficient for q and q is necessary for p; the direction is not reversed.",
+      "Invalidity requires one valuation where all premises are true and the conclusion is false.",
+      "The first argument has no such valuation.",
+      "The inconsistent premise set has no jointly satisfying valuation, so it has no counterexample row.",
+      "Vacuous validity is kept distinct from the truth or satisfiability of the premises."
+    ],
+    "reference": [
+      "In p→q, p is sufficient for q and q is necessary for p. For premises p→q and p, a true p forces q true when the implication premise is true. Thus no premise-true/conclusion-false row exists.",
+      "No valuation makes both p and ¬p true, so the second argument is valid vacuously; its premises are unsatisfiable. This does not make q a tautology."
+    ]
+  }
+]

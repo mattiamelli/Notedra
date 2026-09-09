@@ -1,0 +1,407 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t07",
+    "version": "1",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t07.model",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_01_WELL_DEFINED",
+          "RL_SK07_02_CONSTRUCT_FUNC",
+          "RL_SK07_03_INJ_SURJ",
+          "RL_SK07_04_REL_PROPS"
+        ],
+        "subtopicIds": [
+          "RL_ST07_01_FUNCTION",
+          "RL_ST07_02_INJ_SURJ",
+          "RL_ST07_03_REL_PROPS"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "introduction",
+        "title": "A function is a mapping with obligations",
+        "paragraphs": [
+          "A function must assign every domain object exactly one output in the codomain. Injectivity and surjectivity ask different questions about that valid mapping. A relation is more general and is checked against its own quantified property definitions."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.well-defined",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_01_WELL_DEFINED"
+        ],
+        "subtopicIds": [
+          "RL_ST07_01_FUNCTION"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "procedure",
+        "title": "Check function status before extra properties",
+        "paragraphs": [
+          "For f:A→B, verify three requirements: every input in A has an output, every input has only one output, and every output lies in B. An omitted input, conflicting outputs, or an output outside B prevents the table from defining that function.",
+          "The codomain is declared; the image is the set of outputs actually reached. They need not be equal. A formula also needs these checks for every allowed input, not only a few convenient values."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.mapping",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_01_WELL_DEFINED",
+          "RL_SK07_03_INJ_SURJ"
+        ],
+        "subtopicIds": [
+          "RL_ST07_01_FUNCTION",
+          "RL_ST07_02_INJ_SURJ"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "worked_example",
+        "title": "Keep domain, codomain and image separate",
+        "paragraphs": [
+          "Let A={a,b,c}, B={1,2,3,4}, and define f(a)=2, f(b)=1, f(c)=3. This is a function: each domain object has one permitted output. Its image is {1,2,3}.",
+          "It is injective because the three inputs have distinct outputs. It is not surjective onto B because 4 has no preimage, so it is not bijective. If the declared codomain is instead {1,2,3}, the same assignments form a bijection.",
+          "Injective means f(x)=f(y) implies x=y for all domain x,y. Surjective means every codomain b has some domain x with f(x)=b. Bijective means both; many-to-one and a missing codomain value are different failure modes."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.construct",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_02_CONSTRUCT_FUNC",
+          "RL_SK07_03_INJ_SURJ"
+        ],
+        "subtopicIds": [
+          "RL_ST07_01_FUNCTION",
+          "RL_ST07_02_INJ_SURJ"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "procedure",
+        "title": "Build the constraints into a candidate mapping",
+        "paragraphs": [
+          "Start by listing the required domain, codomain and properties. For an injection reserve distinct outputs for distinct inputs; for a surjection ensure every codomain value is reached. Then check totality and unique outputs as well as the requested property.",
+          "For finite sets, more domain elements than codomain elements prevents injectivity, and fewer domain elements prevents surjectivity. These are useful impossibility checks before constructing a table.",
+          "To construct a surjective but noninjective function from {a,b,c} to {0,1}, one choice is a↦0, b↦1, c↦1. Both outputs occur, and b,c collide. The alternative a↦1, b↦0, c↦0 also works; exact agreement with a sample table is not required."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.relations",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_04_REL_PROPS"
+        ],
+        "subtopicIds": [
+          "RL_ST07_03_REL_PROPS"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "concept",
+        "title": "Translate relation properties into all-pair obligations",
+        "paragraphs": [
+          "A relation R on A is a subset of A×A. Reflexive means every x∈A has (x,x)∈R. Symmetric means (x,y)∈R implies (y,x)∈R. Transitive means (x,y)∈R and (y,z)∈R imply (x,z)∈R for every triple.",
+          "A relation is an equivalence relation when all three properties hold. To disprove a property, give a missing diagonal pair, an asymmetric pair, or a composable pair of edges with a missing shortcut, respectively. A property may hold vacuously when there is no antecedent configuration."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.relation-example",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_04_REL_PROPS"
+        ],
+        "subtopicIds": [
+          "RL_ST07_03_REL_PROPS"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "worked_example",
+        "title": "Check all requirements of equivalence",
+        "paragraphs": [
+          "On A={0,1,2}, let xRy mean x and y have the same parity. The explicit relation is {(0,0),(0,2),(1,1),(2,0),(2,2)}. Every diagonal is present; reversing any listed pair stays in the relation; composing same-parity pairs keeps the endpoints the same parity. It is an equivalence relation.",
+          "Its equivalence classes are {0,2} and {1}: the classes group objects related to one another. For a nontransitive contrast, on {0,1,2} take R={(0,1),(1,2)}. The pairs (0,1),(1,2) are present but (0,2) is missing, so transitivity fails.",
+          "The empty relation on a nonempty set is symmetric and transitive, because there are no pairs satisfying their antecedents, but it is not reflexive. Domain information is essential when classifying a relation."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.pitfalls",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_01_WELL_DEFINED",
+          "RL_SK07_02_CONSTRUCT_FUNC",
+          "RL_SK07_03_INJ_SURJ",
+          "RL_SK07_04_REL_PROPS"
+        ],
+        "subtopicIds": [
+          "RL_ST07_01_FUNCTION",
+          "RL_ST07_02_INJ_SURJ",
+          "RL_ST07_03_REL_PROPS"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "common_pitfall",
+        "title": "One example rarely settles an infinite claim",
+        "paragraphs": [
+          "For an arbitrary-domain injection proof, begin with arbitrary x,y and f(x)=f(y), then derive x=y. For surjectivity, begin with an arbitrary codomain value and construct a valid preimage. Finite enumeration checks a finite table only.",
+          "Do not swap the roles of domain and codomain or mistake a function’s image for its declared codomain. Before calling a relation transitive, check every composable pair, including cases with repeated vertices."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t07.recap",
+        "version": "1",
+        "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+        "skillIds": [
+          "RL_SK07_01_WELL_DEFINED",
+          "RL_SK07_02_CONSTRUCT_FUNC",
+          "RL_SK07_03_INJ_SURJ",
+          "RL_SK07_04_REL_PROPS"
+        ],
+        "subtopicIds": [
+          "RL_ST07_01_FUNCTION",
+          "RL_ST07_02_INJ_SURJ",
+          "RL_ST07_03_REL_PROPS"
+        ],
+        "sourceIds": [
+          "ref-04d924fcee21049a"
+        ],
+        "kind": "recap",
+        "title": "Check definitions with the correct quantifiers",
+        "paragraphs": [
+          "First establish a valid function, then test distinct-input outputs and coverage of the codomain separately. For relations, check each property’s universal obligation or supply a specific counterexample. Constructions require constraints, not one preferred representation."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t07.function",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_01_WELL_DEFINED"
+      ],
+      "subtopicIds": [
+        "RL_ST07_01_FUNCTION"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "Which three conditions establish f:A→B is a function?",
+      "answer": "Every input in A has an output, each has exactly one output, and every output is in B. Extra mapping properties are checked only after these conditions hold."
+    },
+    {
+      "id": "ds.card.rl.t07.image",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_01_WELL_DEFINED"
+      ],
+      "subtopicIds": [
+        "RL_ST07_01_FUNCTION"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "How does the image differ from the codomain?",
+      "answer": "The codomain is the declared target set; the image consists of outputs actually attained. Surjectivity means they are equal."
+    },
+    {
+      "id": "ds.card.rl.t07.construct",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_02_CONSTRUCT_FUNC"
+      ],
+      "subtopicIds": [
+        "RL_ST07_01_FUNCTION"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "How should a learner-created function be checked?",
+      "answer": "Check its entire stated domain and codomain, totality, unique outputs and every requested property. Any mapping satisfying these requirements is valid, even if it differs from a reference table."
+    },
+    {
+      "id": "ds.card.rl.t07.injective",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_03_INJ_SURJ"
+      ],
+      "subtopicIds": [
+        "RL_ST07_02_INJ_SURJ"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "What is an injectivity proof’s usual logical starting point?",
+      "answer": "Let x,y be arbitrary domain elements and assume f(x)=f(y); derive x=y. To refute it, give distinct inputs with equal outputs."
+    },
+    {
+      "id": "ds.card.rl.t07.surjective",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_03_INJ_SURJ"
+      ],
+      "subtopicIds": [
+        "RL_ST07_02_INJ_SURJ"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "What does a surjectivity proof need for an arbitrary target b?",
+      "answer": "An input x in the declared domain satisfying f(x)=b. The target b is arbitrary in the codomain, so every target is covered."
+    },
+    {
+      "id": "ds.card.rl.t07.equivalence",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_04_REL_PROPS"
+      ],
+      "subtopicIds": [
+        "RL_ST07_03_REL_PROPS"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "Which properties define an equivalence relation?",
+      "answer": "Reflexivity, symmetry and transitivity. Each must hold on the declared set; satisfying only two does not suffice."
+    },
+    {
+      "id": "ds.card.rl.t07.transitive",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_04_REL_PROPS"
+      ],
+      "subtopicIds": [
+        "RL_ST07_03_REL_PROPS"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "What is a witness that transitivity fails?",
+      "answer": "Objects x,y,z with xRy and yRz but not xRz. All objects and relation facts must belong to the same declared structure."
+    },
+    {
+      "id": "ds.card.rl.t07.vacuous",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_04_REL_PROPS"
+      ],
+      "subtopicIds": [
+        "RL_ST07_03_REL_PROPS"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "prompt": "Is the empty relation on a nonempty set an equivalence relation?",
+      "answer": "No. It is symmetric and transitive vacuously, but lacks every required diagonal pair, so it is not reflexive."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t07.construct",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_02_CONSTRUCT_FUNC",
+        "RL_SK07_03_INJ_SURJ"
+      ],
+      "subtopicIds": [
+        "RL_ST07_01_FUNCTION",
+        "RL_ST07_02_INJ_SURJ"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "title": "Construct two different valid mappings",
+      "prompt": "Construct two distinct functions from {a,b,c} to {0,1}, each surjective and noninjective. Explain all required properties.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "First complete mapping"
+        },
+        {
+          "id": "step2",
+          "label": "Second complete mapping"
+        },
+        {
+          "id": "step3",
+          "label": "Property checks"
+        }
+      ],
+      "rubric": [
+        "Each input has exactly one output in {0,1}.",
+        "Both target values are attained in each function.",
+        "At least two distinct inputs share an output in each function.",
+        "The two tables actually differ."
+      ],
+      "reference": [
+        "One function sends a↦0,b↦1,c↦1. Another sends a↦1,b↦0,c↦0.",
+        "Both are total, hit both outputs, and map b,c to the same output. These are examples, not the only accepted functions."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t07.relations",
+      "version": "1",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "skillIds": [
+        "RL_SK07_04_REL_PROPS"
+      ],
+      "subtopicIds": [
+        "RL_ST07_03_REL_PROPS"
+      ],
+      "sourceIds": [
+        "ref-04d924fcee21049a"
+      ],
+      "title": "Justify an equivalence relation",
+      "prompt": "On {0,1,2}, define xRy when x and y have the same parity. Justify reflexivity, symmetry and transitivity, and identify its classes.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Reflexivity"
+        },
+        {
+          "id": "step2",
+          "label": "Symmetry"
+        },
+        {
+          "id": "step3",
+          "label": "Transitivity"
+        },
+        {
+          "id": "step4",
+          "label": "Equivalence classes"
+        }
+      ],
+      "rubric": [
+        "Every object has its own parity.",
+        "Reversing an equal-parity pair preserves the condition.",
+        "Two same-parity links force the endpoints to have the same parity.",
+        "Classes cover the domain without overlap and contain exactly the mutually related objects."
+      ],
+      "reference": [
+        "The relation is {(0,0),(0,2),(1,1),(2,0),(2,2)}. Reflexivity, symmetry and transitivity follow from equality of parity.",
+        "The classes are {0,2} and {1}. A list of pairs alone should be accompanied by the required reasoning."
+      ]
+    }
+  ]
+}

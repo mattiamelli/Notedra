@@ -1,0 +1,575 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t03",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t03.model",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_01_GENERALIZE",
+          "RL_SK03_02_DIRECT",
+          "RL_SK03_03_CASES",
+          "RL_SK03_04_CONTRADICTION",
+          "RL_SK03_05_CONTRAPOSITIVE",
+          "RL_SK03_06_IDENTIFY_PROOF",
+          "RL_SK03_07_DEBUG_PROOF"
+        ],
+        "subtopicIds": [
+          "RL_ST03_01_DIRECT_GEN",
+          "RL_ST03_02_CASES",
+          "RL_ST03_03_CONTRA",
+          "RL_ST03_04_IDENTIFY_DEBUG"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "introduction",
+        "title": "A proof discharges a logical obligation",
+        "paragraphs": [
+          "A proof explains why the conclusion follows for every allowed case. Its method is determined by the assumptions and target, not by a memorized opening phrase. State the domain, assumptions and goal before choosing a method."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.direct",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_01_GENERALIZE",
+          "RL_SK03_02_DIRECT"
+        ],
+        "subtopicIds": [
+          "RL_ST03_01_DIRECT_GEN"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "worked_example",
+        "title": "Arbitrariness supports a universal conclusion",
+        "paragraphs": [
+          "To prove that the sum of two even integers is even, let m and n be arbitrary even integers. By definition m=2a and n=2b for some integers a,b. Then m+n=2(a+b), and a+b is an integer, so the sum is even.",
+          "Nothing depended on a specially chosen m or n. That is why the argument proves the universal claim. Checking m=4 and n=6 would establish only one instance. A direct proof must transform the stated assumptions into the target through justified steps."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.cases",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_03_CASES"
+        ],
+        "subtopicIds": [
+          "RL_ST03_02_CASES"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "worked_example",
+        "title": "Cases must cover the whole domain",
+        "paragraphs": [
+          "For an arbitrary integer n, prove n(n+1) is even. Either n is even or n is odd; these cases exhaust the integers. If n=2k, the product is 2k(n+1). If n=2k+1, then n+1=2(k+1), so the product is 2n(k+1). In either case it is twice an integer.",
+          "The shared conclusion follows only after every case is handled. Cases may overlap, but their union must cover every possibility allowed by the assumptions. “Positive” and “negative” alone would miss zero."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.contradiction",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_04_CONTRADICTION"
+        ],
+        "subtopicIds": [
+          "RL_ST03_03_CONTRA"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "worked_example",
+        "title": "Negate the actual target",
+        "paragraphs": [
+          "To prove there is no greatest integer, assume the negation: there is a greatest integer g. Then g+1 is an integer and g+1>g, contradicting the defining property of g. The assumption must be false.",
+          "Write the contradiction explicitly. It must conflict with a premise, definition, or established fact; merely reaching an unfamiliar expression is not a contradiction. For a universal target, the negation introduces an existential counterexample, not a second universal claim."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.contrapositive",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_05_CONTRAPOSITIVE"
+        ],
+        "subtopicIds": [
+          "RL_ST03_03_CONTRA"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "worked_example",
+        "title": "Reverse and negate both sides",
+        "paragraphs": [
+          "To prove “If an integer n has even square, then n is even”, prove the contrapositive: if n is not even, then n² is not even. An integer that is not even is odd, so n=2k+1 for an integer k. Then n²=4k²+4k+1=2(2k²+2k)+1, which is odd.",
+          "For P → Q the contrapositive is ¬Q → ¬P. The converse Q → P and inverse ¬P → ¬Q do not follow merely from P → Q. Contraposition targets an equivalent implication; contradiction instead assumes a negated target and derives inconsistency."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.existence",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_01_GENERALIZE",
+          "RL_SK03_02_DIRECT",
+          "RL_SK03_04_CONTRADICTION"
+        ],
+        "subtopicIds": [
+          "RL_ST03_01_DIRECT_GEN",
+          "RL_ST03_03_CONTRA"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "concept",
+        "title": "An existence claim needs a witness or an argument",
+        "paragraphs": [
+          "For an existential target, a constructive direct proof provides an object and verifies every required property. Proving that a witness would have certain properties does not show one exists. A nonconstructive contradiction argument may instead show that assuming no witness exists is impossible.",
+          "Do not turn a particular existential witness into an arbitrary object. A witness may have special properties justified by its existence claim, while generalization needs an object chosen without additional restrictions."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.identify",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_06_IDENTIFY_PROOF",
+          "RL_SK03_07_DEBUG_PROOF"
+        ],
+        "subtopicIds": [
+          "RL_ST03_04_IDENTIFY_DEBUG"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "procedure",
+        "title": "Identify a method from its structure",
+        "paragraphs": [
+          "Look for the decisive step: arbitrary-object reasoning supports generalization; deriving the target from assumptions is direct proof; exhaustive alternatives signal cases; proving ¬Q from ¬P is not the contrapositive of P → Q, because the correct starting assumption is ¬Q.",
+          "A contradiction proof states the negated goal and reaches a precise conflict. A proof may combine methods, such as cases inside a direct proof. When naming a technique, cite the assumption introduced and the conclusion it justifies."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.debug",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_07_DEBUG_PROOF",
+          "RL_SK03_06_IDENTIFY_PROOF"
+        ],
+        "subtopicIds": [
+          "RL_ST03_04_IDENTIFY_DEBUG"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "worked_example",
+        "title": "Find the first unsupported inference",
+        "paragraphs": [
+          "“If n is even then n² is even; n² is even; therefore n is even” has the form P → Q, Q, therefore P. That inference alone is invalid, even though this particular arithmetic conclusion has a separate proof. The contrapositive argument above supplies the missing reasoning.",
+          "A countervaluation to that logical pattern is P=false and Q=true: both premises hold and the proposed conclusion fails. Also check for circular reasoning, an unjustified division by a possibly zero value, a witness treated as arbitrary, or omitted cases."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.obligations",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_01_GENERALIZE",
+          "RL_SK03_02_DIRECT",
+          "RL_SK03_03_CASES",
+          "RL_SK03_04_CONTRADICTION",
+          "RL_SK03_05_CONTRAPOSITIVE",
+          "RL_SK03_06_IDENTIFY_PROOF",
+          "RL_SK03_07_DEBUG_PROOF"
+        ],
+        "subtopicIds": [
+          "RL_ST03_01_DIRECT_GEN",
+          "RL_ST03_02_CASES",
+          "RL_ST03_03_CONTRA",
+          "RL_ST03_04_IDENTIFY_DEBUG"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "important_rule",
+        "title": "A template is only a checklist",
+        "paragraphs": [
+          "“Let n be arbitrary” does not excuse later restricting n to a convenient value. “Assume for contradiction” does not validate steps that do not follow. Each statement must be licensed by the current assumptions and definitions.",
+          "Review a proof by checking its actual inferences, variable scope, and completion of the target. Filling every workspace field is useful organization; it does not establish correctness."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t03.recap",
+        "version": "1",
+        "topicId": "RL_T03_PROOF_METHODS",
+        "skillIds": [
+          "RL_SK03_01_GENERALIZE",
+          "RL_SK03_02_DIRECT",
+          "RL_SK03_03_CASES",
+          "RL_SK03_04_CONTRADICTION",
+          "RL_SK03_05_CONTRAPOSITIVE",
+          "RL_SK03_06_IDENTIFY_PROOF",
+          "RL_SK03_07_DEBUG_PROOF"
+        ],
+        "subtopicIds": [
+          "RL_ST03_01_DIRECT_GEN",
+          "RL_ST03_02_CASES",
+          "RL_ST03_03_CONTRA",
+          "RL_ST03_04_IDENTIFY_DEBUG"
+        ],
+        "sourceIds": [
+          "ref-7c663f9f3ab7afd3",
+          "ref-c4cc8a5d507dcb00"
+        ],
+        "kind": "recap",
+        "title": "State the claim and justify every transition",
+        "paragraphs": [
+          "Select a method by its logical obligation, carry out the required steps, and close the claim for the entire domain. To diagnose an error, identify exactly which inference or coverage condition fails."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t03.arbitrary",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_01_GENERALIZE"
+      ],
+      "subtopicIds": [
+        "RL_ST03_01_DIRECT_GEN"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "Why must the object in a universal proof be arbitrary?",
+      "answer": "The reasoning must apply to every allowed object, with no convenient property assumed beyond the hypotheses. A proof about one chosen example cannot be generalized automatically."
+    },
+    {
+      "id": "ds.card.rl.t03.witness",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_01_GENERALIZE",
+        "RL_SK03_02_DIRECT"
+      ],
+      "subtopicIds": [
+        "RL_ST03_01_DIRECT_GEN"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "How does an existential witness differ from an arbitrary element?",
+      "answer": "A witness is a particular object known to meet the existential conditions. An arbitrary element is unrestricted within the stated domain and supports universal generalization only if the proof adds no unjustified restriction."
+    },
+    {
+      "id": "ds.card.rl.t03.direct",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_02_DIRECT"
+      ],
+      "subtopicIds": [
+        "RL_ST03_01_DIRECT_GEN"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "What is the obligation of a direct proof of P → Q?",
+      "answer": "Assume P and derive Q through justified steps. Do not assume Q, and keep every domain restriction explicit."
+    },
+    {
+      "id": "ds.card.rl.t03.cases",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_03_CASES"
+      ],
+      "subtopicIds": [
+        "RL_ST03_02_CASES"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "What two requirements make a proof by cases complete?",
+      "answer": "The cases cover every allowed possibility, and each case establishes the same target. Overlap is acceptable; a gap is not."
+    },
+    {
+      "id": "ds.card.rl.t03.contradiction",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_04_CONTRADICTION"
+      ],
+      "subtopicIds": [
+        "RL_ST03_03_CONTRA"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "What must a contradiction proof make explicit?",
+      "answer": "The correctly negated target and the precise inconsistency derived from it together with the standing assumptions. An unexpected result alone is not a contradiction."
+    },
+    {
+      "id": "ds.card.rl.t03.contra",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_05_CONTRAPOSITIVE"
+      ],
+      "subtopicIds": [
+        "RL_ST03_03_CONTRA"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "What is the contrapositive of P → Q?",
+      "answer": "¬Q → ¬P: assume the conclusion fails and show the premise fails. This is equivalent to P → Q; the converse Q → P is not generally equivalent."
+    },
+    {
+      "id": "ds.card.rl.t03.identify",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_06_IDENTIFY_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST03_04_IDENTIFY_DEBUG"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "What evidence should accompany a proof-method label?",
+      "answer": "Name the introduced assumption, decisive step and conclusion. A proof may combine several techniques, so a phrase or keyword alone is not enough."
+    },
+    {
+      "id": "ds.card.rl.t03.debug",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_07_DEBUG_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST03_04_IDENTIFY_DEBUG"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "Why can a true conclusion still have an invalid proof?",
+      "answer": "The displayed reasoning may not establish it. A valid conclusion needs a valid chain from the premises; another proof can exist even when the supplied argument is faulty."
+    },
+    {
+      "id": "ds.card.rl.t03.circular",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_07_DEBUG_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST03_04_IDENTIFY_DEBUG"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "prompt": "What is circular reasoning in a proof?",
+      "answer": "Using the target itself, or an equivalent unsupported claim, as a premise for deriving the target. Restating the goal does not justify it."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t03.direct",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_01_GENERALIZE",
+        "RL_SK03_02_DIRECT"
+      ],
+      "subtopicIds": [
+        "RL_ST03_01_DIRECT_GEN"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "title": "Prove an even-sum claim",
+      "prompt": "Prove that the sum of any two even integers is even. Keep the arbitrary choices and the integer witness explicit.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Arbitrary objects and assumptions"
+        },
+        {
+          "id": "step2",
+          "label": "Justified derivation"
+        },
+        {
+          "id": "step3",
+          "label": "Universal conclusion"
+        }
+      ],
+      "rubric": [
+        "The integers are arbitrary within the even-integer hypothesis.",
+        "Each even number is represented as twice an integer.",
+        "The sum is expressed as twice an integer without assuming the target."
+      ],
+      "reference": [
+        "Let m=2a and n=2b for integers a,b. Then m+n=2(a+b). Since a+b is an integer, the sum is even.",
+        "The reasoning used no extra property of m or n, so it applies to any two even integers."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t03.cases",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_03_CASES",
+        "RL_SK03_06_IDENTIFY_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST03_02_CASES",
+        "RL_ST03_04_IDENTIFY_DEBUG"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "title": "Prove a product claim by cases",
+      "prompt": "Prove n(n+1) is even for every integer n. Identify the methods used and explain why your cases are exhaustive.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Case partition and arbitrary element"
+        },
+        {
+          "id": "step2",
+          "label": "Reasoning within every case"
+        },
+        {
+          "id": "step3",
+          "label": "Conclusion and method identification"
+        }
+      ],
+      "rubric": [
+        "Every integer is even or odd; zero and negative integers are included.",
+        "Each case expresses the product as twice an integer.",
+        "The conclusion covers the whole domain, with structural evidence for the cases method."
+      ],
+      "reference": [
+        "If n=2k, n(n+1)=2[k(n+1)]. If n=2k+1, n(n+1)=2[n(k+1)].",
+        "Both bracketed expressions are integers. This is a universal proof with an exhaustive even/odd case split."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t03.contrapositive",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_05_CONTRAPOSITIVE",
+        "RL_SK03_06_IDENTIFY_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST03_03_CONTRA",
+        "RL_ST03_04_IDENTIFY_DEBUG"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "title": "Prove by the correct contrapositive",
+      "prompt": "For integer n, prove that if n² is even then n is even. State the contrapositive before proving it.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Original implication and contrapositive"
+        },
+        {
+          "id": "step2",
+          "label": "Derivation"
+        },
+        {
+          "id": "step3",
+          "label": "Why this proves the original claim"
+        }
+      ],
+      "rubric": [
+        "The contrapositive assumes n is not even and targets n² not even.",
+        "Odd n is written 2k+1 with integer k.",
+        "The square is shown odd, and logical equivalence closes the original implication."
+      ],
+      "reference": [
+        "If n is odd, n=2k+1 and n²=2(2k²+2k)+1 is odd.",
+        "Thus ¬Q → ¬P holds for P: n² even and Q: n even, establishing P → Q."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t03.contradiction",
+      "version": "1",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "skillIds": [
+        "RL_SK03_04_CONTRADICTION",
+        "RL_SK03_07_DEBUG_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST03_03_CONTRA",
+        "RL_ST03_04_IDENTIFY_DEBUG"
+      ],
+      "sourceIds": [
+        "ref-7c663f9f3ab7afd3",
+        "ref-c4cc8a5d507dcb00"
+      ],
+      "title": "Use a contradiction and diagnose a gap",
+      "prompt": "Prove that no greatest integer exists. Explain the error in the attempt “Choose a very large integer g; g is the greatest integer.”",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Negated target and standing assumptions"
+        },
+        {
+          "id": "step2",
+          "label": "Contradiction"
+        },
+        {
+          "id": "step3",
+          "label": "Diagnosis of the attempted proof"
+        }
+      ],
+      "rubric": [
+        "The temporary assumption asserts a greatest integer, not merely a large one.",
+        "A larger integer is constructed from the assumed greatest one.",
+        "The flawed attempt assumes the property it needs to prove."
+      ],
+      "reference": [
+        "Assume a greatest integer g exists. Then g+1 is an integer larger than g, contradicting maximality.",
+        "Choosing a large integer supplies no bound on all the others. The flawed attempt never establishes the universal maximality requirement."
+      ]
+    }
+  ]
+}

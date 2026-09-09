@@ -1,0 +1,520 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t02",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t02.model",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_01_NL_TO_FOL",
+          "RL_SK02_02_FOL_TO_NL",
+          "RL_SK02_03_NEGATE_FOL",
+          "RL_SK02_04_TARSKI",
+          "RL_SK02_05_FORMAL_STRUCTURE",
+          "RL_SK02_06_COUNTERMODEL"
+        ],
+        "subtopicIds": [
+          "RL_ST02_01_TRANSLATE",
+          "RL_ST02_02_NEGATE_QUANT",
+          "RL_ST02_03_MODELS",
+          "RL_ST02_04_COUNTERMODEL"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "introduction",
+        "title": "A formula needs an interpretation",
+        "paragraphs": [
+          "First-order logic speaks about objects and their properties or relationships. A formula has a truth value only after its symbols and any free variables have been interpreted. Keep the domain, vocabulary and quantifier scope visible.",
+          "These are new DelftStudy examples. Source associations refer to the normalized lecture document range; no original Tarski diagram or exact slide convention is reproduced."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.vocabulary",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_01_NL_TO_FOL",
+          "RL_SK02_02_FOL_TO_NL",
+          "RL_SK02_05_FORMAL_STRUCTURE"
+        ],
+        "subtopicIds": [
+          "RL_ST02_01_TRANSLATE",
+          "RL_ST02_03_MODELS"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "concept",
+        "title": "Separate objects, truth claims and functions",
+        "paragraphs": [
+          "A constant names an object in the domain. A variable receives an object through an assignment. A unary predicate describes a property; a binary relation describes ordered pairs. A function symbol produces an object from its argument objects, so it forms a term rather than a truth claim.",
+          "For a declared constant c, function f and relation R, R(f(c),x) is a formula: first determine c, then f(c), then whether the ordered pair (f(c),x) belongs to R. Every function interpretation must give exactly one domain object for every allowed argument tuple. Distinct constant symbols need not name distinct objects unless this is required explicitly."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.translation",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_01_NL_TO_FOL",
+          "RL_SK02_02_FOL_TO_NL"
+        ],
+        "subtopicIds": [
+          "RL_ST02_01_TRANSLATE"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "procedure",
+        "title": "Translate the obligation, then check the scope",
+        "paragraphs": [
+          "Declare the domain and what each symbol means. Identify which objects are arbitrary and which must exist. Use an implication to restrict a universal claim, and a conjunction to require an existential witness to have several properties.",
+          "With a domain of objects, P(x) meaning “x is a probe” and R(x,y) meaning “x sends to y”, “Every probe sends to some object” is ∀x(P(x) → ∃y R(x,y)). The recipient may depend on the probe. “Some object receives from every probe” is ∃y∀x(P(x) → R(x,y)); one recipient must work for every probe.",
+          "To translate back into English, preserve this dependency and the scope of negation. Do not simply read symbols aloud. An equivalent formula may use different bound-variable names or a different but valid construction; wording and formula strings alone do not settle correctness."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.negation",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_03_NEGATE_FOL"
+        ],
+        "subtopicIds": [
+          "RL_ST02_02_NEGATE_QUANT"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "worked_example",
+        "title": "Negate the entire statement",
+        "paragraphs": [
+          "The quantifier rules are ¬∀x φ ≡ ∃x ¬φ and ¬∃x φ ≡ ∀x ¬φ. Continue inward using ¬(A → B) ≡ A ∧ ¬B, De Morgan’s laws and double negation.",
+          "Negating ∀x(P(x) → ∃y R(x,y)) gives ∃x¬(P(x) → ∃y R(x,y)), then ∃x(P(x) ∧ ∀y¬R(x,y)). In words, at least one probe sends to no object. Retaining a universal first quantifier would assert too much."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.finite",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_04_TARSKI",
+          "RL_SK02_05_FORMAL_STRUCTURE"
+        ],
+        "subtopicIds": [
+          "RL_ST02_03_MODELS"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "worked_example",
+        "title": "Evaluate a fully specified finite structure",
+        "paragraphs": [
+          "Use the nonempty domain {u,v,w}, c=u, P={u,v}, Q={v}, and R={(u,v),(v,w)}. Membership in these listed extensions completely determines predicate and relation truth. Unlisted pairs are false; no position or shape is inferred.",
+          "For ∀x(P(x) → ∃y R(x,y)), u has witness v, v has witness w, and w makes P(w) false. The universal sentence is therefore true. ∃y∀x R(x,y) is false: w has no outgoing R-pair, so no candidate y can satisfy the inner universal.",
+          "A restricted universal is vacuously true for an object outside P. If P is empty, ∀x(P(x) → Q(x)) is true while ∃x(P(x) ∧ Q(x)) is false. Our finite workspace requires a nonempty domain; empty predicate extensions are still permitted."
+        ],
+        "table": {
+          "headers": [
+            "Object x",
+            "P(x)",
+            "R-successors",
+            "P(x) → ∃y R(x,y)"
+          ],
+          "rows": [
+            [
+              "u",
+              "true",
+              "v",
+              "true"
+            ],
+            [
+              "v",
+              "true",
+              "w",
+              "true"
+            ],
+            [
+              "w",
+              "false",
+              "none",
+              "true"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.rl.t02.tarski",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_04_TARSKI",
+          "RL_SK02_05_FORMAL_STRUCTURE"
+        ],
+        "subtopicIds": [
+          "RL_ST02_03_MODELS"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "procedure",
+        "title": "Reason about a world through declared facts",
+        "paragraphs": [
+          "A Tarski-style construction asks for objects and interpretations satisfying all stated constraints. List the objects, assign the required properties, then check each quantified claim object by object. An existential statement needs a witness; a universal statement needs every relevant object checked.",
+          "If a task uses spatial relations, its diagram and direction conventions are part of its meaning. Here the world is represented by the explicit P, Q and R tables from the preceding example, not invented geometry. A different construction can satisfy the same formulas. Check the constraints, not similarity to one drawing."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.countermodel",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_06_COUNTERMODEL",
+          "RL_SK02_05_FORMAL_STRUCTURE"
+        ],
+        "subtopicIds": [
+          "RL_ST02_03_MODELS",
+          "RL_ST02_04_COUNTERMODEL"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "worked_example",
+        "title": "One structure must meet both obligations",
+        "paragraphs": [
+          "To refute an argument, construct one interpretation in which every premise is true and the conclusion is false. Refuting one premise does not refute validity. To refute a universal formula, give a valid structure and a particular falsifying assignment.",
+          "The argument ∀x(P(x) → Q(x)), ∃x Q(x), therefore ∃x P(x), is invalid. Take domain {u}, P=∅ and Q={u}. The implication premise is vacuously true, the existential Q premise is true, and the existential P conclusion is false. All three checks use the same structure."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.scope",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_01_NL_TO_FOL",
+          "RL_SK02_02_FOL_TO_NL",
+          "RL_SK02_03_NEGATE_FOL",
+          "RL_SK02_04_TARSKI",
+          "RL_SK02_05_FORMAL_STRUCTURE",
+          "RL_SK02_06_COUNTERMODEL"
+        ],
+        "subtopicIds": [
+          "RL_ST02_01_TRANSLATE",
+          "RL_ST02_02_NEGATE_QUANT",
+          "RL_ST02_03_MODELS",
+          "RL_ST02_04_COUNTERMODEL"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "common_pitfall",
+        "title": "Check binding and witness dependence",
+        "paragraphs": [
+          "A free variable is not secretly universally quantified. The occurrence of x in P(x) needs an assignment unless a quantifier binds it. Keep parentheses around the scope: ∀x(P(x) → Q(x)) differs from (∀x P(x)) → Q(x).",
+          "One witness for each object does not imply one witness for all objects. Universal claims cannot be established from one convenient example; existential claims cannot be refuted by the failure of one candidate."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t02.recap",
+        "version": "1",
+        "topicId": "RL_T02_FOL",
+        "skillIds": [
+          "RL_SK02_01_NL_TO_FOL",
+          "RL_SK02_02_FOL_TO_NL",
+          "RL_SK02_03_NEGATE_FOL",
+          "RL_SK02_04_TARSKI",
+          "RL_SK02_05_FORMAL_STRUCTURE",
+          "RL_SK02_06_COUNTERMODEL"
+        ],
+        "subtopicIds": [
+          "RL_ST02_01_TRANSLATE",
+          "RL_ST02_02_NEGATE_QUANT",
+          "RL_ST02_03_MODELS",
+          "RL_ST02_04_COUNTERMODEL"
+        ],
+        "sourceIds": [
+          "ref-4dc370d8f0ee45c2"
+        ],
+        "kind": "recap",
+        "title": "Interpret, trace, then justify",
+        "paragraphs": [
+          "Declare the domain and vocabulary, preserve quantifier dependency, and evaluate atomic statements from the interpretation. Negate through every quantifier and connective. For a countermodel, explicitly check every premise and the false conclusion.",
+          "Fixed finite evaluations can be checked automatically. Translations, world construction and countermodels are reviewed with requirements and reference reasoning, without a numeric proof grade."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t02.nl",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_01_NL_TO_FOL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_01_TRANSLATE"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "What should be declared before an English-to-FOL translation?",
+      "answer": "The domain, meanings and arities of predicates/relations/functions, and any constants. Then encode every condition with explicit quantifier scope."
+    },
+    {
+      "id": "ds.card.rl.t02.restrict",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_01_NL_TO_FOL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_01_TRANSLATE"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "Why does “Every P is Q” use ∀x(P(x) → Q(x))?",
+      "answer": "It requires Q only of objects satisfying P. ∀x(P(x) ∧ Q(x)) instead says every domain object is both P and Q."
+    },
+    {
+      "id": "ds.card.rl.t02.dependency",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_02_FOL_TO_NL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_01_TRANSLATE"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "What is the difference between ∀x∃y R(x,y) and ∃y∀x R(x,y)?",
+      "answer": "In the first, y may depend on x. In the second, one fixed y makes R(x,y) true for every x. Preserve that dependency in English."
+    },
+    {
+      "id": "ds.card.rl.t02.negate",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_03_NEGATE_FOL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_02_NEGATE_QUANT"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "How do you negate ∀x(P(x) → ∃y R(x,y)) down to atomic formulas?",
+      "answer": "∃x(P(x) ∧ ∀y¬R(x,y)). Change each quantifier and use ¬(A → B) ≡ A ∧ ¬B."
+    },
+    {
+      "id": "ds.card.rl.t02.world",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_04_TARSKI"
+      ],
+      "subtopicIds": [
+        "RL_ST02_03_MODELS"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "How should a constructed world be checked?",
+      "answer": "Evaluate each requirement in the same world. Supply existential witnesses and check every relevant object for universals; use only the task’s declared spatial or relational semantics."
+    },
+    {
+      "id": "ds.card.rl.t02.structure",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_05_FORMAL_STRUCTURE"
+      ],
+      "subtopicIds": [
+        "RL_ST02_03_MODELS"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "What separates a constant, a predicate and a function interpretation?",
+      "answer": "A constant denotes an object; a predicate denotes a set of satisfying tuples; a function assigns exactly one object to every argument tuple. The structure supplies the domain and symbol interpretations. A variable assignment supplies domain objects to free variables when evaluating a formula."
+    },
+    {
+      "id": "ds.card.rl.t02.vacuous",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_05_FORMAL_STRUCTURE"
+      ],
+      "subtopicIds": [
+        "RL_ST02_03_MODELS"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "Can ∀x(P(x) → Q(x)) be true when no object satisfies P?",
+      "answer": "Yes: every implication has a false antecedent. This does not imply that an object satisfying P exists. An existential claim needs an actual witness."
+    },
+    {
+      "id": "ds.card.rl.t02.countermodel",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_06_COUNTERMODEL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_04_COUNTERMODEL"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "What must a countermodel to an argument show?",
+      "answer": "In one valid structure, all premises are true and the conclusion is false. Merely falsifying a premise or the conclusion in different structures is insufficient."
+    },
+    {
+      "id": "ds.card.rl.t02.witness",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_06_COUNTERMODEL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_04_COUNTERMODEL"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "prompt": "Does one failed candidate refute an existential statement?",
+      "answer": "No. Every possible candidate must fail. To refute a universal statement, one counterexample suffices."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t02.translation",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_01_NL_TO_FOL",
+        "RL_SK02_02_FOL_TO_NL",
+        "RL_SK02_03_NEGATE_FOL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_01_TRANSLATE",
+        "RL_ST02_02_NEGATE_QUANT"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "title": "Formalize a dependency",
+      "prompt": "Use an object domain with P(x): x is a probe and R(x,y): x sends to y. Formalize “Every probe sends to an object”, explain whether recipients may differ, and negate the sentence.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Vocabulary and formalization"
+        },
+        {
+          "id": "step2",
+          "label": "English dependency explanation"
+        },
+        {
+          "id": "step3",
+          "label": "Negation"
+        }
+      ],
+      "rubric": [
+        "Every probe is covered without asserting that every domain object is a probe.",
+        "The formula preserves the intended dependency: a recipient may depend on the probe. Any logically equivalent formulation is allowed.",
+        "The negated statement is true exactly when some probe has no recipient. Equivalent formulas and bound-variable names are allowed."
+      ],
+      "reference": [
+        "One reference is ∀x(P(x) → ∃y R(x,y)). Each probe may use a different recipient. An equivalent form is ¬∃x(P(x) ∧ ∀y¬R(x,y)).",
+        "Its negation is ∃x(P(x) ∧ ∀y¬R(x,y)): there is a probe with no recipient. Equivalent bound-variable names and valid alternative formulas are allowed."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t02.world",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_04_TARSKI",
+        "RL_SK02_05_FORMAL_STRUCTURE"
+      ],
+      "subtopicIds": [
+        "RL_ST02_03_MODELS"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "title": "Construct and inspect a relational world",
+      "prompt": "Create a finite nonempty structure with ∀x(P(x) → ∃y R(x,y)) true and ∃y∀x R(x,y) false. Declare every extension; no geometric relations are assumed.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Domain, constants if used, and predicate/relation extensions"
+        },
+        {
+          "id": "step2",
+          "label": "Witnesses for the universal requirement"
+        },
+        {
+          "id": "step3",
+          "label": "Why every candidate for the existential conclusion fails"
+        }
+      ],
+      "rubric": [
+        "Every symbol has the declared arity and every interpretation stays inside the domain.",
+        "For every P-object, an R-successor is given. Objects outside P need no successor.",
+        "Every possible y fails for at least one x. A different satisfying structure is equally valid."
+      ],
+      "reference": [
+        "A reference structure uses {u,v,w}, P={u,v}, R={(u,v),(v,w)}. For u use v, and for v use w.",
+        "For any proposed universal recipient y, object w has no outgoing R-pair, so R(w,y) is false."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t02.countermodel",
+      "version": "1",
+      "topicId": "RL_T02_FOL",
+      "skillIds": [
+        "RL_SK02_06_COUNTERMODEL"
+      ],
+      "subtopicIds": [
+        "RL_ST02_04_COUNTERMODEL"
+      ],
+      "sourceIds": [
+        "ref-4dc370d8f0ee45c2"
+      ],
+      "title": "Refute the converse-style argument",
+      "prompt": "Find a countermodel to: ∀x(P(x) → Q(x)); ∃x Q(x); therefore ∃x P(x). Explain every truth claim in the same structure.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Structure"
+        },
+        {
+          "id": "step2",
+          "label": "Truth of each premise"
+        },
+        {
+          "id": "step3",
+          "label": "False conclusion"
+        }
+      ],
+      "rubric": [
+        "The domain is nonempty and P/Q are valid subsets.",
+        "Both premises hold simultaneously.",
+        "No object satisfies P, so the existential conclusion is false."
+      ],
+      "reference": [
+        "Take domain {u}, P=∅, Q={u}. The implication is true because P(u) is false.",
+        "The object u witnesses ∃x Q(x), while ∃x P(x) is false. This establishes invalidity; it does not claim every interpretation makes the conclusion false."
+      ]
+    }
+  ]
+}

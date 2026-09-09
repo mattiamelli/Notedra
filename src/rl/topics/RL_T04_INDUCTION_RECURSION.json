@@ -1,0 +1,601 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t04",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t04.model",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_01_DEFINE_RECURSIVE",
+          "RL_SK04_02_EVAL_RECURSIVE",
+          "RL_SK04_03_INDUCTION",
+          "RL_SK04_04_INDUCTION_SETUP",
+          "RL_SK04_05_RECURSIVE_SET",
+          "RL_SK04_06_STRUCT_INDUCTION",
+          "RL_SK04_07_INVARIANT"
+        ],
+        "subtopicIds": [
+          "RL_ST04_01_RECURRENCE",
+          "RL_ST04_02_MATH_INDUCTION",
+          "RL_ST04_03_STRUCTURAL",
+          "RL_ST04_04_INVARIANT"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "introduction",
+        "title": "Definitions generate; induction justifies",
+        "paragraphs": [
+          "A recursive definition explains how objects are generated from simpler ones. Induction proves a property for all generated objects by matching that structure. An invariant applies the same idea to successive states of a process.",
+          "The normalized pack associates this topic with Lectures 6–8. Lecture 8 is historical (2022–23); no L8-only nuance is asserted here. The examples use explicit conventions and the current normalized induction, structural-induction and four-part invariant obligations."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.recurrence",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_01_DEFINE_RECURSIVE",
+          "RL_SK04_02_EVAL_RECURSIVE"
+        ],
+        "subtopicIds": [
+          "RL_ST04_01_RECURRENCE"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "worked_example",
+        "title": "Specify and evaluate a complete recurrence",
+        "paragraphs": [
+          "Define a sequence on indices n=0,1,2,… by a₀=2 and aₙ₊₁=2aₙ+1 for every n≥0. The base fixes the first value, the rule supplies each later one, and the dependency moves to a smaller index.",
+          "Successive values are a₀=2, a₁=5, a₂=11 and a₃=23. Write each substitution: a₂=2a₁+1=2·5+1=11. Do not apply the recursive rule at an index outside its stated range.",
+          "When creating a definition, state the domain, all bases, applicable cases and how the recursive arguments become simpler. Overlapping cases must agree; missing cases leave the object undefined."
+        ],
+        "table": {
+          "headers": [
+            "n",
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "rows": [
+            [
+              "aₙ",
+              "2",
+              "5",
+              "11",
+              "23"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.rl.t04.induction",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_03_INDUCTION"
+        ],
+        "subtopicIds": [
+          "RL_ST04_02_MATH_INDUCTION"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "worked_example",
+        "title": "Separate hypothesis from the next target",
+        "paragraphs": [
+          "Prove aₙ=3·2ⁿ−1 for the sequence above and all n≥0. Base: a₀=2=3·2⁰−1. Hypothesis: for an arbitrary k≥0, assume aₖ=3·2ᵏ−1. Target: establish aₖ₊₁=3·2ᵏ⁺¹−1.",
+          "Using the recurrence and then the hypothesis, aₖ₊₁=2aₖ+1=2(3·2ᵏ−1)+1=3·2ᵏ⁺¹−1. Therefore the base and the step establish the formula for every n≥0.",
+          "The hypothesis is temporary and concerns k; the step must derive the claim at k+1. Assuming the target at k+1 would be circular. Checking the first few values suggests a formula but does not prove it for all indices."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.setup",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_04_INDUCTION_SETUP",
+          "RL_SK04_03_INDUCTION"
+        ],
+        "subtopicIds": [
+          "RL_ST04_02_MATH_INDUCTION"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "procedure",
+        "title": "Match the induction setup to dependencies",
+        "paragraphs": [
+          "Weak induction assumes P(k) to prove P(k+1). Strong induction assumes P(j) for every starting index ≤j≤k and proves P(k+1). Choose the version that supplies the earlier cases actually needed, and state the permitted index range.",
+          "A recurrence depending on the two preceding values generally needs enough bases to make its first recursive use legal. If a proof advances by two, bases must cover each reachable parity class. More bases do not repair a step that fails to reach part of the domain.",
+          "The starting index is part of the claim. A formula intended only for n≥1 does not need a fictitious n=0 case, but the base at n=1 and the range of the step must match."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.language",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_05_RECURSIVE_SET",
+          "RL_SK04_01_DEFINE_RECURSIVE"
+        ],
+        "subtopicIds": [
+          "RL_ST04_01_RECURRENCE",
+          "RL_ST04_03_STRUCTURAL"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "worked_example",
+        "title": "Bases, closure and exclusion define a language",
+        "paragraphs": [
+          "Define L as the smallest set of finite words with: ε∈L, and if w∈L then awb∈L. No other words belong to L. Here ε is the empty word, and a and b are individual symbols.",
+          "The first generated words are ε, ab, aabb and aaabbb. Each constructor adds one a on the left and one b on the right. The exclusion/smallest-set clause prevents unrelated words from being silently included.",
+          "To show a word belongs, give a finite construction from the bases. To show a proposed recursive description is exact, check both that its constructors stay inside the intended set and that every intended object can be generated."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.structural",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_06_STRUCT_INDUCTION",
+          "RL_SK04_05_RECURSIVE_SET"
+        ],
+        "subtopicIds": [
+          "RL_ST04_03_STRUCTURAL"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "worked_example",
+        "title": "One step for every constructor",
+        "paragraphs": [
+          "Prove that every word in L has equally many a and b symbols. Base: ε has zero of each. Constructor step: assume w has equally many, say k of each. Then awb has k+1 of each, so the property is preserved.",
+          "Because every word in L is generated from ε using this constructor, structural induction gives the result for all of L. If there were several constructors or several recursive arguments, each would need its own case and the appropriate hypotheses.",
+          "The property “equal counts” alone does not characterize L: ba has equal counts but is not generated. An induction proving one property does not prove every conceivable characterization of the recursive set."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.invariant",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_07_INVARIANT"
+        ],
+        "subtopicIds": [
+          "RL_ST04_04_INVARIANT"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "worked_example",
+        "title": "Initialization, preservation, termination, conclusion",
+        "paragraphs": [
+          "Fix a nonnegative integer n. Start with r=n and q=0. While r>0, replace (r,q) by (r−1,q+3). Claim: when the process stops, q=3n. The invariant is r≥0 and 3r+q=3n.",
+          "Initialization: r=n≥0 and 3r+q=3n. Preservation: a loop step starts with integer r>0, so r−1≥0; also 3(r−1)+(q+3)=3r+q=3n. Thus the invariant survives each permitted step.",
+          "Termination: the nonnegative integer r strictly decreases by one at each step, so the process eventually reaches r=0. Conclusion: the guard is then false and the invariant gives q=3n. The invariant by itself does not establish termination; the decreasing quantity supplies that separate argument."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.pitfalls",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_01_DEFINE_RECURSIVE",
+          "RL_SK04_02_EVAL_RECURSIVE",
+          "RL_SK04_03_INDUCTION",
+          "RL_SK04_04_INDUCTION_SETUP",
+          "RL_SK04_05_RECURSIVE_SET",
+          "RL_SK04_06_STRUCT_INDUCTION",
+          "RL_SK04_07_INVARIANT"
+        ],
+        "subtopicIds": [
+          "RL_ST04_01_RECURRENCE",
+          "RL_ST04_02_MATH_INDUCTION",
+          "RL_ST04_03_STRUCTURAL",
+          "RL_ST04_04_INVARIANT"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "common_pitfall",
+        "title": "Check the induction domain and every obligation",
+        "paragraphs": [
+          "A recursive call must eventually reach a defined base. An induction step must use a hypothesis already available for its smaller arguments. A structural proof must cover every constructor, not merely the most familiar shape.",
+          "For a process, separate what remains true from what decreases. A preserved fact is not automatically the final postcondition; combine it with the stopping condition. The workspace helps record these obligations and does not automatically certify a proof."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t04.recap",
+        "version": "1",
+        "topicId": "RL_T04_INDUCTION_RECURSION",
+        "skillIds": [
+          "RL_SK04_01_DEFINE_RECURSIVE",
+          "RL_SK04_02_EVAL_RECURSIVE",
+          "RL_SK04_03_INDUCTION",
+          "RL_SK04_04_INDUCTION_SETUP",
+          "RL_SK04_05_RECURSIVE_SET",
+          "RL_SK04_06_STRUCT_INDUCTION",
+          "RL_SK04_07_INVARIANT"
+        ],
+        "subtopicIds": [
+          "RL_ST04_01_RECURRENCE",
+          "RL_ST04_02_MATH_INDUCTION",
+          "RL_ST04_03_STRUCTURAL",
+          "RL_ST04_04_INVARIANT"
+        ],
+        "sourceIds": [
+          "ref-1c8fd7cf4e8c6f1b",
+          "ref-7aeb3af51fc4f1a6"
+        ],
+        "kind": "recap",
+        "title": "Follow the construction or the state transition",
+        "paragraphs": [
+          "State a complete recursive definition, evaluate only legal cases, and align the proof with its dependencies. Induction needs bases, hypothesis, justified step and conclusion; invariant reasoning additionally needs a termination argument and the final condition."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t04.definition",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_01_DEFINE_RECURSIVE"
+      ],
+      "subtopicIds": [
+        "RL_ST04_01_RECURRENCE"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "What must a recursive definition specify?",
+      "answer": "Its domain/indexing, complete base cases and recursive cases, with dependencies that become simpler. Cases must cover the domain and agree if they overlap."
+    },
+    {
+      "id": "ds.card.rl.t04.evaluation",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_02_EVAL_RECURSIVE"
+      ],
+      "subtopicIds": [
+        "RL_ST04_01_RECURRENCE"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "For a₀=2 and aₙ₊₁=2aₙ+1, how is a₂ evaluated?",
+      "answer": "a₁=2·2+1=5, then a₂=2·5+1=11. Each call uses a previously defined value and the stated index range."
+    },
+    {
+      "id": "ds.card.rl.t04.ih",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_03_INDUCTION"
+      ],
+      "subtopicIds": [
+        "RL_ST04_02_MATH_INDUCTION"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "What is assumed and what is proved in an induction step?",
+      "answer": "For arbitrary k in the permitted range, assume the property for the stated smaller index or indices, then derive the next target. Do not assume that target itself."
+    },
+    {
+      "id": "ds.card.rl.t04.finite-check",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_03_INDUCTION"
+      ],
+      "subtopicIds": [
+        "RL_ST04_02_MATH_INDUCTION"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "Does checking many initial values prove an infinite induction claim?",
+      "answer": "No. It may reveal a pattern or an error. A proof needs the base and a justified step that reaches every index in the claimed domain."
+    },
+    {
+      "id": "ds.card.rl.t04.setup",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_04_INDUCTION_SETUP"
+      ],
+      "subtopicIds": [
+        "RL_ST04_02_MATH_INDUCTION"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "When is a strong induction hypothesis useful?",
+      "answer": "When the next case depends on several earlier cases rather than only its immediate predecessor. State exactly which earlier indices may be used and supply the needed bases."
+    },
+    {
+      "id": "ds.card.rl.t04.step-size",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_04_INDUCTION_SETUP"
+      ],
+      "subtopicIds": [
+        "RL_ST04_02_MATH_INDUCTION"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "Why can a step P(k) → P(k+2) need two bases?",
+      "answer": "The step preserves parity. One starting index reaches only one parity class, so a claim over both classes needs a base for each."
+    },
+    {
+      "id": "ds.card.rl.t04.exclusion",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_05_RECURSIVE_SET"
+      ],
+      "subtopicIds": [
+        "RL_ST04_03_STRUCTURAL"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "Why include “smallest set” or “no other objects” in a recursive-set definition?",
+      "answer": "Bases and closure alone can also hold in larger sets. Exclusion says membership comes only from finite applications of the specified constructors."
+    },
+    {
+      "id": "ds.card.rl.t04.constructor",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_06_STRUCT_INDUCTION"
+      ],
+      "subtopicIds": [
+        "RL_ST04_03_STRUCTURAL"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "What does structural induction require for a constructor with two recursive arguments?",
+      "answer": "Assume the property for each recursively supplied argument as needed, then prove it for the constructed object. Also handle every base and every other constructor."
+    },
+    {
+      "id": "ds.card.rl.t04.invariant",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_07_INVARIANT"
+      ],
+      "subtopicIds": [
+        "RL_ST04_04_INVARIANT"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "What are the four obligations in the course’s invariant structure?",
+      "answer": "Initialization establishes the invariant; preservation keeps it true after a legal step; termination shows the process stops; the invariant plus the stopping condition establishes the postcondition."
+    },
+    {
+      "id": "ds.card.rl.t04.termination",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_07_INVARIANT"
+      ],
+      "subtopicIds": [
+        "RL_ST04_04_INVARIANT"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "prompt": "Why is an invariant not itself a termination argument?",
+      "answer": "It is a fact preserved by steps and may hold forever. Termination needs a separate reason, such as a nonnegative integer that strictly decreases on every step."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t04.recursion",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_01_DEFINE_RECURSIVE",
+        "RL_SK04_02_EVAL_RECURSIVE"
+      ],
+      "subtopicIds": [
+        "RL_ST04_01_RECURRENCE"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "title": "Define and inspect a recurrence",
+      "prompt": "Define a sequence starting at 2 that doubles its current value and adds 1 at each step. Specify the index domain and compute through index 3.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Domain, bases and recursive rule"
+        },
+        {
+          "id": "step2",
+          "label": "Evaluation trace"
+        },
+        {
+          "id": "step3",
+          "label": "Why the definition covers every index"
+        }
+      ],
+      "rubric": [
+        "The base index and starting value are explicit.",
+        "The rule covers exactly the later indices and depends on a smaller index.",
+        "Each evaluation substitutes an already defined value."
+      ],
+      "reference": [
+        "One definition is a₀=2 and aₙ₊₁=2aₙ+1 for n≥0 on nonnegative integer indices.",
+        "It yields 2,5,11,23 at indices 0,1,2,3. Every positive index has a predecessor and repeated expansion reaches zero."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t04.induction",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_03_INDUCTION",
+        "RL_SK04_04_INDUCTION_SETUP"
+      ],
+      "subtopicIds": [
+        "RL_ST04_02_MATH_INDUCTION"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "title": "Prove the recurrence formula",
+      "prompt": "For a₀=2 and aₙ₊₁=2aₙ+1, prove aₙ=3·2ⁿ−1 for every n≥0.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Base and domain"
+        },
+        {
+          "id": "step2",
+          "label": "Induction hypothesis and next target"
+        },
+        {
+          "id": "step3",
+          "label": "Step with explicit hypothesis use"
+        },
+        {
+          "id": "step4",
+          "label": "Conclusion"
+        }
+      ],
+      "rubric": [
+        "The base n=0 matches the stated domain.",
+        "The hypothesis is for arbitrary k≥0 and is not the k+1 target.",
+        "The recurrence and hypothesis are used at their legal indices.",
+        "The conclusion covers every n≥0."
+      ],
+      "reference": [
+        "Base: 2=3·1−1. Assume aₖ=3·2ᵏ−1. Then aₖ₊₁=2aₖ+1=2(3·2ᵏ−1)+1=3·2ᵏ⁺¹−1.",
+        "The base and induction step prove the formula for all nonnegative indices."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t04.structural",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_05_RECURSIVE_SET",
+        "RL_SK04_06_STRUCT_INDUCTION"
+      ],
+      "subtopicIds": [
+        "RL_ST04_03_STRUCTURAL"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "title": "Prove a recursive-language property",
+      "prompt": "L is the smallest language containing ε and closed under w ↦ awb. Prove every word in L has equally many a and b symbols. Explain why this does not show every equal-count word lies in L.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Base and constructor"
+        },
+        {
+          "id": "step2",
+          "label": "Hypothesis and preservation"
+        },
+        {
+          "id": "step3",
+          "label": "Conclusion and limitation"
+        }
+      ],
+      "rubric": [
+        "The empty word satisfies the property.",
+        "The only constructor adds one of each symbol and uses the hypothesis for its argument.",
+        "The exclusion clause supports induction over all of L.",
+        "The property is necessary here, not a proof of membership for every equal-count word."
+      ],
+      "reference": [
+        "ε has counts 0,0. If w has counts k,k, then awb has counts k+1,k+1. Structural induction covers L.",
+        "The word ba has one of each symbol but cannot be generated: every nonempty generated word begins with a and ends with b."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t04.invariant",
+      "version": "1",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "skillIds": [
+        "RL_SK04_07_INVARIANT"
+      ],
+      "subtopicIds": [
+        "RL_ST04_04_INVARIANT"
+      ],
+      "sourceIds": [
+        "ref-1c8fd7cf4e8c6f1b",
+        "ref-7aeb3af51fc4f1a6"
+      ],
+      "title": "Structure a complete process proof",
+      "prompt": "For fixed integer n≥0, begin at r=n,q=0 and repeatedly update (r,q) to (r−1,q+3) while r>0. Prove termination with q=3n.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Invariant and initialization"
+        },
+        {
+          "id": "step2",
+          "label": "Preservation for a permitted step"
+        },
+        {
+          "id": "step3",
+          "label": "Termination"
+        },
+        {
+          "id": "step4",
+          "label": "Postcondition at stopping"
+        }
+      ],
+      "rubric": [
+        "The invariant is precise, true initially and strong enough with the stopping condition to imply q=3n. Equivalent or alternative sufficient invariants are allowed.",
+        "Every permitted step preserves the chosen invariant, using the guard and the full update.",
+        "A nonnegative integer decreases strictly, supplying a termination argument.",
+        "At stopping the guard implies r=0; combining this with the chosen invariant proves q=3n."
+      ],
+      "reference": [
+        "Initially 3r+q=3n. A step preserves it because 3(r−1)+(q+3)=3r+q, and r−1 stays nonnegative when integer r>0.",
+        "r decreases by one until zero. At termination the invariant gives q=3n. No proof correctness or score is inferred from completing the fields. An alternative tracks an iteration counter k with r=n−k and q=3k; initializing k=0 and increasing k by one per step proves the same conclusion when r=0."
+      ]
+    }
+  ]
+}

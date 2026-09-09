@@ -3,7 +3,7 @@ import type { StudentRepository } from '../learning/repository';
 import { getExercise, versionBinding } from './catalog';
 import { gradeResponse, initialAnswer, validateResponse } from './runtime';
 import type { GradeResult } from './types';
-import type { PracticeExercise as Exercise } from '../co/types';
+import type { PracticeExercise as Exercise } from './registered-types';
 export type Resolution = {status: 'AVAILABLE'; exercise: Exercise} | {status: 'UNAVAILABLE'; message: string};
 export function resolveAttempt(attempt: Attempt): Resolution {
   try { validateAttempt(attempt); } catch { return {status: 'UNAVAILABLE', message: 'This stored attempt is invalid. Its original answer has not been changed.'}; }

@@ -1,0 +1,83 @@
+[
+  {
+    "topicId": "RL_T01_PROP_LOGIC",
+    "lessonId": "ds.lesson.rl",
+    "cardCount": 8,
+    "exerciseCount": 9,
+    "guidedCount": 2,
+    "toolId": "proposition",
+    "toolName": "Propositional logic workspace"
+  },
+  {
+    "topicId": "RL_T02_FOL",
+    "lessonId": "ds.lesson.rl.t02",
+    "cardCount": 9,
+    "exerciseCount": 4,
+    "guidedCount": 3,
+    "toolId": "finite-model",
+    "toolName": "Finite first-order structure workspace"
+  },
+  {
+    "topicId": "RL_T03_PROOF_METHODS",
+    "lessonId": "ds.lesson.rl.t03",
+    "cardCount": 9,
+    "exerciseCount": 1,
+    "guidedCount": 4,
+    "toolId": "proof",
+    "toolName": "Proof planning workspace"
+  },
+  {
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "lessonId": "ds.lesson.rl.t04",
+    "cardCount": 10,
+    "exerciseCount": 2,
+    "guidedCount": 4,
+    "toolId": "induction",
+    "toolName": "Recursion and induction workspace"
+  },
+  {
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "lessonId": "ds.lesson.rl.t05",
+    "cardCount": 7,
+    "exerciseCount": 3,
+    "guidedCount": 3,
+    "toolId": "tree-graph",
+    "toolName": "Tree and graph workspace"
+  },
+  {
+    "topicId": "RL_T06_SET_THEORY",
+    "lessonId": "ds.lesson.rl.t06",
+    "cardCount": 8,
+    "exerciseCount": 5,
+    "guidedCount": 2,
+    "toolId": "sets",
+    "toolName": "Finite sets workspace"
+  },
+  {
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "lessonId": "ds.lesson.rl.t07",
+    "cardCount": 8,
+    "exerciseCount": 3,
+    "guidedCount": 2,
+    "toolId": "functions-relations",
+    "toolName": "Finite functions and relations workspace"
+  },
+  {
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "lessonId": "ds.lesson.rl.t08",
+    "cardCount": 5,
+    "exerciseCount": 1,
+    "guidedCount": 2,
+    "toolId": null,
+    "toolName": null
+  },
+  {
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "lessonId": "ds.lesson.rl.t09",
+    "cardCount": 3,
+    "exerciseCount": 1,
+    "guidedCount": 1,
+    "toolId": null,
+    "toolName": null
+  }
+]

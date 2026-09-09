@@ -1,0 +1,140 @@
+[
+  {
+    "id": "proposition",
+    "version": "1",
+    "name": "Propositional logic workspace",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE",
+      "RL_SK01_02_NEC_SUFF",
+      "RL_SK01_03_TRUTH_TABLE",
+      "RL_SK01_04_PROP_VALIDITY",
+      "RL_SK01_05_EQUIV",
+      "RL_SK01_06_NORMAL_FORM",
+      "RL_SK01_07_SAT_PROP"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "summary": "Build bounded structured formulas, enumerate valuations, compare equivalence and inspect argument counterexamples.",
+    "assumptions": "Explicit variable order; false before true and the final variable changes fastest. Classical NOT/AND/OR/implication/biconditional. Structured input only; no arbitrary text parsing or theorem proving."
+  },
+  {
+    "id": "finite-model",
+    "version": "1",
+    "name": "Finite first-order structure workspace",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_01_NL_TO_FOL",
+      "RL_SK02_02_FOL_TO_NL",
+      "RL_SK02_03_NEGATE_FOL",
+      "RL_SK02_04_TARSKI",
+      "RL_SK02_05_FORMAL_STRUCTURE",
+      "RL_SK02_06_COUNTERMODEL"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "summary": "Evaluate structured sentences in a fully declared finite interpretation and inspect witnesses or counterexamples.",
+    "assumptions": "Finite nonempty domain, named constants and explicitly interpreted predicates/relations. No invented Tarski geometry, arbitrary FOL theorem proving or automatic grading of open translations/constructions."
+  },
+  {
+    "id": "proof",
+    "version": "1",
+    "name": "Proof planning workspace",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_01_GENERALIZE",
+      "RL_SK03_02_DIRECT",
+      "RL_SK03_03_CASES",
+      "RL_SK03_04_CONTRADICTION",
+      "RL_SK03_05_CONTRAPOSITIVE",
+      "RL_SK03_06_IDENTIFY_PROOF",
+      "RL_SK03_07_DEBUG_PROOF"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3",
+      "ref-c4cc8a5d507dcb00"
+    ],
+    "summary": "Organize assumptions, goals and justified steps, then reveal a rubric and reference reasoning.",
+    "assumptions": "Open proof self-check only. Fields and reference reveal do not establish correctness, receive a numeric score or persist as verified evidence."
+  },
+  {
+    "id": "induction",
+    "version": "1",
+    "name": "Recursion and induction workspace",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_01_DEFINE_RECURSIVE",
+      "RL_SK04_02_EVAL_RECURSIVE",
+      "RL_SK04_03_INDUCTION",
+      "RL_SK04_04_INDUCTION_SETUP",
+      "RL_SK04_05_RECURSIVE_SET",
+      "RL_SK04_06_STRUCT_INDUCTION",
+      "RL_SK04_07_INVARIANT"
+    ],
+    "sourceIds": [
+      "ref-1c8fd7cf4e8c6f1b",
+      "ref-7aeb3af51fc4f1a6"
+    ],
+    "summary": "Evaluate a bounded recurrence and organize induction or invariant obligations.",
+    "assumptions": "Numeric sequence evaluation is finite and deterministic. Induction, structural and invariant proofs are unscored self-checks; a finite trace is not a universal proof."
+  },
+  {
+    "id": "tree-graph",
+    "version": "1",
+    "name": "Tree and graph workspace",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_01_TREE_CONSTRUCT",
+      "RL_SK05_02_TREE_TRAVERSE",
+      "RL_SK05_03_TREE_FUNC",
+      "RL_SK05_04_GRAPH_CONSTRUCT",
+      "RL_SK05_05_TOPO"
+    ],
+    "sourceIds": [
+      "ref-817ca63f2a5346ab",
+      "ref-90f44cf2d63b945d"
+    ],
+    "summary": "Inspect ordered binary traversals and finite directed topological constraints.",
+    "assumptions": "Explicit adjacency and left/right child structure determine meaning. Height counts edges: leaf 0, empty −1. Any proposed topological order must be checked against every edge; graph/tree construction is not compared to one drawing."
+  },
+  {
+    "id": "sets",
+    "version": "1",
+    "name": "Finite sets workspace",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_01_SET_CALC",
+      "RL_SK06_02_VENN",
+      "RL_SK06_03_POWER_CART",
+      "RL_SK06_04_SET_PROOF",
+      "RL_SK06_05_SET_COUNTER"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a",
+      "ref-90f44cf2d63b945d",
+      "ref-95dd5ee6dad3ee92"
+    ],
+    "summary": "Inspect finite set operations, powersets and Cartesian products.",
+    "assumptions": "Finite explicit objects only, with set and ordered-pair structure kept distinct. Complement needs an explicit universe. Open set proofs remain unscored."
+  },
+  {
+    "id": "functions-relations",
+    "version": "1",
+    "name": "Finite functions and relations workspace",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "skillIds": [
+      "RL_SK07_01_WELL_DEFINED",
+      "RL_SK07_02_CONSTRUCT_FUNC",
+      "RL_SK07_03_INJ_SURJ",
+      "RL_SK07_04_REL_PROPS"
+    ],
+    "sourceIds": [
+      "ref-04d924fcee21049a"
+    ],
+    "summary": "Check finite mapping well-definedness and injection/surjection, plus relation properties.",
+    "assumptions": "Finite declared domain/codomain and explicit ordered pairs. Function validity is checked before properties. These finite checks do not prove arbitrary infinite-domain statements."
+  }
+]

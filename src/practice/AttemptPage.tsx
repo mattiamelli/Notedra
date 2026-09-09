@@ -7,7 +7,7 @@ import { attemptPath } from './catalog';
 import { validateResponse } from './runtime';
 import { feedbackFor, PracticeService, resolveAttempt } from './service';
 import { AnswerControls, ExercisePrompt, ExerciseSource, Feedback } from './ExerciseParts';
-import type { PracticeExercise as Exercise } from '../co/types';
+import type { PracticeExercise as Exercise } from './registered-types';
 export function AttemptPage() {
   const {exerciseId,attemptId}=useParams();const learning=useLearning();
   if(!learning?.snapshot)return <p role="status">{learning?.message??'Student storage is not connected.'}</p>;

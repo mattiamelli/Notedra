@@ -7,8 +7,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && vite --host 127.0.0.1",
-    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && tsc --noEmit && vite build",
+    "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && vite --host 127.0.0.1",
+    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -23,7 +23,9 @@
     "check:topics": "node --import tsx scripts/generate-topic-study.ts --check",
     "validate:topics": "node --import tsx scripts/validate-topic-content.ts",
     "validate:co": "node --import tsx scripts/validate-co.ts",
-    "check:co-bundle": "node --import tsx scripts/inspect-co-build.ts"
+    "check:co-bundle": "node --import tsx scripts/inspect-co-build.ts",
+    "validate:rl": "node --import tsx scripts/validate-rl.ts",
+    "check:rl-bundle": "node --import tsx scripts/inspect-rl-build.ts"
   },
   "dependencies": {
     "react": "19.2.6",

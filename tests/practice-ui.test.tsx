@@ -3,7 +3,7 @@ import { IDBFactory } from 'fake-indexeddb';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AppRoutes } from '../src/App';
 import { LearningProvider } from '../src/learning/LearningProvider';
 import { LearningError, emptyBackup, type LoadedState } from '../src/learning/contracts';
@@ -13,6 +13,8 @@ import { repository } from './helpers/learning';
 import type { StudentRepository } from '../src/learning/repository';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let root:Root;let container:HTMLDivElement;
+// Preload lazy route modules so compilation cannot resolve between test act scopes.
+beforeAll(async()=>{await Promise.all([import('../src/practice/ExercisePage'),import('../src/practice/AttemptPage')]);});
 beforeEach(()=>{container=document.createElement('div');document.body.append(container);root=createRoot(container);vi.spyOn(window,'scrollTo').mockImplementation(()=>{});});
 afterEach(async()=>{await act(async()=>root.unmount());container.remove();vi.restoreAllMocks();});
 
@@ -26,8 +28,8 @@ async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
   it('browsing/filtering the expanded catalog creates no attempts',async()=>{
-    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(34);
-    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(2);expect((await load(repo)).data.attempts).toEqual([]);
+    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(61);
+    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(29);expect((await load(repo)).data.attempts).toEqual([]);
   });
   it.each([catalog[0],catalog[2],catalog[4]])('completes the $subjectId flow without exposing a solution early',async exercise=>{
     const repo=repository();await mount(repo,exercisePath(exercise));expect(container.textContent).not.toContain('Reference answer');await click('Start exercise');

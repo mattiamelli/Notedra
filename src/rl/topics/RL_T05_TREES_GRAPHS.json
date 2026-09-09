@@ -1,0 +1,464 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t05",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t05.model",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_01_TREE_CONSTRUCT",
+          "RL_SK05_02_TREE_TRAVERSE",
+          "RL_SK05_03_TREE_FUNC",
+          "RL_SK05_04_GRAPH_CONSTRUCT",
+          "RL_SK05_05_TOPO"
+        ],
+        "subtopicIds": [
+          "RL_ST05_01_TREES",
+          "RL_ST05_02_TREE_FUNCTION",
+          "RL_ST05_03_GRAPHS"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "introduction",
+        "title": "The structure matters more than the drawing",
+        "paragraphs": [
+          "A tree records parent/child structure, while a directed graph records ordered edges. Drawings help you see these relationships; the adjacency and child order determine the mathematics. State conventions before calculating or constructing.",
+          "These new examples use current normalized tree/graph scope and the current Lecture 11/14 associations. Historical Lecture 8 supplies no additional convention. For the binary trees here, left/right order is explicit and height counts edges: a leaf has height 0 and the empty tree height −1."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t05.tree",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_01_TREE_CONSTRUCT",
+          "RL_SK05_02_TREE_TRAVERSE"
+        ],
+        "subtopicIds": [
+          "RL_ST05_01_TREES"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "worked_example",
+        "title": "Read a labelled ordered binary tree",
+        "paragraphs": [
+          "Use this tree: root M; M has left child G and right child T; G has no left child and has right child J; T has left child P and right child W; J, P and W have no children.",
+          "There are six nodes, three leaves (J,P,W), and height two edges. The proper descendants of G are just J. A construction must meet all requested conditions together: labels, node count, leaf count, height and any traversal constraints.",
+          "A child may have at most one parent in a tree, and all nodes must be reachable from the root without a cycle. Repositioning nodes on the page does not change the tree if these relationships remain fixed."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t05.traverse",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_02_TREE_TRAVERSE"
+        ],
+        "subtopicIds": [
+          "RL_ST05_01_TREES"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "worked_example",
+        "title": "Track when the root is visited",
+        "paragraphs": [
+          "Preorder visits root, left subtree, right subtree; inorder visits left subtree, root, right subtree; postorder visits left subtree, right subtree, root. These inorder instructions are for ordered binary trees. Empty child positions contribute no labels.",
+          "For the stated tree, preorder is M,G,J,T,P,W; inorder is G,J,M,P,T,W; postorder is J,G,P,W,T,M. At every recursive call use the same visiting rule, including a node with only a right child."
+        ],
+        "table": {
+          "headers": [
+            "Traversal",
+            "Sequence"
+          ],
+          "rows": [
+            [
+              "Preorder",
+              "M,G,J,T,P,W"
+            ],
+            [
+              "Inorder",
+              "G,J,M,P,T,W"
+            ],
+            [
+              "Postorder",
+              "J,G,P,W,T,M"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.rl.t05.recursive-function",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_03_TREE_FUNC"
+        ],
+        "subtopicIds": [
+          "RL_ST05_02_TREE_FUNCTION"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "worked_example",
+        "title": "Define every tree-function case",
+        "paragraphs": [
+          "Define node count by N(empty)=0 and N(node(value,left,right))=1+N(left)+N(right). The case split covers the empty tree and every nonempty ordered binary tree. It does not require both children to exist.",
+          "In the example, N(G)=1+0+1=2 and N(T)=1+1+1=3, so N(M)=1+2+3=6. A recursive transformation similarly needs an empty case and a node case; to mirror a binary tree, recursively mirror both subtrees and swap their left/right positions.",
+          "For height under our edge convention, H(empty)=−1 and H(node)=1+max(H(left),H(right)). Leaves therefore have height 0. Different height conventions need different bases; never silently transfer a result between them."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t05.graph",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_04_GRAPH_CONSTRUCT"
+        ],
+        "subtopicIds": [
+          "RL_ST05_03_GRAPHS"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "procedure",
+        "title": "Construct against an explicit constraint list",
+        "paragraphs": [
+          "Declare a finite vertex set and the permitted directed edges. Check node and edge counts, whether loops or duplicate edges are allowed, reachability if required, and all cycle/order requirements. In these examples graphs are simple and directed: no loops and no repeated edges.",
+          "To construct a DAG with a chosen topological order, add only edges pointing forward in that order. That ensures acyclicity, but other constraints still need separate checks. Multiple graphs may satisfy the same requirements; one reference drawing is not a unique answer."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t05.topology",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_05_TOPO",
+          "RL_SK05_04_GRAPH_CONSTRUCT"
+        ],
+        "subtopicIds": [
+          "RL_ST05_03_GRAPHS"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "worked_example",
+        "title": "An order respects every directed edge",
+        "paragraphs": [
+          "For vertices {A,B,C,D} and edges A→C, B→C, C→D, a topological order must put A and B before C, and C before D. There are exactly two: A,B,C,D and B,A,C,D. A and B are unconstrained relative to each other.",
+          "A directed cycle makes topological ordering impossible: following each cycle edge would require a vertex to come before itself. Adding D→A to this example creates the cycle A→C→D→A.",
+          "A finite DAG admits an order by repeatedly removing a vertex with no incoming edge from the remaining vertices. If several choices exist, explore their different orderings rather than asserting uniqueness. Validate a proposed order by checking each vertex occurs once and every edge points from an earlier to a later position."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t05.pitfalls",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_01_TREE_CONSTRUCT",
+          "RL_SK05_02_TREE_TRAVERSE",
+          "RL_SK05_03_TREE_FUNC",
+          "RL_SK05_04_GRAPH_CONSTRUCT",
+          "RL_SK05_05_TOPO"
+        ],
+        "subtopicIds": [
+          "RL_ST05_01_TREES",
+          "RL_ST05_02_TREE_FUNCTION",
+          "RL_ST05_03_GRAPHS"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "common_pitfall",
+        "title": "Counts alone do not establish structure",
+        "paragraphs": [
+          "A node list and an edge count do not guarantee a tree; a cycle or a disconnected part can remain. A topological order need not be unique. Traversal answers depend on child order, while drawing angles and distances have no role in these definitions.",
+          "A finite tool checks the declared representation and constraints. Open tree, graph and recursive-function constructions still need a reasoned requirements check; matching one example is not proof of correctness."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t05.recap",
+        "version": "1",
+        "topicId": "RL_T05_TREES_GRAPHS",
+        "skillIds": [
+          "RL_SK05_01_TREE_CONSTRUCT",
+          "RL_SK05_02_TREE_TRAVERSE",
+          "RL_SK05_03_TREE_FUNC",
+          "RL_SK05_04_GRAPH_CONSTRUCT",
+          "RL_SK05_05_TOPO"
+        ],
+        "subtopicIds": [
+          "RL_ST05_01_TREES",
+          "RL_ST05_02_TREE_FUNCTION",
+          "RL_ST05_03_GRAPHS"
+        ],
+        "sourceIds": [
+          "ref-817ca63f2a5346ab",
+          "ref-90f44cf2d63b945d"
+        ],
+        "kind": "recap",
+        "title": "Declare the structure, then apply one rule consistently",
+        "paragraphs": [
+          "For trees, fix child order and the height convention, handle empty cases, and recurse consistently. For graphs, use explicit edges to establish acyclicity and check topological constraints. Verify a construction against every stated requirement."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t05.construct",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_01_TREE_CONSTRUCT"
+      ],
+      "subtopicIds": [
+        "RL_ST05_01_TREES"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "How do you check a tree construction beyond its picture?",
+      "answer": "Check one root, unique parents, reachability, no cycles, and every requested count, height, child-order and value constraint. Many different valid trees may satisfy the same task."
+    },
+    {
+      "id": "ds.card.rl.t05.traversal",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_02_TREE_TRAVERSE"
+      ],
+      "subtopicIds": [
+        "RL_ST05_01_TREES"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "When is a node visited in preorder, inorder and postorder?",
+      "answer": "Preorder: before its left and right subtrees. Inorder for a binary tree: between left and right. Postorder: after both. Empty children contribute nothing."
+    },
+    {
+      "id": "ds.card.rl.t05.height",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_02_TREE_TRAVERSE"
+      ],
+      "subtopicIds": [
+        "RL_ST05_01_TREES"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "What must be stated before giving the height of a tree?",
+      "answer": "Whether height counts edges or nodes, and how the empty tree is handled. In these examples a leaf has edge height 0 and the empty tree height −1."
+    },
+    {
+      "id": "ds.card.rl.t05.tree-function",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_03_TREE_FUNC"
+      ],
+      "subtopicIds": [
+        "RL_ST05_02_TREE_FUNCTION"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "What makes a recursive tree-function definition complete?",
+      "answer": "It covers the empty structure and every constructor, specifies recursive calls on the required subtrees, and gives a result of the declared kind in each case."
+    },
+    {
+      "id": "ds.card.rl.t05.dag-build",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_04_GRAPH_CONSTRUCT"
+      ],
+      "subtopicIds": [
+        "RL_ST05_03_GRAPHS"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "How can a chosen vertex order help construct a DAG?",
+      "answer": "Use only edges pointing forward in that order. A directed cycle would require an edge path to return to an earlier vertex. Still check every other construction requirement."
+    },
+    {
+      "id": "ds.card.rl.t05.topo",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_05_TOPO"
+      ],
+      "subtopicIds": [
+        "RL_ST05_03_GRAPHS"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "What must a proposed topological order satisfy?",
+      "answer": "It lists every vertex exactly once and places the source of every directed edge before its target. This checks the actual edges, not geometric position."
+    },
+    {
+      "id": "ds.card.rl.t05.cycle",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_05_TOPO"
+      ],
+      "subtopicIds": [
+        "RL_ST05_03_GRAPHS"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "prompt": "What do a directed cycle and multiple available source vertices imply?",
+      "answer": "A directed cycle prevents topological ordering. In a finite DAG, a choice between distinct currently available vertices allows different topological orders."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t05.tree",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_01_TREE_CONSTRUCT",
+        "RL_SK05_02_TREE_TRAVERSE"
+      ],
+      "subtopicIds": [
+        "RL_ST05_01_TREES"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "title": "Construct and justify a constrained tree",
+      "prompt": "Construct an ordered binary tree with six distinct labels, exactly three leaves and edge height two. State its child relationships and preorder. Any satisfying tree is allowed.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Root and ordered child relationships"
+        },
+        {
+          "id": "step2",
+          "label": "Counts and height"
+        },
+        {
+          "id": "step3",
+          "label": "Preorder and verification"
+        }
+      ],
+      "rubric": [
+        "Every nonroot node has exactly one parent and the whole structure is connected and acyclic.",
+        "There are six nodes, three leaves and a longest root-to-leaf path of two edges.",
+        "Preorder consistently visits node, left, right."
+      ],
+      "reference": [
+        "One reference is root M; left G with right child J; right T with children P and W. J,P,W are leaves.",
+        "This has six nodes, three leaves, height two and preorder M,G,J,T,P,W. Labels and shape may differ if every stated constraint holds."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t05.function",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_03_TREE_FUNC"
+      ],
+      "subtopicIds": [
+        "RL_ST05_02_TREE_FUNCTION"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "title": "Define a mirror transformation",
+      "prompt": "Define a recursive transformation that mirrors an ordered binary tree. Explain the empty case and what happens at each nonempty node.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Cases and recursive definition"
+        },
+        {
+          "id": "step2",
+          "label": "Why both subtrees are handled"
+        },
+        {
+          "id": "step3",
+          "label": "Self-check on shape and labels"
+        }
+      ],
+      "rubric": [
+        "The empty tree maps to the empty tree.",
+        "At each node the transformed right subtree becomes the left subtree and vice versa.",
+        "Every original label occurs once in the result, and recursive calls handle descendants as well as the root."
+      ],
+      "reference": [
+        "Define M(empty)=empty and M(node(v,L,R))=node(v,M(R),M(L)).",
+        "Swapping only the root children without recursively mirroring their interiors is incomplete. The result keeps labels and node count while reversing left/right structure at every node."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t05.graph",
+      "version": "1",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "skillIds": [
+        "RL_SK05_04_GRAPH_CONSTRUCT",
+        "RL_SK05_05_TOPO"
+      ],
+      "subtopicIds": [
+        "RL_ST05_03_GRAPHS"
+      ],
+      "sourceIds": [
+        "ref-817ca63f2a5346ab",
+        "ref-90f44cf2d63b945d"
+      ],
+      "title": "Construct a DAG with two valid orders",
+      "prompt": "Construct a simple directed graph on {A,B,C,D} with exactly three edges and exactly two topological orders. Show both orders and justify that there are no others.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Vertex set and edge set"
+        },
+        {
+          "id": "step2",
+          "label": "Two orders"
+        },
+        {
+          "id": "step3",
+          "label": "Exhaustive justification"
+        }
+      ],
+      "rubric": [
+        "There are four vertices, three distinct directed edges, no loops, and no cycle.",
+        "Each stated ordering respects every edge.",
+        "The justification excludes all remaining permutations; producing two orders alone does not establish exactly two."
+      ],
+      "reference": [
+        "A reference uses A→C, B→C, C→D. Both A and B must precede C, and C must precede D.",
+        "Only the relative order of A and B is free. Thus A,B,C,D and B,A,C,D are the only orders. Other graphs satisfying the full requirements are allowed."
+      ]
+    }
+  ]
+}

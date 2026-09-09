@@ -1,0 +1,345 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t08",
+    "version": "1",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t08.model",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_01_NUMBER_SETS",
+          "RL_SK08_02_COUNTABLE",
+          "RL_SK08_03_LIMITS"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS",
+          "RL_ST08_02_LIMITS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "introduction",
+        "title": "A finite check cannot settle an infinite size claim",
+        "paragraphs": [
+          "For finite sets, counting elements compares size. For infinite sets, a listing or bijection must account for every element, with a reason that no element is missed. This lesson stays within the normalized number-set, countability, Cantor and paradox overview."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.numbers",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_01_NUMBER_SETS"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "concept",
+        "title": "Number-set membership and hierarchy",
+        "paragraphs": [
+          "The hierarchy is ℕ⊆ℤ⊆ℚ⊆ℝ⊆ℂ: natural numbers, integers, rationals, reals and complex numbers. Here natural-number indexing is stated explicitly as ℕ₀={0,1,2,…}; another task may start natural numbers at 1. A rational has the form p/q with integers p,q and q≠0.",
+          "For example, −3 belongs to ℤ,ℚ,ℝ,ℂ but not ℕ₀; 3/2 belongs to ℚ,ℝ,ℂ but not ℤ; i belongs to ℂ but not ℝ. Membership in several nested number sets is consistent, so “which sets?” may have several answers.",
+          "A set’s elements and its cardinality are different questions. ℕ₀ and ℤ are distinct sets, yet have the same infinite cardinality. ℚ is also countably infinite, while ℝ is uncountable; adjoining an imaginary component gives ℂ, which is uncountable as well."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.listing",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_02_COUNTABLE"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "worked_example",
+        "title": "Give a rule and prove it covers the set",
+        "paragraphs": [
+          "A set is countably infinite if there is a bijection with ℕ₀. A finite set is also called countable under the at-most-countable convention used here; keep this distinction explicit.",
+          "A listing of ℤ is 0,1,−1,2,−2,3,−3,… . Define f(0)=0, f(2k−1)=k, and f(2k)=−k for integers k≥1. Positive integers occupy odd positive indices; negative integers occupy even positive indices. Zero occupies index zero.",
+          "Every integer has exactly one described index, which proves both coverage and no duplicates. The visible beginning of the list is only an illustration; the rule and its justification establish the infinite claim."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.rational",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_02_COUNTABLE"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "procedure",
+        "title": "Avoid missing elements and uncontrolled duplicates",
+        "paragraphs": [
+          "To list positive rationals, arrange pairs (p,q) of positive integers by increasing p+q and within each diagonal by increasing p. Output p/q only when it has not appeared earlier, equivalently when the pair is in lowest terms. Every positive rational has such a pair at a finite diagonal.",
+          "Insert zero and interleave positive entries with their negatives to cover ℚ. A countability explanation must justify that every target is reached after finitely many steps and handle duplicate representations such as 1/2 and 2/4. A few enumerated fractions are not that proof."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.cantor",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_03_LIMITS",
+          "RL_SK08_02_COUNTABLE"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS",
+          "RL_ST08_02_LIMITS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "worked_example",
+        "title": "A diagonal defeats a proposed complete list",
+        "paragraphs": [
+          "For any proposed function f:A→𝒫(A), form D={a∈A | a∉f(a)}. If f were surjective, some d∈A would satisfy f(d)=D. Then d∈D exactly when d∉D, a contradiction. Thus no such function lists every subset of A.",
+          "The point is not that one particular list failed: the construction works against any proposed surjection. For A=ℕ₀, it shows 𝒫(ℕ₀) cannot be counted by a natural-number listing. This course-depth diagonal argument does not require advanced cardinal arithmetic."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.limits",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_03_LIMITS"
+        ],
+        "subtopicIds": [
+          "RL_ST08_02_LIMITS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "concept",
+        "title": "State the boundary a paradox exposes",
+        "paragraphs": [
+          "Unrestricted set formation is unsafe. If a universal collection R={x | x∉x} were itself a set to which the condition applied, asking whether R∈R gives R∈R exactly when R∉R. That contradiction shows why one cannot treat every unrestricted condition as defining a set.",
+          "Keep the scope of the conclusion precise: the paradox challenges unrestricted set formation; it does not show that ordinary set calculations are all invalid. Likewise, failure of a proposed proof or finite search is not automatically a theorem about impossibility.",
+          "The normalized source identifies a limitations overview but does not supply exact theorem formulations for a broader formal-systems course. No completeness, decidability or independence theorem beyond this stated overview is asserted here."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.pitfalls",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_01_NUMBER_SETS",
+          "RL_SK08_02_COUNTABLE",
+          "RL_SK08_03_LIMITS"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS",
+          "RL_ST08_02_LIMITS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "common_pitfall",
+        "title": "Distinguish an argument from an illustration",
+        "paragraphs": [
+          "Printing many elements cannot verify an infinite bijection. Give a rule and prove that each permitted object has the required unique position. Do not equate “infinite” with “uncountable” or infer a future exam’s scope from a historical occurrence.",
+          "Countability proofs and explanations of limitations need a logical review. The practice calculation on fixed number membership is a bounded item, not an automatic check of an infinite proof."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t08.recap",
+        "version": "1",
+        "topicId": "RL_T08_LIMITS_COUNTABILITY",
+        "skillIds": [
+          "RL_SK08_01_NUMBER_SETS",
+          "RL_SK08_02_COUNTABLE",
+          "RL_SK08_03_LIMITS"
+        ],
+        "subtopicIds": [
+          "RL_ST08_01_NUMBER_SETS",
+          "RL_ST08_02_LIMITS"
+        ],
+        "sourceIds": [
+          "ref-1c15c8629b146da0"
+        ],
+        "kind": "recap",
+        "title": "Account for every element and state what follows",
+        "paragraphs": [
+          "Use number-set definitions precisely. For countability, establish a complete listing or bijection rather than a finite sample. For diagonal and paradox arguments, explain the contradiction and the exact assumption it refutes."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t08.hierarchy",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_01_NUMBER_SETS"
+      ],
+      "subtopicIds": [
+        "RL_ST08_01_NUMBER_SETS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "prompt": "Can one number belong to several of ℕ,ℤ,ℚ,ℝ,ℂ?",
+      "answer": "Yes. The sets are nested. Declare whether natural numbers start at 0 or 1, then use the definitions and inclusion hierarchy."
+    },
+    {
+      "id": "ds.card.rl.t08.countability",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_02_COUNTABLE"
+      ],
+      "subtopicIds": [
+        "RL_ST08_01_NUMBER_SETS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "prompt": "What must a listing argument establish beyond its first few terms?",
+      "answer": "A rule that reaches every target after finitely many steps, with duplicate handling. For a claimed bijection, also show each target has exactly one index."
+    },
+    {
+      "id": "ds.card.rl.t08.finite",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_02_COUNTABLE"
+      ],
+      "subtopicIds": [
+        "RL_ST08_01_NUMBER_SETS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "prompt": "How do “countable” and “countably infinite” differ here?",
+      "answer": "Countable means finite or admitting a bijection with ℕ₀. Countably infinite excludes finite sets and requires such a bijection."
+    },
+    {
+      "id": "ds.card.rl.t08.diagonal",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_03_LIMITS"
+      ],
+      "subtopicIds": [
+        "RL_ST08_02_LIMITS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "prompt": "Why does D={a∈A | a∉f(a)} obstruct a surjection f:A→𝒫(A)?",
+      "answer": "If D=f(d), then d∈D iff d∉D, a contradiction. Since f was arbitrary, no function of that type can be surjective."
+    },
+    {
+      "id": "ds.card.rl.t08.paradox",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_03_LIMITS"
+      ],
+      "subtopicIds": [
+        "RL_ST08_02_LIMITS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "prompt": "What does the self-membership paradox warn against?",
+      "answer": "Assuming every unrestricted condition defines a set. The contradictory assumption concerns unrestricted set formation, not the validity of every ordinary set argument."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t08.listing",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_02_COUNTABLE"
+      ],
+      "subtopicIds": [
+        "RL_ST08_01_NUMBER_SETS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "title": "Justify an infinite listing",
+      "prompt": "Show that the listing 0,1,−1,2,−2,… gives a bijection from ℕ₀ to ℤ. Give the rule, not only more terms.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Indexing rule"
+        },
+        {
+          "id": "step2",
+          "label": "Every integer is reached"
+        },
+        {
+          "id": "step3",
+          "label": "No repeated output"
+        }
+      ],
+      "rubric": [
+        "The definition covers index zero, odd positive indices and even positive indices.",
+        "Zero, positive integers and negative integers each have an explicit preimage.",
+        "The cases are disjoint and the formulas give unique indices."
+      ],
+      "reference": [
+        "Use f(0)=0, f(2k−1)=k and f(2k)=−k for k≥1. The preimage of k>0 is 2k−1, and of −k<0 is 2k.",
+        "Each integer has exactly one preimage, so the function is a bijection. A finite output list alone would not prove this."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t08.diagonal",
+      "version": "1",
+      "topicId": "RL_T08_LIMITS_COUNTABILITY",
+      "skillIds": [
+        "RL_SK08_03_LIMITS",
+        "RL_SK08_02_COUNTABLE"
+      ],
+      "subtopicIds": [
+        "RL_ST08_01_NUMBER_SETS",
+        "RL_ST08_02_LIMITS"
+      ],
+      "sourceIds": [
+        "ref-1c15c8629b146da0"
+      ],
+      "title": "Explain the diagonal contradiction",
+      "prompt": "Suppose f:A→𝒫(A) is claimed to be surjective. Explain why D={a∈A | a∉f(a)} cannot equal f(d) for any d∈A, and state the precise conclusion.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "The subset D and the surjectivity assumption"
+        },
+        {
+          "id": "step2",
+          "label": "Membership contradiction"
+        },
+        {
+          "id": "step3",
+          "label": "Conclusion and scope"
+        }
+      ],
+      "rubric": [
+        "D is a subset of A and therefore an allowed target of the claimed surjection.",
+        "If D=f(d), the defining membership condition becomes d∈D iff d∉D.",
+        "The argument applies to any proposed f; it is not a test of a few finite entries."
+      ],
+      "reference": [
+        "Surjectivity would supply d with f(d)=D. Substitution in the definition yields the contradiction d∈D iff d∉D.",
+        "Consequently no function from A to its powerset is surjective. The explanation is an unscored proof self-check."
+      ]
+    }
+  ]
+}

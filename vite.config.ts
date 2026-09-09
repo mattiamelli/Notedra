@@ -1,3 +1,4 @@
+import { rlBuildGuard } from './scripts/rl-content';
 import { coBuildGuard } from './scripts/co-content';
 import { topicStudyGuard } from './scripts/topic-content';
 import { practiceBuildGuard } from './scripts/practice-catalog';
@@ -9,6 +10,6 @@ import { studentReferencesGuard } from './scripts/student-references-guard';
 import { academicIndexGuard } from './scripts/academic-index-guard';
 
 export default defineConfig({
-  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), react(), tailwindcss()],
+  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), react(), tailwindcss()],
   test: { include: ['tests/**/*.test.{ts,tsx}'], environment: 'node' },
 });

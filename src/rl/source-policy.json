@@ -1,0 +1,80 @@
+{
+  "version": "1",
+  "purpose": "Build-only authorization for the new bounded puzzle mechanism. Not runtime assessment material or learner evidence.",
+  "puzzles": [
+    {
+      "exerciseId": "ds.practice.rl-dock-setting",
+      "guidedId": "ds.guided.rl.constraint-docks",
+      "mapping": {
+        "assessment_id": "ASM_RL_END_2025",
+        "document_id": "RL_END_2025",
+        "question_ref": "RL_END_2025_Q14",
+        "source_document": "R&L Endterm 2025.pdf",
+        "source_page_or_slide": "PDF_PAGE_5",
+        "mapping_confidence": "HIGH",
+        "mapping_granularity": "SKILL_LEVEL",
+        "evidence_era": "CURRENT",
+        "current_style_weight": "VERY_HIGH",
+        "validator_type": "RUBRIC",
+        "can_generate_variants": true,
+        "adaptive_use_policy": "SOURCE_ANALOGUE_ALLOWED_NONVERBATIM",
+        "topic_ids": [
+          "RL_T09_TRANSFER_CONSTRAINT_PUZZLES"
+        ],
+        "skill_ids": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "mechanism": "Novel transfer/backtracking constraint puzzle."
+      },
+      "boundary": "The verified current mapping authorizes a novel transfer/backtracking mechanism. The source question remains RUBRIC. Only the independently unique final setting of this different authored finite instance receives item feedback; the elimination argument is an unscored guided self-check. No historical/unverified mapping or copied exam story, wording, diagram or values is used.",
+      "instance": {
+        "kind": "distinct-integer-assignment",
+        "variables": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "domain": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "allDifferent": true,
+        "constraints": [
+          {
+            "kind": "sum",
+            "left": "A",
+            "right": "B",
+            "value": 5
+          },
+          {
+            "kind": "sum",
+            "left": "B",
+            "right": "C",
+            "value": 6
+          },
+          {
+            "kind": "greater-than",
+            "left": "C",
+            "right": "D"
+          }
+        ],
+        "requestedVariable": "D"
+      },
+      "reference": {
+        "assignments": [
+          {
+            "A": 3,
+            "B": 2,
+            "C": 4,
+            "D": 1
+          }
+        ],
+        "enumerationSize": 24,
+        "method": "Independently enumerate all 24 permutations; test each arithmetic constraint; require exactly one complete assignment before exposing the conclusion."
+      }
+    }
+  ]
+}

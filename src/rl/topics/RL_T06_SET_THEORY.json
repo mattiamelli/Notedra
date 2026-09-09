@@ -1,0 +1,482 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t06",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t06.model",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_01_SET_CALC",
+          "RL_SK06_02_VENN",
+          "RL_SK06_03_POWER_CART",
+          "RL_SK06_04_SET_PROOF",
+          "RL_SK06_05_SET_COUNTER"
+        ],
+        "subtopicIds": [
+          "RL_ST06_01_SET_OPS",
+          "RL_ST06_02_VENN",
+          "RL_ST06_03_POWER_CART",
+          "RL_ST06_04_SET_PROOFS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "introduction",
+        "title": "Membership turns set reasoning into logic",
+        "paragraphs": [
+          "A set is determined by which objects are its elements, not their written order or repetition. Translate operations into membership conditions to calculate finite examples, describe Venn regions or prove an identity for arbitrary sets."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.membership",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_01_SET_CALC"
+        ],
+        "subtopicIds": [
+          "RL_ST06_01_SET_OPS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "worked_example",
+        "title": "An element is different from a subset",
+        "paragraphs": [
+          "The statement x∈A asks whether x is one element of A. The statement B⊆A asks whether every element of B belongs to A. A proper subset B⊂A here means B⊆A and B≠A; the symbol convention is explicit.",
+          "Let C={{1},2}. Its elements are the set {1} and the number 2. Thus {1}∈C and 2∈C, but 1∉C. The claim {1}⊆C is false because 1 is not an element of C; {2}⊆C is true.",
+          "The empty set is a subset of every set: it has no element that could violate containment. Whether ∅ is an element of a set is a separate question. Extra braces change the object being discussed."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.operations",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_01_SET_CALC"
+        ],
+        "subtopicIds": [
+          "RL_ST06_01_SET_OPS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "worked_example",
+        "title": "Compute from membership conditions",
+        "paragraphs": [
+          "Use universe U={1,2,3,4,5}, A={1,3,5}, and B={3,4}. A∪B contains elements in either set: {1,3,4,5}. A∩B contains elements in both: {3}. A∖B keeps A-elements outside B: {1,5}. The complement of B relative to U is U∖B={1,2,5}.",
+          "Set-builder notation states a domain and a condition. Here A={x∈U | x is odd}. To evaluate a nested expression, work from its inner operations outward or test the complete condition for each candidate."
+        ],
+        "table": {
+          "headers": [
+            "Expression",
+            "Result"
+          ],
+          "rows": [
+            [
+              "A∪B",
+              "{1,3,4,5}"
+            ],
+            [
+              "A∩B",
+              "{3}"
+            ],
+            [
+              "A∖B",
+              "{1,5}"
+            ],
+            [
+              "U∖B",
+              "{1,2,5}"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.rl.t06.venn",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_02_VENN"
+        ],
+        "subtopicIds": [
+          "RL_ST06_02_VENN"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "procedure",
+        "title": "Describe regions by all membership choices",
+        "paragraphs": [
+          "For a point in a Venn diagram, record whether it belongs to each labelled set. An intersection uses “and”, a union uses “or”, and a complement negates membership relative to the universe.",
+          "The expression (A∪B)∖(A∩B) selects points belonging to exactly one of A and B. Its two regions are A∖B and B∖A. It excludes both the overlap and everything outside both sets. In the finite example the result is {1,4,5}."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.powerset",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_03_POWER_CART"
+        ],
+        "subtopicIds": [
+          "RL_ST06_03_POWER_CART"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "worked_example",
+        "title": "Subsets and ordered pairs are different objects",
+        "paragraphs": [
+          "For S={a,b}, the powerset is 𝒫(S)={∅,{a},{b},{a,b}}. Its four elements are sets. For a finite set with n distinct elements, each element independently belongs or does not belong to a subset, giving 2ⁿ subsets.",
+          "For S={a,b} and T={0,1}, the Cartesian product S×T={(a,0),(a,1),(b,0),(b,1)}. Each element is an ordered pair with first component from S and second from T. Reversing components generally changes the pair and the product.",
+          "𝒫(∅)={∅}, which has one element, while S×∅=∅. The set {a,b}, the singleton set {{a,b}}, and the ordered pair (a,b) must not be conflated."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.proof",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_04_SET_PROOF"
+        ],
+        "subtopicIds": [
+          "RL_ST06_04_SET_PROOFS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "worked_example",
+        "title": "Prove equality through arbitrary membership",
+        "paragraphs": [
+          "To prove A∩(B∪C)=(A∩B)∪(A∩C), let x be arbitrary. Then x∈A∩(B∪C) exactly when x∈A and (x∈B or x∈C). By propositional distributivity, this is equivalent to (x∈A and x∈B) or (x∈A and x∈C), which is membership in (A∩B)∪(A∩C).",
+          "Every step is an equivalence for an arbitrary x, so both inclusions follow. Alternatively, prove each inclusion separately. Proving only one direction establishes a subset relationship, not equality. A finite diagram can suggest the identity but cannot replace the arbitrary-element justification."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.counterexample",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_05_SET_COUNTER"
+        ],
+        "subtopicIds": [
+          "RL_ST06_04_SET_PROOFS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "worked_example",
+        "title": "Keep the premise true while breaking the conclusion",
+        "paragraphs": [
+          "Consider the claim “If A∩B=A, then B⊆A.” Choose A={2} and B={2,7}. The intersection is {2}=A, so the premise holds. But 7∈B and 7∉A, so B⊆A is false. This refutes the universal implication.",
+          "The premise actually implies A⊆B: every element of A is in the intersection and hence in B. Distinguish a counterexample to the claim from an example where the premise itself fails."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.pitfalls",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_01_SET_CALC",
+          "RL_SK06_02_VENN",
+          "RL_SK06_03_POWER_CART",
+          "RL_SK06_04_SET_PROOF",
+          "RL_SK06_05_SET_COUNTER"
+        ],
+        "subtopicIds": [
+          "RL_ST06_01_SET_OPS",
+          "RL_ST06_02_VENN",
+          "RL_ST06_03_POWER_CART",
+          "RL_ST06_04_SET_PROOFS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "common_pitfall",
+        "title": "Track the universe and every layer of braces",
+        "paragraphs": [
+          "A complement has no fixed meaning until its universe is declared. Braces indicate set structure, while parentheses indicate ordered pairs in these examples. Repetition in a listing does not create a second copy of an element.",
+          "A single satisfying example cannot prove a claim about all sets. A counterexample must satisfy the assumptions and falsify the target in the same instance."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t06.recap",
+        "version": "1",
+        "topicId": "RL_T06_SET_THEORY",
+        "skillIds": [
+          "RL_SK06_01_SET_CALC",
+          "RL_SK06_02_VENN",
+          "RL_SK06_03_POWER_CART",
+          "RL_SK06_04_SET_PROOF",
+          "RL_SK06_05_SET_COUNTER"
+        ],
+        "subtopicIds": [
+          "RL_ST06_01_SET_OPS",
+          "RL_ST06_02_VENN",
+          "RL_ST06_03_POWER_CART",
+          "RL_ST06_04_SET_PROOFS"
+        ],
+        "sourceIds": [
+          "ref-7cf75e9c84b8117a",
+          "ref-90f44cf2d63b945d",
+          "ref-95dd5ee6dad3ee92"
+        ],
+        "kind": "recap",
+        "title": "Reduce to membership, then restore the notation",
+        "paragraphs": [
+          "Distinguish elements from subsets and tuples, translate each operation to logic, and keep the universe explicit. Use arbitrary membership for proofs and one fully checked instance for counterexamples."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t06.membership",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_01_SET_CALC"
+      ],
+      "subtopicIds": [
+        "RL_ST06_01_SET_OPS"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "How do x∈A and B⊆A differ?",
+      "answer": "The first says x is an element of A. The second says every element of B belongs to A. A set can be an element, so braces and types matter."
+    },
+    {
+      "id": "ds.card.rl.t06.complement",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_01_SET_CALC"
+      ],
+      "subtopicIds": [
+        "RL_ST06_01_SET_OPS"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "What must be declared to compute the complement of a set?",
+      "answer": "The universe U. The complement of A means the elements of U outside A; changing U can change the answer."
+    },
+    {
+      "id": "ds.card.rl.t06.venn",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_02_VENN"
+      ],
+      "subtopicIds": [
+        "RL_ST06_02_VENN"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "Which region does (A∪B)∖(A∩B) describe?",
+      "answer": "The elements in exactly one of A and B: include A-only and B-only, exclude their overlap and the outside region."
+    },
+    {
+      "id": "ds.card.rl.t06.power",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_03_POWER_CART"
+      ],
+      "subtopicIds": [
+        "RL_ST06_03_POWER_CART"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "What are the elements of a powerset?",
+      "answer": "All subsets of the original set, including the empty set and the full set. For n distinct elements there are 2ⁿ subsets."
+    },
+    {
+      "id": "ds.card.rl.t06.product",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_03_POWER_CART"
+      ],
+      "subtopicIds": [
+        "RL_ST06_03_POWER_CART"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "What is required for (x,y) to belong to A×B?",
+      "answer": "x∈A and y∈B, in that order. An ordered pair is not the same object as a two-element set."
+    },
+    {
+      "id": "ds.card.rl.t06.empty",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_03_POWER_CART"
+      ],
+      "subtopicIds": [
+        "RL_ST06_03_POWER_CART"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "Why is 𝒫(∅) different from ∅?",
+      "answer": "𝒫(∅) contains one element, the empty subset: {∅}. The empty set itself has no elements."
+    },
+    {
+      "id": "ds.card.rl.t06.proof",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_04_SET_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST06_04_SET_PROOFS"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "How can arbitrary-element reasoning establish set equality?",
+      "answer": "Show for arbitrary x that membership in one side is equivalent to membership in the other, or prove both inclusions separately."
+    },
+    {
+      "id": "ds.card.rl.t06.counter",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_05_SET_COUNTER"
+      ],
+      "subtopicIds": [
+        "RL_ST06_04_SET_PROOFS"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "prompt": "What must a counterexample to a set implication establish?",
+      "answer": "Its concrete sets satisfy every premise, but at least one conclusion fails. Identify an element witnessing the failed inclusion or equality."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.t06.proof",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_04_SET_PROOF"
+      ],
+      "subtopicIds": [
+        "RL_ST06_04_SET_PROOFS"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "title": "Write a distributivity proof",
+      "prompt": "Prove A∩(B∪C)=(A∩B)∪(A∩C) for arbitrary sets. Use membership reasoning or two inclusions.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Arbitrary object and target"
+        },
+        {
+          "id": "step2",
+          "label": "Membership implications or equivalences"
+        },
+        {
+          "id": "step3",
+          "label": "Conclusion"
+        }
+      ],
+      "rubric": [
+        "The object is arbitrary and the sets have no unstated restrictions.",
+        "Union/intersection membership conditions are used correctly.",
+        "Both directions of equality are established."
+      ],
+      "reference": [
+        "For arbitrary x, x∈A∩(B∪C) iff x∈A and (x∈B or x∈C).",
+        "This is equivalent to (x∈A and x∈B) or (x∈A and x∈C), hence to membership in the right side. The equivalences prove equality."
+      ]
+    },
+    {
+      "id": "ds.guided.rl.t06.counterexample",
+      "version": "1",
+      "topicId": "RL_T06_SET_THEORY",
+      "skillIds": [
+        "RL_SK06_05_SET_COUNTER"
+      ],
+      "subtopicIds": [
+        "RL_ST06_04_SET_PROOFS"
+      ],
+      "sourceIds": [
+        "ref-7cf75e9c84b8117a",
+        "ref-90f44cf2d63b945d",
+        "ref-95dd5ee6dad3ee92"
+      ],
+      "title": "Build and explain a set counterexample",
+      "prompt": "Refute: for all sets A,B, if A∩B=A then B⊆A. State your sets and explicitly check the premise and failed conclusion.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Concrete sets"
+        },
+        {
+          "id": "step2",
+          "label": "True premise"
+        },
+        {
+          "id": "step3",
+          "label": "False conclusion and witness"
+        }
+      ],
+      "rubric": [
+        "Both sets are fully specified.",
+        "The intersection really equals A.",
+        "A named element belongs to B but not A."
+      ],
+      "reference": [
+        "One choice is A={2}, B={2,7}. Then A∩B={2}=A, while 7 belongs to B and not A.",
+        "Other examples work if they meet the same obligations; matching these exact sets is unnecessary."
+      ]
+    }
+  ]
+}

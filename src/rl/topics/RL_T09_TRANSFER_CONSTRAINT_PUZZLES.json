@@ -1,0 +1,271 @@
+{
+  "lesson": {
+    "id": "ds.lesson.rl.t09",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "blocks": [
+      {
+        "id": "ds.block.rl.t09.model",
+        "version": "1",
+        "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+        "skillIds": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "subtopicIds": [
+          "RL_ST09_01_CONSTRAINT"
+        ],
+        "sourceIds": [
+          "ref-b67b69b8c72d7a46",
+          "ref-b7ffa94c6d835806",
+          "ref-cf1403358195de45"
+        ],
+        "kind": "introduction",
+        "title": "Model the information before searching",
+        "paragraphs": [
+          "Transfer problems ask you to reason through a new situation using constraints. Extract the possible states, translate every condition, eliminate only for a stated reason, and verify the final candidate against the original requirements.",
+          "The calibration-dock example is newly authored under the pack’s verified current transfer/backtracking mechanism. It does not reproduce an exam story or claim to be an official exam problem."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t09.process",
+        "version": "1",
+        "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+        "skillIds": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "subtopicIds": [
+          "RL_ST09_01_CONSTRAINT"
+        ],
+        "sourceIds": [
+          "ref-b67b69b8c72d7a46",
+          "ref-b7ffa94c6d835806",
+          "ref-cf1403358195de45"
+        ],
+        "kind": "procedure",
+        "title": "Use a complete, inspectable search",
+        "paragraphs": [
+          "Choose variables and finite domains. Record uniqueness, totals, inequalities and any other constraints separately. Use a restrictive condition to narrow the cases; preserve all possibilities that have not been ruled out.",
+          "Reasoning backwards from a required outcome can reveal earlier values. A parity or count constraint is useful only when it follows from this task’s rules. For information-based puzzles, state exactly what is known at each stage rather than silently adding facts.",
+          "Write why each rejected case violates a specific condition. A single survivor proves uniqueness only if the starting cases were exhaustive and every elimination was justified."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t09.docks",
+        "version": "1",
+        "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+        "skillIds": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "subtopicIds": [
+          "RL_ST09_01_CONSTRAINT"
+        ],
+        "sourceIds": [
+          "ref-b67b69b8c72d7a46",
+          "ref-b7ffa94c6d835806",
+          "ref-cf1403358195de45"
+        ],
+        "kind": "worked_example",
+        "title": "Solve an original bounded instance",
+        "paragraphs": [
+          "Four calibration docks A,B,C,D receive distinct pulse settings from {1,2,3,4}, each used once. The conditions are A+B=5, B+C=6, and C>D. Find all four settings.",
+          "From the sums, B=5−A and C=6−B=A+1. Consider every possible A. If A=1, then (A,B,C,D)=(1,4,2,3), which violates C>D. If A=2, then B=C=3, violating distinctness. If A=3, the candidate is (3,2,4,1), which satisfies every condition. If A=4, then C=5 lies outside the domain.",
+          "Thus the unique solution is A=3, B=2, C=4, D=1. Check the original sums: 3+2=5 and 2+4=6; check 4>1; and check that every allowed setting is used exactly once."
+        ],
+        "table": {
+          "headers": [
+            "A",
+            "Consequences",
+            "Decision"
+          ],
+          "rows": [
+            [
+              "1",
+              "B=4, C=2, D=3",
+              "Reject: C>D fails"
+            ],
+            [
+              "2",
+              "B=3, C=3",
+              "Reject: duplicate setting"
+            ],
+            [
+              "3",
+              "B=2, C=4, D=1",
+              "All constraints hold"
+            ],
+            [
+              "4",
+              "C=5",
+              "Reject: outside domain"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.rl.t09.uniqueness",
+        "version": "1",
+        "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+        "skillIds": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "subtopicIds": [
+          "RL_ST09_01_CONSTRAINT"
+        ],
+        "sourceIds": [
+          "ref-b67b69b8c72d7a46",
+          "ref-b7ffa94c6d835806",
+          "ref-cf1403358195de45"
+        ],
+        "kind": "important_rule",
+        "title": "A final value and its justification are separate",
+        "paragraphs": [
+          "In a bounded, fully specified instance, the final setting D=1 has a unique answer and can be checked deterministically. The explanation must still show why other possibilities fail. A correct final value does not automatically certify the reasoning.",
+          "Independent enumeration of all 24 permutations of {1,2,3,4} leaves the same single solution. Enumeration is complete here because the domain is explicitly finite. It is not a general method for proving arbitrary infinite claims."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t09.pitfalls",
+        "version": "1",
+        "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+        "skillIds": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "subtopicIds": [
+          "RL_ST09_01_CONSTRAINT"
+        ],
+        "sourceIds": [
+          "ref-b67b69b8c72d7a46",
+          "ref-b7ffa94c6d835806",
+          "ref-cf1403358195de45"
+        ],
+        "kind": "common_pitfall",
+        "title": "Never add a constraint because it feels plausible",
+        "paragraphs": [
+          "Do not assume ordering, distinctness, equality, a parity fact or an observer’s knowledge unless the task states or entails it. A plausible story is not an extra mathematical premise.",
+          "If multiple candidates survive, report that the constraints do not determine a unique answer. If none survive, inspect the transcription and the consistency of the conditions. Do not choose a favorite candidate or report a fabricated unique solution."
+        ]
+      },
+      {
+        "id": "ds.block.rl.t09.recap",
+        "version": "1",
+        "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+        "skillIds": [
+          "RL_SK09_01_TRANSFER"
+        ],
+        "subtopicIds": [
+          "RL_ST09_01_CONSTRAINT"
+        ],
+        "sourceIds": [
+          "ref-b67b69b8c72d7a46",
+          "ref-b7ffa94c6d835806",
+          "ref-cf1403358195de45"
+        ],
+        "kind": "recap",
+        "title": "Preserve possibilities until a reason removes them",
+        "paragraphs": [
+          "Translate the rules, make an exhaustive case split, justify each elimination, and verify the survivor in the original model. Separate the bounded final answer from the open explanation, which remains a rubric self-check."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.rl.t09.model",
+      "version": "1",
+      "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+      "skillIds": [
+        "RL_SK09_01_TRANSFER"
+      ],
+      "subtopicIds": [
+        "RL_ST09_01_CONSTRAINT"
+      ],
+      "sourceIds": [
+        "ref-b67b69b8c72d7a46",
+        "ref-b7ffa94c6d835806",
+        "ref-cf1403358195de45"
+      ],
+      "prompt": "What belongs in the initial model of a constraint puzzle?",
+      "answer": "Explicit variables, allowed values and every stated constraint, including any distinctness or information conditions. Do not silently add plausible story assumptions."
+    },
+    {
+      "id": "ds.card.rl.t09.elimination",
+      "version": "1",
+      "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+      "skillIds": [
+        "RL_SK09_01_TRANSFER"
+      ],
+      "subtopicIds": [
+        "RL_ST09_01_CONSTRAINT"
+      ],
+      "sourceIds": [
+        "ref-b67b69b8c72d7a46",
+        "ref-b7ffa94c6d835806",
+        "ref-cf1403358195de45"
+      ],
+      "prompt": "When does one surviving candidate establish uniqueness?",
+      "answer": "When the starting cases cover every possibility, each rejected case violates a justified condition, and the survivor satisfies every original requirement."
+    },
+    {
+      "id": "ds.card.rl.t09.nonunique",
+      "version": "1",
+      "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+      "skillIds": [
+        "RL_SK09_01_TRANSFER"
+      ],
+      "subtopicIds": [
+        "RL_ST09_01_CONSTRAINT"
+      ],
+      "sourceIds": [
+        "ref-b67b69b8c72d7a46",
+        "ref-b7ffa94c6d835806",
+        "ref-cf1403358195de45"
+      ],
+      "prompt": "What should you conclude if two candidates satisfy every stated constraint?",
+      "answer": "The problem is nonunique under those constraints. Do not label one candidate uniquely correct simply because it is the reference answer."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.rl.constraint-docks",
+      "version": "1",
+      "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+      "skillIds": [
+        "RL_SK09_01_TRANSFER"
+      ],
+      "subtopicIds": [
+        "RL_ST09_01_CONSTRAINT"
+      ],
+      "sourceIds": [
+        "ref-b67b69b8c72d7a46",
+        "ref-b7ffa94c6d835806",
+        "ref-cf1403358195de45"
+      ],
+      "title": "Explain every calibration-dock elimination",
+      "prompt": "Docks A,B,C,D use distinct settings 1,2,3,4 exactly once, with A+B=5, B+C=6 and C>D. Attempt the puzzle, then give an exhaustive justification of its unique solution.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Variables and derived constraints"
+        },
+        {
+          "id": "step2",
+          "label": "Exhaustive cases and eliminations"
+        },
+        {
+          "id": "step3",
+          "label": "Final consistency and uniqueness"
+        }
+      ],
+      "rubric": [
+        "All four settings are assigned once; both sums and the inequality remain active.",
+        "Each derived fact follows from the stated constraints. The reference algebra is one valid route, not a required form.",
+        "The cases cover every possible assignment and every rejection has a valid reason. Any exhaustive method is allowed, including cases on another variable or all 24 permutations.",
+        "The surviving full assignment is checked in the original conditions; no proof grade is inferred from the final number."
+      ],
+      "reference": [
+        "A=1 gives (1,4,2,3), failing C>D. A=2 repeats setting 3 at B and C. A=4 forces C=5 outside the domain.",
+        "A=3 yields (3,2,4,1). It uses the four allowed settings once, gives sums 5 and 6, and has 4>1. These exhaustive cases establish uniqueness. An equivalent exhaustive argument may instead split on B or inspect all 24 full assignments."
+      ]
+    }
+  ]
+}
