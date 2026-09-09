@@ -1,12 +1,12 @@
 # Supplemental learning sources and explanatory feedback
 
-**IMPLEMENTATION COMPLETE — final production acceptance in progress.** This is the maintenance patch between Steps 7 and 8. Step 8 has not started.
+**COMPLETE — all maintenance acceptance gates passed on 9 September 2026.** This is the maintenance patch between Steps 7 and 8. Step 8 has not started.
 
 ## Git and protected baseline
 
-Started from clean `e08b7a3` (921 passing cases in 35 files). The interrupted working changes were preserved; no reset, restore or rewrite of the baseline. The final documentation commit is the HEAD carrying this report; resolve its hash with `git log -1 --oneline` to avoid a self-referential hash. Clean status is verified after the final commit.
+Started from clean `e08b7a3` (921 passing cases in 35 files). The interrupted working changes were preserved; no reset, restore or rewrite of the baseline. Implementation checkpoint: `59eb3c3`. The final acceptance commit is the HEAD carrying this report; resolve its hash with `git log -1 --oneline` to avoid a self-referential hash. Clean status is verified after the final commit.
 
-`scripts/enrichment-baseline.json` records SHA-256 values taken from `e08b7a3`, covering the protected Content Pack v1.0.1/schema 1.1.0, generated navigation/reference/topic projections, existing CO/R&L/pilot content and their locks/graders, the Assembly engine/components/examples, student storage and dependency locks. Every validation/build checks these bytes. Student Schema 1 (`src/learning/contracts.ts:3`) and database version 1 (`src/learning/repository.ts:50`) are unchanged. No migrations, learner misconception records, Mistake Book, mastery, readiness, scheduling, completion percentages, cloud sync or deployment were added. v1.0.0 remains unused.
+`scripts/enrichment-baseline.json` records 83 SHA-256 values independently compared with `git show e08b7a3:<path>`, covering the protected Content Pack v1.0.1/schema 1.1.0, generated navigation/reference/topic projections, existing CO/R&L/pilot content and their locks/graders, the Assembly engine/components/examples, student storage and dependency locks. Every validation/build checks these bytes. Student Schema 1 (`src/learning/contracts.ts:3`) and database version 1 (`src/learning/repository.ts:50`) are unchanged. No migrations, learner misconception records, Mistake Book, mastery, readiness, scheduling, completion percentages, cloud sync or deployment were added. v1.0.0 remains unused.
 
 ## Supplemental inventory
 
@@ -143,13 +143,95 @@ The independent checks additionally enumerate all 256 four-bit additions and all
 
 Performed after an initial full green implementation (1,013 tests, strict typecheck and build). This was a **self-review**, not an independent audit. Reviewed wrong-path explanations against prompts/reference calculations; normalization versus valid alternatives; carry/overflow, endian, stack offsets, cache fields, pipeline timing, implication/quantifier/set semantics; notes exclusion; provenance and syllabus boundaries; copying; immutable bindings/storage; lazy payloads and responsive feedback.
 
-Two confirmed defects were reproduced before fixing:
+Three confirmed defects were reproduced before fixing:
 
 1. Shared feedback displayed `sum-9`, the Java option ID, instead of selected output `9`. Regression: `enrichment-ui.test.tsx` “review regression: shows the selected Java output rather than an internal option ID”. Fix formats submitted choices with the same visible representation as the reference; the existing Java grader/content/attempts are unchanged.
 2. One FOL explanation asserted an unobserved learner procedure (“treats free x like c”). Regression: `enrichment.test.ts` “review regression: exact patterns do not assert an unobserved learner procedure”. Fix describes the observed field agreeing with P(c), then gives the required P(x) calculation.
 
-Both failed in the recorded red run; both passed in the targeted rerun (85 cases in three files, plus typecheck). New content was finalized/locked before publication; no old lock was rewritten. Capability consistency and emitted-source/lazy-graph negative tests also protect the new integration. Under unrestricted parallel load, the existing 43-route test once exceeded its 5-second limit and caused cascading act warnings. The final suite limits workers to two without changing/skipping assertions or timeouts. The new UI harness waits sequentially for storage/button readiness rather than overlapping act polling.
+3. Production Chromium at 390 CSS px exposed a long prompt forced onto one line (document scroll width 1,438). Regression: `enrichment-ui.test.tsx` “review regression: long exercise prompts wrap at narrow widths”, red result 14 pass / 1 fail. Minimal shared prompt-heading CSS fix enables normal wrapping and word breaks. Targeted rerun: 15/15; rebuilt browser: width/scroll width 390/390. Existing Assembly CSS is unchanged.
+
+The first two failed in the recorded red run; both passed in the targeted rerun (85 cases in three files, plus typecheck). New content was finalized/locked before publication; no old lock was rewritten. Capability consistency and emitted-source/lazy-graph negative tests also protect the new integration. Under unrestricted parallel load, the existing 43-route test once exceeded its 5-second limit and caused cascading act warnings. The final suite limits workers to two without changing/skipping assertions or timeouts. The new UI harness waits sequentially for storage/button readiness rather than overlapping act polling.
 
 ## Acceptance evidence and final results
 
-Final results are completed below after the command suite and isolated production browser checks.
+**All 1,029 cases in 40 files passed** in the final run: 921 baseline cases retained plus 108 new cases in five files. No skipped, removed or weakened baseline assertions. Six existing test definitions across five files had factual catalogue-count adaptations (nine parameterized cases affected); the original six pilot and 61 historical bindings are separately preserved. New files: `enrichment.test.ts` 58; `enrichment-reference.test.ts` 16; `enrichment-service.test.ts` 6; `enrichment-ui.test.tsx` 15; `enrichment-bundle.test.ts` 13.
+
+The full suite was rerun after the last mobile fix. Log: `/tmp/ds-enrichment-final-accepted.log` (exit 0). Earlier implementation runs are not substituted for final acceptance. Browser checks below ran against the corresponding production source/build. Tests using jsdom/fake-indexeddb are explicitly separate from real Chromium evidence.
+
+| Requirement / acceptance evidence | Test file / test name or direct evidence | Command | Actual final result |
+| --- | --- | --- | --- |
+| Pack bytes, manifest, source policy, uncertainty and all canonical relations/counts | `content-validation.test.ts` (39); `content-build.test.ts` (4); independent pinned manifest | `pnpm run validate:content` | PASS, eight payload SHA-256 checksums plus pinned manifest |
+| Deterministic academic projection | `academic-index.test.ts` (14) | `pnpm run check:academic` | PASS, 3 subjects / 43 topics / 7,462 bytes |
+| Student references | `student-references.test.ts` (2) | `pnpm run check:references` | PASS, 105 subtopics / 147 skills / 489 locators / 69,985 bytes |
+| Original six items and immutable bindings | `practice-catalog.test.ts`, `practice-service.test.ts`, enrichment “retains all three historical grader fingerprints and 61 old item bindings” | `pnpm run validate:practice` | PASS |
+| Canonical topic projection | `topic-projection.test.ts` (54) | `pnpm run check:topics` | PASS, 84,049 bytes; topology/prerequisites unchanged |
+| Published pilot content | `topic-content.test.ts` (17) | `pnpm run validate:topics` | PASS, three lessons / 24 pilot cards |
+| Complete CO regression | `co-content`, `co-models`, `co-reference`, `co-practice`, `co-ui` tests | `pnpm run validate:co` | PASS, 14 topics / 32 subtopics / 46 skills, 79 preserved cards |
+| Complete R&L regression and academic safety | all `rl-*` tests | `pnpm run validate:rl` | PASS, 9 topics / 29 subtopics / 45 skills, 67 preserved cards; 99 uncertain mappings blocked, 135 broad mappings remain topic-only |
+| Authority, no expansion, bad-note exclusion, historical locks, factual counts | `enrichment.test.ts` “does not let Notes establish evidence”, “rejects textbook expansion”, “rejects stale capability counts”; `enrichment-reference.test.ts` note counterexamples | `pnpm run validate:enrichment` | PASS, 6 items / 16 profiles / 14 classes / 12 cards / 6 cues / 2 guides; 83 protected files unchanged |
+| Independent new answers | `enrichment-reference.test.ts` each new reference + all-256 addition/address enumerations | `pnpm test --maxWorkers=2` | PASS, 16 independent-reference cases |
+| Correct/wrong/unknown-pattern/error feedback, actual answer display | `enrichment.test.ts` specific explanatory feedback group; `enrichment-ui.test.tsx` wrong-answer flows and review regressions | `pnpm test --maxWorkers=2` | PASS |
+| Immutable submissions, idempotency/conflicts, exact version, new retry | `enrichment-service.test.ts` all six items; existing Practice/storage suites | `pnpm test --maxWorkers=2` | PASS (fake-indexeddb); real browser evidence below |
+| Open alternatives accepted without scoring or storage writes | `enrichment-ui.test.tsx` “accepts any open attempt then reveals conditions without grading” (2 cases) | `pnpm test --maxWorkers=2` | PASS; no score or answer comparison |
+| Cards/cues preserve topology and state | `enrichment-ui.test.tsx` “adds optional cards/cues without adding canonical map topology or student writes”; ownership validator | `pnpm test --maxWorkers=2` | PASS |
+| Assembly parsing/execution/memory/undo | `parser.test.ts` 49, `instructions.test.ts` 34, `executor.test.ts` 10, `visualization.test.ts` 8; integration tests | `pnpm test --maxWorkers=2` | PASS; all three production examples below |
+| Complete test suite | All 40 files | `pnpm test --maxWorkers=2` | PASS, 1,029 / 1,029, no stderr warnings in final log |
+| Strict TypeScript | Entire src/tests/scripts/config | `pnpm run typecheck` | PASS |
+| Production build, including direct Vite gates | All validators plus tsc and Vite | `pnpm run build` | PASS |
+| CO lazy graph | `inspect-co-build.ts` | `pnpm run check:co-bundle` | PASS, 13 independent CO topic chunks; tools/Assembly lazy |
+| R&L lazy graph | `inspect-rl-build.ts` | `pnpm run check:rl-bundle` | PASS, eight new R&L topic chunks / six calculation workspaces |
+| No PDFs/full Handoff/authoring-source files; new teaching lazy | `enrichment-bundle.test.ts` 13 negative/graph cases; final emitted asset inspector | `pnpm run check:enrichment-bundle` | PASS; see `enrichment-bundle-report.json` |
+| Patch whitespace and repository consistency | Git diff | `git diff --check` | PASS |
+
+Canonical totals remain 90 documents (CO 29 / RL 33 / IP 28), 43 topics, 105 subtopics, 147 skills, 37 assessments, 489 mapped questions, 17 question types, 22 exam patterns and 29 canonical error tags. Relation counts remain 62 topic prerequisites, 69 skill prerequisites, 105 topic–subtopic, 147 subtopic–skill, 306 document–topic, 37 assessment–document, 538 question–topic and 2,005 question–skill edges. New authored error categories do not change canonical tags. Content validation itself does not read PDF bodies; supplemental PDF inspection is separately documented above.
+
+## Real production Chromium acceptance
+
+**Chromium 152.0.7977.64 on macOS**, reported by the browser's high-entropy fullVersionList in the separately built native harness. Main production preview: `http://127.0.0.1:4197/`, an origin isolated from earlier study data. Test harness: port 4198, separately built with `node --import tsx scripts/build-learning-browser-check.ts`; never bundled into the application.
+
+| Production scenario | Actual evidence / result |
+| --- | --- |
+| CO carry/overflow | Submit `1,1` → incorrect, own answer, `1,0`, why, full derivation, reminder, supported pattern; new retry preserves original; second retry `1,0` → correct without error category. PASS |
+| CO addressing | `37,37` → reference `4080,37`; explains LEA versus stored contents; new retry and revisit. PASS |
+| CO cache | `2,6,6` → reference `5,2,6`; explains treating ways as set-index bits; new retry and revisit. PASS |
+| R&L proposition | `1,1,1` → reference `1,0,1`; middle converse field explained; new retry and revisit. PASS |
+| R&L constant/free assignment | `1,1,0` → reference `1,0,0`; explains assigned b versus constant a; new retry and revisit. PASS |
+| R&L empty-set layers | `0,1,0` → reference `1,2,0`; explains nested object/subset levels; new retry and revisit. PASS |
+| Historical R&L shared witness | Existing `rl-exists-forall`, answer `1` → reference `0`; explains absence of a common witness; historical binding retained, new retry/revisit. PASS |
+| Persistence/navigation | Actual page reload restores carry feedback; captured original/retry URLs differ; Back restores the identical submitted feedback and Forward restores the new draft. PASS |
+| Open proof | Typed a different contrapositive approach, revealed obligations/pitfalls/reference; explicit alternative-validity language, no automatic numeric correctness; reset disables reveal. PASS at desktop and measured 768 px |
+| Open stack | Typed frame reasoning, revealed RBP 4088 / RSP 4064 / write 4072 / unwritten-slot explanation; no automatic grade. PASS at 390 px |
+| Cards/map | Mobile supplemental card reveal with Enter; ArrowLeft from Flashcards selects Mental Map; optional study cue expands with Enter; canonical links remain. PASS |
+| Responsive layout | Measured document width AND scroll width: 390/390, 768/768, 1280/1280. Full submitted feedback and retry flows checked at each actual width. Initial background-tab resize requests were not counted until actual DOM dimensions were verified. PASS |
+| Keyboard/focus | Enter starts/submits/reveals; arrow-key topic navigation; menu Enter opens, Escape closes and returns focus to Open navigation with solid outline. PASS |
+| Console inspection | Inspected warn/error logs on all three main acceptance tabs and native harness: **0 warnings / 0 errors**. Tool locator timeouts/viewport setup issues are not app console errors; actual completed states were rechecked. PASS |
+| Assembly arithmetic | Production Run: RAX=8, RSP=0x1000. PASS |
+| Assembly stack frame | Production Run: RAX=15, RSP/RBP=0x1000; nine-step history and stack values present. PASS |
+| Assembly function call | Production Run and explicit ten-step replay: RAX=7, RBX=7, RDI=5, RSP/RBP=0x1000; call/ret history, Previous and Reset exercised. PASS |
+
+Separate **native IndexedDB: 14 PASS / 0 FAIL** (13 harness checks, then actual reload + retained committed record). Checks cover fresh install, committed resume, concurrent distinct attempts, stale drafts, immutable/idempotent submission, request-success-then-abort failure propagation, atomic restore/recovery and stale connection, aborted replacement, invalid import, preserved corruption, blocked upgrades, injected permission denial and actual reload. This is real Chromium storage, distinct from fake-indexeddb unit tests. The separate harness server logged an optional favicon.ico 404; its inspected console remained clear and this asset is unrelated to the application build. Abort and denial are controlled injections, not simulated OS/device crashes.
+
+**NOT RUN:** Safari, Firefox, actual Safari/WebKit, hardware screen-reader interaction, device/OS-crash survival and browser-data-deletion recovery. These limit cross-browser/assistive-technology and durability claims; no critical required Chromium or command check remains unexecuted.
+
+## Bundle impact
+
+Final emitted assets are inspected after preload rewriting. Reports: `co-bundle-report.json`, `rl-bundle-report.json`, `enrichment-bundle-report.json`.
+
+| Metric | Baseline e08b7a3 | Final | Increase |
+| --- | ---: | ---: | ---: |
+| Initial JavaScript | 474,089 | 475,077 | 988 bytes |
+| Initial JavaScript gzip | 124,886 | 125,104 | 218 bytes |
+| All JS/CSS assets | 932,078 | 984,932 | 52,854 bytes |
+| All JS/CSS gzip | 267,272 | 283,837 | 16,565 bytes |
+| All production files | 933,074 | 985,928 | 52,854 bytes |
+| All production files gzip | 267,922 | 284,486 | 16,564 bytes |
+
+Only the small capability-count index enters the initial dependency graph. Supplemental teaching and feedback are lazy. Required minimal exercise/grader fingerprint maps remain available for historical attempt resolution; full teaching locks, source inventory, validators, raw PDFs/extracted text, ZIP and Handoff payload are absent. No dependency or dependency-lock changes.
+
+## Files and limitations
+
+Implementation checkpoint `59eb3c3` contains the new `src/enrichment/` module, five enrichment validation/build scripts, five test files, source inventory, report, README, and narrow wiring in `CoursePage`, `TopicPage`, `AttemptPage`, `ExerciseParts`, practice catalogue/runtime/types, Vite and package scripts. Five existing test files update factual counts. Final acceptance additionally includes the prompt-wrap regression/fix and three refreshed bundle reports. `git diff --name-only e08b7a3 HEAD` provides the exact 47-file inventory after the final commit.
+
+No published lesson/exercise correctness defect was proven, so no historical content was rewritten. The supplemental exercises intentionally cover six high-value mechanisms, not every course topic. General formulas/proofs remain outside automatic grading. Supplemental source review is targeted, not a full textbook or all-years exam audit; no source fidelity is claimed for uninspected pages. Existing UNKNOWN fields, assessment-era policy, broad/integrated mappings and exercise eligibility remain unchanged. Browser storage can still be lost through browser-data deletion, device failure or some crashes; a completed save is not a guarantee against those events.
+
+No unresolved correctness issue or required acceptance failure remains. **Step 8, Step 9 and all later product features were not started.**

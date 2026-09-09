@@ -6,7 +6,8 @@ import {beforeAll,beforeEach,afterEach,it,expect,vi} from 'vitest';
 import {AppRoutes} from '../src/App';
 import {LearningProvider} from '../src/learning/LearningProvider';
 import {repository} from './helpers/learning';
-import {Feedback} from '../src/practice/ExerciseParts';
+import {readFileSync} from 'node:fs';
+import {Feedback,ExercisePrompt} from '../src/practice/ExerciseParts';
 import {gradeResponse} from '../src/practice/runtime';
 import {allExercises} from '../src/practice/catalog';
 import type {GradeResult} from '../src/practice/types';
@@ -42,4 +43,9 @@ it('adds optional cards/cues without adding canonical map topology or student wr
 it('review regression: shows the selected Java output rather than an internal option ID',async()=>{
  const e=allExercises.find(e=>e.task.kind==='java-output')!;if(e.task.kind!=='java-output')throw new Error('missing pilot');const option=e.task.options.find(o=>o.id!==e.reference.value[0])!;const answer={kind:'choice' as const,value:[option.id]};
  await act(async()=>root.render(<Feedback exercise={e} answer={answer} result={gradeResponse(e,answer)}/>));expect(host.querySelector('pre')?.textContent).toBe(option.output);
+});
+
+it('review regression: long exercise prompts wrap at narrow widths',async()=>{
+ const style=document.createElement('style');style.textContent=readFileSync('src/enrichment/enrichment.css','utf8');document.head.append(style);
+ try{await act(async()=>root.render(<ExercisePrompt exercise={allExercises.find(e=>e.id==='ds.practice.enrich-carry-overflow')!}/>));expect(getComputedStyle(host.querySelector('h2')!).whiteSpace).toBe('normal');expect(getComputedStyle(host.querySelector('h2')!).overflowWrap).toBe('anywhere');}finally{style.remove();}
 });
