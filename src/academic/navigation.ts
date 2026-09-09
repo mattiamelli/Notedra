@@ -34,6 +34,7 @@ export const productAreas = [
 export type ProductArea = typeof productAreas[number];
 export interface Breadcrumb {label: string; to?: string;}
 export function pageContext(pathname: string): {title: string; breadcrumbs: Breadcrumb[]} {
+  if (pathname.startsWith('/practice/')) return {title: 'Practice', breadcrumbs: [{label:'Dashboard',to:'/'},{label:'Practice',to:'/practice'},{label:pathname.includes('/attempts/')?'Saved attempt':'Exercise'}]};
   const path = pathname.replace(/\/+$/, '') || '/';
   const dashboard = {label: 'Dashboard', to: '/'};
   if (path === '/' || path === '/dashboard') return {title: 'Dashboard', breadcrumbs: [{label: 'Dashboard'}]};

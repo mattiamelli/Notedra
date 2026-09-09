@@ -1,3 +1,4 @@
+import { catalog } from '../practice/catalog';
 import { useState, type KeyboardEvent } from 'react';
 import { Link, useParams } from 'react-router';
 import { ASSEMBLY_TOPIC_ID, type Course, topicsFor } from '../academic/navigation';
@@ -35,7 +36,8 @@ function TopicContent({course, topic}: {course: Course; topic: AcademicTopic}) {
     <div className="ds-mode-tabs" role="tablist" aria-label="Topic study modes">{studyModes.map((mode, i) => <button key={mode.label} id={`study-mode-${i}`} role="tab" aria-selected={selected === i} aria-controls="study-mode-panel" tabIndex={selected === i ? 0 : -1} onClick={() => setSelected(i)} onKeyDown={event => moveTab(event, i)}>{mode.label}</button>)}</div>
     <section id="study-mode-panel" className="ds-mode-panel" role="tabpanel" aria-labelledby={`study-mode-${selected}`} tabIndex={0}>
       {selected === 0 && topic.topic_id === ASSEMBLY_TOPIC_ID && <AssemblyToolCard/>}
-      <EmptyState title={current.title}><p>{current.message}</p></EmptyState>
+      {(selected === 0 || selected === 3) && catalog.some(exercise => exercise.topicId === topic.topic_id) && <p className="ds-practice-topic"><Link className="ds-button" to={`/practice?subject=${topic.subject_id}&topic=${topic.topic_id}`}>Open authored practice for this topic</Link></p>}
+      {!(selected === 3 && catalog.some(exercise => exercise.topicId === topic.topic_id)) && <EmptyState title={current.title}><p>{current.message}</p></EmptyState>}
     </section>
   </>;
 }

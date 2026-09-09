@@ -11,6 +11,7 @@ interface LearningContextValue {
   refresh(): void;
   restore(backup: Backup, expected: Dataset): Promise<void>;
   backup(recovery?: boolean): Promise<Backup>;
+  changeStudentData(operation: (repository: StudentRepository) => Promise<LoadedState>): Promise<LoadedState>;
 }
 const Context = createContext<LearningContextValue | null>(null);
 export const useLearning = () => useContext(Context);
@@ -65,7 +66,12 @@ export function LearningProvider({children, createRepository = defaultRepository
     if (current.alive) { setPhase('ready'); setMessage('Backup prepared. Keep the downloaded file somewhere safe.'); }
     return value;
   }), [run]);
-  return <Context.Provider value={{snapshot, phase, message, recordVisit, refresh, restore, backup}}>
+  const changeStudentData = useCallback((operation: (repository: StudentRepository) => Promise<LoadedState>) => run(async current => {
+    const state = await operation(current.repository);
+    publish(current, state);
+    return state;
+  }), [publish, run]);
+  return <Context.Provider value={{snapshot, phase, message, recordVisit, refresh, restore, backup, changeStudentData}}>
     <ResumeRecorder/>{children}
   </Context.Provider>;
 }

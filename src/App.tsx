@@ -1,3 +1,7 @@
+import { PracticePage } from './practice/PracticePage';
+import { ExercisePage } from './practice/ExercisePage';
+import { AttemptPage } from './practice/AttemptPage';
+import './practice/practice.css';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { ASSEMBLY_TOOL_PATH, courses, productAreas } from './academic/navigation';
@@ -21,7 +25,10 @@ export function AppRoutes() {
       <Route path=":topicId" caseSensitive element={<TopicPage course={course}/>}/>
     </Route>)}
     <Route path={ASSEMBLY_TOOL_PATH} caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Assembly workbench…</p>}><AssemblyWorkbench/></Suspense>}/>
-    {productAreas.map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
+    <Route path="practice" caseSensitive element={<PracticePage/>}/>
+    <Route path="practice/:exerciseId" caseSensitive element={<ExercisePage/>}/>
+    <Route path="practice/:exerciseId/attempts/:attemptId" caseSensitive element={<AttemptPage/>}/>
+    {productAreas.filter(area => area.path !== '/practice').map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
   </Route></Routes>;
 }

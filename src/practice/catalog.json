@@ -1,0 +1,311 @@
+[
+  {
+    "id": "ds.practice.co-binary-45",
+    "version": "1",
+    "title": "Decimal to eight bits",
+    "prompt": "Convert decimal 45 to base 2, using exactly 8 digits.",
+    "rules": "Enter exactly 8 binary digits (0–1). Outer whitespace is ignored. No prefix, sign, separator or internal whitespace is accepted.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_01_RADIX",
+    "skillId": "CO_SK04_01_RADIX_CONVERT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_05",
+      "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "radix-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "radix",
+      "decimal": "45",
+      "base": 2,
+      "width": 8,
+      "trim": true,
+      "letterCase": "either"
+    },
+    "reference": {
+      "kind": "text",
+      "value": "00101101"
+    },
+    "explanation": "45 = 32 + 8 + 4 + 1. In the 128, 64, 32, 16, 8, 4, 2, 1 columns this gives 0, 0, 1, 0, 1, 1, 0, 1."
+  },
+  {
+    "id": "ds.practice.co-hex-173",
+    "version": "1",
+    "title": "Decimal to hexadecimal",
+    "prompt": "Convert decimal 173 to base 16, using exactly 2 digits.",
+    "rules": "Enter exactly 2 hexadecimal digits (0–9, A–F or a–f). Outer whitespace is ignored. No prefix, sign, separator or internal whitespace is accepted.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_01_RADIX",
+    "skillId": "CO_SK04_01_RADIX_CONVERT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_05",
+      "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "radix-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "radix",
+      "decimal": "173",
+      "base": 16,
+      "width": 2,
+      "trim": true,
+      "letterCase": "either"
+    },
+    "reference": {
+      "kind": "text",
+      "value": "AD"
+    },
+    "explanation": "173 = 10 × 16 + 13. The hexadecimal digits for 10 and 13 are A and D, so the answer is AD."
+  },
+  {
+    "id": "ds.practice.rl-conjunction",
+    "version": "1",
+    "title": "When are both propositions true?",
+    "prompt": "Complete the final column for (p ∧ q).",
+    "rules": "Choose T or F for every row. Row order is (p, q): (F, F), (F, T), (T, F), (T, T). An unanswered cell is not false.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_03_TRUTH_TABLE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "truth-rows",
+      "version": "1"
+    },
+    "task": {
+      "kind": "truth",
+      "expression": {
+        "op": "and",
+        "left": {
+          "op": "var",
+          "name": "p"
+        },
+        "right": {
+          "op": "var",
+          "name": "q"
+        }
+      },
+      "rows": [
+        {
+          "id": "ff",
+          "p": false,
+          "q": false
+        },
+        {
+          "id": "ft",
+          "p": false,
+          "q": true
+        },
+        {
+          "id": "tf",
+          "p": true,
+          "q": false
+        },
+        {
+          "id": "tt",
+          "p": true,
+          "q": true
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "ff:F",
+        "ft:F",
+        "tf:F",
+        "tt:T"
+      ]
+    },
+    "explanation": "A conjunction is true only when both propositions are true. In the displayed row order, the results are F, F, F, T."
+  },
+  {
+    "id": "ds.practice.rl-not-or",
+    "version": "1",
+    "title": "Negation followed by disjunction",
+    "prompt": "Complete the final column for (¬p ∨ q).",
+    "rules": "Choose T or F for every row. Row order is (p, q): (F, F), (F, T), (T, F), (T, T). An unanswered cell is not false.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_03_TRUTH_TABLE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "truth-rows",
+      "version": "1"
+    },
+    "task": {
+      "kind": "truth",
+      "expression": {
+        "op": "or",
+        "left": {
+          "op": "not",
+          "arg": {
+            "op": "var",
+            "name": "p"
+          }
+        },
+        "right": {
+          "op": "var",
+          "name": "q"
+        }
+      },
+      "rows": [
+        {
+          "id": "ff",
+          "p": false,
+          "q": false
+        },
+        {
+          "id": "ft",
+          "p": false,
+          "q": true
+        },
+        {
+          "id": "tf",
+          "p": true,
+          "q": false
+        },
+        {
+          "id": "tt",
+          "p": true,
+          "q": true
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "ff:T",
+        "ft:T",
+        "tf:F",
+        "tt:T"
+      ]
+    },
+    "explanation": "When p is false, ¬p is true, so the first two rows are true. When p is true, ¬p is false and the result equals q: false, then true."
+  },
+  {
+    "id": "ds.practice.ip-for-sum",
+    "version": "1",
+    "title": "Trace a for-loop sum",
+    "prompt": "What does this Java snippet print?",
+    "rules": "Select exactly one output. Each option represents one printed line followed by a newline. Option IDs are fixed; output text is not parsed as code.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "subtopicId": "IP_ST02_02_LOOPS",
+    "skillId": "IP_SK02_03_LOOP_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_02",
+      "filename": "IP Lecture 2 - Programming Structures.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "fixed-output-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "java-output",
+      "code": "int total = 0;\nfor (int i = 1; i <= 4; i++) {\n    total += i;\n}\nSystem.out.println(total);",
+      "options": [
+        {
+          "id": "sum-9",
+          "output": "9"
+        },
+        {
+          "id": "sum-10",
+          "output": "10"
+        },
+        {
+          "id": "sum-15",
+          "output": "15"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "sum-10"
+      ]
+    },
+    "explanation": "The loop uses i = 1, 2, 3, 4. The successive totals are 1, 3, 6, 10. After i becomes 5 the condition is false; println prints 10."
+  },
+  {
+    "id": "ds.practice.ip-while-even",
+    "version": "1",
+    "title": "Trace a while-loop with a condition",
+    "prompt": "What does this Java snippet print?",
+    "rules": "Select exactly one output. Each option represents one printed line followed by a newline. Option IDs are fixed; output text is not parsed as code.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "subtopicId": "IP_ST02_02_LOOPS",
+    "skillId": "IP_SK02_03_LOOP_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_02",
+      "filename": "IP Lecture 2 - Programming Structures.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "fixed-output-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "java-output",
+      "code": "int i = 1;\nint total = 0;\nwhile (i < 5) {\n    if (i % 2 == 0) {\n        total += i;\n    }\n    i++;\n}\nSystem.out.println(total);",
+      "options": [
+        {
+          "id": "even-4",
+          "output": "4"
+        },
+        {
+          "id": "even-6",
+          "output": "6"
+        },
+        {
+          "id": "even-10",
+          "output": "10"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "even-6"
+      ]
+    },
+    "explanation": "For i = 1, 2, 3, 4, only 2 and 4 satisfy i % 2 == 0. The totals after each iteration are 0, 2, 2, 6. At i = 5 the loop stops; println prints 6."
+  }
+]

@@ -7,8 +7,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && vite --host 127.0.0.1",
-    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && tsc --noEmit && vite build",
+    "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && vite --host 127.0.0.1",
+    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -17,7 +17,8 @@
     "generate:academic": "node --import tsx scripts/generate-academic-index.ts",
     "check:academic": "node --import tsx scripts/generate-academic-index.ts --check",
     "generate:references": "node --import tsx scripts/generate-student-references.ts",
-    "check:references": "node --import tsx scripts/generate-student-references.ts --check"
+    "check:references": "node --import tsx scripts/generate-student-references.ts --check",
+    "validate:practice": "node --import tsx scripts/validate-practice.ts"
   },
   "dependencies": {
     "react": "19.2.6",

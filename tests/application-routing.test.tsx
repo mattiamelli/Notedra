@@ -65,9 +65,15 @@ describe('application routes and canonical navigation', () => {
   it.each(productAreas)('renders the $title shell with a neutral empty state', async area => {
     await renderRoute(area.path);
     expect(heading()).toBe(area.title);
-    expect(container.querySelector('.ds-empty')?.textContent).toContain(area.emptyTitle);
+    // Step 4 intentionally replaces only the Practice placeholder with six authored items.
+    if (area.path === '/practice') {
+      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(6);
+      expect(container.textContent).toContain('Authored practice');
+    } else {
+      expect(container.querySelector('.ds-empty')?.textContent).toContain(area.emptyTitle);
+      expect(container.querySelectorAll('.ds-course-links a')).toHaveLength(3);
+    }
     expect(container.textContent).not.toMatch(/\d+%|streak|\d+ days/);
-    expect(container.querySelectorAll('.ds-course-links a')).toHaveLength(3);
   });
   it.each(['/missing', '/co/MISSING', '/co/RL_T01_PROP_LOGIC', '/rl/CO_T06_ASSEMBLY_X86_64', '/co/co_t06_assembly_x86_64', '/co/CO_T06_ASSEMBLY_X86_64/unknown'])('shows Not Found for %s', async path => {
     await renderRoute(path); expect(heading()).toBe('Page not found');
