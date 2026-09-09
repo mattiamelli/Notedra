@@ -1,0 +1,166 @@
+{
+  "engine": "Chromium",
+  "version": "152.0.7977.64",
+  "platform": "macOS",
+  "productionOrigin": "http://127.0.0.1:4202",
+  "nativeHarnessOrigin": "http://127.0.0.1:4203",
+  "productionArtifact": "pnpm run build after final content/semantic/UI fixes",
+  "topicLearnRoutes": [
+    "/ip/IP_T01_JAVA_BASICS/learn",
+    "/ip/IP_T02_CONTROL_FLOW/learn",
+    "/ip/IP_T03_METHODS_SCOPE/learn",
+    "/ip/IP_T04_CLASSES_OBJECTS/learn",
+    "/ip/IP_T05_ARRAYS_RECURSION/learn",
+    "/ip/IP_T06_CONTAINER_CLASSES/learn",
+    "/ip/IP_T07_COMPOSITION_LIBRARIES/learn",
+    "/ip/IP_T08_TESTING/learn",
+    "/ip/IP_T09_INHERITANCE/learn",
+    "/ip/IP_T10_POLYMORPHISM_BINDING/learn",
+    "/ip/IP_T11_EQUALITY_HASHING/learn",
+    "/ip/IP_T12_EXCEPTIONS/learn",
+    "/ip/IP_T13_DEBUGGING/learn",
+    "/ip/IP_T14_CODE_QUALITY_STRINGS_GENERICS/learn",
+    "/ip/IP_T15_IO_PARSING/learn",
+    "/ip/IP_T16_FUNCTIONAL_JAVA/learn",
+    "/ip/IP_T17_PROGRAM_DESIGN/learn",
+    "/ip/IP_T18_MODERN_JAVA/learn",
+    "/ip/IP_T19_THREADS_CONCURRENCY/learn",
+    "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/learn"
+  ],
+  "topicResult": "20/20 final production Learn routes; correct headings/substantive blocks; pre-wrap code; actual clientWidth=scrollWidth=1280",
+  "wrongFeedback": [
+    "division",
+    "pass-value",
+    "dispatch",
+    "equality",
+    "exception-flow",
+    "race"
+  ],
+  "correctPredictions": [
+    "constructor",
+    "static",
+    "alias",
+    "recursion",
+    "constructor-chain",
+    "generic-invariance",
+    "stream",
+    "var",
+    "joined-sync",
+    "for-sum"
+  ],
+  "immutableAttempt": "pass-value: wrong8:7 persisted across reload; retry submitted4:9 with no misconception; Back restored unchanged8:7 and Forward restored correct retry",
+  "guidedSelfChecks": [
+    "IP_T08_TESTING",
+    "IP_T17_PROGRAM_DESIGN"
+  ],
+  "workbenches": [
+    {
+      "assignment": "array-window",
+      "minutes": 15,
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "referenceFiles": 1,
+      "testSpecifications": 2
+    },
+    {
+      "assignment": "reading-export",
+      "minutes": 30,
+      "clientWidth": 1280,
+      "scrollWidth": 1280,
+      "referenceFiles": 3,
+      "testSpecifications": 3
+    },
+    {
+      "assignment": "material-ledger",
+      "minutes": 60,
+      "clientWidth": 768,
+      "scrollWidth": 768,
+      "referenceFiles": 5,
+      "testSpecifications": 4
+    }
+  ],
+  "workbenchResults": [
+    "editable draft retained while revealing",
+    "native clipboard success for each task",
+    "actual reference source and test-specification reveal",
+    "no numeric correctness or learner-code execution claim",
+    "reading-export ArrowRight/Home file tabs move focus and retain separate draft",
+    "Reset restores files and hides reference/specifications",
+    "actual array-window page reload discards unsaved draft and hides reference",
+    "deep-link reload keeps selected task",
+    "mobile navigation expands then Escape closes",
+    "Home study-mode key selects/focuses Overview",
+    "T19 optional canonical map cue opens"
+  ],
+  "preservedFeedback": [
+    {
+      "course": "CO",
+      "exercise": "ds.practice.enrich-carry-overflow",
+      "submitted": "1,1",
+      "reference": "1,0",
+      "pattern": "Carry versus signed overflow"
+    },
+    {
+      "course": "RL",
+      "exercise": "ds.practice.enrich-implication-directions",
+      "submitted": "1,1,1",
+      "reference": "1,0,1",
+      "pattern": "Converse versus contrapositive"
+    }
+  ],
+  "assembly": [
+    {
+      "example": "Basic arithmetic",
+      "executed": 3,
+      "rax": "8",
+      "rbx": "0",
+      "rsp": "4096",
+      "rbp": "4096"
+    },
+    {
+      "example": "Stack frame",
+      "executed": 9,
+      "rax": "15",
+      "rsp": "4096",
+      "rbp": "4096"
+    },
+    {
+      "example": "Function call",
+      "executed": 10,
+      "rax": "7",
+      "rbx": "7",
+      "rsp": "4096",
+      "rbp": "4096"
+    }
+  ],
+  "assemblyControls": [
+    "Run for all3",
+    "Previous/Next restores RAX5/8",
+    "push highlights current line and stack0x0FF8=4096",
+    "DEC/HEX switches7/0x7",
+    "Reset",
+    "Run/Pause",
+    "history Initial state restores RAX0 and0executed"
+  ],
+  "nativeStorage": {
+    "checks": 14,
+    "failures": 0,
+    "details": "13 controlled native IndexedDB scenarios plus one actual reload check; includes abort-after-request-success, atomic restore/recovery and stale-connection rejection; permission denial is injected, not an OS-crash experiment"
+  },
+  "console": {
+    "ipProductionWarnings": 0,
+    "ipProductionErrors": 0,
+    "responsiveWarnings": 0,
+    "responsiveErrors": 0,
+    "nativeHarnessWarnings": 0,
+    "nativeHarnessErrors": 0
+  },
+  "screenshotInspection": "390px workbench viewport visually inspected through the browser screenshot tool; no overflow",
+  "notRun": [
+    "actual Safari",
+    "Firefox",
+    "JUnit framework execution",
+    "arbitrary learner Java execution (intentionally absent)",
+    "OS/device crash or browser-data-deletion survival"
+  ]
+}

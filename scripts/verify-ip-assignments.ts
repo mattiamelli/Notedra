@@ -12,7 +12,7 @@ interface CodeFile {name: string; language: 'java' | 'text'; content: string;}
 interface Reference {id: string; assignmentId: string; files: CodeFile[];}
 interface Harness {slug: string; source: string; independentReasoning: string[];}
 const root = resolve(import.meta.dirname, '..');
-const javaHome = process.env.JAVA_HOME ?? '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home';
+const javaHome = process.env.DELFTSTUDY_JAVA_HOME ?? process.env.JAVA_HOME ?? '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home';
 function run(binary: string, args: string[], cwd: string) {
   const result = spawnSync(join(javaHome, 'bin', binary), args, {
     cwd, encoding: 'utf8', timeout: 30_000, maxBuffer: 2_000_000,

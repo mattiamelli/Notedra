@@ -321,7 +321,7 @@ Authored 30-minute task. Source IDs: `ref-1b96953ab28fb39d`<br>`ref-6faf9172baf7
 
 ### Count threshold crossings in a window — `ds.assignment.ip.array-window@1`
 
-Authored 15-minute task. Source IDs: `ref-51fd7d38d2311986`<br>`ref-3f69452c7af0560e`<br>`ref-c6ef6c6bd94aa16c`. Supplemental observations: `ip-t05`<br>`ip-t03`.
+Authored 15-minute task. Source IDs: `ref-51fd7d38d2311986`<br>`ref-3f69452c7af0560e`<br>`ref-c6ef6c6bd94aa16c`. Supplemental observations: `ip-t05`<br>`ip-t03`<br>`ip-t02`.
 
 | Requirement | Observable obligation | Requirement skill IDs | Rubric component IDs | Reference test IDs |
 |---|---|---|---|---|

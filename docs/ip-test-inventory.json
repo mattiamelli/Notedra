@@ -1,0 +1,26 @@
+{
+  "baselineTests": 1029,
+  "baselineFiles": 40,
+  "finalTests": 1317,
+  "finalFiles": 49,
+  "baselineRetained": true,
+  "newTests": 288,
+  "newFiles": {
+    "tests/ip-content.test.ts": 96,
+    "tests/ip-review.test.tsx": 7,
+    "tests/ip-ui.test.tsx": 12,
+    "tests/build-inventory.test.ts": 1,
+    "tests/ip-bundle.test.ts": 62,
+    "tests/ip-practice.test.ts": 44,
+    "tests/ip-late-content.test.ts": 23,
+    "tests/ip-assignment-references.test.ts": 42,
+    "tests/ip-review-semantics.test.ts": 1
+  },
+  "adaptedBaselineFiles": {
+    "tests/application-routing.test.tsx": 72,
+    "tests/co-practice.test.ts": 6,
+    "tests/enrichment.test.ts": 58,
+    "tests/practice-ui.test.tsx": 14,
+    "tests/topic-ui.test.tsx": 22
+  }
+}

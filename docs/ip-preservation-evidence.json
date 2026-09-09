@@ -1,0 +1,25 @@
+{
+  "baseline": "bda8c0f",
+  "protectedFiles": 95,
+  "allSHA256MatchCurrentAndGitBaseline": true,
+  "protectedAreasUnchanged": [
+    "src/engine",
+    "src/learning/contracts.ts",
+    "src/learning/repository.ts",
+    "src/practice/service.ts",
+    "src/AssemblyWorkbench.tsx",
+    "src/components",
+    "src/examples",
+    "src/utils",
+    "pnpm-lock.yaml"
+  ],
+  "studentSchemaVersion": 1,
+  "indexedDBVersion": 1,
+  "packVersion": "1.0.1",
+  "academicSchemaVersion": "1.1.0",
+  "v1_0_0Present": false,
+  "newDependencies": false,
+  "protectedHashManifest": "../scripts/ip-baseline.json",
+  "protectedHashManifestSHA256": "20ed38e35ae4d60415b46b5e3fd29b8b00da1999d879910b63bf909ac23ad9d8",
+  "comparison": "Each of the 95 manifest values equals SHA-256 of both the working file and git show bda8c0f:<path>; protected-area diffs are empty."
+}
