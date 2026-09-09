@@ -1,0 +1,282 @@
+{
+  "subjects": [
+    {
+      "subject_id": "CSE1100_IP",
+      "code": "CSE1100",
+      "name": "Introduction to Programming",
+      "short": "IP"
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "code": "CSE1300",
+      "name": "Reasoning and Logic",
+      "short": "R&L"
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "code": "CSE1400",
+      "name": "Computer Organisation",
+      "short": "CO"
+    }
+  ],
+  "topics": [
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T01_HISTORY",
+      "name": "History and computer generations",
+      "order": 1
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T02_BOOLEAN_KMAP",
+      "name": "Boolean algebra and Karnaugh maps",
+      "order": 2
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "name": "Digital logic, CMOS, combinational and sequential circuits",
+      "order": 3
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T04_DATA_REP_RADIX_INTEGER",
+      "name": "Radix and integer data representation",
+      "order": 4
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "name": "Fixed-point and floating-point representation",
+      "order": 5
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T06_ASSEMBLY_X86_64",
+      "name": "x86-64 Assembly and stack execution",
+      "order": 6
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T07_ISA",
+      "name": "Instruction Set Architecture",
+      "order": 7
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T08_BPU_MICROCODE",
+      "name": "Basic Processing Unit and microcode",
+      "order": 8
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T09_IO_INTERRUPTS",
+      "name": "Input/output organization, buses, and interrupts",
+      "order": 9
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T10_DMA_MEMORY",
+      "name": "DMA and memory organization",
+      "order": 10
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T11_CACHE",
+      "name": "Cache organization and locality",
+      "order": 11
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T12_PIPELINE",
+      "name": "Pipelining, hazards, and scheduling",
+      "order": 12
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T13_PARALLELISM",
+      "name": "Parallelism and performance scaling",
+      "order": 13
+    },
+    {
+      "subject_id": "CSE1400_CO",
+      "topic_id": "CO_T14_VIRTUAL_MEMORY",
+      "name": "Virtual memory and address translation",
+      "order": 14
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T01_JAVA_BASICS",
+      "name": "Java basics and data",
+      "order": 1
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T02_CONTROL_FLOW",
+      "name": "Control flow and programming structures",
+      "order": 2
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T03_METHODS_SCOPE",
+      "name": "Methods, parameters, scope, and calls",
+      "order": 3
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T04_CLASSES_OBJECTS",
+      "name": "Classes, objects, constructors, and encapsulation",
+      "order": 4
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T05_ARRAYS_RECURSION",
+      "name": "Arrays, traversal, aliasing, and recursion",
+      "order": 5
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T06_CONTAINER_CLASSES",
+      "name": "Container classes and representation invariants",
+      "order": 6
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T07_COMPOSITION_LIBRARIES",
+      "name": "Composition, object relationships, and Java libraries",
+      "order": 7
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T08_TESTING",
+      "name": "Unit testing and testability",
+      "order": 8
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T09_INHERITANCE",
+      "name": "Inheritance and subtype design",
+      "order": 9
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T10_POLYMORPHISM_BINDING",
+      "name": "Polymorphism, interfaces, and binding",
+      "order": 10
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T11_EQUALITY_HASHING",
+      "name": "Equality, identity, and hash-based collections",
+      "order": 11
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T12_EXCEPTIONS",
+      "name": "Errors and exceptions",
+      "order": 12
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T13_DEBUGGING",
+      "name": "Debugging and runtime diagnosis",
+      "order": 13
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "name": "Code quality, strings, parsing helpers, and generics",
+      "order": 14
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T15_IO_PARSING",
+      "name": "Input/output and file parsing",
+      "order": 15
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T16_FUNCTIONAL_JAVA",
+      "name": "Functional Java, lambdas, streams, and Optional",
+      "order": 16
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T17_PROGRAM_DESIGN",
+      "name": "Program design and domain architecture",
+      "order": 17
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T18_MODERN_JAVA",
+      "name": "Modern Java constructs used in the course",
+      "order": 18
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T19_THREADS_CONCURRENCY",
+      "name": "Threads and shared-state concurrency",
+      "order": 19
+    },
+    {
+      "subject_id": "CSE1100_IP",
+      "topic_id": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "name": "Integrated programming-exam synthesis",
+      "order": 20
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T01_PROP_LOGIC",
+      "name": "Propositional logic",
+      "order": 1
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T02_FOL",
+      "name": "First-order logic and formal structures",
+      "order": 2
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T03_PROOF_METHODS",
+      "name": "Methods of proof",
+      "order": 3
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T04_INDUCTION_RECURSION",
+      "name": "Induction, recursive definitions, structural induction, and invariants",
+      "order": 4
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T05_TREES_GRAPHS",
+      "name": "Trees, graphs, traversals, and recursive functions on structures",
+      "order": 5
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T06_SET_THEORY",
+      "name": "Set theory",
+      "order": 6
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T07_FUNCTIONS_RELATIONS",
+      "name": "Functions and relations",
+      "order": 7
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T08_LIMITS_COUNTABILITY",
+      "name": "Infinite sets, countability, and limits of formal systems",
+      "order": 8
+    },
+    {
+      "subject_id": "CSE1300_RL",
+      "topic_id": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+      "name": "Novel transfer and constraint-reconstruction problems",
+      "order": 9
+    }
+  ]
+}
