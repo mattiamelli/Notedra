@@ -1,0 +1,224 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t13",
+    "version": "1",
+    "topicId": "CO_T13_PARALLELISM",
+    "blocks": [
+      {
+        "id": "ds.block.co.t13.model",
+        "version": "1",
+        "topicId": "CO_T13_PARALLELISM",
+        "skillIds": [
+          "CO_SK13_01_PAR_CLASS",
+          "CO_SK13_02_AMDAHL"
+        ],
+        "subtopicIds": [
+          "CO_ST13_01_ARCH_PAR",
+          "CO_ST13_02_AMDAHL"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "introduction",
+        "title": "Separate available parallel work from hardware capacity",
+        "paragraphs": [
+          "Parallel execution needs independent work and hardware able to carry it out. A processor count is not itself a speedup: some work may be serial, some may contend for resources, and coordination can add cost.",
+          "Classify the work first. Instruction-level overlap uses independent operations; data parallelism applies similar operations to different data; task parallelism runs different tasks."
+        ]
+      },
+      {
+        "id": "ds.block.co.t13.classes",
+        "version": "1",
+        "topicId": "CO_T13_PARALLELISM",
+        "skillIds": [
+          "CO_SK13_01_PAR_CLASS"
+        ],
+        "subtopicIds": [
+          "CO_ST13_01_ARCH_PAR"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "concept",
+        "title": "Compare execution models with the workload in view",
+        "paragraphs": [
+          "A superscalar implementation can issue multiple eligible instructions; multicore systems provide multiple processing cores; GPU-style execution emphasizes substantial data-parallel work. These descriptions do not establish that a workload can use the available parallelism.",
+          "Compare dependencies, data movement, branching and synchronization. A wide parallel machine can be poorly utilized by a small serial task. Explain what work can run concurrently rather than ranking labels as inherently faster."
+        ]
+      },
+      {
+        "id": "ds.block.co.t13.formula",
+        "version": "1",
+        "topicId": "CO_T13_PARALLELISM",
+        "skillIds": [
+          "CO_SK13_02_AMDAHL"
+        ],
+        "subtopicIds": [
+          "CO_ST13_02_AMDAHL"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "procedure",
+        "title": "Derive speedup from normalized time",
+        "paragraphs": [
+          "Let s be the serial fraction of the original one-processor execution time and p the processor count. With ideal scaling of the remaining fraction and no overhead, relative time is s+(1−s)/p. Speedup is its reciprocal.",
+          "Keep the baseline fixed: s is a fraction of original execution time, not a fraction of processors. If overhead or contention is included, add its stated time rather than assuming ideal scaling."
+        ]
+      },
+      {
+        "id": "ds.block.co.t13.example",
+        "version": "1",
+        "topicId": "CO_T13_PARALLELISM",
+        "skillIds": [
+          "CO_SK13_02_AMDAHL"
+        ],
+        "subtopicIds": [
+          "CO_ST13_02_AMDAHL"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "worked_example",
+        "title": "A serial quarter limits three processors",
+        "paragraphs": [
+          "For s=1/4 and p=3, relative time is 1/4+(3/4)/3 = 1/2. Speedup is 2. With unlimited processors the parallel part tends toward zero but the serial quarter remains, so the upper bound is 4.",
+          "For the same ideal model, observed speedup S=2 at p=3 implies s=(1/S−1/p)/(1−1/p) = (1/2−1/3)/(2/3) = 1/4. The inference is conditional on the model; measured overhead can invalidate that interpretation."
+        ]
+      },
+      {
+        "id": "ds.block.co.t13.limits",
+        "version": "1",
+        "topicId": "CO_T13_PARALLELISM",
+        "skillIds": [
+          "CO_SK13_01_PAR_CLASS",
+          "CO_SK13_02_AMDAHL"
+        ],
+        "subtopicIds": [
+          "CO_ST13_01_ARCH_PAR",
+          "CO_ST13_02_AMDAHL"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "concept",
+        "title": "Check the boundary cases",
+        "paragraphs": [
+          "With one processor, speedup is 1. With all work serial, extra processors do not help. With zero serial fraction and no overhead, ideal speedup equals processor count; there is no finite serial-fraction ceiling.",
+          "Real speedup may be lower because data movement, synchronization, imbalance or resource contention adds time. Amdahl’s simple calculation is a stated model, not a forecast of a particular device."
+        ]
+      },
+      {
+        "id": "ds.block.co.t13.recap",
+        "version": "1",
+        "topicId": "CO_T13_PARALLELISM",
+        "skillIds": [
+          "CO_SK13_01_PAR_CLASS",
+          "CO_SK13_02_AMDAHL"
+        ],
+        "subtopicIds": [
+          "CO_ST13_01_ARCH_PAR",
+          "CO_ST13_02_AMDAHL"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "recap",
+        "title": "Explain the execution model and then calculate",
+        "paragraphs": [
+          "Identify the form of parallelism and whether the workload exposes it. Normalize the baseline time, divide only the parallel fraction and retain the serial fraction.",
+          "Use the Amdahl workspace to explore boundaries and Practice to check a fixed calculation plus an unscored architecture comparison."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t13.classes",
+      "version": "1",
+      "topicId": "CO_T13_PARALLELISM",
+      "skillIds": [
+        "CO_SK13_01_PAR_CLASS"
+      ],
+      "subtopicIds": [
+        "CO_ST13_01_ARCH_PAR"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "How do data and task parallelism differ?",
+      "answer": "Data parallelism applies similar operations across different data; task parallelism executes different tasks. Both still need safe independence and sufficient resources."
+    },
+    {
+      "id": "ds.card.co.t13.hardware",
+      "version": "1",
+      "topicId": "CO_T13_PARALLELISM",
+      "skillIds": [
+        "CO_SK13_01_PAR_CLASS"
+      ],
+      "subtopicIds": [
+        "CO_ST13_01_ARCH_PAR"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "Why does more parallel hardware not guarantee useful speedup?",
+      "answer": "Dependencies, workload size, data movement, imbalance and coordination can limit utilization. Hardware capacity and exploitable parallel work are separate."
+    },
+    {
+      "id": "ds.card.co.t13.time",
+      "version": "1",
+      "topicId": "CO_T13_PARALLELISM",
+      "skillIds": [
+        "CO_SK13_02_AMDAHL"
+      ],
+      "subtopicIds": [
+        "CO_ST13_02_AMDAHL"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "Which part of execution time is divided by p in the ideal Amdahl model?",
+      "answer": "Only the original parallel fraction: relative time=s+(1−s)/p. Speedup is 1 divided by that time."
+    },
+    {
+      "id": "ds.card.co.t13.limit",
+      "version": "1",
+      "topicId": "CO_T13_PARALLELISM",
+      "skillIds": [
+        "CO_SK13_02_AMDAHL"
+      ],
+      "subtopicIds": [
+        "CO_ST13_02_AMDAHL"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "What is Amdahl’s limit when the serial fraction s is positive?",
+      "answer": "As processor count grows, speedup approaches 1/s. For s=0 the ideal model has no finite serial ceiling."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t13.parallel",
+      "version": "1",
+      "topicId": "CO_T13_PARALLELISM",
+      "skillIds": [
+        "CO_SK13_01_PAR_CLASS"
+      ],
+      "subtopicIds": [
+        "CO_ST13_01_ARCH_PAR"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "title": "Match hardware to work",
+      "prompt": "Compare a dependency-heavy sequential task with many independent applications of one operation to data. Explain what each can exploit without predicting device speed.",
+      "rubric": [
+        "Identify limited instruction/task independence in the sequential case.",
+        "Identify data parallelism in the repeated independent operation.",
+        "Discuss data movement and coordination before making a performance claim; multiple reasoned comparisons can satisfy the task."
+      ]
+    }
+  ]
+}

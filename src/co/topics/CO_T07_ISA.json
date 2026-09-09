@@ -1,0 +1,275 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t07",
+    "version": "1",
+    "topicId": "CO_T07_ISA",
+    "blocks": [
+      {
+        "id": "ds.block.co.t07.model",
+        "version": "1",
+        "topicId": "CO_T07_ISA",
+        "skillIds": [
+          "CO_SK07_01_ISA_BITS",
+          "CO_SK07_02_ISA_DESIGN",
+          "CO_SK07_03_ISA_COMPARE"
+        ],
+        "subtopicIds": [
+          "CO_ST07_01_FORMAT",
+          "CO_ST07_02_STYLES"
+        ],
+        "sourceIds": [
+          "ref-335597129e574099",
+          "ref-53218a623d9b2a9a"
+        ],
+        "kind": "introduction",
+        "title": "The ISA is a visible contract",
+        "paragraphs": [
+          "An instruction set architecture specifies software-visible operations, state and instruction meanings. Different implementations can obey the same ISA using different datapaths or control organizations.",
+          "An instruction format is a bit allocation problem with semantic constraints. Count encodings, then verify that the fields express the intended operands and operation."
+        ]
+      },
+      {
+        "id": "ds.block.co.t07.budget",
+        "version": "1",
+        "topicId": "CO_T07_ISA",
+        "skillIds": [
+          "CO_SK07_01_ISA_BITS"
+        ],
+        "subtopicIds": [
+          "CO_ST07_01_FORMAT"
+        ],
+        "sourceIds": [
+          "ref-335597129e574099",
+          "ref-53218a623d9b2a9a"
+        ],
+        "kind": "worked_example",
+        "title": "Allocate register and address fields before opcodes",
+        "paragraphs": [
+          "Consider an authored 20-bit fixed instruction with two register fields selecting among 10 registers and a six-bit address field. Each register field needs ceil(log2(10)) = 4 bits, because three bits select only eight choices.",
+          "The opcode receives 20−2×4−6 = 6 bits, allowing 64 opcode codes before any reservations. Each register field has 16 possible codes, of which six are unused. Capacity is 2^b, while the largest unsigned code value is 2^b−1."
+        ]
+      },
+      {
+        "id": "ds.block.co.t07.design",
+        "version": "1",
+        "topicId": "CO_T07_ISA",
+        "skillIds": [
+          "CO_SK07_02_ISA_DESIGN"
+        ],
+        "subtopicIds": [
+          "CO_ST07_01_FORMAT"
+        ],
+        "sourceIds": [
+          "ref-335597129e574099",
+          "ref-53218a623d9b2a9a"
+        ],
+        "kind": "procedure",
+        "title": "Build a format that satisfies all constraints",
+        "paragraphs": [
+          "List the required operation count, register choices, address/immediate range, instruction length and permitted formats. Reserve enough bits for each choice. Verify totals and identify unused or reserved encodings explicitly.",
+          "A valid allocation need not be unique. For example, a 16-bit format needing two fields for eight registers consumes six register bits. Dividing the remaining ten bits between opcode and immediate has several possible solutions, but each supports different capacities.",
+          "Do not borrow bits from a field without checking what semantic capacity is lost. Signed immediates, alignment and implicit operands affect the interpretation, not just the printed width."
+        ]
+      },
+      {
+        "id": "ds.block.co.t07.styles",
+        "version": "1",
+        "topicId": "CO_T07_ISA",
+        "skillIds": [
+          "CO_SK07_03_ISA_COMPARE"
+        ],
+        "subtopicIds": [
+          "CO_ST07_02_STYLES"
+        ],
+        "sourceIds": [
+          "ref-335597129e574099",
+          "ref-53218a623d9b2a9a"
+        ],
+        "kind": "worked_example",
+        "title": "Translate the same computation into different operand styles",
+        "paragraphs": [
+          "For the abstract computation Z=X+Y, a stack style can push X, push Y, add the top two values, then store the result. An accumulator style can load X, add Y, then store Z. A register style can load operands into registers and specify a destination register.",
+          "These are conceptual operation sequences, not executable Visualizer code. Compare where intermediate state lives and which operands are explicit. Fewer instructions do not by themselves imply less time or smaller total code."
+        ]
+      },
+      {
+        "id": "ds.block.co.t07.addressing",
+        "version": "1",
+        "topicId": "CO_T07_ISA",
+        "skillIds": [
+          "CO_SK07_03_ISA_COMPARE"
+        ],
+        "subtopicIds": [
+          "CO_ST07_02_STYLES"
+        ],
+        "sourceIds": [
+          "ref-335597129e574099",
+          "ref-53218a623d9b2a9a"
+        ],
+        "kind": "concept",
+        "title": "Separate addressing and implementation style",
+        "paragraphs": [
+          "An immediate is in the instruction; a register operand names architectural state; a memory address may be explicit or computed from registers and displacement. Count the fields required by the chosen addressing rule.",
+          "RISC/CISC comparisons concern tendencies in instruction complexity, encoding and operand organization. Do not treat the label as a universal speed ranking. Compiler choices and the actual implementation determine measured behavior."
+        ]
+      },
+      {
+        "id": "ds.block.co.t07.recap",
+        "version": "1",
+        "topicId": "CO_T07_ISA",
+        "skillIds": [
+          "CO_SK07_01_ISA_BITS",
+          "CO_SK07_02_ISA_DESIGN",
+          "CO_SK07_03_ISA_COMPARE"
+        ],
+        "subtopicIds": [
+          "CO_ST07_01_FORMAT",
+          "CO_ST07_02_STYLES"
+        ],
+        "sourceIds": [
+          "ref-335597129e574099",
+          "ref-53218a623d9b2a9a"
+        ],
+        "kind": "recap",
+        "title": "Check capacity and meaning together",
+        "paragraphs": [
+          "Derive field widths from required choices, total the bits and state reservations. Then explain how the chosen format locates operands and expresses operations.",
+          "Use the bit-budget workspace for deterministic capacity checks and the unscored design comparison for choices with multiple valid allocations."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t07.ceil",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_01_ISA_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST07_01_FORMAT"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "prompt": "How many bits select among N distinct registers?",
+      "answer": "ceil(log2(N)). If N is not a power of two, some codes are unused; rounding down loses required choices."
+    },
+    {
+      "id": "ds.card.co.t07.capacity",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_01_ISA_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST07_01_FORMAT"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "prompt": "How does encoding capacity differ from the largest code value?",
+      "answer": "b bits have 2^b distinct codes, from 0 through 2^b−1. Reserved codes reduce usable capacity."
+    },
+    {
+      "id": "ds.card.co.t07.design",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_02_ISA_DESIGN"
+      ],
+      "subtopicIds": [
+        "CO_ST07_01_FORMAT"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "prompt": "Why can more than one instruction format satisfy a specification?",
+      "answer": "Different field allocations or implicit operands can meet the same requirements. Compare every capacity and semantic constraint, not one reference bit layout."
+    },
+    {
+      "id": "ds.card.co.t07.styles",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_03_ISA_COMPARE"
+      ],
+      "subtopicIds": [
+        "CO_ST07_02_STYLES"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "prompt": "What distinguishes stack, accumulator and explicit-register operand styles?",
+      "answer": "They place or identify intermediate operands differently: implicit stack top, a distinguished accumulator, or named register fields. Instruction count alone is not a performance proof."
+    },
+    {
+      "id": "ds.card.co.t07.interface",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_03_ISA_COMPARE"
+      ],
+      "subtopicIds": [
+        "CO_ST07_02_STYLES"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "prompt": "Can two different datapaths implement the same ISA?",
+      "answer": "Yes. The ISA specifies visible state and behavior; the microarchitecture chooses how to implement that contract."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t07.format",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_02_ISA_DESIGN"
+      ],
+      "subtopicIds": [
+        "CO_ST07_01_FORMAT"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "title": "Propose a valid bit allocation",
+      "prompt": "Use a 16-bit fixed format, two fields for eight registers each, at least 16 opcode codes and at least 32 immediate codes. Propose and justify a layout.",
+      "rubric": [
+        "Each register field needs three bits, so six bits are fixed.",
+        "Opcode needs at least four bits and immediate at least five: the minimum total is 15, leaving one bit to allocate or reserve.",
+        "Both 4+3+3+6 and 5+3+3+5 meet these unsigned-capacity requirements. Other justified encodings may be valid; no single layout is scored as unique."
+      ]
+    },
+    {
+      "id": "ds.guided.co.t07.compare",
+      "version": "1",
+      "topicId": "CO_T07_ISA",
+      "skillIds": [
+        "CO_SK07_03_ISA_COMPARE"
+      ],
+      "subtopicIds": [
+        "CO_ST07_02_STYLES"
+      ],
+      "sourceIds": [
+        "ref-335597129e574099",
+        "ref-53218a623d9b2a9a"
+      ],
+      "title": "Compare operand organizations",
+      "prompt": "Compare stack and explicit-register styles for an arithmetic expression. Identify one benefit and one cost of each.",
+      "rubric": [
+        "Identify implicit versus explicitly named operands and intermediate storage.",
+        "Discuss encoding size or access needs under stated assumptions.",
+        "Avoid claiming a universal speed winner without instruction timing, compiler and implementation information."
+      ]
+    }
+  ]
+}

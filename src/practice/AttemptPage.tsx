@@ -4,10 +4,10 @@ import { LearningError, errorMessage, type Answer, type Attempt } from '../learn
 import { useLearning } from '../learning/LearningProvider';
 import { PageHeading } from '../shell/PageParts';
 import { attemptPath } from './catalog';
-import { validateResponse } from './grading';
+import { validateResponse } from './runtime';
 import { feedbackFor, PracticeService, resolveAttempt } from './service';
 import { AnswerControls, ExercisePrompt, ExerciseSource, Feedback } from './ExerciseParts';
-import type { Exercise } from './types';
+import type { PracticeExercise as Exercise } from '../co/types';
 export function AttemptPage() {
   const {exerciseId,attemptId}=useParams();const learning=useLearning();
   if(!learning?.snapshot)return <p role="status">{learning?.message??'Student storage is not connected.'}</p>;

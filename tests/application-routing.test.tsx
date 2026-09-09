@@ -19,17 +19,19 @@ beforeEach(() => {
 });
 afterEach(async () => { await act(async () => root.unmount()); container.remove(); vi.restoreAllMocks(); });
 
+
+async function settleRoutes(){const loading=()=>[...container.querySelectorAll('[role="status"]')].some(n=>/^Loading /.test(n.textContent??''));for(let i=0;i<150&&loading();i++)await act(async()=>{await new Promise(r=>setTimeout(r,10));});expect(loading(),'lazy route resolved').toBe(false);}
 async function renderRoute(path: string, browser = false) {
   if (browser) window.history.replaceState(null, '', path);
   await act(async () => {
     root.render(browser ? <BrowserRouter><AppRoutes/></BrowserRouter> : <MemoryRouter initialEntries={[path]}><AppRoutes/></MemoryRouter>);
     if (path === ASSEMBLY_TOOL_PATH) await import('../src/AssemblyWorkbench');
-  });
+  });await settleRoutes();
 }
 async function click(selector: string) {
   const element = container.querySelector<HTMLElement>(selector);
   expect(element, selector).not.toBeNull();
-  await act(async () => element!.click());
+  await act(async () => element!.click());await settleRoutes();
 }
 function button(label: string): HTMLButtonElement {
   const result = [...container.querySelectorAll('button')].find(item => item.textContent?.trim() === label);
@@ -48,7 +50,7 @@ describe('application routes and canonical navigation', () => {
   it.each(courses)('renders $path from canonical course data', async course => {
     await renderRoute(course.path);
     expect(heading()).toBe(course.name);
-    const links = [...container.querySelectorAll('.ds-topic-list a')];
+    const links = [...container.querySelectorAll('.ds-topic-list > li > a')];
     const topics = topicsFor(course.subject_id);
     expect(links).toHaveLength(topics.length);
     expect(links.map(link => link.getAttribute('href'))).toEqual(topics.map(topicPath));
@@ -65,9 +67,9 @@ describe('application routes and canonical navigation', () => {
   it.each(productAreas)('renders the $title shell with a neutral empty state', async area => {
     await renderRoute(area.path);
     expect(heading()).toBe(area.title);
-    // Step 4 intentionally replaces only the Practice placeholder with six authored items.
+    // Step 4 intentionally replaces only the Practice placeholder with authored items, expanded for CO in Step 6.
     if (area.path === '/practice') {
-      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(6);
+      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(34);
       expect(container.textContent).toContain('Authored practice');
     } else {
       expect(container.querySelector('.ds-empty')?.textContent).toContain(area.emptyTitle);
@@ -134,15 +136,15 @@ describe('shell interaction and browser history', () => {
     expect(window.location.pathname).toBe(ASSEMBLY_TOPIC_PATH);
     expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
   });
-  it('supports topic mode clicks and keyboard navigation while keeping study engines unavailable', async () => {
+  it('supports topic mode clicks and keyboard navigation with the CO cards and shared Practice available', async () => {
     await renderRoute(ASSEMBLY_TOPIC_PATH);
     await click('#study-mode-3');
-    expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Flashcards are not available yet');
+    expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Card 1 of 7');
     const flashcards = container.querySelector<HTMLButtonElement>('#study-mode-3')!;
     await act(async () => flashcards.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight', bubbles: true})));
     expect(document.activeElement?.id).toBe('study-mode-4');
     expect(container.querySelector('#study-mode-4')?.getAttribute('aria-selected')).toBe('true');
-    expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Topic practice is not available yet');
+    await settleRoutes();expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Unscored guided practice');expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Assembly Visualizer');
   });
 });
 

@@ -1,0 +1,153 @@
+[
+  {
+    "id": "boolean",
+    "version": "1",
+    "name": "Boolean truth workspace",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "skillIds": [
+      "CO_SK02_01_BOOLEAN_EVAL"
+    ],
+    "sourceIds": [
+      "ref-11dc7c8834244c9d"
+    ],
+    "summary": "Enumerate two-input AND, OR, XOR and NAND.",
+    "assumptions": "Two Boolean inputs; all four assignments; no arbitrary formula or K-map drawing grader."
+  },
+  {
+    "id": "representation",
+    "version": "1",
+    "name": "Representation workspace",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "skillIds": [
+      "CO_SK05_01_FIXED",
+      "CO_SK05_02_FLOAT_ENCODE",
+      "CO_SK05_03_FLOAT_RANGE"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "summary": "Decode signed fixed point and a declared custom float.",
+    "assumptions": "Custom float: hidden leading 1, all exponent codes ordinary, no zero/subnormal/infinity/NaN. Fixed point uses an explicitly chosen signed interpretation."
+  },
+  {
+    "id": "assembly",
+    "version": "1",
+    "name": "Assembly Visualizer",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "skillIds": [
+      "CO_SK06_01_ASM_READ",
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "sourceIds": [
+      "ref-d0b36bb837af8280"
+    ],
+    "summary": "Use the existing instruction-by-instruction workbench.",
+    "assumptions": "The existing supported qword instruction subset and sparse aligned memory model are unchanged. Partial-register examples in Learn are reading-only."
+  },
+  {
+    "id": "isa",
+    "version": "1",
+    "name": "Instruction bit-budget workspace",
+    "topicId": "CO_T07_ISA",
+    "skillIds": [
+      "CO_SK07_01_ISA_BITS"
+    ],
+    "sourceIds": [
+      "ref-335597129e574099",
+      "ref-53218a623d9b2a9a"
+    ],
+    "summary": "Allocate register/address fields and count remaining opcodes.",
+    "assumptions": "Fixed instruction length, explicit field counts, no reserved opcode codes unless the learner accounts for them separately."
+  },
+  {
+    "id": "address",
+    "version": "1",
+    "name": "Address alias workspace",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "skillIds": [
+      "CO_SK09_02_IO_ADDRESS"
+    ],
+    "sourceIds": [
+      "ref-786bac7f3cb5c7c8"
+    ],
+    "summary": "Enumerate addresses differing only on ignored decoder bits.",
+    "assumptions": "Eight-bit byte addresses in the interface; bit 0 is the least significant bit. No timing or physical wiring is inferred."
+  },
+  {
+    "id": "memory",
+    "version": "1",
+    "name": "Memory organization workspace",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "skillIds": [
+      "CO_SK10_02_MEMORY_BITS",
+      "CO_SK10_03_INTERLEAVE"
+    ],
+    "sourceIds": [
+      "ref-11b9ffb5c9a0f6d2",
+      "ref-786bac7f3cb5c7c8"
+    ],
+    "summary": "Separate chip width/depth and low-order bank mapping.",
+    "assumptions": "Non-multiplexed address/data pins, excluding power/control; exact whole-chip organization; bank mapping uses word addresses."
+  },
+  {
+    "id": "cache",
+    "version": "1",
+    "name": "Cache trace workspace",
+    "topicId": "CO_T11_CACHE",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS",
+      "CO_SK11_02_CACHE_TRACE"
+    ],
+    "sourceIds": [
+      "ref-bdab95d59474f2ad"
+    ],
+    "summary": "Step through set/tag lookup and LRU replacement.",
+    "assumptions": "Initially empty, read-only, read-allocate, true LRU; tags listed least to most recent. No writes, timing or hierarchy simulation."
+  },
+  {
+    "id": "pipeline",
+    "version": "1",
+    "name": "Pipeline timing workspace",
+    "topicId": "CO_T12_PIPELINE",
+    "skillIds": [
+      "CO_SK12_01_PIPE_PERF",
+      "CO_SK12_02_PIPE_HAZARD",
+      "CO_SK12_03_PIPE_SCHEDULE"
+    ],
+    "sourceIds": [
+      "ref-295298f11ae42c8a"
+    ],
+    "summary": "Compare a fixed dependency sequence with and without forwarding.",
+    "assumptions": "Five equal stages F,D,X,M,W; in order; fetch waits; separate stage resources; same-cycle W-to-D register access; no branches or speculation."
+  },
+  {
+    "id": "amdahl",
+    "version": "1",
+    "name": "Amdahl workspace",
+    "topicId": "CO_T13_PARALLELISM",
+    "skillIds": [
+      "CO_SK13_02_AMDAHL"
+    ],
+    "sourceIds": [
+      "ref-2a7323af85c4fc92"
+    ],
+    "summary": "Compare serial time, processor count and speedup limits.",
+    "assumptions": "Fixed original workload; ideal scaling of only the parallel fraction; zero communication/coordination overhead."
+  },
+  {
+    "id": "vm",
+    "version": "1",
+    "name": "Virtual-memory workspace",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "skillIds": [
+      "CO_SK14_01_VM_TRANSLATE",
+      "CO_SK14_02_VM_REASON"
+    ],
+    "sourceIds": [
+      "ref-2a7323af85c4fc92"
+    ],
+    "summary": "Split a virtual address, check a supplied page entry and translate.",
+    "assumptions": "Flat one-level page table; byte addresses; explicit present/write permission; no TLB, page replacement or OS fault-handler model."
+  }
+]

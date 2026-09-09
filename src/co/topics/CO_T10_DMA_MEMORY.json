@@ -1,0 +1,254 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t10",
+    "version": "1",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "blocks": [
+      {
+        "id": "ds.block.co.t10.model",
+        "version": "1",
+        "topicId": "CO_T10_DMA_MEMORY",
+        "skillIds": [
+          "CO_SK10_01_DMA",
+          "CO_SK10_02_MEMORY_BITS",
+          "CO_SK10_03_INTERLEAVE"
+        ],
+        "subtopicIds": [
+          "CO_ST10_01_DMA",
+          "CO_ST10_02_MEMORY_CHIPS"
+        ],
+        "sourceIds": [
+          "ref-11b9ffb5c9a0f6d2",
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "introduction",
+        "title": "Track the unit of transfer and who controls it",
+        "paragraphs": [
+          "Memory organization maps logical addresses and word widths onto physical storage. DMA changes who performs a sequence of transfers; interleaving changes which bank handles successive addresses. Keep these questions separate.",
+          "All size calculations below state whether an address counts bytes or words. A capacity in bits is not an address count until the addressable unit is known."
+        ]
+      },
+      {
+        "id": "ds.block.co.t10.dma",
+        "version": "1",
+        "topicId": "CO_T10_DMA_MEMORY",
+        "skillIds": [
+          "CO_SK10_01_DMA"
+        ],
+        "subtopicIds": [
+          "CO_ST10_01_DMA"
+        ],
+        "sourceIds": [
+          "ref-11b9ffb5c9a0f6d2",
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "concept",
+        "title": "DMA moves the transfer loop out of the CPU",
+        "paragraphs": [
+          "With programmed I/O, the CPU performs the transfer operations. Interrupt-driven I/O can avoid continuous status polling, but the CPU may still move each item. DMA lets a controller carry out a configured block transfer between a device and memory.",
+          "The CPU sets up the transfer and handles its completion or errors. DMA still uses memory/bus resources, so CPU and DMA activity may contend for bandwidth. It does not mean the CPU has no setup work or that memory accesses become free."
+        ]
+      },
+      {
+        "id": "ds.block.co.t10.chips",
+        "version": "1",
+        "topicId": "CO_T10_DMA_MEMORY",
+        "skillIds": [
+          "CO_SK10_02_MEMORY_BITS"
+        ],
+        "subtopicIds": [
+          "CO_ST10_02_MEMORY_CHIPS"
+        ],
+        "sourceIds": [
+          "ref-11b9ffb5c9a0f6d2",
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "worked_example",
+        "title": "Build depth and width independently",
+        "paragraphs": [
+          "Build 2048 words of 16 bits using chips of 512 words by 4 bits, with exact depth/width multiples. Four chips in parallel provide 16 bits per addressed word. Four depth groups provide 2048 word positions, so 16 chips are required.",
+          "Each chip needs nine address pins for its 512 words and four data pins. The board uses eleven word-address bits: nine within a depth group and two selecting a group. Control, power and ground pins are excluded from these address/data counts.",
+          "Capacity is 2048×16 = 32768 bits = 4096 bytes of storage. The board’s stated logical addresses are words; do not call its eleven word-address bits a byte-address width."
+        ]
+      },
+      {
+        "id": "ds.block.co.t10.interleave",
+        "version": "1",
+        "topicId": "CO_T10_DMA_MEMORY",
+        "skillIds": [
+          "CO_SK10_03_INTERLEAVE"
+        ],
+        "subtopicIds": [
+          "CO_ST10_02_MEMORY_CHIPS"
+        ],
+        "sourceIds": [
+          "ref-11b9ffb5c9a0f6d2",
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "worked_example",
+        "title": "Split a word address into bank and row",
+        "paragraphs": [
+          "For low-order interleaving across four banks, define bank = word address mod 4 and row = floor(word address/4). Word address 13 maps to bank 1, row 3 because 13 = 4×3+1.",
+          "Successive word addresses visit banks 0,1,2,3 in turn. A stride of four repeatedly visits one bank. Interleaving can overlap service across banks, but actual throughput still depends on bank cycle time, requests and bus constraints."
+        ]
+      },
+      {
+        "id": "ds.block.co.t10.procedure",
+        "version": "1",
+        "topicId": "CO_T10_DMA_MEMORY",
+        "skillIds": [
+          "CO_SK10_02_MEMORY_BITS",
+          "CO_SK10_03_INTERLEAVE"
+        ],
+        "subtopicIds": [
+          "CO_ST10_02_MEMORY_CHIPS"
+        ],
+        "sourceIds": [
+          "ref-11b9ffb5c9a0f6d2",
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "procedure",
+        "title": "Check units before multiplying",
+        "paragraphs": [
+          "Write the target word count/width and chip word count/width. Compute width parallelism and depth groups separately, multiply for chip count, then cross-check total stored bits.",
+          "For a bank problem, first convert a byte address to the specified word address if needed. Apply the declared bank mapping, then analyze conflicts under the given timing rules. Do not assume every access is conflict-free."
+        ]
+      },
+      {
+        "id": "ds.block.co.t10.recap",
+        "version": "1",
+        "topicId": "CO_T10_DMA_MEMORY",
+        "skillIds": [
+          "CO_SK10_01_DMA",
+          "CO_SK10_02_MEMORY_BITS",
+          "CO_SK10_03_INTERLEAVE"
+        ],
+        "subtopicIds": [
+          "CO_ST10_01_DMA",
+          "CO_ST10_02_MEMORY_CHIPS"
+        ],
+        "sourceIds": [
+          "ref-11b9ffb5c9a0f6d2",
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "recap",
+        "title": "Separate capacity from throughput",
+        "paragraphs": [
+          "DMA changes transfer control. Chip organization changes physical capacity/width. Interleaving changes distribution across banks. None alone guarantees a particular execution speed.",
+          "Use the organization workbench for chip/pin arithmetic, and Practice for fixed organization/bank cases and an unscored DMA comparison."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t10.dma",
+      "version": "1",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "skillIds": [
+        "CO_SK10_01_DMA"
+      ],
+      "subtopicIds": [
+        "CO_ST10_01_DMA"
+      ],
+      "sourceIds": [
+        "ref-11b9ffb5c9a0f6d2",
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "What work remains for the CPU when DMA is used?",
+      "answer": "It configures the transfer and handles completion/errors. The DMA controller transfers the block, but memory/bus contention and setup costs remain."
+    },
+    {
+      "id": "ds.card.co.t10.width",
+      "version": "1",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "skillIds": [
+        "CO_SK10_02_MEMORY_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST10_02_MEMORY_CHIPS"
+      ],
+      "sourceIds": [
+        "ref-11b9ffb5c9a0f6d2",
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "How are chips combined to increase memory word width?",
+      "answer": "Use chips in parallel for different bit slices of the same addressed word. Depth groups instead add more word addresses."
+    },
+    {
+      "id": "ds.card.co.t10.pins",
+      "version": "1",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "skillIds": [
+        "CO_SK10_02_MEMORY_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST10_02_MEMORY_CHIPS"
+      ],
+      "sourceIds": [
+        "ref-11b9ffb5c9a0f6d2",
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "How many address and data pins does a chip with 2^a words of d bits need?",
+      "answer": "a address pins and d data pins in this non-multiplexed organization, excluding control/power pins. Capacity is 2^a×d bits."
+    },
+    {
+      "id": "ds.card.co.t10.bank",
+      "version": "1",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "skillIds": [
+        "CO_SK10_03_INTERLEAVE"
+      ],
+      "subtopicIds": [
+        "CO_ST10_02_MEMORY_CHIPS"
+      ],
+      "sourceIds": [
+        "ref-11b9ffb5c9a0f6d2",
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "What is the low-order interleaving rule for B banks?",
+      "answer": "For word address w: bank=w mod B, row=floor(w/B). State the addressable unit and bank mapping explicitly."
+    },
+    {
+      "id": "ds.card.co.t10.stride",
+      "version": "1",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "skillIds": [
+        "CO_SK10_03_INTERLEAVE"
+      ],
+      "subtopicIds": [
+        "CO_ST10_02_MEMORY_CHIPS"
+      ],
+      "sourceIds": [
+        "ref-11b9ffb5c9a0f6d2",
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "Why can a stride equal to the bank count defeat low-order interleaving?",
+      "answer": "It preserves the bank index, repeatedly accessing the same bank. Bank service and bus timing determine the actual penalty."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t10.dma",
+      "version": "1",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "skillIds": [
+        "CO_SK10_01_DMA"
+      ],
+      "subtopicIds": [
+        "CO_ST10_01_DMA"
+      ],
+      "sourceIds": [
+        "ref-11b9ffb5c9a0f6d2",
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "title": "Compare transfer mechanisms",
+      "prompt": "Compare polling, interrupt-driven per-item transfers and DMA for a block of input, without inventing timing numbers.",
+      "rubric": [
+        "Distinguish status detection from who performs each data transfer.",
+        "Identify CPU setup/handler work and shared bus/memory traffic.",
+        "Explain which additional measurements would be needed for a speed claim. No keyword or automatic numeric score is used."
+      ]
+    }
+  ]
+}

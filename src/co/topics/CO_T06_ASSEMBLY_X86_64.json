@@ -1,0 +1,296 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t06",
+    "version": "1",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "blocks": [
+      {
+        "id": "ds.block.co.t06.model",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_01_ASM_READ",
+          "CO_SK06_02_PARTIAL_REG",
+          "CO_SK06_03_STACK_TRACE",
+          "CO_SK06_04_ASM_DEBUG"
+        ],
+        "subtopicIds": [
+          "CO_ST06_01_SYNTAX_REGS",
+          "CO_ST06_02_STACK_CALL"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "introduction",
+        "title": "Trace state one instruction at a time",
+        "paragraphs": [
+          "Assembly exposes operations on architectural state: registers, memory and the next instruction. In AT&T syntax the source normally comes before the destination. Record the state before a step, evaluate its operands, then apply the documented update.",
+          "The existing Visualizer executes a deliberately limited 64-bit subset. This lesson also explains register widths for reading real x86-64 code; byte/word/dword examples are explicitly non-executable in that tool."
+        ]
+      },
+      {
+        "id": "ds.block.co.t06.operands",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_01_ASM_READ"
+        ],
+        "subtopicIds": [
+          "CO_ST06_01_SYNTAX_REGS"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "worked_example",
+        "title": "Distinguish a value, an address and a memory read",
+        "paragraphs": [
+          "In movq $9, %rax, the dollar sign makes 9 an immediate value; RAX becomes 9. In movq %rax, -8(%rbp), the value is stored at address RBP−8. In leaq -8(%rbp), %rax, the address itself is written to RAX without reading that memory cell.",
+          "For RBP=0x1000, the effective address RBP−8 is 0x0FF8. If memory there holds 9, movq -8(%rbp), %rax loads 9, while leaq -8(%rbp), %rax yields 4088. The q suffix denotes an eight-byte operation."
+        ]
+      },
+      {
+        "id": "ds.block.co.t06.widths",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_02_PARTIAL_REG"
+        ],
+        "subtopicIds": [
+          "CO_ST06_01_SYNTAX_REGS"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "worked_example",
+        "title": "Partial-register writes have different effects",
+        "paragraphs": [
+          "Reading-only example, outside the Visualizer subset: start with RAX=0x1122334455667788. Writing AL=0xAA replaces the low byte, giving 0x11223344556677AA. Writing AX=0xBBBB instead replaces the low word, giving 0x112233445566BBBB.",
+          "Writing EAX=0x12345678 clears the upper 32 bits of RAX, giving 0x0000000012345678. A 64-bit RAX write replaces the entire register. These cases are independent writes from the stated original value; do not carry one example into the next."
+        ]
+      },
+      {
+        "id": "ds.block.co.t06.frame",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_03_STACK_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST06_02_STACK_CALL"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "worked_example",
+        "title": "Build and unwind a stack frame",
+        "paragraphs": [
+          "The stack grows toward lower addresses. Starting at RSP=RBP=0x1000, pushq %rbp moves RSP to 0x0FF8 and stores the prior RBP there. movq %rsp, %rbp makes 0x0FF8 the stable frame base; subq $16, %rsp reserves space down to 0x0FE8.",
+          "Locations -8(%rbp) and -16(%rbp) are then 0x0FF0 and 0x0FE8. Restoring RSP from RBP releases those locals, and popq %rbp reads the saved frame pointer and returns RSP to 0x1000. Reserved memory is not automatically initialized."
+        ]
+      },
+      {
+        "id": "ds.block.co.t06.calls",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_03_STACK_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST06_02_STACK_CALL"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "procedure",
+        "title": "A call adds a return point to the stack",
+        "paragraphs": [
+          "A call pushes the location to continue at and transfers control. In the Visualizer that location is a zero-based instruction index; real machine code uses an instruction address. ret takes the return location from the stack and resumes there.",
+          "For nested calls, track a separate return entry and saved frame for each active invocation. Unwind in reverse order. A function result in RAX does not by itself restore RSP or RBP; the epilogue must preserve the stack contract.",
+          "Open the existing Function call example to trace main passing RDI=5, the helper adding 2, and the caller receiving 7 in RAX. The helper is placed before main to avoid unsupported jump/fall-through control."
+        ]
+      },
+      {
+        "id": "ds.block.co.t06.debug",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_04_ASM_DEBUG"
+        ],
+        "subtopicIds": [
+          "CO_ST06_02_STACK_CALL"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "procedure",
+        "title": "Debug by checking invariants",
+        "paragraphs": [
+          "Before each read, identify the exact address, width and whether it has been initialized. Before ret, check that the top of the stack is the intended return entry, not a local value or a saved frame pointer.",
+          "Compare stack allocation with deallocation along each path, and distinguish caller state from current frame state. Alignment constraints come from the specified calling convention: the Visualizer checks aligned eight-byte words but does not enforce a complete ABI.",
+          "Do not paste unsupported partial-register operations into the tool and assume it emulates them. Read its supported-instruction list; use the lesson’s separate reference cases for width semantics."
+        ]
+      },
+      {
+        "id": "ds.block.co.t06.recap",
+        "version": "1",
+        "topicId": "CO_T06_ASSEMBLY_X86_64",
+        "skillIds": [
+          "CO_SK06_01_ASM_READ",
+          "CO_SK06_02_PARTIAL_REG",
+          "CO_SK06_03_STACK_TRACE",
+          "CO_SK06_04_ASM_DEBUG"
+        ],
+        "subtopicIds": [
+          "CO_ST06_01_SYNTAX_REGS",
+          "CO_ST06_02_STACK_CALL"
+        ],
+        "sourceIds": [
+          "ref-d0b36bb837af8280"
+        ],
+        "kind": "recap",
+        "title": "Keep an exact state ledger",
+        "paragraphs": [
+          "Annotate source and destination, widths, effective addresses, current RSP/RBP and return entries. Compare each post-state with the instruction semantics, then unwind frames in reverse order.",
+          "Use Flashcards for distinctions, Practice for partial-register reading and debugging criteria, and the unchanged Assembly Visualizer for executable 64-bit traces."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t06.order",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_01_ASM_READ"
+      ],
+      "subtopicIds": [
+        "CO_ST06_01_SYNTAX_REGS"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "What is the usual AT&T operand order?",
+      "answer": "Source, then destination. An immediate has $, a register has %, and displacement(base) describes a memory effective address."
+    },
+    {
+      "id": "ds.card.co.t06.lea",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_01_ASM_READ"
+      ],
+      "subtopicIds": [
+        "CO_ST06_01_SYNTAX_REGS"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "How do movq displacement(%rbp), %rax and leaq differ?",
+      "answer": "movq reads the value stored at the effective address. leaq computes the address itself and does not read memory."
+    },
+    {
+      "id": "ds.card.co.t06.eax",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_02_PARTIAL_REG"
+      ],
+      "subtopicIds": [
+        "CO_ST06_01_SYNTAX_REGS"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "What happens to the upper half of RAX when EAX is written?",
+      "answer": "A 32-bit EAX write clears the upper 32 bits of RAX. This reading example is outside the Visualizer’s qword-only subset."
+    },
+    {
+      "id": "ds.card.co.t06.small",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_02_PARTIAL_REG"
+      ],
+      "subtopicIds": [
+        "CO_ST06_01_SYNTAX_REGS"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "Do AL and AX writes clear the rest of RAX?",
+      "answer": "No. They replace the low byte or low word while preserving other bits. A full RAX write replaces all 64 bits."
+    },
+    {
+      "id": "ds.card.co.t06.call",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_03_STACK_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST06_02_STACK_CALL"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "What must be at the stack top before ret?",
+      "answer": "The intended return location. Locals and saved frame values must be unwound first. The tool uses instruction indices for return locations."
+    },
+    {
+      "id": "ds.card.co.t06.rsp",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_03_STACK_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST06_02_STACK_CALL"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "Why is RBP useful after reserving stack locals?",
+      "answer": "It can remain a stable frame base while RSP moves. This convention only works if the prologue establishes it and the epilogue restores the caller’s state."
+    },
+    {
+      "id": "ds.card.co.t06.debug",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_04_ASM_DEBUG"
+      ],
+      "subtopicIds": [
+        "CO_ST06_02_STACK_CALL"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "prompt": "Which invariants help find a broken function epilogue?",
+      "answer": "Check the exact top-of-stack role, balanced allocation/deallocation, restored saved registers and the stated alignment contract before returning."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t06.debug",
+      "version": "1",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "skillIds": [
+        "CO_SK06_04_ASM_DEBUG"
+      ],
+      "subtopicIds": [
+        "CO_ST06_02_STACK_CALL"
+      ],
+      "sourceIds": [
+        "ref-d0b36bb837af8280"
+      ],
+      "title": "Diagnose an unbalanced return",
+      "prompt": "A function saves RBP, sets its frame base, reserves 16 bytes, then immediately executes popq %rbp; ret. Explain the problem and a valid repair.",
+      "rubric": [
+        "RSP still points at reserved local space, so the pop does not read the saved frame pointer.",
+        "Restore RSP from the frame base (or undo the exact allocation), then pop the saved RBP, then return.",
+        "Trace the return entry separately. Use the supported Stack frame/Function call examples to verify the sequence; no free-form code grade is assigned."
+      ]
+    }
+  ]
+}

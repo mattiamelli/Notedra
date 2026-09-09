@@ -1,0 +1,360 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t08",
+    "version": "1",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "blocks": [
+      {
+        "id": "ds.block.co.t08.model",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_01_MICRO_TRACE",
+          "CO_SK08_02_WRITE_MICRO",
+          "CO_SK08_03_CONTROL_BITS",
+          "CO_SK08_04_CONTROL_COMPARE",
+          "CO_SK08_05_MICRO_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST08_01_DATAPATH",
+          "CO_ST08_02_CONTROL_ENCODING",
+          "CO_ST08_03_MICRO_OPT"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "introduction",
+        "title": "An instruction becomes a sequence of transfers",
+        "paragraphs": [
+          "A datapath provides storage and routes for moving and transforming values. Control selects allowed transfers and operations. A microoperation describes one such state change; a microroutine organizes them to implement an instruction.",
+          "The symbolic examples specify the needed registers and dependencies. They do not reconstruct an unprovided BPU wiring diagram or assume every transfer can occur on the same bus in one cycle."
+        ]
+      },
+      {
+        "id": "ds.block.co.t08.trace",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_01_MICRO_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST08_01_DATAPATH"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "worked_example",
+        "title": "Read transfers using the state at each step",
+        "paragraphs": [
+          "Assume temporary registers Y and Z and an ALU that can add a register value to Y. Start R1=6, R2=4. Execute Y←R1; Z←Y+R2; R1←Z. The states are Y=6, then Z=10, then R1=10, with R2 unchanged.",
+          "The sequence implements R1←R1+R2. Y must be set before it is read, and Z must be computed before writeback. A simultaneous-transfer notation would need explicit old-state rules; this example is sequential."
+        ]
+      },
+      {
+        "id": "ds.block.co.t08.fetch",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_02_WRITE_MICRO"
+        ],
+        "subtopicIds": [
+          "CO_ST08_01_DATAPATH"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "procedure",
+        "title": "Construct fetch and memory-dependent execution",
+        "paragraphs": [
+          "A symbolic fetch needs to present the instruction address, request a read, wait for completion, capture the instruction and advance the program counter by the specified instruction size. Address and data registers must keep valid values for the required interval.",
+          "WMFC means wait for memory function complete. It expresses a completion dependency, not a fixed number of cycles that can be guessed. Do not consume memory data before the completion event.",
+          "For an execute routine, list the architectural effect, identify operand reads, compute the result and write the correct destination. Check the actual datapath resources before combining transfers."
+        ]
+      },
+      {
+        "id": "ds.block.co.t08.encoding",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_03_CONTROL_BITS"
+        ],
+        "subtopicIds": [
+          "CO_ST08_02_CONTROL_ENCODING"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "worked_example",
+        "title": "Count control choices under an explicit encoding rule",
+        "paragraphs": [
+          "Suppose one group chooses no source or one of seven sources; another chooses no destination or one of three destinations; and an ALU field chooses one of four operations. Independently encoded groups require 3+2+2 = 7 bits.",
+          "For a declared horizontal alternative with one bit for each of the seven source enables, three destination enables and four operation enables, the width is 14 bits. Not every 14-bit combination is legal: mutually exclusive enables must still be constrained.",
+          "These counts exclude sequencing, condition and next-address fields. Include those separately if a specification requires them. A mixed organization encodes some groups and leaves other controls independent."
+        ]
+      },
+      {
+        "id": "ds.block.co.t08.organizations",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_04_CONTROL_COMPARE"
+        ],
+        "subtopicIds": [
+          "CO_ST08_02_CONTROL_ENCODING"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "concept",
+        "title": "Control organization trades representation against decoding",
+        "paragraphs": [
+          "Hardwired control derives control behavior from logic and state. Microprogrammed control stores control sequences. Compare flexibility of changing a sequence, storage/decoding requirements and the timing of the actual implementation.",
+          "Horizontal words expose more independent control bits; encoded groups use fewer bits but need decoding and restrict combinations. Do not assume a shorter word automatically executes faster."
+        ]
+      },
+      {
+        "id": "ds.block.co.t08.optimize",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_05_MICRO_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST08_03_MICRO_OPT"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "procedure",
+        "title": "Overlap only independent, resource-compatible work",
+        "paragraphs": [
+          "First draw the dependency order: production before use, address before a memory request, completion before consuming the result, and architectural writeback at the correct point. Mark shared resources that cannot serve conflicting transfers.",
+          "Independent bookkeeping may overlap a memory wait if the real datapath permits it and it does not disturb the request. Removing a wait without proving completion is not an optimization. Several correct schedules can exist, so justify each proposed overlap.",
+          "In Y←R1; Z←Y+R2; R1←Z, the three data dependencies cannot simply be collapsed into one sequential step. Any alternative requires stated bypass/combination capability."
+        ]
+      },
+      {
+        "id": "ds.block.co.t08.recap",
+        "version": "1",
+        "topicId": "CO_T08_BPU_MICROCODE",
+        "skillIds": [
+          "CO_SK08_01_MICRO_TRACE",
+          "CO_SK08_02_WRITE_MICRO",
+          "CO_SK08_03_CONTROL_BITS",
+          "CO_SK08_04_CONTROL_COMPARE",
+          "CO_SK08_05_MICRO_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST08_01_DATAPATH",
+          "CO_ST08_02_CONTROL_ENCODING",
+          "CO_ST08_03_MICRO_OPT"
+        ],
+        "sourceIds": [
+          "ref-0b54bc0d278f8d07",
+          "ref-7d81fa87adf87c16"
+        ],
+        "kind": "recap",
+        "title": "Trace dependencies before counting cycles",
+        "paragraphs": [
+          "Translate microoperations to state changes, construct fetch/execute around memory completion, and count only explicitly specified control fields. Compare organizations and optimizations using real resource constraints.",
+          "Practice grades fixed transfer/control-width subparts. General microroutine construction and optimization use unscored criteria; no unsupported BPU simulator is implied."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t08.trace",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_01_MICRO_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST08_01_DATAPATH"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "How do you check the architectural effect of a microoperation sequence?",
+      "answer": "Track each temporary and architectural register after every step, then express the final visible state change. Respect production-before-use dependencies."
+    },
+    {
+      "id": "ds.card.co.t08.wmfc",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_02_WRITE_MICRO"
+      ],
+      "subtopicIds": [
+        "CO_ST08_01_DATAPATH"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "What does WMFC establish?",
+      "answer": "Wait for memory function complete: data may be consumed only after completion. It is not a guessed constant memory latency."
+    },
+    {
+      "id": "ds.card.co.t08.fetch",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_02_WRITE_MICRO"
+      ],
+      "subtopicIds": [
+        "CO_ST08_01_DATAPATH"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "What must a symbolic instruction fetch accomplish?",
+      "answer": "Present an instruction address, request/read with the required handshake, capture the instruction and advance PC by the specified size, using only allowed datapath transfers."
+    },
+    {
+      "id": "ds.card.co.t08.encoded",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_03_CONTROL_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST08_02_CONTROL_ENCODING"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "How many bits encode one of k mutually exclusive control choices?",
+      "answer": "ceil(log2(k)), including a no-action choice if the format requires it. Count sequencing fields separately."
+    },
+    {
+      "id": "ds.card.co.t08.horizontal",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_03_CONTROL_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST08_02_CONTROL_ENCODING"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "Does a horizontal word make every combination of enable bits legal?",
+      "answer": "No. Shared resources and mutually exclusive controls still constrain which bits may be asserted together."
+    },
+    {
+      "id": "ds.card.co.t08.control",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_04_CONTROL_COMPARE"
+      ],
+      "subtopicIds": [
+        "CO_ST08_02_CONTROL_ENCODING"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "Why is a shorter encoded control word not automatically faster?",
+      "answer": "It may need decoding and may restrict simultaneous controls. Compare the actual datapath/control timing and flexibility, not only stored width."
+    },
+    {
+      "id": "ds.card.co.t08.overlap",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_05_MICRO_OPT"
+      ],
+      "subtopicIds": [
+        "CO_ST08_03_MICRO_OPT"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "prompt": "What must be proved before overlapping microoperations?",
+      "answer": "They have no violated data/completion dependencies, do not conflict on resources and preserve the required architectural effect."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t08.routine",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_02_WRITE_MICRO"
+      ],
+      "subtopicIds": [
+        "CO_ST08_01_DATAPATH"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "title": "Write a symbolic fetch routine",
+      "prompt": "Describe a fetch routine with PC, an address register, a memory data register and an instruction register. Leave unspecified cycle counts explicit.",
+      "rubric": [
+        "Copy the required PC address to the address register and initiate the read according to the interface.",
+        "Wait for memory completion before using the received data; transfer the instruction into IR.",
+        "Advance PC using the declared instruction size. Any overlap must be justified by the actual datapath; no invented bus connections are assumed."
+      ]
+    },
+    {
+      "id": "ds.guided.co.t08.control",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_04_CONTROL_COMPARE"
+      ],
+      "subtopicIds": [
+        "CO_ST08_02_CONTROL_ENCODING"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "title": "Compare two control organizations",
+      "prompt": "Explain one flexibility trade-off and one implementation-cost trade-off between hardwired and microprogrammed control.",
+      "rubric": [
+        "Distinguish generated control logic from stored control sequences.",
+        "Discuss modifying behavior, control-store size or decoding/timing with explicit assumptions.",
+        "Do not claim one organization always wins in speed or correctness."
+      ]
+    },
+    {
+      "id": "ds.guided.co.t08.optimize",
+      "version": "1",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "skillIds": [
+        "CO_SK08_05_MICRO_OPT"
+      ],
+      "subtopicIds": [
+        "CO_ST08_03_MICRO_OPT"
+      ],
+      "sourceIds": [
+        "ref-0b54bc0d278f8d07",
+        "ref-7d81fa87adf87c16"
+      ],
+      "title": "Audit an overlapping routine",
+      "prompt": "A proposed optimization uses a memory result before the memory-complete signal because the previous read finished quickly. Explain why it is unsafe and what evidence a safe overlap needs.",
+      "rubric": [
+        "A prior read’s latency does not satisfy this read’s completion dependency.",
+        "Keep the wait for the dependent use; overlap only independent work that does not disturb the pending request.",
+        "Check actual datapath resource compatibility and architectural equivalence. Multiple safe schedules may remain."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t11",
+    "version": "1",
+    "topicId": "CO_T11_CACHE",
+    "blocks": [
+      {
+        "id": "ds.block.co.t11.model",
+        "version": "1",
+        "topicId": "CO_T11_CACHE",
+        "skillIds": [
+          "CO_SK11_01_CACHE_BITS",
+          "CO_SK11_02_CACHE_TRACE",
+          "CO_SK11_03_CACHE_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST11_01_ADDRESS",
+          "CO_ST11_02_TRACE",
+          "CO_ST11_03_LOCALITY"
+        ],
+        "sourceIds": [
+          "ref-bdab95d59474f2ad"
+        ],
+        "kind": "introduction",
+        "title": "A cache keeps selected memory blocks close to the CPU",
+        "paragraphs": [
+          "A cache stores copies of blocks identified by address information. The placement rule chooses a set, the tag identifies which block occupies a way, and the replacement rule chooses a victim when that set is full.",
+          "Our workspace is an initially empty read-only cache with allocation on every read miss and least-recently-used replacement. It does not silently assume write-policy behavior or model access latency."
+        ]
+      },
+      {
+        "id": "ds.block.co.t11.fields",
+        "version": "1",
+        "topicId": "CO_T11_CACHE",
+        "skillIds": [
+          "CO_SK11_01_CACHE_BITS"
+        ],
+        "subtopicIds": [
+          "CO_ST11_01_ADDRESS"
+        ],
+        "sourceIds": [
+          "ref-bdab95d59474f2ad"
+        ],
+        "kind": "worked_example",
+        "title": "Decompose an address without adding way bits",
+        "paragraphs": [
+          "For eight-bit byte addresses, four-byte blocks, two sets and two ways, the offset has two bits, set index one bit and tag five bits. Ways are alternatives inside a set, not an additional address field. Data capacity is 4×2×2 = 16 bytes, excluding metadata.",
+          "Byte address 45 has block number floor(45/4)=11 and offset 1. Set = 11 mod 2 = 1; tag = floor(11/2)=5. Reconstruct the address as ((5×2)+1)×4+1 = 45."
+        ]
+      },
+      {
+        "id": "ds.block.co.t11.trace",
+        "version": "1",
+        "topicId": "CO_T11_CACHE",
+        "skillIds": [
+          "CO_SK11_02_CACHE_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST11_02_TRACE"
+        ],
+        "sourceIds": [
+          "ref-bdab95d59474f2ad"
+        ],
+        "kind": "worked_example",
+        "title": "A hit changes LRU order",
+        "paragraphs": [
+          "Use the stated two-way cache and read byte addresses 0,8,0,16,8. All map to set 0 with tags 0,1,0,2,1. Starting empty, the results are miss, miss, hit, miss, miss.",
+          "Store tags from least to most recently used. After each access, set 0 is [0], [0,1], [1,0], [0,2], [2,1]. The hit on tag 0 makes tag 1 the next victim; treating a hit as no state change would implement the wrong replacement behavior.",
+          "Reads 0,1,3 share one four-byte block and therefore produce miss, hit, hit from an empty cache. Distinguish a byte change from a block change."
+        ]
+      },
+      {
+        "id": "ds.block.co.t11.locality",
+        "version": "1",
+        "topicId": "CO_T11_CACHE",
+        "skillIds": [
+          "CO_SK11_03_CACHE_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST11_03_LOCALITY"
+        ],
+        "sourceIds": [
+          "ref-bdab95d59474f2ad"
+        ],
+        "kind": "procedure",
+        "title": "Explain a transformation through its access sequence",
+        "paragraphs": [
+          "Temporal locality reuses recently accessed data; spatial locality accesses nearby addresses in the same or neighboring blocks. To justify a transformation, compare the actual access order, block mapping and live working set.",
+          "For row-major array storage, traversing adjacent elements of a row tends to use contiguous addresses. Changing traversal order or blocking a computation can improve reuse, but the benefit depends on dimensions, block size, associativity and competing data.",
+          "Do not promise a hit rate from the word “locality” alone. Trace a small representative case under the given cache and check that program dependencies and results are preserved."
+        ]
+      },
+      {
+        "id": "ds.block.co.t11.policies",
+        "version": "1",
+        "topicId": "CO_T11_CACHE",
+        "skillIds": [
+          "CO_SK11_02_CACHE_TRACE",
+          "CO_SK11_03_CACHE_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST11_02_TRACE",
+          "CO_ST11_03_LOCALITY"
+        ],
+        "sourceIds": [
+          "ref-bdab95d59474f2ad"
+        ],
+        "kind": "concept",
+        "title": "Keep replacement and write decisions separate",
+        "paragraphs": [
+          "LRU chooses the least recently accessed resident line. FIFO instead follows insertion order; a hit need not change that order. A task must state which policy to trace.",
+          "Write-through propagates writes toward the next level immediately under its protocol; write-back records a dirty cached copy for later writeback. Write allocation is a separate miss decision. The read-only workspace implements none of these write transitions, so write traces need an explicitly specified model."
+        ]
+      },
+      {
+        "id": "ds.block.co.t11.recap",
+        "version": "1",
+        "topicId": "CO_T11_CACHE",
+        "skillIds": [
+          "CO_SK11_01_CACHE_BITS",
+          "CO_SK11_02_CACHE_TRACE",
+          "CO_SK11_03_CACHE_OPT"
+        ],
+        "subtopicIds": [
+          "CO_ST11_01_ADDRESS",
+          "CO_ST11_02_TRACE",
+          "CO_ST11_03_LOCALITY"
+        ],
+        "sourceIds": [
+          "ref-bdab95d59474f2ad"
+        ],
+        "kind": "recap",
+        "title": "Reconstruct addresses and retain exact state",
+        "paragraphs": [
+          "Derive block, set, tag and offset; look up the tag only in its selected set; apply the declared replacement rule; and record every state change, including hits.",
+          "Use the cache workspace to step the controlled LRU trace. Practice offers address-field and hit/miss checks plus unscored optimization reasoning."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t11.fields",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_01_CACHE_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST11_01_ADDRESS"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "prompt": "Where do associativity bits appear in a cache address?",
+      "answer": "They do not form a separate address field. Address bits select block offset, set index and tag; ways are alternatives within the selected set."
+    },
+    {
+      "id": "ds.card.co.t11.capacity",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_01_CACHE_BITS"
+      ],
+      "subtopicIds": [
+        "CO_ST11_01_ADDRESS"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "prompt": "What data capacity has S sets, W ways and B-byte blocks?",
+      "answer": "S×W×B bytes, excluding tags and validity/replacement metadata. Be explicit whether a supplied capacity includes metadata."
+    },
+    {
+      "id": "ds.card.co.t11.lru",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_02_CACHE_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST11_02_TRACE"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "prompt": "Does an LRU hit change replacement state?",
+      "answer": "Yes. Move the accessed line to most recently used. Otherwise a later victim can be wrong."
+    },
+    {
+      "id": "ds.card.co.t11.block",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_02_CACHE_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST11_02_TRACE"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "prompt": "Can different byte addresses hit the same cache line?",
+      "answer": "Yes, when they belong to the same memory block and that block is resident in its selected set. Their offsets differ while block identity stays the same."
+    },
+    {
+      "id": "ds.card.co.t11.locality",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_03_CACHE_OPT"
+      ],
+      "subtopicIds": [
+        "CO_ST11_03_LOCALITY"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "prompt": "How should a cache optimization claim be justified?",
+      "answer": "Show the changed access order and resulting block reuse/conflicts under the stated cache, while preserving program results. Locality is not a guaranteed hit percentage."
+    },
+    {
+      "id": "ds.card.co.t11.write",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_02_CACHE_TRACE",
+        "CO_SK11_03_CACHE_OPT"
+      ],
+      "subtopicIds": [
+        "CO_ST11_02_TRACE",
+        "CO_ST11_03_LOCALITY"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "prompt": "Are replacement policy and write policy the same choice?",
+      "answer": "No. Replacement selects a victim. Write-through/write-back and allocation decisions determine how writes propagate and whether a miss installs a line."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t11.locality",
+      "version": "1",
+      "topicId": "CO_T11_CACHE",
+      "skillIds": [
+        "CO_SK11_03_CACHE_OPT"
+      ],
+      "subtopicIds": [
+        "CO_ST11_03_LOCALITY"
+      ],
+      "sourceIds": [
+        "ref-bdab95d59474f2ad"
+      ],
+      "title": "Justify an access-order change",
+      "prompt": "A row-major array is traversed column by column. Explain when row-by-row traversal might reduce misses, and why it is not an unconditional guarantee.",
+      "rubric": [
+        "Relate adjacent row elements to nearby addresses and spatial locality.",
+        "State dimensions, cache block size/capacity/associativity and other active data needed for a concrete trace.",
+        "Preserve program dependencies and results; compare actual block accesses rather than claiming a fixed improvement."
+      ]
+    }
+  ]
+}

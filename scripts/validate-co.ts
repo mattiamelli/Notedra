@@ -1,0 +1,2 @@
+import {validateCOFiles} from './co-content';
+const data=validateCOFiles();console.log(`CO PASS: 14 topics / 32 subtopics / 46 skills; ${data.topics.length} new lessons; ${data.topics.flatMap(t=>t.cards).length+8} CO cards; ${data.exercises.length} new exact exercises; ${data.topics.flatMap(t=>t.guided).length} unscored activities; ${data.tools.length} tools including Assembly. Locks, sources, coverage and capabilities match.`);

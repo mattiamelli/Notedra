@@ -1,0 +1,247 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t05",
+    "version": "1",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "blocks": [
+      {
+        "id": "ds.block.co.t05.model",
+        "version": "1",
+        "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+        "skillIds": [
+          "CO_SK05_01_FIXED",
+          "CO_SK05_02_FLOAT_ENCODE",
+          "CO_SK05_03_FLOAT_RANGE"
+        ],
+        "subtopicIds": [
+          "CO_ST05_01_FIXED",
+          "CO_ST05_02_FLOAT"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "introduction",
+        "title": "A format is a contract for interpreting bits",
+        "paragraphs": [
+          "Fixed point assigns a fixed scale to an integer code. Floating point divides the code into sign, exponent and significand information. In both cases, start with the declared format before interpreting a bit pattern.",
+          "The examples use explicitly specified teaching formats. They are not IEEE encodings and do not inherit IEEE zero, subnormal, infinity or NaN rules."
+        ]
+      },
+      {
+        "id": "ds.block.co.t05.fixed",
+        "version": "1",
+        "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+        "skillIds": [
+          "CO_SK05_01_FIXED"
+        ],
+        "subtopicIds": [
+          "CO_ST05_01_FIXED"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "Scale a signed integer code",
+        "paragraphs": [
+          "For a five-bit twos’ complement code with two fractional bits, divide the signed integer by 4. Code 11010 is 26 unsigned but 26−32 = −6 signed, so its fixed-point value is −1.5.",
+          "The step is 1/4. Integer codes range from −16 to 15, giving values from −4 to 3.75. To encode an exactly representable value, multiply by 4, check the integer range and encode that signed integer. A non-integer scaled result needs a specified rounding rule."
+        ]
+      },
+      {
+        "id": "ds.block.co.t05.float-format",
+        "version": "1",
+        "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+        "skillIds": [
+          "CO_SK05_02_FLOAT_ENCODE",
+          "CO_SK05_03_FLOAT_RANGE"
+        ],
+        "subtopicIds": [
+          "CO_ST05_02_FLOAT"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "concept",
+        "title": "Declare the exponent and significand rules",
+        "paragraphs": [
+          "Our custom format has one sign bit, three exponent bits E, three fraction bits F, bias 2 and a hidden leading 1. Every exponent code, including 000 and 111, is ordinary. Its value is (−1)^sign × (1 + F/8) × 2^(E−2). Zero has no representation in this particular format.",
+          "Normalization means choosing the exponent so that the positive significand lies in [1,2). The stored exponent is the actual exponent plus the stated bias. Check field bounds instead of assuming an exponent reservation rule."
+        ]
+      },
+      {
+        "id": "ds.block.co.t05.float-example",
+        "version": "1",
+        "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+        "skillIds": [
+          "CO_SK05_02_FLOAT_ENCODE"
+        ],
+        "subtopicIds": [
+          "CO_ST05_02_FLOAT"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "Encode and decode 5.5",
+        "paragraphs": [
+          "5.5 in binary is 101.1 = 1.011 × 2². In the declared format, sign=0, E=2+2=4 (100), F=3 (011). The concatenated code is 0 100 011.",
+          "Decode independently: (1 + 3/8) × 2^(4−2) = 1.375 × 4 = 5.5. Changing the sign bit gives −5.5 without changing the exponent or fraction."
+        ]
+      },
+      {
+        "id": "ds.block.co.t05.range",
+        "version": "1",
+        "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+        "skillIds": [
+          "CO_SK05_03_FLOAT_RANGE"
+        ],
+        "subtopicIds": [
+          "CO_ST05_02_FLOAT"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "Range and spacing follow the declared extremes",
+        "paragraphs": [
+          "The smallest positive value is 1.000 × 2^(0−2) = 0.25. The largest is 1.111 × 2^(7−2) = 1.875 × 32 = 60. Do not remove these endpoints using rules from a different format.",
+          "At actual exponent 2, one fraction-code step changes the value by 2²/8 = 0.5. More fraction bits improve spacing at a given exponent; more exponent range reaches different scales. Not every real number between the endpoints is representable."
+        ]
+      },
+      {
+        "id": "ds.block.co.t05.recap",
+        "version": "1",
+        "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+        "skillIds": [
+          "CO_SK05_01_FIXED",
+          "CO_SK05_02_FLOAT_ENCODE",
+          "CO_SK05_03_FLOAT_RANGE"
+        ],
+        "subtopicIds": [
+          "CO_ST05_01_FIXED",
+          "CO_ST05_02_FLOAT"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "recap",
+        "title": "Interpret fields before calculating",
+        "paragraphs": [
+          "For fixed point, determine signed integer value then apply the scale. For floating point, write the exact sign/significand/exponent formula, normalize, apply bias and check representability.",
+          "The representation workspace uses these same explicit custom-format rules. Practice gives fixed reference tasks; no unspecified rounding behavior is graded."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t05.fixed",
+      "version": "1",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "skillIds": [
+        "CO_SK05_01_FIXED"
+      ],
+      "subtopicIds": [
+        "CO_ST05_01_FIXED"
+      ],
+      "sourceIds": [
+        "ref-0bdffbfe1e3a0c74",
+        "ref-d34d5054a177a3a8"
+      ],
+      "prompt": "How do you decode a signed fixed-point code with f fractional bits?",
+      "answer": "Interpret the underlying signed integer first, then divide by 2^f. The least significant step is 2^(−f)."
+    },
+    {
+      "id": "ds.card.co.t05.fixed-encode",
+      "version": "1",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "skillIds": [
+        "CO_SK05_01_FIXED"
+      ],
+      "subtopicIds": [
+        "CO_ST05_01_FIXED"
+      ],
+      "sourceIds": [
+        "ref-0bdffbfe1e3a0c74",
+        "ref-d34d5054a177a3a8"
+      ],
+      "prompt": "When is a value exactly encodable in a fixed-point format?",
+      "answer": "After multiplication by 2^f it must be an integer within the signed or unsigned code range. Otherwise a declared rounding/overflow rule is needed."
+    },
+    {
+      "id": "ds.card.co.t05.bias",
+      "version": "1",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "skillIds": [
+        "CO_SK05_02_FLOAT_ENCODE"
+      ],
+      "subtopicIds": [
+        "CO_ST05_02_FLOAT"
+      ],
+      "sourceIds": [
+        "ref-0bdffbfe1e3a0c74",
+        "ref-d34d5054a177a3a8"
+      ],
+      "prompt": "How are stored and actual exponents related under bias B?",
+      "answer": "actual exponent = stored exponent − B; stored exponent = actual exponent + B. Use the specified bias."
+    },
+    {
+      "id": "ds.card.co.t05.normal",
+      "version": "1",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "skillIds": [
+        "CO_SK05_02_FLOAT_ENCODE"
+      ],
+      "subtopicIds": [
+        "CO_ST05_02_FLOAT"
+      ],
+      "sourceIds": [
+        "ref-0bdffbfe1e3a0c74",
+        "ref-d34d5054a177a3a8"
+      ],
+      "prompt": "What does normalizing a positive binary significand to [1,2) accomplish?",
+      "answer": "It places one leading 1 before the binary point and compensates with the exponent. Whether that 1 is stored or hidden is a separate format rule."
+    },
+    {
+      "id": "ds.card.co.t05.range",
+      "version": "1",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "skillIds": [
+        "CO_SK05_03_FLOAT_RANGE"
+      ],
+      "subtopicIds": [
+        "CO_ST05_02_FLOAT"
+      ],
+      "sourceIds": [
+        "ref-0bdffbfe1e3a0c74",
+        "ref-d34d5054a177a3a8"
+      ],
+      "prompt": "May you reserve all-zero or all-one exponent codes without being told to?",
+      "answer": "No. Special-code rules belong to the specified format. The teaching workspace treats all exponent codes as ordinary."
+    },
+    {
+      "id": "ds.card.co.t05.spacing",
+      "version": "1",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "skillIds": [
+        "CO_SK05_03_FLOAT_RANGE"
+      ],
+      "subtopicIds": [
+        "CO_ST05_02_FLOAT"
+      ],
+      "sourceIds": [
+        "ref-0bdffbfe1e3a0c74",
+        "ref-d34d5054a177a3a8"
+      ],
+      "prompt": "What is the spacing for hidden-one binary values at exponent e with f fraction bits?",
+      "answer": "Within that exponent bin, adjacent fraction codes differ by 2^(e−f). Exponent range and fraction precision are different constraints."
+    }
+  ],
+  "guided": []
+}

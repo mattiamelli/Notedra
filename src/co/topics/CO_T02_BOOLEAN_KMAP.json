@@ -1,0 +1,371 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t02",
+    "version": "1",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "blocks": [
+      {
+        "id": "ds.block.co.t02.model",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_01_BOOLEAN_EVAL",
+          "CO_SK02_02_SOP",
+          "CO_SK02_03_KMAP_BUILD",
+          "CO_SK02_04_KMAP_MINIMIZE"
+        ],
+        "subtopicIds": [
+          "CO_ST02_01_BOOLEAN",
+          "CO_ST02_02_KMAP"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "introduction",
+        "title": "One truth function, several representations",
+        "paragraphs": [
+          "A Boolean function maps each complete input assignment to one output bit. A formula, truth table, sum-of-products and Karnaugh map are different representations of that same mapping.",
+          "Keep the variable order explicit. Here A is the most significant input bit. The authored examples use three variables only to make the mathematics inspectable; they do not prescribe the variable count of a future course question."
+        ]
+      },
+      {
+        "id": "ds.block.co.t02.evaluate",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_01_BOOLEAN_EVAL",
+          "CO_SK02_02_SOP"
+        ],
+        "subtopicIds": [
+          "CO_ST02_01_BOOLEAN"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "worked_example",
+        "title": "Evaluate every row before simplifying",
+        "paragraphs": [
+          "Consider F = (A AND B) OR (A AND NOT B). With A fixed at zero, both products are zero. With A fixed at one, one of B and NOT B is one, so F is one. Thus F = A.",
+          "In row order AB = 00, 01, 10, 11, the output is 0, 0, 1, 1. Expanding the true rows gives the canonical SoP A·NOT B + A·B; factoring gives A·(NOT B + B) = A."
+        ],
+        "table": {
+          "headers": [
+            "A",
+            "B",
+            "F"
+          ],
+          "rows": [
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "1",
+              "0",
+              "1"
+            ],
+            [
+              "1",
+              "1",
+              "1"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.co.t02.sop",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_02_SOP"
+        ],
+        "subtopicIds": [
+          "CO_ST02_01_BOOLEAN"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "procedure",
+        "title": "Construct a sum-of-products",
+        "paragraphs": [
+          "For each required true row, write one product containing every variable: use a variable for input one and its complement for input zero. OR those products. Check that every required one is covered and no required zero is covered.",
+          "A shorter SoP may omit variables that change within a valid group. Formula text is not a unique answer: equivalent products can be reordered, and more than one minimum cover can exist. The self-check evaluates the function and the coverage criteria, not one spelling."
+        ]
+      },
+      {
+        "id": "ds.block.co.t02.populate",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_03_KMAP_BUILD"
+        ],
+        "subtopicIds": [
+          "CO_ST02_02_KMAP"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "worked_example",
+        "title": "Populate a Gray-ordered map",
+        "paragraphs": [
+          "For three inputs, use rows A = 0, 1 and columns BC = 00, 01, 11, 10. The Gray order makes neighboring columns differ in one bit. Copy each truth-table output into its labelled cell, not into ordinary binary column order.",
+          "For F = C, the true minterms ABC are 001, 011, 101, 111. Both rows of the map read 0, 1, 1, 0. The two middle columns form a four-cell rectangle."
+        ],
+        "table": {
+          "headers": [
+            "A \\ BC",
+            "00",
+            "01",
+            "11",
+            "10"
+          ],
+          "rows": [
+            [
+              "0",
+              "0",
+              "1",
+              "1",
+              "0"
+            ],
+            [
+              "1",
+              "0",
+              "1",
+              "1",
+              "0"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.co.t02.groups",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_04_KMAP_MINIMIZE"
+        ],
+        "subtopicIds": [
+          "CO_ST02_02_KMAP"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "procedure",
+        "title": "Group adjacent cells and retain fixed variables",
+        "paragraphs": [
+          "A valid rectangular group contains 1, 2, 4, 8, … cells and spans powers of two in each dimension. Edges wrap: columns 00 and 10 are adjacent because only B changes. Diagonal cells are not adjacent. Every covered cell must be a one or an allowed don’t-care, and all required ones must be covered.",
+          "The four-cell group for F = C changes A and B but holds C = 1, so its implicant is C. For NOT C, columns 00 and 10 form a wrapping four-cell group and retain C = 0. Larger valid groups remove more literals; overlapping groups are allowed. Compare complete covers rather than choosing a large group that leaves a one uncovered."
+        ]
+      },
+      {
+        "id": "ds.block.co.t02.dont-care",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_03_KMAP_BUILD",
+          "CO_SK02_04_KMAP_MINIMIZE"
+        ],
+        "subtopicIds": [
+          "CO_ST02_02_KMAP"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "worked_example",
+        "title": "Use don’t-cares only when they help",
+        "paragraphs": [
+          "Suppose required ones are minterms 1 and 3, don’t-cares are 5 and 7, and all other rows must be zero. Without using don’t-cares, a valid term is NOT A·C. Including the two don’t-cares allows the four-cell group C.",
+          "Both functions meet every specified row. Don’t-cares need not be covered and are not required ones. C has fewer literals here. In other problems several minimal covers can satisfy the same specified rows; none should be rejected simply for differing from one reference drawing."
+        ]
+      },
+      {
+        "id": "ds.block.co.t02.recap",
+        "version": "1",
+        "topicId": "CO_T02_BOOLEAN_KMAP",
+        "skillIds": [
+          "CO_SK02_01_BOOLEAN_EVAL",
+          "CO_SK02_02_SOP",
+          "CO_SK02_03_KMAP_BUILD",
+          "CO_SK02_04_KMAP_MINIMIZE"
+        ],
+        "subtopicIds": [
+          "CO_ST02_01_BOOLEAN",
+          "CO_ST02_02_KMAP"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d"
+        ],
+        "kind": "recap",
+        "title": "Check meaning before appearance",
+        "paragraphs": [
+          "Fix variable order, enumerate the function, populate Gray-labelled cells, then choose legal groups and derive their fixed literals. Verify the result against every specified input.",
+          "Practice offers deterministic truth-function and map-population checks, plus unscored SoP/grouping criteria. The Boolean workspace explores truth values; it does not claim to grade arbitrary K-map drawings."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t02.truth",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_01_BOOLEAN_EVAL"
+      ],
+      "subtopicIds": [
+        "CO_ST02_01_BOOLEAN"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "What must stay fixed when comparing a Boolean formula with a truth table?",
+      "answer": "The variable identities and row order. Compare the output for every assignment; one differing specified row refutes equivalence."
+    },
+    {
+      "id": "ds.card.co.t02.sop",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_02_SOP"
+      ],
+      "subtopicIds": [
+        "CO_ST02_01_BOOLEAN"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "How is a minterm formed from one true row?",
+      "answer": "Include every variable once: uncomplemented for input 1 and complemented for input 0. OR the true-row minterms to obtain canonical SoP."
+    },
+    {
+      "id": "ds.card.co.t02.gray",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_03_KMAP_BUILD"
+      ],
+      "subtopicIds": [
+        "CO_ST02_02_KMAP"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "Why use BC columns 00, 01, 11, 10 in a K-map?",
+      "answer": "Successive columns differ in exactly one bit. Ordinary binary order would put 01 next to 10 even though both bits change."
+    },
+    {
+      "id": "ds.card.co.t02.x",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_03_KMAP_BUILD"
+      ],
+      "subtopicIds": [
+        "CO_ST02_02_KMAP"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "Must a don’t-care cell be covered?",
+      "answer": "No. It may be treated as 0 or 1 where helpful, while every specified 1 must be covered and every specified 0 excluded."
+    },
+    {
+      "id": "ds.card.co.t02.wrap",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_04_KMAP_MINIMIZE"
+      ],
+      "subtopicIds": [
+        "CO_ST02_02_KMAP"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "Are the first and last Gray-ordered columns adjacent?",
+      "answer": "Yes. Map edges wrap when the labels differ in one bit. Diagonal contact alone is not adjacency."
+    },
+    {
+      "id": "ds.card.co.t02.implicant",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_04_KMAP_MINIMIZE"
+      ],
+      "subtopicIds": [
+        "CO_ST02_02_KMAP"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "Which variables survive in the implicant of a group?",
+      "answer": "Only variables constant across every cell: keep a variable for constant 1 and its complement for constant 0. Variables that change disappear."
+    },
+    {
+      "id": "ds.card.co.t02.covers",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_04_KMAP_MINIMIZE"
+      ],
+      "subtopicIds": [
+        "CO_ST02_02_KMAP"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "prompt": "Can two different K-map covers both be valid minima?",
+      "answer": "Yes. Check legality, coverage, equivalence on specified rows and the stated cost criterion. A different drawing is not automatically wrong."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t02.sop",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_02_SOP"
+      ],
+      "subtopicIds": [
+        "CO_ST02_01_BOOLEAN"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "title": "Build and verify a SoP",
+      "prompt": "Write a SoP for the two-input function whose output rows 00,01,10,11 are 0,1,1,0.",
+      "rubric": [
+        "Canonical SoP is NOT A·B + A·NOT B. Equivalent ordering is allowed.",
+        "Check all four rows. A+B is wrong because it includes 11.",
+        "The workspace does not parse or automatically score arbitrary formula text."
+      ]
+    },
+    {
+      "id": "ds.guided.co.t02.groups",
+      "version": "1",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "skillIds": [
+        "CO_SK02_04_KMAP_MINIMIZE"
+      ],
+      "subtopicIds": [
+        "CO_ST02_02_KMAP"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d"
+      ],
+      "title": "Compare valid grouping choices",
+      "prompt": "Use the three-variable Gray layout from Learn. Required ones: 1,3; don’t-cares: 5,7; all others zero. Explain two valid covers and why one has fewer literals.",
+      "rubric": [
+        "NOT A·C covers exactly the required ones; C also includes allowed don’t-cares.",
+        "C is the four-cell group at columns 01 and 11, across both A rows, and uses one literal.",
+        "Check rectangular power-of-two groups, wrap rules and specified zero exclusion. Multiple valid answers are accepted through self-check, not numeric grading."
+      ]
+    }
+  ]
+}

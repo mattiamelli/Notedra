@@ -1,0 +1,247 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t09",
+    "version": "1",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "blocks": [
+      {
+        "id": "ds.block.co.t09.model",
+        "version": "1",
+        "topicId": "CO_T09_IO_INTERRUPTS",
+        "skillIds": [
+          "CO_SK09_01_BUS_REASON",
+          "CO_SK09_02_IO_ADDRESS",
+          "CO_SK09_03_INTERRUPT_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST09_01_BUS_IO",
+          "CO_ST09_02_ADDRESS_DECODE",
+          "CO_ST09_03_INTERRUPTS"
+        ],
+        "sourceIds": [
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "introduction",
+        "title": "Communication needs an agreement about who drives what",
+        "paragraphs": [
+          "I/O connects devices with different timing and service needs to the processor/memory system. A bus transaction needs an address or device selection, data direction and control/timing that tells participants when information is valid.",
+          "Polling asks software to check device status; interrupts let an event request attention. Neither mechanism removes the need to identify the device, transfer data and acknowledge completion correctly."
+        ]
+      },
+      {
+        "id": "ds.block.co.t09.bus",
+        "version": "1",
+        "topicId": "CO_T09_IO_INTERRUPTS",
+        "skillIds": [
+          "CO_SK09_01_BUS_REASON"
+        ],
+        "subtopicIds": [
+          "CO_ST09_01_BUS_IO"
+        ],
+        "sourceIds": [
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "concept",
+        "title": "Separate selection, driving and completion",
+        "paragraphs": [
+          "Only the selected driver should drive a shared data line during a transfer. A tri-state output can be high, low or high-impedance; high-impedance releases the line and is not another Boolean data value.",
+          "A synchronous interface uses its defined clock timing. An asynchronous handshake signals readiness/completion explicitly. In either case, hold information valid for the specified interval and avoid interpreting an undriven bus as valid data.",
+          "A daisy-chain grant passes priority through an ordered chain. Position affects which requester sees a grant first under that scheme; this is distinct from a separately specified programmable priority rule."
+        ]
+      },
+      {
+        "id": "ds.block.co.t09.decode",
+        "version": "1",
+        "topicId": "CO_T09_IO_INTERRUPTS",
+        "skillIds": [
+          "CO_SK09_02_IO_ADDRESS"
+        ],
+        "subtopicIds": [
+          "CO_ST09_02_ADDRESS_DECODE"
+        ],
+        "sourceIds": [
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "worked_example",
+        "title": "Ignored address lines produce aliases",
+        "paragraphs": [
+          "Consider an eight-bit byte address with decoder lines A0 and A3 ignored. Address 0x24 has the same decoded bits as 0x25, 0x2C and 0x2D. Varying two ignored binary lines produces four aliases.",
+          "Clear the ignored positions to obtain a base, enumerate their combinations, then keep all decoded positions fixed. Two device selectors collide if their accepted address sets overlap; changing only an ignored bit cannot separate them."
+        ]
+      },
+      {
+        "id": "ds.block.co.t09.interrupt",
+        "version": "1",
+        "topicId": "CO_T09_IO_INTERRUPTS",
+        "skillIds": [
+          "CO_SK09_03_INTERRUPT_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST09_03_INTERRUPTS"
+        ],
+        "sourceIds": [
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "worked_example",
+        "title": "Trace service using a stated priority policy",
+        "paragraphs": [
+          "Assume requests H and L arrive together at time 0, H has higher priority, service is non-preemptive, H takes 3 microseconds, L takes 5, and there is no entry/exit overhead. H runs on [0,3); L runs on [3,8). L starts after 3 microseconds and finishes after 8.",
+          "If overhead, arrival time, masking or preemption differs, redraw the schedule. A priority rule alone does not determine total latency. Keep request time, service start, service duration and completion time separate."
+        ]
+      },
+      {
+        "id": "ds.block.co.t09.compare",
+        "version": "1",
+        "topicId": "CO_T09_IO_INTERRUPTS",
+        "skillIds": [
+          "CO_SK09_01_BUS_REASON",
+          "CO_SK09_03_INTERRUPT_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST09_01_BUS_IO",
+          "CO_ST09_03_INTERRUPTS"
+        ],
+        "sourceIds": [
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "procedure",
+        "title": "Choose the mechanism for the stated workload",
+        "paragraphs": [
+          "Compare the time spent repeatedly checking status with the cost of handling an interrupt and transferring the data. Frequent tiny events and rare events can favor different arrangements; quantify only the costs actually specified.",
+          "For an interrupt trace, list arrivals, enabled/masked requests and priority, apply the allowed preemption rule, then add all stated overhead. Never silently assume that every new request interrupts the current handler."
+        ]
+      },
+      {
+        "id": "ds.block.co.t09.recap",
+        "version": "1",
+        "topicId": "CO_T09_IO_INTERRUPTS",
+        "skillIds": [
+          "CO_SK09_01_BUS_REASON",
+          "CO_SK09_02_IO_ADDRESS",
+          "CO_SK09_03_INTERRUPT_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST09_01_BUS_IO",
+          "CO_ST09_02_ADDRESS_DECODE",
+          "CO_ST09_03_INTERRUPTS"
+        ],
+        "sourceIds": [
+          "ref-786bac7f3cb5c7c8"
+        ],
+        "kind": "recap",
+        "title": "Make timing and decoding assumptions visible",
+        "paragraphs": [
+          "Check selected drivers and handshakes, enumerate aliases from ignored bits, and construct interrupt timelines from explicit arrivals, priorities and overhead.",
+          "Practice separates deterministic address/timing checks from open bus-organization reasoning. The address workbench explores aliases without claiming a universal hardware decoder."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t09.tristate",
+      "version": "1",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "skillIds": [
+        "CO_SK09_01_BUS_REASON"
+      ],
+      "subtopicIds": [
+        "CO_ST09_01_BUS_IO"
+      ],
+      "sourceIds": [
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "Is high-impedance a third Boolean data value?",
+      "answer": "No. It means the output releases the line. Another selected driver or specified circuit behavior must establish valid bus data."
+    },
+    {
+      "id": "ds.card.co.t09.alias",
+      "version": "1",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "skillIds": [
+        "CO_SK09_02_IO_ADDRESS"
+      ],
+      "subtopicIds": [
+        "CO_ST09_02_ADDRESS_DECODE"
+      ],
+      "sourceIds": [
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "How many aliases arise from k independently ignored address bits?",
+      "answer": "2^k combinations share the same decoded bits, within the specified address width. Changing an ignored bit does not select a different decoded location."
+    },
+    {
+      "id": "ds.card.co.t09.collision",
+      "version": "1",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "skillIds": [
+        "CO_SK09_02_IO_ADDRESS"
+      ],
+      "subtopicIds": [
+        "CO_ST09_02_ADDRESS_DECODE"
+      ],
+      "sourceIds": [
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "How can two partially decoded device addresses collide?",
+      "answer": "Their accepted address sets overlap. Compare the decoded constraints or enumerate aliases; different printed base addresses alone do not prove separation."
+    },
+    {
+      "id": "ds.card.co.t09.priority",
+      "version": "1",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "skillIds": [
+        "CO_SK09_03_INTERRUPT_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST09_03_INTERRUPTS"
+      ],
+      "sourceIds": [
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "What information is needed to trace interrupt service time?",
+      "answer": "Arrival times, priorities/masks, service durations, overhead and the permitted preemption policy. Priority alone is insufficient."
+    },
+    {
+      "id": "ds.card.co.t09.poll",
+      "version": "1",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "skillIds": [
+        "CO_SK09_01_BUS_REASON",
+        "CO_SK09_03_INTERRUPT_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST09_01_BUS_IO",
+        "CO_ST09_03_INTERRUPTS"
+      ],
+      "sourceIds": [
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "prompt": "Why is interrupt-driven I/O not automatically cheaper than polling?",
+      "answer": "Interrupt entry/exit and handler work also cost time. Compare actual event frequency and specified costs rather than assuming one mechanism always wins."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t09.bus",
+      "version": "1",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "skillIds": [
+        "CO_SK09_01_BUS_REASON"
+      ],
+      "subtopicIds": [
+        "CO_ST09_01_BUS_IO"
+      ],
+      "sourceIds": [
+        "ref-786bac7f3cb5c7c8"
+      ],
+      "title": "Explain a valid shared-bus transfer",
+      "prompt": "Explain why selecting a device, releasing other data drivers and waiting for valid data are three distinct requirements.",
+      "rubric": [
+        "Selection identifies the participant; driver control avoids contention; completion/timing establishes when data may be sampled.",
+        "High-impedance is release, not a valid third bit.",
+        "Use the stated synchronous or handshake contract; no unspecified timing diagram is reconstructed."
+      ]
+    }
+  ]
+}

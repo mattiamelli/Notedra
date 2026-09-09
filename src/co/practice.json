@@ -1,0 +1,926 @@
+[
+  {
+    "id": "ds.practice.co-boolean-rows",
+    "version": "1",
+    "title": "Check a Boolean truth function",
+    "prompt": "For F=(A AND B) OR (A AND NOT B), give the four output bits in AB row order 00,01,10,11.",
+    "rules": "Enter exactly 4 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_01_BOOLEAN",
+    "skillId": "CO_SK02_01_BOOLEAN_EVAL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0011"
+    },
+    "explanation": "Factoring A gives A\u00b7(B+NOT B)=A, so rows with A=0 give 0 and rows with A=1 give 1."
+  },
+  {
+    "id": "ds.practice.co-gray-population",
+    "version": "1",
+    "title": "Populate a Gray-ordered map",
+    "prompt": "For F=C, use rows A=0,1 and columns BC=00,01,11,10. Enter the four outputs for row A=0 followed by the four outputs for row A=1.",
+    "rules": "Enter exactly 8 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_02_KMAP",
+    "skillId": "CO_SK02_03_KMAP_BUILD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 8
+    },
+    "reference": {
+      "kind": "text",
+      "value": "01100110"
+    },
+    "explanation": "C values across the Gray columns are 0,1,1,0 for either value of A. Concatenating both rows gives 01100110."
+  },
+  {
+    "id": "ds.practice.co-cmos-nand",
+    "version": "1",
+    "title": "Trace a specified ideal CMOS network",
+    "prompt": "An ideal static gate has series nMOS A,B from output to low and parallel pMOS A,B from output to high. For A=1 and B=1, what is the output bit?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subtopicId": "CO_ST03_01_CMOS",
+    "skillId": "CO_SK03_01_CMOS_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0"
+    },
+    "explanation": "Both nMOS conduct, completing the low path. Both pMOS are off. The driven output is 0."
+  },
+  {
+    "id": "ds.practice.co-full-adder",
+    "version": "1",
+    "title": "Check a full-adder row",
+    "prompt": "A full adder receives A=1, B=0, Cin=1. Enter its carry bit followed by its sum bit.",
+    "rules": "Enter exactly 2 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subtopicId": "CO_ST03_02_COMBINATIONAL",
+    "skillId": "CO_SK03_03_COMB_BLOCK",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "10"
+    },
+    "explanation": "The input sum is 2. Since A+B+Cin=sum+2\u00b7carry, carry=1 and sum=0."
+  },
+  {
+    "id": "ds.practice.co-hex-addition",
+    "version": "1",
+    "title": "Add in hexadecimal",
+    "prompt": "Add hexadecimal 2B and 19. Give the two-digit hexadecimal result.",
+    "rules": "Enter exactly 2 hexadecimal digits. No prefix or spaces within the answer. Hexadecimal letter case is ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_01_RADIX",
+    "skillId": "CO_SK04_02_RADIX_ARITH",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "hex",
+      "width": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "44"
+    },
+    "explanation": "2B is decimal 43 and 19 is decimal 25; total 68 is hexadecimal 44. In the low column B+9=20 decimal, so write 4 and carry 1."
+  },
+  {
+    "id": "ds.practice.co-signed-five",
+    "version": "1",
+    "title": "Encode a signed integer",
+    "prompt": "Encode decimal \u22126 as five-bit twos\u2019 complement.",
+    "rules": "Enter exactly 5 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_02_SIGNED_INTEGER",
+    "skillId": "CO_SK04_03_SIGNED_ENCODE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 5
+    },
+    "reference": {
+      "kind": "text",
+      "value": "11010"
+    },
+    "explanation": "The five-bit code is 32\u22126=26, or 11010. Decoding its negative top weight gives \u221216+8+2=\u22126."
+  },
+  {
+    "id": "ds.practice.co-overflow-four",
+    "version": "1",
+    "title": "Detect signed overflow",
+    "prompt": "In four-bit twos\u2019 complement, add 0110 and 0011. Enter 1 if signed overflow occurs, otherwise 0.",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_02_SIGNED_INTEGER",
+    "skillId": "CO_SK04_04_OVERFLOW",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1"
+    },
+    "explanation": "6+3=9 exceeds the four-bit signed maximum 7. Low result 1001 denotes \u22127, so signed overflow occurs."
+  },
+  {
+    "id": "ds.practice.co-bcd-thirty-eight",
+    "version": "1",
+    "title": "Encode decimal digits separately",
+    "prompt": "Encode decimal 38 in eight-bit BCD, with the tens digit first.",
+    "rules": "Enter exactly 8 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_03_OTHER_ENCODINGS",
+    "skillId": "CO_SK04_05_BCD_EXCESS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 8
+    },
+    "reference": {
+      "kind": "text",
+      "value": "00111000"
+    },
+    "explanation": "3 is 0011 and 8 is 1000. Concatenate the decimal digit encodings; ordinary binary 38 is a different representation."
+  },
+  {
+    "id": "ds.practice.co-little-byte",
+    "version": "1",
+    "title": "Locate the low-address byte",
+    "prompt": "A two-byte value 0xA1B2 is stored little-endian. Which byte is at the lower address? Enter two hexadecimal digits.",
+    "rules": "Enter exactly 2 hexadecimal digits. No prefix or spaces within the answer. Hexadecimal letter case is ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_03_OTHER_ENCODINGS",
+    "skillId": "CO_SK04_06_ENDIAN",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "hex",
+      "width": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "B2"
+    },
+    "explanation": "Little-endian puts the least significant byte at the lowest address. For 0xA1B2 that byte is B2."
+  },
+  {
+    "id": "ds.practice.co-fixed-signed",
+    "version": "1",
+    "title": "Decode signed fixed point",
+    "prompt": "Interpret 11010 as five-bit twos\u2019 complement fixed point with two fractional bits. What decimal value does it represent?",
+    "rules": "Enter an exact decimal without units, a plus sign, exponent notation or internal spaces. Outer whitespace, leading zeroes and trailing fractional zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subtopicId": "CO_ST05_01_FIXED",
+    "skillId": "CO_SK05_01_FIXED",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "decimal",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "-1.5"
+    },
+    "explanation": "The signed integer code is 26\u221232=\u22126. Divide by 2\u00b2=4 to obtain \u22121.5."
+  },
+  {
+    "id": "ds.practice.co-custom-float-encode",
+    "version": "1",
+    "title": "Encode a declared custom float",
+    "prompt": "Use sign(1 bit), exponent E(3 bits), fraction F(3 bits), hidden leading 1 and bias 2. Every exponent code is ordinary; value=(\u22121)^sign\u00d7(1+F/8)\u00d72^(E\u22122). Encode positive 13 in seven bits.",
+    "rules": "Enter exactly 7 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subtopicId": "CO_ST05_02_FLOAT",
+    "skillId": "CO_SK05_02_FLOAT_ENCODE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 7
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0101101"
+    },
+    "explanation": "13=1101\u2082=1.101\u2082\u00d72\u00b3. Sign=0, stored E=3+2=5 (101), F=5 (101); concatenation is 0101101."
+  },
+  {
+    "id": "ds.practice.co-custom-float-maximum",
+    "version": "1",
+    "title": "Find a format\u2019s upper endpoint",
+    "prompt": "Use one sign bit, three exponent bits, three fraction bits, hidden leading 1 and bias 2. All exponent codes are ordinary, with no special values. What is the largest positive value?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subtopicId": "CO_ST05_02_FLOAT",
+    "skillId": "CO_SK05_03_FLOAT_RANGE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "60"
+    },
+    "explanation": "Largest significand is 1+7/8=1.875 and largest actual exponent is 7\u22122=5. Their product is 60."
+  },
+  {
+    "id": "ds.practice.co-eax-read",
+    "version": "1",
+    "title": "Read a partial-register write",
+    "prompt": "Reading-only x86-64 task, outside the Visualizer subset: RAX starts at 0x1122334455667788, then EAX is assigned 0xAB12. Give the resulting RAX as 16 hexadecimal digits.",
+    "rules": "Enter exactly 16 hexadecimal digits. No prefix or spaces within the answer. Hexadecimal letter case is ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subtopicId": "CO_ST06_01_SYNTAX_REGS",
+    "skillId": "CO_SK06_02_PARTIAL_REG",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "hex",
+      "width": 16
+    },
+    "reference": {
+      "kind": "text",
+      "value": "000000000000AB12"
+    },
+    "explanation": "Writing the 32-bit EAX zeroes the upper 32 bits of RAX. The 32-bit value is 0000AB12, so the full register is 000000000000AB12."
+  },
+  {
+    "id": "ds.practice.co-isa-capacity",
+    "version": "1",
+    "title": "Count opcode choices",
+    "prompt": "A 20-bit instruction has two register fields, each selecting among 10 registers, and a six-bit address. All remaining bits form the opcode, with no reservations. How many opcode codes fit?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_01_FORMAT",
+    "skillId": "CO_SK07_01_ISA_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_07",
+      "filename": "CO Lecture 7 - ISA Part 1.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "64"
+    },
+    "explanation": "Each register needs four bits. Opcode width is 20\u22128\u22126=6, giving 2\u2076=64 codes, not 63."
+  },
+  {
+    "id": "ds.practice.co-micro-transfer",
+    "version": "1",
+    "title": "Trace fixed microoperations",
+    "prompt": "Initially R1=7 and R2=5. Sequentially execute Y\u2190R1; Z\u2190Y\u2212R2; R1\u2190Z. What is final R1?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subtopicId": "CO_ST08_01_DATAPATH",
+    "skillId": "CO_SK08_01_MICRO_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_10",
+      "filename": "CO Lecture 10 - BPU Part 2.pdf",
+      "locator": "PDF_PAGES_1-28",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2"
+    },
+    "explanation": "Y becomes 7, Z becomes 7\u22125=2, and R1 then becomes 2. The sequence is sequential, not simultaneous."
+  },
+  {
+    "id": "ds.practice.co-control-width",
+    "version": "1",
+    "title": "Count encoded control groups",
+    "prompt": "Three independent encoded control groups have 8 source choices, 4 destination choices and 8 ALU choices. The listed counts already include any no-action choice. Exclude sequencing fields. How many bits in total?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subtopicId": "CO_ST08_02_CONTROL_ENCODING",
+    "skillId": "CO_SK08_03_CONTROL_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_10",
+      "filename": "CO Lecture 10 - BPU Part 2.pdf",
+      "locator": "PDF_PAGES_1-28",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "8"
+    },
+    "explanation": "The field widths are log2(8)=3, log2(4)=2 and log2(8)=3. Total is 8 bits."
+  },
+  {
+    "id": "ds.practice.co-address-alias",
+    "version": "1",
+    "title": "Find the highest address alias",
+    "prompt": "An eight-bit decoder ignores A0 and A4. What is the highest address alias of 0x42? Give two hexadecimal digits.",
+    "rules": "Enter exactly 2 hexadecimal digits. No prefix or spaces within the answer. Hexadecimal letter case is ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subtopicId": "CO_ST09_02_ADDRESS_DECODE",
+    "skillId": "CO_SK09_02_IO_ADDRESS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_11",
+      "filename": "CO Lecture 11 - IO.pdf",
+      "locator": "PDF_PAGES_1-35",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "hex",
+      "width": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "53"
+    },
+    "explanation": "Vary ignored bits 0 and 4 while holding decoded bits fixed. The aliases are 42,43,52,53 hexadecimal."
+  },
+  {
+    "id": "ds.practice.co-interrupt-completion",
+    "version": "1",
+    "title": "Count interrupt service and overhead",
+    "prompt": "H and L arrive together at time 0; H has priority. Service is non-preemptive. Each handler has 1 microsecond entry overhead, no exit overhead; H service takes 4 microseconds and L service 6. When does L finish, in microseconds?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subtopicId": "CO_ST09_03_INTERRUPTS",
+    "skillId": "CO_SK09_03_INTERRUPT_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_11",
+      "filename": "CO Lecture 11 - IO.pdf",
+      "locator": "PDF_PAGES_1-35",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "12"
+    },
+    "explanation": "H entry [0,1), service [1,5); L entry [5,6), service [6,12). Completion is 12 microseconds."
+  },
+  {
+    "id": "ds.practice.co-memory-chips",
+    "version": "1",
+    "title": "Build a wider, deeper memory",
+    "prompt": "How many 1024-word \u00d7 8-bit chips are needed for exactly 4096 words \u00d7 16 bits? Use separate whole-chip depth groups and parallel bit slices.",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subtopicId": "CO_ST10_02_MEMORY_CHIPS",
+    "skillId": "CO_SK10_02_MEMORY_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_12",
+      "filename": "CO Lecture 12 - Memory.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "8"
+    },
+    "explanation": "Depth groups=4096/1024=4; parallel chips=16/8=2; total=8 chips."
+  },
+  {
+    "id": "ds.practice.co-bank-index",
+    "version": "1",
+    "title": "Map a word to a bank",
+    "prompt": "Low-order interleaving uses 8 banks, bank=word address mod 8. Which bank holds word address 27? Banks are numbered 0\u20137.",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subtopicId": "CO_ST10_02_MEMORY_CHIPS",
+    "skillId": "CO_SK10_03_INTERLEAVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_12",
+      "filename": "CO Lecture 12 - Memory.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "3"
+    },
+    "explanation": "27=3\u00d78+3, so bank is 3 and row is 3. This is a word address, not a byte address."
+  },
+  {
+    "id": "ds.practice.co-cache-tag-width",
+    "version": "1",
+    "title": "Separate cache address fields",
+    "prompt": "For 16-bit byte addresses, 16-byte blocks, 8 sets and 2 ways, how many tag bits are required? Capacity excludes metadata.",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_01_ADDRESS",
+    "skillId": "CO_SK11_01_CACHE_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "9"
+    },
+    "explanation": "Offset=4 bits, set index=3 bits, leaving 16\u22124\u22123=9 tag bits. Ways do not add an address field."
+  },
+  {
+    "id": "ds.practice.co-cache-lru-trace",
+    "version": "1",
+    "title": "Trace LRU hits",
+    "prompt": "An initially empty read-allocate LRU cache has 8-bit byte addresses, 4-byte blocks, 2 sets and 2 ways. Read 0,8,0,16,8. Give one bit per access: 1=hit, 0=miss.",
+    "rules": "Enter exactly 5 binary digits. No prefix or spaces within the answer.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_02_TRACE",
+    "skillId": "CO_SK11_02_CACHE_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 5
+    },
+    "reference": {
+      "kind": "text",
+      "value": "00100"
+    },
+    "explanation": "Set-0 tags are 0,1,0,2,1. The third access refreshes tag 0, so tag 1 is evicted next. Results are miss,miss,hit,miss,miss."
+  },
+  {
+    "id": "ds.practice.co-pipeline-total",
+    "version": "1",
+    "title": "Count pipeline completion cycles",
+    "prompt": "Six instructions issue through five equal pipeline stages, one per cycle. There are exactly two additional, non-overlapping stall cycles. From first stage start to last stage completion, how many cycles?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T12_PIPELINE",
+    "subtopicId": "CO_ST12_01_THROUGHPUT",
+    "skillId": "CO_SK12_01_PIPE_PERF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_14",
+      "filename": "CO Lecture 14 - Pipelining.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "12"
+    },
+    "explanation": "Ideal total is 5+6\u22121=10 cycles. Add the two stated stalls: 12."
+  },
+  {
+    "id": "ds.practice.co-pipeline-load-use",
+    "version": "1",
+    "title": "Respect load-result availability",
+    "prompt": "Use five stages F,D,X,M,W with in-order issue and forwarding. A load starts F in cycle 1; its result is ready only after M in cycle 4. The next ALU instruction consumes it at the start of X. Fetch waits as needed. In which cycle does the consumer finish W?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T12_PIPELINE",
+    "subtopicId": "CO_ST12_02_HAZARDS",
+    "skillId": "CO_SK12_02_PIPE_HAZARD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_14",
+      "filename": "CO Lecture 14 - Pipelining.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "7"
+    },
+    "explanation": "The consumer cannot use the load in X cycle 4; earliest X is cycle 5, followed by M6,W7. This is one load-use stall."
+  },
+  {
+    "id": "ds.practice.co-amdahl-speedup",
+    "version": "1",
+    "title": "Apply Amdahl to original time",
+    "prompt": "20% of original execution time is serial. The remaining work scales ideally across 4 processors with no overhead. What is the speedup relative to one processor?",
+    "rules": "Enter an exact decimal without units, a plus sign, exponent notation or internal spaces. Outer whitespace, leading zeroes and trailing fractional zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T13_PARALLELISM",
+    "subtopicId": "CO_ST13_02_AMDAHL",
+    "skillId": "CO_SK13_02_AMDAHL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_15",
+      "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "locator": "PDF_PAGES_1-46",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "decimal",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2.5"
+    },
+    "explanation": "Relative time=0.2+0.8/4=0.4; speedup=1/0.4=2.5. Divide only the parallel fraction."
+  },
+  {
+    "id": "ds.practice.co-amdahl-inverse",
+    "version": "1",
+    "title": "Infer a serial fraction within a model",
+    "prompt": "Under the ideal Amdahl model with no overhead, 3 processors produce speedup 2. What is the original serial fraction as an exact decimal?",
+    "rules": "Enter an exact decimal without units, a plus sign, exponent notation or internal spaces. Outer whitespace, leading zeroes and trailing fractional zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T13_PARALLELISM",
+    "subtopicId": "CO_ST13_02_AMDAHL",
+    "skillId": "CO_SK13_02_AMDAHL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_15",
+      "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "locator": "PDF_PAGES_1-46",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "decimal",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0.25"
+    },
+    "explanation": "Solve 1/2=s+(1\u2212s)/3. Multiplying by 3 gives 1.5=1+2s, so s=0.25."
+  },
+  {
+    "id": "ds.practice.co-vm-table-size",
+    "version": "1",
+    "title": "Size a flat page table",
+    "prompt": "A byte-addressed virtual space has 20 address bits and 1024-byte pages. A flat page table has one four-byte entry per virtual page. How many bytes does the page table occupy?",
+    "rules": "Enter an integer without units, a plus sign, exponent notation or internal spaces. Outer whitespace and leading zeroes are ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "subtopicId": "CO_ST14_01_VM",
+    "skillId": "CO_SK14_01_VM_TRANSLATE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_15",
+      "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "locator": "PDF_PAGES_1-46",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4096"
+    },
+    "explanation": "Page offset is 10 bits, leaving 10 virtual-page bits. There are 1024 entries, each four bytes: 4096 bytes."
+  },
+  {
+    "id": "ds.practice.co-vm-translate",
+    "version": "1",
+    "title": "Translate while preserving the offset",
+    "prompt": "Use 16-bit virtual and physical byte addresses and 256-byte pages. Virtual address 0x2AB3 has a present readable entry mapping its virtual page to physical frame 0x15. Give the physical read address as four hexadecimal digits.",
+    "rules": "Enter exactly 4 hexadecimal digits. No prefix or spaces within the answer. Hexadecimal letter case is ignored.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "subtopicId": "CO_ST14_01_VM",
+    "skillId": "CO_SK14_01_VM_TRANSLATE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_15",
+      "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "locator": "PDF_PAGES_1-46",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "hex",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "15B3"
+    },
+    "explanation": "Offset is B3. Replace virtual page 2A with frame 15, preserving the offset: 15B3. In decimal, 21\u00d7256+179=5555."
+  }
+]

@@ -1,0 +1,298 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t03",
+    "version": "1",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "blocks": [
+      {
+        "id": "ds.block.co.t03.model",
+        "version": "1",
+        "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+        "skillIds": [
+          "CO_SK03_01_CMOS_TRACE",
+          "CO_SK03_02_CMOS_DESIGN",
+          "CO_SK03_03_COMB_BLOCK",
+          "CO_SK03_04_SEQ_LOGIC"
+        ],
+        "subtopicIds": [
+          "CO_ST03_01_CMOS",
+          "CO_ST03_02_COMBINATIONAL",
+          "CO_ST03_03_SEQUENTIAL"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d",
+          "ref-d020d444b7fa8a75"
+        ],
+        "kind": "introduction",
+        "title": "Separate a logic function from its implementation",
+        "paragraphs": [
+          "A truth function says what output is required. A transistor network, a gate circuit and a storage element describe how outputs are produced over time. Combinational outputs depend on current inputs; sequential outputs also depend on stored state.",
+          "The examples below specify ideal switch connectivity in words. They are authored logical models, not reconstructions of a lecture diagram. Device delays, sizing and detailed physical layouts require an explicit specification."
+        ]
+      },
+      {
+        "id": "ds.block.co.t03.cmos",
+        "version": "1",
+        "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+        "skillIds": [
+          "CO_SK03_01_CMOS_TRACE"
+        ],
+        "subtopicIds": [
+          "CO_ST03_01_CMOS"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d",
+          "ref-d020d444b7fa8a75"
+        ],
+        "kind": "worked_example",
+        "title": "Trace paths to the supply rails",
+        "paragraphs": [
+          "In the ideal CMOS switch model, an nMOS switch conducts for gate 1 and a pMOS switch conducts for gate 0. For an inverter, one pMOS path connects output to high and one nMOS path connects output to low, both controlled by A.",
+          "At A=0 the high path conducts and the low path is off, so output is 1. At A=1 the roles reverse, so output is 0. Trace complete conducting paths; the state of one transistor is not enough to determine a larger network."
+        ]
+      },
+      {
+        "id": "ds.block.co.t03.design",
+        "version": "1",
+        "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+        "skillIds": [
+          "CO_SK03_02_CMOS_DESIGN"
+        ],
+        "subtopicIds": [
+          "CO_ST03_01_CMOS"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d",
+          "ref-d020d444b7fa8a75"
+        ],
+        "kind": "procedure",
+        "title": "Construct and debug complementary networks",
+        "paragraphs": [
+          "For a static complementary gate, first state when the output must be low. Build an nMOS pull-down network for that condition: series paths require both controls and parallel paths allow either. Build the complementary pMOS pull-up with series/parallel roles exchanged.",
+          "An ideal NAND example has series nMOS controlled by A and B and parallel pMOS controlled by the same inputs. Only A=B=1 completes the low path; every other assignment has a high path. Verify all assignments and check that stable inputs do not leave both rails connected or both paths absent.",
+          "A correct Boolean function alone does not prove that a proposed physical circuit meets its constraints. Check connectivity, complements, permitted devices and output drive against the supplied design task. Multiple realizations can be valid."
+        ]
+      },
+      {
+        "id": "ds.block.co.t03.blocks",
+        "version": "1",
+        "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+        "skillIds": [
+          "CO_SK03_03_COMB_BLOCK"
+        ],
+        "subtopicIds": [
+          "CO_ST03_02_COMBINATIONAL"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d",
+          "ref-d020d444b7fa8a75"
+        ],
+        "kind": "worked_example",
+        "title": "Read a MUX and a full adder",
+        "paragraphs": [
+          "For a two-input MUX defined by Y = NOT S·D0 + S·D1, S=0 selects D0 and S=1 selects D1. This convention must be stated; do not infer an unlabelled selection input.",
+          "A full adder has sum A XOR B XOR Cin and carry AB + A·Cin + B·Cin. For A=1, B=0, Cin=1, total input value is 2, so sum=0 and carry=1. Check the numeric identity A+B+Cin = sum + 2·carry.",
+          "Timing follows the longest relevant propagation path under the given gate delays. Logic equivalence does not imply identical propagation delay."
+        ]
+      },
+      {
+        "id": "ds.block.co.t03.state",
+        "version": "1",
+        "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+        "skillIds": [
+          "CO_SK03_04_SEQ_LOGIC"
+        ],
+        "subtopicIds": [
+          "CO_ST03_03_SEQUENTIAL"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d",
+          "ref-d020d444b7fa8a75"
+        ],
+        "kind": "concept",
+        "title": "Distinguish transparency from an edge event",
+        "paragraphs": [
+          "A level-sensitive latch can follow its input while its enable level is active and holds its prior state when closed. An edge-triggered flip-flop samples around its specified clock edge. A high clock level is not an instruction to repeatedly resample an edge-triggered element.",
+          "A storage cell retains a bit through internal feedback while powered; an SRAM-cell access must distinguish holding, reading and writing. Do not treat reading a cell as overwriting it.",
+          "For a timing trace, identify the initial state, active enable/edge, data at the sampling event and any stated timing constraints. Without those details a unique waveform cannot be inferred."
+        ]
+      },
+      {
+        "id": "ds.block.co.t03.recap",
+        "version": "1",
+        "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+        "skillIds": [
+          "CO_SK03_01_CMOS_TRACE",
+          "CO_SK03_02_CMOS_DESIGN",
+          "CO_SK03_03_COMB_BLOCK",
+          "CO_SK03_04_SEQ_LOGIC"
+        ],
+        "subtopicIds": [
+          "CO_ST03_01_CMOS",
+          "CO_ST03_02_COMBINATIONAL",
+          "CO_ST03_03_SEQUENTIAL"
+        ],
+        "sourceIds": [
+          "ref-11dc7c8834244c9d",
+          "ref-d020d444b7fa8a75"
+        ],
+        "kind": "recap",
+        "title": "Prove paths, function and timing separately",
+        "paragraphs": [
+          "Trace conducting paths for CMOS; verify complementary behavior for a design; check a combinational block by its stated function; and track prior state plus sampling events for sequential logic.",
+          "Practice includes fixed ideal-network and adder checks. Open circuit design and unspecified timing are reviewed using criteria, without a fabricated automatic grade."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t03.switch",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_01_CMOS_TRACE"
+      ],
+      "subtopicIds": [
+        "CO_ST03_01_CMOS"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "prompt": "When do ideal nMOS and pMOS switches conduct?",
+      "answer": "nMOS conducts for gate 1; pMOS conducts for gate 0. Determine an output by complete paths to the rails, not by one switch in isolation."
+    },
+    {
+      "id": "ds.card.co.t03.complement",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_02_CMOS_DESIGN"
+      ],
+      "subtopicIds": [
+        "CO_ST03_01_CMOS"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "prompt": "How are static complementary pull-up and pull-down networks checked?",
+      "answer": "Verify the output for every input and check complementary rail connectivity. Series/parallel roles exchange; both-rail or floating-output cases reveal a problem under the ideal stable-input model."
+    },
+    {
+      "id": "ds.card.co.t03.mux",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_03_COMB_BLOCK"
+      ],
+      "subtopicIds": [
+        "CO_ST03_02_COMBINATIONAL"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "prompt": "What does the select input mean in Y = NOT S·D0 + S·D1?",
+      "answer": "S=0 chooses D0; S=1 chooses D1. The mapping comes from this explicit function, not an assumed drawing convention."
+    },
+    {
+      "id": "ds.card.co.t03.adder",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_03_COMB_BLOCK"
+      ],
+      "subtopicIds": [
+        "CO_ST03_02_COMBINATIONAL"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "prompt": "What arithmetic identity checks a full-adder row?",
+      "answer": "A+B+Cin = sum + 2·carry. Sum is the low bit and carry is the next bit."
+    },
+    {
+      "id": "ds.card.co.t03.latch",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_04_SEQ_LOGIC"
+      ],
+      "subtopicIds": [
+        "CO_ST03_03_SEQUENTIAL"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "prompt": "How does a transparent latch differ from an edge-triggered flip-flop?",
+      "answer": "A latch follows data during its active enable level. A flip-flop samples at its specified edge and otherwise holds state, subject to timing constraints."
+    },
+    {
+      "id": "ds.card.co.t03.sram",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_04_SEQ_LOGIC"
+      ],
+      "subtopicIds": [
+        "CO_ST03_03_SEQUENTIAL"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "prompt": "Why must an SRAM timing task distinguish hold, read and write?",
+      "answer": "Holding preserves feedback state; reading observes it through the access mechanism; writing intentionally changes it. A read is not automatically a state update."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t03.network",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_02_CMOS_DESIGN"
+      ],
+      "subtopicIds": [
+        "CO_ST03_01_CMOS"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "title": "Audit a proposed CMOS design",
+      "prompt": "Explain how you would test a proposed static complementary CMOS NAND implementation without scoring a drawing by appearance.",
+      "rubric": [
+        "State the NAND truth table: only input 11 produces zero.",
+        "Check that the nMOS low path requires both inputs and the pMOS high path allows either complemented control.",
+        "Enumerate all input cases for correct drive and absence of stable rail contention/floating output. Different valid layouts are not rejected."
+      ]
+    },
+    {
+      "id": "ds.guided.co.t03.storage",
+      "version": "1",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "skillIds": [
+        "CO_SK03_04_SEQ_LOGIC"
+      ],
+      "subtopicIds": [
+        "CO_ST03_03_SEQUENTIAL"
+      ],
+      "sourceIds": [
+        "ref-11dc7c8834244c9d",
+        "ref-d020d444b7fa8a75"
+      ],
+      "title": "Trace only specified sampling events",
+      "prompt": "A positive-edge flip-flop starts at Q=0. D is 1 at the first rising edge and 0 at the next rising edge. Between those edges D changes several times. Explain Q.",
+      "rubric": [
+        "Q becomes 1 at the first specified rising edge and remains 1 until the next one.",
+        "Q becomes 0 at the next rising edge, assuming the stated samples satisfy timing constraints.",
+        "Between-edge data changes do not make this edge-triggered device transparent. No waveform geometry or timing margin is invented."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t01",
+    "version": "1",
+    "topicId": "CO_T01_HISTORY",
+    "blocks": [
+      {
+        "id": "ds.block.co.t01.model",
+        "version": "1",
+        "topicId": "CO_T01_HISTORY",
+        "skillIds": [
+          "CO_SK01_01_HISTORY"
+        ],
+        "subtopicIds": [
+          "CO_ST01_01_HISTORY"
+        ],
+        "sourceIds": [
+          "ref-68ea39d8f7f71613"
+        ],
+        "kind": "introduction",
+        "title": "Read history as changing constraints",
+        "paragraphs": [
+          "Computer history is useful when an invention explains a change in what machines could do. Connect a development to its physical implementation, programmability, reliability or cost; a list of names alone does not explain its significance.",
+          "This lesson uses a broad sequence of mechanisms. It does not claim exact lecture dates, priority disputes or an exhaustive list of named machines: the normalized academic pack does not contain that detail."
+        ]
+      },
+      {
+        "id": "ds.block.co.t01.switching",
+        "version": "1",
+        "topicId": "CO_T01_HISTORY",
+        "skillIds": [
+          "CO_SK01_01_HISTORY"
+        ],
+        "subtopicIds": [
+          "CO_ST01_01_HISTORY"
+        ],
+        "sourceIds": [
+          "ref-68ea39d8f7f71613"
+        ],
+        "kind": "concept",
+        "title": "From moving parts to electronic switching",
+        "paragraphs": [
+          "Mechanical calculation represents and changes information through physical motion. Electronic switching replaces that motion with electrical state changes, allowing a different scale of switching speed. Vacuum tubes were an early electronic switching technology.",
+          "Transistors provided a smaller solid-state switching element. Relate this change to practical constraints such as component size, power and reliability; do not turn it into a claim that every later machine was faster on every task."
+        ]
+      },
+      {
+        "id": "ds.block.co.t01.program",
+        "version": "1",
+        "topicId": "CO_T01_HISTORY",
+        "skillIds": [
+          "CO_SK01_01_HISTORY"
+        ],
+        "subtopicIds": [
+          "CO_ST01_01_HISTORY"
+        ],
+        "sourceIds": [
+          "ref-68ea39d8f7f71613"
+        ],
+        "kind": "concept",
+        "title": "The program becomes stored information",
+        "paragraphs": [
+          "A stored-program machine represents instructions in memory and fetches them for execution. Changing a program can then change the sequence of operations without physically rewiring that sequence.",
+          "Distinguish this organizational idea from the technology used to build the switches. Stored programs, transistors and integrated circuits answer different questions: how execution is specified, how a switch is built, and how components are combined."
+        ]
+      },
+      {
+        "id": "ds.block.co.t01.integration",
+        "version": "1",
+        "topicId": "CO_T01_HISTORY",
+        "skillIds": [
+          "CO_SK01_01_HISTORY"
+        ],
+        "subtopicIds": [
+          "CO_ST01_01_HISTORY"
+        ],
+        "sourceIds": [
+          "ref-68ea39d8f7f71613"
+        ],
+        "kind": "concept",
+        "title": "Integration changes the scale of the machine",
+        "paragraphs": [
+          "Integrated circuits combine multiple electronic components on a chip. Increasing integration reduces the need to assemble each logic element separately and makes larger systems practical within tighter size and cost constraints.",
+          "A microprocessor integrates CPU functions on a chip. It is a processor, not automatically the whole computer: memory and I/O still have roles. Moving from individual devices toward integrated processors is a useful technology sequence; organizational ideas can span several such generations."
+        ]
+      },
+      {
+        "id": "ds.block.co.t01.explain",
+        "version": "1",
+        "topicId": "CO_T01_HISTORY",
+        "skillIds": [
+          "CO_SK01_01_HISTORY"
+        ],
+        "subtopicIds": [
+          "CO_ST01_01_HISTORY"
+        ],
+        "sourceIds": [
+          "ref-68ea39d8f7f71613"
+        ],
+        "kind": "procedure",
+        "title": "Turn a milestone into an explanation",
+        "paragraphs": [
+          "Use three parts: identify the development; state which previous constraint it changes; connect that change to computer organization or practical performance. For example, a stored program changes how a sequence of operations is specified, while a transistor changes its physical switching implementation.",
+          "When comparing generations, hold the question fixed. A statement about density is not yet a measured execution-time comparison. Consult the original history lecture for its exact named-machine chronology."
+        ]
+      },
+      {
+        "id": "ds.block.co.t01.recap",
+        "version": "1",
+        "topicId": "CO_T01_HISTORY",
+        "skillIds": [
+          "CO_SK01_01_HISTORY"
+        ],
+        "subtopicIds": [
+          "CO_ST01_01_HISTORY"
+        ],
+        "sourceIds": [
+          "ref-68ea39d8f7f71613"
+        ],
+        "kind": "recap",
+        "title": "Separate technology from organization",
+        "paragraphs": [
+          "Recall the broad development from mechanical mechanisms to electronic switching, transistors, integrated circuits and integrated processors. Explain stored programs as an organizational change rather than another transistor type.",
+          "Use the cards to recall the distinctions, then write the unscored explanation in Practice. Historical explanation is reviewed with criteria rather than keyword scoring."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t01.switching",
+      "version": "1",
+      "topicId": "CO_T01_HISTORY",
+      "skillIds": [
+        "CO_SK01_01_HISTORY"
+      ],
+      "subtopicIds": [
+        "CO_ST01_01_HISTORY"
+      ],
+      "sourceIds": [
+        "ref-68ea39d8f7f71613"
+      ],
+      "prompt": "What changed when calculation moved from mechanical motion to electronic switching?",
+      "answer": "The physical mechanism for changing state changed. Explain the implications for switching speed and practical construction, rather than treating the change as only a new machine name."
+    },
+    {
+      "id": "ds.card.co.t01.stored",
+      "version": "1",
+      "topicId": "CO_T01_HISTORY",
+      "skillIds": [
+        "CO_SK01_01_HISTORY"
+      ],
+      "subtopicIds": [
+        "CO_ST01_01_HISTORY"
+      ],
+      "sourceIds": [
+        "ref-68ea39d8f7f71613"
+      ],
+      "prompt": "Why is the stored-program idea different from the invention of a transistor?",
+      "answer": "A stored program describes how instructions are represented and fetched. A transistor describes a physical switching device; the organizational idea and device technology are separate."
+    },
+    {
+      "id": "ds.card.co.t01.integration",
+      "version": "1",
+      "topicId": "CO_T01_HISTORY",
+      "skillIds": [
+        "CO_SK01_01_HISTORY"
+      ],
+      "subtopicIds": [
+        "CO_ST01_01_HISTORY"
+      ],
+      "sourceIds": [
+        "ref-68ea39d8f7f71613"
+      ],
+      "prompt": "What is the distinction between an integrated circuit and a complete computer?",
+      "answer": "An integrated circuit combines components on a chip. A computer still needs organized processing, memory and I/O; a microprocessor integrates CPU functions but need not include the whole system."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t01.milestone",
+      "version": "1",
+      "topicId": "CO_T01_HISTORY",
+      "skillIds": [
+        "CO_SK01_01_HISTORY"
+      ],
+      "subtopicIds": [
+        "CO_ST01_01_HISTORY"
+      ],
+      "sourceIds": [
+        "ref-68ea39d8f7f71613"
+      ],
+      "title": "Explain a development",
+      "prompt": "Compare the significance of stored programs and increased circuit integration without claiming they are the same kind of change.",
+      "rubric": [
+        "Identify stored instructions and the ability to change an operation sequence without rewiring it.",
+        "Explain integration as combining electronic components and changing construction, size or cost constraints.",
+        "Keep device technology, organization and a measured performance claim distinct. Several explanations can satisfy these criteria; no automatic score is assigned."
+      ]
+    }
+  ]
+}

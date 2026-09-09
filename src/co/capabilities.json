@@ -1,0 +1,128 @@
+[
+  {
+    "topicId": "CO_T01_HISTORY",
+    "lessonId": "ds.lesson.co.t01",
+    "cardCount": 3,
+    "exerciseCount": 0,
+    "guidedCount": 1,
+    "toolId": null,
+    "toolName": null
+  },
+  {
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "lessonId": "ds.lesson.co.t02",
+    "cardCount": 7,
+    "exerciseCount": 2,
+    "guidedCount": 2,
+    "toolId": "boolean",
+    "toolName": "Boolean truth workspace"
+  },
+  {
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "lessonId": "ds.lesson.co.t03",
+    "cardCount": 6,
+    "exerciseCount": 2,
+    "guidedCount": 2,
+    "toolId": null,
+    "toolName": null
+  },
+  {
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "lessonId": "ds.lesson.co",
+    "cardCount": 8,
+    "exerciseCount": 7,
+    "guidedCount": 0,
+    "toolId": null,
+    "toolName": null
+  },
+  {
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "lessonId": "ds.lesson.co.t05",
+    "cardCount": 6,
+    "exerciseCount": 3,
+    "guidedCount": 0,
+    "toolId": "representation",
+    "toolName": "Representation workspace"
+  },
+  {
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "lessonId": "ds.lesson.co.t06",
+    "cardCount": 7,
+    "exerciseCount": 1,
+    "guidedCount": 1,
+    "toolId": "assembly",
+    "toolName": "Assembly Visualizer"
+  },
+  {
+    "topicId": "CO_T07_ISA",
+    "lessonId": "ds.lesson.co.t07",
+    "cardCount": 5,
+    "exerciseCount": 1,
+    "guidedCount": 2,
+    "toolId": "isa",
+    "toolName": "Instruction bit-budget workspace"
+  },
+  {
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "lessonId": "ds.lesson.co.t08",
+    "cardCount": 7,
+    "exerciseCount": 2,
+    "guidedCount": 3,
+    "toolId": null,
+    "toolName": null
+  },
+  {
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "lessonId": "ds.lesson.co.t09",
+    "cardCount": 5,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "toolId": "address",
+    "toolName": "Address alias workspace"
+  },
+  {
+    "topicId": "CO_T10_DMA_MEMORY",
+    "lessonId": "ds.lesson.co.t10",
+    "cardCount": 5,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "toolId": "memory",
+    "toolName": "Memory organization workspace"
+  },
+  {
+    "topicId": "CO_T11_CACHE",
+    "lessonId": "ds.lesson.co.t11",
+    "cardCount": 6,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "toolId": "cache",
+    "toolName": "Cache trace workspace"
+  },
+  {
+    "topicId": "CO_T12_PIPELINE",
+    "lessonId": "ds.lesson.co.t12",
+    "cardCount": 6,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "toolId": "pipeline",
+    "toolName": "Pipeline timing workspace"
+  },
+  {
+    "topicId": "CO_T13_PARALLELISM",
+    "lessonId": "ds.lesson.co.t13",
+    "cardCount": 4,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "toolId": "amdahl",
+    "toolName": "Amdahl workspace"
+  },
+  {
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "lessonId": "ds.lesson.co.t14",
+    "cardCount": 4,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "toolId": "vm",
+    "toolName": "Virtual-memory workspace"
+  }
+]

@@ -1,0 +1,223 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t14",
+    "version": "1",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "blocks": [
+      {
+        "id": "ds.block.co.t14.model",
+        "version": "1",
+        "topicId": "CO_T14_VIRTUAL_MEMORY",
+        "skillIds": [
+          "CO_SK14_01_VM_TRANSLATE",
+          "CO_SK14_02_VM_REASON"
+        ],
+        "subtopicIds": [
+          "CO_ST14_01_VM"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "introduction",
+        "title": "An address belongs to a process’s mapping",
+        "paragraphs": [
+          "A virtual address is interpreted using a process’s translation state. The virtual page number selects a mapping; the page offset identifies a position within that page. Mapping to a physical frame preserves the offset.",
+          "Different processes can use the same virtual address with different mappings. Virtual address equality alone does not imply that both accesses refer to the same physical byte."
+        ]
+      },
+      {
+        "id": "ds.block.co.t14.layout",
+        "version": "1",
+        "topicId": "CO_T14_VIRTUAL_MEMORY",
+        "skillIds": [
+          "CO_SK14_01_VM_TRANSLATE"
+        ],
+        "subtopicIds": [
+          "CO_ST14_01_VM"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "worked_example",
+        "title": "Size the page table from virtual pages",
+        "paragraphs": [
+          "Assume 16-bit virtual byte addresses, 12-bit physical byte addresses, 256-byte pages and a flat page table with four-byte entries. The offset uses eight bits. There are 256 virtual pages and 16 physical frames.",
+          "One entry per virtual page requires 256×4 = 1024 bytes. The virtual page number has eight bits; the physical frame number has four. Do not size the table using the number of resident physical frames."
+        ]
+      },
+      {
+        "id": "ds.block.co.t14.translation",
+        "version": "1",
+        "topicId": "CO_T14_VIRTUAL_MEMORY",
+        "skillIds": [
+          "CO_SK14_01_VM_TRANSLATE"
+        ],
+        "subtopicIds": [
+          "CO_ST14_01_VM"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "worked_example",
+        "title": "Keep the offset unchanged",
+        "paragraphs": [
+          "Virtual address 0x1234 splits into virtual page 0x12 (18) and offset 0x34 (52). If that process’s entry maps page 18 to physical frame 7 and permits the access, the physical address is 7×256+52 = 0x734 (1844).",
+          "The offset 0x34 is unchanged. A different process mapping the same virtual page to frame 3 would instead access 0x334. These are stated example mappings, not a claim that virtual page and frame numbers are equal."
+        ]
+      },
+      {
+        "id": "ds.block.co.t14.protection",
+        "version": "1",
+        "topicId": "CO_T14_VIRTUAL_MEMORY",
+        "skillIds": [
+          "CO_SK14_01_VM_TRANSLATE",
+          "CO_SK14_02_VM_REASON"
+        ],
+        "subtopicIds": [
+          "CO_ST14_01_VM"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "procedure",
+        "title": "Check validity and permissions before forming a usable address",
+        "paragraphs": [
+          "First split the virtual address. Look up the entry belonging to the current process, check that the mapping is present and permits the requested operation, then combine the frame and offset.",
+          "An absent mapping cannot be converted by inventing a frame. A write to a read-only mapping is a protection fault in the workspace’s explicit model. A permitted read can still succeed on that read-only mapping.",
+          "A real system’s fault handling and table organization may be more complex. The workspace is one-level translation with supplied entry state; it does not simulate page replacement, a TLB or an operating system."
+        ]
+      },
+      {
+        "id": "ds.block.co.t14.spaces",
+        "version": "1",
+        "topicId": "CO_T14_VIRTUAL_MEMORY",
+        "skillIds": [
+          "CO_SK14_02_VM_REASON"
+        ],
+        "subtopicIds": [
+          "CO_ST14_01_VM"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "concept",
+        "title": "Explain abstraction, isolation and costs",
+        "paragraphs": [
+          "Translation separates program-visible addresses from placement in physical memory. Permissions help isolate processes and distinguish allowed operations. Intentional sharing requires appropriate mappings and permissions; accidental equal virtual addresses do not create sharing.",
+          "The abstraction has costs: translation metadata, lookups and fault handling need resources. Explain the benefit and its mechanism rather than saying virtual memory creates unlimited physical storage."
+        ]
+      },
+      {
+        "id": "ds.block.co.t14.recap",
+        "version": "1",
+        "topicId": "CO_T14_VIRTUAL_MEMORY",
+        "skillIds": [
+          "CO_SK14_01_VM_TRANSLATE",
+          "CO_SK14_02_VM_REASON"
+        ],
+        "subtopicIds": [
+          "CO_ST14_01_VM"
+        ],
+        "sourceIds": [
+          "ref-2a7323af85c4fc92"
+        ],
+        "kind": "recap",
+        "title": "Translate only after validating the entry",
+        "paragraphs": [
+          "Calculate offset width from page size, table entries from virtual pages, and frame width from physical capacity. Preserve the offset while checking presence and permissions.",
+          "Use the translation workspace for explicit entry states and Practice for sizing/translation calculations and unscored protection reasoning."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t14.offset",
+      "version": "1",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "skillIds": [
+        "CO_SK14_01_VM_TRANSLATE"
+      ],
+      "subtopicIds": [
+        "CO_ST14_01_VM"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "Which part of an address stays unchanged during page translation?",
+      "answer": "The page offset. The virtual page number selects a mapping to a physical frame; combine that frame with the same offset."
+    },
+    {
+      "id": "ds.card.co.t14.table",
+      "version": "1",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "skillIds": [
+        "CO_SK14_01_VM_TRANSLATE"
+      ],
+      "subtopicIds": [
+        "CO_ST14_01_VM"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "What determines the entry count in a flat page table with one entry per virtual page?",
+      "answer": "The virtual address-space size divided by page size. Multiply entries by entry bytes for table size; physical frame count is a different quantity."
+    },
+    {
+      "id": "ds.card.co.t14.fault",
+      "version": "1",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "skillIds": [
+        "CO_SK14_01_VM_TRANSLATE",
+        "CO_SK14_02_VM_REASON"
+      ],
+      "subtopicIds": [
+        "CO_ST14_01_VM"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "Can an absent or write-protected mapping always yield a usable physical address?",
+      "answer": "No. Check presence and operation permissions first. The workspace reports a fault instead of inventing a successful translation."
+    },
+    {
+      "id": "ds.card.co.t14.process",
+      "version": "1",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "skillIds": [
+        "CO_SK14_02_VM_REASON"
+      ],
+      "subtopicIds": [
+        "CO_ST14_01_VM"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "prompt": "Do equal virtual addresses in two processes necessarily name the same physical byte?",
+      "answer": "No. Translation belongs to each process’s mapping. Shared physical storage requires appropriate mappings and permissions."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t14.isolation",
+      "version": "1",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "skillIds": [
+        "CO_SK14_02_VM_REASON"
+      ],
+      "subtopicIds": [
+        "CO_ST14_01_VM"
+      ],
+      "sourceIds": [
+        "ref-2a7323af85c4fc92"
+      ],
+      "title": "Explain process isolation",
+      "prompt": "Two processes access virtual address 0x1234. One maps its page to frame 7 and the other to frame 3. Explain why this is compatible with isolation and when sharing would be intentional.",
+      "rubric": [
+        "The offset is preserved but page tables select different physical frames.",
+        "Each access must satisfy the current process’s mapping and permissions.",
+        "Intentional sharing requires chosen shared frame mappings and suitable permissions; equal virtual addresses alone are insufficient."
+      ]
+    }
+  ]
+}

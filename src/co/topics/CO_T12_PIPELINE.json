@@ -1,0 +1,262 @@
+{
+  "lesson": {
+    "id": "ds.lesson.co.t12",
+    "version": "1",
+    "topicId": "CO_T12_PIPELINE",
+    "blocks": [
+      {
+        "id": "ds.block.co.t12.model",
+        "version": "1",
+        "topicId": "CO_T12_PIPELINE",
+        "skillIds": [
+          "CO_SK12_01_PIPE_PERF",
+          "CO_SK12_02_PIPE_HAZARD",
+          "CO_SK12_03_PIPE_SCHEDULE"
+        ],
+        "subtopicIds": [
+          "CO_ST12_01_THROUGHPUT",
+          "CO_ST12_02_HAZARDS",
+          "CO_ST12_03_SCHEDULE"
+        ],
+        "sourceIds": [
+          "ref-295298f11ae42c8a"
+        ],
+        "kind": "introduction",
+        "title": "Overlap work without violating when values become available",
+        "paragraphs": [
+          "A pipeline overlaps stages from different instructions. Latency measures the time for one instruction; throughput measures the completion rate after filling. Overlap does not remove dependencies or resource conflicts.",
+          "The teaching workspace uses five equal stages F,D,X,M,W, single in-order issue, separate stage resources and no branches. Fetch waits before a dependent instruction when needed. Register writeback may be read in D in the same cycle. These are explicit model rules, not claims about every physical CPU."
+        ]
+      },
+      {
+        "id": "ds.block.co.t12.cycles",
+        "version": "1",
+        "topicId": "CO_T12_PIPELINE",
+        "skillIds": [
+          "CO_SK12_01_PIPE_PERF"
+        ],
+        "subtopicIds": [
+          "CO_ST12_01_THROUGHPUT"
+        ],
+        "sourceIds": [
+          "ref-295298f11ae42c8a"
+        ],
+        "kind": "worked_example",
+        "title": "Count filling, steady issue and stalls",
+        "paragraphs": [
+          "With k stages and n instructions, issuing one instruction per cycle without stalls takes k+n−1 cycles from the first stage of the first instruction through the last stage of the last instruction. Four instructions through five stages therefore take eight cycles.",
+          "Three additional stall cycles make that total eleven. If each stage cycle is 2 ns, ideal instruction latency is 10 ns and ideal steady-state throughput is one completion per 2 ns; four ideal instructions finish in 16 ns. Do not multiply n by full latency once overlap is allowed."
+        ]
+      },
+      {
+        "id": "ds.block.co.t12.hazards",
+        "version": "1",
+        "topicId": "CO_T12_PIPELINE",
+        "skillIds": [
+          "CO_SK12_02_PIPE_HAZARD"
+        ],
+        "subtopicIds": [
+          "CO_ST12_02_HAZARDS"
+        ],
+        "sourceIds": [
+          "ref-295298f11ae42c8a"
+        ],
+        "kind": "concept",
+        "title": "A dependency is not always a stall",
+        "paragraphs": [
+          "A read-after-write dependency requires the consumer to receive the producer’s new value. Forwarding can send a result directly to a later stage without waiting for architectural register writeback. A result must already exist at the receiving stage’s required time.",
+          "In this model an ALU result is ready after X, and a load result after M. A directly following ALU consumer can use ALU forwarding without a stall, while a directly following load consumer needs one stall. Without forwarding, wait until the producer’s W cycle for the consumer’s D read.",
+          "Structural hazards arise from competing resource uses. Control hazards arise because the next instruction depends on a branch decision; misprediction can discard speculative work. Branch penalty must be stated, not inferred from the presence of a branch."
+        ]
+      },
+      {
+        "id": "ds.block.co.t12.schedule",
+        "version": "1",
+        "topicId": "CO_T12_PIPELINE",
+        "skillIds": [
+          "CO_SK12_02_PIPE_HAZARD",
+          "CO_SK12_03_PIPE_SCHEDULE"
+        ],
+        "subtopicIds": [
+          "CO_ST12_02_HAZARDS",
+          "CO_ST12_03_SCHEDULE"
+        ],
+        "sourceIds": [
+          "ref-295298f11ae42c8a"
+        ],
+        "kind": "worked_example",
+        "title": "Construct the controlled dependency schedule",
+        "paragraphs": [
+          "The workspace sequence is ALU A; ALU B depending on A; independent Load C; ALU D depending on C. With forwarding, F start cycles are 1,2,3,5. Adding stage offsets 0,1,2,3,4 gives the completion of D at cycle 9, with one inserted wait.",
+          "Without forwarding, starts are 1,4,5,8: B reads in D at cycle 5 when A writes back, and D reads at cycle 9 when C writes back. The last W is cycle 12. Do not assume forwarding eliminates a load-use dependency before memory data is ready."
+        ]
+      },
+      {
+        "id": "ds.block.co.t12.optimize",
+        "version": "1",
+        "topicId": "CO_T12_PIPELINE",
+        "skillIds": [
+          "CO_SK12_03_PIPE_SCHEDULE"
+        ],
+        "subtopicIds": [
+          "CO_ST12_03_SCHEDULE"
+        ],
+        "sourceIds": [
+          "ref-295298f11ae42c8a"
+        ],
+        "kind": "procedure",
+        "title": "Schedule around dependencies, not around appearances",
+        "paragraphs": [
+          "List each instruction’s producers, result-ready stage and resource needs. Place instructions in a candidate schedule, then check every use against availability and every shared resource against capacity.",
+          "Moving independent work into a delay slot may reduce stalls, but reordering must preserve dependencies and required effects. Multiple schedules can be correct; compare them using the stated machine and cost criterion.",
+          "For a separate stated branch model, add non-overlapping penalties explicitly. For example, two mispredictions each costing three cycles add six cycles; do not double-count cycles already counted as another stall."
+        ]
+      },
+      {
+        "id": "ds.block.co.t12.recap",
+        "version": "1",
+        "topicId": "CO_T12_PIPELINE",
+        "skillIds": [
+          "CO_SK12_01_PIPE_PERF",
+          "CO_SK12_02_PIPE_HAZARD",
+          "CO_SK12_03_PIPE_SCHEDULE"
+        ],
+        "subtopicIds": [
+          "CO_ST12_01_THROUGHPUT",
+          "CO_ST12_02_HAZARDS",
+          "CO_ST12_03_SCHEDULE"
+        ],
+        "sourceIds": [
+          "ref-295298f11ae42c8a"
+        ],
+        "kind": "recap",
+        "title": "State the machine before the timing claim",
+        "paragraphs": [
+          "Separate latency, throughput, filling/draining and stalls. Derive producer-to-consumer timing and inspect the complete schedule.",
+          "Practice and the workspace use explicit models. Open instruction reordering is an unscored structured self-check, not a single-layout answer key."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.co.t12.fill",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_01_PIPE_PERF"
+      ],
+      "subtopicIds": [
+        "CO_ST12_01_THROUGHPUT"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "prompt": "Why is an ideal k-stage pipeline time k+n−1 cycles for n instructions?",
+      "answer": "The first instruction needs k stages; each of the remaining n−1 instructions completes one cycle later under single-issue, no-stall assumptions."
+    },
+    {
+      "id": "ds.card.co.t12.latency",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_01_PIPE_PERF"
+      ],
+      "subtopicIds": [
+        "CO_ST12_01_THROUGHPUT"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "prompt": "Does pipelining reduce one instruction’s latency to one stage?",
+      "answer": "No. It overlaps different instructions. One instruction still passes through all stages; steady throughput can improve without reducing its latency."
+    },
+    {
+      "id": "ds.card.co.t12.load",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_02_PIPE_HAZARD"
+      ],
+      "subtopicIds": [
+        "CO_ST12_02_HAZARDS"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "prompt": "Why can load-use still stall with forwarding?",
+      "answer": "A load’s value is not ready until the declared memory stage completes. Forwarding cannot deliver a result before it exists."
+    },
+    {
+      "id": "ds.card.co.t12.branch",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_02_PIPE_HAZARD"
+      ],
+      "subtopicIds": [
+        "CO_ST12_02_HAZARDS"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "prompt": "What determines a control-hazard penalty?",
+      "answer": "The specified branch-resolution/prediction and recovery rules. Count only the actual non-overlapping lost cycles, not an assumed universal penalty."
+    },
+    {
+      "id": "ds.card.co.t12.schedule",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_03_PIPE_SCHEDULE"
+      ],
+      "subtopicIds": [
+        "CO_ST12_03_SCHEDULE"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "prompt": "How do you check a proposed instruction schedule?",
+      "answer": "Check every producer/consumer availability time, each resource’s capacity and preservation of program effects. Then count the final completion cycle."
+    },
+    {
+      "id": "ds.card.co.t12.reorder",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_03_PIPE_SCHEDULE"
+      ],
+      "subtopicIds": [
+        "CO_ST12_03_SCHEDULE"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "prompt": "May independent-looking instructions always be reordered?",
+      "answer": "No. Establish all data, memory and control dependencies and required effects first. Multiple safe schedules may exist under the stated model."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.co.t12.schedule",
+      "version": "1",
+      "topicId": "CO_T12_PIPELINE",
+      "skillIds": [
+        "CO_SK12_03_PIPE_SCHEDULE"
+      ],
+      "subtopicIds": [
+        "CO_ST12_03_SCHEDULE"
+      ],
+      "sourceIds": [
+        "ref-295298f11ae42c8a"
+      ],
+      "title": "Compare schedules without enforcing one drawing",
+      "prompt": "Explain how moving an independent instruction between a load and its consumer could help, and identify the conditions that make the change safe.",
+      "rubric": [
+        "Show that the consumer’s required value is available later than the immediately following use would allow.",
+        "Verify that the moved work does not depend on or change required data/memory/control effects.",
+        "Rebuild the timing under the declared resources/forwarding rules. Accept any schedule satisfying those constraints; no arbitrary reference layout is scored."
+      ]
+    }
+  ]
+}

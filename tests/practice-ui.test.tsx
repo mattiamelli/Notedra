@@ -15,7 +15,9 @@ Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let root:Root;let container:HTMLDivElement;
 beforeEach(()=>{container=document.createElement('div');document.body.append(container);root=createRoot(container);vi.spyOn(window,'scrollTo').mockImplementation(()=>{});});
 afterEach(async()=>{await act(async()=>root.unmount());container.remove();vi.restoreAllMocks();});
-async function settle(){await act(async()=>{await new Promise(resolve=>setTimeout(resolve,30));});}
+
+async function settleRoutes(){const loading=()=>[...container.querySelectorAll('[role="status"]')].some(n=>/^Loading /.test(n.textContent??''));for(let i=0;i<150&&loading();i++)await act(async()=>{await new Promise(r=>setTimeout(r,10));});expect(loading(),'lazy route resolved').toBe(false);}
+async function settle(){await act(async()=>{await new Promise(resolve=>setTimeout(resolve,30));});await settleRoutes();}
 async function load(repo:StudentRepository){let state!:LoadedState;await act(async()=>{state=await repo.load();});return state;}
 async function mount(repo:StudentRepository,path='/practice'){await act(async()=>root.render(<MemoryRouter initialEntries={[path]}><LearningProvider createRepository={()=>repo}><AppRoutes/></LearningProvider></MemoryRouter>));await settle();}
 function button(name:string){const found=[...container.querySelectorAll('button')].find(item=>item.textContent===name);expect(found,name).toBeDefined();return found!;}
@@ -23,8 +25,8 @@ async function click(name:string){await act(async()=>button(name).click());await
 async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>{await new Promise(resolve=>setTimeout(resolve,0));});expect(container.querySelector('.ds-practice-answer input')).not.toBeNull();});const input=container.querySelector<HTMLInputElement>('.ds-practice-answer input')!;await act(async()=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));});}
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
-  it('browsing/filtering the six-item catalog creates no attempts',async()=>{
-    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(6);
+  it('browsing/filtering the expanded catalog creates no attempts',async()=>{
+    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(34);
     const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(2);expect((await load(repo)).data.attempts).toEqual([]);
   });
   it.each([catalog[0],catalog[2],catalog[4]])('completes the $subjectId flow without exposing a solution early',async exercise=>{

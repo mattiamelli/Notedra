@@ -1,6 +1,3 @@
-import { PracticePage } from './practice/PracticePage';
-import { ExercisePage } from './practice/ExercisePage';
-import { AttemptPage } from './practice/AttemptPage';
 import './practice/practice.css';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
@@ -14,6 +11,10 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import './shell/shell.css';
 import { LearningProvider } from './learning/LearningProvider';
 
+const PracticePage = lazy(() => import('./practice/PracticePage').then(m => ({default:m.PracticePage})));
+const ExercisePage = lazy(() => import('./practice/ExercisePage').then(m => ({default:m.ExercisePage})));
+const AttemptPage = lazy(() => import('./practice/AttemptPage').then(m => ({default:m.AttemptPage})));
+
 const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbench'));
 
 export function AppRoutes() {
@@ -26,9 +27,9 @@ export function AppRoutes() {
       <Route path=":topicId/:mode" caseSensitive element={<TopicPage course={course}/>}/>
     </Route>)}
     <Route path={ASSEMBLY_TOOL_PATH} caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Assembly workbench…</p>}><AssemblyWorkbench/></Suspense>}/>
-    <Route path="practice" caseSensitive element={<PracticePage/>}/>
-    <Route path="practice/:exerciseId" caseSensitive element={<ExercisePage/>}/>
-    <Route path="practice/:exerciseId/attempts/:attemptId" caseSensitive element={<AttemptPage/>}/>
+    <Route path="practice" caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Practice…</p>}><PracticePage/></Suspense>}/>
+    <Route path="practice/:exerciseId" caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Practice…</p>}><ExercisePage/></Suspense>}/>
+    <Route path="practice/:exerciseId/attempts/:attemptId" caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Practice…</p>}><AttemptPage/></Suspense>}/>
     {productAreas.filter(area => area.path !== '/practice').map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
   </Route></Routes>;

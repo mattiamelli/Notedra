@@ -9,21 +9,24 @@ import { repository } from './helpers/learning';
 import { topicStudy,lessons,flashcards,shuffledIds } from '../src/topic-study/content';
 import { studyModes } from '../src/topic-study/types';
 import { studyPath } from '../src/topic-study/AcademicViews';
-import { catalog,exercisePath,attemptPath } from '../src/practice/catalog';
+import { catalog,allExercises,exercisePath,attemptPath } from '../src/practice/catalog';
 import { PracticeService } from '../src/practice/service';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let container:HTMLDivElement,root:Root;
 beforeEach(()=>{container=document.createElement('div');document.body.append(container);root=createRoot(container);vi.spyOn(window,'scrollTo').mockImplementation(()=>{});});
 afterEach(async()=>{await act(async()=>root.unmount());container.remove();vi.restoreAllMocks();});
 function StorageProbe(){const learning=useLearning();return <output data-storage>{learning?.phase}:{learning?.snapshot?.data.resume?.topicId}</output>;}
+
+async function settleRoutes(){const loading=()=>[...container.querySelectorAll('[role="status"]')].some(n=>/^Loading /.test(n.textContent??''));for(let i=0;i<150&&loading();i++)await act(async()=>{await new Promise(r=>setTimeout(r,10));});expect(loading(),'lazy route resolved').toBe(false);}
 async function render(path:string,browser=false,repo?:ReturnType<typeof repository>){
  if(browser)window.history.replaceState(null,'',path);
  const children=repo?<LearningProvider createRepository={()=>repo}><StorageProbe/><AppRoutes/></LearningProvider>:<AppRoutes/>;
  await act(async()=>root.render(browser?<BrowserRouter>{children}</BrowserRouter>:<MemoryRouter key={path} initialEntries={[path]}>{children}</MemoryRouter>));
+ await settleRoutes();
  if(repo){const expected='ready:'+path.split('/')[2];for(let turn=0;turn<100&&container.querySelector('[data-storage]')?.textContent!==expected;turn++)await act(async()=>{await new Promise(resolve=>setTimeout(resolve,5));});expect(container.querySelector('[data-storage]')?.textContent).toBe(expected);}
 }
-async function click(selector:string){const el=container.querySelector<HTMLElement>(selector);expect(el,selector).not.toBeNull();await act(async()=>el!.click());}
-async function button(name:string){const el=[...container.querySelectorAll('button')].find(b=>b.textContent===name);expect(el,name).toBeDefined();await act(async()=>el!.click());}
+async function click(selector:string){const el=container.querySelector<HTMLElement>(selector);expect(el,selector).not.toBeNull();await act(async()=>el!.click());await settleRoutes();}
+async function button(name:string){const el=[...container.querySelectorAll('button')].find(b=>b.textContent===name);expect(el,name).toBeDefined();await act(async()=>el!.click());await settleRoutes();}
 const pilots=lessons.map(l=>topicStudy.topics.find(t=>t.id===l.topicId)!);
 describe('topic learning routes and modes',()=>{
  it.each(studyModes)('all 43 topics resolve directly in $id mode',async mode=>{
@@ -39,10 +42,10 @@ describe('topic learning routes and modes',()=>{
   const t=pilots[0];await render(studyPath(t,'mental-map'));expect(container.querySelectorAll('.ds-map-node')).toHaveLength(t.subtopics.length+t.subtopics.flatMap(s=>s.skills).length);
   const outline=[...container.querySelectorAll('summary')].find(s=>s.textContent==='Text outline of this map');expect(outline).toBeDefined();expect(container.textContent).toContain('is a prerequisite for');expect(container.querySelector('.ds-study-map a')?.getAttribute('href')).toContain('#CO_ST04');
  });
- it.each(pilots)('runs the complete $subjectId topic modes and reuses its two Practice items',async topic=>{
+ it.each(pilots)('runs the complete $subjectId topic modes and retains its two original Practice items alongside new CO items',async topic=>{
   await render(studyPath(topic));await click('#study-mode-1');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(lessonBlocks(topic.id));
   await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await button('Reveal answer');expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(false);
-  await click('#study-mode-4');const expected=catalog.filter(e=>e.topicId===topic.id);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(2);expect([...container.querySelectorAll('.ds-practice-card>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
+  await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(topic.subjectId==='CSE1400_CO'?7:2);expect([...container.querySelectorAll('.ds-practice-card>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
  });
  it('non-pilot modes have real overview/map and honest empty study states',async()=>{
   const t=topicStudy.topics.find(t=>t.id==='IP_T01_JAVA_BASICS')!;await render(studyPath(t));expect(container.textContent).toContain(t.description);

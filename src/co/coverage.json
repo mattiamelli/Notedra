@@ -1,0 +1,461 @@
+[
+  {
+    "skillId": "CO_SK01_01_HISTORY",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t01.milestone"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK02_01_BOOLEAN_EVAL",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-boolean-rows"
+    ],
+    "guidedIds": [],
+    "toolId": "boolean"
+  },
+  {
+    "skillId": "CO_SK02_02_SOP",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t02.sop"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK02_03_KMAP_BUILD",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-gray-population"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK02_04_KMAP_MINIMIZE",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t02.groups"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK03_01_CMOS_TRACE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-cmos-nand"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK03_02_CMOS_DESIGN",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t03.network"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK03_03_COMB_BLOCK",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-full-adder"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK03_04_SEQ_LOGIC",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t03.storage"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK04_01_RADIX_CONVERT",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-binary-45",
+      "ds.practice.co-hex-173"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK04_02_RADIX_ARITH",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-hex-addition"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK04_03_SIGNED_ENCODE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-signed-five"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK04_04_OVERFLOW",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-overflow-four"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK04_05_BCD_EXCESS",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-bcd-thirty-eight"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK04_06_ENDIAN",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-little-byte"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK05_01_FIXED",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-fixed-signed"
+    ],
+    "guidedIds": [],
+    "toolId": "representation"
+  },
+  {
+    "skillId": "CO_SK05_02_FLOAT_ENCODE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-custom-float-encode"
+    ],
+    "guidedIds": [],
+    "toolId": "representation"
+  },
+  {
+    "skillId": "CO_SK05_03_FLOAT_RANGE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-custom-float-maximum"
+    ],
+    "guidedIds": [],
+    "toolId": "representation"
+  },
+  {
+    "skillId": "CO_SK06_01_ASM_READ",
+    "category": "D",
+    "reason": "The existing Assembly Visualizer supports executable qword tracing. Use it within its documented subset; non-executable width concepts remain in Learn.",
+    "exerciseIds": [],
+    "guidedIds": [],
+    "toolId": "assembly"
+  },
+  {
+    "skillId": "CO_SK06_02_PARTIAL_REG",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-eax-read"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "category": "D",
+    "reason": "The existing Assembly Visualizer supports executable qword tracing. Use it within its documented subset; non-executable width concepts remain in Learn.",
+    "exerciseIds": [],
+    "guidedIds": [],
+    "toolId": "assembly"
+  },
+  {
+    "skillId": "CO_SK06_04_ASM_DEBUG",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t06.debug"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK07_01_ISA_BITS",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-isa-capacity"
+    ],
+    "guidedIds": [],
+    "toolId": "isa"
+  },
+  {
+    "skillId": "CO_SK07_02_ISA_DESIGN",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t07.format"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK07_03_ISA_COMPARE",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t07.compare"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK08_01_MICRO_TRACE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-micro-transfer"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK08_02_WRITE_MICRO",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t08.routine"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK08_03_CONTROL_BITS",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-control-width"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK08_04_CONTROL_COMPARE",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t08.control"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK08_05_MICRO_OPT",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t08.optimize"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK09_01_BUS_REASON",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t09.bus"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK09_02_IO_ADDRESS",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-address-alias"
+    ],
+    "guidedIds": [],
+    "toolId": "address"
+  },
+  {
+    "skillId": "CO_SK09_03_INTERRUPT_TRACE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-interrupt-completion"
+    ],
+    "guidedIds": [],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK10_01_DMA",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t10.dma"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK10_02_MEMORY_BITS",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-memory-chips"
+    ],
+    "guidedIds": [],
+    "toolId": "memory"
+  },
+  {
+    "skillId": "CO_SK10_03_INTERLEAVE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-bank-index"
+    ],
+    "guidedIds": [],
+    "toolId": "memory"
+  },
+  {
+    "skillId": "CO_SK11_01_CACHE_BITS",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-cache-tag-width"
+    ],
+    "guidedIds": [],
+    "toolId": "cache"
+  },
+  {
+    "skillId": "CO_SK11_02_CACHE_TRACE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-cache-lru-trace"
+    ],
+    "guidedIds": [],
+    "toolId": "cache"
+  },
+  {
+    "skillId": "CO_SK11_03_CACHE_OPT",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t11.locality"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK12_01_PIPE_PERF",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-pipeline-total"
+    ],
+    "guidedIds": [],
+    "toolId": "pipeline"
+  },
+  {
+    "skillId": "CO_SK12_02_PIPE_HAZARD",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-pipeline-load-use"
+    ],
+    "guidedIds": [],
+    "toolId": "pipeline"
+  },
+  {
+    "skillId": "CO_SK12_03_PIPE_SCHEDULE",
+    "category": "B",
+    "reason": "Construction or scheduling can have multiple valid solutions. Use structured criteria and reference checks, without scoring one representation as uniquely correct.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t12.schedule"
+    ],
+    "toolId": "pipeline"
+  },
+  {
+    "skillId": "CO_SK13_01_PAR_CLASS",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t13.parallel"
+    ],
+    "toolId": null
+  },
+  {
+    "skillId": "CO_SK13_02_AMDAHL",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-amdahl-speedup",
+      "ds.practice.co-amdahl-inverse"
+    ],
+    "guidedIds": [],
+    "toolId": "amdahl"
+  },
+  {
+    "skillId": "CO_SK14_01_VM_TRANSLATE",
+    "category": "A",
+    "reason": "Fixed, explicitly specified subparts have a unique independently checked answer. This does not grade every possible task or award mastery.",
+    "exerciseIds": [
+      "ds.practice.co-vm-table-size",
+      "ds.practice.co-vm-translate"
+    ],
+    "guidedIds": [],
+    "toolId": "vm"
+  },
+  {
+    "skillId": "CO_SK14_02_VM_REASON",
+    "category": "C",
+    "reason": "Explanations and trade-offs require a reasoned rubric review. The activity is an unscored self-check; no keyword matching or numeric grade.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.co.t14.isolation"
+    ],
+    "toolId": "vm"
+  }
+]
