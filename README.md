@@ -1,10 +1,31 @@
-# DelftStudy — x86-64 Assembly Visualizer
+# DelftStudy — Academic Navigation & Assembly Visualizer
 
-A browser-based study workbench for a first-year Computer Science & Engineering student learning Computer Organization at TU Delft. Paste a small AT&T assembly program and see what each instruction does to the registers, stack, and execution path.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Browse the canonical Computer Organisation, Reasoning and Logic, and Introduction to Programming topics, then open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, database, account, or login is needed to run the application.
 
-## Features
+## Application navigation
+
+The Dashboard links to three courses, all 43 canonical topics, the Assembly workbench, and the future study areas. Course/topic names and relationships come from a generated navigation index derived from the trusted academic pack. There are no invented mastery, readiness, grade, completion, or streak values.
+
+| Route | Page |
+| --- | --- |
+| `/` | Dashboard (`/dashboard` redirects here) |
+| `/co` | CSE1400 — Computer Organisation; 14 topics |
+| `/rl` | CSE1300 — Reasoning and Logic; 9 topics |
+| `/ip` | CSE1100 — Introduction to Programming; 20 topics |
+| `/co/:topicId`, `/rl/:topicId`, `/ip/:topicId` | Canonical topic shell; IDs are case-sensitive and must belong to the course |
+| `/co/CO_T06_ASSEMBLY_X86_64/visualizer` | Full Assembly workbench |
+| `/practice`, `/exams`, `/progress`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
+| Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
+
+React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. Topic tabs expose future study modes and clearly state that their study materials/tools are not available yet.
+
+The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. No learning-state persistence engine was added.
+
+Vite development and production-preview servers support refreshing deep links. A different static host must serve `index.html` for application routes (SPA fallback); no backend is required. Hosting configuration/deployment is outside Step 2.
+
+## Assembly features
 
 - Editable, syntax-colored assembly with line numbers and a clear next-instruction marker.
 - Load, step forwards, step backwards, run, pause, and reset.
@@ -49,7 +70,7 @@ npm run build
 npm run preview
 ```
 
-`npm run build` validates the trusted Content Pack, type-checks the project, and creates a static application in `dist/`. Vite also enforces content validation for direct production builds. Serve `dist/` through any static HTTP host. No server-side application code is required. The optional `.openai/hosting.json` is deployment metadata for the prepared Sites preview and is not needed for local development.
+`npm run dev` generates the academic navigation index before starting Vite. `npm run build` validates the trusted Content Pack, regenerates navigation, type-checks the project, and creates a static application in `dist/`. Vite independently enforces content validation and index consistency for direct production builds. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
 
 ## Academic Content Source of Truth
 
@@ -62,7 +83,7 @@ The supported academic source is **DelftStudy Content Pack v1.0.1**, using **sch
 - `UNKNOWN`, `UNVERIFIED`, `PARTIALLY_UNVERIFIED`, and `LOW` values must remain unresolved unless verified against an original source. Uncertain mappings cannot generate source-derived variants, update individual skill mastery, contribute weighted exam readiness, or count as verified historical evidence. Uncertainty in a source locator or difficulty component remains distinct from mapping confidence.
 - Source-document records and PDF hashes are embedded; the **90 original PDF binaries and full PDF text are not**. The validator does not open or hash those PDFs.
 
-This integration establishes the trusted source and development safeguards only. It introduces no course pages, generators, mastery/readiness engine, or other product features. The Assembly Visualizer remains unchanged. The full handoff JSON is not imported into the frontend; the production guard rejects browser imports from the pack and validation-tooling directories.
+Step 1 established the trusted source and development safeguards. Step 2 adds navigation and page shells only. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
 
 ```bash
 npm run validate:content
@@ -80,6 +101,21 @@ All eight manifest payload checksums and file sizes are checked. Because the sup
 Ajv and tsx are development-only dependencies. Ajv's 2020-12 implementation validates the supplied schema directly. Its optional `strictRequired` lint is disabled because conditional requirements refer to properties declared in parent schemas; required-field validation stays enabled. Schema compilation is cached by content hash, so repeated validation is safe and a changed schema cannot reuse a stale compiled schema merely by retaining its `$id`.
 
 The mutation tests operate on in-memory copies. Separate build tests prove that Vite rejects invalid content and full handoff imports, including raw imports. See the [Step 1 verification report](docs/content-integration-status.md) for exact results and the complete file inventory.
+
+### Generated academic navigation
+
+[`scripts/generate-academic-index.ts`](scripts/generate-academic-index.ts) validates the immutable release before generating [`src/generated/academic-index.json`](src/generated/academic-index.json). This **7,462-byte** projection contains exactly 3 subjects and 43 topics, with an explicit allowlist: canonical subject ID, course code/name/short name, topic ID/name/subject ID, and display order. No questions, assessments, provenance, frequency tables or full relations are included.
+
+Ordering uses a locale-independent sort of canonical IDs; the course's zero-padded topic identifiers provide its stable order. Generation is byte-deterministic even if source-array order changes, contains no timestamp, and replaces the generated artifact atomically. Do not hand-edit the generated file. It is committed for reproducibility and generated again before development/production builds. The index has a 16 KB size budget.
+
+```bash
+npm run generate:academic
+npm run check:academic
+```
+
+`check:academic` verifies the trusted source and fails if the artifact is missing, stale or edited. Direct `vite build` also checks freshness. Academic navigation types and selectors are separate from the Assembly engine. Only the generated projection is imported by browser code; the Assembly component is loaded as a separate chunk when its route is opened.
+
+See the [Step 2 verification report](docs/application-shell-status.md) for the full file inventory, route/UI tests, bundle analysis and responsive checks. Step 3 and all study engines remain outside this implementation.
 
 ## Using the workbench
 
@@ -167,6 +203,22 @@ The function example takes its input in RDI and returns its result in RAX. Its h
 
 ```text
 src/
+  academic/
+    types.ts
+    navigation.ts     # Canonical selectors, stable course routes and page context
+  generated/
+    academic-index.json
+  shell/
+    AppShell.tsx
+    PageParts.tsx
+    ShellIcon.tsx
+    shell.css
+  pages/
+    DashboardPage.tsx
+    CoursePage.tsx
+    TopicPage.tsx
+    ProductAreaPage.tsx
+    NotFoundPage.tsx
   components/
     CodeEditor.tsx
     ControlPanel.tsx
@@ -190,7 +242,8 @@ src/
     useSimulator.ts   # React execution controller and timer lifecycle
     stackRows.ts      # Bounded stack viewport around pointers
     storage.ts        # Local preferences and value formatting
-  App.tsx
+  App.tsx            # BrowserRouter and application routes
+  AssemblyWorkbench.tsx # Existing workbench, extracted from the former App
   main.tsx
   index.css
 tests/
@@ -200,16 +253,22 @@ tests/
   visualization.test.ts
   content-validation.test.ts
   content-build.test.ts
+  academic-index.test.ts
+  application-routing.test.tsx
 scripts/
   validate-content.ts
+  generate-academic-index.ts
+  academic-index.ts
+  academic-index-guard.ts
   content/           # Development-only schema, integrity, policy, frequency and build checks
 content-pack/
   v1.0.1/            # Nine immutable audited release files
 docs/
   content-integration-status.md
+  application-shell-status.md
 ```
 
-The engine imports no React or browser APIs. The UI renders engine snapshots; it never implements instruction behavior. Runtime dependencies are limited to React and React DOM. Vite, strict TypeScript, Tailwind CSS, and Vitest provide development tooling.
+The engine imports no React or browser APIs. The UI renders engine snapshots; it never implements instruction behavior. Runtime dependencies are React, React DOM and React Router. Vite, strict TypeScript, Tailwind CSS, Vitest, and jsdom provide development/testing tooling; Ajv and tsx support content validation and generation only.
 
 ## Testing
 
@@ -221,7 +280,7 @@ npm run typecheck
 npm run build
 ```
 
-The suite covers operand parsing, labels and errors, every supported instruction, memory/register transfers, RSP ordering, signed overflow, nested calls, return-address metadata, transactional failures, immutable history, all three complete examples, bounded stack rendering, and storage failures. It avoids component-render-only tests.
+The suite covers operand parsing, labels and errors, every supported instruction, memory/register transfers, RSP ordering, signed overflow, nested calls, return-address metadata, transactional failures, immutable history, all three complete examples, bounded stack rendering, and storage failures. It also tests content integrity, deterministic generation, all 43 topic routes, course associations, product routes, Not Found, browser Back/Forward, mobile navigation state/focus, topic tabs, and the existing Assembly controls within the router.
 
 For an end-to-end check, run each built-in example and compare its registers with the table above. Also check Previous, history selection, Reset, Run/Pause, the current-line marker, decimal/hex display, invalid source, and restoration of source/preferences after refreshing.
 

@@ -1,0 +1,211 @@
+// @vitest-environment jsdom
+import { act } from 'react';
+import { createRoot, type Root } from 'react-dom/client';
+import { BrowserRouter, MemoryRouter } from 'react-router';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { AppRoutes } from '../src/App';
+import { academicIndex, ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, productAreas, topicPath, topicsFor } from '../src/academic/navigation';
+import { examplePrograms } from '../src/examples/examplePrograms';
+
+Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true});
+let container: HTMLDivElement;
+let root: Root;
+beforeEach(() => {
+  localStorage.clear();
+  window.history.replaceState(null, '', '/');
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => {});
+  container = document.createElement('div'); document.body.append(container);
+  root = createRoot(container);
+});
+afterEach(async () => { await act(async () => root.unmount()); container.remove(); vi.restoreAllMocks(); });
+
+async function renderRoute(path: string, browser = false) {
+  if (browser) window.history.replaceState(null, '', path);
+  await act(async () => {
+    root.render(browser ? <BrowserRouter><AppRoutes/></BrowserRouter> : <MemoryRouter initialEntries={[path]}><AppRoutes/></MemoryRouter>);
+    if (path === ASSEMBLY_TOOL_PATH) await import('../src/AssemblyWorkbench');
+  });
+}
+async function click(selector: string) {
+  const element = container.querySelector<HTMLElement>(selector);
+  expect(element, selector).not.toBeNull();
+  await act(async () => element!.click());
+}
+function button(label: string): HTMLButtonElement {
+  const result = [...container.querySelectorAll('button')].find(item => item.textContent?.trim() === label);
+  expect(result, label).toBeDefined(); return result!;
+}
+async function clickButton(label: string) { await act(async () => button(label).click()); }
+const heading = () => container.querySelector('h1')?.textContent;
+const register = (name: string) => container.querySelector(`[data-register="${name}"] .register-value`)?.textContent;
+
+describe('application routes and canonical navigation', () => {
+  it.each(['/', '/dashboard'])('renders the Dashboard at %s', async path => {
+    await renderRoute(path); expect(heading()).toBe('Dashboard');
+    expect(container.querySelectorAll('.ds-course-card')).toHaveLength(3);
+    expect(container.textContent).toContain('3 courses · 43 topics');
+  });
+  it.each(courses)('renders $path from canonical course data', async course => {
+    await renderRoute(course.path);
+    expect(heading()).toBe(course.name);
+    const links = [...container.querySelectorAll('.ds-topic-list a')];
+    const topics = topicsFor(course.subject_id);
+    expect(links).toHaveLength(topics.length);
+    expect(links.map(link => link.getAttribute('href'))).toEqual(topics.map(topicPath));
+    topics.forEach((topic, index) => expect(links[index].textContent).toContain(topic.name));
+    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe(course.path);
+  });
+  it.each(academicIndex.topics)('renders the canonical topic $topic_id under its own course', async topic => {
+    await renderRoute(topicPath(topic));
+    expect(heading()).toBe(topic.name);
+    expect(container.querySelector('.ds-topic-id')?.textContent).toBe(topic.topic_id);
+    expect(container.querySelector('.ds-page-heading')?.textContent).toContain(courses.find(course => course.subject_id === topic.subject_id)!.name);
+    expect(container.querySelectorAll('[role="tab"]')).toHaveLength(6);
+  });
+  it.each(productAreas)('renders the $title shell with a neutral empty state', async area => {
+    await renderRoute(area.path);
+    expect(heading()).toBe(area.title);
+    expect(container.querySelector('.ds-empty')?.textContent).toContain(area.emptyTitle);
+    expect(container.textContent).not.toMatch(/\d+%|streak|\d+ days/);
+    expect(container.querySelectorAll('.ds-course-links a')).toHaveLength(3);
+  });
+  it.each(['/missing', '/co/MISSING', '/co/RL_T01_PROP_LOGIC', '/rl/CO_T06_ASSEMBLY_X86_64', '/co/co_t06_assembly_x86_64', '/co/CO_T06_ASSEMBLY_X86_64/unknown'])('shows Not Found for %s', async path => {
+    await renderRoute(path); expect(heading()).toBe('Page not found');
+    await click('.ds-not-found a'); expect(heading()).toBe('Dashboard');
+  });
+});
+
+describe('shell interaction and browser history', () => {
+  it('provides the desktop navigation, landmark, skip link and all nine primary destinations', async () => {
+    await renderRoute('/');
+    const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')];
+    expect(links.map(link => link.getAttribute('href'))).toEqual(['/', ...courses.map(course => course.path), ...productAreas.map(area => area.path)]);
+    expect(container.querySelectorAll('main')).toHaveLength(1);
+    expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
+    expect(document.title).toBe('Dashboard · DelftStudy');
+  });
+  it('opens and closes mobile navigation with an accessible expanded state', async () => {
+    await renderRoute('/');
+    const menu = container.querySelector<HTMLButtonElement>('.ds-menu-button')!;
+    expect(menu.getAttribute('aria-expanded')).toBe('false');
+    await click('.ds-menu-button');
+    expect(menu.getAttribute('aria-expanded')).toBe('true');
+    expect(container.querySelector('.ds-sidebar')?.classList.contains('is-open')).toBe(true);
+    await act(async () => window.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})));
+    expect(menu.getAttribute('aria-expanded')).toBe('false');
+    expect(document.activeElement).toBe(menu);
+  });
+  it('closes navigation after choosing a course and moves focus to the new content', async () => {
+    await renderRoute('/'); await click('.ds-menu-button');
+    await click('nav[aria-label="Primary navigation"] a[href="/co"]');
+    expect(heading()).toBe(courses[0].name);
+    expect(container.querySelector('.ds-menu-button')?.getAttribute('aria-expanded')).toBe('false');
+    expect(document.activeElement?.id).toBe('ds-content');
+    expect(document.title).toBe(`${courses[0].name} · DelftStudy`);
+  });
+  it('returns focus to the menu when its current-page link closes mobile navigation', async () => {
+    await renderRoute('/'); await click('.ds-menu-button');
+    const link = container.querySelector<HTMLAnchorElement>('nav[aria-label="Primary navigation"] a[href="/"]')!;
+    link.focus();
+    await act(async () => link.click());
+    expect(document.activeElement).toBe(container.querySelector('.ds-menu-button'));
+    expect(container.querySelector('.ds-menu-button')?.getAttribute('aria-expanded')).toBe('false');
+  });
+  it('navigates course → topic with working breadcrumbs and active course state', async () => {
+    await renderRoute('/co'); await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
+    expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/co');
+    await click('.ds-breadcrumbs a[href="/co"]'); expect(heading()).toBe(courses[0].name);
+  });
+  it('supports native BrowserRouter Back and Forward without losing route context', async () => {
+    await renderRoute('/', true);
+    await click('nav[aria-label="Primary navigation"] a[href="/co"]');
+    await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
+    expect(window.location.pathname).toBe(ASSEMBLY_TOPIC_PATH);
+    await act(async () => { const popped = new Promise(resolve => window.addEventListener('popstate', resolve, {once: true})); window.history.back(); await popped; });
+    expect(window.location.pathname).toBe('/co'); expect(heading()).toBe(courses[0].name);
+    await act(async () => { const popped = new Promise(resolve => window.addEventListener('popstate', resolve, {once: true})); window.history.forward(); await popped; });
+    expect(window.location.pathname).toBe(ASSEMBLY_TOPIC_PATH);
+    expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+  });
+  it('supports topic mode clicks and keyboard navigation while keeping study engines unavailable', async () => {
+    await renderRoute(ASSEMBLY_TOPIC_PATH);
+    await click('#study-mode-2');
+    expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Flashcards are not available yet');
+    const flashcards = container.querySelector<HTMLButtonElement>('#study-mode-2')!;
+    await act(async () => flashcards.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight', bubbles: true})));
+    expect(document.activeElement?.id).toBe('study-mode-3');
+    expect(container.querySelector('#study-mode-3')?.getAttribute('aria-selected')).toBe('true');
+    expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Topic practice is not available yet');
+  });
+});
+
+describe('integrated Assembly workbench regression', () => {
+  it('retains the existing local editor draft when navigating away before autosave delay', async () => {
+    localStorage.setItem('delftstudy:v1:program', examplePrograms[0].source);
+    await renderRoute(ASSEMBLY_TOOL_PATH);
+    const editor = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Assembly program"]')!;
+    const draft = 'main:\n    movq $42, %rax';
+    await act(async () => {
+      Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')!.set!.call(editor, draft);
+      editor.dispatchEvent(new Event('input', {bubbles: true}));
+    });
+    expect(button('Next Instruction').disabled).toBe(true);
+    await click('.ds-tool-back');
+    expect(localStorage.getItem('delftstudy:v1:program')).toBe(draft);
+    await click(`a[href="${ASSEMBLY_TOOL_PATH}"]`);
+    expect(container.querySelector<HTMLTextAreaElement>('textarea')?.value).toBe(draft);
+  });
+  it('pauses and removes the running timer and keyboard listeners when leaving the tool', async () => {
+    localStorage.setItem('delftstudy:v1:program', examplePrograms[0].source);
+    await renderRoute(ASSEMBLY_TOOL_PATH);
+    vi.useFakeTimers();
+    const intervals = vi.spyOn(window, 'setInterval');
+    const clearInterval = vi.spyOn(window, 'clearInterval');
+    try {
+      await clickButton('Run');
+      await act(async () => vi.advanceTimersByTime(650));
+      expect(register('rax')).toBe('5');
+      await clickButton('Pause');
+      await act(async () => vi.advanceTimersByTime(1300));
+      expect(container.querySelector('.instruction-counter')?.textContent).toContain('1 executed');
+      await clickButton('Run');
+      const runningTimer = intervals.mock.results.at(-1)!.value;
+      await click('.ds-tool-back');
+      expect(clearInterval).toHaveBeenCalledWith(runningTimer);
+      await act(async () => vi.advanceTimersByTime(1300));
+      expect(container.querySelector('.workspace-grid')).toBeNull();
+      expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+    } finally { vi.useRealTimers(); }
+  });
+  it.each(examplePrograms)('executes $name through the routed workbench', async example => {
+    localStorage.setItem('delftstudy:v1:program', example.source);
+    await renderRoute(ASSEMBLY_TOOL_PATH);
+    expect(heading()).toContain('Assembly workbench');
+    expect(container.querySelectorAll('main')).toHaveLength(1);
+    expect(container.querySelector('.ds-app')?.classList.contains('ds-tool')).toBe(true);
+    let steps = 0;
+    while (!button('Next Instruction').disabled && steps++ < 30) await clickButton('Next Instruction');
+    expect(steps).toBeLessThan(30);
+    expect(register('rax')).toBe(example.id === 'arithmetic' ? '8' : example.id === 'stack-frame' ? '15' : '7');
+    if (example.id === 'function-call') expect(register('rbx')).toBe('7');
+    expect(container.querySelector('[data-register="rsp"] .pointer-value')?.textContent).toBe('0x10004096');
+    expect(container.querySelector('[data-register="rbp"] .pointer-value')?.textContent).toBe('0x10004096');
+    expect(container.querySelector('.instruction-counter')?.textContent).toContain('Program complete');
+    await clickButton('Previous'); expect(button('Next Instruction').disabled).toBe(false);
+    await clickButton('Next Instruction'); expect(container.querySelector('.instruction-counter')?.textContent).toContain('Program complete');
+    await clickButton('Reset'); expect(register('rax')).toBe('0');
+    await click('.ds-tool-back'); expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+  });
+  it('preserves load errors and can return to the course without running hidden instructions', async () => {
+    localStorage.setItem('delftstudy:v1:program', 'xorq %rax, %rax');
+    await renderRoute(ASSEMBLY_TOOL_PATH);
+    expect(container.querySelector('[role="alert"]')?.textContent).toContain('Unsupported instruction');
+    expect(button('Run').disabled).toBe(true);
+    await click('.ds-breadcrumbs a[href="/co"]');
+    expect(heading()).toBe(courses[0].name);
+    await act(async () => window.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight', altKey: true})));
+    expect(heading()).toBe(courses[0].name);
+    expect(container.querySelector('.workspace-grid')).toBeNull();
+  });
+});

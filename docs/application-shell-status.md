@@ -8,4 +8,8 @@ Completed checkpoint: deterministic academic-index generator, development/build 
 
 React Router 7.18.3 is installed for the upcoming shell; jsdom 26.1.0 is a development-only dependency for routing/UI tests. Installation reported one deprecated transitive package, `whatwg-encoding@3.1.1`, used by jsdom; it is not a browser dependency.
 
-Next: connect the global shell and routes, reuse the Assembly workbench, add routing/UI tests, then verify production navigation/responsiveness and finish documentation. Do not start Step 3.
+Second completed checkpoint: application shell, all requested routes, canonical course/topic pages, dashboard, placeholder product areas and full-width Assembly integration implemented. 72 additional routing/UI tests pass, including native Back/Forward and all three examples executed through the routed controls. Full suite: 230 tests passing; typecheck and production build pass.
+
+Assembly engine, components, examples, styles and original tests are unchanged. The former App is extracted into AssemblyWorkbench with the global header supplied by the shell. One existing autosave cleanup now flushes the current program before unmount, fixing a newly possible fast-navigation draft loss; this uses the existing program key and does not add a persistence engine. Mobile current-page navigation restores focus to the menu button.
+
+Next: complete production-preview deep-link, bundle, responsive and console verification; finish the final report and commit it. Do not start Step 3.

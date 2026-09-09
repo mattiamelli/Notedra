@@ -75,7 +75,11 @@ export function useSimulator() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => setSaved(writeLocal('program', source)), 250);
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      // Leaving the routed workbench must not discard an edit waiting for autosave.
+      writeLocal('program', source);
+    };
   }, [source]);
   useEffect(() => {
     if (!running) return;
