@@ -1,6 +1,6 @@
-# DelftStudy — Academic Navigation & Assembly Visualizer
+# DelftStudy — Practice & x86-64 Assembly Visualizer
 
-A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Browse the canonical Computer Organisation, Reasoning and Logic, and Introduction to Programming topics, then open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Browse the canonical Computer Organisation, Reasoning and Logic, and Introduction to Programming topics, practise six authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
@@ -16,11 +16,14 @@ The Dashboard links to three courses, all 43 canonical topics, the Assembly work
 | `/ip` | CSE1100 — Introduction to Programming; 20 topics |
 | `/co/:topicId`, `/rl/:topicId`, `/ip/:topicId` | Canonical topic shell; IDs are case-sensitive and must belong to the course |
 | `/co/CO_T06_ASSEMBLY_X86_64/visualizer` | Full Assembly workbench |
-| `/practice`, `/exams`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
+| `/practice` | Six authored exercises, course filter and actual saved attempts |
+| `/practice/:exerciseId` | Exercise preview and explicit Start |
+| `/practice/:exerciseId/attempts/:attemptId` | Saved draft or immutable submitted-answer review |
+| `/exams`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
 | `/progress` | Unassessed progress placeholder plus local student backup/restore controls |
 | Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
 
-React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. Topic tabs expose future study modes and clearly state that their study materials/tools are not available yet.
+React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. The three relevant topic pages link to authored practice. Other study modes remain explicit placeholders.
 
 The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. Student records use the separate IndexedDB repository described below; the Assembly namespace and format are unchanged.
 
@@ -71,7 +74,7 @@ npm run build
 npm run preview
 ```
 
-`npm run dev` generates the academic navigation and student-reference projections before starting Vite. `npm run build` validates the trusted Content Pack, regenerates both projections, type-checks the project, and creates a static application in `dist/`. Vite independently enforces content validation and index consistency for direct production builds. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
+`npm run dev` generates the academic navigation and student-reference projections and validates the practice catalog before starting Vite. `npm run build` validates the trusted Content Pack, regenerates both projections, validates the six exercise definitions and grader locks, type-checks the project, and creates a static application in `dist/`. Vite independently enforces content validation and index consistency for direct production builds. Serve `dist/` through a static HTTP host with SPA fallback. No server-side application code is required. The existing `.openai/hosting.json` is retained deployment metadata and is not needed for local development.
 
 ## Academic Content Source of Truth
 
@@ -84,7 +87,7 @@ The supported academic source is **DelftStudy Content Pack v1.0.1**, using **sch
 - `UNKNOWN`, `UNVERIFIED`, `PARTIALLY_UNVERIFIED`, and `LOW` values must remain unresolved unless verified against an original source. Uncertain mappings cannot generate source-derived variants, update individual skill mastery, contribute weighted exam readiness, or count as verified historical evidence. Uncertainty in a source locator or difficulty component remains distinct from mapping confidence.
 - Source-document records and PDF hashes are embedded; the **90 original PDF binaries and full PDF text are not**. The validator does not open or hash those PDFs.
 
-Step 1 established the trusted source and development safeguards. Step 2 added navigation and page shells. Step 3 adds local student storage and a resume link; it does not add study or grading engines. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
+Step 1 established the trusted source and development safeguards. Step 2 added navigation and page shells. Step 3 added local student storage and a resume link. Step 4 adds six separately authored exercises and deterministic item feedback. The Assembly engine, parser, memory, stack/history semantics and examples remain unchanged. The full handoff JSON is not imported into the frontend; the production guard continues rejecting browser imports from the pack and validation-tooling directories.
 
 ```bash
 npm run validate:content
@@ -116,7 +119,7 @@ npm run check:academic
 
 `check:academic` verifies the trusted source and fails if the artifact is missing, stale or edited. Direct `vite build` also checks freshness. Academic navigation types and selectors are separate from the Assembly engine. Only the generated projection is imported by browser code; the Assembly component is loaded as a separate chunk when its route is opened.
 
-See the [Step 2 verification report](docs/application-shell-status.md) for the full file inventory, route/UI tests, bundle analysis and responsive checks. The Step 3 storage foundation is documented below; all study/grading engines remain outside this implementation.
+See the [Step 2 verification report](docs/application-shell-status.md) for the full file inventory, route/UI tests, bundle analysis and responsive checks. The Step 3 storage foundation and Step 4 practice flow are documented below.
 
 ## Local student data — Step 3
 
@@ -135,11 +138,11 @@ pnpm run generate:references
 pnpm run check:references
 ```
 
-`StudentRepository` is a small asynchronous interface. The native implementation provides `load`, `saveResume`, `createDraft`, `editDraft`, `submit`, `abandon`, `exportBackup`, `exportRecovery` and `restore`. The UI has no exercise/attempt-entry or grading feature yet. Tests use isolated fixtures; real student storage is never seeded with demonstration attempts.
+`StudentRepository` is a small asynchronous interface. The native implementation provides `load`, `saveResume`, `createDraft`, `editDraft`, `submit`, `abandon`, `exportBackup`, `exportRecovery` and `restore`. Step 4 uses these existing methods through a small PracticeService adapter. Tests use isolated fixtures; real student storage is never seeded with demonstration attempts.
 
 Drafts have canonical identity, explicit targeted skills, optional exercise identity/version and source/template references, bounded text/choice/code answers, timestamps, revisions, and nullable hint/solution exposure. Unknown exposure stays unknown. Code is stored as text and never executed. Draft edits require the current revision; submitted/abandoned attempts cannot be edited. Repeating an identical submission operation is idempotent; conflicting reuse rejects. Retrying creates a new attempt ID. Future evaluation must use a separate evidence contract/store without rewriting original submissions.
 
-No trusted evaluator exists, so **every raw attempt remains UNASSESSED and ineligible for derived evidence**, including ungraded submissions, uncertain mappings, broad topic mappings and integrated IP work. There is no numeric score, readiness estimate or skill-credit calculation. Imported confidence, correctness, eligibility and mastery fields are rejected. Unknown source-page locators/difficulty are not reinterpreted as mapping confidence.
+**Every raw attempt remains UNASSESSED and ineligible for derived evidence**, including ungraded submissions, uncertain mappings, broad topic mappings and integrated IP work. Step 4 computes only per-item feedback in memory; it stores no evaluation and calculates no readiness or skill credit. Imported confidence, correctness, eligibility and mastery fields are rejected. Unknown source-page locators/difficulty are not reinterpreted as mapping confidence.
 
 ### Local saving, conflicts and backups
 
@@ -163,7 +166,36 @@ pnpm exec vite preview --outDir .verification-dist --host 127.0.0.1 --port 4186 
 
 Open the printed URL, press **Run native storage checks**, reload the page, then press **Verify committed record after reload**. This is a separate production-mode test artifact with uniquely named test databases; it is never shipped in `dist/`. For actual UI tests, serve the application preview on an unused port and keep that origin isolated from your own data.
 
-Step 4 was not started. Practice, Exams, Mistakes and Study Planner remain placeholders.
+Step 4 adds Practice only. Exams, Mistakes and Study Planner remain placeholders. Step 5 has not been started.
+
+## Shared practice — Step 4
+
+Open **Practice**, filter by course if needed, choose an exercise, then press **Start exercise**. Browsing alone creates no attempt. Use **Save draft** before leaving; unsaved changes are clearly labelled. **Submit answer** saves the exact final response through the existing IndexedDB transaction and shows feedback only after it completes. Saved attempts have stable deep links. **Retry as new attempt** preserves the submitted record and marks prior solution exposure as known.
+
+The catalog contains exactly six authored study items, two per course:
+
+| Course | Exercises | Response format |
+| --- | --- | --- |
+| CO | Decimal 45 to eight binary digits; decimal 173 to two hexadecimal digits | Exact-width digits, outer whitespace ignored, hex case accepted |
+| R&L | `(p ∧ q)`; `(¬p ∨ q)` | Four labelled rows, one T/F choice per row |
+| IP | For-loop sum; while-loop with an even-number condition | Stable output choices for fixed Java snippets |
+
+Each item shows its canonical topic/skill and lecture filename with the pack's actual whole-document page range. These are not official TU Delft questions, exact-slide citations, calibrated difficulty estimates or official grading weights. Only submitted graded responses reveal the reference explanation. Frontend answer keys are acceptable for this personal tool; it is not an anti-cheat examination system.
+
+Definitions, attempts and feedback are separate. `templateRef` identifies the authored definition; `exercise.id` identifies a unique attempt instance; `exercise.version` locks the definition and executable grader SHA-256. Published versions must not be edited in place. New content/grading behavior requires a new version and lock, with old support retained or an explicit original-version-unavailable state. Builds verify fingerprints and source ownership; **do not regenerate locks merely to silence a failure**.
+
+Pure graders return GRADED (0 or 1 raw item point), INCOMPLETE, INVALID, NOT_AUTOGRADABLE or ERROR. Only GRADED has points. No proof/keyword grading, free-form formula parser, learner-code execution, backend or AI is involved. Feedback is recomputed from the exact saved answer and locked definition; no feedback/evaluation fields are persisted, and raw attempts never become mastery/readiness evidence.
+
+Writes are serialized. A failed save/submission retains the form answer, and a stale revision or restore generation blocks further writes until a safe reload. Copy the displayed recovery text before reloading a conflicted form. Unknown original versions preserve the answer without grading it as incorrect. Existing schema 1, database version 1, 1,000-attempt/4 MB limits and atomic recovery remain unchanged. Unknown imported hint/solution exposure stays unknown.
+
+```bash
+pnpm run validate:practice
+pnpm test
+pnpm run typecheck
+pnpm run build
+```
+
+The [Step 4 acceptance report](docs/practice-engine-status.md) records all 370 tests, native-browser checks, source and version contracts, bundle sizes, self-review findings and intentionally untested environments. No Step 5 feature is implemented.
 
 ## Using the workbench
 
@@ -262,6 +294,17 @@ src/
     repository.ts      # Native IndexedDB, revisions, epochs and atomic restore
     LearningProvider.tsx
     StudentDataPanel.tsx
+  practice/
+    catalog.json       # Six authored definitions; immutable definition/grader locks
+    catalog.ts
+    validation.ts
+    grading.ts         # Pure bounded graders; no code execution
+    service.ts         # Adapter over the existing StudentRepository
+    PracticePage.tsx
+    ExercisePage.tsx
+    AttemptPage.tsx
+    ExerciseParts.tsx
+    practice.css
   shell/
     AppShell.tsx
     PageParts.tsx
@@ -313,9 +356,15 @@ tests/
   learning-repository.test.ts
   learning-ui.test.tsx
   student-references.test.ts
+  practice-catalog.test.ts
+  practice-grading.test.ts
+  practice-service.test.ts
+  practice-ui.test.tsx
   browser/             # Separate production-mode native browser acceptance harness
 scripts/
   validate-content.ts
+  validate-practice.ts
+  practice-catalog.ts
   generate-academic-index.ts
   academic-index.ts
   academic-index-guard.ts
@@ -330,6 +379,7 @@ docs/
   content-integration-status.md
   application-shell-status.md
   learning-state-status.md
+  practice-engine-status.md
 ```
 
 The engine imports no React or browser APIs. The UI renders engine snapshots; it never implements instruction behavior. Runtime dependencies are React, React DOM and React Router. Vite, strict TypeScript, Tailwind CSS, Vitest, and jsdom provide development/testing tooling; Ajv and tsx support content validation and generation only.
