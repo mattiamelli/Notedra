@@ -1,0 +1,1209 @@
+[
+  {
+    "id": "address",
+    "title": "Address alias workspace",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK09_02_IO_ADDRESS"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T09_IO_INTERRUPTS/practice"
+  },
+  {
+    "id": "amdahl",
+    "title": "Amdahl workspace",
+    "topicId": "CO_T13_PARALLELISM",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK13_02_AMDAHL"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T13_PARALLELISM/practice"
+  },
+  {
+    "id": "assembly",
+    "title": "Assembly Visualizer",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK06_01_ASM_READ",
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T06_ASSEMBLY_X86_64/visualizer"
+  },
+  {
+    "id": "boolean",
+    "title": "Boolean truth workspace",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK02_01_BOOLEAN_EVAL"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T02_BOOLEAN_KMAP/practice"
+  },
+  {
+    "id": "cache",
+    "title": "Cache trace workspace",
+    "topicId": "CO_T11_CACHE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK11_01_CACHE_BITS",
+      "CO_SK11_02_CACHE_TRACE"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T11_CACHE/practice"
+  },
+  {
+    "id": "ds.assignment.ip.air-audit",
+    "title": "Air-quality batch audit with explicit failure rules",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK17_02_DECOMPOSE",
+      "IP_SK08_03_TESTABILITY",
+      "IP_SK18_01_MODERN_MODEL",
+      "IP_SK15_01_PARSE_FILE",
+      "IP_SK14_02_STRING_PARSE",
+      "IP_SK12_01_CLASSIFY_FAILURE",
+      "IP_SK12_02_EXCEPTION_FLOW",
+      "IP_SK03_01_DEFINE_METHOD",
+      "IP_SK07_02_API_USE",
+      "IP_SK15_02_WRITE_FILE",
+      "IP_SK15_03_RESOURCE_SAFETY",
+      "IP_SK20_01_EXAM_SYNTHESIS",
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES",
+      "IP_SK20_02_EXAM_PRIORITIZE"
+    ],
+    "kind": "coding",
+    "minutes": 60,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice?task=ds.assignment.ip.air-audit"
+  },
+  {
+    "id": "ds.assignment.ip.alert-policies",
+    "title": "Compose and dispatch alert policies",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK09_01_DESIGN_HIERARCHY",
+      "IP_SK09_02_INHERITANCE_TRACE",
+      "IP_SK04_02_CONSTRUCTOR_STATE",
+      "IP_SK10_01_POLY_DESIGN",
+      "IP_SK10_02_DISPATCH_TRACE",
+      "IP_SK07_01_COMPOSE_MODEL",
+      "IP_SK08_03_TESTABILITY",
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK08_01_WRITE_TESTS"
+    ],
+    "kind": "coding",
+    "minutes": 30,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T10_POLYMORPHISM_BINDING/practice?task=ds.assignment.ip.alert-policies"
+  },
+  {
+    "id": "ds.assignment.ip.array-window",
+    "title": "Count threshold crossings in a window",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK03_01_DEFINE_METHOD",
+      "IP_SK05_01_ARRAY_TRAVERSE",
+      "IP_SK02_04_LOOP_IMPLEMENT",
+      "IP_SK05_02_ARRAY_PROCESS",
+      "IP_SK05_03_ARRAY_ALIAS"
+    ],
+    "kind": "coding",
+    "minutes": 15,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T05_ARRAYS_RECURSION/practice?task=ds.assignment.ip.array-window"
+  },
+  {
+    "id": "ds.assignment.ip.batch-token",
+    "title": "Parse one strictly specified token",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK14_02_STRING_PARSE",
+      "IP_SK12_02_EXCEPTION_FLOW",
+      "IP_SK08_02_TEST_BOUNDARIES"
+    ],
+    "kind": "coding",
+    "minutes": 15,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T14_CODE_QUALITY_STRINGS_GENERICS/practice?task=ds.assignment.ip.batch-token"
+  },
+  {
+    "id": "ds.assignment.ip.boundary-tests",
+    "title": "Design tests that expose boundary bugs",
+    "topicId": "IP_T08_TESTING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES",
+      "IP_SK08_03_TESTABILITY",
+      "IP_SK13_01_DEBUG_SYSTEMATIC"
+    ],
+    "kind": "coding",
+    "minutes": 15,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T08_TESTING/practice?task=ds.assignment.ip.boundary-tests"
+  },
+  {
+    "id": "ds.assignment.ip.capacity-shelf",
+    "title": "Build a bounded shelf with a clear invariant",
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK06_01_CONTAINER_IMPL",
+      "IP_SK06_02_REP_INVARIANT",
+      "IP_SK06_03_COLLECTION_SEMANTICS",
+      "IP_SK05_02_ARRAY_PROCESS",
+      "IP_SK05_03_ARRAY_ALIAS",
+      "IP_SK04_04_ENCAPSULATION",
+      "IP_SK07_02_API_USE",
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES"
+    ],
+    "kind": "coding",
+    "minutes": 30,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T06_CONTAINER_CLASSES/practice?task=ds.assignment.ip.capacity-shelf"
+  },
+  {
+    "id": "ds.assignment.ip.grid-key",
+    "title": "A value key with an honest equality contract",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK04_04_ENCAPSULATION",
+      "IP_SK11_01_EQUALS_IMPL",
+      "IP_SK11_03_EQUALITY_EDGE",
+      "IP_SK11_02_HASH_CONTRACT"
+    ],
+    "kind": "coding",
+    "minutes": 15,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T11_EQUALITY_HASHING/practice?task=ds.assignment.ip.grid-key"
+  },
+  {
+    "id": "ds.assignment.ip.label-stream",
+    "title": "Transform labels and handle an empty result",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK16_01_LAMBDA",
+      "IP_SK16_02_STREAM_PIPE",
+      "IP_SK16_03_OPTIONAL"
+    ],
+    "kind": "coding",
+    "minutes": 15,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T16_FUNCTIONAL_JAVA/practice?task=ds.assignment.ip.label-stream"
+  },
+  {
+    "id": "ds.assignment.ip.material-ledger",
+    "title": "Workshop material ledger",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK04_01_MODEL_CLASS",
+      "IP_SK04_02_CONSTRUCTOR_STATE",
+      "IP_SK07_01_COMPOSE_MODEL",
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK17_02_DECOMPOSE",
+      "IP_SK18_01_MODERN_MODEL",
+      "IP_SK11_01_EQUALS_IMPL",
+      "IP_SK11_02_HASH_CONTRACT",
+      "IP_SK11_03_EQUALITY_EDGE",
+      "IP_SK14_02_STRING_PARSE",
+      "IP_SK15_01_PARSE_FILE",
+      "IP_SK12_02_EXCEPTION_FLOW",
+      "IP_SK07_02_API_USE",
+      "IP_SK06_03_COLLECTION_SEMANTICS",
+      "IP_SK15_02_WRITE_FILE",
+      "IP_SK15_03_RESOURCE_SAFETY",
+      "IP_SK20_01_EXAM_SYNTHESIS",
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES",
+      "IP_SK08_03_TESTABILITY",
+      "IP_SK20_02_EXAM_PRIORITIZE"
+    ],
+    "kind": "coding",
+    "minutes": 60,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice?task=ds.assignment.ip.material-ledger"
+  },
+  {
+    "id": "ds.assignment.ip.note-index",
+    "title": "Coordinate a parallel note index",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK17_02_DECOMPOSE",
+      "IP_SK07_01_COMPOSE_MODEL",
+      "IP_SK19_01_THREAD_RUN",
+      "IP_SK19_02_SYNC",
+      "IP_SK15_01_PARSE_FILE",
+      "IP_SK15_02_WRITE_FILE",
+      "IP_SK15_03_RESOURCE_SAFETY",
+      "IP_SK20_01_EXAM_SYNTHESIS",
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES",
+      "IP_SK20_02_EXAM_PRIORITIZE"
+    ],
+    "kind": "coding",
+    "minutes": 60,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice?task=ds.assignment.ip.note-index"
+  },
+  {
+    "id": "ds.assignment.ip.reading-export",
+    "title": "Validate readings before exporting a file",
+    "topicId": "IP_T15_IO_PARSING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK15_01_PARSE_FILE",
+      "IP_SK14_02_STRING_PARSE",
+      "IP_SK12_02_EXCEPTION_FLOW",
+      "IP_SK18_01_MODERN_MODEL",
+      "IP_SK15_03_RESOURCE_SAFETY",
+      "IP_SK15_02_WRITE_FILE",
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES"
+    ],
+    "kind": "coding",
+    "minutes": 30,
+    "durationSource": "Authored practice duration",
+    "to": "/ip/IP_T15_IO_PARSING/practice?task=ds.assignment.ip.reading-export"
+  },
+  {
+    "id": "ds.enrichment.guided.proof-obligations",
+    "title": "Keep hypotheses; negate the target",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK03_04_CONTRADICTION"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T03_PROOF_METHODS/practice"
+  },
+  {
+    "id": "ds.enrichment.guided.stack-locations",
+    "title": "Explain a frame-relative load",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK06_03_STACK_TRACE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T06_ASSEMBLY_X86_64/practice"
+  },
+  {
+    "id": "ds.guided.co.t01.milestone",
+    "title": "Explain a development",
+    "topicId": "CO_T01_HISTORY",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK01_01_HISTORY"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T01_HISTORY/practice"
+  },
+  {
+    "id": "ds.guided.co.t02.groups",
+    "title": "Compare valid grouping choices",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK02_04_KMAP_MINIMIZE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T02_BOOLEAN_KMAP/practice"
+  },
+  {
+    "id": "ds.guided.co.t02.sop",
+    "title": "Build and verify a SoP",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK02_02_SOP"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T02_BOOLEAN_KMAP/practice"
+  },
+  {
+    "id": "ds.guided.co.t03.network",
+    "title": "Audit a proposed CMOS design",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK03_02_CMOS_DESIGN"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T03_DIGITAL_CMOS_SEQUENTIAL/practice"
+  },
+  {
+    "id": "ds.guided.co.t03.storage",
+    "title": "Trace only specified sampling events",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK03_04_SEQ_LOGIC"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T03_DIGITAL_CMOS_SEQUENTIAL/practice"
+  },
+  {
+    "id": "ds.guided.co.t06.debug",
+    "title": "Diagnose an unbalanced return",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK06_04_ASM_DEBUG"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T06_ASSEMBLY_X86_64/practice"
+  },
+  {
+    "id": "ds.guided.co.t07.compare",
+    "title": "Compare operand organizations",
+    "topicId": "CO_T07_ISA",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK07_03_ISA_COMPARE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T07_ISA/practice"
+  },
+  {
+    "id": "ds.guided.co.t07.format",
+    "title": "Propose a valid bit allocation",
+    "topicId": "CO_T07_ISA",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK07_02_ISA_DESIGN"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T07_ISA/practice"
+  },
+  {
+    "id": "ds.guided.co.t08.control",
+    "title": "Compare two control organizations",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK08_04_CONTROL_COMPARE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T08_BPU_MICROCODE/practice"
+  },
+  {
+    "id": "ds.guided.co.t08.optimize",
+    "title": "Audit an overlapping routine",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK08_05_MICRO_OPT"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T08_BPU_MICROCODE/practice"
+  },
+  {
+    "id": "ds.guided.co.t08.routine",
+    "title": "Write a symbolic fetch routine",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK08_02_WRITE_MICRO"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T08_BPU_MICROCODE/practice"
+  },
+  {
+    "id": "ds.guided.co.t09.bus",
+    "title": "Explain a valid shared-bus transfer",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK09_01_BUS_REASON"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T09_IO_INTERRUPTS/practice"
+  },
+  {
+    "id": "ds.guided.co.t10.dma",
+    "title": "Compare transfer mechanisms",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK10_01_DMA"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T10_DMA_MEMORY/practice"
+  },
+  {
+    "id": "ds.guided.co.t11.locality",
+    "title": "Justify an access-order change",
+    "topicId": "CO_T11_CACHE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK11_03_CACHE_OPT"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T11_CACHE/practice"
+  },
+  {
+    "id": "ds.guided.co.t12.schedule",
+    "title": "Compare schedules without enforcing one drawing",
+    "topicId": "CO_T12_PIPELINE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK12_03_PIPE_SCHEDULE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T12_PIPELINE/practice"
+  },
+  {
+    "id": "ds.guided.co.t13.parallel",
+    "title": "Match hardware to work",
+    "topicId": "CO_T13_PARALLELISM",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK13_01_PAR_CLASS"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T13_PARALLELISM/practice"
+  },
+  {
+    "id": "ds.guided.co.t14.isolation",
+    "title": "Explain process isolation",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK14_02_VM_REASON"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T14_VIRTUAL_MEMORY/practice"
+  },
+  {
+    "id": "ds.guided.ip.t01.numeric-audit",
+    "title": "Audit a grouped measurement",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK01_01_DECLARE_ASSIGN",
+      "IP_SK01_02_REASON_TYPES",
+      "IP_SK01_03_EVAL_EXPRESSIONS",
+      "IP_SK01_04_CAST_CONVERT",
+      "IP_SK01_05_NUMERIC_EDGE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T01_JAVA_BASICS/practice"
+  },
+  {
+    "id": "ds.guided.ip.t02.filtered-loop",
+    "title": "Build a loop with an exact boundary",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK02_01_BOOLEAN_CONDITIONS",
+      "IP_SK02_02_BRANCH_TRACE",
+      "IP_SK02_03_LOOP_TRACE",
+      "IP_SK02_04_LOOP_IMPLEMENT"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T02_CONTROL_FLOW/practice"
+  },
+  {
+    "id": "ds.guided.ip.t03.call-audit",
+    "title": "Separate a calculation from a mutation",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK03_01_DEFINE_METHOD",
+      "IP_SK03_02_TRACE_CALLS",
+      "IP_SK03_03_SCOPE",
+      "IP_SK03_04_PASS_BY_VALUE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T03_METHODS_SCOPE/practice"
+  },
+  {
+    "id": "ds.guided.ip.t04.quota-model",
+    "title": "Model a bounded resource allowance",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK04_01_MODEL_CLASS",
+      "IP_SK04_02_CONSTRUCTOR_STATE",
+      "IP_SK04_03_INSTANCE_STATIC",
+      "IP_SK04_04_ENCAPSULATION"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T04_CLASSES_OBJECTS/practice"
+  },
+  {
+    "id": "ds.guided.ip.t05.filter-and-prefix",
+    "title": "Filter safely and trace a recursive prefix",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK05_01_ARRAY_TRAVERSE",
+      "IP_SK05_02_ARRAY_PROCESS",
+      "IP_SK05_03_ARRAY_ALIAS",
+      "IP_SK05_04_RECURSION"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T05_ARRAYS_RECURSION/practice"
+  },
+  {
+    "id": "ds.guided.ip.t06.set-invariant",
+    "title": "Turn a bounded list into a bounded set",
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK06_01_CONTAINER_IMPL",
+      "IP_SK06_02_REP_INVARIANT",
+      "IP_SK06_03_COLLECTION_SEMANTICS"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T06_CONTAINER_CLASSES/practice"
+  },
+  {
+    "id": "ds.guided.ip.t07.session-model",
+    "title": "Design a session roster around documented APIs",
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK07_01_COMPOSE_MODEL",
+      "IP_SK07_02_API_USE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T07_COMPOSITION_LIBRARIES/practice"
+  },
+  {
+    "id": "ds.guided.ip.t08.tests-before-code",
+    "title": "Design tests that reject plausible bugs",
+    "topicId": "IP_T08_TESTING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK08_01_WRITE_TESTS",
+      "IP_SK08_02_TEST_BOUNDARIES",
+      "IP_SK08_03_TESTABILITY"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T08_TESTING/practice"
+  },
+  {
+    "id": "ds.guided.ip.t09.hierarchy-review",
+    "title": "Review a useful hierarchy and a misleading one",
+    "topicId": "IP_T09_INHERITANCE",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK09_01_DESIGN_HIERARCHY",
+      "IP_SK09_02_INHERITANCE_TRACE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T09_INHERITANCE/practice"
+  },
+  {
+    "id": "ds.guided.ip.t10.dispatch-review",
+    "title": "Explain an interchangeable formatter call",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK10_01_POLY_DESIGN",
+      "IP_SK10_02_DISPATCH_TRACE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T10_POLYMORPHISM_BINDING/practice"
+  },
+  {
+    "id": "ds.guided.ip.t11.contract-review",
+    "title": "Review a key contract",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK11_01_EQUALS_IMPL",
+      "IP_SK11_02_HASH_CONTRACT",
+      "IP_SK11_03_EQUALITY_EDGE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T11_EQUALITY_HASHING/practice"
+  },
+  {
+    "id": "ds.guided.ip.t12.failure-boundary",
+    "title": "Design an error boundary",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK12_01_CLASSIFY_FAILURE",
+      "IP_SK12_02_EXCEPTION_FLOW"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T12_EXCEPTIONS/practice"
+  },
+  {
+    "id": "ds.guided.ip.t13.localize",
+    "title": "Localize an off-by-one error",
+    "topicId": "IP_T13_DEBUGGING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK13_01_DEBUG_SYSTEMATIC"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T13_DEBUGGING/practice"
+  },
+  {
+    "id": "ds.guided.ip.t14.parse-review",
+    "title": "Review a delimiter parser",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK14_01_REFACTOR",
+      "IP_SK14_02_STRING_PARSE",
+      "IP_SK14_03_GENERIC_REASON"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T14_CODE_QUALITY_STRINGS_GENERICS/practice"
+  },
+  {
+    "id": "ds.guided.ip.t15.import-contract",
+    "title": "Design a failure-aware importer",
+    "topicId": "IP_T15_IO_PARSING",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK15_01_PARSE_FILE",
+      "IP_SK15_02_WRITE_FILE",
+      "IP_SK15_03_RESOURCE_SAFETY"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T15_IO_PARSING/practice"
+  },
+  {
+    "id": "ds.guided.ip.t16.pipeline-design",
+    "title": "Describe a pipeline before coding",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK16_01_LAMBDA",
+      "IP_SK16_02_STREAM_PIPE",
+      "IP_SK16_03_OPTIONAL"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T16_FUNCTIONAL_JAVA/practice"
+  },
+  {
+    "id": "ds.guided.ip.t17.roof-design",
+    "title": "Design a roof-inspection report",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK17_02_DECOMPOSE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T17_PROGRAM_DESIGN/practice"
+  },
+  {
+    "id": "ds.guided.ip.t18.choose-model",
+    "title": "Choose constructs for a booking label",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK18_01_MODERN_MODEL",
+      "IP_SK18_02_MODERN_USE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T18_MODERN_JAVA/practice"
+  },
+  {
+    "id": "ds.guided.ip.t19.race-review",
+    "title": "Review a counter trace without guessing the scheduler",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK19_01_THREAD_RUN",
+      "IP_SK19_02_SYNC"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T19_THREADS_CONCURRENCY/practice"
+  },
+  {
+    "id": "ds.guided.ip.t20.integration-plan",
+    "title": "Plan a complete repair-supply log",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK20_01_EXAM_SYNTHESIS",
+      "IP_SK20_02_EXAM_PRIORITIZE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice"
+  },
+  {
+    "id": "ds.guided.ip.t20.prioritization",
+    "title": "Recover from a blocked component",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "subjectId": "CSE1100_IP",
+    "skillIds": [
+      "IP_SK20_02_EXAM_PRIORITIZE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice"
+  },
+  {
+    "id": "ds.guided.rl.constraint-docks",
+    "title": "Explain every calibration-dock elimination",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T09_TRANSFER_CONSTRAINT_PUZZLES/practice"
+  },
+  {
+    "id": "ds.guided.rl.t02.countermodel",
+    "title": "Refute the converse-style argument",
+    "topicId": "RL_T02_FOL",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK02_06_COUNTERMODEL"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T02_FOL/practice"
+  },
+  {
+    "id": "ds.guided.rl.t02.translation",
+    "title": "Formalize a dependency",
+    "topicId": "RL_T02_FOL",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK02_01_NL_TO_FOL",
+      "RL_SK02_02_FOL_TO_NL",
+      "RL_SK02_03_NEGATE_FOL"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T02_FOL/practice"
+  },
+  {
+    "id": "ds.guided.rl.t02.world",
+    "title": "Construct and inspect a relational world",
+    "topicId": "RL_T02_FOL",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK02_04_TARSKI",
+      "RL_SK02_05_FORMAL_STRUCTURE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T02_FOL/practice"
+  },
+  {
+    "id": "ds.guided.rl.t03.cases",
+    "title": "Prove a product claim by cases",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK03_03_CASES",
+      "RL_SK03_06_IDENTIFY_PROOF"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T03_PROOF_METHODS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t03.contradiction",
+    "title": "Use a contradiction and diagnose a gap",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK03_04_CONTRADICTION",
+      "RL_SK03_07_DEBUG_PROOF"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T03_PROOF_METHODS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t03.contrapositive",
+    "title": "Prove by the correct contrapositive",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK03_05_CONTRAPOSITIVE",
+      "RL_SK03_06_IDENTIFY_PROOF"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T03_PROOF_METHODS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t03.direct",
+    "title": "Prove an even-sum claim",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK03_01_GENERALIZE",
+      "RL_SK03_02_DIRECT"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T03_PROOF_METHODS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t04.induction",
+    "title": "Prove the recurrence formula",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK04_03_INDUCTION",
+      "RL_SK04_04_INDUCTION_SETUP"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
+  },
+  {
+    "id": "ds.guided.rl.t04.invariant",
+    "title": "Structure a complete process proof",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK04_07_INVARIANT"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
+  },
+  {
+    "id": "ds.guided.rl.t04.recursion",
+    "title": "Define and inspect a recurrence",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK04_01_DEFINE_RECURSIVE",
+      "RL_SK04_02_EVAL_RECURSIVE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
+  },
+  {
+    "id": "ds.guided.rl.t04.structural",
+    "title": "Prove a recursive-language property",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK04_05_RECURSIVE_SET",
+      "RL_SK04_06_STRUCT_INDUCTION"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
+  },
+  {
+    "id": "ds.guided.rl.t05.function",
+    "title": "Define a mirror transformation",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK05_03_TREE_FUNC"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T05_TREES_GRAPHS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t05.graph",
+    "title": "Construct a DAG with two valid orders",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK05_04_GRAPH_CONSTRUCT",
+      "RL_SK05_05_TOPO"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T05_TREES_GRAPHS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t05.tree",
+    "title": "Construct and justify a constrained tree",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK05_01_TREE_CONSTRUCT",
+      "RL_SK05_02_TREE_TRAVERSE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T05_TREES_GRAPHS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t06.counterexample",
+    "title": "Build and explain a set counterexample",
+    "topicId": "RL_T06_SET_THEORY",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK06_05_SET_COUNTER"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T06_SET_THEORY/practice"
+  },
+  {
+    "id": "ds.guided.rl.t06.proof",
+    "title": "Write a distributivity proof",
+    "topicId": "RL_T06_SET_THEORY",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK06_04_SET_PROOF"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T06_SET_THEORY/practice"
+  },
+  {
+    "id": "ds.guided.rl.t07.construct",
+    "title": "Construct two different valid mappings",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK07_02_CONSTRUCT_FUNC",
+      "RL_SK07_03_INJ_SURJ"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T07_FUNCTIONS_RELATIONS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t07.relations",
+    "title": "Justify an equivalence relation",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK07_04_REL_PROPS"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T07_FUNCTIONS_RELATIONS/practice"
+  },
+  {
+    "id": "ds.guided.rl.t08.diagonal",
+    "title": "Explain the diagonal contradiction",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK08_03_LIMITS",
+      "RL_SK08_02_COUNTABLE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T08_LIMITS_COUNTABILITY/practice"
+  },
+  {
+    "id": "ds.guided.rl.t08.listing",
+    "title": "Justify an infinite listing",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "subjectId": "CSE1300_RL",
+    "skillIds": [
+      "RL_SK08_02_COUNTABLE"
+    ],
+    "kind": "guided",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/rl/RL_T08_LIMITS_COUNTABILITY/practice"
+  },
+  {
+    "id": "isa",
+    "title": "Instruction bit-budget workspace",
+    "topicId": "CO_T07_ISA",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK07_01_ISA_BITS"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T07_ISA/practice"
+  },
+  {
+    "id": "memory",
+    "title": "Memory organization workspace",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK10_02_MEMORY_BITS",
+      "CO_SK10_03_INTERLEAVE"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T10_DMA_MEMORY/practice"
+  },
+  {
+    "id": "pipeline",
+    "title": "Pipeline timing workspace",
+    "topicId": "CO_T12_PIPELINE",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK12_01_PIPE_PERF",
+      "CO_SK12_02_PIPE_HAZARD",
+      "CO_SK12_03_PIPE_SCHEDULE"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T12_PIPELINE/practice"
+  },
+  {
+    "id": "representation",
+    "title": "Representation workspace",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK05_01_FIXED",
+      "CO_SK05_02_FLOAT_ENCODE",
+      "CO_SK05_03_FLOAT_RANGE"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T05_DATA_REP_FIXED_FLOAT/practice"
+  },
+  {
+    "id": "vm",
+    "title": "Virtual-memory workspace",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "subjectId": "CSE1400_CO",
+    "skillIds": [
+      "CO_SK14_01_VM_TRANSLATE",
+      "CO_SK14_02_VM_REASON"
+    ],
+    "kind": "workspace",
+    "minutes": 10,
+    "durationSource": "DelftStudy estimate",
+    "to": "/co/CO_T14_VIRTUAL_MEMORY/practice"
+  }
+]

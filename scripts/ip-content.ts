@@ -1,3 +1,4 @@
+import {storageMigrationHash} from './storage-migration-preservation';
 import {readFileSync,readdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import type {Plugin} from 'vite';
@@ -102,6 +103,6 @@ export function validateIP(data:IPData,projection:StudyProjection=projectionData
 export function checkIPLocks(data:IPData,locks:Record<string,string>){const records=ipRecords(data);need(Object.keys(locks).length===records.length,'content lock inventory');for(const r of records)need(locks[r.id+'@'+r.version]===digest(r),'published version changed: '+r.id);}
 export function validateIPFiles(){const source=trustedTopicStudySource();checkTopicStudy(source);const data=loadIP();const report=validateIP(data,JSON.parse(source) as StudyProjection);checkIPLocks(data,readIP('content-lock.json'));need(canonical(Object.fromEntries(data.exercises.map(e=>[e.id+'@'+e.version,digest(e)])))===canonical(readIP('practice-lock.json')),'practice lock inventory or fingerprint');validateGraderSource(readFileSync(new URL('grading.ts',root),'utf8'),readIP('grader-lock.json'));need(canonical(ipCapabilities(data))===canonical(readIP('capabilities.json')),'stale capability counts');
  const summaries=files<IPAssignment>('assignments').map(a=>({id:a.id,version:a.version,file:readdirSync(new URL('assignments/',root)).find(f=>f.endsWith('.json')&&readIP<IPAssignment>('assignments/'+f).id===a.id)!,title:a.title,minutes:a.minutes,topicId:a.topicId,relatedTopicIds:a.relatedTopicIds}));need(canonical(summaries)===canonical(readIP('assignment-index.json')),'stale assignment index');
- const baseline=JSON.parse(readFileSync(new URL('./ip-baseline.json',import.meta.url),'utf8')) as Record<string,string>;need(Object.keys(baseline).length>=83,'protected baseline inventory');for(const [file,hash] of Object.entries(baseline))need(byteHash(readFileSync(new URL('../'+file,import.meta.url)))===hash,'protected baseline changed: '+file);return report;
+ const baseline=JSON.parse(readFileSync(new URL('./ip-baseline.json',import.meta.url),'utf8')) as Record<string,string>;need(Object.keys(baseline).length>=83,'protected baseline inventory');for(const [file,hash] of Object.entries(baseline))need(byteHash(readFileSync(new URL('../'+file,import.meta.url)))===storageMigrationHash(file,hash),'protected baseline changed: '+file);return report;
 }
 export const ipBuildGuard=(validate=validateIPFiles):Plugin=>({name:'delftstudy-ip-course',apply:'build',buildStart(){validate();}});

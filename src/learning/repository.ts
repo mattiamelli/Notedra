@@ -1,8 +1,9 @@
 import {
-  CONTENT, LearningError, emptyBackup, toBackup, validateAttempt, validateBackup, validateDataset, validateResume,
+  CONTENT, LearningError, emptyBackup, migrateBackup, migrateDataset, toBackup, validateAttempt, validateBackup, validateDataset, validateResume,
   type Answer, type Attempt, type AttemptIdentity, type Backup, type Dataset, type LoadedState, type ResumePosition, type WriteToken,
 } from './contracts';
 
+export const STUDENT_DB_VERSION = 2;
 export const STUDENT_DATABASE = 'delftstudy-student-v1';
 export interface DraftInput extends AttemptIdentity { attemptId?: string; answer: Answer; hintsUsed?: number | null; solutionViewed?: boolean | null; }
 export interface StudentRepository {
@@ -12,9 +13,10 @@ export interface StudentRepository {
   editDraft(id: string, revision: number, answer: Answer, expected: WriteToken): Promise<LoadedState>;
   submit(id: string, revision: number, operationId: string, answer: Answer, expected: WriteToken): Promise<LoadedState>;
   abandon(id: string, revision: number, expected: WriteToken): Promise<LoadedState>;
+  setReviewed(id: string, revision: number, reviewed: boolean, expected: WriteToken): Promise<LoadedState>;
   exportBackup(): Promise<Backup>;
   exportRecovery(): Promise<Backup>;
-  restore(backup: Backup, expected: Dataset): Promise<LoadedState>;
+  restore(backup: unknown, expected: Dataset): Promise<LoadedState>;
   close(): void;
 }
 interface Options { name?: string; factory?: IDBFactory; now?: () => string; id?: () => string; }
@@ -44,19 +46,42 @@ export class IndexedStudentRepository implements StudentRepository {
     this.connection = new Promise((resolve, reject) => {
       let opening: IDBOpenDBRequest;
       let rejected = false;
+      let migrationFailure: unknown;
       try {
         const factory = this.options.factory ?? globalThis.indexedDB;
         if (!factory) throw new LearningError('UNAVAILABLE', 'Student storage is unavailable in this browser. Allow site storage and reload.');
-        opening = factory.open(this.options.name ?? STUDENT_DATABASE, 1);
+        opening = factory.open(this.options.name ?? STUDENT_DATABASE, STUDENT_DB_VERSION);
       } catch (error) { reject(error); return; }
       opening.onupgradeneeded = event => {
-        if ((event as IDBVersionChangeEvent).oldVersion === 0) opening.result.createObjectStore('student');
+        if ((event as IDBVersionChangeEvent).oldVersion === 0) { opening.result.createObjectStore('student'); return; }
+        const tx = opening.transaction!;
+        try {
+          const store = tx.objectStore('student');
+          // Both records and the DB version roll back together if either validation/write fails.
+          for (const key of ['active', 'recovery']) {
+            const read = store.get(key);
+            read.onsuccess = () => {
+              try {
+                if (read.result === undefined && key === 'active') {
+                  const count = store.count();
+                  count.onsuccess = () => {
+                    if (count.result > 0) {
+                      migrationFailure = new LearningError('STORAGE', 'Incomplete legacy student storage. Migration was rolled back; recovery data was preserved.');
+                      tx.abort();
+                    }
+                  };
+                }
+                if (read.result !== undefined) store.put(key === 'active' ? migrateDataset(read.result, this.id()) : migrateBackup(read.result), key);
+              } catch (error) { migrationFailure = error; tx.abort(); }
+            };
+          }
+        } catch (error) { migrationFailure = error; tx.abort(); }
       };
       opening.onblocked = () => {
         rejected = true;
         reject(new LearningError('BLOCKED', 'Storage upgrade is blocked by another tab. Close other DelftStudy tabs and reload.'));
       };
-      opening.onerror = () => reject(new LearningError(opening.error?.name === 'VersionError' ? 'INCOMPATIBLE' : 'STORAGE',
+      opening.onerror = () => reject(migrationFailure ?? new LearningError(opening.error?.name === 'VersionError' ? 'INCOMPATIBLE' : 'STORAGE',
         opening.error?.name === 'VersionError' ? 'A newer student database exists. It was preserved; use a compatible application version.' : 'Cannot open student storage. Check browser permissions and reload.'));
       opening.onsuccess = () => {
         const db = opening.result;
@@ -173,6 +198,16 @@ export class IndexedStudentRepository implements StudentRepository {
   abandon(id: string, revision: number, expected: WriteToken) {
     return this.mutate(expected, state => { const attempt = this.draft(state.data, id, revision); attempt.status = 'ABANDONED'; this.touch(state.data, attempt); });
   }
+  setReviewed(id: string, revision: number, reviewed: boolean, expected: WriteToken) {
+    return this.mutate(expected, state => {
+      if (!state.data.attempts.some(attempt => attempt.attemptId === id && attempt.status === 'SUBMITTED')) conflict('The reviewed submission is unavailable.');
+      const existing = state.data.reviews.find(review => review.attemptId === id);
+      if ((existing?.revision ?? 0) !== revision) conflict('Review state changed in another tab. Reload before changing it.');
+      const record = {attemptId: id, reviewedAt: reviewed ? this.now() : null, revision: revision + 1};
+      if (existing) Object.assign(existing, record); else state.data.reviews.push(record);
+      state.data.revision++;
+    });
+  }
   exportBackup() { return this.transaction('readonly', async store => toBackup((await this.read(store)).data)); }
   exportRecovery() {
     return this.transaction('readonly', async store => {
@@ -181,8 +216,8 @@ export class IndexedStudentRepository implements StudentRepository {
       validateBackup(value); return value;
     });
   }
-  async restore(backup: Backup, expected: Dataset) {
-    const replacement = structuredClone(backup); validateBackup(replacement);
+  async restore(backup: unknown, expected: Dataset) {
+    const replacement = migrateBackup(backup);
     return this.mutate(expected, async (state, store) => {
       if (state.data.revision !== expected.revision) conflict('Saved data changed after the restore preview. Reload and review the backup again.');
       const generation = this.id();

@@ -1,0 +1,401 @@
+{
+  "result": "PASS",
+  "baseline": "1288bf4",
+  "engine": "Chromium 152.0.7977.64",
+  "platform": "macOS",
+  "productionOrigin": "http://127.0.0.1:4211",
+  "nativeHarnessOrigin": "http://127.0.0.1:4212",
+  "method": "Actual browser UI through CUA; synthetic learner history submitted through the app. Native harness uses separate named databases. No production storage injection. Final native and Assembly checks repeated after final build.",
+  "attempts": [
+    {
+      "kind": "CO wrong",
+      "path": "/practice/ds.practice.enrich-carry-overflow/attempts/1b81a72e-1e9f-48a6-b361-400ff9af3fdd",
+      "answer": "1,1",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "CO repeated wrong",
+      "path": "/practice/ds.practice.enrich-carry-overflow/attempts/2d5ff2f2-a372-4e1e-a305-18d9464491bf",
+      "answer": "1,1",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "CO correct new retry from Mistakes",
+      "path": "/practice/ds.practice.enrich-carry-overflow/attempts/4f8992b1-44d5-4670-8611-c660fb33d194",
+      "answer": "1,0",
+      "outcome": "correct"
+    },
+    {
+      "kind": "R&L exact pattern",
+      "path": "/practice/ds.practice.enrich-implication-directions/attempts/5b1bb77c-3758-4d5f-abed-45939c5b9458",
+      "answer": "1,1,1",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "R&L unmatched wrong",
+      "path": "/practice/ds.practice.enrich-implication-directions/attempts/17e4aef8-e4a0-410d-942c-3768a92163c6",
+      "answer": "0,0,0",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "IP equality wrong",
+      "path": "/practice/ds.practice.ip-equality/attempts/6e0f1469-0efb-48d5-a83f-18c1b22c5f9e",
+      "answer": "true:true:1",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "CO prerequisite wrong",
+      "path": "/practice/ds.practice.co-memory-chips/attempts/ebfcb3a6-f1c1-437e-97e6-c3136ea79785",
+      "answer": "0",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "CO downstream wrong1",
+      "path": "/practice/ds.practice.co-cache-tag-width/attempts/39541c35-4bf8-456a-8b58-a5df88a01e29",
+      "answer": "0",
+      "outcome": "incorrect"
+    },
+    {
+      "kind": "CO downstream wrong2",
+      "path": "/practice/ds.practice.co-cache-tag-width/attempts/f2b1e227-92b0-4821-9330-ec49664cb747",
+      "answer": "0",
+      "outcome": "incorrect"
+    }
+  ],
+  "flowChecks": [
+    {
+      "name": "fresh history",
+      "observation": "0 mistakes; no fake suggestions",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat and correction",
+      "observation": "2 CO original wrong answers retained after one correct new retry; recently corrected state",
+      "result": "PASS"
+    },
+    {
+      "name": "pattern matching",
+      "observation": "R&L1,1,1 matches Converse versus contrapositive;0,0,0 has no pattern; both get explanations",
+      "result": "PASS"
+    },
+    {
+      "name": "IP equality",
+      "observation": "wrong true:true:1; reference false:true:1; Identity versus equality pattern",
+      "result": "PASS"
+    },
+    {
+      "name": "filters and Back/Forward",
+      "observation": "R&L course2; exact-pattern1; Back2; Forward1",
+      "result": "PASS"
+    },
+    {
+      "name": "review and undo",
+      "observation": "review saved separately; undo available; reviewed does not mean learned",
+      "result": "PASS"
+    },
+    {
+      "name": "reload",
+      "observation": "8 wrong submissions and reviewed cache marker retained",
+      "result": "PASS"
+    },
+    {
+      "name": "two actual tabs",
+      "observation": "stale review rejected with explicit conflict; Reload saved evidence loads committed marker",
+      "result": "PASS"
+    },
+    {
+      "name": "open proof",
+      "observation": "filled arbitrary assumptions, derivation and conclusion; revealed criteria; no new mistake",
+      "result": "PASS"
+    },
+    {
+      "name": "IP coding draft",
+      "observation": "60-minute direct link opens MaterialKey.java; edited ephemeral draft; no new mistake",
+      "result": "PASS"
+    },
+    {
+      "name": "exclusion count",
+      "observation": "still8 mistakes after both open activities",
+      "result": "PASS"
+    },
+    {
+      "name": "prerequisite",
+      "observation": "memory organization first, cache fields second; own recent wrongs on both; canonical reason displayed",
+      "result": "PASS"
+    },
+    {
+      "name": "time10",
+      "observation": "IP equality retry5min +Learn5min",
+      "result": "PASS"
+    },
+    {
+      "name": "time60",
+      "observation": "Workshop material ledger60min; authored duration and unscored reason",
+      "result": "PASS"
+    },
+    {
+      "name": "diversity",
+      "observation": "20min all-course queue: CO retry5 +RL retry5 +IP guided10; all explained and distinct",
+      "result": "PASS"
+    },
+    {
+      "name": "dashboard and topic",
+      "observation": "Dashboard8 recent; cache topic2 recent; links present",
+      "result": "PASS"
+    },
+    {
+      "name": "keyboard",
+      "observation": "native filter changed course; review Enter; Retry Enter creates new draft with3 enabled options; Open activity Enter navigates",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile menu focus",
+      "observation": "Escape closes menu and returns focus to Open navigation",
+      "result": "PASS"
+    }
+  ],
+  "keyboardRetryDraft": {
+    "id": "d7293e96-f5b0-4b69-a9a3-4574de868266",
+    "exercise": "ds.practice.ip-equality",
+    "enabledAnswerOptions": 3,
+    "submitVisible": true,
+    "mistakeCountUnchanged": true
+  },
+  "nativeChecks": [
+    {
+      "name": "fresh installation",
+      "result": "PASS"
+    },
+    {
+      "name": "committed resume survives new connection",
+      "result": "PASS"
+    },
+    {
+      "name": "distinct concurrent attempts survive",
+      "result": "PASS"
+    },
+    {
+      "name": "stale draft edit rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "immutable and idempotent submission",
+      "result": "PASS"
+    },
+    {
+      "name": "request success followed by abort is not saved",
+      "result": "PASS"
+    },
+    {
+      "name": "restore and recovery are atomic; stale connection rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "aborted replacement preserves active and recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid import rejected before mutation",
+      "result": "PASS"
+    },
+    {
+      "name": "corruption preserved with explicit error",
+      "result": "PASS"
+    },
+    {
+      "name": "blocked upgrade rejects and releases late connection",
+      "result": "PASS"
+    },
+    {
+      "name": "browser permission failure propagates (injected denial)",
+      "result": "PASS"
+    },
+    {
+      "name": "prepare actual page-reload persistence check",
+      "result": "PASS"
+    },
+    {
+      "name": "actual page reload retained committed database record",
+      "result": "PASS"
+    },
+    {
+      "name": "real v1 connection versionchange and atomic Schema/DB 2 migration preserve submitted bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "legacy generation rejects writes inside the new transaction",
+      "result": "PASS"
+    },
+    {
+      "name": "historical interpretation retains original binding and later success without deleting mistake",
+      "result": "PASS"
+    },
+    {
+      "name": "workflow commits, survives another connection and never modifies answer bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "concurrent review revisions conflict safely",
+      "result": "PASS"
+    },
+    {
+      "name": "request success then abort is not a saved workflow action",
+      "result": "PASS"
+    },
+    {
+      "name": "Schema 2 export/import round trip preserves workflow and exact attempt bindings",
+      "result": "PASS"
+    },
+    {
+      "name": "Schema 1 import migrates and preserves pre-import review workflow",
+      "result": "PASS"
+    },
+    {
+      "name": "restore changes epoch and rejects a stale second connection",
+      "result": "PASS"
+    },
+    {
+      "name": "aborted restore retains both prior active and recovery exactly",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed, future, duplicate and corrupted review backups fail before mutation",
+      "result": "PASS"
+    },
+    {
+      "name": "aborted native version upgrade rolls back DB version, active and recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "version 1 client cannot reopen upgraded database",
+      "result": "PASS"
+    },
+    {
+      "name": "prepare actual page reload with committed review marker",
+      "result": "PASS"
+    },
+    {
+      "name": "actual page reload preserves Schema 2 attempts, binding and workflow",
+      "result": "PASS"
+    }
+  ],
+  "nativeCheckCount": 29,
+  "nativeFailures": 0,
+  "responsive": [
+    {
+      "route": "/mistakes",
+      "expectedWidth": 390,
+      "measuredWidth": 390,
+      "documentScrollWidth": 390,
+      "result": "PASS"
+    },
+    {
+      "route": "/study-plan?course=CSE1300_RL",
+      "expectedWidth": 390,
+      "measuredWidth": 390,
+      "documentScrollWidth": 390,
+      "result": "PASS"
+    },
+    {
+      "route": "/mistakes",
+      "expectedWidth": 768,
+      "measuredWidth": 768,
+      "documentScrollWidth": 768,
+      "result": "PASS"
+    },
+    {
+      "route": "/study-plan?course=CSE1300_RL",
+      "expectedWidth": 768,
+      "measuredWidth": 768,
+      "documentScrollWidth": 768,
+      "result": "PASS"
+    },
+    {
+      "route": "/mistakes",
+      "expectedWidth": 1280,
+      "measuredWidth": 1280,
+      "documentScrollWidth": 1280,
+      "result": "PASS"
+    },
+    {
+      "route": "/study-plan?course=CSE1300_RL",
+      "expectedWidth": 1280,
+      "measuredWidth": 1280,
+      "documentScrollWidth": 1280,
+      "result": "PASS"
+    }
+  ],
+  "responsiveRegression": {
+    "route": "/study-plan?course=CSE1300_RL",
+    "title": "Compare meanings across all valuations",
+    "before": {
+      "viewport": 390,
+      "documentScrollWidth": 416,
+      "headingWidth": 305,
+      "headingScrollWidth": 364,
+      "whiteSpace": "nowrap",
+      "result": "FAIL"
+    },
+    "after": {
+      "viewport": 390,
+      "documentScrollWidth": 390,
+      "headingWidth": 305,
+      "headingScrollWidth": 305,
+      "whiteSpace": "normal",
+      "result": "PASS"
+    },
+    "fix": "Only adaptive card heading CSS; global Assembly CSS unchanged."
+  },
+  "assembly": [
+    {
+      "example": "Basic arithmetic",
+      "complete": true,
+      "instructions": 3,
+      "rax": 8,
+      "rbx": 0,
+      "rsp": 4096,
+      "rbp": 4096,
+      "result": "PASS"
+    },
+    {
+      "example": "Stack frame",
+      "complete": true,
+      "instructions": 9,
+      "rax": 15,
+      "rbx": 0,
+      "rsp": 4096,
+      "rbp": 4096,
+      "result": "PASS"
+    },
+    {
+      "example": "Function call",
+      "complete": true,
+      "instructions": 10,
+      "rax": 7,
+      "rbx": 7,
+      "rsp": 4096,
+      "rbp": 4096,
+      "result": "PASS"
+    }
+  ],
+  "loadedAssets": {
+    "script": "assets/index-D-lzjyC4.js",
+    "styles": [
+      "assets/index-DPc55Gao.css",
+      "assets/adaptive-Dty-ca5a.css"
+    ]
+  },
+  "console": {
+    "productionQA": [],
+    "secondProductionTab": [],
+    "nativeHarness": []
+  },
+  "notRun": [
+    "Safari",
+    "Firefox",
+    "Physical mobile device",
+    "Real disk quota exhaustion",
+    "Physical power-loss/OS-crash persistence"
+  ],
+  "limitations": "Injected SecurityError is not a real permission denial. Native aborts exercise failure semantics but do not prove survival of every device failure."
+}

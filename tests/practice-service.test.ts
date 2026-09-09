@@ -66,8 +66,8 @@ describe('practice through the unchanged student repository',()=>{
   });
   it('never drops older attempts to make room at the existing dataset limit',async()=>{
     const repo=repository();const s=new PracticeService(repo);const {data}=await repo.load();const started=await s.start(catalog[0].id,'a',data);const template=started.data.attempts[0];
-    const backup={...emptyBackup(),attempts:Array.from({length:1000},(_,i)=>({...template,attemptId:`a-${i}`,exercise:{...template.exercise!,id:`ds.instance.a-${i}`}}))};
+    const backup={...emptyBackup(),attempts:Array.from({length:5000},(_,i)=>({...template,attemptId:`a-${i}`,exercise:{...template.exercise!,id:`ds.instance.a-${i}`}}))};
     const full=await repo.restore(backup,started.data);
-    await expect(s.start(catalog[1].id,'overflow',full.data)).rejects.toMatchObject({code:'INVALID'});expect((await repo.load()).data.attempts).toHaveLength(1000);
+    await expect(s.start(catalog[1].id,'overflow',full.data)).rejects.toMatchObject({code:'INVALID'});expect((await repo.load()).data.attempts).toHaveLength(5000);
   });
 });

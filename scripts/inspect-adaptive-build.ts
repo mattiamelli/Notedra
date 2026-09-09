@@ -1,0 +1,10 @@
+import './inspect-ip-build';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {validateAdaptiveBundle} from './adaptive-bundle';
+import type {IPBundleChunk} from './ip-bundle';
+const report=JSON.parse(readFileSync('docs/rl-bundle-report.json','utf8')) as {chunks:(IPBundleChunk&{bytes:number;gzipBytes:number})[];initialJSBytes:number;initialJSGzipBytes:number;totalAssetBytes:number;totalAssetGzipBytes:number;totalProductionBytes:number;totalProductionGzipBytes:number};
+const ip=JSON.parse(readFileSync('docs/ip-bundle-report.json','utf8')) as {files:{file:string;bytes:number;gzipBytes:number}[]};
+const result=validateAdaptiveBundle(report.chunks,ip.files.map(f=>({...f,prefix:readFileSync('dist/'+f.file).subarray(0,2048).toString()})));
+const owners=Object.fromEntries(Object.entries(result.owners).map(([module,file])=>[module,report.chunks.find(c=>c.file===file)]));
+writeFileSync('docs/adaptive-bundle-report.json',JSON.stringify({baseline:'1288bf4',baselineInitialJS:481622,baselineInitialGzip:126323,initialJS:report.initialJSBytes,initialGzip:report.initialJSGzipBytes,initialDelta:report.initialJSBytes-481622,initialGzipDelta:report.initialJSGzipBytes-126323,totalAssets:report.totalAssetBytes,totalGzip:report.totalAssetGzipBytes,owners,files:ip.files},null,2)+'\n');
+console.log('Adaptive bundle PASS: lazy Mistake Book, Study Path and shared evidence/ranking; no raw source/report/test payload.');

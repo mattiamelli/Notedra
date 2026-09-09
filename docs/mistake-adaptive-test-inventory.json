@@ -1,0 +1,296 @@
+{
+  "baseline": "1288bf4",
+  "baselineTests": 1317,
+  "baselineFiles": 49,
+  "finalTests": 1432,
+  "finalFiles": 57,
+  "allBaselineFileCountsRetained": true,
+  "skippedTests": 0,
+  "files": [
+    {
+      "file": "tests/academic-index.test.ts",
+      "baseline": 14,
+      "final": 14
+    },
+    {
+      "file": "tests/adaptive-engine.test.ts",
+      "baseline": 0,
+      "final": 21
+    },
+    {
+      "file": "tests/adaptive-performance.test.ts",
+      "baseline": 0,
+      "final": 3
+    },
+    {
+      "file": "tests/adaptive-review.test.ts",
+      "baseline": 0,
+      "final": 4
+    },
+    {
+      "file": "tests/adaptive-ui.test.tsx",
+      "baseline": 0,
+      "final": 13
+    },
+    {
+      "file": "tests/adaptive-validation.test.ts",
+      "baseline": 0,
+      "final": 24
+    },
+    {
+      "file": "tests/application-routing.test.tsx",
+      "baseline": 72,
+      "final": 72
+    },
+    {
+      "file": "tests/build-inventory.test.ts",
+      "baseline": 1,
+      "final": 1
+    },
+    {
+      "file": "tests/co-content.test.ts",
+      "baseline": 36,
+      "final": 36
+    },
+    {
+      "file": "tests/co-models.test.ts",
+      "baseline": 39,
+      "final": 39
+    },
+    {
+      "file": "tests/co-practice.test.ts",
+      "baseline": 6,
+      "final": 6
+    },
+    {
+      "file": "tests/co-reference.test.ts",
+      "baseline": 38,
+      "final": 38
+    },
+    {
+      "file": "tests/co-ui.test.tsx",
+      "baseline": 26,
+      "final": 26
+    },
+    {
+      "file": "tests/content-build.test.ts",
+      "baseline": 4,
+      "final": 4
+    },
+    {
+      "file": "tests/content-validation.test.ts",
+      "baseline": 39,
+      "final": 39
+    },
+    {
+      "file": "tests/enrichment-bundle.test.ts",
+      "baseline": 13,
+      "final": 13
+    },
+    {
+      "file": "tests/enrichment-reference.test.ts",
+      "baseline": 16,
+      "final": 16
+    },
+    {
+      "file": "tests/enrichment-service.test.ts",
+      "baseline": 6,
+      "final": 6
+    },
+    {
+      "file": "tests/enrichment-ui.test.tsx",
+      "baseline": 15,
+      "final": 15
+    },
+    {
+      "file": "tests/enrichment.test.ts",
+      "baseline": 58,
+      "final": 58
+    },
+    {
+      "file": "tests/executor.test.ts",
+      "baseline": 10,
+      "final": 10
+    },
+    {
+      "file": "tests/instructions.test.ts",
+      "baseline": 34,
+      "final": 34
+    },
+    {
+      "file": "tests/ip-assignment-references.test.ts",
+      "baseline": 42,
+      "final": 42
+    },
+    {
+      "file": "tests/ip-bundle.test.ts",
+      "baseline": 62,
+      "final": 62
+    },
+    {
+      "file": "tests/ip-content.test.ts",
+      "baseline": 96,
+      "final": 96
+    },
+    {
+      "file": "tests/ip-late-content.test.ts",
+      "baseline": 23,
+      "final": 23
+    },
+    {
+      "file": "tests/ip-practice.test.ts",
+      "baseline": 44,
+      "final": 44
+    },
+    {
+      "file": "tests/ip-review-semantics.test.ts",
+      "baseline": 1,
+      "final": 1
+    },
+    {
+      "file": "tests/ip-review.test.tsx",
+      "baseline": 7,
+      "final": 7
+    },
+    {
+      "file": "tests/ip-ui.test.tsx",
+      "baseline": 12,
+      "final": 12
+    },
+    {
+      "file": "tests/learning-contracts.test.ts",
+      "baseline": 31,
+      "final": 31
+    },
+    {
+      "file": "tests/learning-repository.test.ts",
+      "baseline": 17,
+      "final": 17
+    },
+    {
+      "file": "tests/learning-ui.test.tsx",
+      "baseline": 12,
+      "final": 12
+    },
+    {
+      "file": "tests/mistake-evidence.test.ts",
+      "baseline": 0,
+      "final": 28
+    },
+    {
+      "file": "tests/mistake-failures.test.ts",
+      "baseline": 0,
+      "final": 4
+    },
+    {
+      "file": "tests/mistake-migration.test.ts",
+      "baseline": 0,
+      "final": 18
+    },
+    {
+      "file": "tests/parser.test.ts",
+      "baseline": 49,
+      "final": 49
+    },
+    {
+      "file": "tests/practice-catalog.test.ts",
+      "baseline": 14,
+      "final": 14
+    },
+    {
+      "file": "tests/practice-grading.test.ts",
+      "baseline": 39,
+      "final": 39
+    },
+    {
+      "file": "tests/practice-service.test.ts",
+      "baseline": 11,
+      "final": 11
+    },
+    {
+      "file": "tests/practice-ui.test.tsx",
+      "baseline": 14,
+      "final": 14
+    },
+    {
+      "file": "tests/rl-content.test.ts",
+      "baseline": 41,
+      "final": 41
+    },
+    {
+      "file": "tests/rl-logic.test.ts",
+      "baseline": 54,
+      "final": 54
+    },
+    {
+      "file": "tests/rl-model-boundaries.test.ts",
+      "baseline": 4,
+      "final": 4
+    },
+    {
+      "file": "tests/rl-models.test.ts",
+      "baseline": 56,
+      "final": 56
+    },
+    {
+      "file": "tests/rl-practice-reference.test.ts",
+      "baseline": 71,
+      "final": 71
+    },
+    {
+      "file": "tests/rl-practice.test.ts",
+      "baseline": 28,
+      "final": 28
+    },
+    {
+      "file": "tests/rl-reference.test.ts",
+      "baseline": 30,
+      "final": 30
+    },
+    {
+      "file": "tests/rl-review.test.ts",
+      "baseline": 2,
+      "final": 2
+    },
+    {
+      "file": "tests/rl-topic-ui.test.tsx",
+      "baseline": 11,
+      "final": 11
+    },
+    {
+      "file": "tests/rl-ui.test.tsx",
+      "baseline": 10,
+      "final": 10
+    },
+    {
+      "file": "tests/student-references.test.ts",
+      "baseline": 2,
+      "final": 2
+    },
+    {
+      "file": "tests/topic-content.test.ts",
+      "baseline": 17,
+      "final": 17
+    },
+    {
+      "file": "tests/topic-examples.test.ts",
+      "baseline": 6,
+      "final": 6
+    },
+    {
+      "file": "tests/topic-projection.test.ts",
+      "baseline": 54,
+      "final": 54
+    },
+    {
+      "file": "tests/topic-ui.test.tsx",
+      "baseline": 22,
+      "final": 22
+    },
+    {
+      "file": "tests/visualization.test.ts",
+      "baseline": 8,
+      "final": 8
+    }
+  ]
+}

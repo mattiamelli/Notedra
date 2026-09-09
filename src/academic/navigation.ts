@@ -35,7 +35,7 @@ export const productAreas = [
   {path: '/exams', title: 'Mock Exams', icon: 'exam', purpose: 'Bring topics together in an exam-style session.', emptyTitle: 'Mock exams are not available yet', message: 'Timed sessions and exam-style questions will be available in a future update.'},
   {path: '/progress', title: 'Progress', icon: 'progress', purpose: 'Understand your learning through evidence from your work.', emptyTitle: 'Progress tracking is not available yet', message: 'Learning progress will appear here once activity tracking is available. No learning scores are calculated yet.'},
   {path: '/mistakes', title: 'Mistakes', icon: 'mistakes', purpose: 'Return to mistakes and work through them again.', emptyTitle: 'Mistake review is not available yet', message: 'This space will help you revisit mistakes once practice attempts can be recorded.'},
-  {path: '/study-plan', title: 'Study Planner', icon: 'calendar', purpose: 'Organise what to study and when.', emptyTitle: 'Study planning is not available yet', message: 'Planning study sessions will be available in a future update. You can browse the course topics now.'},
+  {path: '/study-plan', title: 'Study Path', icon: 'calendar', purpose: 'Choose a next activity from exact local practice evidence.', emptyTitle: 'Study planning is not available yet', message: 'Planning study sessions will be available in a future update. You can browse the course topics now.'},
 ] as const;
 export type ProductArea = typeof productAreas[number];
 export interface Breadcrumb {label: string; to?: string;}

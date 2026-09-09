@@ -15,7 +15,7 @@ export function repository(factory = new IDBFactory(), name = 'isolated-learning
 }
 export const foreignSkill = references.skills.find(skill => !references.subtopics.some(sub => sub.id === skill.subtopic && sub.topic === topic.topicId))!.id;
 export async function rawWrite(factory: IDBFactory, name: string, value: unknown, key = 'active') {
-  const db = await new Promise<IDBDatabase>((resolve, reject) => { const open = factory.open(name, 1); open.onsuccess = () => resolve(open.result); open.onerror = () => reject(open.error); });
+  const db = await new Promise<IDBDatabase>((resolve, reject) => { const open = factory.open(name); open.onsuccess = () => resolve(open.result); open.onerror = () => reject(open.error); });
   await new Promise<void>((resolve, reject) => { const tx = db.transaction('student', 'readwrite'); tx.objectStore('student').put(value, key); tx.oncomplete = () => resolve(); tx.onabort = () => reject(tx.error); }); db.close();
 }
 export async function rawRead(factory: IDBFactory, name: string): Promise<Dataset> {

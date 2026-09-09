@@ -4,18 +4,35 @@ A browser-based study workspace for a first-year Computer Science & Engineering 
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
+## Mistake Book and Study Path
+
+**Mistakes** (`/mistakes`) keeps factual wrong-answer history, exact answer-pattern matches, repetition counts, course/topic/skill/recency filters, reviewed/undo and immutable retry links. Only valid deterministic submissions count. Unknown original versions remain visibly limited; open proofs, coding drafts, page visits and workspace interactions never become correctness evidence.
+
+**Study Path** (`/study-plan`) gives up to four explained next actions from existing Learn, Flashcards, Practice, guides, workspaces or coding tasks. Choose 10/20/30/45/60+ minutes. Canonical prerequisites, recent repeated errors, later successful attempts, diverse activities and repeated-retry limits determine the order. Times are estimates or authored durations; there is no mastery/readiness or predicted grade.
+
+Student Schema 1 / DB 1 upgrade atomically to Schema 2 / DB 2. Original submitted records remain unchanged. Only separate review workflow is added; backups include it, legacy imports migrate, failed upgrades/restores roll back, and stale generations cannot write. Everything stays local. Marked reviewed does not mean learned.
+
+```bash
+pnpm run validate:mistakes
+pnpm run validate:adaptive
+pnpm run check:adaptive-bundle
+```
+
+See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 and later are not implemented.
+
+
 ## Supplemental learning and explanatory feedback
 
 The maintenance patch adds 12 targeted cards (CO 79→85; R&L 67→73), six original controlled exercises, six optional skill-map cues and two open reasoning self-checks. Sixteen selected exercises have version-bound, answer-specific explanations with a reference, worked reasoning and concept reminder. An authored error pattern is shown only when supported by the submitted answer; other wrong responses get a verified explanation without a diagnosis. Retry creates a new attempt and preserves the submitted answer.
 
-Proofs and other open answers remain unscored. Supplemental notes are temporary, and no learner mistake history, mastery or adaptive study system is stored. The trusted pack, existing published content and all Assembly behavior remain unchanged. Raw PDFs and source-review artifacts are not shipped to browsers. See the [maintenance acceptance report](docs/supplemental-learning-enrichment-status.md) for source verification, before/after inventories, tests and browser limitations.
+Proofs and other open answers remain unscored. Supplemental notes are temporary, and Step 9 derives a factual Mistake Book and deterministic Study Path from exact submitted practice evidence. Review workflow is stored separately; no mastery score is calculated. The trusted pack, existing published content and all Assembly behavior remain unchanged. Raw PDFs and source-review artifacts are not shipped to browsers. See the [maintenance acceptance report](docs/supplemental-learning-enrichment-status.md) for source verification, before/after inventories, tests and browser limitations.
 
 ```bash
 pnpm run validate:enrichment
 pnpm run check:enrichment-bundle
 ```
 
-The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Steps 9 and later remain future work.
+The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Steps 10 and later remain future work.
 
 ## Introduction to Programming
 
@@ -23,7 +40,7 @@ All 20 IP topics and 56 canonical skills have guided Learn content, two flashcar
 
 The Coding Workbench supports editable starter files, keyboard file tabs, copy/reset, requirement rubrics and separately loaded reference implementations/test specifications. **Drafts are ephemeral:** copy files before navigating or reloading. **Learner Java is never executed or automatically graded.** Test specifications and one valid reference help self-review; revealing them does not mean tests passed. Submitted fixed-prediction attempts continue to use the existing immutable local-storage lifecycle.
 
-The integrated assignments use original contexts and explicit component evidence. They do not award broad skill correctness. Source PDFs, ZIPs, the full Handoff and build validators are excluded from browser bundles. Lessons, assignments, workbench and reference solutions load separately on demand. Student Schema 1 and IndexedDB version 1 remain unchanged.
+The integrated assignments use original contexts and explicit component evidence. They do not award broad skill correctness. Source PDFs, ZIPs, the full Handoff and build validators are excluded from browser bundles. Lessons, assignments, workbench and reference solutions load separately on demand. Step 9 safely migrates student records to Schema 2 / IndexedDB 2; original attempts and bindings remain unchanged.
 
 ```bash
 pnpm run validate:ip
@@ -33,7 +50,7 @@ pnpm run verify:ip-java
 
 The first two commands validate canonical ownership, sources, published fingerprints, safe assessment policies and actual production payloads. The optional development-only Java check requires JDK 21; set `DELFTSTUDY_JAVA_HOME` to its installation directory if needed. It executes only checked-in authored fixtures and reference harnesses, never student answers. Illustrative JUnit snippets are specifications, not a claim that JUnit ran.
 
-See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). No mastery, adaptive study, Mistake Book, global mock-exam orchestration, accounts or deployment is included.
+See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). Step 9 adds the Mistake Book and Study Path described below. Mastery, global mock-exam orchestration, accounts and deployment remain excluded.
 
 ## Application navigation
 
@@ -69,14 +86,14 @@ Six calculation workspaces cover propositional truth/equivalence/validity, finit
 
 Proofs, translations and open constructions accept multiple valid approaches. Write working notes, then reveal the rubric and reference reasoning. These notes are temporary page state, not saved attempts, and never receive an automatic correctness score. Fixed exact-answer exercises use the existing immutable Practice service and IndexedDB transactions. Finite checks do not establish infinite theorems or learning mastery.
 
-New content and tools load on demand. Academic taxonomy/projections, all CO content, Assembly and student schema/database version 1 remain unchanged. All 99 uncertain R&L mappings stay blocked; broad evidence remains topic-only. The new bounded puzzle uses a verified current mechanism and a separately exhaustive uniqueness check. Source references honestly identify normalized lecture ranges: no original PDFs were supplied or directly inspected.
+New content and tools load on demand. Academic taxonomy/projections, all CO content and Assembly remain unchanged. Student Schema/DB 2 is described below. All 99 uncertain R&L mappings stay blocked; broad evidence remains topic-only. The new bounded puzzle uses a verified current mechanism and a separately exhaustive uniqueness check. Source references honestly identify normalized lecture ranges: no original PDFs were supplied or directly inspected.
 
 ```bash
 pnpm run validate:rl
 pnpm run check:rl-bundle
 ```
 
-See [Step 7 acceptance evidence](docs/reasoning-logic-status.md) and the [production module inventory](docs/rl-bundle-report.json). Complete IP, global exams, mastery/readiness, adaptive learning, and all later steps remain outside this implementation.
+See [Step 7 acceptance evidence](docs/reasoning-logic-status.md) and the [production module inventory](docs/rl-bundle-report.json). IP is complete from Step 8 and the local Study Path from Step 9. Global exams, mastery/readiness and later steps remain outside this implementation.
 
 ## Assembly features
 
@@ -178,7 +195,7 @@ Three independent layers remain separate:
 
 1. Immutable Content Pack **1.0.1**, academic schema **1.1.0**.
 2. Generated navigation and minimal canonical reference projections.
-3. Mutable student schema **1**, in native IndexedDB database `delftstudy-student-v1` (database version 1).
+3. Mutable student schema **2**, in native IndexedDB database `delftstudy-student-v1` (database version 2).
 
 The new **69,985-byte** student projection contains pack version/SHA-256, 3 subject IDs, 43 topic/course associations, 105 subtopic/topic associations, 147 skill/subtopic associations, and 489 source mapping locators with their owning course/topic IDs. Source locators are used only to validate optional attempt references; they are not runnable exercises. No assessment content, mapping-confidence payloads, provenance or historical-frequency tables are included. The existing navigation projection remains 7,462 bytes. Both artifacts are deterministic and checked during direct Vite builds.
 
@@ -196,13 +213,13 @@ Drafts have canonical identity, explicit targeted skills, optional exercise iden
 ### Local saving, conflicts and backups
 
 - Essential student writes happen immediately through IndexedDB transactions; no unload/beforeunload handler is required. Save success is reported only after transaction completion. Aborts, quota/permission failures, corruption and incompatible versions are surfaced; storage errors never silently reset data or return a successful empty dataset.
-- The bounded dataset (at most 1,000 attempts and 4 MB per backup) is stored as one active record in a small object store. Transactions serialize read/validate/write operations. Distinct concurrent attempts are preserved; stale record revisions conflict. This favors straightforward correctness over a generalized synchronization system.
+- The bounded dataset (at most 5,000 attempts and 16 MB per backup) is stored as one active record in a small object store. Transactions serialize read/validate/write operations. Distinct concurrent attempts are preserved; stale record revisions conflict. This favors straightforward correctness over a generalized synchronization system.
 - Backup replacement validates everything before mutation, checks the persisted dataset generation and revision inside the write transaction, retains the prior snapshot, and replaces active data atomically. A fresh generation rejects pre-restore tabs even without cross-tab notifications. Use **Reload saved data** after a conflict. Blocked upgrades require closing other tabs; connection/permission failures may require a full page reload.
 - **Export student backup**, then keep the downloaded JSON somewhere safe. To transfer or restore, choose that file, review the contents, check the replacement confirmation and press **Replace student data**. Cancellation changes nothing. No automatic merge occurs.
 - **Export pre-restore recovery** downloads the immediately preceding dataset. Choose that file through the same confirmed restore flow to recover it. Each successful restore replaces the previous recovery snapshot; export an older recovery file before another restore if you need to retain it.
 - Backups cover only the student namespace. Assembly editor/preferences remain under `delftstudy:v1:` in localStorage; CPU execution history remains in memory. No blanket clear-browser-storage action exists.
 - Browser, device, hostname and port each define separate local storage. This is not cloud synchronization. Browser-data deletion, device failure and some crashes can lose local data even after a completed save. Exported backups provide a separate recovery copy.
-- Only the actual new schema is supported. Unknown student/database versions, different academic fingerprints and malformed persisted data are preserved and refused; no speculative migrations or automatic corruption repair are implemented. Preserve existing browser data and use a compatible application/backup when incompatibility is reported.
+- Schema 1 backups and databases migrate deliberately to Schema 2. Unknown future versions, different academic fingerprints and malformed persisted data are preserved and refused; there is no automatic corruption repair. Preserve existing browser data and use a compatible application/backup when incompatibility is reported.
 
 The only new dependency is **fake-indexeddb 6.2.5**, development-only for reproducible storage tests. Runtime dependencies remain React, React DOM and React Router. The existing deprecated **whatwg-encoding 3.1.1** is transitive through development-only jsdom 26.1.0 (also through html-encoding-sniffer 4.0.0); no broad upgrade was performed.
 
@@ -235,7 +252,7 @@ Definitions, attempts and feedback are separate. `templateRef` identifies the au
 
 Pure graders return GRADED (0 or 1 raw item point), INCOMPLETE, INVALID, NOT_AUTOGRADABLE or ERROR. Only GRADED has points. No proof/keyword grading, free-form formula parser, learner-code execution, backend or AI is involved. Feedback is recomputed from the exact saved answer and locked definition; no feedback/evaluation fields are persisted, and raw attempts never become mastery/readiness evidence.
 
-Writes are serialized. A failed save/submission retains the form answer, and a stale revision or restore generation blocks further writes until a safe reload. Copy the displayed recovery text before reloading a conflicted form. Unknown original versions preserve the answer without grading it as incorrect. Existing schema 1, database version 1, 1,000-attempt/4 MB limits and atomic recovery remain unchanged. Unknown imported hint/solution exposure stays unknown.
+Writes are serialized. A failed save/submission retains the form answer, and a stale revision or restore generation blocks further writes until a safe reload. Copy the displayed recovery text before reloading a conflicted form. Unknown original versions preserve the answer without grading it as incorrect. Schema 2 and database version 2 support 5,000 attempts /16 MB and preserve atomic recovery and original bindings. Unknown imported hint/solution exposure stays unknown.
 
 ```bash
 pnpm run validate:practice
@@ -262,7 +279,7 @@ Lessons use safe typed blocks with stable IDs, versions, canonical skill/subtopi
 
 Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Step 5 Topic Practice reused the six original definitions and the same Start/Resume/Review runner; Step 6 expands this shared catalog for CO. Steps 7 and 8 complete R&L and IP learning content. IP Exam-style links to authored integrated coding tasks; no global exam engine or inferred mistake profile is implemented.
 
-The deterministic `src/generated/topic-study.json` is **84,049 bytes** and contains only topic-page academic fields plus 106 deduplicated source references. Authored lessons are **27,195 bytes** (3 lessons, 27 blocks); flashcards are **12,214 bytes** (24 cards). The separate content lock has 54 SHA-256 entries for lessons, blocks and cards. Published educational text cannot change silently: use a new content version and an explicitly reviewed lock. Normal builds never regenerate locks. The academic pack, existing Practice locks and student/database schema remain unchanged.
+The deterministic `src/generated/topic-study.json` is **84,049 bytes** and contains only topic-page academic fields plus 106 deduplicated source references. Authored lessons are **27,195 bytes** (3 lessons, 27 blocks); flashcards are **12,214 bytes** (24 cards). The separate content lock has 54 SHA-256 entries for lessons, blocks and cards. Published educational text cannot change silently: use a new content version and an explicitly reviewed lock. Normal builds never regenerate locks. The academic pack and existing Practice locks remain unchanged. The deliberate Step 9 student migration is described below.
 
 ```bash
 pnpm run generate:topics
@@ -365,7 +382,7 @@ All 14 canonical CO topics now have Learn and Flashcards, covering all 32 subtop
 - **Nine new workspaces:** Boolean truth, fixed/custom floating representation, ISA bit budgets, I/O aliases, memory organization/interleaving, cache LRU tracing, pipeline timing, Amdahl and VM translation. Every model states its assumptions and has reset, accessible results and reference/boundary tests.
 - **Existing Assembly Visualizer** remains the CO Assembly execution tool. New partial-register lesson examples are explicitly reading-only.
 
-New topic JSON is lazy-loaded by topic. Shared workspaces and Practice definitions load on demand; Assembly remains lazy. No dependencies, backend, storage schema or trusted evidence fields were added. Student schema and IndexedDB version remain 1. Published content and grader changes require deliberate new versions and locks; builds never silently regenerate them.
+New topic JSON is lazy-loaded by topic. Shared workspaces and Practice definitions load on demand; Assembly remains lazy. CO adds no dependencies or backend. The current student schema and IndexedDB version are 2; the Step 9 migration preserves existing submissions. Published content and grader changes require deliberate new versions and locks; builds never silently regenerate them.
 
 ```bash
 pnpm run validate:co

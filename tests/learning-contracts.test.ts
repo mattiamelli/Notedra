@@ -34,12 +34,12 @@ describe('bounded student contracts', () => {
     const submitted = attempt({status: 'SUBMITTED', submission: {operationId: 'same', submittedAt: position.visitedAt}});
     expect(() => validateBackup({...emptyBackup(), attempts: [submitted, {...submitted, attemptId: 'second'}]})).toThrow('Duplicate submission');
   });
-  it.each([{schemaVersion: 2}, {content: {version: '1.0.0', fingerprint: 'old'}}, {content: {version: '1.0.1', fingerprint: 'wrong'}}])('refuses incompatible versions %j', patch => {
+  it.each([{schemaVersion: 3}, {content: {version: '1.0.0', fingerprint: 'old'}}, {content: {version: '1.0.1', fingerprint: 'wrong'}}])('refuses incompatible versions %j', patch => {
     expect(() => validateBackup({...emptyBackup(), ...patch})).toThrow(expect.objectContaining({code: 'INCOMPATIBLE'}));
   });
   it('rejects malformed JSON, oversized backups and arbitrary resume URLs', () => {
     expect(() => parseBackup('{')).toThrow('valid JSON');
-    expect(() => parseBackup(' '.repeat(4_000_001))).toThrow('4 MB');
+    expect(() => parseBackup(' '.repeat(16_000_001))).toThrow('16 MB');
     expect(() => validateBackup({...emptyBackup(), resume: {...position, url: 'https://evil.invalid'}})).toThrow('unsupported student-data fields');
   });
   it('leaves hints and exposure unknown, and all source mappings ineligible', () => {

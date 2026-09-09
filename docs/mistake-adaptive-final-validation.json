@@ -1,0 +1,213 @@
+{
+  "baseline": "1288bf4",
+  "phase": "Complete final rerun after production responsive fix",
+  "tests": 1432,
+  "testFiles": 57,
+  "performance": [
+    {
+      "attempts": 100,
+      "deriveAndRankMilliseconds": 14.36
+    },
+    {
+      "attempts": 1000,
+      "deriveAndRankMilliseconds": 62.39
+    },
+    {
+      "attempts": 5000,
+      "deriveAndRankMilliseconds": 238.5
+    }
+  ],
+  "commands": [
+    {
+      "command": "pnpm run validate:content",
+      "startedUTC": "2026-09-09T21:10:33.807694+00:00",
+      "exitCode": 0,
+      "seconds": 1.86,
+      "logSHA256": "28b04b5481dbc6bc7f0cbd31c305ea205cc3832d352432a9f5cfbf1db8816215",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:academic",
+      "startedUTC": "2026-09-09T21:10:35.670688+00:00",
+      "exitCode": 0,
+      "seconds": 1.75,
+      "logSHA256": "ef351cd8ba45fdc95a70b4cb9216045492b850e0028da93bfd36714369de8b80",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:references",
+      "startedUTC": "2026-09-09T21:10:37.423407+00:00",
+      "exitCode": 0,
+      "seconds": 1.77,
+      "logSHA256": "f5c67b78156d56e2b2f829ddc2de88535633f6aace03d06b5bdf750001bf8d9d",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:practice",
+      "startedUTC": "2026-09-09T21:10:39.189384+00:00",
+      "exitCode": 0,
+      "seconds": 1.71,
+      "logSHA256": "8e9f28e277ad4b6366b3e1244ee5dbe484f01fa3e7107f2aaa17adfe3f33bf86",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:topics",
+      "startedUTC": "2026-09-09T21:10:40.898740+00:00",
+      "exitCode": 0,
+      "seconds": 1.71,
+      "logSHA256": "6b0324f76084f5828a433bb5169d7adba1e686de738f3c4bded5b0481bf9c0dc",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:topics",
+      "startedUTC": "2026-09-09T21:10:42.610006+00:00",
+      "exitCode": 0,
+      "seconds": 1.73,
+      "logSHA256": "b40eec295e6587db5d3acf6ae711c057b1767526a8b6ceadbb9b5b3f00d72d7f",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:co",
+      "startedUTC": "2026-09-09T21:10:44.341545+00:00",
+      "exitCode": 0,
+      "seconds": 1.77,
+      "logSHA256": "e10cc812fc30c58da73e2d198fda4229ee35364ee3ac2a3c1c1ec34de34f75b5",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:co-bundle",
+      "startedUTC": "2026-09-09T21:10:46.108249+00:00",
+      "exitCode": 0,
+      "seconds": 8.42,
+      "logSHA256": "2d867a4874b1a8fadda7e5601e9081577e045fe4aeb1bfdb35db2f38cfa9577a",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:rl",
+      "startedUTC": "2026-09-09T21:10:54.524783+00:00",
+      "exitCode": 0,
+      "seconds": 3.07,
+      "logSHA256": "465185f2c702ea5e601f22d7cafd74da81c8005b3346bed2550836646a576378",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:rl-bundle",
+      "startedUTC": "2026-09-09T21:10:57.596719+00:00",
+      "exitCode": 0,
+      "seconds": 10.34,
+      "logSHA256": "925c091e5ef65abe71c30159f66292a4959f2814aee32008d2fc33dfb9fe6932",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:enrichment",
+      "startedUTC": "2026-09-09T21:11:07.940294+00:00",
+      "exitCode": 0,
+      "seconds": 2.38,
+      "logSHA256": "9c2fd8672316986669d956a49cddedbda034d06a77926e541a074c8d4c6e29b0",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:enrichment-bundle",
+      "startedUTC": "2026-09-09T21:11:10.322801+00:00",
+      "exitCode": 0,
+      "seconds": 8.77,
+      "logSHA256": "59d844619d384d172396249a79ee356f0c031526de1d4d1efc49da8ac9ac883a",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:ip",
+      "startedUTC": "2026-09-09T21:11:19.096347+00:00",
+      "exitCode": 0,
+      "seconds": 2.74,
+      "logSHA256": "b5a765fdfbdfb72dbbede7eec2916a5911a69f234fd2ccb4a9b618c90d6ce41a",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:ip-bundle",
+      "startedUTC": "2026-09-09T21:11:21.835249+00:00",
+      "exitCode": 0,
+      "seconds": 10.14,
+      "logSHA256": "520e18dc8a37f5fd0a5389dfa830215abbf5a2d49b0a29408b752172b1ff3d78",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:mistakes",
+      "startedUTC": "2026-09-09T21:11:31.972335+00:00",
+      "exitCode": 0,
+      "seconds": 2.29,
+      "logSHA256": "66dd3e1a2d3d649f2cbcf5f91b9fc176283012ff34ac8bcf79cda171c80320ab",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run validate:adaptive",
+      "startedUTC": "2026-09-09T21:11:34.258809+00:00",
+      "exitCode": 0,
+      "seconds": 1.45,
+      "logSHA256": "1a8d06c76b2019cb2094ea5becea18c9f1a07c8beeb9a5669b26d40875af2b92",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run check:adaptive-bundle",
+      "startedUTC": "2026-09-09T21:11:35.707770+00:00",
+      "exitCode": 0,
+      "seconds": 8.6,
+      "logSHA256": "8b76c2b3844d06e09f93b36c558657d4cc36544cb74abcd31b233cb6e9f6326f",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "startedUTC": "2026-09-09T21:11:44.309772+00:00",
+      "exitCode": 0,
+      "seconds": 42.19,
+      "logSHA256": "b730a55de732cd450d1ed9d3f62e9c23f6b341979cc895c488be3b901c59a91d",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "startedUTC": "2026-09-09T21:12:26.502557+00:00",
+      "exitCode": 0,
+      "seconds": 9.97,
+      "logSHA256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run build",
+      "startedUTC": "2026-09-09T21:12:36.475468+00:00",
+      "exitCode": 0,
+      "seconds": 28.61,
+      "logSHA256": "99a5a881686439c2ad280708ceb170534d24645709d4b27a03b07d0214345c06",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm run verify:ip-java",
+      "startedUTC": "2026-09-09T21:13:05.082887+00:00",
+      "exitCode": 0,
+      "seconds": 66.86,
+      "logSHA256": "1ca7e8277a2d679d6d842ad0f0f7622ded7e3d1436a5005dae5f7ca5a937e75a",
+      "result": "PASS"
+    },
+    {
+      "command": "node --import tsx scripts/build-learning-browser-check.ts",
+      "startedUTC": "2026-09-09T21:14:11.939276+00:00",
+      "exitCode": 0,
+      "seconds": 2.34,
+      "logSHA256": "8b5914512927c449a3bb1f179653480ef1c933dce7c2566f5e0b38d25e0d9836",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "startedUTC": "2026-09-09T21:14:14.282562+00:00",
+      "exitCode": 0,
+      "seconds": 0.13,
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS"
+    }
+  ],
+  "postDocumentationBuild": {
+    "command": "pnpm run build",
+    "result": "PASS",
+    "exitCode": 0,
+    "sameProductionAssetNamesAndSizes": true,
+    "logSHA256": "e214ebf5dbf74656b213032f154f39ea945f83fa6ee0a99d65c8682ef69523b6"
+  }
+}

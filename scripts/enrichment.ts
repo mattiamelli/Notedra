@@ -1,3 +1,4 @@
+import {storageMigrationHash} from './storage-migration-preservation';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import type {Plugin} from 'vite';
@@ -78,6 +79,6 @@ export function validateEnrichmentFiles(){
  const practiceLocks=read('practice-lock') as Record<string,string>;need(Object.keys(practiceLocks).length===6,'practice lock inventory');for(const e of data.practice)need(practiceLocks[e.id+'@'+e.version]===sha(canonical(e)),'practice lock mismatch');
  const grader=read('grader-lock');need(grader.id==='enrichment-exact'&&grader.version==='1'&&grader.sha256===sha(readFileSync(new URL('grading.ts',root))),'grader binding changed');
  const baseline=JSON.parse(readFileSync(new URL('./enrichment-baseline.json',import.meta.url),'utf8')) as Record<string,string>;
- for(const [file,hash] of Object.entries(baseline))need(sha(readFileSync(new URL('../'+file,import.meta.url)))===hash,'protected baseline changed: '+file);
+ for(const [file,hash] of Object.entries(baseline))need(sha(readFileSync(new URL('../'+file,import.meta.url)))===storageMigrationHash(file,hash),'protected baseline changed: '+file);
 }
 export const enrichmentGuard=(validate=validateEnrichmentFiles):Plugin=>({name:'delftstudy-enrichment',apply:'build',buildStart(){validate();}});

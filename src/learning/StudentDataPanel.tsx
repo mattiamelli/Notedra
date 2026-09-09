@@ -20,7 +20,7 @@ export function StudentDataPanel() {
     const current = ++sequence.current; const expected = learning.snapshot.data;
     setPending(null); setConfirmed(false); setError(''); setReading(true);
     try {
-      if (file.size > MAX_BACKUP_BYTES) throw new Error('Backup exceeds the 4 MB limit.');
+      if (file.size > MAX_BACKUP_BYTES) throw new Error('Backup exceeds the 16 MB limit.');
       const backup = parseBackup(await file.text());
       if (current === sequence.current) setPending({backup, expected, name: file.name});
     } catch (failure) { if (current === sequence.current) setError(failure instanceof Error ? failure.message : errorMessage(failure)); }

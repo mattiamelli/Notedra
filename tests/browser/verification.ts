@@ -13,7 +13,7 @@ async function rejects(operation: () => Promise<unknown>, code: string) {
   try { await operation(); } catch (error) { assert(typeof error === 'object' && error !== null && 'code' in error && error.code === code, `Expected ${code}, got ${String(error)}`); return; }
   throw new Error(`Expected ${code}, but operation succeeded.`);
 }
-function open(name: string, version = 1) { return new Promise<IDBDatabase>((resolve, reject) => { const req = indexedDB.open(name, version); req.onupgradeneeded = () => { if (!req.result.objectStoreNames.contains('student')) req.result.createObjectStore('student'); }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error); }); }
+function open(name: string, version = 2) { return new Promise<IDBDatabase>((resolve, reject) => { const req = indexedDB.open(name, version); req.onupgradeneeded = () => { if (!req.result.objectStoreNames.contains('student')) req.result.createObjectStore('student'); }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error); }); }
 async function raw(name: string, data: unknown) {
   const db = await open(name);
   await new Promise<void>((resolve, reject) => { const tx = db.transaction('student', 'readwrite'); tx.objectStore('student').put(data, 'active'); tx.oncomplete = () => resolve(); tx.onabort = () => reject(tx.error); }); db.close();
@@ -86,7 +86,7 @@ async function run() {
     assert(Number(value.schemaVersion) === 99, 'Future data was reset.'); db.close(); corruptRepo.close();
   });
   await check('blocked upgrade rejects and releases late connection', async () => {
-    const blockedName = prefix + crypto.randomUUID(); const held = await open(blockedName);
+    const blockedName = prefix + crypto.randomUUID(); const held = await open(blockedName, 1);
     const adapter = {open: (dbName: string) => indexedDB.open(dbName, 2)} as IDBFactory;
     const blockedRepo = new IndexedStudentRepository({name: blockedName, factory: adapter});
     await rejects(() => blockedRepo.load(), 'BLOCKED'); held.close(); blockedRepo.close();

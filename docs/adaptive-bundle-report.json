@@ -1,399 +1,102 @@
 {
-  "initialJSBytes": 485110,
-  "initialJSGzipBytes": 127345,
-  "baseline": {
-    "commit": "bda8c0f",
-    "initialJSBytes": 475077,
-    "initialJSGzipBytes": 125104,
-    "totalAssetBytes": 984932,
-    "totalAssetGzipBytes": 283837,
-    "totalProductionBytes": 985928,
-    "totalProductionGzipBytes": 284486
+  "baseline": "1288bf4",
+  "baselineInitialJS": 481622,
+  "baselineInitialGzip": 126323,
+  "initialJS": 485110,
+  "initialGzip": 127345,
+  "initialDelta": 3488,
+  "initialGzipDelta": 1022,
+  "totalAssets": 1438259,
+  "totalGzip": 423752,
+  "owners": {
+    "MistakesPage.tsx": {
+      "file": "assets/MistakesPage-DejcclX6.js",
+      "bytes": 9398,
+      "gzipBytes": 3354,
+      "entry": false,
+      "imports": [
+        "assets/index-D-lzjyC4.js",
+        "assets/service-B1fI3KJ4.js",
+        "assets/useEvidence-CYP7dQDn.js",
+        "assets/feedback-BP-WpN_Y.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/adaptive/filters.ts",
+        "src/adaptive/MistakesPage.tsx"
+      ]
+    },
+    "StudyPathPage.tsx": {
+      "file": "assets/StudyPathPage-C42h9SdF.js",
+      "bytes": 35849,
+      "gzipBytes": 8373,
+      "entry": false,
+      "imports": [
+        "assets/index-D-lzjyC4.js",
+        "assets/useEvidence-CYP7dQDn.js",
+        "assets/service-B1fI3KJ4.js",
+        "assets/feedback-BP-WpN_Y.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/adaptive/actions.json",
+        "src/adaptive/engine.ts",
+        "src/adaptive/StudyPathPage.tsx"
+      ]
+    },
+    "engine.ts": {
+      "file": "assets/StudyPathPage-C42h9SdF.js",
+      "bytes": 35849,
+      "gzipBytes": 8373,
+      "entry": false,
+      "imports": [
+        "assets/index-D-lzjyC4.js",
+        "assets/useEvidence-CYP7dQDn.js",
+        "assets/service-B1fI3KJ4.js",
+        "assets/feedback-BP-WpN_Y.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/adaptive/actions.json",
+        "src/adaptive/engine.ts",
+        "src/adaptive/StudyPathPage.tsx"
+      ]
+    },
+    "evidence.ts": {
+      "file": "assets/useEvidence-CYP7dQDn.js",
+      "bytes": 3196,
+      "gzipBytes": 1568,
+      "entry": false,
+      "imports": [
+        "assets/index-D-lzjyC4.js",
+        "assets/service-B1fI3KJ4.js",
+        "assets/feedback-BP-WpN_Y.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/adaptive/evidence.ts",
+        "src/adaptive/useEvidence.ts"
+      ]
+    },
+    "actions.json": {
+      "file": "assets/StudyPathPage-C42h9SdF.js",
+      "bytes": 35849,
+      "gzipBytes": 8373,
+      "entry": false,
+      "imports": [
+        "assets/index-D-lzjyC4.js",
+        "assets/useEvidence-CYP7dQDn.js",
+        "assets/service-B1fI3KJ4.js",
+        "assets/feedback-BP-WpN_Y.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/adaptive/actions.json",
+        "src/adaptive/engine.ts",
+        "src/adaptive/StudyPathPage.tsx"
+      ]
+    }
   },
-  "initialDeltaBytes": 10033,
-  "initialDeltaGzipBytes": 2241,
-  "initialChunks": [
-    "assets/index-D-lzjyC4.js"
-  ],
-  "ipTopics": {
-    "bytes": 168424,
-    "gzipBytes": 55588,
-    "chunks": [
-      {
-        "file": "assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js",
-        "bytes": 12286,
-        "gzipBytes": 3670,
-        "modules": [
-          "src/ip/topics/IP_T01_JAVA_BASICS.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js",
-        "bytes": 10751,
-        "gzipBytes": 3242,
-        "modules": [
-          "src/ip/topics/IP_T03_METHODS_SCOPE.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js",
-        "bytes": 10693,
-        "gzipBytes": 3236,
-        "modules": [
-          "src/ip/topics/IP_T04_CLASSES_OBJECTS.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js",
-        "bytes": 10487,
-        "gzipBytes": 3259,
-        "modules": [
-          "src/ip/topics/IP_T05_ARRAYS_RECURSION.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js",
-        "bytes": 9576,
-        "gzipBytes": 3060,
-        "modules": [
-          "src/ip/topics/IP_T06_CONTAINER_CLASSES.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js",
-        "bytes": 8206,
-        "gzipBytes": 2797,
-        "modules": [
-          "src/ip/topics/IP_T07_COMPOSITION_LIBRARIES.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T08_TESTING-BAXYRvyj.js",
-        "bytes": 10102,
-        "gzipBytes": 3265,
-        "modules": [
-          "src/ip/topics/IP_T08_TESTING.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T09_INHERITANCE-Binoh_DU.js",
-        "bytes": 8166,
-        "gzipBytes": 2664,
-        "modules": [
-          "src/ip/topics/IP_T09_INHERITANCE.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js",
-        "bytes": 8367,
-        "gzipBytes": 2616,
-        "modules": [
-          "src/ip/topics/IP_T10_POLYMORPHISM_BINDING.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js",
-        "bytes": 8361,
-        "gzipBytes": 2778,
-        "modules": [
-          "src/ip/topics/IP_T11_EQUALITY_HASHING.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T12_EXCEPTIONS-B7H-5rEl.js",
-        "bytes": 7190,
-        "gzipBytes": 2467,
-        "modules": [
-          "src/ip/topics/IP_T12_EXCEPTIONS.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T13_DEBUGGING-CqMISr3b.js",
-        "bytes": 5085,
-        "gzipBytes": 1956,
-        "modules": [
-          "src/ip/topics/IP_T13_DEBUGGING.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js",
-        "bytes": 8515,
-        "gzipBytes": 2974,
-        "modules": [
-          "src/ip/topics/IP_T14_CODE_QUALITY_STRINGS_GENERICS.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T15_IO_PARSING-CxDROOYT.js",
-        "bytes": 9618,
-        "gzipBytes": 3228,
-        "modules": [
-          "src/ip/topics/IP_T15_IO_PARSING.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js",
-        "bytes": 8056,
-        "gzipBytes": 2719,
-        "modules": [
-          "src/ip/topics/IP_T16_FUNCTIONAL_JAVA.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js",
-        "bytes": 6554,
-        "gzipBytes": 2353,
-        "modules": [
-          "src/ip/topics/IP_T17_PROGRAM_DESIGN.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T18_MODERN_JAVA-B9jrpJOu.js",
-        "bytes": 7291,
-        "gzipBytes": 2647,
-        "modules": [
-          "src/ip/topics/IP_T18_MODERN_JAVA.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js",
-        "bytes": 8101,
-        "gzipBytes": 2829,
-        "modules": [
-          "src/ip/topics/IP_T19_THREADS_CONCURRENCY.json"
-        ]
-      },
-      {
-        "file": "assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js",
-        "bytes": 11019,
-        "gzipBytes": 3828,
-        "modules": [
-          "src/ip/topics/IP_T20_EXAM_PROGRAM_SYNTHESIS.json"
-        ]
-      }
-    ]
-  },
-  "codingWorkbench": {
-    "bytes": 6686,
-    "gzipBytes": 2477,
-    "chunks": [
-      {
-        "file": "assets/CodingWorkbench-BOxkfDhQ.js",
-        "bytes": 6686,
-        "gzipBytes": 2477,
-        "modules": [
-          "src/ip/CodingWorkbench.tsx"
-        ]
-      }
-    ]
-  },
-  "assignments": {
-    "bytes": 54571,
-    "gzipBytes": 20268,
-    "chunks": [
-      {
-        "file": "assets/air-audit-BIinS1_M.js",
-        "bytes": 7749,
-        "gzipBytes": 2739,
-        "modules": [
-          "src/ip/assignments/air-audit.json"
-        ]
-      },
-      {
-        "file": "assets/alert-policies-DrsrCxXC.js",
-        "bytes": 5419,
-        "gzipBytes": 1862,
-        "modules": [
-          "src/ip/assignments/alert-policies.json"
-        ]
-      },
-      {
-        "file": "assets/array-window-Bto1gkFC.js",
-        "bytes": 2919,
-        "gzipBytes": 1268,
-        "modules": [
-          "src/ip/assignments/array-window.json"
-        ]
-      },
-      {
-        "file": "assets/batch-token-CBpM-gf2.js",
-        "bytes": 2727,
-        "gzipBytes": 1237,
-        "modules": [
-          "src/ip/assignments/batch-token.json"
-        ]
-      },
-      {
-        "file": "assets/boundary-tests-r4CPnxAO.js",
-        "bytes": 3656,
-        "gzipBytes": 1497,
-        "modules": [
-          "src/ip/assignments/boundary-tests.json"
-        ]
-      },
-      {
-        "file": "assets/capacity-shelf-B8EMZ286.js",
-        "bytes": 4560,
-        "gzipBytes": 1681,
-        "modules": [
-          "src/ip/assignments/capacity-shelf.json"
-        ]
-      },
-      {
-        "file": "assets/grid-key-ByuEdlSN.js",
-        "bytes": 2994,
-        "gzipBytes": 1256,
-        "modules": [
-          "src/ip/assignments/grid-key.json"
-        ]
-      },
-      {
-        "file": "assets/label-stream-BTlUuTVJ.js",
-        "bytes": 2727,
-        "gzipBytes": 1169,
-        "modules": [
-          "src/ip/assignments/label-stream.json"
-        ]
-      },
-      {
-        "file": "assets/material-ledger-Dlb9LY3I.js",
-        "bytes": 8817,
-        "gzipBytes": 2962,
-        "modules": [
-          "src/ip/assignments/material-ledger.json"
-        ]
-      },
-      {
-        "file": "assets/note-index-9EzBN5C-.js",
-        "bytes": 7856,
-        "gzipBytes": 2694,
-        "modules": [
-          "src/ip/assignments/note-index.json"
-        ]
-      },
-      {
-        "file": "assets/reading-export-03SKeJdJ.js",
-        "bytes": 5147,
-        "gzipBytes": 1903,
-        "modules": [
-          "src/ip/assignments/reading-export.json"
-        ]
-      }
-    ]
-  },
-  "referenceSolutions": {
-    "bytes": 43262,
-    "gzipBytes": 17535,
-    "chunks": [
-      {
-        "file": "assets/air-audit-CoOfR9nj.js",
-        "bytes": 7801,
-        "gzipBytes": 2765,
-        "modules": [
-          "src/ip/references/air-audit.json"
-        ]
-      },
-      {
-        "file": "assets/alert-policies-BW_0oYWi.js",
-        "bytes": 2812,
-        "gzipBytes": 1173,
-        "modules": [
-          "src/ip/references/alert-policies.json"
-        ]
-      },
-      {
-        "file": "assets/array-window-DrNedUNk.js",
-        "bytes": 1785,
-        "gzipBytes": 934,
-        "modules": [
-          "src/ip/references/array-window.json"
-        ]
-      },
-      {
-        "file": "assets/batch-token-g3chmWvR.js",
-        "bytes": 1950,
-        "gzipBytes": 988,
-        "modules": [
-          "src/ip/references/batch-token.json"
-        ]
-      },
-      {
-        "file": "assets/boundary-tests-CBldJTKl.js",
-        "bytes": 2840,
-        "gzipBytes": 1268,
-        "modules": [
-          "src/ip/references/boundary-tests.json"
-        ]
-      },
-      {
-        "file": "assets/capacity-shelf-Dl_X9eRW.js",
-        "bytes": 2992,
-        "gzipBytes": 1330,
-        "modules": [
-          "src/ip/references/capacity-shelf.json"
-        ]
-      },
-      {
-        "file": "assets/grid-key-DHvNZxu4.js",
-        "bytes": 1992,
-        "gzipBytes": 999,
-        "modules": [
-          "src/ip/references/grid-key.json"
-        ]
-      },
-      {
-        "file": "assets/label-stream-BxbDcTkq.js",
-        "bytes": 1716,
-        "gzipBytes": 871,
-        "modules": [
-          "src/ip/references/label-stream.json"
-        ]
-      },
-      {
-        "file": "assets/material-ledger-aES6d9xp.js",
-        "bytes": 7898,
-        "gzipBytes": 2792,
-        "modules": [
-          "src/ip/references/material-ledger.json"
-        ]
-      },
-      {
-        "file": "assets/note-index-BJOza8nf.js",
-        "bytes": 7023,
-        "gzipBytes": 2606,
-        "modules": [
-          "src/ip/references/note-index.json"
-        ]
-      },
-      {
-        "file": "assets/reading-export-CUwAZtHJ.js",
-        "bytes": 4453,
-        "gzipBytes": 1809,
-        "modules": [
-          "src/ip/references/reading-export.json"
-        ]
-      }
-    ]
-  },
-  "preservedPilot": {
-    "bytes": 1727,
-    "gzipBytes": 989,
-    "chunks": [
-      {
-        "file": "assets/IntroTopicContent-BbPnH81E.js",
-        "bytes": 1727,
-        "gzipBytes": 989,
-        "modules": [
-          "src/ip/intro-guided.json",
-          "src/ip/IntroTopicContent.tsx"
-        ]
-      }
-    ]
-  },
-  "totalAssetBytes": 1438259,
-  "totalAssetGzipBytes": 423752,
-  "totalProductionBytes": 1439255,
-  "totalProductionGzipBytes": 424400,
   "files": [
     {
       "file": "favicon.svg",
@@ -910,17 +613,5 @@
       "bytes": 3196,
       "gzipBytes": 1568
     }
-  ],
-  "checks": [
-    "19 separately lazy new IP topics; preserved T02 pilot uses existing lesson/card stores",
-    "11 separately lazy assignments selected on demand",
-    "11 separately lazy original reference solutions remain behind reveal",
-    "CodingWorkbench has its own lazy chunk and no large editor dependency",
-    "Only IP capability counts and the lightweight IPStudyMode loader may enter the initial graph",
-    "IP teaching, practice, feedback, evidence, cues and workbench absent from the initial graph",
-    "IP build-only coverage/locks/source-review/oracles, scripts, docs and tests absent from every chunk",
-    "No raw PDF/ZIP/text, source inventory, Java verification evidence or full Handoff emitted",
-    "CO/RL/enrichment module gates and all Vite content gates executed unchanged",
-    "Sizes measured from final emitted assets after Vite rewriting; per-file gzip measured independently"
   ]
 }

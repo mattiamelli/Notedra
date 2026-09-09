@@ -1,0 +1,1179 @@
+{
+  "baseline": "1288bf4",
+  "result": "PASS",
+  "unchangedProtectedFileCount": 191,
+  "originalManifestCounts": {
+    "ip": {
+      "total": 95,
+      "unchanged": 92,
+      "authorizedStorageChanges": 3
+    },
+    "enrichment": {
+      "total": 83,
+      "unchanged": 80,
+      "authorizedStorageChanges": 3
+    }
+  },
+  "authorizedStorageMigration": {
+    "src/learning/contracts.ts": {
+      "before": "7441f052df8d8bf33514170ac346a7cd43bd5153d5e5dde19f92263f2bc69da9",
+      "after": "df49fdbc79b56257fbec10af7c304367a6f842e5d61c4c4ad310e9bb1841c04b"
+    },
+    "src/learning/repository.ts": {
+      "before": "419616b549d2c382079b72b1b31678fd174d23e059ab90fc1f0d6702d0a1a8c2",
+      "after": "e0b140a99b07c754e2d81323c67cb7be0d0db81e2f90efc6f99c3c119fe15518"
+    },
+    "src/learning/StudentDataPanel.tsx": {
+      "before": "ea369f6476f61231e14c6ed4684c3252331fba7ff67031475282c8dc507ec868",
+      "after": "9d33f52f5fc9d275da7720d9c35f4cb9252f278701d649c28ab02e90abcc0b85"
+    }
+  },
+  "files": [
+    {
+      "file": "content-pack/v1.0.1/ADVERSARIAL_REAUDIT_REPORT.json",
+      "baselineSHA256": "a62e5297b2bda4b891f7307566d61c936910d58f8ea4189b72d7bd213dcc5391",
+      "currentSHA256": "a62e5297b2bda4b891f7307566d61c936910d58f8ea4189b72d7bd213dcc5391",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/ADVERSARIAL_REAUDIT_REPORT.md",
+      "baselineSHA256": "2241588fd3f604e403244796c4fbd89d4d8e630d37f99ef03099b9da68e3f686",
+      "currentSHA256": "2241588fd3f604e403244796c4fbd89d4d8e630d37f99ef03099b9da68e3f686",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/DelftStudy_Codex_Handoff_Pack.json",
+      "baselineSHA256": "0290897dea04a92aeecee0e449baabcf781e91ead1577469e10a08700965a36e",
+      "currentSHA256": "0290897dea04a92aeecee0e449baabcf781e91ead1577469e10a08700965a36e",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/DelftStudy_Content_Pack.schema.json",
+      "baselineSHA256": "e13352039639ee60468026728933f1d6917c0c44fb327105f25e8d7da2c84521",
+      "currentSHA256": "e13352039639ee60468026728933f1d6917c0c44fb327105f25e8d7da2c84521",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/DelftStudy_Master_Content_Pack.md",
+      "baselineSHA256": "2d4817d1a32b36565d884b58e66e1bc7ffed8d73075dd29a0bb48698fae5131e",
+      "currentSHA256": "2d4817d1a32b36565d884b58e66e1bc7ffed8d73075dd29a0bb48698fae5131e",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/FINAL_VALIDATION_REPORT.json",
+      "baselineSHA256": "158974522505a75c9aacc3f20dda71a340a182e6e90c906778fe5bd6306c5af0",
+      "currentSHA256": "158974522505a75c9aacc3f20dda71a340a182e6e90c906778fe5bd6306c5af0",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/FINAL_VALIDATION_REPORT.md",
+      "baselineSHA256": "6f3820be2b8e6ffa1bd47f3ebb73f7fe306ef94e965d452a5b3527f24c35a71b",
+      "currentSHA256": "6f3820be2b8e6ffa1bd47f3ebb73f7fe306ef94e965d452a5b3527f24c35a71b",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/INSTRUCTIONS_FOR_CODEX.md",
+      "baselineSHA256": "13196ba214edd60b1abb42277a3c2a4bd5c374efa3b997416385303ea2b7b5a3",
+      "currentSHA256": "13196ba214edd60b1abb42277a3c2a4bd5c374efa3b997416385303ea2b7b5a3",
+      "unchanged": true
+    },
+    {
+      "file": "content-pack/v1.0.1/manifest.json",
+      "baselineSHA256": "d26c0384029d261185cd118979c874d86771439e49cf68a8deb96ee450653bcc",
+      "currentSHA256": "d26c0384029d261185cd118979c874d86771439e49cf68a8deb96ee450653bcc",
+      "unchanged": true
+    },
+    {
+      "file": "pnpm-lock.yaml",
+      "baselineSHA256": "dd62e22e779e58c122d811d1eb83b15617e34c72eb8fb23f2ef1086c0b3081d8",
+      "currentSHA256": "dd62e22e779e58c122d811d1eb83b15617e34c72eb8fb23f2ef1086c0b3081d8",
+      "unchanged": true
+    },
+    {
+      "file": "scripts/enrichment-baseline.json",
+      "baselineSHA256": "6fcc46877d57b375fcd95055f4c04ccfeeac261a353dbd7765e310490150ec31",
+      "currentSHA256": "6fcc46877d57b375fcd95055f4c04ccfeeac261a353dbd7765e310490150ec31",
+      "unchanged": true
+    },
+    {
+      "file": "scripts/ip-baseline.json",
+      "baselineSHA256": "20ed38e35ae4d60415b46b5e3fd29b8b00da1999d879910b63bf909ac23ad9d8",
+      "currentSHA256": "20ed38e35ae4d60415b46b5e3fd29b8b00da1999d879910b63bf909ac23ad9d8",
+      "unchanged": true
+    },
+    {
+      "file": "src/AssemblyWorkbench.tsx",
+      "baselineSHA256": "e054a84c05c2ef77eafc9f69e50863f6600bbaada15c00db7c0b267ad4a3c0c5",
+      "currentSHA256": "e054a84c05c2ef77eafc9f69e50863f6600bbaada15c00db7c0b267ad4a3c0c5",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/COStudyMode.tsx",
+      "baselineSHA256": "9e0abe220a3c9a188df0edc36d9783f6371f1f2526eeef789b2172002da08c3a",
+      "currentSHA256": "9e0abe220a3c9a188df0edc36d9783f6371f1f2526eeef789b2172002da08c3a",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/TopicContent.tsx",
+      "baselineSHA256": "7fefb248c30845b7bc8aed334a621f4fd71948ea4c68b493355e7318b50bb57b",
+      "currentSHA256": "7fefb248c30845b7bc8aed334a621f4fd71948ea4c68b493355e7318b50bb57b",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/Workspace.tsx",
+      "baselineSHA256": "d5e1f498ef9ab81e782d1d92c4e0fa90c7ce42a71341f6f998cd40567db21783",
+      "currentSHA256": "d5e1f498ef9ab81e782d1d92c4e0fa90c7ce42a71341f6f998cd40567db21783",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/capabilities.json",
+      "baselineSHA256": "4ffa3a4a7d907d6a4fe932efaccb9339a2bd01970a84ea7cf3096d3642fec91b",
+      "currentSHA256": "4ffa3a4a7d907d6a4fe932efaccb9339a2bd01970a84ea7cf3096d3642fec91b",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/co.css",
+      "baselineSHA256": "980b433332dfde8865d14559a642e5e0fd1e7f7e3454a166f4876ace70e219e6",
+      "currentSHA256": "980b433332dfde8865d14559a642e5e0fd1e7f7e3454a166f4876ace70e219e6",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/content-lock.json",
+      "baselineSHA256": "6ff52fec36176f88d25c2d3775fa4a35fe43b4d03b98454693a3999d621fd66f",
+      "currentSHA256": "6ff52fec36176f88d25c2d3775fa4a35fe43b4d03b98454693a3999d621fd66f",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/coverage.json",
+      "baselineSHA256": "dc4c41b77da5df3ea7fbbd0463aca6d9fd67a1755c76704d303db7a5031529eb",
+      "currentSHA256": "dc4c41b77da5df3ea7fbbd0463aca6d9fd67a1755c76704d303db7a5031529eb",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/grader-lock.json",
+      "baselineSHA256": "ccf047da36b0b6f4b1380f5a96af71bf8c9008f2efa6caec619486ca36e27e27",
+      "currentSHA256": "ccf047da36b0b6f4b1380f5a96af71bf8c9008f2efa6caec619486ca36e27e27",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/grading.ts",
+      "baselineSHA256": "613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+      "currentSHA256": "613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/models.ts",
+      "baselineSHA256": "580191c88bb212f37822c51aacc77b8912f1231fee84dfb00fb7bd760e11dad5",
+      "currentSHA256": "580191c88bb212f37822c51aacc77b8912f1231fee84dfb00fb7bd760e11dad5",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/practice-lock.json",
+      "baselineSHA256": "f6c2ba972547da1b00a0407c78c0ee25771fb64edcf8720b039bb32c8cc22ca3",
+      "currentSHA256": "f6c2ba972547da1b00a0407c78c0ee25771fb64edcf8720b039bb32c8cc22ca3",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/practice.json",
+      "baselineSHA256": "1c30dd2a76cb949f7bf3652d41d17c640ce37212347fa44a7fd2352ffe4f8c29",
+      "currentSHA256": "1c30dd2a76cb949f7bf3652d41d17c640ce37212347fa44a7fd2352ffe4f8c29",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/tools.json",
+      "baselineSHA256": "156fba030fecdc0c9413d4bf201fe59615020795f5f8c7b81521551f1a877029",
+      "currentSHA256": "156fba030fecdc0c9413d4bf201fe59615020795f5f8c7b81521551f1a877029",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T01_HISTORY.json",
+      "baselineSHA256": "5ef9672942c6c6e412029a363d107e8f54e0e307629260f32c3a7840d4a34fdb",
+      "currentSHA256": "5ef9672942c6c6e412029a363d107e8f54e0e307629260f32c3a7840d4a34fdb",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T02_BOOLEAN_KMAP.json",
+      "baselineSHA256": "c83c8e6ba09186f98fbfca6189909ee8390a5361df2dc000d3f6ede8984dc150",
+      "currentSHA256": "c83c8e6ba09186f98fbfca6189909ee8390a5361df2dc000d3f6ede8984dc150",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T03_DIGITAL_CMOS_SEQUENTIAL.json",
+      "baselineSHA256": "94e310c89b1b41f644559c1c9b6022ce054c1a9682df2f041c019a3095a5e184",
+      "currentSHA256": "94e310c89b1b41f644559c1c9b6022ce054c1a9682df2f041c019a3095a5e184",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T05_DATA_REP_FIXED_FLOAT.json",
+      "baselineSHA256": "841fcb4b4b15e12bb2f797950c98d0c5f69884d90768ace7c3d73e4d6136deb7",
+      "currentSHA256": "841fcb4b4b15e12bb2f797950c98d0c5f69884d90768ace7c3d73e4d6136deb7",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T06_ASSEMBLY_X86_64.json",
+      "baselineSHA256": "8ab47a4aeb790c8517e9b932484b876b9d694e5d1bd162ea25f97a2e7c384772",
+      "currentSHA256": "8ab47a4aeb790c8517e9b932484b876b9d694e5d1bd162ea25f97a2e7c384772",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T07_ISA.json",
+      "baselineSHA256": "c9509634cb369969967a67732518a58b042856b1abc96d6631ccd5c1e76cb856",
+      "currentSHA256": "c9509634cb369969967a67732518a58b042856b1abc96d6631ccd5c1e76cb856",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T08_BPU_MICROCODE.json",
+      "baselineSHA256": "2259b04a9f5e286f40576cfcdb965eb402d3dad6194a6428190d39ecbb5bf255",
+      "currentSHA256": "2259b04a9f5e286f40576cfcdb965eb402d3dad6194a6428190d39ecbb5bf255",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T09_IO_INTERRUPTS.json",
+      "baselineSHA256": "7e5a8e0c3b205235c500d7e9cd6cd84f37e21cd5355ffb4e5a8f5f16758d77cd",
+      "currentSHA256": "7e5a8e0c3b205235c500d7e9cd6cd84f37e21cd5355ffb4e5a8f5f16758d77cd",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T10_DMA_MEMORY.json",
+      "baselineSHA256": "3c0e65d85e2af22e39eae43437c458065f9960f6d89d914fec000e0f09063c4c",
+      "currentSHA256": "3c0e65d85e2af22e39eae43437c458065f9960f6d89d914fec000e0f09063c4c",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T11_CACHE.json",
+      "baselineSHA256": "0d012deaf07d1d735c933b7873eb1c1046c5e0a8992e6d557de7d2a16df4b93f",
+      "currentSHA256": "0d012deaf07d1d735c933b7873eb1c1046c5e0a8992e6d557de7d2a16df4b93f",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T12_PIPELINE.json",
+      "baselineSHA256": "9874d66c374ad3de5583ea2d4ef96a0133c14740c106daafab91008bb2d67672",
+      "currentSHA256": "9874d66c374ad3de5583ea2d4ef96a0133c14740c106daafab91008bb2d67672",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T13_PARALLELISM.json",
+      "baselineSHA256": "95e88a61ab5457020f3c7ad10214090f1676c6aecf8de7632e538afb010d065a",
+      "currentSHA256": "95e88a61ab5457020f3c7ad10214090f1676c6aecf8de7632e538afb010d065a",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/topics/CO_T14_VIRTUAL_MEMORY.json",
+      "baselineSHA256": "fecae5ff3bafb464073df8200648e06fb5d9e82edf621d0ab7073f6d92a5ef63",
+      "currentSHA256": "fecae5ff3bafb464073df8200648e06fb5d9e82edf621d0ab7073f6d92a5ef63",
+      "unchanged": true
+    },
+    {
+      "file": "src/co/types.ts",
+      "baselineSHA256": "3de10456b3033e2058ae8c2ae3cac8ed929865573afd5c061df8086914873925",
+      "currentSHA256": "3de10456b3033e2058ae8c2ae3cac8ed929865573afd5c061df8086914873925",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/CodeEditor.tsx",
+      "baselineSHA256": "ccb8c44411e69ff7490c59dcd2cc60eef36f8e90ddba32374a39cf80ef5d2d86",
+      "currentSHA256": "ccb8c44411e69ff7490c59dcd2cc60eef36f8e90ddba32374a39cf80ef5d2d86",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ControlPanel.tsx",
+      "baselineSHA256": "5003a2590220bb7b02bf8d34e0ba3ea66fb6a2e4da8380d5e5275f9399a1414c",
+      "currentSHA256": "5003a2590220bb7b02bf8d34e0ba3ea66fb6a2e4da8380d5e5275f9399a1414c",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ExecutionHistory.tsx",
+      "baselineSHA256": "0e803b8c4c5c44b843a6a3de618a0b35a46cac6ea8384c5ada5f142bd29b7779",
+      "currentSHA256": "0e803b8c4c5c44b843a6a3de618a0b35a46cac6ea8384c5ada5f142bd29b7779",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/Header.tsx",
+      "baselineSHA256": "d97896bb1646d03f1aea8457d43e5914f6d552b89c4d38aeb89bf2df208e07f5",
+      "currentSHA256": "d97896bb1646d03f1aea8457d43e5914f6d552b89c4d38aeb89bf2df208e07f5",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/Icon.tsx",
+      "baselineSHA256": "a5884a9340ce51b8849058c8675154685c27fd52cc524e603e12e66d29848c9c",
+      "currentSHA256": "a5884a9340ce51b8849058c8675154685c27fd52cc524e603e12e66d29848c9c",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/InstructionExplanation.tsx",
+      "baselineSHA256": "fa4045cceace355e29d4ef84700628f55ae045736ae250c04baf3d1a37ebcea9",
+      "currentSHA256": "fa4045cceace355e29d4ef84700628f55ae045736ae250c04baf3d1a37ebcea9",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/RegisterPanel.tsx",
+      "baselineSHA256": "76498b399ea6ded331d0654702f333d50c92ab61c9ba48bf2048cd1ca7c1be7c",
+      "currentSHA256": "76498b399ea6ded331d0654702f333d50c92ab61c9ba48bf2048cd1ca7c1be7c",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/StackVisualizer.tsx",
+      "baselineSHA256": "50428a34e86ad493ab45b975d216c1bfa5950cdeb0a594b8d00fea4a6b2a4252",
+      "currentSHA256": "50428a34e86ad493ab45b975d216c1bfa5950cdeb0a594b8d00fea4a6b2a4252",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/cpu.ts",
+      "baselineSHA256": "fff2e4ba7416d8f7f0953688938e6c9bf4b881ae67a1bbf54975bc15fff35837",
+      "currentSHA256": "fff2e4ba7416d8f7f0953688938e6c9bf4b881ae67a1bbf54975bc15fff35837",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/executor.ts",
+      "baselineSHA256": "3756bbaf32f91de8c3fc24a0974e09b62f9a3bda03afdc38b1b28d4356414644",
+      "currentSHA256": "3756bbaf32f91de8c3fc24a0974e09b62f9a3bda03afdc38b1b28d4356414644",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/instructions.ts",
+      "baselineSHA256": "e9f3019f074755d58e551458f20e366c04bc2890140380138e125f19d50a5ebb",
+      "currentSHA256": "e9f3019f074755d58e551458f20e366c04bc2890140380138e125f19d50a5ebb",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/memory.ts",
+      "baselineSHA256": "dd3511a45c53208509d45c6f001c1aff98a1a8d89f71ffadd1f0da642af853ea",
+      "currentSHA256": "dd3511a45c53208509d45c6f001c1aff98a1a8d89f71ffadd1f0da642af853ea",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/parser.ts",
+      "baselineSHA256": "68964719108f09f165cb58867b98ca1a2856e6ada13f527ac0facdbb81d800c3",
+      "currentSHA256": "68964719108f09f165cb58867b98ca1a2856e6ada13f527ac0facdbb81d800c3",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/session.ts",
+      "baselineSHA256": "2d544d3106bea78da082ed6ebf3f2d1088b3c16e26e0feb325f81701cc26564e",
+      "currentSHA256": "2d544d3106bea78da082ed6ebf3f2d1088b3c16e26e0feb325f81701cc26564e",
+      "unchanged": true
+    },
+    {
+      "file": "src/engine/types.ts",
+      "baselineSHA256": "eef0357429ec5053122e40e562ae1a70aadcd7b99c9a022f29fa1860882898dd",
+      "currentSHA256": "eef0357429ec5053122e40e562ae1a70aadcd7b99c9a022f29fa1860882898dd",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/EvidenceView.tsx",
+      "baselineSHA256": "8b71986d1baddb26b01f15395ed20496a67cda89767d426277cc7454f5d2431b",
+      "currentSHA256": "8b71986d1baddb26b01f15395ed20496a67cda89767d426277cc7454f5d2431b",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/StudyCues.tsx",
+      "baselineSHA256": "7ba54f24c0955267b2bba50175ca47eade448939f321a0b7c4b467603988be49",
+      "currentSHA256": "7ba54f24c0955267b2bba50175ca47eade448939f321a0b7c4b467603988be49",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/TopicEnrichment.tsx",
+      "baselineSHA256": "84c81660a193cf016d58130820d863d3c96aa9d13d6ccb3b252924c1150650a1",
+      "currentSHA256": "84c81660a193cf016d58130820d863d3c96aa9d13d6ccb3b252924c1150650a1",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/capabilities.json",
+      "baselineSHA256": "d574c4988a310c3462b924c090b9af76953e6594d4b6df67e8da67101d4d7000",
+      "currentSHA256": "d574c4988a310c3462b924c090b9af76953e6594d4b6df67e8da67101d4d7000",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/cards.json",
+      "baselineSHA256": "f0e830da36aec691310e7fb163e157687009f1afefcc6dbde6aba55ca51f4bf7",
+      "currentSHA256": "f0e830da36aec691310e7fb163e157687009f1afefcc6dbde6aba55ca51f4bf7",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/content-lock.json",
+      "baselineSHA256": "07fec58d23fb1bdffd768746f94e4e2cf152748dba586e50fc5e1555ba0dd032",
+      "currentSHA256": "07fec58d23fb1bdffd768746f94e4e2cf152748dba586e50fc5e1555ba0dd032",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/cues.json",
+      "baselineSHA256": "dafdbbbbb0ae1416b64bf2e7ba55af820f52718016ec960911eb9ee5db8c65f3",
+      "currentSHA256": "dafdbbbbb0ae1416b64bf2e7ba55af820f52718016ec960911eb9ee5db8c65f3",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/enrichment.css",
+      "baselineSHA256": "cc794d556fc4d781f0051535a6b28ecd59dc689bf93fbd2a82f9a99d32aa905b",
+      "currentSHA256": "cc794d556fc4d781f0051535a6b28ecd59dc689bf93fbd2a82f9a99d32aa905b",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/evidence.json",
+      "baselineSHA256": "d971d7c512d32e5e0c81c302b521732176cf1886420c6602fa73f9c7586fb88c",
+      "currentSHA256": "d971d7c512d32e5e0c81c302b521732176cf1886420c6602fa73f9c7586fb88c",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/feedback.json",
+      "baselineSHA256": "67b7a0f6f8823241334a3888e3919d1d2e5586e42de2a454f29045597dd33ef0",
+      "currentSHA256": "67b7a0f6f8823241334a3888e3919d1d2e5586e42de2a454f29045597dd33ef0",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/feedback.ts",
+      "baselineSHA256": "97e2266ab0a90fe3c888e9ac650986a47c23e57f714cbb14d8fa4ff4bfbf424a",
+      "currentSHA256": "97e2266ab0a90fe3c888e9ac650986a47c23e57f714cbb14d8fa4ff4bfbf424a",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/grader-lock.json",
+      "baselineSHA256": "42d68578a2bd7b60b6b96b5d645d9910d41709f1878be8e3b54b302c90be411d",
+      "currentSHA256": "42d68578a2bd7b60b6b96b5d645d9910d41709f1878be8e3b54b302c90be411d",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/grading.ts",
+      "baselineSHA256": "3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+      "currentSHA256": "3272aa22b155acd4c63e209fd7a46958044150aa5248ea2399de1de33e0881c9",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/guided.json",
+      "baselineSHA256": "6f90a9ebf21e02b87b54bf846b7b203bb752995cb4925e74f452501439a68dd6",
+      "currentSHA256": "6f90a9ebf21e02b87b54bf846b7b203bb752995cb4925e74f452501439a68dd6",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/misconceptions.json",
+      "baselineSHA256": "9182fcad6d39b06321a147b0bfd343eca8e630281dacd1711c70e55156b383bf",
+      "currentSHA256": "9182fcad6d39b06321a147b0bfd343eca8e630281dacd1711c70e55156b383bf",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/practice-lock.json",
+      "baselineSHA256": "3c0f1480e16da9dfd4bcaf30ddcc2f3fdc4afd8fe5b57cc7dbe67366cc74f8d8",
+      "currentSHA256": "3c0f1480e16da9dfd4bcaf30ddcc2f3fdc4afd8fe5b57cc7dbe67366cc74f8d8",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/practice.json",
+      "baselineSHA256": "a39aa8c4f37a49a1d993b19a11a2850bcdaa5d32d84be84aaf61d655088ea6db",
+      "currentSHA256": "a39aa8c4f37a49a1d993b19a11a2850bcdaa5d32d84be84aaf61d655088ea6db",
+      "unchanged": true
+    },
+    {
+      "file": "src/enrichment/types.ts",
+      "baselineSHA256": "91dcc11b6546d83ed8c6cbccbcebdf26dbf3260f765354b599e8d06c718bc42f",
+      "currentSHA256": "91dcc11b6546d83ed8c6cbccbcebdf26dbf3260f765354b599e8d06c718bc42f",
+      "unchanged": true
+    },
+    {
+      "file": "src/examples/examplePrograms.ts",
+      "baselineSHA256": "27e042933171ca63604a2f6139c07b437c37cb7f7624df538a557d11278a4d88",
+      "currentSHA256": "27e042933171ca63604a2f6139c07b437c37cb7f7624df538a557d11278a4d88",
+      "unchanged": true
+    },
+    {
+      "file": "src/generated/academic-index.json",
+      "baselineSHA256": "4655711ac11b8ff491576a8b68df1af8fc0cdecafeca5d67d2cf2db4c2aaff63",
+      "currentSHA256": "4655711ac11b8ff491576a8b68df1af8fc0cdecafeca5d67d2cf2db4c2aaff63",
+      "unchanged": true
+    },
+    {
+      "file": "src/generated/student-references.json",
+      "baselineSHA256": "cb19b20e85f564ad8871e9224fe8b18b324341df719a969966a21ff15ee2cd60",
+      "currentSHA256": "cb19b20e85f564ad8871e9224fe8b18b324341df719a969966a21ff15ee2cd60",
+      "unchanged": true
+    },
+    {
+      "file": "src/generated/topic-study.json",
+      "baselineSHA256": "1b886353299ac96dbddd818c71074e0575079066b5c5a347febbcddf0e73608e",
+      "currentSHA256": "1b886353299ac96dbddd818c71074e0575079066b5c5a347febbcddf0e73608e",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/Assignments.tsx",
+      "baselineSHA256": "d728d856cbb08400c9d8093ecc57f5ad04bad320b1761a201f790dbe80b68c54",
+      "currentSHA256": "d728d856cbb08400c9d8093ecc57f5ad04bad320b1761a201f790dbe80b68c54",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/CodingWorkbench.tsx",
+      "baselineSHA256": "06bfb672740482857cfc4cb1337146ae78adf1d6200f2a01904c535824adf610",
+      "currentSHA256": "06bfb672740482857cfc4cb1337146ae78adf1d6200f2a01904c535824adf610",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/IPStudyMode.tsx",
+      "baselineSHA256": "36dbfb145a6b541d38691a7ebf248c747e216e7dc1da1acf5a68d073f3d9f370",
+      "currentSHA256": "36dbfb145a6b541d38691a7ebf248c747e216e7dc1da1acf5a68d073f3d9f370",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/IntroTopicContent.tsx",
+      "baselineSHA256": "56fd40f7b5f193d910c3e2015659254b6d9223aaad9c8712d8cd716e37285490",
+      "currentSHA256": "56fd40f7b5f193d910c3e2015659254b6d9223aaad9c8712d8cd716e37285490",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/MapCues.tsx",
+      "baselineSHA256": "6152ea3a408fd3dce7fa181fdb82af4e42ffd95bc99aea123261cb855beb3c2f",
+      "currentSHA256": "6152ea3a408fd3dce7fa181fdb82af4e42ffd95bc99aea123261cb855beb3c2f",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/TopicContent.tsx",
+      "baselineSHA256": "7d7b1ee47ac03432ffac94090373e9cba172e617b2f40666712bb18fddb309ea",
+      "currentSHA256": "7d7b1ee47ac03432ffac94090373e9cba172e617b2f40666712bb18fddb309ea",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignment-index.json",
+      "baselineSHA256": "50880d19b8d73ae8d323b9f0e3b78d7af21273947c8f1b60e242c3a66dd16c89",
+      "currentSHA256": "50880d19b8d73ae8d323b9f0e3b78d7af21273947c8f1b60e242c3a66dd16c89",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/air-audit.json",
+      "baselineSHA256": "def797b523c916f61d9d37dda28f85a09edb79c413fe5489d7d7ef059abb7bcc",
+      "currentSHA256": "def797b523c916f61d9d37dda28f85a09edb79c413fe5489d7d7ef059abb7bcc",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/alert-policies.json",
+      "baselineSHA256": "7646a705b7f5163ee46ea26a138582ee5fb5086f6afa70ef73f4a9a522e59f35",
+      "currentSHA256": "7646a705b7f5163ee46ea26a138582ee5fb5086f6afa70ef73f4a9a522e59f35",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/array-window.json",
+      "baselineSHA256": "77815414ec9752c4d42adac04703a38fb30512a2e499323487b6e116b4bdaa19",
+      "currentSHA256": "77815414ec9752c4d42adac04703a38fb30512a2e499323487b6e116b4bdaa19",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/batch-token.json",
+      "baselineSHA256": "917d00337ac313842f4c400883cabfa87c5e7bbbbe90fecb32df218edc7ad7d0",
+      "currentSHA256": "917d00337ac313842f4c400883cabfa87c5e7bbbbe90fecb32df218edc7ad7d0",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/boundary-tests.json",
+      "baselineSHA256": "04677e402a9128e8ee187ce8589983a1df4dabb0c15cb60beb1eed186c559e2e",
+      "currentSHA256": "04677e402a9128e8ee187ce8589983a1df4dabb0c15cb60beb1eed186c559e2e",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/capacity-shelf.json",
+      "baselineSHA256": "1ccc13e933de6707c08c5d4aa0784f6ced3679d05c557a5f66883a4318d146b0",
+      "currentSHA256": "1ccc13e933de6707c08c5d4aa0784f6ced3679d05c557a5f66883a4318d146b0",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/grid-key.json",
+      "baselineSHA256": "7498630c537629a7d8a0c22f389ccc856cc1aeeb5778688c1b861788ce7ed054",
+      "currentSHA256": "7498630c537629a7d8a0c22f389ccc856cc1aeeb5778688c1b861788ce7ed054",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/label-stream.json",
+      "baselineSHA256": "54860eacb697549805c7f296cf620d580a4d3d8fa2a53c758cfa9cdb68c9c338",
+      "currentSHA256": "54860eacb697549805c7f296cf620d580a4d3d8fa2a53c758cfa9cdb68c9c338",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/material-ledger.json",
+      "baselineSHA256": "088100dd5b989a25942a0a4ec610171f1634081906cf5649966bfeb2513cd15b",
+      "currentSHA256": "088100dd5b989a25942a0a4ec610171f1634081906cf5649966bfeb2513cd15b",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/note-index.json",
+      "baselineSHA256": "092353ee51d70f9651bfc0a82560f5152ae9bd229748b8be065bf7722ab17e33",
+      "currentSHA256": "092353ee51d70f9651bfc0a82560f5152ae9bd229748b8be065bf7722ab17e33",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/assignments/reading-export.json",
+      "baselineSHA256": "906f27fb5caa0dc0387a8b9880dd59f1697535a504eab171901c9bc0cfcdf93d",
+      "currentSHA256": "906f27fb5caa0dc0387a8b9880dd59f1697535a504eab171901c9bc0cfcdf93d",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/capabilities.json",
+      "baselineSHA256": "3f9fffd09f381266f4e80548155be130228e471a640e68cb2f3cdb756363ab9f",
+      "currentSHA256": "3f9fffd09f381266f4e80548155be130228e471a640e68cb2f3cdb756363ab9f",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/content-lock.json",
+      "baselineSHA256": "76b27d02cf6fe6c920b0e211766bc1884fa48cc22fea4758e67d4511a2610717",
+      "currentSHA256": "76b27d02cf6fe6c920b0e211766bc1884fa48cc22fea4758e67d4511a2610717",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/coverage.json",
+      "baselineSHA256": "c2f224ebd3a7dca3446a1866fa155cce1c0c7d0ead6408f722e0f2d5a07beb04",
+      "currentSHA256": "c2f224ebd3a7dca3446a1866fa155cce1c0c7d0ead6408f722e0f2d5a07beb04",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/cues.json",
+      "baselineSHA256": "2c74d6a56badfa30a1cdb49b46ebef762b3e6fda9646bf2a84eb56defab81129",
+      "currentSHA256": "2c74d6a56badfa30a1cdb49b46ebef762b3e6fda9646bf2a84eb56defab81129",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/evidence.json",
+      "baselineSHA256": "29912aefc6313fb90de5ae57d6e1460cbaeba4a1a78c760bb5f4e2c5ae314293",
+      "currentSHA256": "29912aefc6313fb90de5ae57d6e1460cbaeba4a1a78c760bb5f4e2c5ae314293",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/feedback.json",
+      "baselineSHA256": "00d4692a2460004357dcf4e58222ea32bbd8c08fac6833f31607e75cd548da62",
+      "currentSHA256": "00d4692a2460004357dcf4e58222ea32bbd8c08fac6833f31607e75cd548da62",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/grader-lock.json",
+      "baselineSHA256": "d6ff3227ed138fe92f1f77b2f060eb66fb5fd773a0d3a467f0c7691ea55ada08",
+      "currentSHA256": "d6ff3227ed138fe92f1f77b2f060eb66fb5fd773a0d3a467f0c7691ea55ada08",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/grading.ts",
+      "baselineSHA256": "5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+      "currentSHA256": "5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/intro-guided.json",
+      "baselineSHA256": "b503694df66b07ea68e5e3e5525c189cc74884a47126fbdcfc2597995e08348e",
+      "currentSHA256": "b503694df66b07ea68e5e3e5525c189cc74884a47126fbdcfc2597995e08348e",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/ip.css",
+      "baselineSHA256": "1f9b7c269b066969feb459371486163f99c94f846a608755984e1e3e23cad2bb",
+      "currentSHA256": "1f9b7c269b066969feb459371486163f99c94f846a608755984e1e3e23cad2bb",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/misconceptions.json",
+      "baselineSHA256": "7a0807a351a94eb59722aefabd1692474c9e3799b9feea2f7bbbc30abea177d8",
+      "currentSHA256": "7a0807a351a94eb59722aefabd1692474c9e3799b9feea2f7bbbc30abea177d8",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/practice-lock.json",
+      "baselineSHA256": "8365a0a2895c8302b92137cb5a1eeb0506d4da256396b438b7f23e232b841880",
+      "currentSHA256": "8365a0a2895c8302b92137cb5a1eeb0506d4da256396b438b7f23e232b841880",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/practice.json",
+      "baselineSHA256": "cdc4a8f9ec35ea095e53acd2b9f74ac59fbe9c9da68662be9aa24640549c2ef6",
+      "currentSHA256": "cdc4a8f9ec35ea095e53acd2b9f74ac59fbe9c9da68662be9aa24640549c2ef6",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/air-audit.json",
+      "baselineSHA256": "efd7043edafd4c223ab59ece03a88a6c8392225ad3651a2b6ded91b258deed79",
+      "currentSHA256": "efd7043edafd4c223ab59ece03a88a6c8392225ad3651a2b6ded91b258deed79",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/alert-policies.json",
+      "baselineSHA256": "18c8bae9711f12a78d68e9a8f962557fb6ac6637a401cab50a14e7902c46e61e",
+      "currentSHA256": "18c8bae9711f12a78d68e9a8f962557fb6ac6637a401cab50a14e7902c46e61e",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/array-window.json",
+      "baselineSHA256": "4b2aa5e0311f8a5dd403df98dc66b6afe9c1e34d59567d3414e2f8beb931aa8b",
+      "currentSHA256": "4b2aa5e0311f8a5dd403df98dc66b6afe9c1e34d59567d3414e2f8beb931aa8b",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/batch-token.json",
+      "baselineSHA256": "2e96bb5da998efe7688c76bea69bf1f3102d676986b4e88e9772daadcb05cdad",
+      "currentSHA256": "2e96bb5da998efe7688c76bea69bf1f3102d676986b4e88e9772daadcb05cdad",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/boundary-tests.json",
+      "baselineSHA256": "2b61125427401dfc7bd4adc4ef6f783b24614fcb717cb630ed2dd12816296980",
+      "currentSHA256": "2b61125427401dfc7bd4adc4ef6f783b24614fcb717cb630ed2dd12816296980",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/capacity-shelf.json",
+      "baselineSHA256": "b930a4f723725c4e78688e5ab73b913f73e084f8fa3705c7e6b38d7cbc39be81",
+      "currentSHA256": "b930a4f723725c4e78688e5ab73b913f73e084f8fa3705c7e6b38d7cbc39be81",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/grid-key.json",
+      "baselineSHA256": "856a275eb54799ef32d28c4bd46915aefb1f5e67a9050c71f8fba03deb657aeb",
+      "currentSHA256": "856a275eb54799ef32d28c4bd46915aefb1f5e67a9050c71f8fba03deb657aeb",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/label-stream.json",
+      "baselineSHA256": "8318c700b48b2a928ad3718c803816497a1060ca6cb6ee6aa04fed4aa74b66d9",
+      "currentSHA256": "8318c700b48b2a928ad3718c803816497a1060ca6cb6ee6aa04fed4aa74b66d9",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/material-ledger.json",
+      "baselineSHA256": "577e8010aecd479a36615d9aeffd262d8d52ade509ea7868f0c47b306bf76179",
+      "currentSHA256": "577e8010aecd479a36615d9aeffd262d8d52ade509ea7868f0c47b306bf76179",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/note-index.json",
+      "baselineSHA256": "02be03942c1558d34b6b149785752a4f0524c82f874a51737f2a54e37e4bdcbd",
+      "currentSHA256": "02be03942c1558d34b6b149785752a4f0524c82f874a51737f2a54e37e4bdcbd",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/references/reading-export.json",
+      "baselineSHA256": "2d48db94ab797929a7fc5c2b201b2798f12a39b2f9be033d2d62628d6fa8ce07",
+      "currentSHA256": "2d48db94ab797929a7fc5c2b201b2798f12a39b2f9be033d2d62628d6fa8ce07",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T01_JAVA_BASICS.json",
+      "baselineSHA256": "390ab4991e5f5f42e97648de84fd3239b93e9365298dcb819e4f43db0a1bc1df",
+      "currentSHA256": "390ab4991e5f5f42e97648de84fd3239b93e9365298dcb819e4f43db0a1bc1df",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T03_METHODS_SCOPE.json",
+      "baselineSHA256": "e186be4716b3d4c7e468700ea07b454e6bd8295651cb10593a0e30f20f664a9a",
+      "currentSHA256": "e186be4716b3d4c7e468700ea07b454e6bd8295651cb10593a0e30f20f664a9a",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T04_CLASSES_OBJECTS.json",
+      "baselineSHA256": "3c0147d9f6b3b9e65c2e8e8198c2eee41700ae5d1d2c75ac10e4537db57b6829",
+      "currentSHA256": "3c0147d9f6b3b9e65c2e8e8198c2eee41700ae5d1d2c75ac10e4537db57b6829",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T05_ARRAYS_RECURSION.json",
+      "baselineSHA256": "b1c4ad162a74c8cb6170354fe6dee69bcf55c8db43e09a2bbf4605d6a7053ab0",
+      "currentSHA256": "b1c4ad162a74c8cb6170354fe6dee69bcf55c8db43e09a2bbf4605d6a7053ab0",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T06_CONTAINER_CLASSES.json",
+      "baselineSHA256": "e5157cc6cdaa7b851c1f3bd57ea3201b59a825e0c0b6116647821034a72302ad",
+      "currentSHA256": "e5157cc6cdaa7b851c1f3bd57ea3201b59a825e0c0b6116647821034a72302ad",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T07_COMPOSITION_LIBRARIES.json",
+      "baselineSHA256": "639fdeac7d008606fe0946b93ec80fd7dfa0d44350579a85f7220c02d2bcc86a",
+      "currentSHA256": "639fdeac7d008606fe0946b93ec80fd7dfa0d44350579a85f7220c02d2bcc86a",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T08_TESTING.json",
+      "baselineSHA256": "fd8369a32bfe644ea04c23b7906093d1ea9c5b0703a7b832539dd189321c1d20",
+      "currentSHA256": "fd8369a32bfe644ea04c23b7906093d1ea9c5b0703a7b832539dd189321c1d20",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T09_INHERITANCE.json",
+      "baselineSHA256": "f5116d86e83240ff2d28d52d6fdae61618f0785d20cb6e8e1e359b5d84e9e91a",
+      "currentSHA256": "f5116d86e83240ff2d28d52d6fdae61618f0785d20cb6e8e1e359b5d84e9e91a",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T10_POLYMORPHISM_BINDING.json",
+      "baselineSHA256": "6bfa3c9de28c0a14ed8b14d7e27f49f277ad31f6f69f6793590b6511aca5e72b",
+      "currentSHA256": "6bfa3c9de28c0a14ed8b14d7e27f49f277ad31f6f69f6793590b6511aca5e72b",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T11_EQUALITY_HASHING.json",
+      "baselineSHA256": "c6f0871902bb9074095729449c2bdd384e5a9bf94506a8332614a4c32866f9cf",
+      "currentSHA256": "c6f0871902bb9074095729449c2bdd384e5a9bf94506a8332614a4c32866f9cf",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T12_EXCEPTIONS.json",
+      "baselineSHA256": "8a11c4fa26ad2bb9fbf8a05cab4694673f7aec98097a98388a9a4f3a8000334f",
+      "currentSHA256": "8a11c4fa26ad2bb9fbf8a05cab4694673f7aec98097a98388a9a4f3a8000334f",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T13_DEBUGGING.json",
+      "baselineSHA256": "3463bec666fabd3242323ea1ccafde1132fecff1c96a389204eb8ded83643d06",
+      "currentSHA256": "3463bec666fabd3242323ea1ccafde1132fecff1c96a389204eb8ded83643d06",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T14_CODE_QUALITY_STRINGS_GENERICS.json",
+      "baselineSHA256": "d83af6527fcc00c742a062a532e873b1a93f9548bfeedc1e28b2e7d694ab6bbc",
+      "currentSHA256": "d83af6527fcc00c742a062a532e873b1a93f9548bfeedc1e28b2e7d694ab6bbc",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T15_IO_PARSING.json",
+      "baselineSHA256": "4113b349349512c911ac6f1484b3ec724762f36eecb43511abac332b58706da1",
+      "currentSHA256": "4113b349349512c911ac6f1484b3ec724762f36eecb43511abac332b58706da1",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T16_FUNCTIONAL_JAVA.json",
+      "baselineSHA256": "64739d194470c62531c5b68519e7ab9bd954cf0c1c15f48a21ab309ba860532e",
+      "currentSHA256": "64739d194470c62531c5b68519e7ab9bd954cf0c1c15f48a21ab309ba860532e",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T17_PROGRAM_DESIGN.json",
+      "baselineSHA256": "39363fb2edd6e4d6daf484bd8a95e5973c192004ba7219db2c422932b859ff6a",
+      "currentSHA256": "39363fb2edd6e4d6daf484bd8a95e5973c192004ba7219db2c422932b859ff6a",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T18_MODERN_JAVA.json",
+      "baselineSHA256": "e4dde09c73cc959105ba6e2430857c79f2aaeaeb92006924422f97a3a686dd72",
+      "currentSHA256": "e4dde09c73cc959105ba6e2430857c79f2aaeaeb92006924422f97a3a686dd72",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T19_THREADS_CONCURRENCY.json",
+      "baselineSHA256": "5a1e78ab22040fc129cb1f43c15edd07ad0754c808eaf7b6f5d94b88386e0c76",
+      "currentSHA256": "5a1e78ab22040fc129cb1f43c15edd07ad0754c808eaf7b6f5d94b88386e0c76",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/topics/IP_T20_EXAM_PROGRAM_SYNTHESIS.json",
+      "baselineSHA256": "6d77526a17689dea4f82f3dd67d1c74ec6d0201254cd53e435e06dedbfecd1e8",
+      "currentSHA256": "6d77526a17689dea4f82f3dd67d1c74ec6d0201254cd53e435e06dedbfecd1e8",
+      "unchanged": true
+    },
+    {
+      "file": "src/ip/types.ts",
+      "baselineSHA256": "8572491b045197d29ce4b1dcedd342f26864e4e8c15bb9a054a510879f09c5ce",
+      "currentSHA256": "8572491b045197d29ce4b1dcedd342f26864e4e8c15bb9a054a510879f09c5ce",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/AttemptPage.tsx",
+      "baselineSHA256": "9e44d28948c510fc4ccd142edbe88f4f40b1371f658ecbbae14b9b97b407d469",
+      "currentSHA256": "9e44d28948c510fc4ccd142edbe88f4f40b1371f658ecbbae14b9b97b407d469",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/ExercisePage.tsx",
+      "baselineSHA256": "5b3b9fe1e23012a26668f016a022f93642619eda960037a9878ce7652dcdc5da",
+      "currentSHA256": "5b3b9fe1e23012a26668f016a022f93642619eda960037a9878ce7652dcdc5da",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/ExerciseParts.tsx",
+      "baselineSHA256": "49aea4165a24e654f9a9020f6dfc72abac74d69b6bf28a0ccf91ff423bfa6dac",
+      "currentSHA256": "49aea4165a24e654f9a9020f6dfc72abac74d69b6bf28a0ccf91ff423bfa6dac",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/PracticePage.tsx",
+      "baselineSHA256": "9d2a746bfeb5db88fef68382f198f331c1f5878c399f285a6ddbfe56894b6d12",
+      "currentSHA256": "9d2a746bfeb5db88fef68382f198f331c1f5878c399f285a6ddbfe56894b6d12",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/catalog-lock.json",
+      "baselineSHA256": "61320b1181faa33778360a499056700201555715ecb3f5112a00074498c1f3b5",
+      "currentSHA256": "61320b1181faa33778360a499056700201555715ecb3f5112a00074498c1f3b5",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/catalog.json",
+      "baselineSHA256": "1ad2a4b15572296057cb4f847ad30715a6adc5dd251c00093d649081e4dffca2",
+      "currentSHA256": "1ad2a4b15572296057cb4f847ad30715a6adc5dd251c00093d649081e4dffca2",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/catalog.ts",
+      "baselineSHA256": "c3dfd21623d9bf61b51f860a10d8cb9cc21a57e20a4ee083eb8729e74fd86ad7",
+      "currentSHA256": "c3dfd21623d9bf61b51f860a10d8cb9cc21a57e20a4ee083eb8729e74fd86ad7",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/grader-lock.json",
+      "baselineSHA256": "9b5c46e49121c70265216a5ccc29220e0b4a9480e19bb6e284af3ecd54a3eb07",
+      "currentSHA256": "9b5c46e49121c70265216a5ccc29220e0b4a9480e19bb6e284af3ecd54a3eb07",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/grading.ts",
+      "baselineSHA256": "56e488a8f607aeaaf0739ec5797f8a24cfbac9f907652f5f294d9f8192556c1a",
+      "currentSHA256": "56e488a8f607aeaaf0739ec5797f8a24cfbac9f907652f5f294d9f8192556c1a",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/practice.css",
+      "baselineSHA256": "b91ea14299402805a2732e41446120d7b71b63ef865578dcada52e61783bbb67",
+      "currentSHA256": "b91ea14299402805a2732e41446120d7b71b63ef865578dcada52e61783bbb67",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/registered-types.ts",
+      "baselineSHA256": "bf88dd0d56fe5596f34456d9ffce07e1512b4f26e34ea25c9418a96c681e26f2",
+      "currentSHA256": "bf88dd0d56fe5596f34456d9ffce07e1512b4f26e34ea25c9418a96c681e26f2",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/runtime.ts",
+      "baselineSHA256": "8b6cd6b02f3317c22595fcf41b8f3d42c94ce6110b3794c4970d0f32c0e18c3d",
+      "currentSHA256": "8b6cd6b02f3317c22595fcf41b8f3d42c94ce6110b3794c4970d0f32c0e18c3d",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/service.ts",
+      "baselineSHA256": "2bbe04d6b65814f91fe7701fbbca37938754bdf6c0e92ca74f130c1a9509c669",
+      "currentSHA256": "2bbe04d6b65814f91fe7701fbbca37938754bdf6c0e92ca74f130c1a9509c669",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/types.ts",
+      "baselineSHA256": "da7b5083268cfd10ff3c0726d52ecbc4501325ff094f2034413c66c3c88cc83c",
+      "currentSHA256": "da7b5083268cfd10ff3c0726d52ecbc4501325ff094f2034413c66c3c88cc83c",
+      "unchanged": true
+    },
+    {
+      "file": "src/practice/validation.ts",
+      "baselineSHA256": "5c2471dadce150e61b381b2b7af2f6cb6eb1ed2396f7a9845b458a54864960d8",
+      "currentSHA256": "5c2471dadce150e61b381b2b7af2f6cb6eb1ed2396f7a9845b458a54864960d8",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/FolWorkspace.tsx",
+      "baselineSHA256": "4e85cdc05b2585ba48784d9eb819f65a26c0d19fc2f6b0d79bf9ac33d0fbcd0b",
+      "currentSHA256": "4e85cdc05b2585ba48784d9eb819f65a26c0d19fc2f6b0d79bf9ac33d0fbcd0b",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/GuidedPractice.tsx",
+      "baselineSHA256": "2780fc5d007b2a0453254c4d13544708585361e1fc9e832fae2a538a9c5f7004",
+      "currentSHA256": "2780fc5d007b2a0453254c4d13544708585361e1fc9e832fae2a538a9c5f7004",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/IntroTopicContent.tsx",
+      "baselineSHA256": "e9665c24063173706704adebe200a81f265ed5c8271bee0a1ec460489c7ae029",
+      "currentSHA256": "e9665c24063173706704adebe200a81f265ed5c8271bee0a1ec460489c7ae029",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/PropositionWorkspace.tsx",
+      "baselineSHA256": "cc5880bba68bf9158c24c75ecd3571e4fc89acaed34283e2671192c8f62534de",
+      "currentSHA256": "cc5880bba68bf9158c24c75ecd3571e4fc89acaed34283e2671192c8f62534de",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/RLStudyMode.tsx",
+      "baselineSHA256": "506d8e6b989aae0d0e80eccdca8119cd66240c7c8053e37f0ba96b764411deb3",
+      "currentSHA256": "506d8e6b989aae0d0e80eccdca8119cd66240c7c8053e37f0ba96b764411deb3",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/RecurrenceWorkspace.tsx",
+      "baselineSHA256": "a460ca2d7ebb03dcf7e7187f6b9850e59d4239bd7bd189e9f8940eeeb9cb67d0",
+      "currentSHA256": "a460ca2d7ebb03dcf7e7187f6b9850e59d4239bd7bd189e9f8940eeeb9cb67d0",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/RelationsWorkspace.tsx",
+      "baselineSHA256": "8bd43c831a4db06c88630cc34aa1e0e47ba6620f1730030242950560e1fc8561",
+      "currentSHA256": "8bd43c831a4db06c88630cc34aa1e0e47ba6620f1730030242950560e1fc8561",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/SetsWorkspace.tsx",
+      "baselineSHA256": "c16861e9c082419e2e653ee1b19b871c85b088e6c9839093a59e5c9b536deac0",
+      "currentSHA256": "c16861e9c082419e2e653ee1b19b871c85b088e6c9839093a59e5c9b536deac0",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/TopicContent.tsx",
+      "baselineSHA256": "15ec4e0c8a16e9f385e50acaef4013eb3c11d237c9feb289c0266d90d779f822",
+      "currentSHA256": "15ec4e0c8a16e9f385e50acaef4013eb3c11d237c9feb289c0266d90d779f822",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/TreeGraphWorkspace.tsx",
+      "baselineSHA256": "89a70a883257e2479e3cf7adff23a75a6167ef42f7f0963fe0139c2d66130de5",
+      "currentSHA256": "89a70a883257e2479e3cf7adff23a75a6167ef42f7f0963fe0139c2d66130de5",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/Workspace.tsx",
+      "baselineSHA256": "456188048f104a60e4ecb9c70bd054e151e1330f4b1413de483fd3397ef63b9b",
+      "currentSHA256": "456188048f104a60e4ecb9c70bd054e151e1330f4b1413de483fd3397ef63b9b",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/capabilities.json",
+      "baselineSHA256": "11f5804236881c1140e4273b74412439476d9ddb88202341f11e16eb062ee8a7",
+      "currentSHA256": "11f5804236881c1140e4273b74412439476d9ddb88202341f11e16eb062ee8a7",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/content-lock.json",
+      "baselineSHA256": "bc52ae7bba42468d85185f1c6d717dd40971bd460622f3f63b4a80f5abde93d0",
+      "currentSHA256": "bc52ae7bba42468d85185f1c6d717dd40971bd460622f3f63b4a80f5abde93d0",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/coverage.json",
+      "baselineSHA256": "bdc219878b2285c140e2bde48a86078447daeaee53abf863ded262caa4a5d1f0",
+      "currentSHA256": "bdc219878b2285c140e2bde48a86078447daeaee53abf863ded262caa4a5d1f0",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/grader-lock.json",
+      "baselineSHA256": "ab8e50a421c066fe42f56f201c1c18ac34c25d27b822fcef3d6cccf38c8524df",
+      "currentSHA256": "ab8e50a421c066fe42f56f201c1c18ac34c25d27b822fcef3d6cccf38c8524df",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/grading.ts",
+      "baselineSHA256": "c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+      "currentSHA256": "c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/intro-guided.json",
+      "baselineSHA256": "570477633b6310223d59a1e7b8c7d48623958bed6866d301e04b401df3f8541d",
+      "currentSHA256": "570477633b6310223d59a1e7b8c7d48623958bed6866d301e04b401df3f8541d",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/logic.ts",
+      "baselineSHA256": "f4a9df538796c4e15c11186d461e57ddaf1bba61e63a0fd1ca6b284d1d1afd12",
+      "currentSHA256": "f4a9df538796c4e15c11186d461e57ddaf1bba61e63a0fd1ca6b284d1d1afd12",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/models.ts",
+      "baselineSHA256": "36c3f1fd39aee8569eb9908fed15255694a4e59194654129474908b6873295cb",
+      "currentSHA256": "36c3f1fd39aee8569eb9908fed15255694a4e59194654129474908b6873295cb",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/practice-lock.json",
+      "baselineSHA256": "816c9780cad0663e7e2938969056e6af0f55d2e2648b229cbf338522d1d4036b",
+      "currentSHA256": "816c9780cad0663e7e2938969056e6af0f55d2e2648b229cbf338522d1d4036b",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/practice-types.ts",
+      "baselineSHA256": "0bbfc6351d41d90f5d4703d25099eb1e381d31ed4e30fb92b1fed13f7a419acc",
+      "currentSHA256": "0bbfc6351d41d90f5d4703d25099eb1e381d31ed4e30fb92b1fed13f7a419acc",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/practice.json",
+      "baselineSHA256": "cd45630e58e0f36c8a13c113bd0e24d76c173abd7ec7b7c279b242679729e6b0",
+      "currentSHA256": "cd45630e58e0f36c8a13c113bd0e24d76c173abd7ec7b7c279b242679729e6b0",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/rl.css",
+      "baselineSHA256": "08cabc759b060d2052d856445d185bdda67326983d1099b01af26028a3ee9554",
+      "currentSHA256": "08cabc759b060d2052d856445d185bdda67326983d1099b01af26028a3ee9554",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/source-policy.json",
+      "baselineSHA256": "e1b323ae886295282de0ee89dfdb89e62b858f98b4185f5b92827ecf23055a6f",
+      "currentSHA256": "e1b323ae886295282de0ee89dfdb89e62b858f98b4185f5b92827ecf23055a6f",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/tools.json",
+      "baselineSHA256": "24c42a689f1cc1fc2a3efe6b2cde020e5844fff98c35bd91729ec5b6108e2f78",
+      "currentSHA256": "24c42a689f1cc1fc2a3efe6b2cde020e5844fff98c35bd91729ec5b6108e2f78",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T02_FOL.json",
+      "baselineSHA256": "eea03048817015f5e2dcfc974a29bd0faae99622fc8dbf5288b36fd3155d490b",
+      "currentSHA256": "eea03048817015f5e2dcfc974a29bd0faae99622fc8dbf5288b36fd3155d490b",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T03_PROOF_METHODS.json",
+      "baselineSHA256": "f9b4b9d77bca4b0a1b9fee3a51b3bc0a29edafa7c26b8807d9cbd3dabdeb4904",
+      "currentSHA256": "f9b4b9d77bca4b0a1b9fee3a51b3bc0a29edafa7c26b8807d9cbd3dabdeb4904",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T04_INDUCTION_RECURSION.json",
+      "baselineSHA256": "9c9ec77da982d8e62874b21dbd594d22e7bc9b39aab7bac1e659ca82110d682a",
+      "currentSHA256": "9c9ec77da982d8e62874b21dbd594d22e7bc9b39aab7bac1e659ca82110d682a",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T05_TREES_GRAPHS.json",
+      "baselineSHA256": "c2fa126939d0df747f625993723cb8c08ad62e0c2d1491954a078661cfd77e72",
+      "currentSHA256": "c2fa126939d0df747f625993723cb8c08ad62e0c2d1491954a078661cfd77e72",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T06_SET_THEORY.json",
+      "baselineSHA256": "6cd2e56e8c6ed8b7d714e550b8c08d44d9d6d9dab1616d0b429e3e4498c14d8a",
+      "currentSHA256": "6cd2e56e8c6ed8b7d714e550b8c08d44d9d6d9dab1616d0b429e3e4498c14d8a",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T07_FUNCTIONS_RELATIONS.json",
+      "baselineSHA256": "fd49edb13454af60a29287ff312c4571abb37a7926738b2115e51d16720531e1",
+      "currentSHA256": "fd49edb13454af60a29287ff312c4571abb37a7926738b2115e51d16720531e1",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T08_LIMITS_COUNTABILITY.json",
+      "baselineSHA256": "53aca47aa6ef4313b29ee60359e40c37abec1c7438780ecc6df38e0316b71dd1",
+      "currentSHA256": "53aca47aa6ef4313b29ee60359e40c37abec1c7438780ecc6df38e0316b71dd1",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/topics/RL_T09_TRANSFER_CONSTRAINT_PUZZLES.json",
+      "baselineSHA256": "10a4582593a75d621da642b4aaba72fb63ff3d65cce6d471205a5dfc171ae71f",
+      "currentSHA256": "10a4582593a75d621da642b4aaba72fb63ff3d65cce6d471205a5dfc171ae71f",
+      "unchanged": true
+    },
+    {
+      "file": "src/rl/types.ts",
+      "baselineSHA256": "c6f1f7c0ebf344ec1537aacac47961b1806e8d884fa74f2d43713c983719b110",
+      "currentSHA256": "c6f1f7c0ebf344ec1537aacac47961b1806e8d884fa74f2d43713c983719b110",
+      "unchanged": true
+    },
+    {
+      "file": "src/utils/stackRows.ts",
+      "baselineSHA256": "47bc355e7d37155168653fedc18b1d0c636c4d26230398dcf6dd112a84262b17",
+      "currentSHA256": "47bc355e7d37155168653fedc18b1d0c636c4d26230398dcf6dd112a84262b17",
+      "unchanged": true
+    },
+    {
+      "file": "src/utils/storage.ts",
+      "baselineSHA256": "5f6e692b9660407bca249b32916ce58ec960e2b1f1c86658990ae7c4bc5a7aaf",
+      "currentSHA256": "5f6e692b9660407bca249b32916ce58ec960e2b1f1c86658990ae7c4bc5a7aaf",
+      "unchanged": true
+    },
+    {
+      "file": "src/utils/useSimulator.ts",
+      "baselineSHA256": "3503ba5e3effeb881a93cb2bece1f4523637e58babc8f98ca18250dedb43006a",
+      "currentSHA256": "3503ba5e3effeb881a93cb2bece1f4523637e58babc8f98ca18250dedb43006a",
+      "unchanged": true
+    }
+  ]
+}
