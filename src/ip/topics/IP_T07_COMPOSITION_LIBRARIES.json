@@ -1,0 +1,242 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t07",
+    "version": "1",
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t07.start",
+        "version": "1",
+        "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+        "skillIds": [
+          "IP_SK07_01_COMPOSE_MODEL",
+          "IP_SK07_02_API_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST07_01_COMPOSITION",
+          "IP_ST07_02_LIBRARY_USE"
+        ],
+        "sourceIds": [
+          "ref-f7af58ce8943d54b"
+        ],
+        "kind": "introduction",
+        "title": "Connect objects through explicit responsibilities",
+        "paragraphs": [
+          "Composition represents a has-a relationship using references to collaborators or contained objects. Library types can provide storage and operations, but their contracts still determine what a program may safely assume."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t07.composition",
+        "version": "1",
+        "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+        "skillIds": [
+          "IP_SK07_01_COMPOSE_MODEL"
+        ],
+        "subtopicIds": [
+          "IP_ST07_01_COMPOSITION"
+        ],
+        "sourceIds": [
+          "ref-f7af58ce8943d54b"
+        ],
+        "kind": "concept",
+        "title": "Model relationship meaning before choosing a collection",
+        "paragraphs": [
+          "A Session can refer to one Facilitator and a list of Participants. The relationship describes which objects are connected; an ArrayList is one possible implementation of the many-valued association. Choose fields according to ownership and multiplicity rather than copying every relationship into every object.",
+          "A reference does not itself imply exclusive ownership. If two Sessions reference one Facilitator, changes to that shared object may be visible from both. Decide where responsibilities belong and whether a caller may mutate an internal participant collection."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t07.api",
+        "version": "1",
+        "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+        "skillIds": [
+          "IP_SK07_02_API_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST07_02_LIBRARY_USE"
+        ],
+        "sourceIds": [
+          "ref-f7af58ce8943d54b"
+        ],
+        "kind": "procedure",
+        "title": "Read the method contract, not just its name",
+        "paragraphs": [
+          "Use documentation to check the parameter types, result, preconditions, effects and exceptional cases. ArrayList.get(index) requires a valid existing index; adding at size is permitted, but getting at size is not. A method may return information about the removed or replaced value.",
+          "Overloads can have different meanings: remove(int index) removes by position, while remove(Object value) removes a matching object. With a list of Integer values, argument type affects which overload is selected. Read the exact signature before using an integer literal."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t07.library-cost",
+        "version": "1",
+        "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+        "skillIds": [
+          "IP_SK07_02_API_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST07_02_LIBRARY_USE"
+        ],
+        "sourceIds": [
+          "ref-f7af58ce8943d54b"
+        ],
+        "kind": "common_pitfall",
+        "title": "A library abstraction is not a promise of zero cost",
+        "paragraphs": [
+          "ArrayList grows as needed, but growing its backing storage may copy elements. Inserting or removing near the front shifts later elements. Do not claim that every addition has constant cost; choose an API based on the required behavior and the scale of the task.",
+          "Document your own public methods with the same discipline: accepted inputs, observable changes, outputs and failure behavior. A caller should not need your implementation to discover whether an operation mutates its arguments."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t07.trace",
+        "version": "1",
+        "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+        "skillIds": [
+          "IP_SK07_02_API_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST07_02_LIBRARY_USE"
+        ],
+        "sourceIds": [
+          "ref-f7af58ce8943d54b"
+        ],
+        "kind": "worked_example",
+        "title": "Apply indexed-list contracts in sequence",
+        "paragraphs": [
+          "Insertion at index1 places dusk between dawn and noon. remove(0) removes and returns dawn; the remaining first entry is dusk and the size is2. This example uses String elements so the index-removal overload is unambiguous."
+        ],
+        "code": "import java.util.ArrayList;\nimport java.util.List;\nclass Program {\n    public static void main(String[] args) {\n        List<String> slots = new ArrayList<>();\n        slots.add(\"dawn\");\n        slots.add(\"noon\");\n        slots.add(1, \"dusk\");\n        String removed = slots.remove(0);\n        System.out.println(removed);\n        System.out.println(slots.get(0) + \" \" + slots.size());\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t07.recap",
+        "version": "1",
+        "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+        "skillIds": [
+          "IP_SK07_01_COMPOSE_MODEL",
+          "IP_SK07_02_API_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST07_01_COMPOSITION",
+          "IP_ST07_02_LIBRARY_USE"
+        ],
+        "sourceIds": [
+          "ref-f7af58ce8943d54b"
+        ],
+        "kind": "recap",
+        "title": "Choose a relationship, then honor the API",
+        "paragraphs": [
+          "First draw the object relationships and identify who owns each responsibility. Then select a library representation, read its contracts and decide how much mutable internal state callers may access."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t07.composition",
+      "version": "1",
+      "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+      "skillIds": [
+        "IP_SK07_01_COMPOSE_MODEL"
+      ],
+      "subtopicIds": [
+        "IP_ST07_01_COMPOSITION"
+      ],
+      "sourceIds": [
+        "ref-f7af58ce8943d54b"
+      ],
+      "prompt": "How is a has-a relationship different from an is-a relationship?",
+      "answer": "Composition connects an object to another object it uses or contains. Inheritance claims a subtype can act as the more general type. Having a collection does not make an object a subtype of that collection."
+    },
+    {
+      "id": "ds.card.ip.t07.multiplicity",
+      "version": "1",
+      "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+      "skillIds": [
+        "IP_SK07_01_COMPOSE_MODEL"
+      ],
+      "subtopicIds": [
+        "IP_ST07_01_COMPOSITION"
+      ],
+      "sourceIds": [
+        "ref-f7af58ce8943d54b"
+      ],
+      "prompt": "Does a many-valued association force an ArrayList implementation?",
+      "answer": "No. Multiplicity states how many related objects there can be. The representation also depends on required order, duplicates, lookup and mutation behavior."
+    },
+    {
+      "id": "ds.card.ip.t07.javadoc",
+      "version": "1",
+      "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+      "skillIds": [
+        "IP_SK07_02_API_USE"
+      ],
+      "subtopicIds": [
+        "IP_ST07_02_LIBRARY_USE"
+      ],
+      "sourceIds": [
+        "ref-f7af58ce8943d54b"
+      ],
+      "prompt": "What should you inspect in an API entry before calling a method?",
+      "answer": "The exact signature, parameter meaning, return value, preconditions, side effects and exceptional cases. A familiar method name alone does not establish its behavior."
+    },
+    {
+      "id": "ds.card.ip.t07.remove-overload",
+      "version": "1",
+      "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+      "skillIds": [
+        "IP_SK07_02_API_USE"
+      ],
+      "subtopicIds": [
+        "IP_ST07_02_LIBRARY_USE"
+      ],
+      "sourceIds": [
+        "ref-f7af58ce8943d54b"
+      ],
+      "prompt": "For List<Integer> values, why can values.remove(1) differ from values.remove(Integer.valueOf(1))?",
+      "answer": "The int argument selects index removal; the Integer argument selects object removal. One removes the element at position1, while the other removes a matching value if present."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t07.session-model",
+      "version": "1",
+      "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+      "skillIds": [
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK07_02_API_USE"
+      ],
+      "subtopicIds": [
+        "IP_ST07_01_COMPOSITION",
+        "IP_ST07_02_LIBRARY_USE"
+      ],
+      "sourceIds": [
+        "ref-f7af58ce8943d54b"
+      ],
+      "title": "Design a session roster around documented APIs",
+      "prompt": "A Session has one facilitator and an ordered roster of unique participant names. Design its fields, enroll(name) and a way to inspect names. Decide whether a caller can mutate the internal roster. Explain which List operations you need and their contracts.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Object relationships, multiplicities and ownership"
+        },
+        {
+          "id": "step2",
+          "label": "Enrollment steps and duplicate behavior"
+        },
+        {
+          "id": "step3",
+          "label": "Read-only observation or copying policy and API checks"
+        }
+      ],
+      "rubric": [
+        "Represents a single facilitator and a many-valued roster without an inheritance claim.",
+        "Defines duplicate and order behavior explicitly.",
+        "Does not accidentally expose the internal mutable list through its observation method.",
+        "Uses documented contains/add/get or copy behavior with valid index assumptions."
+      ],
+      "reference": [
+        "One design stores a Facilitator reference and a private List<String>. enroll checks the stated name precondition and contains(name) before appending; it returns whether the roster changed.",
+        "Return a new ArrayList<>(names) if callers may mutate their returned list independently, or provide narrow indexed queries. These alternatives have different interfaces but can satisfy the same ownership goal.",
+        "The list copy separates outer-list mutation. For immutable String elements, sharing each element reference does not expose mutable name state. State that reasoning rather than claiming every list copy is a deep copy."
+      ]
+    }
+  ]
+}

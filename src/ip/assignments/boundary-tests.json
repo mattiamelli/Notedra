@@ -1,0 +1,118 @@
+{
+  "id": "ds.assignment.ip.boundary-tests",
+  "version": "1",
+  "title": "Design tests that expose boundary bugs",
+  "minutes": 15,
+  "topicId": "IP_T08_TESTING",
+  "relatedTopicIds": [
+    "IP_T08_TESTING",
+    "IP_T13_DEBUGGING"
+  ],
+  "skillIds": [
+    "IP_SK08_01_WRITE_TESTS",
+    "IP_SK08_02_TEST_BOUNDARIES",
+    "IP_SK08_03_TESTABILITY",
+    "IP_SK13_01_DEBUG_SYSTEMATIC"
+  ],
+  "subtopicIds": [
+    "IP_ST08_01_UNIT_TESTS",
+    "IP_ST08_02_TESTABILITY",
+    "IP_ST13_01_DEBUG_WORKFLOW"
+  ],
+  "sourceIds": [
+    "ref-18b7de6140eaf782",
+    "ref-34e225f008e41f8b"
+  ],
+  "evidenceIds": [
+    "ip-t08",
+    "ip-t13"
+  ],
+  "instructions": [
+    "Write a JUnit 5 test suite for Clamp.clamp(value, min, max). It returns min below the interval, max above it, otherwise value; min > max throws IllegalArgumentException.",
+    "The implementation is provided. Test its public contract rather than reproducing its branch structure. Include a degenerate interval and an exception assertion. Explain which plausible bug each test would catch.",
+    "JUnit source is an illustrative reference: JUnit is not installed or run in this browser. The development check uses a separate plain-Java requirement harness.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "Clamp.java",
+      "language": "java",
+      "content": "public final class Clamp {\n    public static int clamp(int value, int min, int max) {\n        if (min > max) throw new IllegalArgumentException(\"Reversed interval\");\n        return Math.max(min, Math.min(max, value));\n    }\n}\n"
+    },
+    {
+      "name": "ClampTest.java",
+      "language": "java",
+      "content": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\nclass ClampTest {\n    // Add independent cases with assertEquals and assertThrows.\n}\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "cases",
+      "text": "Select below, lower-bound, inside, upper-bound, above and degenerate-interval inputs with explicit expected values.",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ]
+    },
+    {
+      "id": "exceptions",
+      "text": "Use an exception assertion for a reversed interval and avoid swallowing a missing exception.",
+      "skillIds": [
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ]
+    },
+    {
+      "id": "design",
+      "text": "Keep the pure clamp function testable without console input; explain why executing every line does not establish a strong test suite.",
+      "skillIds": [
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK13_01_DEBUG_SYSTEMATIC"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-cases",
+      "text": "Review evidence for: Select below, lower-bound, inside, upper-bound, above and degenerate-interval inputs with explicit expected values.",
+      "requirementIds": [
+        "cases"
+      ],
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "testIds": [
+        "clamp-cases"
+      ]
+    },
+    {
+      "id": "rubric-exceptions",
+      "text": "Review evidence for: Use an exception assertion for a reversed interval and avoid swallowing a missing exception.",
+      "requirementIds": [
+        "exceptions"
+      ],
+      "skillIds": [
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "testIds": [
+        "clamp-throws"
+      ]
+    },
+    {
+      "id": "rubric-design",
+      "text": "Review evidence for: Keep the pure clamp function testable without console input; explain why executing every line does not establish a strong test suite.",
+      "requirementIds": [
+        "design"
+      ],
+      "skillIds": [
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK13_01_DEBUG_SYSTEMATIC"
+      ],
+      "testIds": [
+        "clamp-review"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.boundary-tests"
+}

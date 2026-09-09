@@ -1,0 +1,99 @@
+{
+  "id": "ds.assignment.ip.array-window",
+  "version": "1",
+  "title": "Count threshold crossings in a window",
+  "minutes": 15,
+  "topicId": "IP_T05_ARRAYS_RECURSION",
+  "relatedTopicIds": [
+    "IP_T05_ARRAYS_RECURSION",
+    "IP_T03_METHODS_SCOPE",
+    "IP_T02_CONTROL_FLOW"
+  ],
+  "skillIds": [
+    "IP_SK03_01_DEFINE_METHOD",
+    "IP_SK05_01_ARRAY_TRAVERSE",
+    "IP_SK02_04_LOOP_IMPLEMENT",
+    "IP_SK05_02_ARRAY_PROCESS",
+    "IP_SK05_03_ARRAY_ALIAS"
+  ],
+  "subtopicIds": [
+    "IP_ST03_01_METHOD_DEF_CALL",
+    "IP_ST05_01_ARRAY_CORE",
+    "IP_ST02_02_LOOPS",
+    "IP_ST05_02_ALIAS_COPY"
+  ],
+  "sourceIds": [
+    "ref-51fd7d38d2311986",
+    "ref-3f69452c7af0560e",
+    "ref-c6ef6c6bd94aa16c"
+  ],
+  "evidenceIds": [
+    "ip-t05",
+    "ip-t03",
+    "ip-t02"
+  ],
+  "instructions": [
+    "Implement countAtLeast(values, from, to, threshold). The half-open window contains indices from through to - 1. Return how many values in that window are at least threshold.",
+    "Use one loop and a local accumulator. Keep the input array unchanged; explain why to may equal values.length.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "WindowCounts.java",
+      "language": "java",
+      "content": "public final class WindowCounts {\n    public static int countAtLeast(int[] values, int from, int to, int threshold) {\n        throw new UnsupportedOperationException(\"Write your implementation\");\n    }\n}\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "range",
+      "text": "Reject a null array with NullPointerException and reject from < 0, to > length, or from > to with IllegalArgumentException.",
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD",
+        "IP_SK05_01_ARRAY_TRAVERSE"
+      ]
+    },
+    {
+      "id": "count",
+      "text": "Count the half-open window with an inclusive threshold; accept an empty window and leave the original array unchanged.",
+      "skillIds": [
+        "IP_SK02_04_LOOP_IMPLEMENT",
+        "IP_SK05_02_ARRAY_PROCESS",
+        "IP_SK05_03_ARRAY_ALIAS"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-range",
+      "text": "Review evidence for: Reject a null array with NullPointerException and reject from < 0, to > length, or from > to with IllegalArgumentException.",
+      "requirementIds": [
+        "range"
+      ],
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD",
+        "IP_SK05_01_ARRAY_TRAVERSE"
+      ],
+      "testIds": [
+        "window-errors"
+      ]
+    },
+    {
+      "id": "rubric-count",
+      "text": "Review evidence for: Count the half-open window with an inclusive threshold; accept an empty window and leave the original array unchanged.",
+      "requirementIds": [
+        "count"
+      ],
+      "skillIds": [
+        "IP_SK02_04_LOOP_IMPLEMENT",
+        "IP_SK05_02_ARRAY_PROCESS",
+        "IP_SK05_03_ARRAY_ALIAS"
+      ],
+      "testIds": [
+        "window-boundaries"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.array-window"
+}

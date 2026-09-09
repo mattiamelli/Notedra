@@ -1,0 +1,163 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t13",
+    "version": "1",
+    "topicId": "IP_T13_DEBUGGING",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t13.model",
+        "version": "1",
+        "topicId": "IP_T13_DEBUGGING",
+        "skillIds": [
+          "IP_SK13_01_DEBUG_SYSTEMATIC"
+        ],
+        "subtopicIds": [
+          "IP_ST13_01_DEBUG_WORKFLOW"
+        ],
+        "sourceIds": [
+          "ref-34e225f008e41f8b"
+        ],
+        "kind": "introduction",
+        "title": "Debug by shrinking uncertainty",
+        "paragraphs": [
+          "Start from a reproducible input and a precise difference between expected and actual behavior. A debugger reveals state; you still need a hypothesis about which requirement the state violates."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t13.workflow",
+        "version": "1",
+        "topicId": "IP_T13_DEBUGGING",
+        "skillIds": [
+          "IP_SK13_01_DEBUG_SYSTEMATIC"
+        ],
+        "subtopicIds": [
+          "IP_ST13_01_DEBUG_WORKFLOW"
+        ],
+        "sourceIds": [
+          "ref-34e225f008e41f8b"
+        ],
+        "kind": "procedure",
+        "title": "Move from a failing example to a local cause",
+        "paragraphs": [
+          "First reproduce the smallest failing case and write the expected result. If compilation fails, begin with the first useful diagnostic and its source location; later messages can be consequences. For a runtime failure, read the exception and the first relevant application frame in the stack trace.",
+          "Set a breakpoint just before the suspected transition. Inspect index, accumulator, object fields and aliases. Step over to check one statement; step into when the error seems inside a called method. The call stack explains which caller and arguments brought execution here.",
+          "A watch shows how an expression changes; a watchpoint or conditional breakpoint narrows the stop to a particular field update or invalid state. Reduce unrelated input rather than scattering unstructured print statements through the entire application."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t13.boundary",
+        "version": "1",
+        "topicId": "IP_T13_DEBUGGING",
+        "skillIds": [
+          "IP_SK13_01_DEBUG_SYSTEMATIC"
+        ],
+        "subtopicIds": [
+          "IP_ST13_01_DEBUG_WORKFLOW"
+        ],
+        "sourceIds": [
+          "ref-34e225f008e41f8b"
+        ],
+        "kind": "worked_example",
+        "title": "Investigate a missing final element",
+        "paragraphs": [
+          "A method should count every positive entry in [2, -1, 4]. Its loop uses i < values.length - 1 and returns 1. Before changing anything, predict the index sequence: only 0 and 1 are visited; index 2 is excluded.",
+          "With a breakpoint on the guard, observe (i,count) before each check: (0,0), (1,1), (2,1). The third guard is false. Replacing the bound with i < values.length repairs this cause. Add tests for empty, one-element positive, one-element negative and a positive final element so the same bug cannot quietly return."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t13.recap",
+        "version": "1",
+        "topicId": "IP_T13_DEBUGGING",
+        "skillIds": [
+          "IP_SK13_01_DEBUG_SYSTEMATIC"
+        ],
+        "subtopicIds": [
+          "IP_ST13_01_DEBUG_WORKFLOW"
+        ],
+        "sourceIds": [
+          "ref-34e225f008e41f8b"
+        ],
+        "kind": "recap",
+        "title": "A repair needs a regression",
+        "paragraphs": [
+          "Use compiler diagnostics, runtime stack traces and state inspection for the phase that actually failed. A small failing test, a verified local cause and a passing regression are stronger evidence than a plausible edit."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t13.hypothesis",
+      "version": "1",
+      "topicId": "IP_T13_DEBUGGING",
+      "skillIds": [
+        "IP_SK13_01_DEBUG_SYSTEMATIC"
+      ],
+      "subtopicIds": [
+        "IP_ST13_01_DEBUG_WORKFLOW"
+      ],
+      "sourceIds": [
+        "ref-34e225f008e41f8b"
+      ],
+      "prompt": "What should you write down before stepping through a failing method?",
+      "answer": "A reproducible input, expected result, actual result and a hypothesis about the first incorrect state transition. Debugger state is evidence to test that hypothesis."
+    },
+    {
+      "id": "ds.card.ip.t13.step",
+      "version": "1",
+      "topicId": "IP_T13_DEBUGGING",
+      "skillIds": [
+        "IP_SK13_01_DEBUG_SYSTEMATIC"
+      ],
+      "subtopicIds": [
+        "IP_ST13_01_DEBUG_WORKFLOW"
+      ],
+      "sourceIds": [
+        "ref-34e225f008e41f8b"
+      ],
+      "prompt": "When is step-into more useful than step-over?",
+      "answer": "When the suspected behavior lies inside a called method. Step-over checks the caller transition; step-into reveals that method’s arguments and local state. The call stack supplies context."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t13.localize",
+      "version": "1",
+      "topicId": "IP_T13_DEBUGGING",
+      "skillIds": [
+        "IP_SK13_01_DEBUG_SYSTEMATIC"
+      ],
+      "subtopicIds": [
+        "IP_ST13_01_DEBUG_WORKFLOW"
+      ],
+      "sourceIds": [
+        "ref-34e225f008e41f8b"
+      ],
+      "title": "Localize an off-by-one error",
+      "prompt": "A first-positive search should return the lowest positive index or −1. It returns −1 for [0, 6] but 0 for [6, 0]. Plan a debugging session before proposing a repair.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Minimal failing case and hypothesis"
+        },
+        {
+          "id": "step2",
+          "label": "Breakpoint, watches and expected trace"
+        },
+        {
+          "id": "step3",
+          "label": "Regression tests and repair check"
+        }
+      ],
+      "rubric": [
+        "The expected result for [0,6] is 1.",
+        "The plan observes the final iteration and distinguishes a bound error from a predicate error.",
+        "The proposed repair is checked against empty, no-positive, first-positive and last-positive inputs."
+      ],
+      "reference": [
+        "Watch i and the tested element at the guard. A loop that stops at length−1 excludes the last index; verify that observation rather than assuming it.",
+        "After repairing the loop bound, rerun the original case and boundary tests. If the trace instead enters index1, inspect the predicate and return path. More than one underlying bug could produce the same symptom."
+      ]
+    }
+  ]
+}

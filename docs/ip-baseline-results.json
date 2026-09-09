@@ -1,0 +1,82 @@
+[
+  {
+    "command": "pnpm run validate:content",
+    "exit": 0,
+    "seconds": 2.14
+  },
+  {
+    "command": "pnpm run check:academic",
+    "exit": 0,
+    "seconds": 2.03
+  },
+  {
+    "command": "pnpm run check:references",
+    "exit": 0,
+    "seconds": 2.43
+  },
+  {
+    "command": "pnpm run validate:practice",
+    "exit": 0,
+    "seconds": 1.93
+  },
+  {
+    "command": "pnpm run check:topics",
+    "exit": 0,
+    "seconds": 2.19
+  },
+  {
+    "command": "pnpm run validate:topics",
+    "exit": 0,
+    "seconds": 1.92
+  },
+  {
+    "command": "pnpm run validate:co",
+    "exit": 0,
+    "seconds": 2.0
+  },
+  {
+    "command": "pnpm run check:co-bundle",
+    "exit": 0,
+    "seconds": 9.8
+  },
+  {
+    "command": "pnpm run validate:rl",
+    "exit": 0,
+    "seconds": 3.73
+  },
+  {
+    "command": "pnpm run check:rl-bundle",
+    "exit": 0,
+    "seconds": 9.81
+  },
+  {
+    "command": "pnpm run validate:enrichment",
+    "exit": 0,
+    "seconds": 2.36
+  },
+  {
+    "command": "pnpm run check:enrichment-bundle",
+    "exit": 0,
+    "seconds": 9.65
+  },
+  {
+    "command": "pnpm test --maxWorkers=2",
+    "exit": 0,
+    "seconds": 33.96
+  },
+  {
+    "command": "pnpm run typecheck",
+    "exit": 0,
+    "seconds": 9.19
+  },
+  {
+    "command": "pnpm run build",
+    "exit": 0,
+    "seconds": 26.95
+  },
+  {
+    "command": "git diff --check",
+    "exit": 0,
+    "seconds": 0.11
+  }
+]

@@ -1,0 +1,158 @@
+{
+  "id": "ds.assignment.ip.capacity-shelf",
+  "version": "1",
+  "title": "Build a bounded shelf with a clear invariant",
+  "minutes": 30,
+  "topicId": "IP_T06_CONTAINER_CLASSES",
+  "relatedTopicIds": [
+    "IP_T06_CONTAINER_CLASSES",
+    "IP_T05_ARRAYS_RECURSION",
+    "IP_T04_CLASSES_OBJECTS",
+    "IP_T07_COMPOSITION_LIBRARIES",
+    "IP_T08_TESTING"
+  ],
+  "skillIds": [
+    "IP_SK06_01_CONTAINER_IMPL",
+    "IP_SK06_02_REP_INVARIANT",
+    "IP_SK06_03_COLLECTION_SEMANTICS",
+    "IP_SK05_02_ARRAY_PROCESS",
+    "IP_SK05_03_ARRAY_ALIAS",
+    "IP_SK04_04_ENCAPSULATION",
+    "IP_SK07_02_API_USE",
+    "IP_SK08_01_WRITE_TESTS",
+    "IP_SK08_02_TEST_BOUNDARIES"
+  ],
+  "subtopicIds": [
+    "IP_ST06_01_ARRAY_BACKED",
+    "IP_ST06_02_COLLECTION_SEMANTICS",
+    "IP_ST05_01_ARRAY_CORE",
+    "IP_ST05_02_ALIAS_COPY",
+    "IP_ST04_02_INSTANCE_STATIC",
+    "IP_ST07_02_LIBRARY_USE",
+    "IP_ST08_01_UNIT_TESTS"
+  ],
+  "sourceIds": [
+    "ref-f8f42116f140d764",
+    "ref-3f69452c7af0560e",
+    "ref-6faf9172baf75824",
+    "ref-f7af58ce8943d54b",
+    "ref-18b7de6140eaf782"
+  ],
+  "evidenceIds": [
+    "ip-t06",
+    "ip-t05",
+    "ip-t04",
+    "ip-t07",
+    "ip-t08"
+  ],
+  "instructions": [
+    "Implement a fixed-capacity shelf of unique non-empty labels. Preserve insertion order. add returns false for duplicates or a full shelf; remove returns whether a label was present.",
+    "Use an array and a separate size. snapshot returns only the occupied labels in a new array. Reject null or empty labels with IllegalArgumentException and reject a negative capacity.",
+    "Write down the representation invariant before implementing mutation. A caller changing a snapshot must not change the shelf.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "CapacityShelf.java",
+      "language": "java",
+      "content": "public final class CapacityShelf {\n    public CapacityShelf(int capacity) { /* establish invariant */ }\n    public int size() { throw new UnsupportedOperationException(); }\n    public boolean add(String label) { throw new UnsupportedOperationException(); }\n    public boolean remove(String label) { throw new UnsupportedOperationException(); }\n    public String[] snapshot() { throw new UnsupportedOperationException(); }\n}\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "invariant",
+      "text": "Maintain 0 <= size <= capacity; occupied labels are non-null, non-empty and unique, and unused cells are null.",
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL",
+        "IP_SK06_02_REP_INVARIANT"
+      ]
+    },
+    {
+      "id": "mutation",
+      "text": "Preserve insertion order across successful adds and removals and handle duplicates, full capacity and absent removal according to contract.",
+      "skillIds": [
+        "IP_SK06_03_COLLECTION_SEMANTICS",
+        "IP_SK05_02_ARRAY_PROCESS"
+      ]
+    },
+    {
+      "id": "isolation",
+      "text": "Return a defensive array copy and keep backing state private.",
+      "skillIds": [
+        "IP_SK05_03_ARRAY_ALIAS",
+        "IP_SK04_04_ENCAPSULATION",
+        "IP_SK07_02_API_USE"
+      ]
+    },
+    {
+      "id": "boundaries",
+      "text": "Test zero capacity, negative capacity, invalid labels, first/last removal and a reused slot.",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-invariant",
+      "text": "Review evidence for: Maintain 0 <= size <= capacity; occupied labels are non-null, non-empty and unique, and unused cells are null.",
+      "requirementIds": [
+        "invariant"
+      ],
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL",
+        "IP_SK06_02_REP_INVARIANT"
+      ],
+      "testIds": [
+        "shelf-cycle",
+        "shelf-boundaries"
+      ]
+    },
+    {
+      "id": "rubric-mutation",
+      "text": "Review evidence for: Preserve insertion order across successful adds and removals and handle duplicates, full capacity and absent removal according to contract.",
+      "requirementIds": [
+        "mutation"
+      ],
+      "skillIds": [
+        "IP_SK06_03_COLLECTION_SEMANTICS",
+        "IP_SK05_02_ARRAY_PROCESS"
+      ],
+      "testIds": [
+        "shelf-cycle"
+      ]
+    },
+    {
+      "id": "rubric-isolation",
+      "text": "Review evidence for: Return a defensive array copy and keep backing state private.",
+      "requirementIds": [
+        "isolation"
+      ],
+      "skillIds": [
+        "IP_SK05_03_ARRAY_ALIAS",
+        "IP_SK04_04_ENCAPSULATION",
+        "IP_SK07_02_API_USE"
+      ],
+      "testIds": [
+        "shelf-alias"
+      ]
+    },
+    {
+      "id": "rubric-boundaries",
+      "text": "Review evidence for: Test zero capacity, negative capacity, invalid labels, first/last removal and a reused slot.",
+      "requirementIds": [
+        "boundaries"
+      ],
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "testIds": [
+        "shelf-boundaries"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.capacity-shelf"
+}

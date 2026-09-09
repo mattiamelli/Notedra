@@ -2,7 +2,7 @@ import {useState} from 'react';
 import cards from './cards.json';
 import cues from './cues.json';
 import guides from './guided.json';
-import {CanonicalLink} from '../topic-study/AcademicViews';
+import {StudyCues} from './StudyCues';
 import {EvidenceView} from './EvidenceView';
 import type {GuidedSupplement} from './types';
 import type {StudyMode} from '../topic-study/types';
@@ -14,7 +14,7 @@ export default function TopicEnrichment({topicId,mode}:{topicId:string;mode:Stud
  }
  if(mode==='mental-map'){
   const selected=cues.filter(c=>c.topicId===topicId);if(!selected.length)return null;
-  return <details className="ds-study-reading ds-enrichment"><summary>Optional study cues</summary><p>Reminders attached to existing skills. These do not add map connections or prerequisites.</p>{selected.map(c=><article key={c.id}><h3><CanonicalLink id={c.skillIds[0]}/></h3><p>{c.text}</p><EvidenceView ids={c.evidenceIds}/></article>)}</details>;
+  return <StudyCues cues={selected}/>;
  }
  if(mode==='practice'){
   const selected=guides.filter(g=>g.topicId===topicId);return selected.length?<section className="ds-study-reading ds-enrichment" aria-label="Supplemental guided self-check"><h2>Guided self-check / rubric</h2><p>Open reasoning has no automatic grade. Different valid approaches are welcome.</p>{selected.map(g=><Guided key={g.id} item={g}/>)}</section>:null;

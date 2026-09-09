@@ -1,0 +1,336 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t03",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t03.start",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_01_DEFINE_METHOD",
+          "IP_SK03_02_TRACE_CALLS",
+          "IP_SK03_03_SCOPE",
+          "IP_SK03_04_PASS_BY_VALUE"
+        ],
+        "subtopicIds": [
+          "IP_ST03_01_METHOD_DEF_CALL",
+          "IP_ST03_02_SCOPE_PASSING"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "introduction",
+        "title": "A method call has its own local state",
+        "paragraphs": [
+          "A method packages one coherent operation behind a name, parameters and a return type. Reason about a call by separating the caller’s variables, the callee’s local variables and any shared objects."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t03.contract",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_01_DEFINE_METHOD"
+        ],
+        "subtopicIds": [
+          "IP_ST03_01_METHOD_DEF_CALL"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "procedure",
+        "title": "Design the method header from the required result",
+        "paragraphs": [
+          "For a method that counts positive values in an array, the array is an input and the count is an int result. A useful method header is static int countPositive(int[] values). State the accepted inputs and whether the method changes the array before writing a loop.",
+          "For these non-generic methods, the Java signature is the method name and ordered parameter types: countPositive(int[]). The return type and modifiers are not part of the signature. You cannot overload two methods merely by changing the return type.",
+          "return transfers a result and finishes the current call; printing a result is a different side effect. A void method returns no value. An instance method operates with a receiver object; a static method has no implicit this and must receive any required instance explicitly."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t03.calls",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_02_TRACE_CALLS"
+        ],
+        "subtopicIds": [
+          "IP_ST03_01_METHOD_DEF_CALL"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "concept",
+        "title": "Follow arguments into a fresh invocation",
+        "paragraphs": [
+          "Evaluate argument expressions, create parameter variables containing those values, execute the method body and return to the caller. Each invocation has its own parameters and locals, including recursive calls. For twice(3) followed by twice(5), a local total from the first call is not reused by the second.",
+          "A returned value matters only where the caller uses it. Calling a pure calculation method without storing, passing or otherwise using its return value leaves no changed caller variable."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t03.scope",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_03_SCOPE"
+        ],
+        "subtopicIds": [
+          "IP_ST03_02_SCOPE_PASSING"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "important_rule",
+        "title": "Scope is visibility; lifetime and reachability are different",
+        "paragraphs": [
+          "A local declared inside a block is only available in its permitted lexical scope. A parameter is visible in the method body. A field can be hidden by a parameter with the same name; this.value refers to the receiver’s field when value names the parameter.",
+          "Leaving a block makes its local name unavailable; it does not immediately garbage-collect an object. An object can remain reachable through another reference. Do not use scope diagrams as claims about the timing of memory reclamation."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t03.passing",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_04_PASS_BY_VALUE"
+        ],
+        "subtopicIds": [
+          "IP_ST03_02_SCOPE_PASSING"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "concept",
+        "title": "Java always passes values",
+        "paragraphs": [
+          "For a primitive argument, the copied value is the primitive value. For an object or array argument, the copied value is a reference. Reassigning the parameter never reassigns the caller’s variable. Mutating the object through that reference can change the object that both variables refer to.",
+          "Draw reference arrows rather than saying Java passes objects by reference. A method can return a replacement object if the caller is meant to choose a new reference."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t03.trace",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_02_TRACE_CALLS",
+          "IP_SK03_03_SCOPE",
+          "IP_SK03_04_PASS_BY_VALUE"
+        ],
+        "subtopicIds": [
+          "IP_ST03_01_METHOD_DEF_CALL",
+          "IP_ST03_02_SCOPE_PASSING"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "worked_example",
+        "title": "Mutation survives; parameter reassignment does not",
+        "paragraphs": [
+          "The program prints 3 7. limit and values inside adjust are separate variables from the caller’s same-named variables. The array element is shared during the first mutation; the later new array belongs to the callee’s replacement reference."
+        ],
+        "code": "class Program {\n    static void adjust(int limit, int[] values) {\n        limit = 9;\n        values[0] += 2;\n        values = new int[] {99};\n    }\n    public static void main(String[] args) {\n        int limit = 3;\n        int[] values = {5};\n        adjust(limit, values);\n        System.out.println(limit + \" \" + values[0]);\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t03.recap",
+        "version": "1",
+        "topicId": "IP_T03_METHODS_SCOPE",
+        "skillIds": [
+          "IP_SK03_01_DEFINE_METHOD",
+          "IP_SK03_02_TRACE_CALLS",
+          "IP_SK03_03_SCOPE",
+          "IP_SK03_04_PASS_BY_VALUE"
+        ],
+        "subtopicIds": [
+          "IP_ST03_01_METHOD_DEF_CALL",
+          "IP_ST03_02_SCOPE_PASSING"
+        ],
+        "sourceIds": [
+          "ref-51fd7d38d2311986"
+        ],
+        "kind": "recap",
+        "title": "Trace a call boundary explicitly",
+        "paragraphs": [
+          "Check the method contract, each argument value, each new parameter binding, object mutations and the returned result. Use scope to resolve names, then use references to determine which state can change."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t03.signature",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD"
+      ],
+      "subtopicIds": [
+        "IP_ST03_01_METHOD_DEF_CALL"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "What does a method header describe, and what is its Java signature?",
+      "answer": "The method header exposes its name, parameter types and result type. For a non-generic method, its Java signature uses the name and ordered parameter types; the return type is not part of the signature. The contract separately states accepted inputs, side effects and the meaning of the result."
+    },
+    {
+      "id": "ds.card.ip.t03.return",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD"
+      ],
+      "subtopicIds": [
+        "IP_ST03_01_METHOD_DEF_CALL"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "Does printing a calculated value return it to the caller?",
+      "answer": "No. Printing is an output side effect. return supplies a value to the calling expression and ends the current invocation."
+    },
+    {
+      "id": "ds.card.ip.t03.locals",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_02_TRACE_CALLS"
+      ],
+      "subtopicIds": [
+        "IP_ST03_01_METHOD_DEF_CALL"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "Do two consecutive calls share the same local variable?",
+      "answer": "Each invocation gets its own parameters and locals. Shared fields or objects can persist, but an ordinary local from a completed call is not the next call’s local state."
+    },
+    {
+      "id": "ds.card.ip.t03.ignored",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_02_TRACE_CALLS"
+      ],
+      "subtopicIds": [
+        "IP_ST03_01_METHOD_DEF_CALL"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "A pure method returns an updated number. What happens if its caller ignores the return value?",
+      "answer": "The caller’s number variable remains unchanged. The method returned a value; it did not acquire the ability to reassign the caller’s variable."
+    },
+    {
+      "id": "ds.card.ip.t03.shadow",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_03_SCOPE"
+      ],
+      "subtopicIds": [
+        "IP_ST03_02_SCOPE_PASSING"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "In a constructor with parameter int size and field size, what does this.size = size mean?",
+      "answer": "Assign the parameter value on the right to the field belonging to the current object on the left. this distinguishes the receiver field from the same-named parameter."
+    },
+    {
+      "id": "ds.card.ip.t03.scope-gc",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_03_SCOPE"
+      ],
+      "subtopicIds": [
+        "IP_ST03_02_SCOPE_PASSING"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "Does leaving a block immediately destroy every object created inside it?",
+      "answer": "No. Scope controls where names can be used. An object can remain reachable elsewhere, and Java does not promise immediate garbage collection at block exit."
+    },
+    {
+      "id": "ds.card.ip.t03.rebind",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_04_PASS_BY_VALUE"
+      ],
+      "subtopicIds": [
+        "IP_ST03_02_SCOPE_PASSING"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "Can assigning a new array to a method parameter reassign the caller’s array variable?",
+      "answer": "No. The parameter holds a copied reference. Its reassignment changes that parameter only; return the replacement and assign it in the caller if replacement is intended."
+    },
+    {
+      "id": "ds.card.ip.t03.mutate",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_04_PASS_BY_VALUE"
+      ],
+      "subtopicIds": [
+        "IP_ST03_02_SCOPE_PASSING"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "prompt": "Why can a method change an array element even though Java is pass-by-value?",
+      "answer": "The copied reference still points to the same array object. Writing an element mutates that shared object; it does not reassign the caller’s reference variable."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t03.call-audit",
+      "version": "1",
+      "topicId": "IP_T03_METHODS_SCOPE",
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD",
+        "IP_SK03_02_TRACE_CALLS",
+        "IP_SK03_03_SCOPE",
+        "IP_SK03_04_PASS_BY_VALUE"
+      ],
+      "subtopicIds": [
+        "IP_ST03_01_METHOD_DEF_CALL",
+        "IP_ST03_02_SCOPE_PASSING"
+      ],
+      "sourceIds": [
+        "ref-51fd7d38d2311986"
+      ],
+      "title": "Separate a calculation from a mutation",
+      "prompt": "Design static int countPositive(int[] values), with a non-null input and no mutation. Then explain a separate void method that assigns its array parameter to new int[] {0}, versus one that writes values[0] = 0 when the array is non-empty.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Method contract and implementation outline"
+        },
+        {
+          "id": "step2",
+          "label": "Call trace with an input of {-2, 0, 4, 7}"
+        },
+        {
+          "id": "step3",
+          "label": "Parameter reassignment, object mutation and scope"
+        }
+      ],
+      "rubric": [
+        "Chooses an int result and a counter local to the invocation.",
+        "Counts exactly values strictly greater than zero without modifying the array.",
+        "Distinguishes replacing a local reference from mutating an array element.",
+        "Explains non-null and non-empty preconditions where they are required."
+      ],
+      "reference": [
+        "Initialize count to zero; traverse the array; increment for each value > 0; return count. The stated example returns 2 and leaves all elements unchanged.",
+        "Assigning the parameter to a new array leaves the caller reference unchanged. Writing values[0] changes the shared array object if an element exists.",
+        "A for-each or index-based solution is valid. A method that silently treats zero as positive violates the requirement even if it compiles."
+      ]
+    }
+  ]
+}

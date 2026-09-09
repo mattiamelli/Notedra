@@ -1,0 +1,147 @@
+[
+  {
+    "id": "ds.cue.ip.t03.copy",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_04_PASS_BY_VALUE"
+    ],
+    "subtopicIds": [
+      "IP_ST03_02_SCOPE_PASSING"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "text": "The parameter receives a copied value. Mutating a shared object differs from assigning that local parameter a new reference."
+  },
+  {
+    "id": "ds.cue.ip.t05.alias",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_03_ARRAY_ALIAS"
+    ],
+    "subtopicIds": [
+      "IP_ST05_02_ALIAS_COPY"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "text": "Two variables can refer to one array. Copying the reference does not copy the elements; inspect which object each mutation reaches."
+  },
+  {
+    "id": "ds.cue.ip.t10.dispatch",
+    "version": "1",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "skillIds": [
+      "IP_SK10_02_DISPATCH_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST10_02_BINDING"
+    ],
+    "sourceIds": [
+      "ref-596f95ae721fb59e"
+    ],
+    "evidenceIds": [
+      "ip-t10"
+    ],
+    "text": "Select the overload from declared types, then dispatch an overridable instance method using the receiver’s runtime class."
+  },
+  {
+    "id": "ds.cue.ip.t11.hash",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_02_HASH_CONTRACT"
+    ],
+    "subtopicIds": [
+      "IP_ST11_02_HASH"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "text": "Equal values require matching hashes; a matching hash does not prove equality. Keep value-key identity stable while stored in a hash collection."
+  },
+  {
+    "id": "ds.cue.ip.t15.ownership",
+    "version": "1",
+    "topicId": "IP_T15_IO_PARSING",
+    "skillIds": [
+      "IP_SK15_03_RESOURCE_SAFETY"
+    ],
+    "subtopicIds": [
+      "IP_ST15_03_RESOURCE_SAFETY"
+    ],
+    "sourceIds": [
+      "ref-8c6eff249b686f68",
+      "ref-cc566cb126fff995"
+    ],
+    "evidenceIds": [
+      "ip-t15"
+    ],
+    "text": "Name the resource owner. Borrowed readers stay with the caller; the boundary that opens a file closes it, including on failure."
+  },
+  {
+    "id": "ds.cue.ip.t17.boundaries",
+    "version": "1",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "skillIds": [
+      "IP_SK17_02_DECOMPOSE"
+    ],
+    "subtopicIds": [
+      "IP_ST17_02_APP_DECOMPOSE"
+    ],
+    "sourceIds": [
+      "ref-15f80f1f4bb2f1f3"
+    ],
+    "evidenceIds": [
+      "ip-t17"
+    ],
+    "text": "Keep parsing, processing and UI responsibilities distinct so each required behavior has a testable boundary."
+  },
+  {
+    "id": "ds.cue.ip.t19.race",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_02_SYNC"
+    ],
+    "subtopicIds": [
+      "IP_ST19_02_SHARED_STATE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "text": "Starting first does not guarantee finishing first. Use a common synchronization strategy for compound shared updates and wait before claiming completion."
+  },
+  {
+    "id": "ds.cue.ip.t20.integration",
+    "version": "1",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "skillIds": [
+      "IP_SK20_01_EXAM_SYNTHESIS"
+    ],
+    "subtopicIds": [
+      "IP_ST20_01_SPEC_TO_PROGRAM"
+    ],
+    "sourceIds": [
+      "ref-556a1c1cc39b369a"
+    ],
+    "evidenceIds": [
+      "ip-t20"
+    ],
+    "text": "One complete program remains an integrated task. Verify each requirement with component tests or a rubric; launching it is not broad skill correctness."
+  }
+]

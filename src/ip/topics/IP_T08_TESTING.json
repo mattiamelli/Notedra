@@ -1,0 +1,302 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t08",
+    "version": "1",
+    "topicId": "IP_T08_TESTING",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t08.start",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_01_WRITE_TESTS",
+          "IP_SK08_02_TEST_BOUNDARIES",
+          "IP_SK08_03_TESTABILITY"
+        ],
+        "subtopicIds": [
+          "IP_ST08_01_UNIT_TESTS",
+          "IP_ST08_02_TESTABILITY"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "introduction",
+        "title": "Tests need observable claims",
+        "paragraphs": [
+          "A test is an executable check of a specific requirement. Useful tests choose inputs that distinguish the intended behavior from plausible bugs, then assert observable results or effects. Merely running the code without an assertion rarely establishes the required behavior."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t08.assertions",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_01_WRITE_TESTS"
+        ],
+        "subtopicIds": [
+          "IP_ST08_01_UNIT_TESTS"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "procedure",
+        "title": "Arrange, act, assert",
+        "paragraphs": [
+          "Arrange an independent fixture, act by invoking the behavior once, then assert the relevant result. Name the behavior being tested. In JUnit Jupiter, @Test identifies a test method and assertions such as assertEquals, assertTrue and assertThrows encode expectations.",
+          "Prefer a concrete expected value derived from the specification. Computing the expected value with the same algorithm as the implementation can reproduce the same bug. Avoid tests whose only claim is that an object exists when the requirement is about a calculation or state change."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t08.boundaries",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_02_TEST_BOUNDARIES"
+        ],
+        "subtopicIds": [
+          "IP_ST08_01_UNIT_TESTS"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "concept",
+        "title": "Choose cases around decisions and failures",
+        "paragraphs": [
+          "For a method counting values >0, include negative values, zero, positives, an empty input and repeated positives. Zero distinguishes >0 from the incorrect >=0. Test the agreed null-input behavior rather than inventing a hidden convention.",
+          "For invalid input that must throw, assert the specific exception type. Test that a rejected operation leaves required state unchanged. Tests that only cover ordinary successful values miss important contract branches."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t08.testability",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_03_TESTABILITY"
+        ],
+        "subtopicIds": [
+          "IP_ST08_02_TESTABILITY"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "concept",
+        "title": "Separate calculations from input and output",
+        "paragraphs": [
+          "A method that accepts values and returns a result is easier to test than one that reads a keyboard, mutates global state and prints its only result. Keep parsing, model operations and user interaction separate enough to exercise them independently.",
+          "Create a fresh fixture for each test so execution order does not determine the result. Test public behavior and invariants rather than private implementation details that can change during a valid refactor."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t08.junit",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_01_WRITE_TESTS",
+          "IP_SK08_02_TEST_BOUNDARIES"
+        ],
+        "subtopicIds": [
+          "IP_ST08_01_UNIT_TESTS"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "code_example",
+        "title": "JUnit checks a positive, boundary and failure contract",
+        "paragraphs": [
+          "Assume Counter.positive(int[]) returns the number of strictly positive elements without mutation and throws IllegalArgumentException for null. These are JUnit Jupiter examples; the browser does not run or grade a learner-written test suite. The exception assertion applies only because this contract explicitly requires it.",
+          "For input {-3,0,4,4}, there are two positives. The zero case catches >= instead of >. Rechecking the input’s elements detects accidental mutation. More passing tests do not prove the method correct for every input."
+        ],
+        "code": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\nclass CounterTest {\n    @Test void countsStrictlyPositiveValuesWithoutMutation() {\n        int[] input = {-3, 0, 4, 4};\n        assertEquals(2, Counter.positive(input));\n        assertArrayEquals(new int[] {-3, 0, 4, 4}, input);\n    }\n    @Test void emptyAndZeroHaveNoPositiveValues() {\n        assertEquals(0, Counter.positive(new int[] {}));\n        assertEquals(0, Counter.positive(new int[] {0}));\n    }\n    @Test void rejectsNullAccordingToTheContract() {\n        assertThrows(IllegalArgumentException.class,\n                () -> Counter.positive(null));\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t08.worked",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_01_WRITE_TESTS",
+          "IP_SK08_02_TEST_BOUNDARIES",
+          "IP_SK08_03_TESTABILITY"
+        ],
+        "subtopicIds": [
+          "IP_ST08_01_UNIT_TESTS",
+          "IP_ST08_02_TESTABILITY"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "worked_example",
+        "title": "A test case should expose a particular wrong behavior",
+        "paragraphs": [
+          "Suppose an implementation increments its count when value >=0. A test using {1,2} passes both the correct and incorrect method. A test using {0} expects0 and rejects that bug. Now suppose it changes every negative input to0; an output-only assertion may miss the mutation, so also compare the input array afterward.",
+          "For an equals implementation, include null, a different type, the same reference, distinct equal instances and distinct unequal fields. A test of the same object against itself cannot detect missing value equality."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t08.recap",
+        "version": "1",
+        "topicId": "IP_T08_TESTING",
+        "skillIds": [
+          "IP_SK08_01_WRITE_TESTS",
+          "IP_SK08_02_TEST_BOUNDARIES",
+          "IP_SK08_03_TESTABILITY"
+        ],
+        "subtopicIds": [
+          "IP_ST08_01_UNIT_TESTS",
+          "IP_ST08_02_TESTABILITY"
+        ],
+        "sourceIds": [
+          "ref-18b7de6140eaf782"
+        ],
+        "kind": "recap",
+        "title": "Connect each test to a plausible defect",
+        "paragraphs": [
+          "Write the contract, choose ordinary and boundary cases, derive the result independently, assert side effects and exceptional behavior where required, and isolate fixtures. Passing tests provide bounded evidence; coverage percentage alone does not measure test quality."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t08.aaa",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS"
+      ],
+      "subtopicIds": [
+        "IP_ST08_01_UNIT_TESTS"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "prompt": "What are the three parts of arrange, act, assert?",
+      "answer": "Prepare a known independent fixture, invoke the behavior, then compare its observable result or effects with a specification-derived expectation."
+    },
+    {
+      "id": "ds.card.ip.t08.assert-meaning",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS"
+      ],
+      "subtopicIds": [
+        "IP_ST08_01_UNIT_TESTS"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "prompt": "Why can a test that calls a method but makes no assertion be weak?",
+      "answer": "Unless its explicit purpose is an exception or completion condition, it does not check the required result. The method can return a wrong value and the test still passes."
+    },
+    {
+      "id": "ds.card.ip.t08.zero-boundary",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "subtopicIds": [
+        "IP_ST08_01_UNIT_TESTS"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "prompt": "Which single input distinguishes counting >0 from counting >=0?",
+      "answer": "An array containing only0. The required result is0; an incorrect >=0 condition produces1."
+    },
+    {
+      "id": "ds.card.ip.t08.exception",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "subtopicIds": [
+        "IP_ST08_01_UNIT_TESTS"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "prompt": "When is assertThrows(IllegalArgumentException.class, ...) appropriate?",
+      "answer": "When the tested contract requires that exception for the chosen input. It should check the specific failure behavior, not turn an unexpected failure into a passing test."
+    },
+    {
+      "id": "ds.card.ip.t08.pure-core",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_03_TESTABILITY"
+      ],
+      "subtopicIds": [
+        "IP_ST08_02_TESTABILITY"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "prompt": "How can separating a calculation from keyboard input improve testability?",
+      "answer": "Tests can pass controlled values directly to the calculation and assert a returned result, without simulating a console or depending on global input/output state."
+    },
+    {
+      "id": "ds.card.ip.t08.coverage",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_03_TESTABILITY"
+      ],
+      "subtopicIds": [
+        "IP_ST08_02_TESTABILITY"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "prompt": "Does executing every line prove a test suite is meaningful?",
+      "answer": "No. Lines can execute while assertions miss wrong results, mutation or boundary behavior. Tests need expectations linked to requirements and plausible defects."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t08.tests-before-code",
+      "version": "1",
+      "topicId": "IP_T08_TESTING",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK08_03_TESTABILITY"
+      ],
+      "subtopicIds": [
+        "IP_ST08_01_UNIT_TESTS",
+        "IP_ST08_02_TESTABILITY"
+      ],
+      "sourceIds": [
+        "ref-18b7de6140eaf782"
+      ],
+      "title": "Design tests that reject plausible bugs",
+      "prompt": "For Counter.positive, use the contract in the lesson. Propose JUnit tests that catch: using >=0, skipping the last element, counting each distinct value once, mutating negatives, and accepting null silently. Explain how to test the calculation without a console.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Inputs, exact expected results and assertion choices"
+        },
+        {
+          "id": "step2",
+          "label": "Boundary/failure and non-mutation checks"
+        },
+        {
+          "id": "step3",
+          "label": "Fresh fixtures and separation from input/output"
+        }
+      ],
+      "rubric": [
+        "Includes {0}→0 for the condition boundary.",
+        "Includes {0,5}→1 for the last-element bug and {4,4}→2 for duplicate counting.",
+        "Checks the input is unchanged and asserts IllegalArgumentException for null.",
+        "Uses independent fixtures and specification-derived answers."
+      ],
+      "reference": [
+        "A useful set includes {0}, {0,5}, {4,4}, {}, and {-3,0,4,4}, expecting0,1,2,0,2. Use assertArrayEquals to compare the last fixture after the call with its original values.",
+        "Use assertThrows(IllegalArgumentException.class, () -> Counter.positive(null)) under this explicit contract. Prefer a calculation method taking an array over a method that reads System.in.",
+        "Many different test suites meet these obligations. No string comparison or checklist automatically establishes the quality or correctness of a learner’s suite."
+      ]
+    }
+  ]
+}

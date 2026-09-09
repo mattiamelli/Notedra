@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ip-late-t11-value",
+    "sourceBlockId": "ds.block.ip.t11.value",
+    "description": "Value equality, null/type, both fields, symmetry/transitivity, hash contract and collection keys",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nfinal class BinKey {\n    private final String zone;\n    private final int slot;\n    BinKey(String zone, int slot) {\n        this.zone = zone;\n        this.slot = slot;\n    }\n    @Override public boolean equals(Object other) {\n        if (this == other) return true;\n        if (other == null || getClass() != other.getClass()) return false;\n        BinKey that = (BinKey) other;\n        return slot == that.slot && java.util.Objects.equals(zone, that.zone);\n    }\n    @Override public int hashCode() {\n        return java.util.Objects.hash(zone, slot);\n    }\n}\nBinKey a = new BinKey(\"east\", 4), b = new BinKey(\"east\", 4), c = new BinKey(\"east\", 4);\nif (a == b || !a.equals(b) || !b.equals(a) || !b.equals(c) || !a.equals(c)) throw new AssertionError(\"equivalence\");\nif (a.equals(null) || a.equals(\"east\") || a.equals(new BinKey(\"west\", 4)) || a.equals(new BinKey(\"east\", 5))) throw new AssertionError(\"different fields\");\nif (!a.equals(a) || a.hashCode() != b.hashCode() || !a.equals(b)) throw new AssertionError(\"consistency\");\nvar keys = new java.util.HashSet<BinKey>(); keys.add(a); keys.add(b);\nif (keys.size() != 1 || !keys.contains(c)) throw new AssertionError(\"key contract\");\nif (!new BinKey(null, 2).equals(new BinKey(null, 2))) throw new AssertionError(\"nullable field\");\nSystem.out.println(\"equality contracts verified\");\n}\n}\n",
+    "expectedStdout": "equality contracts verified\n",
+    "reasoning": "Pair identity is (zone,slot); three equal independently allocated values establish the tested transitive chain. Both fields vary independently; null receiver argument is false while two null zone fields agree. HashSet merges equal pair values by contract, without assuming every unequal pair has a different hash."
+  },
+  {
+    "id": "ip-late-t12-flow",
+    "sourceBlockId": "ds.block.ip.t12.flow",
+    "description": "A failed parse chooses catch then finally then continuation",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\ntry {\n    Integer.parseInt(\"not-an-int\");\n    System.out.println(\"parsed\");\n} catch (NumberFormatException failure) {\n    System.out.println(\"recover\");\n} finally {\n    System.out.println(\"close\");\n}\nSystem.out.println(\"after\");\n}\n}\n",
+    "expectedStdout": "recover\nclose\nafter\n",
+    "reasoning": "Parsing non-numeric text throws before parsed is reached; NumberFormatException matches, then finally completes, then the following statement runs."
+  },
+  {
+    "id": "ip-late-t14-strings",
+    "sourceBlockId": "ds.block.ip.t14.strings",
+    "description": "Literal delimiter, trailing field preservation and trimmed conversion",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nString row = \"amber| 7 \";\nString[] fields = row.split(\"\\\\|\", -1);\nif (fields.length != 2 || fields[0].trim().isEmpty()) {\n    throw new IllegalArgumentException(\"Expected label|count\");\n}\nint count = Integer.parseInt(fields[1].trim());\nif (count <= 0) throw new IllegalArgumentException(\"Count must be positive\");\nSystem.out.println(fields[0].trim() + \":\" + count);\n}\n}\n",
+    "expectedStdout": "amber:7\n",
+    "reasoning": "The escaped delimiter splits into amber and space-7-space; trim gives7 and a positive count, then the formatter joins with colon."
+  },
+  {
+    "id": "ip-late-t15-read",
+    "sourceBlockId": "ds.block.ip.t15.read",
+    "description": "File-to-model valid rows, malformed input, failure propagation and borrowed resource ownership",
+    "javaSource": "public class Program {\nrecord CountRow(String name, int count) {}\nstatic java.util.List<CountRow> parse(java.io.Reader source)\n        throws java.io.IOException {\n    var reader = new java.io.BufferedReader(source);\n    var rows = new java.util.ArrayList<CountRow>();\n    String line;\n    int lineNumber = 0;\n    while ((line = reader.readLine()) != null) {\n        lineNumber++;\n        String[] fields = line.split(\"\\\\|\", -1);\n        try {\n            if (fields.length != 2 || fields[0].trim().isEmpty())\n                throw new IllegalArgumentException(\"Expected name|count\");\n            int count = Integer.parseInt(fields[1].trim());\n            if (count < 0) throw new IllegalArgumentException(\"Negative count\");\n            rows.add(new CountRow(fields[0].trim(), count));\n        } catch (IllegalArgumentException failure) {\n            throw new java.io.IOException(\"Malformed row \" + lineNumber, failure);\n        }\n    }\n    return rows;\n}\nstatic void write(java.io.Writer target, java.util.List<CountRow> rows)\n        throws java.io.IOException {\n    for (CountRow row : rows) {\n        target.write(row.name() + \"=\" + row.count() + \"\\n\");\n    }\n}\npublic static void main(String[] args) throws Exception {\n\nclass TrackingReader extends java.io.StringReader {\n    boolean closed;\n    TrackingReader(String text) { super(text); }\n    @Override public void close() { closed = true; super.close(); }\n}\nvar reader = new TrackingReader(\"cedar|0\\nmaple|12\\n\");\nvar rows = parse(reader);\nif (!rows.equals(java.util.List.of(new CountRow(\"cedar\",0),new CountRow(\"maple\",12))) || reader.closed) throw new AssertionError(\"model/ownership\");\nreader.close();\nfor (String bad : new String[]{\"\", \"x\", \"x|\", \"x|-1\", \"x|abc\", \"|4\", \"x|4|tail\"}) {\n    try { parse(new java.io.StringReader(\"valid|2\\n\"+bad+\"\\n\")); throw new AssertionError(\"accepted malformed input\"); }\n    catch (java.io.IOException expected) { if (!expected.getMessage().equals(\"Malformed row 2\")) throw new AssertionError(expected); }\n}\nif (!parse(new java.io.StringReader(\"\")).isEmpty()) throw new AssertionError(\"empty file\");\njava.io.Reader failing = new java.io.Reader() {\n    public int read(char[] buffer,int offset,int length) throws java.io.IOException { throw new java.io.IOException(\"read failed\"); }\n    public void close() {}\n};\ntry { parse(failing); throw new AssertionError(\"lost read failure\"); }\ncatch (java.io.IOException expected) { if (!expected.getMessage().equals(\"read failed\")) throw new AssertionError(expected); }\nvar target = new java.io.StringWriter(); write(target, rows);\nSystem.out.print(target.toString());\nvar empty = new java.io.StringWriter(); write(empty, java.util.List.of());\nif (!empty.toString().isEmpty()) throw new AssertionError(\"empty report\");\nvar brokenTarget = new java.io.Writer() {\n    public void write(char[] b,int o,int l) throws java.io.IOException { throw new java.io.IOException(\"write failed\"); }\n    public void flush() {} public void close() {}\n};\ntry { write(brokenTarget, rows); throw new AssertionError(\"lost write failure\"); }\ncatch (java.io.IOException expected) { if (!expected.getMessage().equals(\"write failed\")) throw new AssertionError(expected); }\nvar owned = new TrackingReader(\"bad|x\");\ntry (owned) { parse(owned); throw new AssertionError(\"bad row passed\"); }\ncatch (java.io.IOException expected) { if (!owned.closed) throw new AssertionError(\"not closed on failure\"); }\nSystem.out.println(\"malformed, I/O and ownership checks verified\");\n\n}\n}\n",
+    "expectedStdout": "cedar=0\nmaple=12\nmalformed, I/O and ownership checks verified\n",
+    "reasoning": "The two valid records preserve order and zero is allowed. Each explicitly malformed second line fails at row2 rather than returning the earlier valid partial list; empty input contains no lines. The parser borrows a Reader and must leave it open; the owning try-with-resources closes on failure. Writer behavior is checked for exact newlines, empty output, and propagated failures."
+  },
+  {
+    "id": "ip-late-t16-lambda",
+    "sourceBlockId": "ds.block.ip.t16.lambda",
+    "description": "Functional interface parameter/result contract",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\njava.util.function.Function<Integer, Integer> twice = x -> x * 2;\njava.util.function.Predicate<Integer> large = x -> x >= 10;\nSystem.out.println(large.test(twice.apply(6)));\n}\n}\n",
+    "expectedStdout": "true\n",
+    "reasoning": "twice maps6 to12; the predicate accepts values at least10."
+  },
+  {
+    "id": "ip-late-t16-pipeline",
+    "sourceBlockId": "ds.block.ip.t16.pipeline",
+    "description": "Ordered sequential filter/map/sort/toList",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nvar result = java.util.List.of(6, 1, 4, 3).stream()\n        .filter(x -> x >= 3)\n        .map(x -> x * 2)\n        .sorted()\n        .toList();\nSystem.out.println(result);\n}\n}\n",
+    "expectedStdout": "[6, 8, 12]\n",
+    "reasoning": "Filter retains6,4,3; map doubles to12,8,6; sorted ascending yields6,8,12. No stateful callback or parallel schedule is involved."
+  },
+  {
+    "id": "ip-late-t16-optional",
+    "sourceBlockId": "ds.block.ip.t16.optional",
+    "description": "An absent result stays absent through map",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nString label = java.util.List.of(\"elm\", \"ash\").stream()\n        .filter(name -> name.startsWith(\"z\"))\n        .findFirst()\n        .map(String::toUpperCase)\n        .orElse(\"NO MATCH\");\nSystem.out.println(label);\n}\n}\n",
+    "expectedStdout": "NO MATCH\n",
+    "reasoning": "Neither source name begins with z, so findFirst is empty, the uppercase mapper is not used, and orElse supplies NO MATCH."
+  },
+  {
+    "id": "ip-late-t18-syntax",
+    "sourceBlockId": "ds.block.ip.t18.syntax",
+    "description": "Enum switch expression result",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nenum Mode { QUIET, NORMAL, URGENT }\nMode mode = Mode.NORMAL;\nvar delay = switch (mode) {\n    case QUIET -> 20;\n    case NORMAL -> 8;\n    case URGENT -> 0;\n};\nSystem.out.println(delay);\n}\n}\n",
+    "expectedStdout": "8\n",
+    "reasoning": "NORMAL selects exactly its arrow branch whose value is8; the enum cases are exhaustive and there is no statement-switch fall-through."
+  },
+  {
+    "id": "ip-late-t18-compare",
+    "sourceBlockId": "ds.block.ip.t18.compare",
+    "description": "Comparable sign and tie-breaking",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nrecord Slot(String aisle, int position) implements Comparable<Slot> {\n    @Override public int compareTo(Slot other) {\n        int aisleOrder = aisle.compareTo(other.aisle);\n        return aisleOrder != 0 ? aisleOrder : Integer.compare(position, other.position);\n    }\n}\nvar slots = new java.util.ArrayList<>(java.util.List.of(new Slot(\"B\",1),new Slot(\"A\",8),new Slot(\"A\",2)));\njava.util.Collections.sort(slots);\nSystem.out.println(slots);\nif (new Slot(\"A\",Integer.MIN_VALUE).compareTo(new Slot(\"A\",Integer.MAX_VALUE)) >= 0) throw new AssertionError(\"overflow\");\nrecord Bucket(java.util.List<String> entries) {}\nvar list = new java.util.ArrayList<String>(); var bucket = new Bucket(list); list.add(\"changed\");\nif (bucket.entries().size()!=1) throw new AssertionError(\"record was assumed deeply immutable\");\n\n}\n}\n",
+    "expectedStdout": "[Slot[aisle=A, position=2], Slot[aisle=A, position=8], Slot[aisle=B, position=1]]\n",
+    "reasoning": "A precedes B lexicographically. Equal aisles compare integer positions2 before8. Integer.compare preserves ordering even at opposite integer bounds. The separate record check demonstrates a final component reference can still observe mutation of its referenced list."
+  },
+  {
+    "id": "ip-late-t19-synchronized",
+    "sourceBlockId": "ds.block.ip.t19.synchronized",
+    "description": "Same-monitor increments followed by successful joins",
+    "javaSource": "public class Program {\n\npublic static void main(String[] args) throws Exception {\nclass Counter {\n    private int count;\n    synchronized void increment() { count++; }\n    synchronized int value() { return count; }\n}\nCounter counter = new Counter();\nRunnable work = () -> {\n    for (int i = 0; i < 4; i++) counter.increment();\n};\nThread first = new Thread(work);\nThread second = new Thread(work);\nfirst.start();\nsecond.start();\nfirst.join();\nsecond.join();\nSystem.out.println(counter.value());\n}\n}\n",
+    "expectedStdout": "8\n",
+    "reasoning": "Each of two workers performs exactly four increments protected by one common counter monitor; both joins complete before value reads. Thus eight updates survive without assuming the order of the workers."
+  }
+]

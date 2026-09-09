@@ -1,0 +1,260 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t14",
+    "version": "1",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t14.model",
+        "version": "1",
+        "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+        "skillIds": [
+          "IP_SK14_01_REFACTOR",
+          "IP_SK14_02_STRING_PARSE",
+          "IP_SK14_03_GENERIC_REASON"
+        ],
+        "subtopicIds": [
+          "IP_ST14_01_QUALITY",
+          "IP_ST14_02_STRINGS",
+          "IP_ST14_03_GENERICS"
+        ],
+        "sourceIds": [
+          "ref-517a35b992dabf40"
+        ],
+        "kind": "introduction",
+        "title": "Make responsibilities and types visible",
+        "paragraphs": [
+          "Readable code exposes the contract it implements. Extract repeated logic for a clear responsibility, parse strings according to a stated grammar, and use generics to keep type mistakes at compile time."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t14.refactor",
+        "version": "1",
+        "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+        "skillIds": [
+          "IP_SK14_01_REFACTOR"
+        ],
+        "subtopicIds": [
+          "IP_ST14_01_QUALITY"
+        ],
+        "sourceIds": [
+          "ref-517a35b992dabf40"
+        ],
+        "kind": "procedure",
+        "title": "Refactor while preserving behavior",
+        "paragraphs": [
+          "If one method reads input, decodes records, filters them and prints a report, give each stage a name and a focused contract. Keep parsing independent of console input so a small String or Reader can be tested without a terminal.",
+          "Prefer names that reveal units and intent, eliminate duplicated rules, and group parameters only when they represent one real concept. Keep regression tests running as structure changes. A short method with a misleading name is not automatically good; line counts and coverage percentages are signals, not proofs of quality."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t14.strings",
+        "version": "1",
+        "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+        "skillIds": [
+          "IP_SK14_02_STRING_PARSE"
+        ],
+        "subtopicIds": [
+          "IP_ST14_02_STRINGS"
+        ],
+        "sourceIds": [
+          "ref-517a35b992dabf40"
+        ],
+        "kind": "code_example",
+        "title": "Make the record grammar explicit",
+        "paragraphs": [
+          "This authored mini-format is label|count, with exactly two fields, a nonblank label and a strictly positive integer. split uses a regular expression: the vertical bar is escaped. The negative limit retains trailing empty fields so \"oak|\" remains visibly malformed.",
+          "Trim fields deliberately, check their count before indexing, then convert the numeric token and enforce its domain. String methods return values; they do not mutate an existing String. Scanner token methods and nextLine consume different units, so understand what remains after reading a token."
+        ],
+        "code": "String row = \"amber| 7 \";\nString[] fields = row.split(\"\\\\|\", -1);\nif (fields.length != 2 || fields[0].trim().isEmpty()) {\n    throw new IllegalArgumentException(\"Expected label|count\");\n}\nint count = Integer.parseInt(fields[1].trim());\nif (count <= 0) throw new IllegalArgumentException(\"Count must be positive\");\nSystem.out.println(fields[0].trim() + \":\" + count);"
+      },
+      {
+        "id": "ds.block.ip.t14.generics",
+        "version": "1",
+        "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+        "skillIds": [
+          "IP_SK14_03_GENERIC_REASON"
+        ],
+        "subtopicIds": [
+          "IP_ST14_03_GENERICS"
+        ],
+        "sourceIds": [
+          "ref-517a35b992dabf40"
+        ],
+        "kind": "concept",
+        "title": "A type argument is a compile-time promise",
+        "paragraphs": [
+          "List<String> accepts String elements and returns String from get. List<Integer> uses the wrapper type; List<int> is invalid. A Box<T> can use T consistently in its field, setter and getter without requiring casts from its clients.",
+          "Generics are invariant: List<String> is not a subtype of List<Object>. Otherwise an Object could be inserted through the wider view and later read as String. A bound such as T extends Number limits allowed type arguments; it does not mean every T is interchangeable.",
+          "Type erasure means List<String> and List<Integer> do not become distinct specialized runtime classes. This does not remove ordinary runtime object types or compiler-inserted casts. Stay within the stated generic contract rather than using raw types to suppress errors."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t14.recap",
+        "version": "1",
+        "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+        "skillIds": [
+          "IP_SK14_01_REFACTOR",
+          "IP_SK14_02_STRING_PARSE",
+          "IP_SK14_03_GENERIC_REASON"
+        ],
+        "subtopicIds": [
+          "IP_ST14_01_QUALITY",
+          "IP_ST14_02_STRINGS",
+          "IP_ST14_03_GENERICS"
+        ],
+        "sourceIds": [
+          "ref-517a35b992dabf40"
+        ],
+        "kind": "recap",
+        "title": "Contracts are better than guesses",
+        "paragraphs": [
+          "Preserve behavior when refactoring, treat input grammar as data, and let generic types reject invalid combinations. Scope, API contracts and tests matter more than style metrics by themselves."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t14.responsibility",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_01_REFACTOR"
+      ],
+      "subtopicIds": [
+        "IP_ST14_01_QUALITY"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "prompt": "Why extract parsing from a method that reads console input and prints results?",
+      "answer": "A pure parsing boundary can be tested with supplied text, reused by file input, and report a clear failure without owning UI behavior. The split should follow responsibilities, not an arbitrary line count."
+    },
+    {
+      "id": "ds.card.ip.t14.metrics",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_01_REFACTOR"
+      ],
+      "subtopicIds": [
+        "IP_ST14_01_QUALITY"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "prompt": "Does high line coverage prove a refactoring is correct?",
+      "answer": "No. Executed lines may have weak assertions or miss meaningful inputs. Preserve behavior with requirement-based assertions and boundary/failure cases."
+    },
+    {
+      "id": "ds.card.ip.t14.split",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_02_STRING_PARSE"
+      ],
+      "subtopicIds": [
+        "IP_ST14_02_STRINGS"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "prompt": "Why can split(regex, -1) matter for validating delimited records?",
+      "answer": "It preserves trailing empty fields, so a missing final value can be detected. Also remember that the delimiter is a regular expression and may need escaping."
+    },
+    {
+      "id": "ds.card.ip.t14.immutable-string",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_02_STRING_PARSE"
+      ],
+      "subtopicIds": [
+        "IP_ST14_02_STRINGS"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "prompt": "Does calling text.trim() change the String referenced by text?",
+      "answer": "No. String is immutable; trim returns a result. Use that returned value deliberately, and do not silently trim where the format treats whitespace as meaningful."
+    },
+    {
+      "id": "ds.card.ip.t14.invariance",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_03_GENERIC_REASON"
+      ],
+      "subtopicIds": [
+        "IP_ST14_03_GENERICS"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "prompt": "Why can a List<String> not be assigned to List<Object>?",
+      "answer": "The wider reference would allow inserting a non-String Object into the same list. Java rejects that assignment to preserve the String element contract."
+    },
+    {
+      "id": "ds.card.ip.t14.erasure",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_03_GENERIC_REASON"
+      ],
+      "subtopicIds": [
+        "IP_ST14_03_GENERICS"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "prompt": "Does type erasure make a raw collection as safe as a parameterized collection?",
+      "answer": "No. Parameterized types provide compile-time checks and typed access; erasure does not justify bypassing them. Raw operations can postpone failures to runtime casts."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t14.parse-review",
+      "version": "1",
+      "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "skillIds": [
+        "IP_SK14_01_REFACTOR",
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK14_03_GENERIC_REASON"
+      ],
+      "subtopicIds": [
+        "IP_ST14_01_QUALITY",
+        "IP_ST14_02_STRINGS",
+        "IP_ST14_03_GENERICS"
+      ],
+      "sourceIds": [
+        "ref-517a35b992dabf40"
+      ],
+      "title": "Review a delimiter parser",
+      "prompt": "A format has exactly three fields separated by #, including an optional final comment. Empty comments are valid; missing separators are invalid. A candidate uses split(\"#\"), indexes all three fields immediately and catches every exception to return a default record.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Grammar and split behavior"
+        },
+        {
+          "id": "step2",
+          "label": "Validation and failure policy"
+        },
+        {
+          "id": "step3",
+          "label": "Refactoring and test boundaries"
+        }
+      ],
+      "rubric": [
+        "The parser preserves an empty trailing field and checks field count before indexing.",
+        "Malformed input is reported according to the contract, not converted into fictional data.",
+        "Tests distinguish missing separators, empty allowed comment, too many fields and numeric conversion failures if relevant."
+      ],
+      "reference": [
+        "Use split(\"#\", -1) and require exactly three fields. This accepts \"name#4#\" while rejecting \"name#4\". Validate each nonoptional field under its own rule.",
+        "Keep parsing separate from reading/printing and expose a meaningful failure. Multiple small implementations can satisfy the format without matching one reference text."
+      ]
+    }
+  ]
+}

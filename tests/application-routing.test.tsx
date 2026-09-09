@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import ipDefinitions from '../src/ip/practice.json';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { BrowserRouter, MemoryRouter } from 'react-router';
@@ -69,7 +70,7 @@ describe('application routes and canonical navigation', () => {
     expect(heading()).toBe(area.title);
     // Step 4 intentionally replaces only the Practice placeholder with authored items, expanded for CO in Step 6.
     if (area.path === '/practice') {
-      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(67);
+      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(100);expect([...container.querySelectorAll('.ds-practice-card')].filter(c=>!ipDefinitions.some(e=>c.querySelector(`a[href="/practice/${e.id}"]`)))).toHaveLength(67);
       expect(container.textContent).toContain('Authored practice');
     } else {
       expect(container.querySelector('.ds-empty')?.textContent).toContain(area.emptyTitle);

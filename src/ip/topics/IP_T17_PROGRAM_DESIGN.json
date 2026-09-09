@@ -1,0 +1,203 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t17",
+    "version": "1",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t17.intro",
+        "version": "1",
+        "topicId": "IP_T17_PROGRAM_DESIGN",
+        "skillIds": [
+          "IP_SK17_01_DOMAIN_MODEL",
+          "IP_SK17_02_DECOMPOSE"
+        ],
+        "subtopicIds": [
+          "IP_ST17_01_DOMAIN_MODEL",
+          "IP_ST17_02_APP_DECOMPOSE"
+        ],
+        "sourceIds": [
+          "ref-15f80f1f4bb2f1f3"
+        ],
+        "kind": "introduction",
+        "title": "Translate requirements into responsibilities",
+        "paragraphs": [
+          "The purpose of class design is to make a complete program understandable and testable. Start from required behavior and data relationships; a noun in a story does not automatically need its own class."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t17.model",
+        "version": "1",
+        "topicId": "IP_T17_PROGRAM_DESIGN",
+        "skillIds": [
+          "IP_SK17_01_DOMAIN_MODEL"
+        ],
+        "subtopicIds": [
+          "IP_ST17_01_DOMAIN_MODEL"
+        ],
+        "sourceIds": [
+          "ref-15f80f1f4bb2f1f3"
+        ],
+        "kind": "worked_example",
+        "title": "Separate domain values from access to them",
+        "paragraphs": [
+          "An original roof-inspection tool records RoofSection(id, area), Inspection(sectionId, status) and a list of inspections. A RoofSection is a domain value. A ReportService answers questions such as which sections lack a completed inspection. A parser turns external text into those values.",
+          "Use composition when an object has another object or collection. Introduce inheritance or an interface only when a real substitution contract needs different implementations. Do not create a subtype merely to share two fields; a small value object or helper can be clearer.",
+          "State identity, allowed values, optional fields and multiplicity. Decide which class validates each invariant so malformed states do not spread through unrelated UI code."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t17.decompose",
+        "version": "1",
+        "topicId": "IP_T17_PROGRAM_DESIGN",
+        "skillIds": [
+          "IP_SK17_02_DECOMPOSE"
+        ],
+        "subtopicIds": [
+          "IP_ST17_02_APP_DECOMPOSE"
+        ],
+        "sourceIds": [
+          "ref-15f80f1f4bb2f1f3"
+        ],
+        "kind": "procedure",
+        "title": "Build a thin application around testable services",
+        "paragraphs": [
+          "Divide the path into input acquisition → parsing → domain model → processing → presentation. The command-line layer obtains a filename and commands, calls services and formats messages. It should not contain every filtering rule or equality implementation.",
+          "Define narrow method contracts first: parse(Reader) returns valid records or a documented failure; missingInspections(sections, inspections) returns a result without reading System.in; format(report) produces required text. This allows StringReader, small model objects and StringWriter to exercise the core independently.",
+          "Work through one valid example and one failure path before deciding that the architecture is adequate. Requirements can permit several correct class structures; a rubric checks responsibilities and behavior, not exact class names or paragraph wording."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t17.recap",
+        "version": "1",
+        "topicId": "IP_T17_PROGRAM_DESIGN",
+        "skillIds": [
+          "IP_SK17_01_DOMAIN_MODEL",
+          "IP_SK17_02_DECOMPOSE"
+        ],
+        "subtopicIds": [
+          "IP_ST17_01_DOMAIN_MODEL",
+          "IP_ST17_02_APP_DECOMPOSE"
+        ],
+        "sourceIds": [
+          "ref-15f80f1f4bb2f1f3"
+        ],
+        "kind": "recap",
+        "title": "Judge architecture by the program it enables",
+        "paragraphs": [
+          "A good design assigns invariants, separates I/O from processing and gives tests a way to check observable requirements. Explain why a relationship exists instead of adding inheritance for its own sake."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t17.has-is",
+      "version": "1",
+      "topicId": "IP_T17_PROGRAM_DESIGN",
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL"
+      ],
+      "subtopicIds": [
+        "IP_ST17_01_DOMAIN_MODEL"
+      ],
+      "sourceIds": [
+        "ref-15f80f1f4bb2f1f3"
+      ],
+      "prompt": "When does composition fit better than inheritance?",
+      "answer": "When an object contains or uses another object rather than satisfying its full substitution contract. Shared fields alone do not justify an is-a relationship."
+    },
+    {
+      "id": "ds.card.ip.t17.invariant-owner",
+      "version": "1",
+      "topicId": "IP_T17_PROGRAM_DESIGN",
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL"
+      ],
+      "subtopicIds": [
+        "IP_ST17_01_DOMAIN_MODEL"
+      ],
+      "sourceIds": [
+        "ref-15f80f1f4bb2f1f3"
+      ],
+      "prompt": "Why assign each invariant to a clear class or boundary?",
+      "answer": "Validation becomes consistent and testable; invalid states are rejected where they enter instead of forcing every unrelated caller to guess which checks already happened."
+    },
+    {
+      "id": "ds.card.ip.t17.separate-ui",
+      "version": "1",
+      "topicId": "IP_T17_PROGRAM_DESIGN",
+      "skillIds": [
+        "IP_SK17_02_DECOMPOSE"
+      ],
+      "subtopicIds": [
+        "IP_ST17_02_APP_DECOMPOSE"
+      ],
+      "sourceIds": [
+        "ref-15f80f1f4bb2f1f3"
+      ],
+      "prompt": "What becomes easier when processing does not read from System.in?",
+      "answer": "Small deterministic tests can supply domain values directly, processing can be reused by another input layer, and UI errors do not become mixed with business rules."
+    },
+    {
+      "id": "ds.card.ip.t17.alternative-design",
+      "version": "1",
+      "topicId": "IP_T17_PROGRAM_DESIGN",
+      "skillIds": [
+        "IP_SK17_02_DECOMPOSE"
+      ],
+      "subtopicIds": [
+        "IP_ST17_02_APP_DECOMPOSE"
+      ],
+      "sourceIds": [
+        "ref-15f80f1f4bb2f1f3"
+      ],
+      "prompt": "Can two different class diagrams both satisfy the same assignment?",
+      "answer": "Yes. Evaluate responsibilities, contracts, relationships, testability and required behavior. Matching one reference diagram is not a correctness criterion."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t17.roof-design",
+      "version": "1",
+      "topicId": "IP_T17_PROGRAM_DESIGN",
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE"
+      ],
+      "subtopicIds": [
+        "IP_ST17_01_DOMAIN_MODEL",
+        "IP_ST17_02_APP_DECOMPOSE"
+      ],
+      "sourceIds": [
+        "ref-15f80f1f4bb2f1f3"
+      ],
+      "title": "Design a roof-inspection report",
+      "prompt": "An application reads sections and inspection entries, reports sections with no completed inspection, and writes a readable summary. Input locations are provided by the user. Invalid section identifiers reject the import. Propose a design and a small integration test.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Classes, relationships and invariants"
+        },
+        {
+          "id": "step2",
+          "label": "Parser/service/UI contracts and resource owners"
+        },
+        {
+          "id": "step3",
+          "label": "Tests proving required behavior"
+        }
+      ],
+      "rubric": [
+        "Domain data is typed rather than stored as one raw String.",
+        "Parsing, processing and UI responsibilities can be tested separately.",
+        "Missing identifiers and resource failures have explicit handling.",
+        "An integration test connects valid parsing to the final report without awarding broad skill correctness."
+      ],
+      "reference": [
+        "One design has Section and Inspection value types, a parser for each input, a ReportService and a thin CLI. Composition connects collections; no hierarchy is required by the stated behavior.",
+        "Use two sections and one completed inspection: only the other section is reported. Also check invalid IDs, an empty input, and write failures. A different design is valid if it meets the same contracts."
+      ]
+    }
+  ]
+}

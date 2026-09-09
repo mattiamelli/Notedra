@@ -1,0 +1,223 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t18",
+    "version": "1",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t18.intro",
+        "version": "1",
+        "topicId": "IP_T18_MODERN_JAVA",
+        "skillIds": [
+          "IP_SK18_01_MODERN_MODEL",
+          "IP_SK18_02_MODERN_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST18_01_MODERN_TYPES",
+          "IP_ST18_02_SWITCH_COMPARE"
+        ],
+        "sourceIds": [
+          "ref-5469f9c870013b80"
+        ],
+        "kind": "introduction",
+        "title": "Use modern constructs to express a clear model",
+        "paragraphs": [
+          "Modern Java can remove boilerplate without removing type rules. Choose var, enum, records or sealed types for what they communicate, and keep the underlying contracts visible."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t18.model",
+        "version": "1",
+        "topicId": "IP_T18_MODERN_JAVA",
+        "skillIds": [
+          "IP_SK18_01_MODERN_MODEL"
+        ],
+        "subtopicIds": [
+          "IP_ST18_01_MODERN_TYPES"
+        ],
+        "sourceIds": [
+          "ref-5469f9c870013b80"
+        ],
+        "kind": "concept",
+        "title": "Choose a closed value set or a data carrier deliberately",
+        "paragraphs": [
+          "An enum models a named finite set such as PENDING, ACTIVE and CLOSED; it can have fields and methods. A record declares a data carrier whose component fields are final and whose accessors, equals, hashCode and toString are generated. A record is final and cannot extend an arbitrary class.",
+          "Records are shallowly immutable: a final List component can still refer to a mutable list unless you copy or restrict it. Generated equality follows component equality; it does not invent the domain identity you wanted. Choose a normal class when controlled state changes or a different identity policy are central.",
+          "A final class cannot be subclassed. A sealed class/interface restricts its permitted direct subtypes. Keep the choice tied to a real model; a closed set of variants can make exhaustive handling easier."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t18.syntax",
+        "version": "1",
+        "topicId": "IP_T18_MODERN_JAVA",
+        "skillIds": [
+          "IP_SK18_02_MODERN_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST18_02_SWITCH_COMPARE"
+        ],
+        "sourceIds": [
+          "ref-5469f9c870013b80"
+        ],
+        "kind": "code_example",
+        "title": "var infers once; switch expressions produce values",
+        "paragraphs": [
+          "var is local type inference from an initializer, not a dynamically changing type. var count = 4 still means an int variable; assigning a String later fails. An uninitialized var declaration and an untyped lambda assigned directly to var do not supply enough type information.",
+          "The enum switch below is exhaustive and each arrow branch supplies one result without fall-through. A switch expression is a value and can initialize a variable. Make the covered cases clear; do not confuse it with an older statement switch that may fall through."
+        ],
+        "code": "enum Mode { QUIET, NORMAL, URGENT }\nMode mode = Mode.NORMAL;\nvar delay = switch (mode) {\n    case QUIET -> 20;\n    case NORMAL -> 8;\n    case URGENT -> 0;\n};\nSystem.out.println(delay);"
+      },
+      {
+        "id": "ds.block.ip.t18.compare",
+        "version": "1",
+        "topicId": "IP_T18_MODERN_JAVA",
+        "skillIds": [
+          "IP_SK18_02_MODERN_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST18_02_SWITCH_COMPARE"
+        ],
+        "sourceIds": [
+          "ref-5469f9c870013b80"
+        ],
+        "kind": "code_example",
+        "title": "Comparable defines an ordering",
+        "paragraphs": [
+          "compareTo returns a negative value, zero or a positive value, not necessarily exactly −1 or 1. Zero means equivalent under this ordering, which is not automatically the same as equals. Choose and document tie-breaking so clients understand the order.",
+          "This original Slot compares aisle text first and then its integer position. Integer.compare avoids the overflow risk of subtracting arbitrary integers as a comparator. The ordering here includes all record components."
+        ],
+        "code": "record Slot(String aisle, int position) implements Comparable<Slot> {\n    @Override public int compareTo(Slot other) {\n        int aisleOrder = aisle.compareTo(other.aisle);\n        return aisleOrder != 0 ? aisleOrder : Integer.compare(position, other.position);\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t18.recap",
+        "version": "1",
+        "topicId": "IP_T18_MODERN_JAVA",
+        "skillIds": [
+          "IP_SK18_01_MODERN_MODEL",
+          "IP_SK18_02_MODERN_USE"
+        ],
+        "subtopicIds": [
+          "IP_ST18_01_MODERN_TYPES",
+          "IP_ST18_02_SWITCH_COMPARE"
+        ],
+        "sourceIds": [
+          "ref-5469f9c870013b80"
+        ],
+        "kind": "recap",
+        "title": "Less boilerplate still requires a contract",
+        "paragraphs": [
+          "Use local inference without losing static types, record components without claiming deep immutability, exhaustive switch expressions without fall-through, and comparison results by their sign."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t18.record-depth",
+      "version": "1",
+      "topicId": "IP_T18_MODERN_JAVA",
+      "skillIds": [
+        "IP_SK18_01_MODERN_MODEL"
+      ],
+      "subtopicIds": [
+        "IP_ST18_01_MODERN_TYPES"
+      ],
+      "sourceIds": [
+        "ref-5469f9c870013b80"
+      ],
+      "prompt": "Does a record containing a mutable ArrayList freeze that list?",
+      "answer": "No. Its component reference is final, but the referenced list can still change. Use an appropriate defensive copy or immutable collection when the contract requires stable contents."
+    },
+    {
+      "id": "ds.card.ip.t18.sealed-final",
+      "version": "1",
+      "topicId": "IP_T18_MODERN_JAVA",
+      "skillIds": [
+        "IP_SK18_01_MODERN_MODEL"
+      ],
+      "subtopicIds": [
+        "IP_ST18_01_MODERN_TYPES"
+      ],
+      "sourceIds": [
+        "ref-5469f9c870013b80"
+      ],
+      "prompt": "How do final and sealed differ for a class?",
+      "answer": "final prevents subclasses. sealed restricts which direct subtypes are permitted; those subtypes must satisfy the language’s continuation rules. Use the distinction to express the intended model."
+    },
+    {
+      "id": "ds.card.ip.t18.var",
+      "version": "1",
+      "topicId": "IP_T18_MODERN_JAVA",
+      "skillIds": [
+        "IP_SK18_02_MODERN_USE"
+      ],
+      "subtopicIds": [
+        "IP_ST18_02_SWITCH_COMPARE"
+      ],
+      "sourceIds": [
+        "ref-5469f9c870013b80"
+      ],
+      "prompt": "Does var let a local variable change from int to String?",
+      "answer": "No. Its static type is inferred from its initializer and remains that type. var changes how you write the declaration, not the type system."
+    },
+    {
+      "id": "ds.card.ip.t18.ordering",
+      "version": "1",
+      "topicId": "IP_T18_MODERN_JAVA",
+      "skillIds": [
+        "IP_SK18_02_MODERN_USE"
+      ],
+      "subtopicIds": [
+        "IP_ST18_02_SWITCH_COMPARE"
+      ],
+      "sourceIds": [
+        "ref-5469f9c870013b80"
+      ],
+      "prompt": "Must compareTo return exactly −1, 0 or 1?",
+      "answer": "No. Only the sign and zero matter. Zero means tied under the ordering; make its relationship to equals and any tie-breaking deliberate."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t18.choose-model",
+      "version": "1",
+      "topicId": "IP_T18_MODERN_JAVA",
+      "skillIds": [
+        "IP_SK18_01_MODERN_MODEL",
+        "IP_SK18_02_MODERN_USE"
+      ],
+      "subtopicIds": [
+        "IP_ST18_01_MODERN_TYPES",
+        "IP_ST18_02_SWITCH_COMPARE"
+      ],
+      "sourceIds": [
+        "ref-5469f9c870013b80"
+      ],
+      "title": "Choose constructs for a booking label",
+      "prompt": "A label has immutable text and an integer priority. A booking has a status from a small known set and changes status over time. Explain where a record, enum, normal class and Comparable could fit; define the ordering and null policy.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Construct choices with reasons"
+        },
+        {
+          "id": "step2",
+          "label": "Ordering, equality and mutable data"
+        },
+        {
+          "id": "step3",
+          "label": "Examples and counterexamples"
+        }
+      ],
+      "rubric": [
+        "The mutable booking is not assumed immutable merely because modern syntax is available.",
+        "The label’s identity and ordering are stated, with a tie-break if needed.",
+        "Null and any mutable referenced contents have an explicit policy."
+      ],
+      "reference": [
+        "A Label record can hold validated non-null text and priority; a Status enum expresses the allowed status names; a Booking class controls valid state transitions.",
+        "An ordering can compare priority then text. If the record had a list component, final references would not by themselves freeze it. Multiple designs are acceptable when the same contracts are satisfied."
+      ]
+    }
+  ]
+}

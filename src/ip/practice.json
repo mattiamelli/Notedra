@@ -1,0 +1,1586 @@
+[
+  {
+    "id": "ds.practice.ip-division",
+    "version": "1",
+    "title": "Integer operations happen before assignment",
+    "prompt": "Integer operations happen before assignment \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "subtopicId": "IP_ST01_02_EXPRESSIONS_CASTING",
+    "skillId": "IP_SK01_03_EVAL_EXPRESSIONS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_01",
+      "filename": "IP Lecture 1 - First Steps.pdf",
+      "locator": "PDF_PAGES_1-36",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n  System.out.print(7 / 2 * 2);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "6"
+        },
+        {
+          "id": "pattern",
+          "output": "7"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Both operands of 7 / 2 are int, so division truncates toward zero to 3. Multiplication then produces 6."
+  },
+  {
+    "id": "ds.practice.ip-cast",
+    "version": "1",
+    "title": "Place the widening conversion",
+    "prompt": "Place the widening conversion \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "subtopicId": "IP_ST01_02_EXPRESSIONS_CASTING",
+    "skillId": "IP_SK01_04_CAST_CONVERT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_01",
+      "filename": "IP Lecture 1 - First Steps.pdf",
+      "locator": "PDF_PAGES_1-36",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n  System.out.print((double) (7 / 2));\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "3.0"
+        },
+        {
+          "id": "pattern",
+          "output": "3.5"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The parenthesized integer division produces 3. Casting that result gives 3.0; (double)7 / 2 would instead produce 3.5."
+  },
+  {
+    "id": "ds.practice.ip-overflow",
+    "version": "1",
+    "title": "An int at its upper boundary",
+    "prompt": "An int at its upper boundary \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "subtopicId": "IP_ST01_03_NUMERIC_EDGE_CASES",
+    "skillId": "IP_SK01_05_NUMERIC_EDGE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_01",
+      "filename": "IP Lecture 1 - First Steps.pdf",
+      "locator": "PDF_PAGES_1-36",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n  int n = Integer.MAX_VALUE;\n  System.out.print(n + 1);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "-2147483648"
+        },
+        {
+          "id": "pattern",
+          "output": "2147483648"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Java int arithmetic wraps modulo 2^32; adding one to 2147483647 yields the signed value -2147483648. This operation does not throw an overflow exception."
+  },
+  {
+    "id": "ds.practice.ip-narrow-assignment",
+    "version": "1",
+    "title": "An assignment requiring narrowing",
+    "prompt": "An assignment requiring narrowing \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "subtopicId": "IP_ST01_01_TYPES_VARIABLES",
+    "skillId": "IP_SK01_01_DECLARE_ASSIGN",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_01",
+      "filename": "IP Lecture 1 - First Steps.pdf",
+      "locator": "PDF_PAGES_1-36",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n  int count = 3.5;\n  System.out.print(count);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "Compile-time error"
+        },
+        {
+          "id": "pattern",
+          "output": "3"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "A double value cannot be implicitly assigned to int. An explicit narrowing cast would truncate, but no cast appears here."
+  },
+  {
+    "id": "ds.practice.ip-reference-type",
+    "version": "1",
+    "title": "Two references, one array",
+    "prompt": "Two references, one array \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "subtopicId": "IP_ST01_01_TYPES_VARIABLES",
+    "skillId": "IP_SK01_02_REASON_TYPES",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_01",
+      "filename": "IP Lecture 1 - First Steps.pdf",
+      "locator": "PDF_PAGES_1-36",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n  int[] a = {4}; int[] b = a;\n  b[0] = 9; System.out.print(a[0]);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "9"
+        },
+        {
+          "id": "pattern",
+          "output": "4"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Assignment copies the reference value, so both variables refer to the same array. Writing through b changes the array read through a."
+  },
+  {
+    "id": "ds.practice.ip-method-return",
+    "version": "1",
+    "title": "Follow a returned value",
+    "prompt": "Follow a returned value \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "subtopicId": "IP_ST03_01_METHOD_DEF_CALL",
+    "skillId": "IP_SK03_02_TRACE_CALLS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_03",
+      "filename": "IP Lecture 3 - Methods.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static int adjust(int n) { if (n < 0) return 0; return n + 2; }\n public static void main(String[] args) { int x = 3; System.out.print(adjust(x) + x); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "8"
+        },
+        {
+          "id": "pattern",
+          "output": "10"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8."
+  },
+  {
+    "id": "ds.practice.ip-pass-value",
+    "version": "1",
+    "title": "Mutation and parameter reassignment",
+    "prompt": "Mutation and parameter reassignment \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "subtopicId": "IP_ST03_02_SCOPE_PASSING",
+    "skillId": "IP_SK03_04_PASS_BY_VALUE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_03",
+      "filename": "IP Lecture 3 - Methods.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static void change(int n, int[] a) { n=8; a[0]=9; a=new int[]{7}; }\n public static void main(String[] args) { int n=4; int[] a={2}; change(n,a); System.out.print(n+\":\"+a[0]); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "4:9"
+        },
+        {
+          "id": "pattern",
+          "output": "8:7"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The method receives copies of 4 and the array reference. Assigning n or a changes only parameter variables; a[0]=9 mutates the shared array before the local reference is rebound."
+  },
+  {
+    "id": "ds.practice.ip-scope",
+    "version": "1",
+    "title": "Field and local names",
+    "prompt": "Field and local names \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "subtopicId": "IP_ST03_02_SCOPE_PASSING",
+    "skillId": "IP_SK03_03_SCOPE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_03",
+      "filename": "IP Lecture 3 - Methods.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n int level=5;\n void show() { int level=2; System.out.print(level+\":\"+this.level); }\n public static void main(String[] args) { new Program().show(); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "2:5"
+        },
+        {
+          "id": "pattern",
+          "output": "2:2"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The local level shadows the field for the unqualified name. this.level explicitly reads the object field, which remains 5."
+  },
+  {
+    "id": "ds.practice.ip-constructor",
+    "version": "1",
+    "title": "Initialize the current object",
+    "prompt": "Initialize the current object \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "subtopicId": "IP_ST04_01_CLASS_MODEL",
+    "skillId": "IP_SK04_02_CONSTRUCTOR_STATE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_04",
+      "filename": "IP Lecture 4 - Classes.pdf",
+      "locator": "PDF_PAGES_1-41",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n int value; Program(int value) { this.value=value+1; }\n public static void main(String[] args) { System.out.print(new Program(4).value); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "5"
+        },
+        {
+          "id": "pattern",
+          "output": "0"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The parameter is 4. this.value selects the field and receives 5, replacing its default zero value during construction."
+  },
+  {
+    "id": "ds.practice.ip-static",
+    "version": "1",
+    "title": "Separate shared and per-object state",
+    "prompt": "Separate shared and per-object state \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "subtopicId": "IP_ST04_02_INSTANCE_STATIC",
+    "skillId": "IP_SK04_03_INSTANCE_STATIC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_04",
+      "filename": "IP Lecture 4 - Classes.pdf",
+      "locator": "PDF_PAGES_1-41",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static int count; int value; Program(int n) { value=n; count++; }\n public static void main(String[] args) { Program a=new Program(2), b=new Program(5); System.out.print(a.value+\":\"+b.value+\":\"+count); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "2:5:2"
+        },
+        {
+          "id": "pattern",
+          "output": "5:5:2"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Each object has its own value field, while both constructors increment the single class-level count."
+  },
+  {
+    "id": "ds.practice.ip-array-bound",
+    "version": "1",
+    "title": "The last valid index",
+    "prompt": "The last valid index \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "subtopicId": "IP_ST05_01_ARRAY_CORE",
+    "skillId": "IP_SK05_01_ARRAY_TRAVERSE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_05",
+      "filename": "IP Lecture 5 - Arrays.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n int[] a={3,6}; int sum=0;\n for(int i=0;i<=a.length;i++) sum+=a[i];\n System.out.print(sum);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "Runtime error before output"
+        },
+        {
+          "id": "pattern",
+          "output": "9"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Indices 0 and 1 are valid. The loop also attempts index 2, causing ArrayIndexOutOfBoundsException before the print statement."
+  },
+  {
+    "id": "ds.practice.ip-alias",
+    "version": "1",
+    "title": "An update through an alias",
+    "prompt": "An update through an alias \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "subtopicId": "IP_ST05_02_ALIAS_COPY",
+    "skillId": "IP_SK05_03_ARRAY_ALIAS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_05",
+      "filename": "IP Lecture 5 - Arrays.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n int[] a={2,4}; int[] b=a; b[1]+=a[0];\n System.out.print(a[1]);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "6"
+        },
+        {
+          "id": "pattern",
+          "output": "4"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "a and b refer to the same array. b[1] becomes 4+2, so reading a[1] returns 6."
+  },
+  {
+    "id": "ds.practice.ip-recursion",
+    "version": "1",
+    "title": "Accumulate recursive return values",
+    "prompt": "Accumulate recursive return values \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "subtopicId": "IP_ST05_03_RECURSION",
+    "skillId": "IP_SK05_04_RECURSION",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_05",
+      "filename": "IP Lecture 5 - Arrays.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static int total(int n) { if(n==0) return 0; return n+total(n-1); }\n public static void main(String[] args) { System.out.print(total(4)); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "10"
+        },
+        {
+          "id": "pattern",
+          "output": "4"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Calls descend to total(0)=0, then return 1,3,6,10 while adding each suspended n. The stated input is nonnegative."
+  },
+  {
+    "id": "ds.practice.ip-list-set",
+    "version": "1",
+    "title": "Duplicates in a list and set",
+    "prompt": "Duplicates in a list and set \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "subtopicId": "IP_ST06_02_COLLECTION_SEMANTICS",
+    "skillId": "IP_SK06_03_COLLECTION_SEMANTICS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_06",
+      "filename": "IP Lecture 6 - Container Classes.pdf",
+      "locator": "PDF_PAGES_1-50",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.*;\npublic class Program { public static void main(String[] args) {\n List<Integer> a=new ArrayList<>(List.of(2,2,5)); Set<Integer> b=new HashSet<>(a);\n System.out.print(a.size()+\":\"+b.size());\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "3:2"
+        },
+        {
+          "id": "pattern",
+          "output": "3:3"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The list keeps all three entries. The set contains two distinct Integer values, 2 and 5. No set iteration order is assumed."
+  },
+  {
+    "id": "ds.practice.ip-api-remove",
+    "version": "1",
+    "title": "Choose the intended remove overload",
+    "prompt": "Choose the intended remove overload \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "subtopicId": "IP_ST07_02_LIBRARY_USE",
+    "skillId": "IP_SK07_02_API_USE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_07",
+      "filename": "IP Lecture 7 - Class Composition & Libraries.pdf",
+      "locator": "PDF_PAGES_1-29",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.*;\npublic class Program { public static void main(String[] args) {\n List<Integer> a=new ArrayList<>(List.of(4,7,4));\n a.remove(Integer.valueOf(4)); System.out.print(a);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "[7, 4]"
+        },
+        {
+          "id": "pattern",
+          "output": "[4, 7]"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Integer.valueOf(4) chooses remove(Object), removing the first equal value 4. remove(int) would interpret its argument as an index."
+  },
+  {
+    "id": "ds.practice.ip-constructor-chain",
+    "version": "1",
+    "title": "Constructor order",
+    "prompt": "Constructor order \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T09_INHERITANCE",
+    "subtopicId": "IP_ST09_02_OVERRIDE_VISIBILITY",
+    "skillId": "IP_SK09_02_INHERITANCE_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_09",
+      "filename": "IP Lecture 9 - Inheritance.pdf",
+      "locator": "PDF_PAGES_1-36",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "class Parent { Parent() { System.out.print(\"P\"); } }\npublic class Program extends Parent {\n Program() { System.out.print(\"C\"); }\n public static void main(String[] args) { new Program(); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "PC"
+        },
+        {
+          "id": "pattern",
+          "output": "CP"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The child constructor implicitly calls super() first. Parent construction prints P before the child body prints C."
+  },
+  {
+    "id": "ds.practice.ip-dispatch",
+    "version": "1",
+    "title": "Overload selection and overriding",
+    "prompt": "Overload selection and overriding \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "subtopicId": "IP_ST10_02_BINDING",
+    "skillId": "IP_SK10_02_DISPATCH_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_10",
+      "filename": "IP Lecture 10 - Polymorphism.pdf",
+      "locator": "PDF_PAGES_1-14",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "class Parent { String show(Object x){return \"parent\";} }\nclass Child extends Parent {\n @Override String show(Object x){return \"child-object\";}\n String show(String x){return \"child-string\";}\n}\npublic class Program { public static void main(String[] args) { Parent p=new Child(); System.out.print(p.show(\"x\")); }}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "child-object"
+        },
+        {
+          "id": "pattern",
+          "output": "child-string"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "At compile time the receiver type Parent exposes show(Object). At runtime the Child override of that selected signature runs. The Child-only show(String) overload is not selected through Parent."
+  },
+  {
+    "id": "ds.practice.ip-equality",
+    "version": "1",
+    "title": "Identity and logical value",
+    "prompt": "Identity and logical value \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "subtopicId": "IP_ST11_01_EQUALS",
+    "skillId": "IP_SK11_01_EQUALS_IMPL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_11",
+      "filename": "IP Lecture 11 - Equality & Hashcodes.pdf",
+      "locator": "PDF_PAGES_1-25",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.*;\nfinal class Key {\n final int n; Key(int n){this.n=n;}\n public boolean equals(Object o){return o instanceof Key && n==((Key)o).n;}\n public int hashCode(){return Integer.hashCode(n);}\n}\npublic class Program { public static void main(String[] args) { Key a=new Key(6), b=new Key(6); Set<Key> keys=new HashSet<>(); keys.add(a); keys.add(b); System.out.print((a==b)+\":\"+a.equals(b)+\":\"+keys.size()); }}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "false:true:1"
+        },
+        {
+          "id": "pattern",
+          "output": "true:true:1"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The two new expressions create different objects, so == is false. equals compares n, and equal hashes allow the HashSet to retain one logical value. equals(null) is false because null is not an instance of Key."
+  },
+  {
+    "id": "ds.practice.ip-hash-collision",
+    "version": "1",
+    "title": "A collision does not prove equality",
+    "prompt": "A collision does not prove equality \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "subtopicId": "IP_ST11_02_HASH",
+    "skillId": "IP_SK11_02_HASH_CONTRACT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_11",
+      "filename": "IP Lecture 11 - Equality & Hashcodes.pdf",
+      "locator": "PDF_PAGES_1-25",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n String a=\"Aa\", b=\"BB\";\n System.out.print((a.hashCode()==b.hashCode())+\":\"+a.equals(b));\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "true:false"
+        },
+        {
+          "id": "pattern",
+          "output": "true:true"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Both String hashes are 2112: 65*31+97 and 66*31+66. Their contents differ, so equals is false. Equal objects must hash equally, but the converse is not required."
+  },
+  {
+    "id": "ds.practice.ip-equals-overload",
+    "version": "1",
+    "title": "An equals overload is not an override",
+    "prompt": "An equals overload is not an override \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "subtopicId": "IP_ST11_03_BINDING_EQUALITY",
+    "skillId": "IP_SK11_03_EQUALITY_EDGE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_11",
+      "filename": "IP Lecture 11 - Equality & Hashcodes.pdf",
+      "locator": "PDF_PAGES_1-25",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "class Key {\n int n; Key(int n){this.n=n;}\n public boolean equals(Key other){return other!=null && n==other.n;}\n}\npublic class Program { public static void main(String[] args) { Key a=new Key(3),b=new Key(3); Object x=a; System.out.print(a.equals(b)+\":\"+x.equals(b)); }}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "true:false"
+        },
+        {
+          "id": "pattern",
+          "output": "true:true"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The Key-typed call selects equals(Key). The Object-typed call uses equals(Object), which was not overridden, so it retains identity equality. @Override would expose this signature error."
+  },
+  {
+    "id": "ds.practice.ip-exception-flow",
+    "version": "1",
+    "title": "Catch, then finally",
+    "prompt": "Catch, then finally \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "subtopicId": "IP_ST12_02_EXCEPTION_FLOW",
+    "skillId": "IP_SK12_02_EXCEPTION_FLOW",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_12",
+      "filename": "IP Lecture 12 - Exceptions.pdf",
+      "locator": "PDF_PAGES_1-29",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n try { Integer.parseInt(\"oak\"); System.out.print(\"A\"); }\n catch(NumberFormatException ex) { System.out.print(\"C\"); }\n finally { System.out.print(\"F\"); }\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "CF"
+        },
+        {
+          "id": "pattern",
+          "output": "ACF"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Parsing throws before A can print. The matching catch prints C, and finally prints F as the try/catch statement completes."
+  },
+  {
+    "id": "ds.practice.ip-checked-exception",
+    "version": "1",
+    "title": "A checked exception obligation",
+    "prompt": "A checked exception obligation \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "subtopicId": "IP_ST12_01_ERROR_CLASS",
+    "skillId": "IP_SK12_01_CLASSIFY_FAILURE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_12",
+      "filename": "IP Lecture 12 - Exceptions.pdf",
+      "locator": "PDF_PAGES_1-29",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.io.IOException;\npublic class Program {\n static void load() throws IOException { throw new IOException(); }\n public static void main(String[] args) { load(); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "Compile-time error"
+        },
+        {
+          "id": "pattern",
+          "output": "Runtime IOException"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "main neither catches nor declares IOException, so javac rejects the program. No runtime path occurs until the checked-exception obligation is satisfied."
+  },
+  {
+    "id": "ds.practice.ip-trailing-field",
+    "version": "1",
+    "title": "Keep an empty final field",
+    "prompt": "Keep an empty final field \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "subtopicId": "IP_ST14_02_STRINGS",
+    "skillId": "IP_SK14_02_STRING_PARSE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_14",
+      "filename": "IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+      "locator": "PDF_PAGES_1-81",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n String[] fields=\"oak|2|\".split(\"\\\\|\",-1);\n System.out.print(fields.length);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "3"
+        },
+        {
+          "id": "pattern",
+          "output": "2"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The literal separator is escaped for the regex, and negative split limit retains the trailing empty string. The fields are oak, 2, and empty."
+  },
+  {
+    "id": "ds.practice.ip-generic-invariance",
+    "version": "1",
+    "title": "A generic assignment",
+    "prompt": "A generic assignment \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "subtopicId": "IP_ST14_03_GENERICS",
+    "skillId": "IP_SK14_03_GENERIC_REASON",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_14",
+      "filename": "IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+      "locator": "PDF_PAGES_1-81",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.*;\npublic class Program { public static void main(String[] args) {\n List<Number> values=new ArrayList<Integer>();\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "Compile-time error"
+        },
+        {
+          "id": "pattern",
+          "output": "Compiles successfully"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "List<Integer> is not a subtype of List<Number>. Otherwise a Double could be inserted through the Number view into an Integer list."
+  },
+  {
+    "id": "ds.practice.ip-stream",
+    "version": "1",
+    "title": "Read the pipeline in order",
+    "prompt": "Read the pipeline in order \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "subtopicId": "IP_ST16_02_STREAMS",
+    "skillId": "IP_SK16_02_STREAM_PIPE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_17",
+      "filename": "IP Lecture 17 - Functional Java.pdf",
+      "locator": "PDF_PAGES_1-52",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.*;\npublic class Program { public static void main(String[] args) {\n System.out.print(List.of(3,1,4,2).stream().filter(n->n%2==0).map(n->n*3).sorted().toList());\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "[6, 12]"
+        },
+        {
+          "id": "pattern",
+          "output": "[12, 6]"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Filtering keeps 4,2; mapping produces 12,6; sorting produces 6,12; the terminal toList collects that order. Intermediate operations describe a lazy pipeline until the terminal operation requests results."
+  },
+  {
+    "id": "ds.practice.ip-optional",
+    "version": "1",
+    "title": "An absent stream result",
+    "prompt": "An absent stream result \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "subtopicId": "IP_ST16_03_OPTIONAL",
+    "skillId": "IP_SK16_03_OPTIONAL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_17",
+      "filename": "IP Lecture 17 - Functional Java.pdf",
+      "locator": "PDF_PAGES_1-52",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.*;\npublic class Program { public static void main(String[] args) {\n System.out.print(List.of(2,4).stream().filter(n->n<0).findFirst().orElse(7));\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "7"
+        },
+        {
+          "id": "pattern",
+          "output": "null"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "No element passes the filter, so findFirst returns an empty Optional. orElse supplies the stated fallback 7. It does not return null."
+  },
+  {
+    "id": "ds.practice.ip-lambda",
+    "version": "1",
+    "title": "A predicate returns a Boolean result",
+    "prompt": "A predicate returns a Boolean result \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "subtopicId": "IP_ST16_01_LAMBDAS",
+    "skillId": "IP_SK16_01_LAMBDA",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_17",
+      "filename": "IP Lecture 17 - Functional Java.pdf",
+      "locator": "PDF_PAGES_1-52",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "import java.util.function.Predicate;\npublic class Program { public static void main(String[] args) {\n Predicate<Integer> multiple=n->n%3==0; System.out.print(multiple.test(4));\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "false"
+        },
+        {
+          "id": "pattern",
+          "output": "1"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "4%3 is 1, but the equality test compares that remainder with zero, producing false. Predicate.test returns boolean."
+  },
+  {
+    "id": "ds.practice.ip-var",
+    "version": "1",
+    "title": "var still gives a static type",
+    "prompt": "var still gives a static type \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "subtopicId": "IP_ST18_02_SWITCH_COMPARE",
+    "skillId": "IP_SK18_02_MODERN_USE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_19",
+      "filename": "IP Lecture 19 - Modern Java.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n var n=7; System.out.print(n/2);\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "3"
+        },
+        {
+          "id": "pattern",
+          "output": "3.5"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The initializer infers int. var does not make n dynamically typed, so n/2 uses integer division and yields 3."
+  },
+  {
+    "id": "ds.practice.ip-record",
+    "version": "1",
+    "title": "A record with immutable components",
+    "prompt": "A record with immutable components \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "subtopicId": "IP_ST18_01_MODERN_TYPES",
+    "skillId": "IP_SK18_01_MODERN_MODEL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_19",
+      "filename": "IP Lecture 19 - Modern Java.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n record Mark(String name,int value) {}\n public static void main(String[] args) { System.out.print(new Mark(\"a\",2).equals(new Mark(\"a\",2))); }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "true"
+        },
+        {
+          "id": "pattern",
+          "output": "false"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Generated record equality compares the declared components. Equal String contents and equal int values make these records equal, even though the instances differ. Reference components can still point to mutable objects; records are not automatically deeply immutable."
+  },
+  {
+    "id": "ds.practice.ip-direct-run",
+    "version": "1",
+    "title": "Calling run directly",
+    "prompt": "Calling run directly \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "subtopicId": "IP_ST19_01_THREAD_LIFECYCLE",
+    "skillId": "IP_SK19_01_THREAD_RUN",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_20",
+      "filename": "IP Lecture 20 - Threads.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program { public static void main(String[] args) {\n Thread t=new Thread(()->System.out.print(\"W\"));\n t.run(); System.out.print(\"M\");\n}}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "WM"
+        },
+        {
+          "id": "pattern",
+          "output": "Either WM or MW"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Calling run directly executes the Runnable on the calling thread. It completes before the following M print; start would create concurrent execution."
+  },
+  {
+    "id": "ds.practice.ip-joined-sync",
+    "version": "1",
+    "title": "Wait for synchronized workers",
+    "prompt": "Wait for synchronized workers \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "subtopicId": "IP_ST19_02_SHARED_STATE",
+    "skillId": "IP_SK19_02_SYNC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_20",
+      "filename": "IP Lecture 20 - Threads.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static class Counter { int n; synchronized void add(){n++;} }\n public static void main(String[] args) throws InterruptedException {\n  Counter c=new Counter(); Runnable work=()->{for(int i=0;i<100;i++)c.add();};\n  Thread a=new Thread(work),b=new Thread(work); a.start();b.start();a.join();b.join();System.out.print(c.n);\n }\n}",
+      "options": [
+        {
+          "id": "reference",
+          "output": "200"
+        },
+        {
+          "id": "pattern",
+          "output": "An unpredictable value less than 200"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Each add uses the same counter monitor, preventing lost updates. Both joins wait for completion and make completed worker actions visible; exactly 200 increments precede the read. This assumes normal completion, as declared by the task."
+  },
+  {
+    "id": "ds.practice.ip-race",
+    "version": "1",
+    "title": "A lost update is possible",
+    "prompt": "A lost update is possible \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "subtopicId": "IP_ST19_02_SHARED_STATE",
+    "skillId": "IP_SK19_02_SYNC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_20",
+      "filename": "IP Lecture 20 - Threads.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static int n;\n public static void main(String[] args) throws InterruptedException {\n  Thread a=new Thread(()->n++), b=new Thread(()->n++);\n  a.start();b.start();a.join();b.join();System.out.print(n);\n }\n}\n// Which claim is justified? Reason about possible outcomes, not one scheduled run.",
+      "options": [
+        {
+          "id": "reference",
+          "output": "1 and 2 are possible; 2 is not guaranteed"
+        },
+        {
+          "id": "pattern",
+          "output": "2 is guaranteed after join"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "Both workers can read 0 before either writes 1, losing one increment; serialized updates can produce 2. join waits for completion but does not make n++ atomic. No single observed run proves a scheduling guarantee."
+  },
+  {
+    "id": "ds.practice.ip-missing-join",
+    "version": "1",
+    "title": "Reading before waiting",
+    "prompt": "Reading before waiting \u2014 choose the correct prediction.",
+    "rules": "Fixed authored Java 21 example. Assume required standard-library imports are available. Choose one prediction; only this fixed response is graded. Learner code is never executed.",
+    "subjectId": "CSE1100_IP",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "subtopicId": "IP_ST19_01_THREAD_LIFECYCLE",
+    "skillId": "IP_SK19_01_THREAD_RUN",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "IP_LEC_20",
+      "filename": "IP Lecture 20 - Threads.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "ip-fixed-choice",
+      "version": "1"
+    },
+    "task": {
+      "kind": "ip-fixed",
+      "code": "public class Program {\n static int n;\n public static void main(String[] args) {\n  Thread t=new Thread(()->n=1);t.start();System.out.print(n);\n }\n}\n// Which claim is justified?",
+      "options": [
+        {
+          "id": "reference",
+          "output": "0 and 1 are possible; no final value is guaranteed here"
+        },
+        {
+          "id": "pattern",
+          "output": "1 is guaranteed immediately after start"
+        },
+        {
+          "id": "other",
+          "output": "A different result from both predictions"
+        }
+      ]
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "reference"
+      ]
+    },
+    "explanation": "The main read may occur before the worker write, so 0 is possible. An execution observing the write can print 1. start does not wait for the worker to finish or establish a completed-worker result for this read."
+  }
+]

@@ -1,0 +1,274 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t15",
+    "version": "1",
+    "topicId": "IP_T15_IO_PARSING",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t15.model",
+        "version": "1",
+        "topicId": "IP_T15_IO_PARSING",
+        "skillIds": [
+          "IP_SK15_01_PARSE_FILE",
+          "IP_SK15_02_WRITE_FILE",
+          "IP_SK15_03_RESOURCE_SAFETY"
+        ],
+        "subtopicIds": [
+          "IP_ST15_01_FILE_READ_PARSE",
+          "IP_ST15_02_WRITE_OUTPUT",
+          "IP_ST15_03_RESOURCE_SAFETY"
+        ],
+        "sourceIds": [
+          "ref-8c6eff249b686f68",
+          "ref-cc566cb126fff995"
+        ],
+        "kind": "introduction",
+        "title": "Turn bytes into validated domain values",
+        "paragraphs": [
+          "File handling has several independent responsibilities: acquire a resource, decode characters, parse records, validate fields, construct objects, process them and format output. A failure policy belongs at each boundary."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t15.read",
+        "version": "1",
+        "topicId": "IP_T15_IO_PARSING",
+        "skillIds": [
+          "IP_SK15_01_PARSE_FILE"
+        ],
+        "subtopicIds": [
+          "IP_ST15_01_FILE_READ_PARSE"
+        ],
+        "sourceIds": [
+          "ref-8c6eff249b686f68",
+          "ref-cc566cb126fff995"
+        ],
+        "kind": "code_example",
+        "title": "Read complete lines and keep parsing testable",
+        "paragraphs": [
+          "This original station-count format is name|nonnegative-count, one record per line. The parser below owns no file handle: it accepts a Reader supplied by its caller, rejects malformed lines with a line number, and returns no partial result when a row fails. A caller can use a StringReader in tests.",
+          "BufferedReader reads text efficiently and readLine returns null at end-of-file. An empty line is a line, not EOF. Validate field count before indexing; preserve trailing empties; convert numbers and reject values outside the stated domain. Do not assume every course task allows malformed rows to be silently skipped."
+        ],
+        "code": "record CountRow(String name, int count) {}\nstatic java.util.List<CountRow> parse(java.io.Reader source)\n        throws java.io.IOException {\n    var reader = new java.io.BufferedReader(source);\n    var rows = new java.util.ArrayList<CountRow>();\n    String line;\n    int lineNumber = 0;\n    while ((line = reader.readLine()) != null) {\n        lineNumber++;\n        String[] fields = line.split(\"\\\\|\", -1);\n        try {\n            if (fields.length != 2 || fields[0].trim().isEmpty())\n                throw new IllegalArgumentException(\"Expected name|count\");\n            int count = Integer.parseInt(fields[1].trim());\n            if (count < 0) throw new IllegalArgumentException(\"Negative count\");\n            rows.add(new CountRow(fields[0].trim(), count));\n        } catch (IllegalArgumentException failure) {\n            throw new java.io.IOException(\"Malformed row \" + lineNumber, failure);\n        }\n    }\n    return rows;\n}"
+      },
+      {
+        "id": "ds.block.ip.t15.write",
+        "version": "1",
+        "topicId": "IP_T15_IO_PARSING",
+        "skillIds": [
+          "IP_SK15_02_WRITE_FILE"
+        ],
+        "subtopicIds": [
+          "IP_ST15_02_WRITE_OUTPUT"
+        ],
+        "sourceIds": [
+          "ref-8c6eff249b686f68",
+          "ref-cc566cb126fff995"
+        ],
+        "kind": "code_example",
+        "title": "Specify output and error behavior",
+        "paragraphs": [
+          "Use a Writer for characters and define separators, order and line endings in the requirement. This report writes exactly name=count followed by a newline for each row, preserving list order. An empty list produces an empty report.",
+          "The method accepts a caller-owned Writer and propagates IOException. It does not claim that writing to a buffer guarantees bytes survived device failure. File writers must eventually be closed; flush sends buffered data onward but does not replace resource ownership."
+        ],
+        "code": "static void write(java.io.Writer target, java.util.List<CountRow> rows)\n        throws java.io.IOException {\n    for (CountRow row : rows) {\n        target.write(row.name() + \"=\" + row.count() + \"\\n\");\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t15.ownership",
+        "version": "1",
+        "topicId": "IP_T15_IO_PARSING",
+        "skillIds": [
+          "IP_SK15_03_RESOURCE_SAFETY"
+        ],
+        "subtopicIds": [
+          "IP_ST15_03_RESOURCE_SAFETY"
+        ],
+        "sourceIds": [
+          "ref-8c6eff249b686f68",
+          "ref-cc566cb126fff995"
+        ],
+        "kind": "important_rule",
+        "title": "The code that opens a resource normally closes it",
+        "paragraphs": [
+          "At the application boundary, open your file Reader/Writer in try-with-resources. Successfully initialized resources are closed when the block exits normally or exceptionally. A parser accepting a caller-owned Reader should document that it leaves closure to the caller; closing System.in from a helper can disable later interaction.",
+          "Propagate I/O errors or translate them at a boundary that can explain the failure. Do not return an empty successful report merely because a file was unreadable. Test malformed content with an in-memory Reader and simulate read/write failures separately from valid empty input.",
+          "Writing directly to an output file can leave partial output if writing fails. This example does not promise atomic file replacement. An assignment that needs all-or-nothing output must state and design that additional requirement."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t15.recap",
+        "version": "1",
+        "topicId": "IP_T15_IO_PARSING",
+        "skillIds": [
+          "IP_SK15_01_PARSE_FILE",
+          "IP_SK15_02_WRITE_FILE",
+          "IP_SK15_03_RESOURCE_SAFETY"
+        ],
+        "subtopicIds": [
+          "IP_ST15_01_FILE_READ_PARSE",
+          "IP_ST15_02_WRITE_OUTPUT",
+          "IP_ST15_03_RESOURCE_SAFETY"
+        ],
+        "sourceIds": [
+          "ref-8c6eff249b686f68",
+          "ref-cc566cb126fff995"
+        ],
+        "kind": "recap",
+        "title": "Keep parsing, processing and ownership separate",
+        "paragraphs": [
+          "A good importer states its grammar, validation policy, resource owner and observable failures. Test content rules with in-memory I/O, then verify the real file boundary and its cleanup separately."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t15.eof",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE"
+      ],
+      "subtopicIds": [
+        "IP_ST15_01_FILE_READ_PARSE"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "prompt": "What distinguishes a blank line from end-of-file in BufferedReader.readLine()?",
+      "answer": "A blank line returns an empty String. End-of-file returns null. A parser must handle blank rows using its declared format policy."
+    },
+    {
+      "id": "ds.card.ip.t15.parse-boundary",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE"
+      ],
+      "subtopicIds": [
+        "IP_ST15_01_FILE_READ_PARSE"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "prompt": "Why test file-to-model parsing with a StringReader?",
+      "answer": "It supplies exact valid or malformed text without filesystem setup. The parser can be checked independently from opening files, permissions and UI reporting."
+    },
+    {
+      "id": "ds.card.ip.t15.output",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_02_WRITE_FILE"
+      ],
+      "subtopicIds": [
+        "IP_ST15_02_WRITE_OUTPUT"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "prompt": "Which details belong in an output-format test?",
+      "answer": "Field order, separators, record order, required line endings, empty output and any stated escaping. Assert required behavior, not an unrelated generated toString representation."
+    },
+    {
+      "id": "ds.card.ip.t15.write-failure",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_02_WRITE_FILE"
+      ],
+      "subtopicIds": [
+        "IP_ST15_02_WRITE_OUTPUT"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "prompt": "If writing throws halfway through a report, is the output necessarily unchanged?",
+      "answer": "No. Some output may already have been written. Propagate the failure; only an explicitly designed atomic replacement scheme can promise all-or-nothing file output."
+    },
+    {
+      "id": "ds.card.ip.t15.owner",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_03_RESOURCE_SAFETY"
+      ],
+      "subtopicIds": [
+        "IP_ST15_03_RESOURCE_SAFETY"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "prompt": "Should a reusable parser always close the Reader passed to it?",
+      "answer": "Not without an ownership contract. Usually the caller that opens a resource closes it; a parser can leave a borrowed Reader open so the caller controls its lifetime."
+    },
+    {
+      "id": "ds.card.ip.t15.try-resources",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_03_RESOURCE_SAFETY"
+      ],
+      "subtopicIds": [
+        "IP_ST15_03_RESOURCE_SAFETY"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "prompt": "What does try-with-resources add on an exception path?",
+      "answer": "It closes successfully initialized AutoCloseable resources as the block exits, including when parsing or processing throws. It does not convert a failed operation into success."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t15.import-contract",
+      "version": "1",
+      "topicId": "IP_T15_IO_PARSING",
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY"
+      ],
+      "subtopicIds": [
+        "IP_ST15_01_FILE_READ_PARSE",
+        "IP_ST15_02_WRITE_OUTPUT",
+        "IP_ST15_03_RESOURCE_SAFETY"
+      ],
+      "sourceIds": [
+        "ref-8c6eff249b686f68",
+        "ref-cc566cb126fff995"
+      ],
+      "title": "Design a failure-aware importer",
+      "prompt": "A studio imports rows token|quantity where quantity is an integer ≥0. Blank rows and malformed rows reject the entire import. The caller opens the file, and the processor consumes only a fully parsed list. Plan the parser, output and tests.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Resource ownership and parser contract"
+        },
+        {
+          "id": "step2",
+          "label": "Valid and malformed examples with expected outcomes"
+        },
+        {
+          "id": "step3",
+          "label": "Output assertions and injected I/O failures"
+        }
+      ],
+      "rubric": [
+        "EOF and blank rows have different behavior.",
+        "A malformed later row does not return a successful partial list.",
+        "Caller-owned resources remain caller-owned, and file boundaries use try-with-resources.",
+        "Tests cover empty file, valid zero, missing field, negative/noninteger count, multirow failure and I/O errors."
+      ],
+      "reference": [
+        "Use readLine until null, validate exactly two fields and nonnegative numeric content, and attach the failing line number. Accumulate locally and return only after all rows parse.",
+        "Test formatting separately with StringWriter. Use a throwing Reader/Writer for failure paths; the app reports the error and must not label the import saved or complete."
+      ]
+    }
+  ]
+}

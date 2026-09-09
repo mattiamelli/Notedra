@@ -1,0 +1,280 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t06",
+    "version": "1",
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t06.start",
+        "version": "1",
+        "topicId": "IP_T06_CONTAINER_CLASSES",
+        "skillIds": [
+          "IP_SK06_01_CONTAINER_IMPL",
+          "IP_SK06_02_REP_INVARIANT",
+          "IP_SK06_03_COLLECTION_SEMANTICS"
+        ],
+        "subtopicIds": [
+          "IP_ST06_01_ARRAY_BACKED",
+          "IP_ST06_02_COLLECTION_SEMANTICS"
+        ],
+        "sourceIds": [
+          "ref-f8f42116f140d764"
+        ],
+        "kind": "introduction",
+        "title": "A container has more rules than its storage array",
+        "paragraphs": [
+          "An array-backed container distinguishes physical capacity from the number of stored elements. Its methods implement a public contract while preserving the internal representation after every operation."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t06.storage",
+        "version": "1",
+        "topicId": "IP_T06_CONTAINER_CLASSES",
+        "skillIds": [
+          "IP_SK06_01_CONTAINER_IMPL"
+        ],
+        "subtopicIds": [
+          "IP_ST06_01_ARRAY_BACKED"
+        ],
+        "sourceIds": [
+          "ref-f8f42116f140d764"
+        ],
+        "kind": "procedure",
+        "title": "Separate logical size from capacity",
+        "paragraphs": [
+          "Use data.length for capacity and size for the number of live elements. The occupied prefix is data[0] through data[size−1]. Add at data[size] only when space is available, then increment size. A bounded container can reject an insertion when full; resizing is a different explicit policy.",
+          "When removing an element from a compact representation, shift the later live elements left, then decrement size. Do not stop iteration at capacity when the method should inspect only occupied elements."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t06.invariant",
+        "version": "1",
+        "topicId": "IP_T06_CONTAINER_CLASSES",
+        "skillIds": [
+          "IP_SK06_02_REP_INVARIANT"
+        ],
+        "subtopicIds": [
+          "IP_ST06_01_ARRAY_BACKED"
+        ],
+        "sourceIds": [
+          "ref-f8f42116f140d764"
+        ],
+        "kind": "important_rule",
+        "title": "Every public operation must preserve the representation",
+        "paragraphs": [
+          "For a compact list, maintain 0≤size≤data.length and interpret exactly the first size cells as contents. Slots outside that prefix are not elements, even if they contain old primitive values. Clearing vacated reference slots also avoids retaining removed objects unnecessarily.",
+          "A failed operation should leave state consistent with its contract. Check capacity and lookup success before performing dependent mutations. Use this.size when a same-named parameter would otherwise shadow the field."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t06.semantics",
+        "version": "1",
+        "topicId": "IP_T06_CONTAINER_CLASSES",
+        "skillIds": [
+          "IP_SK06_03_COLLECTION_SEMANTICS"
+        ],
+        "subtopicIds": [
+          "IP_ST06_02_COLLECTION_SEMANTICS"
+        ],
+        "sourceIds": [
+          "ref-f8f42116f140d764"
+        ],
+        "kind": "concept",
+        "title": "Specify duplicates and order before implementing",
+        "paragraphs": [
+          "A list-like container preserves a sequence and may hold duplicates. Removing the first occurrence is different from removing all occurrences. A set-like container represents membership without duplicate elements and must check whether an element is already present before insertion.",
+          "Representation and meaning are separate choices. Swapping the last item into a removed slot can work for an unordered set, but would change the order promised by a sequence. A resizable list may occasionally copy its contents; an individual resizing insertion is not constant work."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t06.trace",
+        "version": "1",
+        "topicId": "IP_T06_CONTAINER_CLASSES",
+        "skillIds": [
+          "IP_SK06_01_CONTAINER_IMPL",
+          "IP_SK06_02_REP_INVARIANT",
+          "IP_SK06_03_COLLECTION_SEMANTICS"
+        ],
+        "subtopicIds": [
+          "IP_ST06_01_ARRAY_BACKED",
+          "IP_ST06_02_COLLECTION_SEMANTICS"
+        ],
+        "sourceIds": [
+          "ref-f8f42116f140d764"
+        ],
+        "kind": "worked_example",
+        "title": "A bounded list removes exactly one occurrence",
+        "paragraphs": [
+          "The example is an explicitly bounded list with capacity3. It rejects9 without changing the stored elements, then removes only the first4. Output is false followed by [7, 4]. The remaining duplicate and its position are part of this list’s contract."
+        ],
+        "code": "class Program {\n    static class IntList {\n        private final int[] data = new int[3];\n        private int size;\n        boolean add(int value) {\n            if (size == data.length) return false;\n            data[size++] = value;\n            return true;\n        }\n        boolean removeFirst(int value) {\n            int i = 0;\n            while (i < size && data[i] != value) i++;\n            if (i == size) return false;\n            for (int j = i; j < size - 1; j++) data[j] = data[j + 1];\n            data[--size] = 0;\n            return true;\n        }\n        String contents() {\n            return java.util.Arrays.toString(java.util.Arrays.copyOf(data, size));\n        }\n    }\n    public static void main(String[] args) {\n        IntList values = new IntList();\n        values.add(4); values.add(7); values.add(4);\n        System.out.println(values.add(9));\n        values.removeFirst(4);\n        System.out.println(values.contents());\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t06.recap",
+        "version": "1",
+        "topicId": "IP_T06_CONTAINER_CLASSES",
+        "skillIds": [
+          "IP_SK06_01_CONTAINER_IMPL",
+          "IP_SK06_02_REP_INVARIANT",
+          "IP_SK06_03_COLLECTION_SEMANTICS"
+        ],
+        "subtopicIds": [
+          "IP_ST06_01_ARRAY_BACKED",
+          "IP_ST06_02_COLLECTION_SEMANTICS"
+        ],
+        "sourceIds": [
+          "ref-f8f42116f140d764"
+        ],
+        "kind": "recap",
+        "title": "Write the invariant beside the method contract",
+        "paragraphs": [
+          "Before coding add or remove, state capacity, logical size, occupied positions, duplicate policy, order policy and failure behavior. Trace the empty, full, absent and repeated-element cases."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t06.capacity",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL"
+      ],
+      "subtopicIds": [
+        "IP_ST06_01_ARRAY_BACKED"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "prompt": "What is the difference between a container’s size and its backing array’s length?",
+      "answer": "size counts live logical elements; the array length is storage capacity. A partially filled array has fewer logical elements than slots."
+    },
+    {
+      "id": "ds.card.ip.t06.remove",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL"
+      ],
+      "subtopicIds": [
+        "IP_ST06_01_ARRAY_BACKED"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "prompt": "How does compact ordered deletion at index i preserve later elements?",
+      "answer": "Shift live elements after i one position left, then decrement size. Do not read past the previous live prefix or reorder the remaining sequence."
+    },
+    {
+      "id": "ds.card.ip.t06.invariant",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_02_REP_INVARIANT"
+      ],
+      "subtopicIds": [
+        "IP_ST06_01_ARRAY_BACKED"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "prompt": "What basic invariant should a compact array-backed container maintain?",
+      "answer": "0 ≤ size ≤ capacity, with exactly the positions below size interpreted as live elements. Additional rules depend on its public sequence or set contract."
+    },
+    {
+      "id": "ds.card.ip.t06.failure",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_02_REP_INVARIANT"
+      ],
+      "subtopicIds": [
+        "IP_ST06_01_ARRAY_BACKED"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "prompt": "What should a bounded add do when the container is already full?",
+      "answer": "Follow its declared failure contract, such as returning false, without writing beyond the array or incrementing size. A rejected operation must not leave partial state changes."
+    },
+    {
+      "id": "ds.card.ip.t06.duplicates",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_03_COLLECTION_SEMANTICS"
+      ],
+      "subtopicIds": [
+        "IP_ST06_02_COLLECTION_SEMANTICS"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "prompt": "Why is checking capacity alone insufficient for a set-like add operation?",
+      "answer": "A set also forbids duplicate members. It must determine whether the value already exists and follow the declared duplicate-insertion behavior."
+    },
+    {
+      "id": "ds.card.ip.t06.order",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_03_COLLECTION_SEMANTICS"
+      ],
+      "subtopicIds": [
+        "IP_ST06_02_COLLECTION_SEMANTICS"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "prompt": "Can an ordered list remove an element by replacing it with the last element?",
+      "answer": "That normally changes the relative sequence, so it violates an order-preserving list contract. It can be suitable for an explicitly unordered representation."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t06.set-invariant",
+      "version": "1",
+      "topicId": "IP_T06_CONTAINER_CLASSES",
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL",
+        "IP_SK06_02_REP_INVARIANT",
+        "IP_SK06_03_COLLECTION_SEMANTICS"
+      ],
+      "subtopicIds": [
+        "IP_ST06_01_ARRAY_BACKED",
+        "IP_ST06_02_COLLECTION_SEMANTICS"
+      ],
+      "sourceIds": [
+        "ref-f8f42116f140d764"
+      ],
+      "title": "Turn a bounded list into a bounded set",
+      "prompt": "Design add and remove for an array-backed set of up to three distinct ints. add returns false when the value is already present or the set is full. remove returns false for an absent value. Specify whether internal order matters and trace add(2), add(2), add(5), remove(2), add(7).",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Representation invariant and duplicate policy"
+        },
+        {
+          "id": "step2",
+          "label": "Add/remove algorithms and failure paths"
+        },
+        {
+          "id": "step3",
+          "label": "Operation trace and boundary tests"
+        }
+      ],
+      "rubric": [
+        "States size bounds and uniqueness within the occupied prefix.",
+        "Searches for existing values before insertion and avoids partial writes on failure.",
+        "Reduces size only after a successful removal.",
+        "Distinguishes membership from an unstated order guarantee."
+      ],
+      "reference": [
+        "One valid design uses a compact prefix with no duplicates. Search only that prefix. Reject a duplicate or a full insertion; otherwise append and increment size.",
+        "The trace has results true,false,true,true,true and final membership {5,7}. Either [5,7] or another order is acceptable if the contract explicitly makes order irrelevant.",
+        "Test removing from empty, adding to full, duplicate insertion when full and absent removal. Check that every rejected operation preserves membership and size."
+      ]
+    }
+  ]
+}

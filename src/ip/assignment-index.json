@@ -1,0 +1,165 @@
+[
+  {
+    "file": "air-audit.json",
+    "id": "ds.assignment.ip.air-audit",
+    "version": "1",
+    "title": "Air-quality batch audit with explicit failure rules",
+    "minutes": 60,
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "relatedTopicIds": [
+      "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "IP_T17_PROGRAM_DESIGN",
+      "IP_T08_TESTING",
+      "IP_T18_MODERN_JAVA",
+      "IP_T15_IO_PARSING",
+      "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "IP_T12_EXCEPTIONS",
+      "IP_T03_METHODS_SCOPE",
+      "IP_T07_COMPOSITION_LIBRARIES"
+    ]
+  },
+  {
+    "file": "alert-policies.json",
+    "id": "ds.assignment.ip.alert-policies",
+    "version": "1",
+    "title": "Compose and dispatch alert policies",
+    "minutes": 30,
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "relatedTopicIds": [
+      "IP_T10_POLYMORPHISM_BINDING",
+      "IP_T09_INHERITANCE",
+      "IP_T04_CLASSES_OBJECTS",
+      "IP_T07_COMPOSITION_LIBRARIES",
+      "IP_T08_TESTING",
+      "IP_T17_PROGRAM_DESIGN"
+    ]
+  },
+  {
+    "file": "array-window.json",
+    "id": "ds.assignment.ip.array-window",
+    "version": "1",
+    "title": "Count threshold crossings in a window",
+    "minutes": 15,
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "relatedTopicIds": [
+      "IP_T05_ARRAYS_RECURSION",
+      "IP_T03_METHODS_SCOPE",
+      "IP_T02_CONTROL_FLOW"
+    ]
+  },
+  {
+    "file": "batch-token.json",
+    "id": "ds.assignment.ip.batch-token",
+    "version": "1",
+    "title": "Parse one strictly specified token",
+    "minutes": 15,
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "relatedTopicIds": [
+      "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "IP_T12_EXCEPTIONS",
+      "IP_T08_TESTING"
+    ]
+  },
+  {
+    "file": "boundary-tests.json",
+    "id": "ds.assignment.ip.boundary-tests",
+    "version": "1",
+    "title": "Design tests that expose boundary bugs",
+    "minutes": 15,
+    "topicId": "IP_T08_TESTING",
+    "relatedTopicIds": [
+      "IP_T08_TESTING",
+      "IP_T13_DEBUGGING"
+    ]
+  },
+  {
+    "file": "capacity-shelf.json",
+    "id": "ds.assignment.ip.capacity-shelf",
+    "version": "1",
+    "title": "Build a bounded shelf with a clear invariant",
+    "minutes": 30,
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "relatedTopicIds": [
+      "IP_T06_CONTAINER_CLASSES",
+      "IP_T05_ARRAYS_RECURSION",
+      "IP_T04_CLASSES_OBJECTS",
+      "IP_T07_COMPOSITION_LIBRARIES",
+      "IP_T08_TESTING"
+    ]
+  },
+  {
+    "file": "grid-key.json",
+    "id": "ds.assignment.ip.grid-key",
+    "version": "1",
+    "title": "A value key with an honest equality contract",
+    "minutes": 15,
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "relatedTopicIds": [
+      "IP_T11_EQUALITY_HASHING",
+      "IP_T04_CLASSES_OBJECTS"
+    ]
+  },
+  {
+    "file": "label-stream.json",
+    "id": "ds.assignment.ip.label-stream",
+    "version": "1",
+    "title": "Transform labels and handle an empty result",
+    "minutes": 15,
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "relatedTopicIds": [
+      "IP_T16_FUNCTIONAL_JAVA"
+    ]
+  },
+  {
+    "file": "material-ledger.json",
+    "id": "ds.assignment.ip.material-ledger",
+    "version": "1",
+    "title": "Workshop material ledger",
+    "minutes": 60,
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "relatedTopicIds": [
+      "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "IP_T04_CLASSES_OBJECTS",
+      "IP_T07_COMPOSITION_LIBRARIES",
+      "IP_T17_PROGRAM_DESIGN",
+      "IP_T18_MODERN_JAVA",
+      "IP_T11_EQUALITY_HASHING",
+      "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "IP_T15_IO_PARSING",
+      "IP_T12_EXCEPTIONS",
+      "IP_T06_CONTAINER_CLASSES",
+      "IP_T08_TESTING"
+    ]
+  },
+  {
+    "file": "note-index.json",
+    "id": "ds.assignment.ip.note-index",
+    "version": "1",
+    "title": "Coordinate a parallel note index",
+    "minutes": 60,
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "relatedTopicIds": [
+      "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "IP_T17_PROGRAM_DESIGN",
+      "IP_T07_COMPOSITION_LIBRARIES",
+      "IP_T19_THREADS_CONCURRENCY",
+      "IP_T15_IO_PARSING",
+      "IP_T08_TESTING"
+    ]
+  },
+  {
+    "file": "reading-export.json",
+    "id": "ds.assignment.ip.reading-export",
+    "version": "1",
+    "title": "Validate readings before exporting a file",
+    "minutes": 30,
+    "topicId": "IP_T15_IO_PARSING",
+    "relatedTopicIds": [
+      "IP_T15_IO_PARSING",
+      "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+      "IP_T12_EXCEPTIONS",
+      "IP_T18_MODERN_JAVA",
+      "IP_T08_TESTING"
+    ]
+  }
+]

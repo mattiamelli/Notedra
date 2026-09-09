@@ -1,0 +1,135 @@
+{
+  "id": "ds.reference.ip.material-ledger",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.material-ledger",
+  "files": [
+    {
+      "name": "MaterialKey.java",
+      "language": "java",
+      "content": "import java.util.Objects;\npublic final class MaterialKey {\n    private final String area;\n    private final String material;\n    public MaterialKey(String area, String material) {\n        if (area == null || material == null || !area.matches(\"[A-Z]{1,8}\") || !material.matches(\"[a-z]{1,12}\")) throw new IllegalArgumentException(\"Invalid material key\");\n        this.area = area; this.material = material;\n    }\n    public String area() { return area; }\n    public String material() { return material; }\n    @Override public boolean equals(Object other) {\n        if (this == other) return true;\n        if (!(other instanceof MaterialKey)) return false;\n        MaterialKey key = (MaterialKey) other;\n        return area.equals(key.area) && material.equals(key.material);\n    }\n    @Override public int hashCode() { return Objects.hash(area, material); }\n}\n"
+    },
+    {
+      "name": "StockEntry.java",
+      "language": "java",
+      "content": "import java.util.Objects;\npublic record StockEntry(MaterialKey key, int units) {\n    public StockEntry {\n        Objects.requireNonNull(key, \"key\");\n        if (units < 0 || units > 1000) throw new IllegalArgumentException(\"Invalid units\");\n    }\n}\n"
+    },
+    {
+      "name": "LedgerParser.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.util.*;\npublic final class LedgerParser {\n    private LedgerParser() {}\n    public static List<StockEntry> read(Reader reader) throws IOException {\n        BufferedReader buffered = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);\n        List<StockEntry> entries = new ArrayList<>();\n        String line;\n        int number = 0;\n        while ((line = buffered.readLine()) != null) {\n            number++;\n            String[] fields = line.split(\"~\", -1);\n            try {\n                if (fields.length != 3) throw new IllegalArgumentException();\n                int units = Integer.parseInt(fields[2]);\n                if (!Integer.toString(units).equals(fields[2])) throw new IllegalArgumentException();\n                entries.add(new StockEntry(new MaterialKey(fields[0], fields[1]), units));\n            } catch (IllegalArgumentException error) { throw new IOException(\"Invalid material record at line \" + number, error); }\n        }\n        return entries;\n    }\n}\n"
+    },
+    {
+      "name": "LedgerTotals.java",
+      "language": "java",
+      "content": "import java.util.*;\npublic final class LedgerTotals {\n    private LedgerTotals() {}\n    public static List<String> lines(List<StockEntry> entries) {\n        Map<MaterialKey, Long> totals = new HashMap<>();\n        for (StockEntry entry : entries) totals.put(entry.key(), totals.getOrDefault(entry.key(), 0L) + entry.units());\n        List<MaterialKey> keys = new ArrayList<>(totals.keySet());\n        keys.sort(Comparator.comparing(MaterialKey::area).thenComparing(MaterialKey::material));\n        List<String> output = new ArrayList<>();\n        for (MaterialKey key : keys) output.add(key.area() + \"/\" + key.material() + \"=\" + totals.get(key));\n        return output;\n    }\n}\n"
+    },
+    {
+      "name": "LedgerCli.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.*;\nimport java.util.*;\npublic final class LedgerCli {\n    private LedgerCli() {}\n    public static int run(String[] args, PrintStream out, PrintStream err) {\n        if (args.length != 2) { err.println(\"Usage: LedgerCli input output\"); return 2; }\n        try {\n            List<StockEntry> entries;\n            try (BufferedReader reader = Files.newBufferedReader(Path.of(args[0]), StandardCharsets.UTF_8)) { entries = LedgerParser.read(reader); }\n            List<String> lines = LedgerTotals.lines(entries);\n            try (BufferedWriter writer = Files.newBufferedWriter(Path.of(args[1]), StandardCharsets.UTF_8)) {\n                for (String line : lines) writer.write(line + \"\\n\");\n            }\n            out.println(\"Wrote \" + lines.size() + \" totals.\");\n            return 0;\n        } catch (IOException | InvalidPathException error) { err.println(error.getMessage()); return 1; }\n    }\n    public static void main(String[] args) { run(args, System.out, System.err); }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "ledger-model",
+      "name": "Model and equality contracts",
+      "requirementIds": [
+        "model",
+        "equality",
+        "testing"
+      ],
+      "skillIds": [
+        "IP_SK04_01_MODEL_CLASS",
+        "IP_SK04_02_CONSTRUCTOR_STATE",
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE",
+        "IP_SK18_01_MODERN_MODEL",
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_02_HASH_CONTRACT",
+        "IP_SK11_03_EQUALITY_EDGE",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Compare distinct EAST/resin keys, null, unrelated/different keys; reject invalid model fields.",
+      "expected": "Equal logical keys compare equal and share hashes; invalid fields are rejected; different keys stay different."
+    },
+    {
+      "id": "ledger-parser",
+      "name": "Parser failure localization",
+      "requirementIds": [
+        "parser",
+        "testing"
+      ],
+      "skillIds": [
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Parse the sample and reject malformed second lines, signs, leading zeros and out-of-range units.",
+      "expected": "Four entries on the sample; checked error identifies the failing 1-based line."
+    },
+    {
+      "id": "ledger-totals",
+      "name": "Aggregate and sort",
+      "requirementIds": [
+        "processing",
+        "equality",
+        "testing"
+      ],
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_02_HASH_CONTRACT",
+        "IP_SK11_03_EQUALITY_EDGE",
+        "IP_SK07_02_API_USE",
+        "IP_SK06_03_COLLECTION_SEMANTICS",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Process sample data with repeated EAST/resin keys and an empty dataset.",
+      "expected": "EAST/resin=11, EAST/wire=0, WEST/wire=9; empty dataset has zero totals."
+    },
+    {
+      "id": "ledger-cli",
+      "name": "CLI and resource integration",
+      "requirementIds": [
+        "cli",
+        "model",
+        "testing"
+      ],
+      "skillIds": [
+        "IP_SK04_01_MODEL_CLASS",
+        "IP_SK04_02_CONSTRUCTOR_STATE",
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE",
+        "IP_SK18_01_MODERN_MODEL",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK20_01_EXAM_SYNTHESIS",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Run with two paths, wrong argument count, missing input and malformed input with existing output.",
+      "expected": "Status 0 and Wrote 3 totals. on success; 2 for argument count; 1 for I/O/format errors; malformed input preserves output."
+    }
+  ],
+  "reasoning": [
+    "EAST/resin appears twice, with 4+7=11 units. WEST/wire has 9 and EAST/wire has 0. Sorting keys by area then material produces EAST/resin, EAST/wire, WEST/wire.",
+    "MaterialKey is final and immutable; equality and hash use the same two fields. StockEntry composes the key. Aggregation uses value keys rather than reference identity.",
+    "The parser owns no borrowed reader. The CLI owns both file resources and finishes parsing before it opens output. This prevents truncation on parse failure, not all possible partial writes.",
+    "The parser creates an ArrayList-backed dataset, bounded by an integer-indexed backing array. At most Integer.MAX_VALUE entries with at most 1000 units each fit in long. Different collection sources would need their own explicit bound or checked arithmetic.",
+    "Each rubric component has its own requirements and test specifications. These describe review evidence; no single completion action awards all mapped skills.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

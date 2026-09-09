@@ -1,0 +1,112 @@
+{
+  "id": "ds.reference.ip.note-index",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.note-index",
+  "files": [
+    {
+      "name": "TokenCounter.java",
+      "language": "java",
+      "content": "import java.util.*;\npublic final class TokenCounter {\n    private final Map<String, Long> counts = new HashMap<>();\n    public static void validate(String token) {\n        if (token == null || !token.matches(\"[a-z]{1,12}\")) throw new IllegalArgumentException(\"Invalid token\");\n    }\n    public synchronized void record(String token) {\n        validate(token);\n        counts.put(token, counts.getOrDefault(token, 0L) + 1L);\n    }\n    public synchronized Map<String, Long> snapshot() { return new TreeMap<>(counts); }\n}\n"
+    },
+    {
+      "name": "NoteWorker.java",
+      "language": "java",
+      "content": "import java.util.*;\npublic final class NoteWorker implements Runnable {\n    private final TokenCounter counter;\n    private final List<String> tokens;\n    public NoteWorker(TokenCounter counter, List<String> tokens) {\n        this.counter = Objects.requireNonNull(counter);\n        this.tokens = List.copyOf(tokens);\n        for (String token : this.tokens) TokenCounter.validate(token);\n    }\n    @Override public void run() { for (String token : tokens) counter.record(token); }\n}\n"
+    },
+    {
+      "name": "NoteIndex.java",
+      "language": "java",
+      "content": "import java.util.*;\npublic final class NoteIndex {\n    private NoteIndex() {}\n    public static Map<String,Long> count(List<List<String>> batches) throws InterruptedException {\n        Objects.requireNonNull(batches);\n        if (Thread.interrupted()) throw new InterruptedException(\"Interrupted before starting workers\");\n        TokenCounter counter = new TokenCounter();\n        List<Thread> workers = new ArrayList<>();\n        for (List<String> batch : batches) workers.add(new Thread(new NoteWorker(counter, batch)));\n        for (Thread worker : workers) worker.start();\n        for (Thread worker : workers) worker.join();\n        return counter.snapshot();\n    }\n}\n"
+    },
+    {
+      "name": "NoteIndexCli.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.*;\nimport java.util.*;\npublic final class NoteIndexCli {\n    private NoteIndexCli() {}\n    public static int run(String[] paths, PrintStream out, PrintStream err) throws InterruptedException {\n        if (paths.length == 0) { err.println(\"Usage: NoteIndexCli input...\"); return 2; }\n        List<List<String>> batches = new ArrayList<>();\n        try {\n            for (String path : paths) {\n                List<String> tokens = new ArrayList<>();\n                try (BufferedReader reader = Files.newBufferedReader(Path.of(path), StandardCharsets.UTF_8)) {\n                    String line;\n                    int number = 0;\n                    while ((line = reader.readLine()) != null) {\n                        number++;\n                        try { TokenCounter.validate(line); }\n                        catch (IllegalArgumentException error) { throw new IOException(\"Invalid token at line \" + number, error); }\n                        tokens.add(line);\n                    }\n                }\n                batches.add(tokens);\n            }\n        } catch (IOException | InvalidPathException error) { err.println(error.getMessage()); return 1; }\n        Map<String,Long> counts = NoteIndex.count(batches);\n        for (Map.Entry<String,Long> entry : counts.entrySet()) out.print(entry.getKey() + \"=\" + entry.getValue() + \"\\n\");\n        return 0;\n    }\n    public static void main(String[] args) throws InterruptedException { run(args, System.out, System.err); }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "index-counts",
+      "name": "Completed synchronized totals",
+      "requirementIds": [
+        "lifecycle",
+        "atomicity",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN",
+        "IP_SK19_02_SYNC",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Process batches [lumen,ink,lumen], [ink,glow], [glow,lumen].",
+      "expected": "glow=2, ink=2, lumen=3 after all joins; no worker execution order is specified."
+    },
+    {
+      "id": "index-isolation",
+      "name": "Ownership and validation",
+      "requirementIds": [
+        "design",
+        "atomicity",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE",
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK19_02_SYNC",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Change a returned snapshot; reject malformed or null tokens before starting workers; process no batches.",
+      "expected": "Counter remains unchanged; invalid data is rejected; no batches yield an empty completed map."
+    },
+    {
+      "id": "index-cli",
+      "name": "Files and output",
+      "requirementIds": [
+        "io",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK20_01_EXAM_SYNTHESIS",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Read authored note files, verify sorted output, then try missing file, bad token and no arguments.",
+      "expected": "Only complete sorted totals print on success; status 1 for I/O/format failure and 2 for missing arguments."
+    },
+    {
+      "id": "index-race",
+      "name": "Open race reasoning",
+      "requirementIds": [
+        "atomicity",
+        "lifecycle",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN",
+        "IP_SK19_02_SYNC",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Explain the conceptual two-increment unsynchronized counter and direct run versus start.",
+      "expected": "Two reads of 0 followed by two writes of 1 lose one update; serial read/write pairs yield 2. No unique schedule is promised, and join alone does not protect the increment."
+    }
+  ],
+  "reasoning": [
+    "The three fixed batches contain seven tokens: glow twice, ink twice and lumen three times. Every synchronized record call performs one indivisible map update on the same counter object.",
+    "Every worker is joined before snapshot. Completion and visibility after joins combine with synchronized atomic updates to justify the final counts; the result does not require any particular worker order.",
+    "Calling run directly executes on the calling thread. start creates a separate execution thread. Waiting with join does not stop two unsynchronized increments from interleaving.",
+    "For the conceptual two-increment integer race, read0/read0/write1/write1 yields 1; read0/write1/read1/write2 yields 2. This open self-check asks for possible interleavings, not one promised schedule or a fake numerical grade.",
+    "For the supplied ArrayList-backed file batches, the maximum indexed outer and inner array sizes imply a total below Long.MAX_VALUE; different collection sources need their own bound or checked arithmetic. An already-interrupted coordinator throws before starting workers; interruption while joining propagates instead of returning an incomplete snapshot. Threads are a learning mechanism here, not a speed claim or a production thread-pool design.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

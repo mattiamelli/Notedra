@@ -1,0 +1,92 @@
+{
+  "id": "ds.assignment.ip.batch-token",
+  "version": "1",
+  "title": "Parse one strictly specified token",
+  "minutes": 15,
+  "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+  "relatedTopicIds": [
+    "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "IP_T12_EXCEPTIONS",
+    "IP_T08_TESTING"
+  ],
+  "skillIds": [
+    "IP_SK14_02_STRING_PARSE",
+    "IP_SK12_02_EXCEPTION_FLOW",
+    "IP_SK08_02_TEST_BOUNDARIES"
+  ],
+  "subtopicIds": [
+    "IP_ST14_02_STRINGS",
+    "IP_ST12_02_EXCEPTION_FLOW",
+    "IP_ST08_01_UNIT_TESTS"
+  ],
+  "sourceIds": [
+    "ref-517a35b992dabf40",
+    "ref-7034e3454bddea79",
+    "ref-18b7de6140eaf782"
+  ],
+  "evidenceIds": [
+    "ip-t14",
+    "ip-t12",
+    "ip-t08"
+  ],
+  "instructions": [
+    "Implement quantity(token) for the authored format TAG@quantity. TAG is 1\u20138 uppercase ASCII letters. Quantity is 1\u20133 ASCII digits with value 0\u2013999; leading zeros are allowed.",
+    "Reject null, extra separators, whitespace, signs, empty fields and invalid characters with IllegalArgumentException. Do not silently trim or repair malformed input.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "BatchToken.java",
+      "language": "java",
+      "content": "public final class BatchToken {\n    public static int quantity(String token) {\n        throw new UnsupportedOperationException(\"Write your parser\");\n    }\n}\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "parse",
+      "text": "Separate exactly two fields and validate the tag and decimal quantity against the stated format before conversion.",
+      "skillIds": [
+        "IP_SK14_02_STRING_PARSE"
+      ]
+    },
+    {
+      "id": "failure",
+      "text": "Reject every stated malformed-input category with IllegalArgumentException and explain the validation order.",
+      "skillIds": [
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-parse",
+      "text": "Review evidence for: Separate exactly two fields and validate the tag and decimal quantity against the stated format before conversion.",
+      "requirementIds": [
+        "parse"
+      ],
+      "skillIds": [
+        "IP_SK14_02_STRING_PARSE"
+      ],
+      "testIds": [
+        "token-valid"
+      ]
+    },
+    {
+      "id": "rubric-failure",
+      "text": "Review evidence for: Reject every stated malformed-input category with IllegalArgumentException and explain the validation order.",
+      "requirementIds": [
+        "failure"
+      ],
+      "skillIds": [
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "testIds": [
+        "token-invalid"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.batch-token"
+}

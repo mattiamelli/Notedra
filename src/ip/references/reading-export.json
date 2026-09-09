@@ -1,0 +1,80 @@
+{
+  "id": "ds.reference.ip.reading-export",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.reading-export",
+  "files": [
+    {
+      "name": "Reading.java",
+      "language": "java",
+      "content": "public record Reading(String channel, int value) {}\n"
+    },
+    {
+      "name": "ReadingFormatException.java",
+      "language": "java",
+      "content": "import java.io.IOException;\npublic final class ReadingFormatException extends IOException {\n    private static final long serialVersionUID = 1L;\n    private final int lineNumber;\n    public ReadingFormatException(int lineNumber) {\n        super(\"Invalid reading at line \" + lineNumber);\n        this.lineNumber = lineNumber;\n    }\n    public int lineNumber() { return lineNumber; }\n}\n"
+    },
+    {
+      "name": "ReadingExport.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.*;\nimport java.util.*;\npublic final class ReadingExport {\n    private ReadingExport() {}\n    public static List<Reading> parse(Reader reader) throws IOException {\n        BufferedReader buffered = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);\n        List<Reading> readings = new ArrayList<>();\n        String line;\n        int number = 0;\n        while ((line = buffered.readLine()) != null) {\n            number++;\n            String[] fields = line.split(java.util.regex.Pattern.quote(\"|\"), -1);\n            if (fields.length != 2 || !fields[0].matches(\"[a-z]{1,8}\")) throw new ReadingFormatException(number);\n            try {\n                int value = Integer.parseInt(fields[1]);\n                if (!Integer.toString(value).equals(fields[1]) || value < -50 || value > 150) throw new NumberFormatException();\n                readings.add(new Reading(fields[0], value));\n            } catch (NumberFormatException error) { throw new ReadingFormatException(number); }\n        }\n        return readings;\n    }\n    public static void convert(Path input, Path output) throws IOException {\n        List<Reading> readings;\n        try (BufferedReader reader = Files.newBufferedReader(input, StandardCharsets.UTF_8)) { readings = parse(reader); }\n        try (BufferedWriter writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8)) {\n            for (Reading reading : readings) {\n                writer.write(reading.channel().toUpperCase(Locale.ROOT) + \":\" + reading.value() + \"\\n\");\n            }\n        }\n    }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "reading-output",
+      "name": "Exact formatted output",
+      "requirementIds": [
+        "parse",
+        "output"
+      ],
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK18_01_MODERN_MODEL",
+        "IP_SK15_02_WRITE_FILE"
+      ],
+      "description": "Convert north|12, south|-4, north|0 on three lines.",
+      "expected": "NORTH:12\\nSOUTH:-4\\nNORTH:0\\n."
+    },
+    {
+      "id": "reading-malformed",
+      "name": "Malformed records and failure locality",
+      "requirementIds": [
+        "parse",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK18_01_MODERN_MODEL",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "description": "Try blank line 2, extra separators, invalid name, non-canonical integer and out-of-range number.",
+      "expected": "ReadingFormatException with the failing line number; malformed input does not truncate output."
+    },
+    {
+      "id": "reading-resources",
+      "name": "Borrowed and owned resources",
+      "requirementIds": [
+        "ownership",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "description": "Use a close-tracking Reader and a Reader that throws IOException; read/write a temporary UTF-8 file.",
+      "expected": "Borrowed readers remain open, I/O failure propagates, owned operations complete and resources close."
+    }
+  ],
+  "reasoning": [
+    "The parser operates before the destination writer is created, so a malformed input record cannot truncate a pre-existing output. This is not a guarantee of atomic replacement if writing later fails.",
+    "Integer.toString after parsing rejects signs/leading zeros not in the declared grammar; bounds reject values outside -50..150. Parsing syntax is input validation, not grading learner source text.",
+    "parse borrows the Reader and does not close it. convert owns resources it opens, so its try-with-resources blocks close them on normal and exceptional exits.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

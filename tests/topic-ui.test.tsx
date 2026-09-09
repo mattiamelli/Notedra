@@ -47,11 +47,11 @@ describe('topic learning routes and modes',()=>{
   await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await button('Reveal answer');expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(false);
   await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(topic.subjectId==='CSE1400_CO'?8:topic.subjectId==='CSE1300_RL'?10:2);expect([...container.querySelectorAll('.ds-practice-card>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
  });
- it('non-pilot modes have real overview/map and honest empty study states',async()=>{
+ it('completed IP modes retain overview/map and show real study content with honest unavailable global features',async()=>{
   const t=topicStudy.topics.find(t=>t.id==='IP_T01_JAVA_BASICS')!;await render(studyPath(t));expect(container.textContent).toContain(t.description);
-  await click('#study-mode-1');expect(container.textContent).toContain('Guided learning is not available yet');await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();
-  await click('#study-mode-3');expect(container.textContent).toContain('Flashcards are not available yet');await click('#study-mode-4');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(0);
-  await click('#study-mode-5');expect(container.textContent).toContain('Exam-style practice is not available yet');await click('#study-mode-6');expect(container.textContent).toContain('Topic mistake review is not available yet');expect(container.textContent).not.toMatch(/Step \d|mastery:|streak/);
+  await click('#study-mode-1');expect(container.textContent).toContain('Track both the value and its type');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(8);await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();
+  await click('#study-mode-3');expect(container.textContent).toContain('Card 1 of 10');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('#study-mode-4');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(5);
+  await click('#study-mode-5');expect(container.textContent).toContain('Authored exam-style practice');expect(container.textContent).toContain('No authored 60-minute assignment targets this topic');await click('#study-mode-6');expect(container.textContent).toContain('Topic mistake review is not available yet');expect(container.textContent).not.toMatch(/Step \d|mastery:|streak/);
  });
  it('Learn and Flashcards deep links survive remount and BrowserRouter Back/Forward',async()=>{
   const t=pilots[0];await render(studyPath(t,'learn'),true);await click('#study-mode-3');expect(window.location.pathname).toBe(studyPath(t,'flashcards'));

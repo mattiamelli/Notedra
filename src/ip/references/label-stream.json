@@ -1,0 +1,44 @@
+{
+  "id": "ds.reference.ip.label-stream",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.label-stream",
+  "files": [
+    {
+      "name": "LabelStream.java",
+      "language": "java",
+      "content": "import java.util.*;\nimport java.util.stream.Collectors;\npublic final class LabelStream {\n    private LabelStream() {}\n    public static List<String> cleanLabels(List<String> labels) {\n        return labels.stream().map(String::trim).filter(label -> label.length() >= 4)\n                .sorted().collect(Collectors.toList());\n    }\n    public static Optional<String> firstLabel(List<String> labels) {\n        return cleanLabels(labels).stream().findFirst();\n    }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "labels-order",
+      "name": "Pipeline order and duplicates",
+      "requirementIds": [
+        "pipeline"
+      ],
+      "skillIds": [
+        "IP_SK16_01_LAMBDA",
+        "IP_SK16_02_STREAM_PIPE"
+      ],
+      "description": "Use [\" elm \", \"oak\", \" cedar\", \"ash\", \"birch\", \"birch\"].",
+      "expected": "[birch, birch, cedar]; input list unchanged."
+    },
+    {
+      "id": "labels-optional",
+      "name": "Present and absent results",
+      "requirementIds": [
+        "optional"
+      ],
+      "skillIds": [
+        "IP_SK16_03_OPTIONAL"
+      ],
+      "description": "Find the first cleaned label for the above list, then for [\"a\", \" b \"].",
+      "expected": "Optional[birch], then Optional.empty."
+    }
+  ],
+  "reasoning": [
+    "After trimming, elm, oak and ash have length three and are removed. birch occurs twice and remains twice because no distinct operation was requested.",
+    "Natural String order places birch before cedar. findFirst returns an Optional, including an empty Optional when no element survives.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

@@ -1,0 +1,959 @@
+[
+  {
+    "id": "ds.feedback.ip.division",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_03_EVAL_EXPRESSIONS"
+    ],
+    "subtopicIds": [
+      "IP_ST01_02_EXPRESSIONS_CASTING"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "exerciseId": "ds.practice.ip-division",
+    "binding": "1:sha256:1fab407635e7967cb5f83f63f258cb12441f3eb39d9aa7ee10ca16e051f97a7c:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Both operands of 7 / 2 are int, so division truncates toward zero to 3. Multiplication then produces 6.",
+    "remember": "Determine operand types before evaluating each operator.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.division",
+        "why": "7 treats integer division as exact real arithmetic."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.cast",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_04_CAST_CONVERT"
+    ],
+    "subtopicIds": [
+      "IP_ST01_02_EXPRESSIONS_CASTING"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "exerciseId": "ds.practice.ip-cast",
+    "binding": "1:sha256:0a8ba25f015f6882fd2cc9b36b677c7a1d67e68d162ddf47747c9d3fd465d51c:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The parenthesized integer division produces 3. Casting that result gives 3.0; (double)7 / 2 would instead produce 3.5.",
+    "remember": "A later cast cannot recover a fraction already discarded.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.cast",
+        "why": "3.5 would require converting an operand before division."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.overflow",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_05_NUMERIC_EDGE"
+    ],
+    "subtopicIds": [
+      "IP_ST01_03_NUMERIC_EDGE_CASES"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "exerciseId": "ds.practice.ip-overflow",
+    "binding": "1:sha256:8e77731616012dae50f65749555f8d027e670bcbd9424bfeb2235246d71cdf71:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Java int arithmetic wraps modulo 2^32; adding one to 2147483647 yields the signed value -2147483648. This operation does not throw an overflow exception.",
+    "remember": "The variable and operands determine the arithmetic width.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.overflow",
+        "why": "2147483648 is the mathematical sum, outside the int range."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.narrow-assignment",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_01_DECLARE_ASSIGN"
+    ],
+    "subtopicIds": [
+      "IP_ST01_01_TYPES_VARIABLES"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "exerciseId": "ds.practice.ip-narrow-assignment",
+    "binding": "1:sha256:55d33f6a1dc2cf7070bfa07a6abb11371e8e99cc2dd27be1017453b55431173f:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "A double value cannot be implicitly assigned to int. An explicit narrowing cast would truncate, but no cast appears here.",
+    "remember": "Separate compiler rejection from the behavior of a compiling program.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.narrow-assignment",
+        "why": "3 assumes an implicit double-to-int conversion that Java does not permit."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.reference-type",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_02_REASON_TYPES"
+    ],
+    "subtopicIds": [
+      "IP_ST01_01_TYPES_VARIABLES"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "exerciseId": "ds.practice.ip-reference-type",
+    "binding": "1:sha256:1d67f95cfc99a7f8beb285e0ff591b3e2a34ed3d5b5df2b8c8946ff3cdc1bd9f:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Assignment copies the reference value, so both variables refer to the same array. Writing through b changes the array read through a.",
+    "remember": "A reference variable holds a reference, not an inline object copy.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.reference-type",
+        "why": "4 would require an independent array copy."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.method-return",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_02_TRACE_CALLS"
+    ],
+    "subtopicIds": [
+      "IP_ST03_01_METHOD_DEF_CALL"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "exerciseId": "ds.practice.ip-method-return",
+    "binding": "1:sha256:8c4a5d0ce8b36bb51585f1392d1ae59de2cc33c9c6b2ab6b13c3c8f97180ce08:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8.",
+    "remember": "A returned value does not itself reassign the caller variable.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.method-return",
+        "why": "10 incorrectly changes x to the method result."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.pass-value",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_04_PASS_BY_VALUE"
+    ],
+    "subtopicIds": [
+      "IP_ST03_02_SCOPE_PASSING"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "exerciseId": "ds.practice.ip-pass-value",
+    "binding": "1:sha256:8b18474ee2fcebd751a31730714c27d5bbf00427c3d9fcbe7bd2356994801aae:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The method receives copies of 4 and the array reference. Assigning n or a changes only parameter variables; a[0]=9 mutates the shared array before the local reference is rebound.",
+    "remember": "Java always passes values, including reference values.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.pass-value",
+        "why": "8:7 treats both parameter reassignments as writes to the caller variables."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.scope",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_03_SCOPE"
+    ],
+    "subtopicIds": [
+      "IP_ST03_02_SCOPE_PASSING"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "exerciseId": "ds.practice.ip-scope",
+    "binding": "1:sha256:378e673e968f6bc7bc7dbdc0d3ac29d9216c4c484133d1cf4d5e3ef7060a1ec4:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The local level shadows the field for the unqualified name. this.level explicitly reads the object field, which remains 5.",
+    "remember": "Scope chooses a binding; identical spelling does not make two storage locations identical.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.scope",
+        "why": "2:2 conflates the local variable with the instance field."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.constructor",
+    "version": "1",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "skillIds": [
+      "IP_SK04_02_CONSTRUCTOR_STATE"
+    ],
+    "subtopicIds": [
+      "IP_ST04_01_CLASS_MODEL"
+    ],
+    "sourceIds": [
+      "ref-6faf9172baf75824"
+    ],
+    "evidenceIds": [
+      "ip-t04"
+    ],
+    "exerciseId": "ds.practice.ip-constructor",
+    "binding": "1:sha256:609f68b31667b3ee298e3b984d963ec919b62988882986638310cc8a2f1e66e4:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The parameter is 4. this.value selects the field and receives 5, replacing its default zero value during construction.",
+    "remember": "this identifies the current object; unqualified parameter names may shadow fields.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.constructor",
+        "why": "0 overlooks the explicit assignment to this.value."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.static",
+    "version": "1",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "skillIds": [
+      "IP_SK04_03_INSTANCE_STATIC"
+    ],
+    "subtopicIds": [
+      "IP_ST04_02_INSTANCE_STATIC"
+    ],
+    "sourceIds": [
+      "ref-6faf9172baf75824"
+    ],
+    "evidenceIds": [
+      "ip-t04"
+    ],
+    "exerciseId": "ds.practice.ip-static",
+    "binding": "1:sha256:59cf0b598744e5b4ad345e07a4633b101d7faff080536e0e195e99741dafd45b:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Each object has its own value field, while both constructors increment the single class-level count.",
+    "remember": "static state belongs to the class; instance fields belong to each object.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.static",
+        "why": "5:5:2 treats value as shared even though it is not static."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.array-bound",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_01_ARRAY_TRAVERSE"
+    ],
+    "subtopicIds": [
+      "IP_ST05_01_ARRAY_CORE"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "exerciseId": "ds.practice.ip-array-bound",
+    "binding": "1:sha256:c321d7016184e769261f87bd82e2c169993a305370abe44b84cdf2d1cdef7cad:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Indices 0 and 1 are valid. The loop also attempts index 2, causing ArrayIndexOutOfBoundsException before the print statement.",
+    "remember": "For zero-based arrays, the last valid index is length-1.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.array-bound",
+        "why": "9 stops the trace before the invalid final iteration."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.alias",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_03_ARRAY_ALIAS"
+    ],
+    "subtopicIds": [
+      "IP_ST05_02_ALIAS_COPY"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "exerciseId": "ds.practice.ip-alias",
+    "binding": "1:sha256:9f8b9bdedbde0d465f61ff0a2ce9d7ef1c7f79ff06d68eb6c5bc0ac2cdce324b:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "a and b refer to the same array. b[1] becomes 4+2, so reading a[1] returns 6.",
+    "remember": "Draw one array and two reference arrows before tracing mutations.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.alias",
+        "why": "4 assumes assigning a reference cloned the array."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.recursion",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_04_RECURSION"
+    ],
+    "subtopicIds": [
+      "IP_ST05_03_RECURSION"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "exerciseId": "ds.practice.ip-recursion",
+    "binding": "1:sha256:3b66d626955fa646d26b00e9696451f70b14bacddbf1288ef5dd336331877272:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Calls descend to total(0)=0, then return 1,3,6,10 while adding each suspended n. The stated input is nonnegative.",
+    "remember": "Check termination first, then unwind each return expression.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.recursion",
+        "why": "4 keeps only the outer n and discards the recursive sum."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.list-set",
+    "version": "1",
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "skillIds": [
+      "IP_SK06_03_COLLECTION_SEMANTICS"
+    ],
+    "subtopicIds": [
+      "IP_ST06_02_COLLECTION_SEMANTICS"
+    ],
+    "sourceIds": [
+      "ref-f8f42116f140d764"
+    ],
+    "evidenceIds": [
+      "ip-t06"
+    ],
+    "exerciseId": "ds.practice.ip-list-set",
+    "binding": "1:sha256:2ab9ee555e51040b7aa88d8262b1747435e19aeeeeaafedeba9f0eef7cc31748:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The list keeps all three entries. The set contains two distinct Integer values, 2 and 5. No set iteration order is assumed.",
+    "remember": "A collection contract determines whether duplicates are retained.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.list-set",
+        "why": "3:3 assumes the set preserves duplicate values."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.api-remove",
+    "version": "1",
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "skillIds": [
+      "IP_SK07_02_API_USE"
+    ],
+    "subtopicIds": [
+      "IP_ST07_02_LIBRARY_USE"
+    ],
+    "sourceIds": [
+      "ref-f7af58ce8943d54b"
+    ],
+    "evidenceIds": [
+      "ip-t07"
+    ],
+    "exerciseId": "ds.practice.ip-api-remove",
+    "binding": "1:sha256:b105e15f4977e945bd7c4e2bb1a8539a08abf5d8b504c5292f3ee8d728c951a7:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Integer.valueOf(4) chooses remove(Object), removing the first equal value 4. remove(int) would interpret its argument as an index.",
+    "remember": "Read the parameter types and return contract of overloaded library methods.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.api-remove",
+        "why": "[4, 7] removes the last entry rather than the first matching value."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.constructor-chain",
+    "version": "1",
+    "topicId": "IP_T09_INHERITANCE",
+    "skillIds": [
+      "IP_SK09_02_INHERITANCE_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST09_02_OVERRIDE_VISIBILITY"
+    ],
+    "sourceIds": [
+      "ref-1b96953ab28fb39d"
+    ],
+    "evidenceIds": [
+      "ip-t09"
+    ],
+    "exerciseId": "ds.practice.ip-constructor-chain",
+    "binding": "1:sha256:4b6f6d8f6690f23ca548a4a87a027039ee56e578f35e894362815110cee6f5ee:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The child constructor implicitly calls super() first. Parent construction prints P before the child body prints C.",
+    "remember": "Superclass construction precedes the subclass constructor body.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.constructor-chain",
+        "why": "CP reverses the superclass-before-subclass order."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.dispatch",
+    "version": "1",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "skillIds": [
+      "IP_SK10_02_DISPATCH_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST10_02_BINDING"
+    ],
+    "sourceIds": [
+      "ref-596f95ae721fb59e"
+    ],
+    "evidenceIds": [
+      "ip-t10"
+    ],
+    "exerciseId": "ds.practice.ip-dispatch",
+    "binding": "1:sha256:7171342f0cdccea1be453756db307453a10ad0ef8d94628cdfc5cab58c0d4f25:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "At compile time the receiver type Parent exposes show(Object). At runtime the Child override of that selected signature runs. The Child-only show(String) overload is not selected through Parent.",
+    "remember": "Choose a signature using static types, then dispatch an overridden instance method using the runtime object.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.dispatch",
+        "why": "child-string uses the dynamic type to choose an overload, which Java does not do."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.equality",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_01_EQUALS_IMPL"
+    ],
+    "subtopicIds": [
+      "IP_ST11_01_EQUALS"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "exerciseId": "ds.practice.ip-equality",
+    "binding": "1:sha256:1c7eec44335b9143a9bfe69b8349cf2f37f1d0c3a944e218db522d9847eb2ac7:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The two new expressions create different objects, so == is false. equals compares n, and equal hashes allow the HashSet to retain one logical value. equals(null) is false because null is not an instance of Key.",
+    "remember": "Identity and domain-defined equality answer different questions.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.equality",
+        "why": "The first true equates equal field values with object identity."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.hash-collision",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_02_HASH_CONTRACT"
+    ],
+    "subtopicIds": [
+      "IP_ST11_02_HASH"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "exerciseId": "ds.practice.ip-hash-collision",
+    "binding": "1:sha256:2517cfe28d14c9ef7fc9f429b8e8288c95081f88b0db059086f45c877a9fb8cb:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Both String hashes are 2112: 65*31+97 and 66*31+66. Their contents differ, so equals is false. Equal objects must hash equally, but the converse is not required.",
+    "remember": "Hash collisions are permitted; collections still check equality.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.hash-collision",
+        "why": "true:true treats equal hash codes as sufficient evidence of equality."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.equals-overload",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_03_EQUALITY_EDGE"
+    ],
+    "subtopicIds": [
+      "IP_ST11_03_BINDING_EQUALITY"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "exerciseId": "ds.practice.ip-equals-overload",
+    "binding": "1:sha256:601aad5a1b8a685943c86049963da67115ca9aee2442905c53f1bbda94e6e0ec:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The Key-typed call selects equals(Key). The Object-typed call uses equals(Object), which was not overridden, so it retains identity equality. @Override would expose this signature error.",
+    "remember": "Override public boolean equals(Object), and pair it with a compatible hashCode.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.equals-overload",
+        "why": "true:true assumes the Key-only overload replaces Object.equals(Object)."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.exception-flow",
+    "version": "1",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "skillIds": [
+      "IP_SK12_02_EXCEPTION_FLOW"
+    ],
+    "subtopicIds": [
+      "IP_ST12_02_EXCEPTION_FLOW"
+    ],
+    "sourceIds": [
+      "ref-7034e3454bddea79"
+    ],
+    "evidenceIds": [
+      "ip-t12"
+    ],
+    "exerciseId": "ds.practice.ip-exception-flow",
+    "binding": "1:sha256:9447e366b973efc0eb1b505462a412e11fb50a9019c34e18d8c18aef03bb4a43:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Parsing throws before A can print. The matching catch prints C, and finally prints F as the try/catch statement completes.",
+    "remember": "Trace the first thrown exception; skip the remaining statements in that try body.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.exception-flow",
+        "why": "ACF executes a statement that the thrown exception bypasses."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.checked-exception",
+    "version": "1",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "skillIds": [
+      "IP_SK12_01_CLASSIFY_FAILURE"
+    ],
+    "subtopicIds": [
+      "IP_ST12_01_ERROR_CLASS"
+    ],
+    "sourceIds": [
+      "ref-7034e3454bddea79"
+    ],
+    "evidenceIds": [
+      "ip-t12"
+    ],
+    "exerciseId": "ds.practice.ip-checked-exception",
+    "binding": "1:sha256:75131749257acccee252095340d333ad774b2c1701c7d1132d6bf78b2120a30a:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "main neither catches nor declares IOException, so javac rejects the program. No runtime path occurs until the checked-exception obligation is satisfied.",
+    "remember": "Compilation requirements and runtime exception flow are separate questions.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.checked-exception",
+        "why": "Runtime IOException skips the compile-time obligation to catch or declare the checked exception."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.trailing-field",
+    "version": "1",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "skillIds": [
+      "IP_SK14_02_STRING_PARSE"
+    ],
+    "subtopicIds": [
+      "IP_ST14_02_STRINGS"
+    ],
+    "sourceIds": [
+      "ref-517a35b992dabf40"
+    ],
+    "evidenceIds": [
+      "ip-t14"
+    ],
+    "exerciseId": "ds.practice.ip-trailing-field",
+    "binding": "1:sha256:dd7f5d4f6c072bc0dba4e5d960815b66911846984389319fea3ae12a9eee0358:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The literal separator is escaped for the regex, and negative split limit retains the trailing empty string. The fields are oak, 2, and empty.",
+    "remember": "A parser must deliberately choose how to handle empty fields.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.trailing-field",
+        "why": "2 assumes the default split behavior that discards trailing empty fields."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.generic-invariance",
+    "version": "1",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "skillIds": [
+      "IP_SK14_03_GENERIC_REASON"
+    ],
+    "subtopicIds": [
+      "IP_ST14_03_GENERICS"
+    ],
+    "sourceIds": [
+      "ref-517a35b992dabf40"
+    ],
+    "evidenceIds": [
+      "ip-t14"
+    ],
+    "exerciseId": "ds.practice.ip-generic-invariance",
+    "binding": "1:sha256:67c761af8f076da7904946b60694f6662fe42c99426cdbbfef1f454f6403864e:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "List<Integer> is not a subtype of List<Number>. Otherwise a Double could be inserted through the Number view into an Integer list.",
+    "remember": "Generic type arguments are invariant; use a suitable API type for the required reads and writes.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.generic-invariance",
+        "why": "This choice incorrectly transfers the Integer-is-a-Number relation to mutable lists."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.stream",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "skillIds": [
+      "IP_SK16_02_STREAM_PIPE"
+    ],
+    "subtopicIds": [
+      "IP_ST16_02_STREAMS"
+    ],
+    "sourceIds": [
+      "ref-25062da4a98e2927"
+    ],
+    "evidenceIds": [
+      "ip-t16"
+    ],
+    "exerciseId": "ds.practice.ip-stream",
+    "binding": "1:sha256:387ec57f1d7530851271a4480bf75b3f7b42c23eef6dc58425ab19fca2a5b3bc:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Filtering keeps 4,2; mapping produces 12,6; sorting produces 6,12; the terminal toList collects that order. Intermediate operations describe a lazy pipeline until the terminal operation requests results.",
+    "remember": "Follow each intermediate transformation and the final ordering contract.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.stream",
+        "why": "[12, 6] omits the explicit sorted operation."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.optional",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "skillIds": [
+      "IP_SK16_03_OPTIONAL"
+    ],
+    "subtopicIds": [
+      "IP_ST16_03_OPTIONAL"
+    ],
+    "sourceIds": [
+      "ref-25062da4a98e2927"
+    ],
+    "evidenceIds": [
+      "ip-t16"
+    ],
+    "exerciseId": "ds.practice.ip-optional",
+    "binding": "1:sha256:ff65226c18a87baadcf343795d1fe14df6961ac021b757ca3ccb4de440cde66b:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "No element passes the filter, so findFirst returns an empty Optional. orElse supplies the stated fallback 7. It does not return null.",
+    "remember": "Handle absence explicitly instead of calling get without checking.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.optional",
+        "why": "null ignores the explicit fallback in orElse."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.lambda",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "skillIds": [
+      "IP_SK16_01_LAMBDA"
+    ],
+    "subtopicIds": [
+      "IP_ST16_01_LAMBDAS"
+    ],
+    "sourceIds": [
+      "ref-25062da4a98e2927"
+    ],
+    "evidenceIds": [
+      "ip-t16"
+    ],
+    "exerciseId": "ds.practice.ip-lambda",
+    "binding": "1:sha256:64bce396f0fdc97dbaba75bd1a37b829553e71d54f954cd1ceab98d803f1ec11:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "4%3 is 1, but the equality test compares that remainder with zero, producing false. Predicate.test returns boolean.",
+    "remember": "The functional-interface method signature constrains the lambda result.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.lambda",
+        "why": "1 reports the remainder rather than the Boolean predicate result."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.var",
+    "version": "1",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "skillIds": [
+      "IP_SK18_02_MODERN_USE"
+    ],
+    "subtopicIds": [
+      "IP_ST18_02_SWITCH_COMPARE"
+    ],
+    "sourceIds": [
+      "ref-5469f9c870013b80"
+    ],
+    "evidenceIds": [
+      "ip-t18"
+    ],
+    "exerciseId": "ds.practice.ip-var",
+    "binding": "1:sha256:5625917445466f3db20fb3b23c15d556cc6ab6afd56da78e0971b8c822cd5cf2:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The initializer infers int. var does not make n dynamically typed, so n/2 uses integer division and yields 3.",
+    "remember": "Local type inference still chooses one compile-time type.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.var",
+        "why": "3.5 treats var as a dynamically chosen real-number representation."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.record",
+    "version": "1",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "skillIds": [
+      "IP_SK18_01_MODERN_MODEL"
+    ],
+    "subtopicIds": [
+      "IP_ST18_01_MODERN_TYPES"
+    ],
+    "sourceIds": [
+      "ref-5469f9c870013b80"
+    ],
+    "evidenceIds": [
+      "ip-t18"
+    ],
+    "exerciseId": "ds.practice.ip-record",
+    "binding": "1:sha256:6f115b5e54c9e1bba231f3537e72804ad020867367279a0a7a7f74a97aa12ce0:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Generated record equality compares the declared components. Equal String contents and equal int values make these records equal, even though the instances differ. Reference components can still point to mutable objects; records are not automatically deeply immutable.",
+    "remember": "Choose record value semantics only when its component-based contract fits the model.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.record",
+        "why": "false substitutes reference identity for generated component equality."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.direct-run",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_01_THREAD_RUN"
+    ],
+    "subtopicIds": [
+      "IP_ST19_01_THREAD_LIFECYCLE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "exerciseId": "ds.practice.ip-direct-run",
+    "binding": "1:sha256:8f94ef9aa8687d1fa8da2cacec8bc9a5331d7618fbd1c290f3b13e939a5a80ff:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Calling run directly executes the Runnable on the calling thread. It completes before the following M print; start would create concurrent execution.",
+    "remember": "start schedules a worker; a direct run call is an ordinary method call.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.direct-run",
+        "why": "The nondeterministic answer assumes run starts a separate thread."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.joined-sync",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_02_SYNC"
+    ],
+    "subtopicIds": [
+      "IP_ST19_02_SHARED_STATE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "exerciseId": "ds.practice.ip-joined-sync",
+    "binding": "1:sha256:c379755e71229668702fac071ab6035826631a66c8609ca98bd236639a3e59a7:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Each add uses the same counter monitor, preventing lost updates. Both joins wait for completion and make completed worker actions visible; exactly 200 increments precede the read. This assumes normal completion, as declared by the task.",
+    "remember": "Protect the shared update and wait for every worker before reading the final result.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.joined-sync",
+        "why": "An unpredictable smaller value would require missing mutual exclusion or reading before completion."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.race",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_02_SYNC"
+    ],
+    "subtopicIds": [
+      "IP_ST19_02_SHARED_STATE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "exerciseId": "ds.practice.ip-race",
+    "binding": "1:sha256:d1ec58ff1569a6a7a6f36e8e3053b08c35fb53c7f7fabc37db6c90d79c30e880:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "Both workers can read 0 before either writes 1, losing one increment; serialized updates can produce 2. join waits for completion but does not make n++ atomic. No single observed run proves a scheduling guarantee.",
+    "remember": "Separate waiting for completion from protecting a read-modify-write operation.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.race",
+        "why": "The guaranteed-2 choice assumes join makes the earlier increments atomic."
+      }
+    ]
+  },
+  {
+    "id": "ds.feedback.ip.missing-join",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_01_THREAD_RUN"
+    ],
+    "subtopicIds": [
+      "IP_ST19_01_THREAD_LIFECYCLE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "exerciseId": "ds.practice.ip-missing-join",
+    "binding": "1:sha256:c2e99187e436ad08aae9e222f7bea2c2bd44d902d7a06f260758db9b27cdc223:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The main read may occur before the worker write, so 0 is possible. An execution observing the write can print 1. start does not wait for the worker to finish or establish a completed-worker result for this read.",
+    "remember": "Join a worker before relying on its completed result; do not infer an execution order from source-line order across threads.",
+    "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
+    "paths": [
+      {
+        "answer": "pattern",
+        "misconceptionId": "ds.misconception.ip.missing-join",
+        "why": "The guaranteed-1 choice assumes start blocks until the worker finishes."
+      }
+    ]
+  }
+]

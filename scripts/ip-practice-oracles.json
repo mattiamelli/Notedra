@@ -1,0 +1,200 @@
+[
+  {
+    "exerciseId": "ds.practice.ip-division",
+    "category": "RUN",
+    "expected": "6",
+    "reasoning": "Both operands of 7 / 2 are int, so division truncates toward zero to 3. Multiplication then produces 6."
+  },
+  {
+    "exerciseId": "ds.practice.ip-cast",
+    "category": "RUN",
+    "expected": "3.0",
+    "reasoning": "The parenthesized integer division produces 3. Casting that result gives 3.0; (double)7 / 2 would instead produce 3.5."
+  },
+  {
+    "exerciseId": "ds.practice.ip-overflow",
+    "category": "RUN",
+    "expected": "-2147483648",
+    "reasoning": "Java int arithmetic wraps modulo 2^32; adding one to 2147483647 yields the signed value -2147483648. This operation does not throw an overflow exception."
+  },
+  {
+    "exerciseId": "ds.practice.ip-narrow-assignment",
+    "category": "COMPILE_ERROR",
+    "expected": "Compile-time error",
+    "reasoning": "A double value cannot be implicitly assigned to int. An explicit narrowing cast would truncate, but no cast appears here."
+  },
+  {
+    "exerciseId": "ds.practice.ip-reference-type",
+    "category": "RUN",
+    "expected": "9",
+    "reasoning": "Assignment copies the reference value, so both variables refer to the same array. Writing through b changes the array read through a."
+  },
+  {
+    "exerciseId": "ds.practice.ip-method-return",
+    "category": "RUN",
+    "expected": "8",
+    "reasoning": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8."
+  },
+  {
+    "exerciseId": "ds.practice.ip-pass-value",
+    "category": "RUN",
+    "expected": "4:9",
+    "reasoning": "The method receives copies of 4 and the array reference. Assigning n or a changes only parameter variables; a[0]=9 mutates the shared array before the local reference is rebound."
+  },
+  {
+    "exerciseId": "ds.practice.ip-scope",
+    "category": "RUN",
+    "expected": "2:5",
+    "reasoning": "The local level shadows the field for the unqualified name. this.level explicitly reads the object field, which remains 5."
+  },
+  {
+    "exerciseId": "ds.practice.ip-constructor",
+    "category": "RUN",
+    "expected": "5",
+    "reasoning": "The parameter is 4. this.value selects the field and receives 5, replacing its default zero value during construction."
+  },
+  {
+    "exerciseId": "ds.practice.ip-static",
+    "category": "RUN",
+    "expected": "2:5:2",
+    "reasoning": "Each object has its own value field, while both constructors increment the single class-level count."
+  },
+  {
+    "exerciseId": "ds.practice.ip-array-bound",
+    "category": "RUNTIME_ERROR",
+    "expected": "ArrayIndexOutOfBoundsException",
+    "reasoning": "Indices 0 and 1 are valid. The loop also attempts index 2, causing ArrayIndexOutOfBoundsException before the print statement."
+  },
+  {
+    "exerciseId": "ds.practice.ip-alias",
+    "category": "RUN",
+    "expected": "6",
+    "reasoning": "a and b refer to the same array. b[1] becomes 4+2, so reading a[1] returns 6."
+  },
+  {
+    "exerciseId": "ds.practice.ip-recursion",
+    "category": "RUN",
+    "expected": "10",
+    "reasoning": "Calls descend to total(0)=0, then return 1,3,6,10 while adding each suspended n. The stated input is nonnegative."
+  },
+  {
+    "exerciseId": "ds.practice.ip-list-set",
+    "category": "RUN",
+    "expected": "3:2",
+    "reasoning": "The list keeps all three entries. The set contains two distinct Integer values, 2 and 5. No set iteration order is assumed."
+  },
+  {
+    "exerciseId": "ds.practice.ip-api-remove",
+    "category": "RUN",
+    "expected": "[7, 4]",
+    "reasoning": "Integer.valueOf(4) chooses remove(Object), removing the first equal value 4. remove(int) would interpret its argument as an index."
+  },
+  {
+    "exerciseId": "ds.practice.ip-constructor-chain",
+    "category": "RUN",
+    "expected": "PC",
+    "reasoning": "The child constructor implicitly calls super() first. Parent construction prints P before the child body prints C."
+  },
+  {
+    "exerciseId": "ds.practice.ip-dispatch",
+    "category": "RUN",
+    "expected": "child-object",
+    "reasoning": "At compile time the receiver type Parent exposes show(Object). At runtime the Child override of that selected signature runs. The Child-only show(String) overload is not selected through Parent."
+  },
+  {
+    "exerciseId": "ds.practice.ip-equality",
+    "category": "RUN",
+    "expected": "false:true:1",
+    "reasoning": "The two new expressions create different objects, so == is false. equals compares n, and equal hashes allow the HashSet to retain one logical value. equals(null) is false because null is not an instance of Key."
+  },
+  {
+    "exerciseId": "ds.practice.ip-hash-collision",
+    "category": "RUN",
+    "expected": "true:false",
+    "reasoning": "Both String hashes are 2112: 65*31+97 and 66*31+66. Their contents differ, so equals is false. Equal objects must hash equally, but the converse is not required."
+  },
+  {
+    "exerciseId": "ds.practice.ip-equals-overload",
+    "category": "RUN",
+    "expected": "true:false",
+    "reasoning": "The Key-typed call selects equals(Key). The Object-typed call uses equals(Object), which was not overridden, so it retains identity equality. @Override would expose this signature error."
+  },
+  {
+    "exerciseId": "ds.practice.ip-exception-flow",
+    "category": "RUN",
+    "expected": "CF",
+    "reasoning": "Parsing throws before A can print. The matching catch prints C, and finally prints F as the try/catch statement completes."
+  },
+  {
+    "exerciseId": "ds.practice.ip-checked-exception",
+    "category": "COMPILE_ERROR",
+    "expected": "Compile-time error",
+    "reasoning": "main neither catches nor declares IOException, so javac rejects the program. No runtime path occurs until the checked-exception obligation is satisfied."
+  },
+  {
+    "exerciseId": "ds.practice.ip-trailing-field",
+    "category": "RUN",
+    "expected": "3",
+    "reasoning": "The literal separator is escaped for the regex, and negative split limit retains the trailing empty string. The fields are oak, 2, and empty."
+  },
+  {
+    "exerciseId": "ds.practice.ip-generic-invariance",
+    "category": "COMPILE_ERROR",
+    "expected": "Compile-time error",
+    "reasoning": "List<Integer> is not a subtype of List<Number>. Otherwise a Double could be inserted through the Number view into an Integer list."
+  },
+  {
+    "exerciseId": "ds.practice.ip-stream",
+    "category": "RUN",
+    "expected": "[6, 12]",
+    "reasoning": "Filtering keeps 4,2; mapping produces 12,6; sorting produces 6,12; the terminal toList collects that order. Intermediate operations describe a lazy pipeline until the terminal operation requests results."
+  },
+  {
+    "exerciseId": "ds.practice.ip-optional",
+    "category": "RUN",
+    "expected": "7",
+    "reasoning": "No element passes the filter, so findFirst returns an empty Optional. orElse supplies the stated fallback 7. It does not return null."
+  },
+  {
+    "exerciseId": "ds.practice.ip-lambda",
+    "category": "RUN",
+    "expected": "false",
+    "reasoning": "4%3 is 1, but the equality test compares that remainder with zero, producing false. Predicate.test returns boolean."
+  },
+  {
+    "exerciseId": "ds.practice.ip-var",
+    "category": "RUN",
+    "expected": "3",
+    "reasoning": "The initializer infers int. var does not make n dynamically typed, so n/2 uses integer division and yields 3."
+  },
+  {
+    "exerciseId": "ds.practice.ip-record",
+    "category": "RUN",
+    "expected": "true",
+    "reasoning": "Generated record equality compares the declared components. Equal String contents and equal int values make these records equal, even though the instances differ. Reference components can still point to mutable objects; records are not automatically deeply immutable."
+  },
+  {
+    "exerciseId": "ds.practice.ip-direct-run",
+    "category": "RUN",
+    "expected": "WM",
+    "reasoning": "Calling run directly executes the Runnable on the calling thread. It completes before the following M print; start would create concurrent execution."
+  },
+  {
+    "exerciseId": "ds.practice.ip-joined-sync",
+    "category": "RUN",
+    "expected": "200",
+    "reasoning": "Each add uses the same counter monitor, preventing lost updates. Both joins wait for completion and make completed worker actions visible; exactly 200 increments precede the read. This assumes normal completion, as declared by the task."
+  },
+  {
+    "exerciseId": "ds.practice.ip-race",
+    "category": "REASONED_CONCURRENCY",
+    "expected": "Possible outcomes: 1,2",
+    "reasoning": "Both workers can read 0 before either writes 1, losing one increment; serialized updates can produce 2. join waits for completion but does not make n++ atomic. No single observed run proves a scheduling guarantee."
+  },
+  {
+    "exerciseId": "ds.practice.ip-missing-join",
+    "category": "REASONED_CONCURRENCY",
+    "expected": "Possible outcomes: 0,1",
+    "reasoning": "The main read may occur before the worker write, so 0 is possible. An execution observing the write can print 1. start does not wait for the worker to finish or establish a completed-worker result for this read."
+  }
+]

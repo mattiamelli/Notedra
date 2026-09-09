@@ -1,0 +1,764 @@
+[
+  {
+    "skillId": "IP_SK01_01_DECLARE_ASSIGN",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-narrow-assignment"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t01.numeric-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK01_02_REASON_TYPES",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-reference-type"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t01.numeric-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK01_03_EVAL_EXPRESSIONS",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-division"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t01.numeric-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK01_04_CAST_CONVERT",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-cast"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t01.numeric-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK01_05_NUMERIC_EDGE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-overflow"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t01.numeric-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK02_01_BOOLEAN_CONDITIONS",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t02.filtered-loop"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK02_02_BRANCH_TRACE",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t02.filtered-loop"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK02_03_LOOP_TRACE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-for-sum",
+      "ds.practice.ip-while-even"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t02.filtered-loop"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK02_04_LOOP_IMPLEMENT",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t02.filtered-loop"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.array-window"
+    ]
+  },
+  {
+    "skillId": "IP_SK03_01_DEFINE_METHOD",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t03.call-audit"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.array-window"
+    ]
+  },
+  {
+    "skillId": "IP_SK03_02_TRACE_CALLS",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-method-return"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t03.call-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK03_03_SCOPE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-scope"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t03.call-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK03_04_PASS_BY_VALUE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-pass-value"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t03.call-audit"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK04_01_MODEL_CLASS",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t04.quota-model"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK04_02_CONSTRUCTOR_STATE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-constructor"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t04.quota-model"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.alert-policies",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK04_03_INSTANCE_STATIC",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-static"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t04.quota-model"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK04_04_ENCAPSULATION",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t04.quota-model"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.capacity-shelf",
+      "ds.assignment.ip.grid-key"
+    ]
+  },
+  {
+    "skillId": "IP_SK05_01_ARRAY_TRAVERSE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-array-bound"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t05.filter-and-prefix"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.array-window"
+    ]
+  },
+  {
+    "skillId": "IP_SK05_02_ARRAY_PROCESS",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t05.filter-and-prefix"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.array-window",
+      "ds.assignment.ip.capacity-shelf"
+    ]
+  },
+  {
+    "skillId": "IP_SK05_03_ARRAY_ALIAS",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-alias"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t05.filter-and-prefix"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.array-window",
+      "ds.assignment.ip.capacity-shelf"
+    ]
+  },
+  {
+    "skillId": "IP_SK05_04_RECURSION",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-recursion"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t05.filter-and-prefix"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK06_01_CONTAINER_IMPL",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t06.set-invariant"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.capacity-shelf"
+    ]
+  },
+  {
+    "skillId": "IP_SK06_02_REP_INVARIANT",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t06.set-invariant"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.capacity-shelf"
+    ]
+  },
+  {
+    "skillId": "IP_SK06_03_COLLECTION_SEMANTICS",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-list-set"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t06.set-invariant"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.capacity-shelf",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK07_01_COMPOSE_MODEL",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t07.session-model"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.alert-policies",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index"
+    ]
+  },
+  {
+    "skillId": "IP_SK07_02_API_USE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-api-remove"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t07.session-model"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.capacity-shelf",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK08_01_WRITE_TESTS",
+    "category": "B",
+    "reason": "Structured test or debugging evidence can have several valid responses; compare requirements and reference reasoning without automatic scoring.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t08.tests-before-code"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.alert-policies",
+      "ds.assignment.ip.boundary-tests",
+      "ds.assignment.ip.capacity-shelf",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK08_02_TEST_BOUNDARIES",
+    "category": "B",
+    "reason": "Structured test or debugging evidence can have several valid responses; compare requirements and reference reasoning without automatic scoring.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t08.tests-before-code"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.batch-token",
+      "ds.assignment.ip.boundary-tests",
+      "ds.assignment.ip.capacity-shelf",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK08_03_TESTABILITY",
+    "category": "B",
+    "reason": "Structured test or debugging evidence can have several valid responses; compare requirements and reference reasoning without automatic scoring.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t08.tests-before-code"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.alert-policies",
+      "ds.assignment.ip.boundary-tests",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK09_01_DESIGN_HIERARCHY",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t09.hierarchy-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.alert-policies"
+    ]
+  },
+  {
+    "skillId": "IP_SK09_02_INHERITANCE_TRACE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-constructor-chain"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t09.hierarchy-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.alert-policies"
+    ]
+  },
+  {
+    "skillId": "IP_SK10_01_POLY_DESIGN",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t10.dispatch-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.alert-policies"
+    ]
+  },
+  {
+    "skillId": "IP_SK10_02_DISPATCH_TRACE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-dispatch"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t10.dispatch-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.alert-policies"
+    ]
+  },
+  {
+    "skillId": "IP_SK11_01_EQUALS_IMPL",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-equality"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t11.contract-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.grid-key",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK11_02_HASH_CONTRACT",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-hash-collision"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t11.contract-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.grid-key",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK11_03_EQUALITY_EDGE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-equals-overload"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t11.contract-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.grid-key",
+      "ds.assignment.ip.material-ledger"
+    ]
+  },
+  {
+    "skillId": "IP_SK12_01_CLASSIFY_FAILURE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-checked-exception"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t12.failure-boundary"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit"
+    ]
+  },
+  {
+    "skillId": "IP_SK12_02_EXCEPTION_FLOW",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-exception-flow"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t12.failure-boundary"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.batch-token",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK13_01_DEBUG_SYSTEMATIC",
+    "category": "B",
+    "reason": "Structured test or debugging evidence can have several valid responses; compare requirements and reference reasoning without automatic scoring.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t13.localize"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.boundary-tests"
+    ]
+  },
+  {
+    "skillId": "IP_SK14_01_REFACTOR",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t14.parse-review"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK14_02_STRING_PARSE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-trailing-field"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t14.parse-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.batch-token",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK14_03_GENERIC_REASON",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-generic-invariance"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t14.parse-review"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK15_01_PARSE_FILE",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t15.import-contract"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK15_02_WRITE_FILE",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t15.import-contract"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK15_03_RESOURCE_SAFETY",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t15.import-contract"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK16_01_LAMBDA",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-lambda"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t16.pipeline-design"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.label-stream"
+    ]
+  },
+  {
+    "skillId": "IP_SK16_02_STREAM_PIPE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-stream"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t16.pipeline-design"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.label-stream"
+    ]
+  },
+  {
+    "skillId": "IP_SK16_03_OPTIONAL",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-optional"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t16.pipeline-design"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.label-stream"
+    ]
+  },
+  {
+    "skillId": "IP_SK17_01_DOMAIN_MODEL",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t17.roof-design"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.alert-policies",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index"
+    ]
+  },
+  {
+    "skillId": "IP_SK17_02_DECOMPOSE",
+    "category": "C",
+    "reason": "Open implementation/design obligations require a rubric and component evidence. Similar text or syntax cannot establish correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t17.roof-design"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index"
+    ]
+  },
+  {
+    "skillId": "IP_SK18_01_MODERN_MODEL",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-record"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t18.choose-model"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.reading-export"
+    ]
+  },
+  {
+    "skillId": "IP_SK18_02_MODERN_USE",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-var"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t18.choose-model"
+    ],
+    "assignmentIds": []
+  },
+  {
+    "skillId": "IP_SK19_01_THREAD_RUN",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-direct-run",
+      "ds.practice.ip-missing-join"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t19.race-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.note-index"
+    ]
+  },
+  {
+    "skillId": "IP_SK19_02_SYNC",
+    "category": "A",
+    "reason": "Only the authored fixed prediction has a deterministic answer. Implementation/design alternatives remain unscored guided or coding self-check.",
+    "exerciseIds": [
+      "ds.practice.ip-joined-sync",
+      "ds.practice.ip-race"
+    ],
+    "guidedIds": [
+      "ds.guided.ip.t19.race-review"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.note-index"
+    ]
+  },
+  {
+    "skillId": "IP_SK20_01_EXAM_SYNTHESIS",
+    "category": "D",
+    "reason": "The coding workbench supports an integrated program and explicit component rubric/tests. It does not execute learner code or infer whole-course skill correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t20.integration-plan"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index"
+    ]
+  },
+  {
+    "skillId": "IP_SK20_02_EXAM_PRIORITIZE",
+    "category": "D",
+    "reason": "The coding workbench supports an integrated program and explicit component rubric/tests. It does not execute learner code or infer whole-course skill correctness.",
+    "exerciseIds": [],
+    "guidedIds": [
+      "ds.guided.ip.t20.integration-plan",
+      "ds.guided.ip.t20.prioritization"
+    ],
+    "assignmentIds": [
+      "ds.assignment.ip.air-audit",
+      "ds.assignment.ip.material-ledger",
+      "ds.assignment.ip.note-index"
+    ]
+  }
+]

@@ -1,0 +1,172 @@
+{
+  "id": "ds.assignment.ip.reading-export",
+  "version": "1",
+  "title": "Validate readings before exporting a file",
+  "minutes": 30,
+  "topicId": "IP_T15_IO_PARSING",
+  "relatedTopicIds": [
+    "IP_T15_IO_PARSING",
+    "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "IP_T12_EXCEPTIONS",
+    "IP_T18_MODERN_JAVA",
+    "IP_T08_TESTING"
+  ],
+  "skillIds": [
+    "IP_SK15_01_PARSE_FILE",
+    "IP_SK14_02_STRING_PARSE",
+    "IP_SK12_02_EXCEPTION_FLOW",
+    "IP_SK18_01_MODERN_MODEL",
+    "IP_SK15_03_RESOURCE_SAFETY",
+    "IP_SK15_02_WRITE_FILE",
+    "IP_SK08_01_WRITE_TESTS",
+    "IP_SK08_02_TEST_BOUNDARIES"
+  ],
+  "subtopicIds": [
+    "IP_ST15_01_FILE_READ_PARSE",
+    "IP_ST14_02_STRINGS",
+    "IP_ST12_02_EXCEPTION_FLOW",
+    "IP_ST18_01_MODERN_TYPES",
+    "IP_ST15_03_RESOURCE_SAFETY",
+    "IP_ST15_02_WRITE_OUTPUT",
+    "IP_ST08_01_UNIT_TESTS"
+  ],
+  "sourceIds": [
+    "ref-8c6eff249b686f68",
+    "ref-cc566cb126fff995",
+    "ref-517a35b992dabf40",
+    "ref-7034e3454bddea79",
+    "ref-5469f9c870013b80",
+    "ref-18b7de6140eaf782"
+  ],
+  "evidenceIds": [
+    "ip-t15",
+    "ip-t14",
+    "ip-t12",
+    "ip-t18",
+    "ip-t08"
+  ],
+  "instructions": [
+    "Implement an authored channel|value format: channel is 1\u20138 lowercase ASCII letters; value is a canonical integer from -50 through 150 (0 is allowed, no + sign or leading zeros). Every physical line is a record; blank lines are invalid.",
+    "parse(Reader) borrows its reader and must not close it. convert(input, output) owns its UTF-8 file resources and must close them. Parse the whole input successfully before opening the output so malformed input preserves any existing output.",
+    "Output one uppercase CHANNEL:value record per line, in input order, using a literal newline. Report malformed records with a checked ReadingFormatException carrying the 1-based line number.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "Reading.java",
+      "language": "java",
+      "content": "public record Reading(String channel, int value) {}\n"
+    },
+    {
+      "name": "ReadingFormatException.java",
+      "language": "java",
+      "content": "import java.io.IOException;\npublic final class ReadingFormatException extends IOException {\n    public ReadingFormatException(int line) { super(\"Invalid reading at line \" + line); }\n}\n"
+    },
+    {
+      "name": "ReadingExport.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.nio.file.Path;\nimport java.util.List;\npublic final class ReadingExport {\n    public static List<Reading> parse(Reader reader) throws IOException { throw new UnsupportedOperationException(); }\n    public static void convert(Path input, Path output) throws IOException { throw new UnsupportedOperationException(); }\n}\n"
+    },
+    {
+      "name": "readings.data",
+      "language": "text",
+      "content": "north|12\nsouth|-4\nnorth|0\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "parse",
+      "text": "Validate each line, construct Reading values and reject malformed syntax/range with its physical line number.",
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK18_01_MODERN_MODEL"
+      ]
+    },
+    {
+      "id": "ownership",
+      "text": "Keep borrowed readers open; close owned file readers/writers using try-with-resources and propagate I/O failures.",
+      "skillIds": [
+        "IP_SK15_03_RESOURCE_SAFETY"
+      ]
+    },
+    {
+      "id": "output",
+      "text": "Validate the whole input before opening output, then write exact uppercase CHANNEL:value lines in source order.",
+      "skillIds": [
+        "IP_SK15_02_WRITE_FILE"
+      ]
+    },
+    {
+      "id": "tests",
+      "text": "Test malformed second line, empty input, range boundaries, underlying I/O failure and preservation of a pre-existing destination on parse failure.",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-parse",
+      "text": "Review evidence for: Validate each line, construct Reading values and reject malformed syntax/range with its physical line number.",
+      "requirementIds": [
+        "parse"
+      ],
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK18_01_MODERN_MODEL"
+      ],
+      "testIds": [
+        "reading-output",
+        "reading-malformed"
+      ]
+    },
+    {
+      "id": "rubric-ownership",
+      "text": "Review evidence for: Keep borrowed readers open; close owned file readers/writers using try-with-resources and propagate I/O failures.",
+      "requirementIds": [
+        "ownership"
+      ],
+      "skillIds": [
+        "IP_SK15_03_RESOURCE_SAFETY"
+      ],
+      "testIds": [
+        "reading-resources"
+      ]
+    },
+    {
+      "id": "rubric-output",
+      "text": "Review evidence for: Validate the whole input before opening output, then write exact uppercase CHANNEL:value lines in source order.",
+      "requirementIds": [
+        "output"
+      ],
+      "skillIds": [
+        "IP_SK15_02_WRITE_FILE"
+      ],
+      "testIds": [
+        "reading-output"
+      ]
+    },
+    {
+      "id": "rubric-tests",
+      "text": "Review evidence for: Test malformed second line, empty input, range boundaries, underlying I/O failure and preservation of a pre-existing destination on parse failure.",
+      "requirementIds": [
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "testIds": [
+        "reading-malformed",
+        "reading-resources"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.reading-export"
+}

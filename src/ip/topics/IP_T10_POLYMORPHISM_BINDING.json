@@ -1,0 +1,242 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t10",
+    "version": "1",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t10.start",
+        "version": "1",
+        "topicId": "IP_T10_POLYMORPHISM_BINDING",
+        "skillIds": [
+          "IP_SK10_01_POLY_DESIGN",
+          "IP_SK10_02_DISPATCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST10_01_INTERFACE_POLY",
+          "IP_ST10_02_BINDING"
+        ],
+        "sourceIds": [
+          "ref-596f95ae721fb59e"
+        ],
+        "kind": "introduction",
+        "title": "Separate the interface from the chosen implementation",
+        "paragraphs": [
+          "Polymorphism lets a caller use a declared interface while different objects provide behavior. Java first checks types and chooses an applicable method signature at compile time; runtime dispatch then chooses an implementation of an overridden instance method."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t10.abstraction",
+        "version": "1",
+        "topicId": "IP_T10_POLYMORPHISM_BINDING",
+        "skillIds": [
+          "IP_SK10_01_POLY_DESIGN"
+        ],
+        "subtopicIds": [
+          "IP_ST10_01_INTERFACE_POLY"
+        ],
+        "sourceIds": [
+          "ref-596f95ae721fb59e"
+        ],
+        "kind": "concept",
+        "title": "A small interface captures a useful capability",
+        "paragraphs": [
+          "An interface such as Pricer with int price(int units) can let a calculator use interchangeable pricing rules. Each implementation must fulfill the declared contract. The calculator depends on the capability rather than a concrete implementation’s extra methods.",
+          "An abstract class can supply shared implementation and leave some behavior abstract; it cannot be instantiated directly. An interface expresses a type-level contract and can be implemented by unrelated classes. Choose the abstraction that fits the relationship and required state."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t10.static-dynamic",
+        "version": "1",
+        "topicId": "IP_T10_POLYMORPHISM_BINDING",
+        "skillIds": [
+          "IP_SK10_02_DISPATCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST10_02_BINDING"
+        ],
+        "sourceIds": [
+          "ref-596f95ae721fb59e"
+        ],
+        "kind": "concept",
+        "title": "Declared type controls what can be called",
+        "paragraphs": [
+          "If Pricer p refers to a particular implementation, the compiler permits operations exposed by Pricer. It does not permit a method available only on that implementation merely because the current object happens to have it. The object’s runtime class still determines which override of a permitted instance method executes.",
+          "A checked cast changes the type used to view a reference; it does not transform the object. Avoid adding casts to hide a poor interface or assuming an unchecked runtime type relationship."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t10.binding",
+        "version": "1",
+        "topicId": "IP_T10_POLYMORPHISM_BINDING",
+        "skillIds": [
+          "IP_SK10_02_DISPATCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST10_02_BINDING"
+        ],
+        "sourceIds": [
+          "ref-596f95ae721fb59e"
+        ],
+        "kind": "procedure",
+        "title": "Resolve overloads before overrides",
+        "paragraphs": [
+          "Overloading uses the same name with different parameter signatures. The compiler chooses an applicable overload using the declared receiver and argument types. Overriding supplies a subclass implementation of an inherited instance signature; the receiver’s runtime class decides which override runs.",
+          "Use a two-stage trace: first write the selected parameter signature, then find its most specific runtime override. A method with a different parameter type is an overload, even if its author intended an override; @Override exposes that mistake."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t10.trace",
+        "version": "1",
+        "topicId": "IP_T10_POLYMORPHISM_BINDING",
+        "skillIds": [
+          "IP_SK10_02_DISPATCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST10_02_BINDING"
+        ],
+        "sourceIds": [
+          "ref-596f95ae721fb59e"
+        ],
+        "kind": "worked_example",
+        "title": "The runtime object does not redo overload selection",
+        "paragraphs": [
+          "The first call chooses label(Object) because value is declared Object, then dispatches to Detailed’s override and prints detailed. The second call chooses label(String), inherited unchanged, and prints string. Both receiver references identify the same Detailed object."
+        ],
+        "code": "class Program {\n    static class Labeler {\n        String label(Object value) { return \"object\"; }\n        String label(String value) { return \"string\"; }\n    }\n    static class Detailed extends Labeler {\n        @Override String label(Object value) { return \"detailed\"; }\n    }\n    public static void main(String[] args) {\n        Labeler receiver = new Detailed();\n        Object value = \"hello\";\n        System.out.println(receiver.label(value));\n        System.out.println(receiver.label(\"hello\"));\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t10.recap",
+        "version": "1",
+        "topicId": "IP_T10_POLYMORPHISM_BINDING",
+        "skillIds": [
+          "IP_SK10_01_POLY_DESIGN",
+          "IP_SK10_02_DISPATCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST10_01_INTERFACE_POLY",
+          "IP_ST10_02_BINDING"
+        ],
+        "sourceIds": [
+          "ref-596f95ae721fb59e"
+        ],
+        "kind": "recap",
+        "title": "Trace a call in two stages",
+        "paragraphs": [
+          "Choose a coherent interface, respect its declared contract and resolve each call in order: compile-time signature, then runtime instance implementation. Do not treat overloaded methods, overridden methods, static methods and fields as one dispatch mechanism."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t10.interface",
+      "version": "1",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "skillIds": [
+        "IP_SK10_01_POLY_DESIGN"
+      ],
+      "subtopicIds": [
+        "IP_ST10_01_INTERFACE_POLY"
+      ],
+      "sourceIds": [
+        "ref-596f95ae721fb59e"
+      ],
+      "prompt": "What does programming through an interface let a caller vary?",
+      "answer": "The concrete implementing object can change while the caller continues to use the same declared capability and contract. Implementation-only methods are not automatically available through the interface reference."
+    },
+    {
+      "id": "ds.card.ip.t10.abstract",
+      "version": "1",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "skillIds": [
+        "IP_SK10_01_POLY_DESIGN"
+      ],
+      "subtopicIds": [
+        "IP_ST10_01_INTERFACE_POLY"
+      ],
+      "sourceIds": [
+        "ref-596f95ae721fb59e"
+      ],
+      "prompt": "Can an abstract class be instantiated directly?",
+      "answer": "No. A concrete subclass must implement its remaining abstract behavior. An abstract class may still contain constructors, fields and concrete methods used by its subclasses."
+    },
+    {
+      "id": "ds.card.ip.t10.overload",
+      "version": "1",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "skillIds": [
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "subtopicIds": [
+        "IP_ST10_02_BINDING"
+      ],
+      "sourceIds": [
+        "ref-596f95ae721fb59e"
+      ],
+      "prompt": "Which information chooses an overloaded method signature?",
+      "answer": "Compile-time types of the receiver and arguments, together with Java’s applicability rules. The runtime class of an argument does not rerun overload selection."
+    },
+    {
+      "id": "ds.card.ip.t10.override",
+      "version": "1",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "skillIds": [
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "subtopicIds": [
+        "IP_ST10_02_BINDING"
+      ],
+      "sourceIds": [
+        "ref-596f95ae721fb59e"
+      ],
+      "prompt": "After a signature is selected, what chooses an overridden instance implementation?",
+      "answer": "The receiver object’s runtime class. This does not change the already selected parameter signature and is not the rule used for fields or static methods."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t10.dispatch-review",
+      "version": "1",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "skillIds": [
+        "IP_SK10_01_POLY_DESIGN",
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "subtopicIds": [
+        "IP_ST10_01_INTERFACE_POLY",
+        "IP_ST10_02_BINDING"
+      ],
+      "sourceIds": [
+        "ref-596f95ae721fb59e"
+      ],
+      "title": "Explain an interchangeable formatter call",
+      "prompt": "Use the Labeler/Detailed example in the lesson. Write the selected signature and executing implementation for both calls. Then propose a one-method interface for a caller that only needs formatting, and explain why calling a Detailed-only helper through that interface should be rejected.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Compile-time signature for each call"
+        },
+        {
+          "id": "step2",
+          "label": "Runtime implementation and expected output"
+        },
+        {
+          "id": "step3",
+          "label": "Interface contract and available operations"
+        }
+      ],
+      "rubric": [
+        "Selects label(Object) for the Object-declared variable and label(String) for the String literal.",
+        "Dispatches only the Object signature to Detailed.",
+        "Distinguishes interface-visible operations from implementation-only helpers.",
+        "Gives a contract usable by more than one implementation without unsupported casts."
+      ],
+      "reference": [
+        "receiver.label(value) selects label(Object) and executes Detailed.label(Object), printing detailed. receiver.label(\"hello\") selects label(String) and uses the inherited method, printing string.",
+        "A possible interface is Formatter { String format(String input); } with a stated non-null input and textual-output contract. Implementations may differ while fulfilling that promise.",
+        "An implementation-only helper is unavailable through Formatter because it is not part of the declared interface. Other coherent interface designs are valid; no source-text match grades the design."
+      ]
+    }
+  ]
+}

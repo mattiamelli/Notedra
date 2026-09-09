@@ -1,0 +1,336 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t04",
+    "version": "1",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t04.start",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_01_MODEL_CLASS",
+          "IP_SK04_02_CONSTRUCTOR_STATE",
+          "IP_SK04_03_INSTANCE_STATIC",
+          "IP_SK04_04_ENCAPSULATION"
+        ],
+        "subtopicIds": [
+          "IP_ST04_01_CLASS_MODEL",
+          "IP_ST04_02_INSTANCE_STATIC"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "introduction",
+        "title": "Objects combine state and behavior",
+        "paragraphs": [
+          "A class describes the fields, construction rules and operations shared by its objects. An object is one particular instance with its own state. Model meaningful responsibilities rather than exposing every field for arbitrary changes."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t04.model",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_01_MODEL_CLASS"
+        ],
+        "subtopicIds": [
+          "IP_ST04_01_CLASS_MODEL"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "concept",
+        "title": "Select fields that represent the entity",
+        "paragraphs": [
+          "For a meter that accumulates units, an int units field describes each meter’s current quantity. A constructor establishes the initial quantity; add and units expose the required behavior. Do not store a second total that can be derived unless there is a reason and a rule keeping it consistent.",
+          "A reference variable can identify a meter, but it is not the meter’s entire state. Drawing separate object boxes makes it easier to distinguish independent instances from aliases."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t04.construct",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_02_CONSTRUCTOR_STATE"
+        ],
+        "subtopicIds": [
+          "IP_ST04_01_CLASS_MODEL"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "concept",
+        "title": "A constructor establishes usable state",
+        "paragraphs": [
+          "A constructor has the class name and no return type. new allocates an instance and invokes the selected constructor. Within an instance constructor or method, this refers to that receiver. In this.units = units, the left side is a field and the right side is the parameter.",
+          "Do not accidentally write units = units when both names resolve to the parameter: that assignment leaves the field unchanged. Define which starting states are valid before allowing the object to be used."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t04.static",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_03_INSTANCE_STATIC"
+        ],
+        "subtopicIds": [
+          "IP_ST04_02_INSTANCE_STATIC"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "concept",
+        "title": "One field per instance or one field per class",
+        "paragraphs": [
+          "An instance field belongs to each object. A static field belongs to the class and is shared by all instances of that class. A static method has no implicit receiver and cannot directly use an instance field without an object reference.",
+          "Use ClassName.member for static access to make the ownership visible. Choosing static merely to make a compiler error disappear can accidentally combine the state of independent objects."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t04.encapsulation",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_04_ENCAPSULATION"
+        ],
+        "subtopicIds": [
+          "IP_ST04_02_INSTANCE_STATIC"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "important_rule",
+        "title": "Control changes through a coherent interface",
+        "paragraphs": [
+          "Private fields let the class enforce its own rules. Expose operations that preserve valid state; a public setter for every field is not automatically good encapsulation. If quantities must remain non-negative, every construction and update path must respect that rule.",
+          "Returning a mutable internal array or collection exposes a second mutation path. Choose whether callers may mutate it, need a copy, or need a narrower operation; document that choice instead of assuming private alone prevents all changes."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t04.trace",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_01_MODEL_CLASS",
+          "IP_SK04_02_CONSTRUCTOR_STATE",
+          "IP_SK04_03_INSTANCE_STATIC",
+          "IP_SK04_04_ENCAPSULATION"
+        ],
+        "subtopicIds": [
+          "IP_ST04_01_CLASS_MODEL",
+          "IP_ST04_02_INSTANCE_STATIC"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "worked_example",
+        "title": "Two objects, one alias, one class counter",
+        "paragraphs": [
+          "The example deliberately allows arbitrary integer quantities so the arithmetic is easy to trace. It prints 13 20 2. first and alias share one object; second has separate instance state. created is shared class state, incremented once by each constructor call."
+        ],
+        "code": "class Program {\n    static class Meter {\n        private int units;\n        private static int created;\n        Meter(int units) { this.units = units; created++; }\n        void add(int extra) { units += extra; }\n        int units() { return units; }\n        static int created() { return created; }\n    }\n    public static void main(String[] args) {\n        Meter first = new Meter(10);\n        Meter second = new Meter(20);\n        Meter alias = first;\n        alias.add(3);\n        System.out.println(first.units() + \" \" + second.units()\n                + \" \" + Meter.created());\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t04.recap",
+        "version": "1",
+        "topicId": "IP_T04_CLASSES_OBJECTS",
+        "skillIds": [
+          "IP_SK04_01_MODEL_CLASS",
+          "IP_SK04_02_CONSTRUCTOR_STATE",
+          "IP_SK04_03_INSTANCE_STATIC",
+          "IP_SK04_04_ENCAPSULATION"
+        ],
+        "subtopicIds": [
+          "IP_ST04_01_CLASS_MODEL",
+          "IP_ST04_02_INSTANCE_STATIC"
+        ],
+        "sourceIds": [
+          "ref-6faf9172baf75824"
+        ],
+        "kind": "recap",
+        "title": "Check construction and every state-changing operation",
+        "paragraphs": [
+          "Name the entity, state its invariant, choose fields and constructor parameters, and decide which state is per-object. Verify that the public interface preserves the invariant and that reference sharing is intentional."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t04.domain-fields",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_01_MODEL_CLASS"
+      ],
+      "subtopicIds": [
+        "IP_ST04_01_CLASS_MODEL"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "When modeling an entity, should every word in the specification become a field?",
+      "answer": "No. Choose state the object must represent and responsibilities it must fulfill. Derived values need not be stored unless a justified design keeps them consistent."
+    },
+    {
+      "id": "ds.card.ip.t04.object-alias",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_01_MODEL_CLASS"
+      ],
+      "subtopicIds": [
+        "IP_ST04_01_CLASS_MODEL"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "Do two reference variables always mean two different objects?",
+      "answer": "No. They can contain references to the same object. Count constructor calls and trace reference assignments to distinguish instances from aliases."
+    },
+    {
+      "id": "ds.card.ip.t04.constructor",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_02_CONSTRUCTOR_STATE"
+      ],
+      "subtopicIds": [
+        "IP_ST04_01_CLASS_MODEL"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "How does a constructor differ from a method returning the class type?",
+      "answer": "A constructor has the class name and no return type and is invoked during construction. A method has a declared return type (or void) and is called as an operation."
+    },
+    {
+      "id": "ds.card.ip.t04.this-field",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_02_CONSTRUCTOR_STATE"
+      ],
+      "subtopicIds": [
+        "IP_ST04_01_CLASS_MODEL"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "Why can a constructor containing units = units leave the field at zero?",
+      "answer": "If units names the parameter on both sides, it assigns that local variable to itself. this.units = units assigns the object field instead."
+    },
+    {
+      "id": "ds.card.ip.t04.static-count",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_03_INSTANCE_STATIC"
+      ],
+      "subtopicIds": [
+        "IP_ST04_02_INSTANCE_STATIC"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "Two objects each have units, while the class has static created. How many separate values exist?",
+      "answer": "Two instance units values, one for each object, and one shared created value for the class."
+    },
+    {
+      "id": "ds.card.ip.t04.static-method",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_03_INSTANCE_STATIC"
+      ],
+      "subtopicIds": [
+        "IP_ST04_02_INSTANCE_STATIC"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "Why can a static method not use this?",
+      "answer": "It is invoked without an implicit receiver object. It may use an explicitly provided object reference, but there is no current instance denoted by this."
+    },
+    {
+      "id": "ds.card.ip.t04.private-rule",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_04_ENCAPSULATION"
+      ],
+      "subtopicIds": [
+        "IP_ST04_02_INSTANCE_STATIC"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "Why is a private field alone not enough to guarantee an invariant?",
+      "answer": "Constructors, methods and any exposed mutable references can still produce invalid state. All permitted mutation paths must preserve the rule."
+    },
+    {
+      "id": "ds.card.ip.t04.interface",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_04_ENCAPSULATION"
+      ],
+      "subtopicIds": [
+        "IP_ST04_02_INSTANCE_STATIC"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "prompt": "Is adding a public setter for every field always good encapsulation?",
+      "answer": "No. Prefer operations that express valid changes and preserve the object’s rules. Unrestricted setters can expose inconsistent intermediate states."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t04.quota-model",
+      "version": "1",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "skillIds": [
+        "IP_SK04_01_MODEL_CLASS",
+        "IP_SK04_02_CONSTRUCTOR_STATE",
+        "IP_SK04_03_INSTANCE_STATIC",
+        "IP_SK04_04_ENCAPSULATION"
+      ],
+      "subtopicIds": [
+        "IP_ST04_01_CLASS_MODEL",
+        "IP_ST04_02_INSTANCE_STATIC"
+      ],
+      "sourceIds": [
+        "ref-6faf9172baf75824"
+      ],
+      "title": "Model a bounded resource allowance",
+      "prompt": "Design an Allowance object with a non-negative limit and remaining amount. Construction begins with remaining equal to limit. A request(int amount) returns false and leaves state unchanged if amount is negative or exceeds remaining; otherwise it deducts the amount and returns true. Explain whether remaining should be static.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Fields, constructor contract and this bindings"
+        },
+        {
+          "id": "step2",
+          "label": "Request algorithm and invariant"
+        },
+        {
+          "id": "step3",
+          "label": "Two-object example and public interface"
+        }
+      ],
+      "rubric": [
+        "Uses per-instance state with 0 ≤ remaining ≤ limit.",
+        "Checks rejected requests before mutation.",
+        "Distinguishes constructor parameters from fields.",
+        "Uses a query and coherent request operation rather than unrestricted mutation."
+      ],
+      "reference": [
+        "One design stores private final int limit and private int remaining. Construction accepts only a non-negative limit; describe how invalid construction is rejected. Set this.limit = limit and this.remaining = limit.",
+        "request checks amount < 0 or amount > remaining before subtracting. Distinct Allowance objects retain independent remaining values, so that field is not static.",
+        "With limit 8, requesting 3 succeeds and leaves5; requesting6 fails and leaves5. Other designs meeting the same contract are valid."
+      ]
+    }
+  ]
+}

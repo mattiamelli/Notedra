@@ -1,0 +1,224 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t19",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t19.model",
+        "version": "1",
+        "topicId": "IP_T19_THREADS_CONCURRENCY",
+        "skillIds": [
+          "IP_SK19_01_THREAD_RUN",
+          "IP_SK19_02_SYNC"
+        ],
+        "subtopicIds": [
+          "IP_ST19_01_THREAD_LIFECYCLE",
+          "IP_ST19_02_SHARED_STATE"
+        ],
+        "sourceIds": [
+          "ref-ea0f1a1b1d127fd4"
+        ],
+        "kind": "introduction",
+        "title": "Concurrency changes what a trace can promise",
+        "paragraphs": [
+          "Thread code shares a process but does not have one guaranteed interleaving. Distinguish creating work, starting a thread, waiting for completion and protecting shared state. Each solves a different problem."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t19.lifecycle",
+        "version": "1",
+        "topicId": "IP_T19_THREADS_CONCURRENCY",
+        "skillIds": [
+          "IP_SK19_01_THREAD_RUN"
+        ],
+        "subtopicIds": [
+          "IP_ST19_01_THREAD_LIFECYCLE"
+        ],
+        "sourceIds": [
+          "ref-ea0f1a1b1d127fd4"
+        ],
+        "kind": "concept",
+        "title": "Runnable describes work; start launches a thread",
+        "paragraphs": [
+          "Runnable defines run(). Calling run() directly is an ordinary method call on the current thread; it does not create a new thread. Calling start() on a new Thread schedules its run method on a separate thread. Do not call start twice on the same Thread object.",
+          "join() waits for that thread to terminate. After successful join completion, the joining thread can observe that worker’s completed actions. It does not choose the worker’s order relative to other active threads. The required join mechanism is corroborated by the Java API; no exact lecture slide is claimed for it.",
+          "If waiting is interrupted, handle or propagate InterruptedException according to the method contract. Do not continue to announce a completed result as though join succeeded. Current lecture materials also show platform/virtual thread factories; the basic examples use the familiar Thread constructor."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t19.synchronized",
+        "version": "1",
+        "topicId": "IP_T19_THREADS_CONCURRENCY",
+        "skillIds": [
+          "IP_SK19_02_SYNC"
+        ],
+        "subtopicIds": [
+          "IP_ST19_02_SHARED_STATE"
+        ],
+        "sourceIds": [
+          "ref-ea0f1a1b1d127fd4"
+        ],
+        "kind": "code_example",
+        "title": "Protect a complete shared update and then wait",
+        "paragraphs": [
+          "The two workers below each increment a shared counter four times. Every increment uses the same counter monitor. After both joins complete successfully, value() returns 8. Synchronization prevents lost compound updates; joins ensure the work has completed before reporting.",
+          "Synchronizing on unrelated lock objects does not protect one shared invariant. join alone does not make count++ atomic. A data race may not fail on a particular test run, so repeated successful runs do not prove a missing lock safe."
+        ],
+        "code": "class Counter {\n    private int count;\n    synchronized void increment() { count++; }\n    synchronized int value() { return count; }\n}\nCounter counter = new Counter();\nRunnable work = () -> {\n    for (int i = 0; i < 4; i++) counter.increment();\n};\nThread first = new Thread(work);\nThread second = new Thread(work);\nfirst.start();\nsecond.start();\nfirst.join();\nsecond.join();\nSystem.out.println(counter.value());"
+      },
+      {
+        "id": "ds.block.ip.t19.race",
+        "version": "1",
+        "topicId": "IP_T19_THREADS_CONCURRENCY",
+        "skillIds": [
+          "IP_SK19_02_SYNC"
+        ],
+        "subtopicIds": [
+          "IP_ST19_02_SHARED_STATE"
+        ],
+        "sourceIds": [
+          "ref-ea0f1a1b1d127fd4"
+        ],
+        "kind": "worked_example",
+        "title": "A possible interleaving is not a guaranteed result",
+        "paragraphs": [
+          "Consider two unsynchronized workers each doing count++ once, starting at zero. One possible interleaving is read 0 by A, read 0 by B, A writes 1, B writes 1: an update is lost. Another serial interleaving reaches 2. This demonstrates possible outcomes, not one promised scheduling order.",
+          "For a simple read/add/write interleaving model, make each read and write step explicit and retain each worker’s own local temporary. This teaching model is not an exhaustive specification of Java’s memory model. A real data race has no general safety guarantee; protect the state instead of trying to predict one lucky execution.",
+          "A thread can wait forever if locks are acquired in conflicting orders. Keep critical sections small and use a consistent lock strategy. No sleep duration, scheduler luck or console output order substitutes for a required coordination condition."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t19.recap",
+        "version": "1",
+        "topicId": "IP_T19_THREADS_CONCURRENCY",
+        "skillIds": [
+          "IP_SK19_01_THREAD_RUN",
+          "IP_SK19_02_SYNC"
+        ],
+        "subtopicIds": [
+          "IP_ST19_01_THREAD_LIFECYCLE",
+          "IP_ST19_02_SHARED_STATE"
+        ],
+        "sourceIds": [
+          "ref-ea0f1a1b1d127fd4"
+        ],
+        "kind": "recap",
+        "title": "Separate launch, completion and atomicity",
+        "paragraphs": [
+          "Use start to launch, join to await completion, and a common synchronization strategy to protect shared invariants. Ask about possible interleavings for a race; report unique results only when the stated coordination guarantees them."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t19.start-run",
+      "version": "1",
+      "topicId": "IP_T19_THREADS_CONCURRENCY",
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN"
+      ],
+      "subtopicIds": [
+        "IP_ST19_01_THREAD_LIFECYCLE"
+      ],
+      "sourceIds": [
+        "ref-ea0f1a1b1d127fd4"
+      ],
+      "prompt": "What is the difference between task.run() and new Thread(task).start()?",
+      "answer": "run is an ordinary call on the current thread. start launches work on a new thread; its scheduling relative to other active threads is not fixed."
+    },
+    {
+      "id": "ds.card.ip.t19.join",
+      "version": "1",
+      "topicId": "IP_T19_THREADS_CONCURRENCY",
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN"
+      ],
+      "subtopicIds": [
+        "IP_ST19_01_THREAD_LIFECYCLE"
+      ],
+      "sourceIds": [
+        "ref-ea0f1a1b1d127fd4"
+      ],
+      "prompt": "Does calling join make a worker’s compound shared updates atomic?",
+      "answer": "No. join waits for termination and makes completed actions observable after successful completion. Shared compound updates still need a suitable common synchronization strategy."
+    },
+    {
+      "id": "ds.card.ip.t19.lost-update",
+      "version": "1",
+      "topicId": "IP_T19_THREADS_CONCURRENCY",
+      "skillIds": [
+        "IP_SK19_02_SYNC"
+      ],
+      "subtopicIds": [
+        "IP_ST19_02_SHARED_STATE"
+      ],
+      "sourceIds": [
+        "ref-ea0f1a1b1d127fd4"
+      ],
+      "prompt": "How can two count++ operations starting from zero end with a lost update?",
+      "answer": "Both can read zero before either writes, then each writes one. Reading, adding and writing form a compound update; it is not atomic merely because it occupies one source line."
+    },
+    {
+      "id": "ds.card.ip.t19.same-monitor",
+      "version": "1",
+      "topicId": "IP_T19_THREADS_CONCURRENCY",
+      "skillIds": [
+        "IP_SK19_02_SYNC"
+      ],
+      "subtopicIds": [
+        "IP_ST19_02_SHARED_STATE"
+      ],
+      "sourceIds": [
+        "ref-ea0f1a1b1d127fd4"
+      ],
+      "prompt": "Why can two synchronized blocks still fail to protect the same counter?",
+      "answer": "If they lock different objects, both can run at once. All conflicting accesses must follow the same strategy for the shared invariant; successful sample runs do not prove safety."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t19.race-review",
+      "version": "1",
+      "topicId": "IP_T19_THREADS_CONCURRENCY",
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN",
+        "IP_SK19_02_SYNC"
+      ],
+      "subtopicIds": [
+        "IP_ST19_01_THREAD_LIFECYCLE",
+        "IP_ST19_02_SHARED_STATE"
+      ],
+      "sourceIds": [
+        "ref-ea0f1a1b1d127fd4"
+      ],
+      "title": "Review a counter trace without guessing the scheduler",
+      "prompt": "Two workers share count=0. Each performs one unsynchronized increment. A proposed explanation says “A starts first, so the result is always 2.” Give a lost-update interleaving, explain the invalid scheduling claim, and state what would guarantee the final count after completion.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Possible read/add/write interleaving"
+        },
+        {
+          "id": "step2",
+          "label": "What start and join do and do not guarantee"
+        },
+        {
+          "id": "step3",
+          "label": "Synchronization repair and completion observation"
+        }
+      ],
+      "rubric": [
+        "The trace keeps separate local reads for A and B and can demonstrate a final 1.",
+        "Starting first is not claimed to imply finishing first.",
+        "A repair protects both increments with the same monitor and waits for both workers before reporting.",
+        "A concrete interleaving is not presented as an exhaustive Java memory-model proof."
+      ],
+      "reference": [
+        "A reads0; B reads0; A computes/writes1; B computes/writes1. A serial execution can produce2, so the program cannot promise one schedule-derived result.",
+        "Use one shared synchronized increment operation and successful joins before reading the final value. Then two completed increments produce2. No score or arbitrary Java execution is attached to this explanation."
+      ]
+    }
+  ]
+}

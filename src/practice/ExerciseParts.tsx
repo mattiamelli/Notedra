@@ -13,13 +13,13 @@ export function ExerciseSource({exercise}: {exercise: Exercise}) {
     <details className="ds-practice-source"><summary>Source and scope</summary><p>{exercise.source.filename} · {exercise.source.documentId}</p><p>{exercise.source.locator} — whole-document reference, not an exact supporting slide. Original PDF is not included.</p><code>{exercise.skillId}</code><p>No official difficulty or examination weighting is claimed.</p></details></>;
 }
 export function ExercisePrompt({exercise}: {exercise: Exercise}) {
-  return <div className="ds-practice-prompt"><h2>{exercise.prompt}</h2>{exercise.task.kind === 'java-output' && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}<p id="answer-rules">{exercise.rules}</p></div>;
+  return <div className="ds-practice-prompt"><h2>{exercise.prompt}</h2>{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}<p id="answer-rules">{exercise.rules}</p></div>;
 }
 export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: Exercise; answer: Answer; onChange: (answer: Answer)=>void; disabled: boolean}) {
   const task=exercise.task;
   if(task.kind==='enrichment-exact'||task.kind==='radix'||task.kind==='co-exact'||task.kind==='rl-exact') return <label className="ds-practice-answer">Your answer<input aria-describedby="answer-rules" autoComplete="off" spellCheck={false} maxLength={16000} disabled={disabled} value={answer.kind==='text'?answer.value:''} onChange={event=>onChange({kind:'text',value:event.target.value})}/></label>;
   const selected = answer.kind==='choice'?answer.value:[];
-  if(task.kind==='java-output') return <fieldset disabled={disabled} className="ds-output-options" aria-describedby="answer-rules"><legend>Your predicted output</legend>{task.options.map(option=><label key={option.id}><input type="radio" name="java-output" value={option.id} checked={selected.includes(option.id)} onChange={()=>onChange({kind:'choice',value:[option.id]})}/><code>{option.output}</code></label>)}</fieldset>;
+  if((task.kind==='java-output'||task.kind==='ip-fixed')) return <fieldset disabled={disabled} className="ds-output-options" aria-describedby="answer-rules"><legend>Your predicted output</legend>{task.options.map(option=><label key={option.id}><input type="radio" name="java-output" value={option.id} checked={selected.includes(option.id)} onChange={()=>onChange({kind:'choice',value:[option.id]})}/><code>{option.output}</code></label>)}</fieldset>;
   return <table className="ds-truth-table"><caption>Truth table — select the formula’s value for every row</caption><thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">Formula value</th></tr></thead><tbody>{task.rows.map(row=><tr key={row.id}><td>{row.p?'T':'F'}</td><td>{row.q?'T':'F'}</td><td><select aria-label={`Result when p is ${row.p?'T':'F'} and q is ${row.q?'T':'F'}`} aria-describedby="answer-rules" disabled={disabled} value={selected.find(value=>value.startsWith(row.id+':'))?.split(':')[1]??''} onChange={event=>onChange({kind:'choice',value:[...selected.filter(value=>!value.startsWith(row.id+':')), ...(event.target.value?[`${row.id}:${event.target.value}`]:[])]})}><option value="">Choose…</option><option value="T">True (T)</option><option value="F">False (F)</option></select></td></tr>)}</tbody></table>;
 }
 export function Feedback({result,exercise,answer}: {result: GradeResult; exercise: Exercise; answer:Answer}) {
@@ -27,7 +27,7 @@ export function Feedback({result,exercise,answer}: {result: GradeResult; exercis
   const explanation=explainAnswer(exercise,answer,result)!;
   function display(value:Answer):string {
     if(!Array.isArray(value.value))return value.value;
-    if(exercise.task.kind==='java-output')return value.value.map(id=>exercise.task.kind==='java-output'?exercise.task.options.find(option=>option.id===id)?.output??id:id).join('\n');
+    if((exercise.task.kind==='java-output'||exercise.task.kind==='ip-fixed'))return value.value.map(id=>(exercise.task.kind==='java-output'||exercise.task.kind==='ip-fixed')?exercise.task.options.find(option=>option.id===id)?.output??id:id).join('\n');
     if(exercise.task.kind==='truth')return exercise.task.rows.map(row=>`${row.p?'T':'F'}, ${row.q?'T':'F'} → ${value.value.includes(`${row.id}:T`)?'T':'F'}`).join('\n');
     return value.value.join(', ');
   }

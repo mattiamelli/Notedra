@@ -1,17 +1,17 @@
 {
   "initialChunks": [
-    "assets/index-B2R5sCDB.js"
+    "assets/index-D1XyHEJo.js"
   ],
   "initialJSBytes": 475077,
-  "initialJSGzipBytes": 125104,
+  "initialJSGzipBytes": 125106,
   "authoredCOLazyBytes": 104952,
-  "totalAssetBytes": 984932,
-  "totalAssetGzipBytes": 283837,
+  "totalAssetBytes": 984952,
+  "totalAssetGzipBytes": 283866,
   "chunks": [
     {
-      "file": "assets/index-B2R5sCDB.js",
+      "file": "assets/index-D1XyHEJo.js",
       "bytes": 475077,
-      "gzipBytes": 125104,
+      "gzipBytes": 125106,
       "entry": true,
       "imports": [],
       "dynamicImports": [
@@ -23,8 +23,8 @@
         "assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js",
         "assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js",
         "assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js",
-        "assets/TopicContent-CwvfKFzz.js",
-        "assets/IntroTopicContent-BrtUq6C3.js",
+        "assets/TopicContent-CipTHw3m.js",
+        "assets/IntroTopicContent-D7p-WpIY.js",
         "assets/CO_T01_HISTORY-D8bfk0pi.js",
         "assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js",
         "assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js",
@@ -38,13 +38,13 @@
         "assets/CO_T12_PIPELINE-BFgDPOAQ.js",
         "assets/CO_T13_PARALLELISM-kuJ2Wedj.js",
         "assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js",
-        "assets/TopicContent-M6429l9t.js",
-        "assets/TopicEnrichment-CW_26P6A.js",
-        "assets/TopicPractice-BjlFeRcb.js",
-        "assets/PracticePage-BwoS0x09.js",
-        "assets/ExercisePage-DQm4Zw9O.js",
-        "assets/AttemptPage-DG1O3eaN.js",
-        "assets/AssemblyWorkbench-BF7RM2a5.js"
+        "assets/TopicContent-kdeg3IMd.js",
+        "assets/TopicEnrichment-B_4u05n4.js",
+        "assets/TopicPractice-BGTB76eh.js",
+        "assets/PracticePage-rfJpl1Nn.js",
+        "assets/ExercisePage-Bo56J3S1.js",
+        "assets/AttemptPage-CgLwDRsM.js",
+        "assets/AssemblyWorkbench-1UHp3GKW.js"
       ],
       "modules": [
         "\u0000vite/modulepreload-polyfill.js",
@@ -112,13 +112,13 @@
       ]
     },
     {
-      "file": "assets/PracticePage-BwoS0x09.js",
+      "file": "assets/PracticePage-rfJpl1Nn.js",
       "bytes": 3165,
-      "gzipBytes": 1403,
+      "gzipBytes": 1400,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/service-Bk2oBlYx.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/service-BdaDZj-U.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -126,15 +126,15 @@
       ]
     },
     {
-      "file": "assets/ExercisePage-DQm4Zw9O.js",
+      "file": "assets/ExercisePage-Bo56J3S1.js",
       "bytes": 1605,
-      "gzipBytes": 861,
+      "gzipBytes": 863,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/service-Bk2oBlYx.js",
-        "assets/ExerciseParts-vFXOnRHS.js",
-        "assets/enrichment-BFLar0tr.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/service-BdaDZj-U.js",
+        "assets/ExerciseParts-4xxurIpK.js",
+        "assets/enrichment-Gn-Q7D8x.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -142,15 +142,15 @@
       ]
     },
     {
-      "file": "assets/AttemptPage-DG1O3eaN.js",
+      "file": "assets/AttemptPage-CgLwDRsM.js",
       "bytes": 4773,
-      "gzipBytes": 1974,
+      "gzipBytes": 1977,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/service-Bk2oBlYx.js",
-        "assets/ExerciseParts-vFXOnRHS.js",
-        "assets/enrichment-BFLar0tr.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/service-BdaDZj-U.js",
+        "assets/ExerciseParts-4xxurIpK.js",
+        "assets/enrichment-Gn-Q7D8x.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -158,14 +158,14 @@
       ]
     },
     {
-      "file": "assets/ExerciseParts-vFXOnRHS.js",
+      "file": "assets/ExerciseParts-4xxurIpK.js",
       "bytes": 27744,
-      "gzipBytes": 8724,
+      "gzipBytes": 8727,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/service-Bk2oBlYx.js",
-        "assets/enrichment-BFLar0tr.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/service-BdaDZj-U.js",
+        "assets/enrichment-Gn-Q7D8x.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -176,12 +176,12 @@
       ]
     },
     {
-      "file": "assets/AssemblyWorkbench-BF7RM2a5.js",
+      "file": "assets/AssemblyWorkbench-1UHp3GKW.js",
       "bytes": 29502,
-      "gzipBytes": 10203,
+      "gzipBytes": 10204,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -207,13 +207,13 @@
       ]
     },
     {
-      "file": "assets/TopicEnrichment-CW_26P6A.js",
+      "file": "assets/TopicEnrichment-B_4u05n4.js",
       "bytes": 14969,
-      "gzipBytes": 4911,
+      "gzipBytes": 4912,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/enrichment-BFLar0tr.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/enrichment-Gn-Q7D8x.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -224,12 +224,12 @@
       ]
     },
     {
-      "file": "assets/enrichment-BFLar0tr.js",
+      "file": "assets/enrichment-Gn-Q7D8x.js",
       "bytes": 3329,
-      "gzipBytes": 1461,
+      "gzipBytes": 1462,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -239,13 +239,13 @@
       ]
     },
     {
-      "file": "assets/TopicPractice-BjlFeRcb.js",
+      "file": "assets/TopicPractice-BGTB76eh.js",
       "bytes": 1676,
-      "gzipBytes": 818,
+      "gzipBytes": 819,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/service-Bk2oBlYx.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/service-BdaDZj-U.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -253,12 +253,12 @@
       ]
     },
     {
-      "file": "assets/service-Bk2oBlYx.js",
+      "file": "assets/service-BdaDZj-U.js",
       "bytes": 92670,
-      "gzipBytes": 23422,
+      "gzipBytes": 23423,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -373,13 +373,13 @@
       ]
     },
     {
-      "file": "assets/IntroTopicContent-BrtUq6C3.js",
+      "file": "assets/IntroTopicContent-D7p-WpIY.js",
       "bytes": 2927,
-      "gzipBytes": 1335,
+      "gzipBytes": 1334,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
-        "assets/TopicContent-CwvfKFzz.js"
+        "assets/index-D1XyHEJo.js",
+        "assets/TopicContent-CipTHw3m.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -388,16 +388,16 @@
       ]
     },
     {
-      "file": "assets/TopicContent-CwvfKFzz.js",
+      "file": "assets/TopicContent-CipTHw3m.js",
       "bytes": 7543,
-      "gzipBytes": 3261,
+      "gzipBytes": 3264,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [
-        "assets/TopicPractice-BjlFeRcb.js",
-        "assets/Workspace-Bfk3Az8k.js"
+        "assets/TopicPractice-BGTB76eh.js",
+        "assets/Workspace-DY6tjiAP.js"
       ],
       "modules": [
         "src/rl/GuidedPractice.tsx",
@@ -549,16 +549,16 @@
       ]
     },
     {
-      "file": "assets/TopicContent-M6429l9t.js",
+      "file": "assets/TopicContent-kdeg3IMd.js",
       "bytes": 5946,
-      "gzipBytes": 2672,
+      "gzipBytes": 2675,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [
-        "assets/TopicPractice-BjlFeRcb.js",
-        "assets/Workspace-DwUHBFRO.js"
+        "assets/TopicPractice-BGTB76eh.js",
+        "assets/Workspace-CWXkw2Xj.js"
       ],
       "modules": [
         "src/co/tools.json",
@@ -566,32 +566,32 @@
       ]
     },
     {
-      "file": "assets/Workspace-Bfk3Az8k.js",
+      "file": "assets/Workspace-DY6tjiAP.js",
       "bytes": 2025,
-      "gzipBytes": 837,
+      "gzipBytes": 840,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [
-        "assets/PropositionWorkspace-SzPOit4A.js",
-        "assets/FolWorkspace-C9IRBJf6.js",
-        "assets/RecurrenceWorkspace-BAmfSmNt.js",
-        "assets/TreeGraphWorkspace-K712dzHH.js",
-        "assets/SetsWorkspace-Cv6etTHE.js",
-        "assets/RelationsWorkspace-DGtgJidZ.js"
+        "assets/PropositionWorkspace-BO3JMkGv.js",
+        "assets/FolWorkspace-_SolHVGG.js",
+        "assets/RecurrenceWorkspace-BKP1LGgi.js",
+        "assets/TreeGraphWorkspace-CWsRB6FD.js",
+        "assets/SetsWorkspace-BEMW2FHJ.js",
+        "assets/RelationsWorkspace-6aLODKhT.js"
       ],
       "modules": [
         "src/rl/Workspace.tsx"
       ]
     },
     {
-      "file": "assets/Workspace-DwUHBFRO.js",
+      "file": "assets/Workspace-CWXkw2Xj.js",
       "bytes": 13507,
       "gzipBytes": 5482,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js"
+        "assets/index-D1XyHEJo.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -600,12 +600,12 @@
       ]
     },
     {
-      "file": "assets/PropositionWorkspace-SzPOit4A.js",
+      "file": "assets/PropositionWorkspace-BO3JMkGv.js",
       "bytes": 5150,
-      "gzipBytes": 1805,
+      "gzipBytes": 1803,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
+        "assets/index-D1XyHEJo.js",
         "assets/logic-DTFjvJ0t.js"
       ],
       "dynamicImports": [],
@@ -625,12 +625,12 @@
       ]
     },
     {
-      "file": "assets/FolWorkspace-C9IRBJf6.js",
+      "file": "assets/FolWorkspace-_SolHVGG.js",
       "bytes": 4077,
       "gzipBytes": 1661,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
+        "assets/index-D1XyHEJo.js",
         "assets/logic-DTFjvJ0t.js"
       ],
       "dynamicImports": [],
@@ -639,12 +639,12 @@
       ]
     },
     {
-      "file": "assets/RecurrenceWorkspace-BAmfSmNt.js",
+      "file": "assets/RecurrenceWorkspace-BKP1LGgi.js",
       "bytes": 2531,
-      "gzipBytes": 1146,
+      "gzipBytes": 1145,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
+        "assets/index-D1XyHEJo.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -664,12 +664,12 @@
       ]
     },
     {
-      "file": "assets/TreeGraphWorkspace-K712dzHH.js",
+      "file": "assets/TreeGraphWorkspace-CWsRB6FD.js",
       "bytes": 3912,
       "gzipBytes": 1641,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
+        "assets/index-D1XyHEJo.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -678,12 +678,12 @@
       ]
     },
     {
-      "file": "assets/SetsWorkspace-Cv6etTHE.js",
+      "file": "assets/SetsWorkspace-BEMW2FHJ.js",
       "bytes": 2348,
-      "gzipBytes": 1019,
+      "gzipBytes": 1020,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
+        "assets/index-D1XyHEJo.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -692,12 +692,12 @@
       ]
     },
     {
-      "file": "assets/RelationsWorkspace-DGtgJidZ.js",
+      "file": "assets/RelationsWorkspace-6aLODKhT.js",
       "bytes": 3125,
-      "gzipBytes": 1262,
+      "gzipBytes": 1263,
       "entry": false,
       "imports": [
-        "assets/index-B2R5sCDB.js",
+        "assets/index-D1XyHEJo.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -708,9 +708,9 @@
   ],
   "assets": [
     {
-      "file": "assets/index-BfSCG0gr.css",
-      "bytes": 49206,
-      "gzipBytes": 11487
+      "file": "assets/index-Kmt37Rmk.css",
+      "bytes": 49226,
+      "gzipBytes": 11497
     },
     {
       "file": "assets/enrichment-B1peaizb.css",

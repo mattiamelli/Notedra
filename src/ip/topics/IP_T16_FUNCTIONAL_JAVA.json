@@ -1,0 +1,262 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t16",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t16.model",
+        "version": "1",
+        "topicId": "IP_T16_FUNCTIONAL_JAVA",
+        "skillIds": [
+          "IP_SK16_01_LAMBDA",
+          "IP_SK16_02_STREAM_PIPE",
+          "IP_SK16_03_OPTIONAL"
+        ],
+        "subtopicIds": [
+          "IP_ST16_01_LAMBDAS",
+          "IP_ST16_02_STREAMS",
+          "IP_ST16_03_OPTIONAL"
+        ],
+        "sourceIds": [
+          "ref-25062da4a98e2927"
+        ],
+        "kind": "introduction",
+        "title": "A pipeline describes a transformation",
+        "paragraphs": [
+          "A functional interface gives a lambda its parameter and result contract. A stream connects a source to intermediate transformations and a terminal operation. Reason about the values at each stage before compressing the code."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t16.lambda",
+        "version": "1",
+        "topicId": "IP_T16_FUNCTIONAL_JAVA",
+        "skillIds": [
+          "IP_SK16_01_LAMBDA"
+        ],
+        "subtopicIds": [
+          "IP_ST16_01_LAMBDAS"
+        ],
+        "sourceIds": [
+          "ref-25062da4a98e2927"
+        ],
+        "kind": "code_example",
+        "title": "A lambda still has a type",
+        "paragraphs": [
+          "Predicate<T> returns a boolean through test; Function<T,R> maps a T to R through apply; Supplier<T> provides a T through get. A lambda needs a compatible target functional interface. var alone cannot supply the missing type of an untyped lambda.",
+          "The callback below keeps no changing external state. It maps a reading to twice its value, then tests the mapped result. State-free callbacks make a transformation easier to reason about and test."
+        ],
+        "code": "java.util.function.Function<Integer, Integer> twice = x -> x * 2;\njava.util.function.Predicate<Integer> large = x -> x >= 10;\nSystem.out.println(large.test(twice.apply(6)));"
+      },
+      {
+        "id": "ds.block.ip.t16.pipeline",
+        "version": "1",
+        "topicId": "IP_T16_FUNCTIONAL_JAVA",
+        "skillIds": [
+          "IP_SK16_02_STREAM_PIPE"
+        ],
+        "subtopicIds": [
+          "IP_ST16_02_STREAMS"
+        ],
+        "sourceIds": [
+          "ref-25062da4a98e2927"
+        ],
+        "kind": "code_example",
+        "title": "Trace filter, map, order and collection",
+        "paragraphs": [
+          "For [6, 1, 4, 3], filtering values ≥3 leaves [6,4,3]; doubling gives [12,8,6]; sorting gives [6,8,12]. toList is the terminal operation that produces the result. Changing the order of filter and map can change which elements survive.",
+          "Intermediate stages are lazy: constructing the pipeline does not itself traverse all values. A terminal operation drives the needed traversal. Streams are single-use; create a fresh stream for a second query. For numeric reduction, mapToInt(...).sum() can produce a total; it is not another intermediate stream.",
+          "These examples use a sequential ordered list source. Do not infer guarantees about arbitrary sources, parallel execution or callback scheduling. No parallel-stream analysis is required here."
+        ],
+        "code": "var result = java.util.List.of(6, 1, 4, 3).stream()\n        .filter(x -> x >= 3)\n        .map(x -> x * 2)\n        .sorted()\n        .toList();\nSystem.out.println(result);"
+      },
+      {
+        "id": "ds.block.ip.t16.optional",
+        "version": "1",
+        "topicId": "IP_T16_FUNCTIONAL_JAVA",
+        "skillIds": [
+          "IP_SK16_03_OPTIONAL"
+        ],
+        "subtopicIds": [
+          "IP_ST16_03_OPTIONAL"
+        ],
+        "sourceIds": [
+          "ref-25062da4a98e2927"
+        ],
+        "kind": "code_example",
+        "title": "Absence is a result to handle",
+        "paragraphs": [
+          "findFirst may return no matching value. Optional represents presence or absence without pretending that an arbitrary sentinel is a valid domain value. map transforms only a present value; orElse supplies a fallback when absent.",
+          "Calling get without checking presence can fail. Optional.of requires a non-null value; ofNullable can represent a possibly null source. Choose a fallback that is appropriate for the result type and requirements rather than hiding missing required data."
+        ],
+        "code": "String label = java.util.List.of(\"elm\", \"ash\").stream()\n        .filter(name -> name.startsWith(\"z\"))\n        .findFirst()\n        .map(String::toUpperCase)\n        .orElse(\"NO MATCH\");\nSystem.out.println(label);"
+      },
+      {
+        "id": "ds.block.ip.t16.recap",
+        "version": "1",
+        "topicId": "IP_T16_FUNCTIONAL_JAVA",
+        "skillIds": [
+          "IP_SK16_01_LAMBDA",
+          "IP_SK16_02_STREAM_PIPE",
+          "IP_SK16_03_OPTIONAL"
+        ],
+        "subtopicIds": [
+          "IP_ST16_01_LAMBDAS",
+          "IP_ST16_02_STREAMS",
+          "IP_ST16_03_OPTIONAL"
+        ],
+        "sourceIds": [
+          "ref-25062da4a98e2927"
+        ],
+        "kind": "recap",
+        "title": "Follow values and finish the pipeline",
+        "paragraphs": [
+          "Choose the functional type, trace each stage in order, name the terminal operation and handle absence explicitly. A compact pipeline is useful only when its semantics remain clear."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t16.functional-type",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_01_LAMBDA"
+      ],
+      "subtopicIds": [
+        "IP_ST16_01_LAMBDAS"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "prompt": "Which functional interface fits a callback that accepts a value and answers yes/no?",
+      "answer": "Predicate<T>, whose test method returns boolean. Function<T,R> instead transforms a value; Supplier<T> takes no argument and provides a value."
+    },
+    {
+      "id": "ds.card.ip.t16.lambda-state",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_01_LAMBDA"
+      ],
+      "subtopicIds": [
+        "IP_ST16_01_LAMBDAS"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "prompt": "Why prefer callbacks that do not update external mutable state?",
+      "answer": "Their results are easier to reason about from inputs, repeated tests are clearer, and pipeline logic does not depend on hidden mutation or callback timing."
+    },
+    {
+      "id": "ds.card.ip.t16.lazy",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_02_STREAM_PIPE"
+      ],
+      "subtopicIds": [
+        "IP_ST16_02_STREAMS"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "prompt": "Does list.stream().filter(predicate) by itself calculate the final filtered list?",
+      "answer": "No. It builds an intermediate lazy stage. A terminal operation such as toList, count or sum drives the required traversal."
+    },
+    {
+      "id": "ds.card.ip.t16.reuse",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_02_STREAM_PIPE"
+      ],
+      "subtopicIds": [
+        "IP_ST16_02_STREAMS"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "prompt": "Can a consumed stream be traversed again for a second result?",
+      "answer": "No. Obtain a new stream from the source for another query. Keep the reusable collection if multiple traversals are needed."
+    },
+    {
+      "id": "ds.card.ip.t16.empty",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_03_OPTIONAL"
+      ],
+      "subtopicIds": [
+        "IP_ST16_03_OPTIONAL"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "prompt": "What happens to optional.map(f) when optional is empty?",
+      "answer": "It stays empty; f is not applied to a value. A terminal handling step such as orElse can then provide an explicit fallback."
+    },
+    {
+      "id": "ds.card.ip.t16.of-null",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_03_OPTIONAL"
+      ],
+      "subtopicIds": [
+        "IP_ST16_03_OPTIONAL"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "prompt": "Does Optional.of(null) mean an empty Optional?",
+      "answer": "No. It rejects null. Optional.empty() explicitly represents absence, and Optional.ofNullable(value) handles a potentially null source."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t16.pipeline-design",
+      "version": "1",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "skillIds": [
+        "IP_SK16_01_LAMBDA",
+        "IP_SK16_02_STREAM_PIPE",
+        "IP_SK16_03_OPTIONAL"
+      ],
+      "subtopicIds": [
+        "IP_ST16_01_LAMBDAS",
+        "IP_ST16_02_STREAMS",
+        "IP_ST16_03_OPTIONAL"
+      ],
+      "sourceIds": [
+        "ref-25062da4a98e2927"
+      ],
+      "title": "Describe a pipeline before coding",
+      "prompt": "A list of sensor durations may contain zero. Keep strictly positive durations, convert seconds to milliseconds, sort ascending and return a list. Separately request the first duration above 9 seconds, returning an explicit absent result if none exists.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Values after each stage for [4,0,12,2]"
+        },
+        {
+          "id": "step2",
+          "label": "Functional types and terminal operations"
+        },
+        {
+          "id": "step3",
+          "label": "Empty-source and no-match tests"
+        }
+      ],
+      "rubric": [
+        "The main pipeline preserves only positive values, converts units once and sorts the transformed values.",
+        "The search uses an Optional-like absent result without inventing a matching duration.",
+        "No side effects or unsupported ordering assumptions are required."
+      ],
+      "reference": [
+        "The main output is [2000,4000,12000]. Predicate<Integer> fits filtering; Function<Integer,Integer> fits the conversion; toList finishes the pipeline.",
+        "For the separate search, filtering values >9 then findFirst returns 12 on this ordered source. An empty list or [4,0,2] yields an empty Optional. Build a fresh stream for each query."
+      ]
+    }
+  ]
+}

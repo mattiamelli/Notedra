@@ -1,0 +1,412 @@
+{
+  "archive": "CSE 11B Introduction to Programming (IP).zip",
+  "bytes": 49181148,
+  "sha256": "22c0a6917be91b7e2e1d51d0b1012937a02a97d24780bf9934ac61ba4c7b101e",
+  "entries": [
+    {
+      "path": "Introduction to Java Programming and Data Structures.pdf",
+      "bytes": 23295073,
+      "compressedBytes": 23295073,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 0 - Introduction.pdf",
+      "bytes": 920123,
+      "compressedBytes": 920123,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 1 - First Steps.pdf",
+      "bytes": 479058,
+      "compressedBytes": 479058,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 10 - Polymorphism.pdf",
+      "bytes": 327934,
+      "compressedBytes": 327934,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 11 - Equality & Hashcodes.pdf",
+      "bytes": 769356,
+      "compressedBytes": 769356,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 12 - Exceptions.pdf",
+      "bytes": 350552,
+      "compressedBytes": 350552,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 13 - Debugging.pdf",
+      "bytes": 1726309,
+      "compressedBytes": 1726309,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+      "bytes": 1200518,
+      "compressedBytes": 1200518,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 15 - Input Output Part 1.pdf",
+      "bytes": 1138952,
+      "compressedBytes": 1138952,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 16 - Input Output Part 2.pdf",
+      "bytes": 708554,
+      "compressedBytes": 708554,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 17 - Functional Java.pdf",
+      "bytes": 343812,
+      "compressedBytes": 343812,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 18 - Program Design.pdf",
+      "bytes": 283415,
+      "compressedBytes": 283415,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 19 - Modern Java.pdf",
+      "bytes": 382495,
+      "compressedBytes": 382495,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 2 - Programming Structures.pdf",
+      "bytes": 301004,
+      "compressedBytes": 301004,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 20 - Threads.pdf",
+      "bytes": 500714,
+      "compressedBytes": 500714,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 21 - Exam Practice.pdf",
+      "bytes": 680872,
+      "compressedBytes": 680872,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 3 - Methods.pdf",
+      "bytes": 256442,
+      "compressedBytes": 256442,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 4 - Classes.pdf",
+      "bytes": 684440,
+      "compressedBytes": 684440,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 5 - Arrays.pdf",
+      "bytes": 424851,
+      "compressedBytes": 424851,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 6 - Container Classes.pdf",
+      "bytes": 788951,
+      "compressedBytes": 788951,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 7 - Class Composition & Libraries.pdf",
+      "bytes": 599801,
+      "compressedBytes": 599801,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 8 - Unit Tests.pdf",
+      "bytes": 1033936,
+      "compressedBytes": 1033936,
+      "directory": false
+    },
+    {
+      "path": "IP Lectures/IP Lecture 9 - Inheritance.pdf",
+      "bytes": 378069,
+      "compressedBytes": 378069,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Instructions.md",
+      "bytes": 5927,
+      "compressedBytes": 5927,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Knowledge Files/Course Overview.md",
+      "bytes": 70743,
+      "compressedBytes": 70743,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Knowledge Files/Exercises.md",
+      "bytes": 884148,
+      "compressedBytes": 884148,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Knowledge Files/Introduction to Java Programming and Data Structures.md",
+      "bytes": 5562953,
+      "compressedBytes": 5562953,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Knowledge Files/Lectures.md",
+      "bytes": 618463,
+      "compressedBytes": 618463,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Knowledge Files/Programming Exams.md",
+      "bytes": 124080,
+      "compressedBytes": 124080,
+      "directory": false
+    },
+    {
+      "path": "IP LLM Files/Knowledge Files/Theoretical Exams.md",
+      "bytes": 321936,
+      "compressedBytes": 321936,
+      "directory": false
+    },
+    {
+      "path": "IP Notes.pdf",
+      "bytes": 1086314,
+      "compressedBytes": 1086314,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Endterm 2020.pdf",
+      "bytes": 341909,
+      "compressedBytes": 341909,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Endterm 2021.pdf",
+      "bytes": 771026,
+      "compressedBytes": 771026,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Endterm 2023.pdf",
+      "bytes": 415421,
+      "compressedBytes": 415421,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Endterm 2024.pdf",
+      "bytes": 377511,
+      "compressedBytes": 377511,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Mock 2023.pdf",
+      "bytes": 327269,
+      "compressedBytes": 327269,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Mock 2024.pdf",
+      "bytes": 286060,
+      "compressedBytes": 286060,
+      "directory": false
+    },
+    {
+      "path": "IP Programming Exams/IP Programming Resit 2024.pdf",
+      "bytes": 401975,
+      "compressedBytes": 401975,
+      "directory": false
+    },
+    {
+      "path": "README.md",
+      "bytes": 3016,
+      "compressedBytes": 3016,
+      "directory": false
+    }
+  ],
+  "canonicalDocuments": [
+    {
+      "documentId": "IP_LEC_01",
+      "filename": "IP Lecture 1 - First Steps.pdf",
+      "sha256": "6382355d495ccba2835baf5e2a6b48e842e15c05ecf89112055c525fac9f892c",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_02",
+      "filename": "IP Lecture 2 - Programming Structures.pdf",
+      "sha256": "919b8ea50f227965c01a61c61aa9e6d181455801183f6952479f9399941e807b",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_03",
+      "filename": "IP Lecture 3 - Methods.pdf",
+      "sha256": "2f6376e5fa56c4bbcafd5acc76b48e87fa235e2c45af5a000f3be91e910a2eb2",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_04",
+      "filename": "IP Lecture 4 - Classes.pdf",
+      "sha256": "09273694c6fd2a8ef2018b0cdb9788cbb9af3b4062816ade1da4cb779301f45b",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_05",
+      "filename": "IP Lecture 5 - Arrays.pdf",
+      "sha256": "36122c0245a265b58fd1a6261ca74248862927f1560fb891a3e94c12e3eadd3e",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_06",
+      "filename": "IP Lecture 6 - Container Classes.pdf",
+      "sha256": "670f0acfd35ff4239c2169e9af705dc2abcaba8e6267afa722b90a7c8fec4bc1",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_07",
+      "filename": "IP Lecture 7 - Class Composition & Libraries.pdf",
+      "sha256": "b75f2ae8961e53d2bbe3735083872711ebc0a9f46b4c8eba6fda33f3164cc4f4",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_08",
+      "filename": "IP Lecture 8 - Unit Tests.pdf",
+      "sha256": "9375cd20aa2d0b3515e75d421165de63758e167affe38a8d742e0f0e7d849dd1",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_09",
+      "filename": "IP Lecture 9 - Inheritance.pdf",
+      "sha256": "81ebbf8037449abc77e0df33430dfee3f4bd0c9fc3e193fa41ee831d9bbf7b85",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_10",
+      "filename": "IP Lecture 10 - Polymorphism.pdf",
+      "sha256": "82387ffde8b7e09458e0d7a52f8bdd7b1144079b46f085da40a2b179da595a42",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_11",
+      "filename": "IP Lecture 11 - Equality & Hashcodes.pdf",
+      "sha256": "ef12290236dad0e27ff8d588afdcfed10d0c98ba33357be8c1842a74dd165e83",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_12",
+      "filename": "IP Lecture 12 - Exceptions.pdf",
+      "sha256": "4c2d7f7bd04756577d1de4153ac446a1adb3b410e66e8ade99da426a4f9c8258",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_13",
+      "filename": "IP Lecture 13 - Debugging.pdf",
+      "sha256": "0082526ef9ec4b3da520a80e217da98b00ae9a29a0d38c72512c276f1c281b1c",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_14",
+      "filename": "IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+      "sha256": "42f6f713b9c3a1bd5384f5e51350e1885d343e453ce26616022497845e0d97ce",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_15",
+      "filename": "IP Lecture 15 - Input Output Part 1.pdf",
+      "sha256": "b57559fa322736c18803908d934cef26c65d6e30d0574f178d0a2bc2ccc8cffd",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_16",
+      "filename": "IP Lecture 16 - Input Output Part 2.pdf",
+      "sha256": "ed25e3ba2fd5d643b6b8fac8ea5b1bfe4e83db4adb54cedd3747d96cdd55bfe6",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_17",
+      "filename": "IP Lecture 17 - Functional Java.pdf",
+      "sha256": "206da7129ad6699ad610c2346eea9635dc489e6e06e50a66154eed3f41e7ec6b",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_18",
+      "filename": "IP Lecture 18 - Program Design.pdf",
+      "sha256": "2ef49475562c70668294b39486c1c4a03a1cf09d13622728c0fc5278c6a4a1ff",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_19",
+      "filename": "IP Lecture 19 - Modern Java.pdf",
+      "sha256": "ac4508c19ae8d4c8c26a7a576dbfdc68267dcc070cf1e71d1a6b080fd1924faf",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_20",
+      "filename": "IP Lecture 20 - Threads.pdf",
+      "sha256": "c35d85d4a6ceb07ac54aaa8553831eb496473b5a91449e1cb3373268fc81340d",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_LEC_21",
+      "filename": "IP Lecture 21 - Exam Practice.pdf",
+      "sha256": "0770914dc752a8381274510695fdd7733985c2dba5c9c1bf4ba3b37499068c71",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_RESIT_2024",
+      "filename": "IP Programming Resit 2024.pdf",
+      "sha256": "f85091bea8f303e28ee3b87673624ad62e00dc91dead08679d529e854e5c3fb8",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_MOCK_2024",
+      "filename": "IP Programming Mock 2024.pdf",
+      "sha256": "1390f5c687e9fe4a313a2119788da0212e7fc63f0c5704d668d9dac888da50db",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_MOCK_2023",
+      "filename": "IP Programming Mock 2023.pdf",
+      "sha256": "d9a0a61d97701727471daa373bb39cbd08ffb69ce1920da215faa8c05bed6a5a",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_END_2024",
+      "filename": "IP Programming Endterm 2024.pdf",
+      "sha256": "3b60ffd01c44d2af816eb6f7703aa281adb62254201304414020ad8cfbcc8cb8",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_END_2023",
+      "filename": "IP Programming Endterm 2023.pdf",
+      "sha256": "e93b0b8bae75cb3b1e4d53eef28b54c156cb28693d03f1e62e547946bf973fce",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_END_2021",
+      "filename": "IP Programming Endterm 2021.pdf",
+      "sha256": "6361bd5e24e12b84a4bb0b02db06ba847b5d0f795c51cb9475d5b2e85af57bfa",
+      "matchesCanonicalSha": true
+    },
+    {
+      "documentId": "IP_END_2020",
+      "filename": "IP Programming Endterm 2020.pdf",
+      "sha256": "5ff9046d6bb0156716af4a2c2002f1e3e62a2db0a2efae7313ab79a6967faa4e",
+      "matchesCanonicalSha": true
+    }
+  ],
+  "reviewScope": "Targeted physical pages in docs/ip-source-review.md; extraction/indexing is not a full review. Raw originals and extracted page text remain outside the repository."
+}

@@ -1,0 +1,46 @@
+{
+  "id": "ds.reference.ip.array-window",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.array-window",
+  "files": [
+    {
+      "name": "WindowCounts.java",
+      "language": "java",
+      "content": "import java.util.Objects;\npublic final class WindowCounts {\n    private WindowCounts() {}\n    public static int countAtLeast(int[] values, int from, int to, int threshold) {\n        Objects.requireNonNull(values, \"values\");\n        if (from < 0 || to > values.length || from > to) throw new IllegalArgumentException(\"Invalid window\");\n        int count = 0;\n        for (int i = from; i < to; i++) if (values[i] >= threshold) count++;\n        return count;\n    }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "window-boundaries",
+      "name": "Window and threshold boundaries",
+      "requirementIds": [
+        "count"
+      ],
+      "skillIds": [
+        "IP_SK02_04_LOOP_IMPLEMENT",
+        "IP_SK05_02_ARRAY_PROCESS",
+        "IP_SK05_03_ARRAY_ALIAS"
+      ],
+      "description": "Use [4,7,7,2,9], window [1,4), threshold 7; then [0,5), threshold 7; then [3,3).",
+      "expected": "2, then 3, then 0; the original array is unchanged."
+    },
+    {
+      "id": "window-errors",
+      "name": "Invalid ranges and null",
+      "requirementIds": [
+        "range"
+      ],
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD",
+        "IP_SK05_01_ARRAY_TRAVERSE"
+      ],
+      "description": "Try null; negative from; to beyond length; reversed endpoints.",
+      "expected": "NullPointerException for null; IllegalArgumentException for each invalid range."
+    }
+  ],
+  "reasoning": [
+    "The window [1,4) reads only 7,7,2, so exactly two values meet 7. In [0,5), the final 9 adds one more.",
+    "The loop stops before to, so to == length never becomes an array access. It reads the array but never assigns an element.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

@@ -1,0 +1,896 @@
+{
+  "initialJSBytes": 481622,
+  "initialJSGzipBytes": 126323,
+  "baseline": {
+    "commit": "bda8c0f",
+    "initialJSBytes": 475077,
+    "initialJSGzipBytes": 125104,
+    "totalAssetBytes": 984932,
+    "totalAssetGzipBytes": 283837,
+    "totalProductionBytes": 985928,
+    "totalProductionGzipBytes": 284486
+  },
+  "initialDeltaBytes": 6545,
+  "initialDeltaGzipBytes": 1219,
+  "initialChunks": [
+    "assets/index-B_mcX9xn.js"
+  ],
+  "ipTopics": {
+    "bytes": 168424,
+    "gzipBytes": 55588,
+    "chunks": [
+      {
+        "file": "assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js",
+        "bytes": 12286,
+        "gzipBytes": 3670,
+        "modules": [
+          "src/ip/topics/IP_T01_JAVA_BASICS.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js",
+        "bytes": 10751,
+        "gzipBytes": 3242,
+        "modules": [
+          "src/ip/topics/IP_T03_METHODS_SCOPE.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js",
+        "bytes": 10693,
+        "gzipBytes": 3236,
+        "modules": [
+          "src/ip/topics/IP_T04_CLASSES_OBJECTS.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js",
+        "bytes": 10487,
+        "gzipBytes": 3259,
+        "modules": [
+          "src/ip/topics/IP_T05_ARRAYS_RECURSION.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js",
+        "bytes": 9576,
+        "gzipBytes": 3060,
+        "modules": [
+          "src/ip/topics/IP_T06_CONTAINER_CLASSES.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js",
+        "bytes": 8206,
+        "gzipBytes": 2797,
+        "modules": [
+          "src/ip/topics/IP_T07_COMPOSITION_LIBRARIES.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T08_TESTING-BAXYRvyj.js",
+        "bytes": 10102,
+        "gzipBytes": 3265,
+        "modules": [
+          "src/ip/topics/IP_T08_TESTING.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T09_INHERITANCE-Binoh_DU.js",
+        "bytes": 8166,
+        "gzipBytes": 2664,
+        "modules": [
+          "src/ip/topics/IP_T09_INHERITANCE.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js",
+        "bytes": 8367,
+        "gzipBytes": 2616,
+        "modules": [
+          "src/ip/topics/IP_T10_POLYMORPHISM_BINDING.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js",
+        "bytes": 8361,
+        "gzipBytes": 2778,
+        "modules": [
+          "src/ip/topics/IP_T11_EQUALITY_HASHING.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T12_EXCEPTIONS-B7H-5rEl.js",
+        "bytes": 7190,
+        "gzipBytes": 2467,
+        "modules": [
+          "src/ip/topics/IP_T12_EXCEPTIONS.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T13_DEBUGGING-CqMISr3b.js",
+        "bytes": 5085,
+        "gzipBytes": 1956,
+        "modules": [
+          "src/ip/topics/IP_T13_DEBUGGING.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js",
+        "bytes": 8515,
+        "gzipBytes": 2974,
+        "modules": [
+          "src/ip/topics/IP_T14_CODE_QUALITY_STRINGS_GENERICS.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T15_IO_PARSING-CxDROOYT.js",
+        "bytes": 9618,
+        "gzipBytes": 3228,
+        "modules": [
+          "src/ip/topics/IP_T15_IO_PARSING.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js",
+        "bytes": 8056,
+        "gzipBytes": 2719,
+        "modules": [
+          "src/ip/topics/IP_T16_FUNCTIONAL_JAVA.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js",
+        "bytes": 6554,
+        "gzipBytes": 2353,
+        "modules": [
+          "src/ip/topics/IP_T17_PROGRAM_DESIGN.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T18_MODERN_JAVA-B9jrpJOu.js",
+        "bytes": 7291,
+        "gzipBytes": 2647,
+        "modules": [
+          "src/ip/topics/IP_T18_MODERN_JAVA.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js",
+        "bytes": 8101,
+        "gzipBytes": 2829,
+        "modules": [
+          "src/ip/topics/IP_T19_THREADS_CONCURRENCY.json"
+        ]
+      },
+      {
+        "file": "assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js",
+        "bytes": 11019,
+        "gzipBytes": 3828,
+        "modules": [
+          "src/ip/topics/IP_T20_EXAM_PROGRAM_SYNTHESIS.json"
+        ]
+      }
+    ]
+  },
+  "codingWorkbench": {
+    "bytes": 6686,
+    "gzipBytes": 2479,
+    "chunks": [
+      {
+        "file": "assets/CodingWorkbench-B_1_L2JF.js",
+        "bytes": 6686,
+        "gzipBytes": 2479,
+        "modules": [
+          "src/ip/CodingWorkbench.tsx"
+        ]
+      }
+    ]
+  },
+  "assignments": {
+    "bytes": 54571,
+    "gzipBytes": 20268,
+    "chunks": [
+      {
+        "file": "assets/air-audit-BIinS1_M.js",
+        "bytes": 7749,
+        "gzipBytes": 2739,
+        "modules": [
+          "src/ip/assignments/air-audit.json"
+        ]
+      },
+      {
+        "file": "assets/alert-policies-DrsrCxXC.js",
+        "bytes": 5419,
+        "gzipBytes": 1862,
+        "modules": [
+          "src/ip/assignments/alert-policies.json"
+        ]
+      },
+      {
+        "file": "assets/array-window-Bto1gkFC.js",
+        "bytes": 2919,
+        "gzipBytes": 1268,
+        "modules": [
+          "src/ip/assignments/array-window.json"
+        ]
+      },
+      {
+        "file": "assets/batch-token-CBpM-gf2.js",
+        "bytes": 2727,
+        "gzipBytes": 1237,
+        "modules": [
+          "src/ip/assignments/batch-token.json"
+        ]
+      },
+      {
+        "file": "assets/boundary-tests-r4CPnxAO.js",
+        "bytes": 3656,
+        "gzipBytes": 1497,
+        "modules": [
+          "src/ip/assignments/boundary-tests.json"
+        ]
+      },
+      {
+        "file": "assets/capacity-shelf-B8EMZ286.js",
+        "bytes": 4560,
+        "gzipBytes": 1681,
+        "modules": [
+          "src/ip/assignments/capacity-shelf.json"
+        ]
+      },
+      {
+        "file": "assets/grid-key-ByuEdlSN.js",
+        "bytes": 2994,
+        "gzipBytes": 1256,
+        "modules": [
+          "src/ip/assignments/grid-key.json"
+        ]
+      },
+      {
+        "file": "assets/label-stream-BTlUuTVJ.js",
+        "bytes": 2727,
+        "gzipBytes": 1169,
+        "modules": [
+          "src/ip/assignments/label-stream.json"
+        ]
+      },
+      {
+        "file": "assets/material-ledger-Dlb9LY3I.js",
+        "bytes": 8817,
+        "gzipBytes": 2962,
+        "modules": [
+          "src/ip/assignments/material-ledger.json"
+        ]
+      },
+      {
+        "file": "assets/note-index-9EzBN5C-.js",
+        "bytes": 7856,
+        "gzipBytes": 2694,
+        "modules": [
+          "src/ip/assignments/note-index.json"
+        ]
+      },
+      {
+        "file": "assets/reading-export-03SKeJdJ.js",
+        "bytes": 5147,
+        "gzipBytes": 1903,
+        "modules": [
+          "src/ip/assignments/reading-export.json"
+        ]
+      }
+    ]
+  },
+  "referenceSolutions": {
+    "bytes": 43262,
+    "gzipBytes": 17535,
+    "chunks": [
+      {
+        "file": "assets/air-audit-CoOfR9nj.js",
+        "bytes": 7801,
+        "gzipBytes": 2765,
+        "modules": [
+          "src/ip/references/air-audit.json"
+        ]
+      },
+      {
+        "file": "assets/alert-policies-BW_0oYWi.js",
+        "bytes": 2812,
+        "gzipBytes": 1173,
+        "modules": [
+          "src/ip/references/alert-policies.json"
+        ]
+      },
+      {
+        "file": "assets/array-window-DrNedUNk.js",
+        "bytes": 1785,
+        "gzipBytes": 934,
+        "modules": [
+          "src/ip/references/array-window.json"
+        ]
+      },
+      {
+        "file": "assets/batch-token-g3chmWvR.js",
+        "bytes": 1950,
+        "gzipBytes": 988,
+        "modules": [
+          "src/ip/references/batch-token.json"
+        ]
+      },
+      {
+        "file": "assets/boundary-tests-CBldJTKl.js",
+        "bytes": 2840,
+        "gzipBytes": 1268,
+        "modules": [
+          "src/ip/references/boundary-tests.json"
+        ]
+      },
+      {
+        "file": "assets/capacity-shelf-Dl_X9eRW.js",
+        "bytes": 2992,
+        "gzipBytes": 1330,
+        "modules": [
+          "src/ip/references/capacity-shelf.json"
+        ]
+      },
+      {
+        "file": "assets/grid-key-DHvNZxu4.js",
+        "bytes": 1992,
+        "gzipBytes": 999,
+        "modules": [
+          "src/ip/references/grid-key.json"
+        ]
+      },
+      {
+        "file": "assets/label-stream-BxbDcTkq.js",
+        "bytes": 1716,
+        "gzipBytes": 871,
+        "modules": [
+          "src/ip/references/label-stream.json"
+        ]
+      },
+      {
+        "file": "assets/material-ledger-aES6d9xp.js",
+        "bytes": 7898,
+        "gzipBytes": 2792,
+        "modules": [
+          "src/ip/references/material-ledger.json"
+        ]
+      },
+      {
+        "file": "assets/note-index-BJOza8nf.js",
+        "bytes": 7023,
+        "gzipBytes": 2606,
+        "modules": [
+          "src/ip/references/note-index.json"
+        ]
+      },
+      {
+        "file": "assets/reading-export-CUwAZtHJ.js",
+        "bytes": 4453,
+        "gzipBytes": 1809,
+        "modules": [
+          "src/ip/references/reading-export.json"
+        ]
+      }
+    ]
+  },
+  "preservedPilot": {
+    "bytes": 1727,
+    "gzipBytes": 989,
+    "chunks": [
+      {
+        "file": "assets/IntroTopicContent-GePa7dIk.js",
+        "bytes": 1727,
+        "gzipBytes": 989,
+        "modules": [
+          "src/ip/intro-guided.json",
+          "src/ip/IntroTopicContent.tsx"
+        ]
+      }
+    ]
+  },
+  "totalAssetBytes": 1383217,
+  "totalAssetGzipBytes": 407855,
+  "totalProductionBytes": 1384213,
+  "totalProductionGzipBytes": 408505,
+  "files": [
+    {
+      "file": "favicon.svg",
+      "bytes": 252,
+      "gzipBytes": 191
+    },
+    {
+      "file": "index.html",
+      "bytes": 744,
+      "gzipBytes": 459
+    },
+    {
+      "file": "assets/AssemblyWorkbench-BgcL6yUQ.js",
+      "bytes": 29502,
+      "gzipBytes": 10203
+    },
+    {
+      "file": "assets/Assignments-DHZWlAdv.js",
+      "bytes": 6473,
+      "gzipBytes": 2199
+    },
+    {
+      "file": "assets/AttemptPage-Bmto3FFv.js",
+      "bytes": 4810,
+      "gzipBytes": 1993
+    },
+    {
+      "file": "assets/CO_T01_HISTORY-D8bfk0pi.js",
+      "bytes": 6587,
+      "gzipBytes": 2101
+    },
+    {
+      "file": "assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js",
+      "bytes": 9319,
+      "gzipBytes": 3001
+    },
+    {
+      "file": "assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js",
+      "bytes": 9445,
+      "gzipBytes": 2990
+    },
+    {
+      "file": "assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js",
+      "bytes": 6940,
+      "gzipBytes": 2177
+    },
+    {
+      "file": "assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js",
+      "bytes": 9118,
+      "gzipBytes": 2963
+    },
+    {
+      "file": "assets/CO_T07_ISA-CGiPsZmf.js",
+      "bytes": 8073,
+      "gzipBytes": 2575
+    },
+    {
+      "file": "assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js",
+      "bytes": 11299,
+      "gzipBytes": 3394
+    },
+    {
+      "file": "assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js",
+      "bytes": 7533,
+      "gzipBytes": 2496
+    },
+    {
+      "file": "assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js",
+      "bytes": 7253,
+      "gzipBytes": 2385
+    },
+    {
+      "file": "assets/CO_T11_CACHE-iPa6VChI.js",
+      "bytes": 7748,
+      "gzipBytes": 2638
+    },
+    {
+      "file": "assets/CO_T12_PIPELINE-BFgDPOAQ.js",
+      "bytes": 8385,
+      "gzipBytes": 2754
+    },
+    {
+      "file": "assets/CO_T13_PARALLELISM-kuJ2Wedj.js",
+      "bytes": 6454,
+      "gzipBytes": 2098
+    },
+    {
+      "file": "assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js",
+      "bytes": 6798,
+      "gzipBytes": 2102
+    },
+    {
+      "file": "assets/CodingWorkbench-B_1_L2JF.js",
+      "bytes": 6686,
+      "gzipBytes": 2479
+    },
+    {
+      "file": "assets/EvidenceView-C2jlMtzQ.js",
+      "bytes": 12049,
+      "gzipBytes": 4389
+    },
+    {
+      "file": "assets/ExercisePage-BAfbuzUr.js",
+      "bytes": 1640,
+      "gzipBytes": 876
+    },
+    {
+      "file": "assets/ExerciseParts-Mcn2bF8w.js",
+      "bytes": 71834,
+      "gzipBytes": 17038
+    },
+    {
+      "file": "assets/FolWorkspace-DBvJTSJa.js",
+      "bytes": 4077,
+      "gzipBytes": 1661
+    },
+    {
+      "file": "assets/GuidedPractice-Bk8JfnRu.js",
+      "bytes": 2049,
+      "gzipBytes": 953
+    },
+    {
+      "file": "assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js",
+      "bytes": 12286,
+      "gzipBytes": 3670
+    },
+    {
+      "file": "assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js",
+      "bytes": 10751,
+      "gzipBytes": 3242
+    },
+    {
+      "file": "assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js",
+      "bytes": 10693,
+      "gzipBytes": 3236
+    },
+    {
+      "file": "assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js",
+      "bytes": 10487,
+      "gzipBytes": 3259
+    },
+    {
+      "file": "assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js",
+      "bytes": 9576,
+      "gzipBytes": 3060
+    },
+    {
+      "file": "assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js",
+      "bytes": 8206,
+      "gzipBytes": 2797
+    },
+    {
+      "file": "assets/IP_T08_TESTING-BAXYRvyj.js",
+      "bytes": 10102,
+      "gzipBytes": 3265
+    },
+    {
+      "file": "assets/IP_T09_INHERITANCE-Binoh_DU.js",
+      "bytes": 8166,
+      "gzipBytes": 2664
+    },
+    {
+      "file": "assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js",
+      "bytes": 8367,
+      "gzipBytes": 2616
+    },
+    {
+      "file": "assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js",
+      "bytes": 8361,
+      "gzipBytes": 2778
+    },
+    {
+      "file": "assets/IP_T12_EXCEPTIONS-B7H-5rEl.js",
+      "bytes": 7190,
+      "gzipBytes": 2467
+    },
+    {
+      "file": "assets/IP_T13_DEBUGGING-CqMISr3b.js",
+      "bytes": 5085,
+      "gzipBytes": 1956
+    },
+    {
+      "file": "assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js",
+      "bytes": 8515,
+      "gzipBytes": 2974
+    },
+    {
+      "file": "assets/IP_T15_IO_PARSING-CxDROOYT.js",
+      "bytes": 9618,
+      "gzipBytes": 3228
+    },
+    {
+      "file": "assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js",
+      "bytes": 8056,
+      "gzipBytes": 2719
+    },
+    {
+      "file": "assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js",
+      "bytes": 6554,
+      "gzipBytes": 2353
+    },
+    {
+      "file": "assets/IP_T18_MODERN_JAVA-B9jrpJOu.js",
+      "bytes": 7291,
+      "gzipBytes": 2647
+    },
+    {
+      "file": "assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js",
+      "bytes": 8101,
+      "gzipBytes": 2829
+    },
+    {
+      "file": "assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js",
+      "bytes": 11019,
+      "gzipBytes": 3828
+    },
+    {
+      "file": "assets/IntroTopicContent-Dv6Rb90s.js",
+      "bytes": 2964,
+      "gzipBytes": 1356
+    },
+    {
+      "file": "assets/IntroTopicContent-GePa7dIk.js",
+      "bytes": 1727,
+      "gzipBytes": 989
+    },
+    {
+      "file": "assets/MapCues-_-7rSIvK.js",
+      "bytes": 3044,
+      "gzipBytes": 1406
+    },
+    {
+      "file": "assets/PracticePage-CTOAR-3p.js",
+      "bytes": 3165,
+      "gzipBytes": 1401
+    },
+    {
+      "file": "assets/PropositionWorkspace-CRqdd1RC.js",
+      "bytes": 5150,
+      "gzipBytes": 1804
+    },
+    {
+      "file": "assets/RL_T02_FOL-CPbVtDo6.js",
+      "bytes": 15292,
+      "gzipBytes": 4506
+    },
+    {
+      "file": "assets/RL_T03_PROOF_METHODS-Dyog5d7L.js",
+      "bytes": 15936,
+      "gzipBytes": 4289
+    },
+    {
+      "file": "assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js",
+      "bytes": 17916,
+      "gzipBytes": 5101
+    },
+    {
+      "file": "assets/RL_T05_TREES_GRAPHS-CIHz8klu.js",
+      "bytes": 13625,
+      "gzipBytes": 4050
+    },
+    {
+      "file": "assets/RL_T06_SET_THEORY-Cvt6P7Nr.js",
+      "bytes": 12356,
+      "gzipBytes": 3535
+    },
+    {
+      "file": "assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js",
+      "bytes": 11902,
+      "gzipBytes": 3460
+    },
+    {
+      "file": "assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js",
+      "bytes": 10869,
+      "gzipBytes": 3529
+    },
+    {
+      "file": "assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js",
+      "bytes": 8140,
+      "gzipBytes": 2725
+    },
+    {
+      "file": "assets/RecurrenceWorkspace-DyPIfkvs.js",
+      "bytes": 2531,
+      "gzipBytes": 1144
+    },
+    {
+      "file": "assets/RelationsWorkspace-B5-GJJ9M.js",
+      "bytes": 3125,
+      "gzipBytes": 1262
+    },
+    {
+      "file": "assets/SetsWorkspace-DjCOxDyp.js",
+      "bytes": 2348,
+      "gzipBytes": 1019
+    },
+    {
+      "file": "assets/StudyCues-_lFgJvU_.js",
+      "bytes": 545,
+      "gzipBytes": 359
+    },
+    {
+      "file": "assets/TopicContent-CMwjuwAS.js",
+      "bytes": 5946,
+      "gzipBytes": 2673
+    },
+    {
+      "file": "assets/TopicContent-DgUp8pP0.css",
+      "bytes": 2325,
+      "gzipBytes": 828
+    },
+    {
+      "file": "assets/TopicContent-_imbj--o.js",
+      "bytes": 1314,
+      "gzipBytes": 645
+    },
+    {
+      "file": "assets/TopicContent-egLbiqh7.js",
+      "bytes": 5606,
+      "gzipBytes": 2516
+    },
+    {
+      "file": "assets/TopicEnrichment-C81-RP3l.js",
+      "bytes": 14666,
+      "gzipBytes": 4869
+    },
+    {
+      "file": "assets/TopicPractice-Lam2pQg1.js",
+      "bytes": 1676,
+      "gzipBytes": 819
+    },
+    {
+      "file": "assets/TreeGraphWorkspace-Br8L8fU0.js",
+      "bytes": 3912,
+      "gzipBytes": 1641
+    },
+    {
+      "file": "assets/Workspace-BbKx9g87.js",
+      "bytes": 2025,
+      "gzipBytes": 836
+    },
+    {
+      "file": "assets/Workspace-knsqwrP3.js",
+      "bytes": 13507,
+      "gzipBytes": 5482
+    },
+    {
+      "file": "assets/air-audit-BIinS1_M.js",
+      "bytes": 7749,
+      "gzipBytes": 2739
+    },
+    {
+      "file": "assets/air-audit-CoOfR9nj.js",
+      "bytes": 7801,
+      "gzipBytes": 2765
+    },
+    {
+      "file": "assets/alert-policies-BW_0oYWi.js",
+      "bytes": 2812,
+      "gzipBytes": 1173
+    },
+    {
+      "file": "assets/alert-policies-DrsrCxXC.js",
+      "bytes": 5419,
+      "gzipBytes": 1862
+    },
+    {
+      "file": "assets/array-window-Bto1gkFC.js",
+      "bytes": 2919,
+      "gzipBytes": 1268
+    },
+    {
+      "file": "assets/array-window-DrNedUNk.js",
+      "bytes": 1785,
+      "gzipBytes": 934
+    },
+    {
+      "file": "assets/batch-token-CBpM-gf2.js",
+      "bytes": 2727,
+      "gzipBytes": 1237
+    },
+    {
+      "file": "assets/batch-token-g3chmWvR.js",
+      "bytes": 1950,
+      "gzipBytes": 988
+    },
+    {
+      "file": "assets/boundary-tests-CBldJTKl.js",
+      "bytes": 2840,
+      "gzipBytes": 1268
+    },
+    {
+      "file": "assets/boundary-tests-r4CPnxAO.js",
+      "bytes": 3656,
+      "gzipBytes": 1497
+    },
+    {
+      "file": "assets/capacity-shelf-B8EMZ286.js",
+      "bytes": 4560,
+      "gzipBytes": 1681
+    },
+    {
+      "file": "assets/capacity-shelf-Dl_X9eRW.js",
+      "bytes": 2992,
+      "gzipBytes": 1330
+    },
+    {
+      "file": "assets/enrichment-B1peaizb.css",
+      "bytes": 893,
+      "gzipBytes": 405
+    },
+    {
+      "file": "assets/grid-key-ByuEdlSN.js",
+      "bytes": 2994,
+      "gzipBytes": 1256
+    },
+    {
+      "file": "assets/grid-key-DHvNZxu4.js",
+      "bytes": 1992,
+      "gzipBytes": 999
+    },
+    {
+      "file": "assets/index-B_mcX9xn.js",
+      "bytes": 481622,
+      "gzipBytes": 126323
+    },
+    {
+      "file": "assets/index-DPc55Gao.css",
+      "bytes": 51001,
+      "gzipBytes": 11746
+    },
+    {
+      "file": "assets/label-stream-BTlUuTVJ.js",
+      "bytes": 2727,
+      "gzipBytes": 1169
+    },
+    {
+      "file": "assets/label-stream-BxbDcTkq.js",
+      "bytes": 1716,
+      "gzipBytes": 871
+    },
+    {
+      "file": "assets/logic-DTFjvJ0t.js",
+      "bytes": 8365,
+      "gzipBytes": 3053
+    },
+    {
+      "file": "assets/material-ledger-Dlb9LY3I.js",
+      "bytes": 8817,
+      "gzipBytes": 2962
+    },
+    {
+      "file": "assets/material-ledger-aES6d9xp.js",
+      "bytes": 7898,
+      "gzipBytes": 2792
+    },
+    {
+      "file": "assets/models-8GyK5YA1.js",
+      "bytes": 7879,
+      "gzipBytes": 3021
+    },
+    {
+      "file": "assets/note-index-9EzBN5C-.js",
+      "bytes": 7856,
+      "gzipBytes": 2694
+    },
+    {
+      "file": "assets/note-index-BJOza8nf.js",
+      "bytes": 7023,
+      "gzipBytes": 2606
+    },
+    {
+      "file": "assets/reading-export-03SKeJdJ.js",
+      "bytes": 5147,
+      "gzipBytes": 1903
+    },
+    {
+      "file": "assets/reading-export-CUwAZtHJ.js",
+      "bytes": 4453,
+      "gzipBytes": 1809
+    },
+    {
+      "file": "assets/service-rgQzFAk3.js",
+      "bytes": 141516,
+      "gzipBytes": 32207
+    }
+  ],
+  "checks": [
+    "19 separately lazy new IP topics; preserved T02 pilot uses existing lesson/card stores",
+    "11 separately lazy assignments selected on demand",
+    "11 separately lazy original reference solutions remain behind reveal",
+    "CodingWorkbench has its own lazy chunk and no large editor dependency",
+    "Only IP capability counts and the lightweight IPStudyMode loader may enter the initial graph",
+    "IP teaching, practice, feedback, evidence, cues and workbench absent from the initial graph",
+    "IP build-only coverage/locks/source-review/oracles, scripts, docs and tests absent from every chunk",
+    "No raw PDF/ZIP/text, source inventory, Java verification evidence or full Handoff emitted",
+    "CO/RL/enrichment module gates and all Vite content gates executed unchanged",
+    "Sizes measured from final emitted assets after Vite rewriting; per-file gzip measured independently"
+  ]
+}

@@ -1,0 +1,629 @@
+[
+  {
+    "id": "ds.misconception.ip.division",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_03_EVAL_EXPRESSIONS"
+    ],
+    "subtopicIds": [
+      "IP_ST01_02_EXPRESSIONS_CASTING"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "label": "Integer division",
+    "rule": "Determine operand types before evaluating each operator."
+  },
+  {
+    "id": "ds.misconception.ip.cast",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_04_CAST_CONVERT"
+    ],
+    "subtopicIds": [
+      "IP_ST01_02_EXPRESSIONS_CASTING"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "label": "Conversion timing",
+    "rule": "A later cast cannot recover a fraction already discarded."
+  },
+  {
+    "id": "ds.misconception.ip.overflow",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_05_NUMERIC_EDGE"
+    ],
+    "subtopicIds": [
+      "IP_ST01_03_NUMERIC_EDGE_CASES"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "label": "Integer overflow",
+    "rule": "The variable and operands determine the arithmetic width."
+  },
+  {
+    "id": "ds.misconception.ip.narrow-assignment",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_01_DECLARE_ASSIGN"
+    ],
+    "subtopicIds": [
+      "IP_ST01_01_TYPES_VARIABLES"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "label": "Implicit narrowing",
+    "rule": "Separate compiler rejection from the behavior of a compiling program."
+  },
+  {
+    "id": "ds.misconception.ip.reference-type",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "skillIds": [
+      "IP_SK01_02_REASON_TYPES"
+    ],
+    "subtopicIds": [
+      "IP_ST01_01_TYPES_VARIABLES"
+    ],
+    "sourceIds": [
+      "ref-4796de4e30624f07"
+    ],
+    "evidenceIds": [
+      "ip-t01"
+    ],
+    "label": "Reference aliasing",
+    "rule": "A reference variable holds a reference, not an inline object copy."
+  },
+  {
+    "id": "ds.misconception.ip.method-return",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_02_TRACE_CALLS"
+    ],
+    "subtopicIds": [
+      "IP_ST03_01_METHOD_DEF_CALL"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "label": "Return versus caller state",
+    "rule": "A returned value does not itself reassign the caller variable."
+  },
+  {
+    "id": "ds.misconception.ip.pass-value",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_04_PASS_BY_VALUE"
+    ],
+    "subtopicIds": [
+      "IP_ST03_02_SCOPE_PASSING"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "label": "Pass by value",
+    "rule": "Java always passes values, including reference values."
+  },
+  {
+    "id": "ds.misconception.ip.scope",
+    "version": "1",
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "skillIds": [
+      "IP_SK03_03_SCOPE"
+    ],
+    "subtopicIds": [
+      "IP_ST03_02_SCOPE_PASSING"
+    ],
+    "sourceIds": [
+      "ref-51fd7d38d2311986"
+    ],
+    "evidenceIds": [
+      "ip-t03"
+    ],
+    "label": "Local shadowing",
+    "rule": "Scope chooses a binding; identical spelling does not make two storage locations identical."
+  },
+  {
+    "id": "ds.misconception.ip.constructor",
+    "version": "1",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "skillIds": [
+      "IP_SK04_02_CONSTRUCTOR_STATE"
+    ],
+    "subtopicIds": [
+      "IP_ST04_01_CLASS_MODEL"
+    ],
+    "sourceIds": [
+      "ref-6faf9172baf75824"
+    ],
+    "evidenceIds": [
+      "ip-t04"
+    ],
+    "label": "Constructor initialization",
+    "rule": "this identifies the current object; unqualified parameter names may shadow fields."
+  },
+  {
+    "id": "ds.misconception.ip.static",
+    "version": "1",
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "skillIds": [
+      "IP_SK04_03_INSTANCE_STATIC"
+    ],
+    "subtopicIds": [
+      "IP_ST04_02_INSTANCE_STATIC"
+    ],
+    "sourceIds": [
+      "ref-6faf9172baf75824"
+    ],
+    "evidenceIds": [
+      "ip-t04"
+    ],
+    "label": "Static versus instance",
+    "rule": "static state belongs to the class; instance fields belong to each object."
+  },
+  {
+    "id": "ds.misconception.ip.array-bound",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_01_ARRAY_TRAVERSE"
+    ],
+    "subtopicIds": [
+      "IP_ST05_01_ARRAY_CORE"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "label": "Array boundary",
+    "rule": "For zero-based arrays, the last valid index is length-1."
+  },
+  {
+    "id": "ds.misconception.ip.alias",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_03_ARRAY_ALIAS"
+    ],
+    "subtopicIds": [
+      "IP_ST05_02_ALIAS_COPY"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "label": "Array aliasing",
+    "rule": "Draw one array and two reference arrows before tracing mutations."
+  },
+  {
+    "id": "ds.misconception.ip.recursion",
+    "version": "1",
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "skillIds": [
+      "IP_SK05_04_RECURSION"
+    ],
+    "subtopicIds": [
+      "IP_ST05_03_RECURSION"
+    ],
+    "sourceIds": [
+      "ref-3f69452c7af0560e"
+    ],
+    "evidenceIds": [
+      "ip-t05"
+    ],
+    "label": "Recursion unwinding",
+    "rule": "Check termination first, then unwind each return expression."
+  },
+  {
+    "id": "ds.misconception.ip.list-set",
+    "version": "1",
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "skillIds": [
+      "IP_SK06_03_COLLECTION_SEMANTICS"
+    ],
+    "subtopicIds": [
+      "IP_ST06_02_COLLECTION_SEMANTICS"
+    ],
+    "sourceIds": [
+      "ref-f8f42116f140d764"
+    ],
+    "evidenceIds": [
+      "ip-t06"
+    ],
+    "label": "List versus set semantics",
+    "rule": "A collection contract determines whether duplicates are retained."
+  },
+  {
+    "id": "ds.misconception.ip.api-remove",
+    "version": "1",
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "skillIds": [
+      "IP_SK07_02_API_USE"
+    ],
+    "subtopicIds": [
+      "IP_ST07_02_LIBRARY_USE"
+    ],
+    "sourceIds": [
+      "ref-f7af58ce8943d54b"
+    ],
+    "evidenceIds": [
+      "ip-t07"
+    ],
+    "label": "Overloaded collection API",
+    "rule": "Read the parameter types and return contract of overloaded library methods."
+  },
+  {
+    "id": "ds.misconception.ip.constructor-chain",
+    "version": "1",
+    "topicId": "IP_T09_INHERITANCE",
+    "skillIds": [
+      "IP_SK09_02_INHERITANCE_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST09_02_OVERRIDE_VISIBILITY"
+    ],
+    "sourceIds": [
+      "ref-1b96953ab28fb39d"
+    ],
+    "evidenceIds": [
+      "ip-t09"
+    ],
+    "label": "Constructor chaining",
+    "rule": "Superclass construction precedes the subclass constructor body."
+  },
+  {
+    "id": "ds.misconception.ip.dispatch",
+    "version": "1",
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "skillIds": [
+      "IP_SK10_02_DISPATCH_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST10_02_BINDING"
+    ],
+    "sourceIds": [
+      "ref-596f95ae721fb59e"
+    ],
+    "evidenceIds": [
+      "ip-t10"
+    ],
+    "label": "Overload versus override",
+    "rule": "Choose a signature using static types, then dispatch an overridden instance method using the runtime object."
+  },
+  {
+    "id": "ds.misconception.ip.equality",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_01_EQUALS_IMPL"
+    ],
+    "subtopicIds": [
+      "IP_ST11_01_EQUALS"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "label": "Identity versus equality",
+    "rule": "Identity and domain-defined equality answer different questions."
+  },
+  {
+    "id": "ds.misconception.ip.hash-collision",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_02_HASH_CONTRACT"
+    ],
+    "subtopicIds": [
+      "IP_ST11_02_HASH"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "label": "Hash implication direction",
+    "rule": "Hash collisions are permitted; collections still check equality."
+  },
+  {
+    "id": "ds.misconception.ip.equals-overload",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "skillIds": [
+      "IP_SK11_03_EQUALITY_EDGE"
+    ],
+    "subtopicIds": [
+      "IP_ST11_03_BINDING_EQUALITY"
+    ],
+    "sourceIds": [
+      "ref-f3d7a5431ab68a61"
+    ],
+    "evidenceIds": [
+      "ip-t11"
+    ],
+    "label": "Equality overloading",
+    "rule": "Override public boolean equals(Object), and pair it with a compatible hashCode."
+  },
+  {
+    "id": "ds.misconception.ip.exception-flow",
+    "version": "1",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "skillIds": [
+      "IP_SK12_02_EXCEPTION_FLOW"
+    ],
+    "subtopicIds": [
+      "IP_ST12_02_EXCEPTION_FLOW"
+    ],
+    "sourceIds": [
+      "ref-7034e3454bddea79"
+    ],
+    "evidenceIds": [
+      "ip-t12"
+    ],
+    "label": "Exception control flow",
+    "rule": "Trace the first thrown exception; skip the remaining statements in that try body."
+  },
+  {
+    "id": "ds.misconception.ip.checked-exception",
+    "version": "1",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "skillIds": [
+      "IP_SK12_01_CLASSIFY_FAILURE"
+    ],
+    "subtopicIds": [
+      "IP_ST12_01_ERROR_CLASS"
+    ],
+    "sourceIds": [
+      "ref-7034e3454bddea79"
+    ],
+    "evidenceIds": [
+      "ip-t12"
+    ],
+    "label": "Checked exception handling",
+    "rule": "Compilation requirements and runtime exception flow are separate questions."
+  },
+  {
+    "id": "ds.misconception.ip.trailing-field",
+    "version": "1",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "skillIds": [
+      "IP_SK14_02_STRING_PARSE"
+    ],
+    "subtopicIds": [
+      "IP_ST14_02_STRINGS"
+    ],
+    "sourceIds": [
+      "ref-517a35b992dabf40"
+    ],
+    "evidenceIds": [
+      "ip-t14"
+    ],
+    "label": "Trailing-field parsing",
+    "rule": "A parser must deliberately choose how to handle empty fields."
+  },
+  {
+    "id": "ds.misconception.ip.generic-invariance",
+    "version": "1",
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "skillIds": [
+      "IP_SK14_03_GENERIC_REASON"
+    ],
+    "subtopicIds": [
+      "IP_ST14_03_GENERICS"
+    ],
+    "sourceIds": [
+      "ref-517a35b992dabf40"
+    ],
+    "evidenceIds": [
+      "ip-t14"
+    ],
+    "label": "Generic invariance",
+    "rule": "Generic type arguments are invariant; use a suitable API type for the required reads and writes."
+  },
+  {
+    "id": "ds.misconception.ip.stream",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "skillIds": [
+      "IP_SK16_02_STREAM_PIPE"
+    ],
+    "subtopicIds": [
+      "IP_ST16_02_STREAMS"
+    ],
+    "sourceIds": [
+      "ref-25062da4a98e2927"
+    ],
+    "evidenceIds": [
+      "ip-t16"
+    ],
+    "label": "Pipeline ordering",
+    "rule": "Follow each intermediate transformation and the final ordering contract."
+  },
+  {
+    "id": "ds.misconception.ip.optional",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "skillIds": [
+      "IP_SK16_03_OPTIONAL"
+    ],
+    "subtopicIds": [
+      "IP_ST16_03_OPTIONAL"
+    ],
+    "sourceIds": [
+      "ref-25062da4a98e2927"
+    ],
+    "evidenceIds": [
+      "ip-t16"
+    ],
+    "label": "Optional absence",
+    "rule": "Handle absence explicitly instead of calling get without checking."
+  },
+  {
+    "id": "ds.misconception.ip.lambda",
+    "version": "1",
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "skillIds": [
+      "IP_SK16_01_LAMBDA"
+    ],
+    "subtopicIds": [
+      "IP_ST16_01_LAMBDAS"
+    ],
+    "sourceIds": [
+      "ref-25062da4a98e2927"
+    ],
+    "evidenceIds": [
+      "ip-t16"
+    ],
+    "label": "Predicate result type",
+    "rule": "The functional-interface method signature constrains the lambda result."
+  },
+  {
+    "id": "ds.misconception.ip.var",
+    "version": "1",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "skillIds": [
+      "IP_SK18_02_MODERN_USE"
+    ],
+    "subtopicIds": [
+      "IP_ST18_02_SWITCH_COMPARE"
+    ],
+    "sourceIds": [
+      "ref-5469f9c870013b80"
+    ],
+    "evidenceIds": [
+      "ip-t18"
+    ],
+    "label": "var and static types",
+    "rule": "Local type inference still chooses one compile-time type."
+  },
+  {
+    "id": "ds.misconception.ip.record",
+    "version": "1",
+    "topicId": "IP_T18_MODERN_JAVA",
+    "skillIds": [
+      "IP_SK18_01_MODERN_MODEL"
+    ],
+    "subtopicIds": [
+      "IP_ST18_01_MODERN_TYPES"
+    ],
+    "sourceIds": [
+      "ref-5469f9c870013b80"
+    ],
+    "evidenceIds": [
+      "ip-t18"
+    ],
+    "label": "Record equality",
+    "rule": "Choose record value semantics only when its component-based contract fits the model."
+  },
+  {
+    "id": "ds.misconception.ip.direct-run",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_01_THREAD_RUN"
+    ],
+    "subtopicIds": [
+      "IP_ST19_01_THREAD_LIFECYCLE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "label": "start versus run",
+    "rule": "start schedules a worker; a direct run call is an ordinary method call."
+  },
+  {
+    "id": "ds.misconception.ip.joined-sync",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_02_SYNC"
+    ],
+    "subtopicIds": [
+      "IP_ST19_02_SHARED_STATE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "label": "Synchronization plus join",
+    "rule": "Protect the shared update and wait for every worker before reading the final result."
+  },
+  {
+    "id": "ds.misconception.ip.race",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_02_SYNC"
+    ],
+    "subtopicIds": [
+      "IP_ST19_02_SHARED_STATE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "label": "Race nondeterminism",
+    "rule": "Separate waiting for completion from protecting a read-modify-write operation."
+  },
+  {
+    "id": "ds.misconception.ip.missing-join",
+    "version": "1",
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "skillIds": [
+      "IP_SK19_01_THREAD_RUN"
+    ],
+    "subtopicIds": [
+      "IP_ST19_01_THREAD_LIFECYCLE"
+    ],
+    "sourceIds": [
+      "ref-ea0f1a1b1d127fd4"
+    ],
+    "evidenceIds": [
+      "ip-t19"
+    ],
+    "label": "Missing join",
+    "rule": "Join a worker before relying on its completed result; do not infer an execution order from source-line order across threads."
+  }
+]

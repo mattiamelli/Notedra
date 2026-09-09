@@ -1,0 +1,182 @@
+{
+  "id": "ds.assignment.ip.alert-policies",
+  "version": "1",
+  "title": "Compose and dispatch alert policies",
+  "minutes": 30,
+  "topicId": "IP_T10_POLYMORPHISM_BINDING",
+  "relatedTopicIds": [
+    "IP_T10_POLYMORPHISM_BINDING",
+    "IP_T09_INHERITANCE",
+    "IP_T04_CLASSES_OBJECTS",
+    "IP_T07_COMPOSITION_LIBRARIES",
+    "IP_T08_TESTING",
+    "IP_T17_PROGRAM_DESIGN"
+  ],
+  "skillIds": [
+    "IP_SK09_01_DESIGN_HIERARCHY",
+    "IP_SK09_02_INHERITANCE_TRACE",
+    "IP_SK04_02_CONSTRUCTOR_STATE",
+    "IP_SK10_01_POLY_DESIGN",
+    "IP_SK10_02_DISPATCH_TRACE",
+    "IP_SK07_01_COMPOSE_MODEL",
+    "IP_SK08_03_TESTABILITY",
+    "IP_SK17_01_DOMAIN_MODEL",
+    "IP_SK08_01_WRITE_TESTS"
+  ],
+  "subtopicIds": [
+    "IP_ST09_01_HIERARCHY",
+    "IP_ST09_02_OVERRIDE_VISIBILITY",
+    "IP_ST04_01_CLASS_MODEL",
+    "IP_ST10_01_INTERFACE_POLY",
+    "IP_ST10_02_BINDING",
+    "IP_ST07_01_COMPOSITION",
+    "IP_ST08_02_TESTABILITY",
+    "IP_ST17_01_DOMAIN_MODEL",
+    "IP_ST08_01_UNIT_TESTS"
+  ],
+  "sourceIds": [
+    "ref-1b96953ab28fb39d",
+    "ref-6faf9172baf75824",
+    "ref-596f95ae721fb59e",
+    "ref-f7af58ce8943d54b",
+    "ref-18b7de6140eaf782",
+    "ref-15f80f1f4bb2f1f3"
+  ],
+  "evidenceIds": [
+    "ip-t10",
+    "ip-t09",
+    "ip-t04",
+    "ip-t07",
+    "ip-t08",
+    "ip-t17"
+  ],
+  "instructions": [
+    "Create an AlertRule interface with matches(int). HighAlert matches readings strictly above its threshold; LowAlert matches readings strictly below its threshold.",
+    "Use a small abstract ThresholdAlert to hold the shared immutable threshold, with constructor chaining through super. RuleSet composes a list of AlertRule objects and counts matching rules for a reading.",
+    "The threshold base is justified only by shared state; RuleSet has rules and is not itself a subtype of the threshold class. Explain static interface type versus runtime implementation.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "AlertRule.java",
+      "language": "java",
+      "content": "public interface AlertRule { boolean matches(int reading); }\n"
+    },
+    {
+      "name": "ThresholdAlert.java",
+      "language": "java",
+      "content": "public abstract class ThresholdAlert implements AlertRule {\n    // Store immutable shared threshold and expose it to subclasses safely.\n}\n"
+    },
+    {
+      "name": "HighAlert.java",
+      "language": "java",
+      "content": "public final class HighAlert extends ThresholdAlert {\n    public HighAlert(int threshold) { /* call super */ }\n    public boolean matches(int reading) { throw new UnsupportedOperationException(); }\n}\n"
+    },
+    {
+      "name": "LowAlert.java",
+      "language": "java",
+      "content": "public final class LowAlert extends ThresholdAlert {\n    public LowAlert(int threshold) { /* call super */ }\n    public boolean matches(int reading) { throw new UnsupportedOperationException(); }\n}\n"
+    },
+    {
+      "name": "RuleSet.java",
+      "language": "java",
+      "content": "import java.util.List;\npublic final class RuleSet {\n    public RuleSet(List<AlertRule> rules) { /* take ownership safely */ }\n    public int matchingRules(int reading) { throw new UnsupportedOperationException(); }\n}\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "hierarchy",
+      "text": "Use the interface and an abstract shared-state base correctly, including super constructor chaining and immutable threshold state.",
+      "skillIds": [
+        "IP_SK09_01_DESIGN_HIERARCHY",
+        "IP_SK09_02_INHERITANCE_TRACE",
+        "IP_SK04_02_CONSTRUCTOR_STATE"
+      ]
+    },
+    {
+      "id": "dispatch",
+      "text": "Override matches(int) with strict high/low behavior and explain why a call through AlertRule uses the actual object implementation.",
+      "skillIds": [
+        "IP_SK10_01_POLY_DESIGN",
+        "IP_SK10_02_DISPATCH_TRACE"
+      ]
+    },
+    {
+      "id": "composition",
+      "text": "Compose a defensive list of rules; reject null rules and keep matching independent of console input.",
+      "skillIds": [
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK17_01_DOMAIN_MODEL"
+      ]
+    },
+    {
+      "id": "tests",
+      "text": "Test threshold equality, mixed rules, an empty rule list and caller mutation of the original list.",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-hierarchy",
+      "text": "Review evidence for: Use the interface and an abstract shared-state base correctly, including super constructor chaining and immutable threshold state.",
+      "requirementIds": [
+        "hierarchy"
+      ],
+      "skillIds": [
+        "IP_SK09_01_DESIGN_HIERARCHY",
+        "IP_SK09_02_INHERITANCE_TRACE",
+        "IP_SK04_02_CONSTRUCTOR_STATE"
+      ],
+      "testIds": [
+        "alert-dispatch"
+      ]
+    },
+    {
+      "id": "rubric-dispatch",
+      "text": "Review evidence for: Override matches(int) with strict high/low behavior and explain why a call through AlertRule uses the actual object implementation.",
+      "requirementIds": [
+        "dispatch"
+      ],
+      "skillIds": [
+        "IP_SK10_01_POLY_DESIGN",
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "testIds": [
+        "alert-dispatch"
+      ]
+    },
+    {
+      "id": "rubric-composition",
+      "text": "Review evidence for: Compose a defensive list of rules; reject null rules and keep matching independent of console input.",
+      "requirementIds": [
+        "composition"
+      ],
+      "skillIds": [
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK17_01_DOMAIN_MODEL"
+      ],
+      "testIds": [
+        "alert-composition"
+      ]
+    },
+    {
+      "id": "rubric-tests",
+      "text": "Review evidence for: Test threshold equality, mixed rules, an empty rule list and caller mutation of the original list.",
+      "requirementIds": [
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS"
+      ],
+      "testIds": [
+        "alert-composition"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.alert-policies"
+}

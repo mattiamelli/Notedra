@@ -1,0 +1,259 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t11",
+    "version": "1",
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t11.model",
+        "version": "1",
+        "topicId": "IP_T11_EQUALITY_HASHING",
+        "skillIds": [
+          "IP_SK11_01_EQUALS_IMPL",
+          "IP_SK11_02_HASH_CONTRACT",
+          "IP_SK11_03_EQUALITY_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST11_01_EQUALS",
+          "IP_ST11_02_HASH",
+          "IP_ST11_03_BINDING_EQUALITY"
+        ],
+        "sourceIds": [
+          "ref-f3d7a5431ab68a61"
+        ],
+        "kind": "introduction",
+        "title": "Equality is a domain contract",
+        "paragraphs": [
+          "Two references may point to different objects that represent the same value. Decide what your domain means by equal, then make equals, hashCode and tests agree with that decision. Identity alone cannot answer every domain question."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t11.value",
+        "version": "1",
+        "topicId": "IP_T11_EQUALITY_HASHING",
+        "skillIds": [
+          "IP_SK11_01_EQUALS_IMPL"
+        ],
+        "subtopicIds": [
+          "IP_ST11_01_EQUALS"
+        ],
+        "sourceIds": [
+          "ref-f3d7a5431ab68a61"
+        ],
+        "kind": "code_example",
+        "title": "Implement a complete value decision",
+        "paragraphs": [
+          "This original BinKey identifies a storage position by zone and slot. The class is final, equality uses exactly those fields, null is unequal, and comparing an object with itself is true. Objects.equals safely compares a potentially null zone. Another policy could reject null in the constructor; state which one you chose.",
+          "Override equals(Object), not equals(BinKey): the latter overloads and can behave differently through an Object reference. The exact-class check here excludes unrelated types before the cast."
+        ],
+        "code": "final class BinKey {\n    private final String zone;\n    private final int slot;\n    BinKey(String zone, int slot) {\n        this.zone = zone;\n        this.slot = slot;\n    }\n    @Override public boolean equals(Object other) {\n        if (this == other) return true;\n        if (other == null || getClass() != other.getClass()) return false;\n        BinKey that = (BinKey) other;\n        return slot == that.slot && java.util.Objects.equals(zone, that.zone);\n    }\n    @Override public int hashCode() {\n        return java.util.Objects.hash(zone, slot);\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t11.hash",
+        "version": "1",
+        "topicId": "IP_T11_EQUALITY_HASHING",
+        "skillIds": [
+          "IP_SK11_02_HASH_CONTRACT"
+        ],
+        "subtopicIds": [
+          "IP_ST11_02_HASH"
+        ],
+        "sourceIds": [
+          "ref-f3d7a5431ab68a61"
+        ],
+        "kind": "important_rule",
+        "title": "Equal values must lead to the same hash",
+        "paragraphs": [
+          "If a.equals(b), a.hashCode() must equal b.hashCode(). The converse is false: different values may collide. A constant hash can satisfy the contract but creates poor distribution; it does not make all objects equal.",
+          "Hash-based collections use both hashing and equality. Inserting two distinct BinKey objects for the same zone and slot into a HashSet keeps one logical key. Changing a field used in equality/hashCode while an object is a key can break later lookup. Prefer stable key fields or remove and reinsert using a deliberate policy."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t11.edges",
+        "version": "1",
+        "topicId": "IP_T11_EQUALITY_HASHING",
+        "skillIds": [
+          "IP_SK11_03_EQUALITY_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST11_03_BINDING_EQUALITY"
+        ],
+        "sourceIds": [
+          "ref-f3d7a5431ab68a61"
+        ],
+        "kind": "worked_example",
+        "title": "Check null, symmetry and the declared method signature",
+        "paragraphs": [
+          "Let a and b be separately created BinKey(\"east\", 4), c be BinKey(\"east\", 5), and alias=a. Then a==b is false, a.equals(b) is true, a==alias is true, a.equals(c) is false, and a.equals(null) is false.",
+          "Equality must be reflexive, symmetric and transitive, and stay consistent while relevant state is unchanged. A superclass using instanceof while a subclass adds equality fields can make base.equals(child) true and child.equals(base) false. A final value class avoids that hierarchy problem; an extensible hierarchy needs a coherent policy across both directions."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t11.recap",
+        "version": "1",
+        "topicId": "IP_T11_EQUALITY_HASHING",
+        "skillIds": [
+          "IP_SK11_01_EQUALS_IMPL",
+          "IP_SK11_02_HASH_CONTRACT",
+          "IP_SK11_03_EQUALITY_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST11_01_EQUALS",
+          "IP_ST11_02_HASH",
+          "IP_ST11_03_BINDING_EQUALITY"
+        ],
+        "sourceIds": [
+          "ref-f3d7a5431ab68a61"
+        ],
+        "kind": "recap",
+        "title": "Test the contract, not object addresses",
+        "paragraphs": [
+          "Write the equality signature and value policy first. Then verify null/type handling, the equivalence laws, hash consistency and collection behavior. An unchanged hash value alone proves neither identity nor equality."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t11.signature",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL"
+      ],
+      "subtopicIds": [
+        "IP_ST11_01_EQUALS"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "prompt": "Why must the value method be equals(Object)?",
+      "answer": "That signature overrides Object.equals. equals(MyType) only overloads; calls selected through Object or collection APIs can then use a different method."
+    },
+    {
+      "id": "ds.card.ip.t11.null-fields",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL"
+      ],
+      "subtopicIds": [
+        "IP_ST11_01_EQUALS"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "prompt": "How do you distinguish a null argument from a nullable equality field?",
+      "answer": "equals(null) must be false for a non-null receiver. A nullable field can still be compared safely with Objects.equals; alternatively reject it at construction under an explicit contract."
+    },
+    {
+      "id": "ds.card.ip.t11.collision",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_02_HASH_CONTRACT"
+      ],
+      "subtopicIds": [
+        "IP_ST11_02_HASH"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "prompt": "If two objects have the same hash code, must equals return true?",
+      "answer": "No. Equal objects require equal hash codes, but unequal objects may collide. Hash collections still use equality to distinguish keys."
+    },
+    {
+      "id": "ds.card.ip.t11.mutable-key",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_02_HASH_CONTRACT"
+      ],
+      "subtopicIds": [
+        "IP_ST11_02_HASH"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "prompt": "Why can mutating an equality field break a hash collection lookup?",
+      "answer": "The stored object may now compute a different bucket/hash while still residing under its old placement. Keep key identity fields stable or deliberately remove and reinsert."
+    },
+    {
+      "id": "ds.card.ip.t11.edge-matrix",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_03_EQUALITY_EDGE"
+      ],
+      "subtopicIds": [
+        "IP_ST11_03_BINDING_EQUALITY"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "prompt": "Which equality cases expose more than a single happy-path test?",
+      "answer": "Same reference; null; unrelated type; separately created same values; each different field; both comparison directions; a three-object transitivity chain; repeated comparison without relevant mutation."
+    },
+    {
+      "id": "ds.card.ip.t11.inheritance",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_03_EQUALITY_EDGE"
+      ],
+      "subtopicIds": [
+        "IP_ST11_03_BINDING_EQUALITY"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "prompt": "Why can a base instanceof check conflict with a subclass equality rule?",
+      "answer": "The base can accept a subclass while the subclass rejects the base or compares additional fields, breaking symmetry. Choose a coherent type policy; final value classes simplify it."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t11.contract-review",
+      "version": "1",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_02_HASH_CONTRACT",
+        "IP_SK11_03_EQUALITY_EDGE"
+      ],
+      "subtopicIds": [
+        "IP_ST11_01_EQUALS",
+        "IP_ST11_02_HASH",
+        "IP_ST11_03_BINDING_EQUALITY"
+      ],
+      "sourceIds": [
+        "ref-f3d7a5431ab68a61"
+      ],
+      "title": "Review a key contract",
+      "prompt": "A catalogue groups sketches by (room, drawer). Two separate keys for the same pair should locate one group. A candidate compares only room in equals but hashes room and drawer. Review the defect and specify a stronger test suite; no implementation text is graded.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Equality definition and type/null policy"
+        },
+        {
+          "id": "step2",
+          "label": "Counterexample and repair"
+        },
+        {
+          "id": "step3",
+          "label": "Tests beyond the happy path"
+        }
+      ],
+      "rubric": [
+        "The chosen identity fields match the stated pair.",
+        "Equal objects always have equal hashes; collisions are not treated as proof of equality.",
+        "Tests cover null, same reference, both fields, symmetry, transitivity and HashSet/Map lookup."
+      ],
+      "reference": [
+        "The candidate considers keys with the same room but different drawers equal while their hashes may differ. Compare both room and drawer and hash the same value-defining fields.",
+        "Use distinct equal objects in collection tests, vary each field separately, and compare both directions. Multiple implementations can satisfy the contract."
+      ]
+    }
+  ]
+}

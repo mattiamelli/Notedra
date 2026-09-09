@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ip-t01-trace",
+    "sourceBlockId": "ds.block.ip.t01.trace",
+    "description": "Trusted authored worked example for IP_T01_JAVA_BASICS",
+    "javaSource": "class Program {\n    public static void main(String[] args) {\n        int count = 11;\n        int groups = 4;\n        double a = count / groups;\n        double b = (double) count / groups;\n        byte c = (byte) 130;\n        int largest = Integer.MAX_VALUE;\n        System.out.println(a + \" \" + b + \" \" + c);\n        System.out.println(largest + 1);\n    }\n}",
+    "expectedStdout": "2.0 2.75 -126\n-2147483648\n",
+    "reasoning": "11/4 first performs integer division (2), then widens to 2.0; casting an operand first makes 11.0/4=2.75. Narrowing 130 to eight bits gives signed -126. Adding one to the maximum signed 32-bit int wraps to its minimum."
+  },
+  {
+    "id": "ip-t03-trace",
+    "sourceBlockId": "ds.block.ip.t03.trace",
+    "description": "Trusted authored worked example for IP_T03_METHODS_SCOPE",
+    "javaSource": "class Program {\n    static void adjust(int limit, int[] values) {\n        limit = 9;\n        values[0] += 2;\n        values = new int[] {99};\n    }\n    public static void main(String[] args) {\n        int limit = 3;\n        int[] values = {5};\n        adjust(limit, values);\n        System.out.println(limit + \" \" + values[0]);\n    }\n}",
+    "expectedStdout": "3 7\n",
+    "reasoning": "The primitive parameter is a copy of 3; assigning 9 cannot change the caller variable. The reference parameter initially refers to the same array, so the mutation writes 7. Rebinding that local parameter to a new array does not change the caller reference."
+  },
+  {
+    "id": "ip-t04-trace",
+    "sourceBlockId": "ds.block.ip.t04.trace",
+    "description": "Trusted authored worked example for IP_T04_CLASSES_OBJECTS",
+    "javaSource": "class Program {\n    static class Meter {\n        private int units;\n        private static int created;\n        Meter(int units) { this.units = units; created++; }\n        void add(int extra) { units += extra; }\n        int units() { return units; }\n        static int created() { return created; }\n    }\n    public static void main(String[] args) {\n        Meter first = new Meter(10);\n        Meter second = new Meter(20);\n        Meter alias = first;\n        alias.add(3);\n        System.out.println(first.units() + \" \" + second.units()\n                + \" \" + Meter.created());\n    }\n}",
+    "expectedStdout": "13 20 2\n",
+    "reasoning": "Constructing two objects increments the one shared created field twice. first and alias refer to the same Meter, so adding3 changes its units10→13; the second object keeps20."
+  },
+  {
+    "id": "ip-t05-trace",
+    "sourceBlockId": "ds.block.ip.t05.trace",
+    "description": "Trusted authored worked example for IP_T05_ARRAYS_RECURSION",
+    "javaSource": "class Program {\n    static int prefixSum(int[] values, int length) {\n        if (length == 0) return 0;\n        return values[length - 1] + prefixSum(values, length - 1);\n    }\n    public static void main(String[] args) {\n        int[] a = {2, 4, 6};\n        int[] b = a;\n        b[1] = 9;\n        int[] c = a.clone();\n        c[0] = 8;\n        System.out.println(a[0] + \" \" + a[1] + \" \" + c[0]);\n        System.out.println(prefixSum(a, a.length));\n    }\n}",
+    "expectedStdout": "2 9 8\n17\n",
+    "reasoning": "b aliases a, so the shared second element becomes9. clone makes a different primitive array, leaving a[0]=2 when c[0]=8. Recursive prefix sums have lengths3,2,1,0 and unwind as0+2+9+6=17."
+  },
+  {
+    "id": "ip-t06-trace",
+    "sourceBlockId": "ds.block.ip.t06.trace",
+    "description": "Trusted authored worked example for IP_T06_CONTAINER_CLASSES",
+    "javaSource": "class Program {\n    static class IntList {\n        private final int[] data = new int[3];\n        private int size;\n        boolean add(int value) {\n            if (size == data.length) return false;\n            data[size++] = value;\n            return true;\n        }\n        boolean removeFirst(int value) {\n            int i = 0;\n            while (i < size && data[i] != value) i++;\n            if (i == size) return false;\n            for (int j = i; j < size - 1; j++) data[j] = data[j + 1];\n            data[--size] = 0;\n            return true;\n        }\n        String contents() {\n            return java.util.Arrays.toString(java.util.Arrays.copyOf(data, size));\n        }\n    }\n    public static void main(String[] args) {\n        IntList values = new IntList();\n        values.add(4); values.add(7); values.add(4);\n        System.out.println(values.add(9));\n        values.removeFirst(4);\n        System.out.println(values.contents());\n    }\n}",
+    "expectedStdout": "false\n[7, 4]\n",
+    "reasoning": "Three adds fill logical positions0,1,2. A fourth is rejected before mutation. Removing first4 shifts7 and4 left and reduces size3→2; the remaining4 is retained because this is list semantics."
+  },
+  {
+    "id": "ip-t07-trace",
+    "sourceBlockId": "ds.block.ip.t07.trace",
+    "description": "Trusted authored worked example for IP_T07_COMPOSITION_LIBRARIES",
+    "javaSource": "import java.util.ArrayList;\nimport java.util.List;\nclass Program {\n    public static void main(String[] args) {\n        List<String> slots = new ArrayList<>();\n        slots.add(\"dawn\");\n        slots.add(\"noon\");\n        slots.add(1, \"dusk\");\n        String removed = slots.remove(0);\n        System.out.println(removed);\n        System.out.println(slots.get(0) + \" \" + slots.size());\n    }\n}",
+    "expectedStdout": "dawn\ndusk 2\n",
+    "reasoning": "Indexed insertion at1 shifts noon right, producing[dawn,dusk,noon]. Removing index0 returns dawn and shifts remaining values; get0=dusk and size2."
+  },
+  {
+    "id": "ip-t09-trace",
+    "sourceBlockId": "ds.block.ip.t09.trace",
+    "description": "Trusted authored worked example for IP_T09_INHERITANCE",
+    "javaSource": "class Program {\n    static class Base {\n        Base() { System.out.println(\"base\"); }\n        int value() { return 2; }\n    }\n    static class Child extends Base {\n        Child() { super(); System.out.println(\"child\"); }\n        @Override int value() { return 7; }\n    }\n    public static void main(String[] args) {\n        Base item = new Child();\n        System.out.println(item.value());\n    }\n}",
+    "expectedStdout": "base\nchild\n7\n",
+    "reasoning": "Child construction first invokes Base, then its own body. The variable is statically Base but references a Child, so virtual instance method dispatch calls Child.value and returns7."
+  },
+  {
+    "id": "ip-t10-trace",
+    "sourceBlockId": "ds.block.ip.t10.trace",
+    "description": "Trusted authored worked example for IP_T10_POLYMORPHISM_BINDING",
+    "javaSource": "class Program {\n    static class Labeler {\n        String label(Object value) { return \"object\"; }\n        String label(String value) { return \"string\"; }\n    }\n    static class Detailed extends Labeler {\n        @Override String label(Object value) { return \"detailed\"; }\n    }\n    public static void main(String[] args) {\n        Labeler receiver = new Detailed();\n        Object value = \"hello\";\n        System.out.println(receiver.label(value));\n        System.out.println(receiver.label(\"hello\"));\n    }\n}",
+    "expectedStdout": "detailed\nstring\n",
+    "reasoning": "The static argument type Object selects label(Object); the runtime Detailed receiver overrides that signature, yielding detailed. The String literal selects label(String), which Detailed inherits unchanged, yielding string."
+  }
+]

@@ -1,0 +1,116 @@
+{
+  "id": "ds.reference.ip.air-audit",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.air-audit",
+  "files": [
+    {
+      "name": "Sample.java",
+      "language": "java",
+      "content": "public record Sample(String zone, int number, int ppm) {\n    public Sample {\n        if (zone == null || !zone.matches(\"[A-Z]{1,6}\") || number < 1 || number > 1000 || ppm < 0 || ppm > 5000) throw new IllegalArgumentException(\"Invalid sample\");\n    }\n}\n"
+    },
+    {
+      "name": "SampleFormatException.java",
+      "language": "java",
+      "content": "import java.io.IOException;\npublic final class SampleFormatException extends IOException {\n    private static final long serialVersionUID = 1L;\n    private final int lineNumber;\n    public SampleFormatException(int lineNumber) { super(\"Invalid sample at line \" + lineNumber); this.lineNumber = lineNumber; }\n    public int lineNumber() { return lineNumber; }\n}\n"
+    },
+    {
+      "name": "AirAudit.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.*;\nimport java.util.*;\npublic final class AirAudit {\n    private AirAudit() {}\n    private static int canonicalInt(String text) {\n        int value = Integer.parseInt(text);\n        if (!Integer.toString(value).equals(text)) throw new IllegalArgumentException(\"Invalid integer\");\n        return value;\n    }\n    public static List<Sample> parse(Reader reader) throws IOException {\n        BufferedReader buffered = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);\n        List<Sample> samples = new ArrayList<>();\n        Set<String> seen = new HashSet<>();\n        String line;\n        int number = 0;\n        while ((line = buffered.readLine()) != null) {\n            number++;\n            String[] fields = line.split(java.util.regex.Pattern.quote(\"^\"), -1);\n            try {\n                if (fields.length != 3) throw new IllegalArgumentException();\n                Sample sample = new Sample(fields[0], canonicalInt(fields[1]), canonicalInt(fields[2]));\n                if (!seen.add(sample.zone() + \":\" + sample.number())) throw new IllegalArgumentException(\"Duplicate sample\");\n                samples.add(sample);\n            } catch (IllegalArgumentException error) { throw new SampleFormatException(number); }\n        }\n        return samples;\n    }\n    private static void threshold(int threshold) {\n        if (threshold < 0 || threshold > 5000) throw new IllegalArgumentException(\"Invalid threshold\");\n    }\n    public static List<String> report(List<Sample> samples, int threshold) {\n        threshold(threshold);\n        Map<String, int[]> stats = new TreeMap<>();\n        for (Sample sample : samples) {\n            int[] values = stats.computeIfAbsent(sample.zone(), key -> new int[3]);\n            values[0]++;\n            values[1] = Math.max(values[1], sample.ppm());\n            if (sample.ppm() > threshold) values[2]++;\n        }\n        List<String> lines = new ArrayList<>();\n        for (Map.Entry<String, int[]> entry : stats.entrySet()) {\n            int[] values = entry.getValue();\n            lines.add(entry.getKey() + \" count=\" + values[0] + \" peak=\" + values[1] + \" alerts=\" + values[2]);\n        }\n        return lines;\n    }\n    public static void generate(Path input, Path output, int threshold) throws IOException {\n        threshold(threshold);\n        List<Sample> samples;\n        try (BufferedReader reader = Files.newBufferedReader(input, StandardCharsets.UTF_8)) { samples = parse(reader); }\n        List<String> lines = report(samples, threshold);\n        try (BufferedWriter writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8)) { for (String line : lines) writer.write(line + \"\\n\"); }\n    }\n}\n"
+    },
+    {
+      "name": "AirAuditCli.java",
+      "language": "java",
+      "content": "import java.io.*;\nimport java.nio.file.*;\npublic final class AirAuditCli {\n    private AirAuditCli() {}\n    public static int run(String[] args, PrintStream err) {\n        if (args.length != 3) { err.println(\"Usage: AirAuditCli input output threshold\"); return 2; }\n        int threshold;\n        try {\n            threshold = Integer.parseInt(args[2]);\n            if (!Integer.toString(threshold).equals(args[2]) || threshold < 0 || threshold > 5000) throw new NumberFormatException();\n        } catch (NumberFormatException error) { err.println(\"Invalid threshold\"); return 2; }\n        try { AirAudit.generate(Path.of(args[0]), Path.of(args[1]), threshold); return 0; }\n        catch (IOException | InvalidPathException error) { err.println(error.getMessage()); return 1; }\n    }\n    public static void main(String[] args) { run(args, System.err); }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "air-normal",
+      "name": "Independent statistics calculation",
+      "requirementIds": [
+        "decompose",
+        "report",
+        "testplan"
+      ],
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK18_01_MODERN_MODEL",
+        "IP_SK03_01_DEFINE_METHOD",
+        "IP_SK07_02_API_USE",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "For sample input and threshold 700, derive each zone result manually.",
+      "expected": "LAB count=2 peak=800 alerts=1; STUDIO count=2 peak=900 alerts=1."
+    },
+    {
+      "id": "air-invalid",
+      "name": "Malformed/duplicate matrix",
+      "requirementIds": [
+        "input",
+        "testplan"
+      ],
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK14_02_STRING_PARSE",
+        "IP_SK12_01_CLASSIFY_FAILURE",
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Reject duplicate zone/sample, blank second line, malformed field count, invalid integers and out-of-range values.",
+      "expected": "SampleFormatException identifies the failing line; identical sample numbers in different zones are valid."
+    },
+    {
+      "id": "air-ownership",
+      "name": "Resource and output preservation",
+      "requirementIds": [
+        "resources",
+        "testplan"
+      ],
+      "skillIds": [
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK20_01_EXAM_SYNTHESIS",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Use borrowed close-tracking and failing readers; run generate on valid and malformed files with an existing destination.",
+      "expected": "Borrowed reader stays open; IOException propagates; malformed input leaves destination unchanged."
+    },
+    {
+      "id": "air-cli",
+      "name": "Argument/status contract",
+      "requirementIds": [
+        "report",
+        "resources",
+        "testplan"
+      ],
+      "skillIds": [
+        "IP_SK03_01_DEFINE_METHOD",
+        "IP_SK07_02_API_USE",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK20_01_EXAM_SYNTHESIS",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "description": "Exercise correct paths, missing path, malformed source, bad threshold and wrong argument count.",
+      "expected": "0 for success, 1 for I/O/data failure and 2 for invalid arguments/threshold."
+    }
+  ],
+  "reasoning": [
+    "At threshold 700, LAB readings 800 and 700 have one strict exceedance; STUDIO readings 400 and 900 also have one. Both zones have count two and respective peaks 800 and 900.",
+    "Sample numbers identify records within a zone. A duplicate composite identifier is rejected, while LAB/1 and STUDIO/1 are different identifiers. Colon cannot appear in a validated zone, so the duplicate-detection key is unambiguous.",
+    "Malformed input is a checked I/O-domain failure, not a successful report. The parser reports the physical line and stops; the CLI converts errors to its declared status without manufacturing partial totals.",
+    "The parser borrows a Reader. The service closes file resources and delays output creation until validated report lines exist. A later write failure can still leave partial output; this assignment does not promise transactional filesystem replacement.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

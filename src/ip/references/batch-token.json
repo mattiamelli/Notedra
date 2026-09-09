@@ -1,0 +1,44 @@
+{
+  "id": "ds.reference.ip.batch-token",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.batch-token",
+  "files": [
+    {
+      "name": "BatchToken.java",
+      "language": "java",
+      "content": "public final class BatchToken {\n    private BatchToken() {}\n    public static int quantity(String token) {\n        if (token == null) throw new IllegalArgumentException(\"Missing token\");\n        String[] fields = token.split(\"@\", -1);\n        if (fields.length != 2 || fields[0].isEmpty() || fields[0].length() > 8\n                || fields[1].isEmpty() || fields[1].length() > 3) throw new IllegalArgumentException(\"Invalid token\");\n        for (char c : fields[0].toCharArray()) if (c < 'A' || c > 'Z') throw new IllegalArgumentException(\"Invalid tag\");\n        for (char c : fields[1].toCharArray()) if (c < '0' || c > '9') throw new IllegalArgumentException(\"Invalid quantity\");\n        return Integer.parseInt(fields[1]);\n    }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "token-valid",
+      "name": "Small and boundary quantities",
+      "requirementIds": [
+        "parse"
+      ],
+      "skillIds": [
+        "IP_SK14_02_STRING_PARSE"
+      ],
+      "description": "Parse A@0, PULSE@007 and ZZZZZZZZ@999.",
+      "expected": "0, 7 and 999."
+    },
+    {
+      "id": "token-invalid",
+      "name": "Malformed input matrix",
+      "requirementIds": [
+        "failure"
+      ],
+      "skillIds": [
+        "IP_SK12_02_EXCEPTION_FLOW",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "description": "Try null, A@, @1, a@2, A@+2, A@1000, A@1@2, A @2 and A@2 followed by a space.",
+      "expected": "Every input is rejected; none is silently corrected."
+    }
+  ],
+  "reasoning": [
+    "Keeping trailing empty fields with split(\"@\", -1) distinguishes a missing quantity. Exactly two fields rejects extra separators.",
+    "After checking 1\u20133 ASCII digits, Integer.parseInt cannot overflow and yields a value from 0 through 999. Leading zeros do not change the base.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

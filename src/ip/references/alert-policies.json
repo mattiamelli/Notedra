@@ -1,0 +1,72 @@
+{
+  "id": "ds.reference.ip.alert-policies",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.alert-policies",
+  "files": [
+    {
+      "name": "AlertRule.java",
+      "language": "java",
+      "content": "public interface AlertRule { boolean matches(int reading); }\n"
+    },
+    {
+      "name": "ThresholdAlert.java",
+      "language": "java",
+      "content": "public abstract class ThresholdAlert implements AlertRule {\n    private final int threshold;\n    protected ThresholdAlert(int threshold) { this.threshold = threshold; }\n    protected final int threshold() { return threshold; }\n}\n"
+    },
+    {
+      "name": "HighAlert.java",
+      "language": "java",
+      "content": "public final class HighAlert extends ThresholdAlert {\n    public HighAlert(int threshold) { super(threshold); }\n    @Override public boolean matches(int reading) { return reading > threshold(); }\n}\n"
+    },
+    {
+      "name": "LowAlert.java",
+      "language": "java",
+      "content": "public final class LowAlert extends ThresholdAlert {\n    public LowAlert(int threshold) { super(threshold); }\n    @Override public boolean matches(int reading) { return reading < threshold(); }\n}\n"
+    },
+    {
+      "name": "RuleSet.java",
+      "language": "java",
+      "content": "import java.util.List;\npublic final class RuleSet {\n    private final List<AlertRule> rules;\n    public RuleSet(List<AlertRule> rules) { this.rules = List.copyOf(rules); }\n    public int matchingRules(int reading) {\n        int count = 0;\n        for (AlertRule rule : rules) if (rule.matches(reading)) count++;\n        return count;\n    }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "alert-dispatch",
+      "name": "Dynamic dispatch at boundaries",
+      "requirementIds": [
+        "hierarchy",
+        "dispatch"
+      ],
+      "skillIds": [
+        "IP_SK09_01_DESIGN_HIERARCHY",
+        "IP_SK09_02_INHERITANCE_TRACE",
+        "IP_SK04_02_CONSTRUCTOR_STATE",
+        "IP_SK10_01_POLY_DESIGN",
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "description": "Call HighAlert(10) and LowAlert(10) through AlertRule for 9,10,11.",
+      "expected": "High: false,false,true. Low: true,false,false."
+    },
+    {
+      "id": "alert-composition",
+      "name": "Composed rule collection",
+      "requirementIds": [
+        "composition",
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK07_01_COMPOSE_MODEL",
+        "IP_SK08_03_TESTABILITY",
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK08_01_WRITE_TESTS"
+      ],
+      "description": "Use HighAlert(5), LowAlert(10) at reading 7, then clear the caller list; also test empty rules.",
+      "expected": "Two matches remain after caller mutation; empty rules produce zero."
+    }
+  ],
+  "reasoning": [
+    "At the threshold neither strict rule matches. The interface declares a callable operation while each runtime object supplies its override.",
+    "RuleSet owns a list copy, so clearing the caller list cannot change its rule collection. It delegates behavior rather than testing object class names. Null list/elements are rejected by List.copyOf.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

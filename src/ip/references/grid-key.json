@@ -1,0 +1,46 @@
+{
+  "id": "ds.reference.ip.grid-key",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.grid-key",
+  "files": [
+    {
+      "name": "GridKey.java",
+      "language": "java",
+      "content": "public final class GridKey {\n    private final int row;\n    private final int column;\n    public GridKey(int row, int column) { this.row = row; this.column = column; }\n    public int row() { return row; }\n    public int column() { return column; }\n    @Override public boolean equals(Object other) {\n        if (this == other) return true;\n        if (!(other instanceof GridKey)) return false;\n        GridKey key = (GridKey) other;\n        return row == key.row && column == key.column;\n    }\n    @Override public int hashCode() { return 31 * row + column; }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "key-contract",
+      "name": "Equality matrix",
+      "requirementIds": [
+        "state",
+        "equality"
+      ],
+      "skillIds": [
+        "IP_SK04_04_ENCAPSULATION",
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_03_EQUALITY_EDGE"
+      ],
+      "description": "Compare one object to itself, two distinct equal keys, a third equal key, keys differing in either field, null and a String.",
+      "expected": "The first equal-coordinate cases are true; differing fields, null and unrelated types are false."
+    },
+    {
+      "id": "key-hash",
+      "name": "Hash collection and collision",
+      "requirementIds": [
+        "hash"
+      ],
+      "skillIds": [
+        "IP_SK11_02_HASH_CONTRACT"
+      ],
+      "description": "Add (0,31), an equal copy and (1,0) to a HashSet using hash = 31*row+column.",
+      "expected": "Size 2; the two unequal keys collide at hash 31 without becoming equal."
+    }
+  ],
+  "reasoning": [
+    "A final class makes the chosen equality domain explicit: subclasses cannot add equality-relevant state. Each equality comparison uses the same two immutable fields.",
+    "Both (0,31) and (1,0) hash to 31. Their different coordinates keep equals false. A HashSet uses equality as well as hashing.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

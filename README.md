@@ -1,6 +1,6 @@
 # DelftStudy — Topic Learning, Practice & x86-64 Assembly Visualizer
 
-A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation and nine Reasoning & Logic topics plus the existing Java pilot, review 166 flashcards, practise 67 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation, nine Reasoning & Logic and 20 Introduction to Programming topics, review 270 flashcards, practise 100 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
@@ -15,7 +15,25 @@ pnpm run validate:enrichment
 pnpm run check:enrichment-bundle
 ```
 
-The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Steps 8 and later remain future work.
+The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Steps 9 and later remain future work.
+
+## Introduction to Programming
+
+All 20 IP topics and 56 canonical skills have guided Learn content, two flashcards per skill and an explicit safe practice classification. The published control-flow lesson and cards are unchanged. IP adds 33 fixed Java predictions with exact-version feedback, eight optional map cues, 21 unscored guided activities and 11 original coding tasks: five 15-minute challenges, three 30-minute mini-assignments and three 60-minute integrated assignments.
+
+The Coding Workbench supports editable starter files, keyboard file tabs, copy/reset, requirement rubrics and separately loaded reference implementations/test specifications. **Drafts are ephemeral:** copy files before navigating or reloading. **Learner Java is never executed or automatically graded.** Test specifications and one valid reference help self-review; revealing them does not mean tests passed. Submitted fixed-prediction attempts continue to use the existing immutable local-storage lifecycle.
+
+The integrated assignments use original contexts and explicit component evidence. They do not award broad skill correctness. Source PDFs, ZIPs, the full Handoff and build validators are excluded from browser bundles. Lessons, assignments, workbench and reference solutions load separately on demand. Student Schema 1 and IndexedDB version 1 remain unchanged.
+
+```bash
+pnpm run validate:ip
+pnpm run check:ip-bundle
+pnpm run verify:ip-java
+```
+
+The first two commands validate canonical ownership, sources, published fingerprints, safe assessment policies and actual production payloads. The optional development-only Java check requires JDK 21; set `DELFTSTUDY_JAVA_HOME` to its installation directory if needed. It executes only checked-in authored fixtures and reference harnesses, never student answers. Illustrative JUnit snippets are specifications, not a claim that JUnit ran.
+
+See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). No mastery, adaptive study, Mistake Book, global mock-exam orchestration, accounts or deployment is included.
 
 ## Application navigation
 
@@ -37,7 +55,7 @@ The Dashboard links to three courses, all 43 canonical topics, the Assembly work
 | `/progress` | Unassessed progress placeholder plus local student backup/restore controls |
 | Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
 
-React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. All topics have seven study modes; authored lessons and cards cover all CO and R&L topics plus the preserved IP pilot described below. Arrow keys and Home/End navigate the mode tabs. Canonical map links focus their target academic section.
+React Router's declarative `BrowserRouter` provides clean URLs and native Back/Forward navigation. Desktop pages use a sidebar; mobile/tablet navigation is an expandable menu with an accessible expanded state, Escape-to-close and focus handling. Page titles and breadcrumbs follow the current route. All topics have seven study modes; authored lessons and cards cover all 43 canonical topics, including the preserved IP control-flow pilot. Arrow keys and Home/End navigate the mode tabs. Canonical map links focus their target academic section.
 
 The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. Student records use the separate IndexedDB repository described below; the Assembly namespace and format are unchanged.
 
@@ -242,7 +260,7 @@ The three published pilots retain their guided lessons and eight cards each:
 
 Lessons use safe typed blocks with stable IDs, versions, canonical skill/subtopic associations and source references. These are authored DelftStudy explanations, not official TU Delft wording. Source disclosures preserve broad document ranges and UNKNOWN precision; no exact supporting slide or downloadable PDF is invented. All pilot examples have independent arithmetic, logical or Java-trace checks.
 
-Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Step 5 Topic Practice reused the six original definitions and the same Start/Resume/Review runner; Step 6 expands this shared catalog for CO. Non-pilot RL/IP topics retain honest empty Learn, Flashcard and Practice states. Exam-style and Mistakes contain no engines or inferred profiles.
+Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Step 5 Topic Practice reused the six original definitions and the same Start/Resume/Review runner; Step 6 expands this shared catalog for CO. Steps 7 and 8 complete R&L and IP learning content. IP Exam-style links to authored integrated coding tasks; no global exam engine or inferred mistake profile is implemented.
 
 The deterministic `src/generated/topic-study.json` is **84,049 bytes** and contains only topic-page academic fields plus 106 deduplicated source references. Authored lessons are **27,195 bytes** (3 lessons, 27 blocks); flashcards are **12,214 bytes** (24 cards). The separate content lock has 54 SHA-256 entries for lessons, blocks and cards. Published educational text cannot change silently: use a new content version and an explicitly reviewed lock. Normal builds never regenerate locks. The academic pack, existing Practice locks and student/database schema remain unchanged.
 

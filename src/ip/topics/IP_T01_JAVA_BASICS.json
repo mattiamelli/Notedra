@@ -1,0 +1,393 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t01",
+    "version": "1",
+    "topicId": "IP_T01_JAVA_BASICS",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t01.start",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_01_DECLARE_ASSIGN",
+          "IP_SK01_02_REASON_TYPES",
+          "IP_SK01_03_EVAL_EXPRESSIONS",
+          "IP_SK01_04_CAST_CONVERT",
+          "IP_SK01_05_NUMERIC_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST01_01_TYPES_VARIABLES",
+          "IP_ST01_02_EXPRESSIONS_CASTING",
+          "IP_ST01_03_NUMERIC_EDGE_CASES"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "introduction",
+        "title": "Track both the value and its type",
+        "paragraphs": [
+          "A Java expression has a type as well as a value. Write down the operands’ types before calculating: they determine which operations Java performs, whether a conversion is needed and how a finite representation behaves."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t01.variables",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_01_DECLARE_ASSIGN"
+        ],
+        "subtopicIds": [
+          "IP_ST01_01_TYPES_VARIABLES"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "concept",
+        "title": "Declaration is different from assignment",
+        "paragraphs": [
+          "int count; declares a local variable. count = 6; gives it a value, and count = count + 2; reads the old value before storing 8. A local must be definitely assigned on every path before it is read. A field has a Java default value; that does not make an uninitialized local readable.",
+          "Use a type that represents the requirement: boolean for a condition, int for a bounded whole-number count and double for an approximate fractional measurement. The identifier denotes a variable, not a permanent mathematical equation."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t01.types",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_02_REASON_TYPES"
+        ],
+        "subtopicIds": [
+          "IP_ST01_01_TYPES_VARIABLES"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "concept",
+        "title": "A reference is a value that identifies an object",
+        "paragraphs": [
+          "Primitive variables contain primitive values. A reference variable contains a reference to an object, or null; assigning one reference to another copies the reference, not the object. Mutating one shared object and reassigning one variable are different operations.",
+          "The declared type controls which operations the compiler permits. String is a reference type; char is a primitive UTF-16 code unit. The eight primitive types are byte, short, int, long, float, double, char and boolean. The valid short range is −32768 through 32767."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t01.expressions",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_03_EVAL_EXPRESSIONS"
+        ],
+        "subtopicIds": [
+          "IP_ST01_02_EXPRESSIONS_CASTING"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "concept",
+        "title": "Evaluate using Java’s numeric and operator rules",
+        "paragraphs": [
+          "Multiplication and division bind more tightly than addition. In 3 + 2 * 4 the result is 11; parentheses change the grouping. With int operands, 11 / 4 is 2 and -11 / 4 is -2: integer division truncates toward zero. -11 % 4 is -3, so quotient * divisor + remainder reconstructs the dividend.",
+          "String concatenation is evaluated in expression order: \"total=\" + 2 + 3 produces \"total=23\", whereas \"total=\" + (2 + 3) produces \"total=5\". A displayed result is not evidence that the intended arithmetic happened."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t01.conversion",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_04_CAST_CONVERT"
+        ],
+        "subtopicIds": [
+          "IP_ST01_02_EXPRESSIONS_CASTING"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "concept",
+        "title": "Convert before the operation whose behavior must change",
+        "paragraphs": [
+          "double average = count / groups; still divides two integers first. Use (double) count / groups when a fractional quotient is intended. Assigning that result later to a double cannot recover a discarded fraction.",
+          "A narrowing conversion may require an explicit cast and can lose information. Converting an ordinary finite value such as -3.9 to int gives -3, not -4. Widening from int to double preserves every int value, but not every widening numeric conversion preserves precision: large long values may lose low bits in double."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t01.limits",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_05_NUMERIC_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST01_03_NUMERIC_EDGE_CASES"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "important_rule",
+        "title": "Finite numbers have boundaries",
+        "paragraphs": [
+          "Java int arithmetic uses 32-bit signed values; overflow wraps without an overflow exception. Floating-point values approximate many decimal fractions: 0.1 + 0.2 need not equal the stored approximation of 0.3. Do not mistake approximate arithmetic for exact decimal calculation.",
+          "Distinguish failure kinds. An incompatible assignment can be rejected at compile time. Dividing an integer by a variable whose value is zero throws at runtime. A program that compiles and runs can still calculate the wrong result because it uses integer division where a fraction was intended."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t01.trace",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_03_EVAL_EXPRESSIONS",
+          "IP_SK01_04_CAST_CONVERT",
+          "IP_SK01_05_NUMERIC_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST01_02_EXPRESSIONS_CASTING",
+          "IP_ST01_03_NUMERIC_EDGE_CASES"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "worked_example",
+        "title": "Three conversions, three different effects",
+        "paragraphs": [
+          "Trace each assignment before reading the output. The first line is 2.0 2.75 -126; the second is -2147483648. The cast affects either the operation’s input type or the stored result, depending on where it appears."
+        ],
+        "code": "class Program {\n    public static void main(String[] args) {\n        int count = 11;\n        int groups = 4;\n        double a = count / groups;\n        double b = (double) count / groups;\n        byte c = (byte) 130;\n        int largest = Integer.MAX_VALUE;\n        System.out.println(a + \" \" + b + \" \" + c);\n        System.out.println(largest + 1);\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t01.recap",
+        "version": "1",
+        "topicId": "IP_T01_JAVA_BASICS",
+        "skillIds": [
+          "IP_SK01_01_DECLARE_ASSIGN",
+          "IP_SK01_02_REASON_TYPES",
+          "IP_SK01_03_EVAL_EXPRESSIONS",
+          "IP_SK01_04_CAST_CONVERT",
+          "IP_SK01_05_NUMERIC_EDGE"
+        ],
+        "subtopicIds": [
+          "IP_ST01_01_TYPES_VARIABLES",
+          "IP_ST01_02_EXPRESSIONS_CASTING",
+          "IP_ST01_03_NUMERIC_EDGE_CASES"
+        ],
+        "sourceIds": [
+          "ref-4796de4e30624f07"
+        ],
+        "kind": "recap",
+        "title": "A four-question numeric check",
+        "paragraphs": [
+          "Before trusting an expression, check the operand types, evaluation order, conversion position and representable range. Then classify a problem as compile-time rejection, runtime failure or a wrong result; each requires different evidence."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t01.declare",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_01_DECLARE_ASSIGN"
+      ],
+      "subtopicIds": [
+        "IP_ST01_01_TYPES_VARIABLES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "What is the difference between int n; and n = 7;?",
+      "answer": "The first declares a local variable; the second assigns a value. A local cannot be read until Java can establish that it was assigned on that path."
+    },
+    {
+      "id": "ds.card.ip.t01.update",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_01_DECLARE_ASSIGN"
+      ],
+      "subtopicIds": [
+        "IP_ST01_01_TYPES_VARIABLES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "After int n = 4; n = n + 3;, what is n and why?",
+      "answer": "7. Java evaluates the right-hand expression using the old value 4 and then assigns the resulting value to n."
+    },
+    {
+      "id": "ds.card.ip.t01.reference",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_02_REASON_TYPES"
+      ],
+      "subtopicIds": [
+        "IP_ST01_01_TYPES_VARIABLES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "If two variables contain the same object reference, did assignment copy the object?",
+      "answer": "No. The variables contain copied references to the same object. Mutating that object can be observed through either reference; reassigning one variable changes only that variable."
+    },
+    {
+      "id": "ds.card.ip.t01.primitive",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_02_REASON_TYPES"
+      ],
+      "subtopicIds": [
+        "IP_ST01_01_TYPES_VARIABLES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "How do char, String and null differ?",
+      "answer": "char is a primitive UTF-16 code unit. String is a reference type. null is a value that can be assigned to reference variables, not to primitive variables."
+    },
+    {
+      "id": "ds.card.ip.t01.division",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_03_EVAL_EXPRESSIONS"
+      ],
+      "subtopicIds": [
+        "IP_ST01_02_EXPRESSIONS_CASTING"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "What are -11 / 4 and -11 % 4 for int operands?",
+      "answer": "-2 and -3. Division truncates toward zero, and (-2)*4 + (-3) equals -11."
+    },
+    {
+      "id": "ds.card.ip.t01.concat",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_03_EVAL_EXPRESSIONS"
+      ],
+      "subtopicIds": [
+        "IP_ST01_02_EXPRESSIONS_CASTING"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "Why do \"x=\" + 2 + 3 and \"x=\" + (2 + 3) differ?",
+      "answer": "The first performs left-to-right concatenation and produces x=23. Parentheses force numeric addition first in the second, producing x=5."
+    },
+    {
+      "id": "ds.card.ip.t01.cast-position",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_04_CAST_CONVERT"
+      ],
+      "subtopicIds": [
+        "IP_ST01_02_EXPRESSIONS_CASTING"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "Why is (double) (11 / 4) different from (double) 11 / 4?",
+      "answer": "The first performs integer division before the cast and gives 2.0. The second converts an operand before division and gives 2.75."
+    },
+    {
+      "id": "ds.card.ip.t01.narrow",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_04_CAST_CONVERT"
+      ],
+      "subtopicIds": [
+        "IP_ST01_02_EXPRESSIONS_CASTING"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "Does casting -3.9 to int round to the nearest integer?",
+      "answer": "No. For this finite in-range value, conversion truncates toward zero and produces -3. A cast is not a general rounding operation."
+    },
+    {
+      "id": "ds.card.ip.t01.overflow",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_05_NUMERIC_EDGE"
+      ],
+      "subtopicIds": [
+        "IP_ST01_03_NUMERIC_EDGE_CASES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "What happens when an int variable holding Integer.MAX_VALUE is increased by one?",
+      "answer": "It wraps to Integer.MIN_VALUE, -2147483648. Java does not throw an integer-overflow exception for this addition."
+    },
+    {
+      "id": "ds.card.ip.t01.precision",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_05_NUMERIC_EDGE"
+      ],
+      "subtopicIds": [
+        "IP_ST01_03_NUMERIC_EDGE_CASES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "prompt": "Why should a fractional measurement comparison allow an appropriate tolerance?",
+      "answer": "Many decimal values have only approximate binary floating-point representations. Select a tolerance justified by the problem rather than assuming every decimal calculation is exact."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t01.numeric-audit",
+      "version": "1",
+      "topicId": "IP_T01_JAVA_BASICS",
+      "skillIds": [
+        "IP_SK01_01_DECLARE_ASSIGN",
+        "IP_SK01_02_REASON_TYPES",
+        "IP_SK01_03_EVAL_EXPRESSIONS",
+        "IP_SK01_04_CAST_CONVERT",
+        "IP_SK01_05_NUMERIC_EDGE"
+      ],
+      "subtopicIds": [
+        "IP_ST01_01_TYPES_VARIABLES",
+        "IP_ST01_02_EXPRESSIONS_CASTING",
+        "IP_ST01_03_NUMERIC_EDGE_CASES"
+      ],
+      "sourceIds": [
+        "ref-4796de4e30624f07"
+      ],
+      "title": "Audit a grouped measurement",
+      "prompt": "A program stores 11 samples in int count and 4 groups in int groups, then sets double average = count / groups. Explain the result, correct the fractional calculation, and classify these separate defects: reading an unassigned local, dividing by a zero-valued integer variable, and adding one to Integer.MAX_VALUE.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Values and types before and after the calculation"
+        },
+        {
+          "id": "step2",
+          "label": "Corrected expression and reason for conversion position"
+        },
+        {
+          "id": "step3",
+          "label": "Compile-time, runtime and numeric-boundary distinctions"
+        }
+      ],
+      "rubric": [
+        "Identifies the original value as 2.0 and the intended fractional value as 2.75.",
+        "Places a double conversion on an operand before division.",
+        "Separates compile-time definite-assignment rejection from a runtime ArithmeticException.",
+        "Explains int wrapping rather than inventing an overflow exception; primitive values are not object references."
+      ],
+      "reference": [
+        "count / groups evaluates as int 2 before assignment widens it to double 2.0. (double) count / groups gives 2.75.",
+        "An unassigned local read is a compile-time error. Integer division by a zero-valued variable throws ArithmeticException. Integer.MAX_VALUE + 1 evaluates to -2147483648.",
+        "Other expressions that ensure floating-point division are valid. A correct audit explains the types and operations, not just the printed numbers."
+      ]
+    }
+  ]
+}

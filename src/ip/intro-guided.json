@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ds.guided.ip.t02.filtered-loop",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_01_BOOLEAN_CONDITIONS",
+      "IP_SK02_02_BRANCH_TRACE",
+      "IP_SK02_03_LOOP_TRACE",
+      "IP_SK02_04_LOOP_IMPLEMENT"
+    ],
+    "subtopicIds": [
+      "IP_ST02_01_BOOLEAN_BRANCH",
+      "IP_ST02_02_LOOPS"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "title": "Build a loop with an exact boundary",
+    "prompt": "For a non-negative int n small enough to avoid sum overflow, count and sum the odd integers from1 through n that are at least5. Give the branch condition and loop bounds. Trace n=9, then check n=0 and n=4.",
+    "fields": [
+      {
+        "id": "step1",
+        "label": "Boolean condition and inclusive loop range"
+      },
+      {
+        "id": "step2",
+        "label": "Iteration trace, count and sum"
+      },
+      {
+        "id": "step3",
+        "label": "Boundary cases and termination"
+      }
+    ],
+    "rubric": [
+      "Uses oddness and i≥5 together.",
+      "Includes n itself when it qualifies, using a loop with i≤n under the stated small-input bound.",
+      "Initializes count and sum to0 and increments them only for qualifying values.",
+      "Explains termination and empty-selection cases."
+    ],
+    "reference": [
+      "One solution loops i from1 through n and enters the branch when i % 2 != 0 && i >= 5. Increment count and add i to sum within that branch.",
+      "For n=9, qualifying values are5,7,9: count3 and sum21. For n=0 or n=4, both results remain0.",
+      "Equivalent while or for loops are valid. A switch can classify finite cases but is not a replacement for the general numeric condition. No automated score is assigned to the written algorithm."
+    ]
+  }
+]

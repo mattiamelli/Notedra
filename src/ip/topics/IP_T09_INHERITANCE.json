@@ -1,0 +1,242 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t09",
+    "version": "1",
+    "topicId": "IP_T09_INHERITANCE",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t09.start",
+        "version": "1",
+        "topicId": "IP_T09_INHERITANCE",
+        "skillIds": [
+          "IP_SK09_01_DESIGN_HIERARCHY",
+          "IP_SK09_02_INHERITANCE_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST09_01_HIERARCHY",
+          "IP_ST09_02_OVERRIDE_VISIBILITY"
+        ],
+        "sourceIds": [
+          "ref-1b96953ab28fb39d"
+        ],
+        "kind": "introduction",
+        "title": "A subtype must honor the parent’s promises",
+        "paragraphs": [
+          "Inheritance expresses an is-a relationship and allows an object of a subtype to be used where a parent type is expected. Code reuse alone is not enough: callers must still be able to rely on the parent contract."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t09.hierarchy",
+        "version": "1",
+        "topicId": "IP_T09_INHERITANCE",
+        "skillIds": [
+          "IP_SK09_01_DESIGN_HIERARCHY"
+        ],
+        "subtopicIds": [
+          "IP_ST09_01_HIERARCHY"
+        ],
+        "sourceIds": [
+          "ref-1b96953ab28fb39d"
+        ],
+        "kind": "concept",
+        "title": "Choose inheritance for substitutability",
+        "paragraphs": [
+          "If a Shape promises a non-negative area calculation, a Circle can provide that behavior through an override. If a Report merely uses a List to store entries, Report has a List; it is not automatically a kind of List. Composition often expresses that relationship more accurately.",
+          "An override should not unexpectedly reject inputs the parent contract accepts or break promised results. Shared fields and methods are useful only when the abstraction makes semantic sense."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t09.construction",
+        "version": "1",
+        "topicId": "IP_T09_INHERITANCE",
+        "skillIds": [
+          "IP_SK09_02_INHERITANCE_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST09_02_OVERRIDE_VISIBILITY"
+        ],
+        "sourceIds": [
+          "ref-1b96953ab28fb39d"
+        ],
+        "kind": "procedure",
+        "title": "Construct the superclass before the subclass body",
+        "paragraphs": [
+          "A subclass constructor invokes a superclass constructor, explicitly with super(arguments) or through an applicable implicit no-argument call. The superclass establishes its part of the object before the subclass constructor body executes. Constructors are not inherited as ordinary methods.",
+          "If the superclass has no accessible no-argument constructor, the subclass must call an appropriate accessible constructor. Distinguish this(...) delegation within one class from super(...) construction of the superclass part."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t09.visibility",
+        "version": "1",
+        "topicId": "IP_T09_INHERITANCE",
+        "skillIds": [
+          "IP_SK09_02_INHERITANCE_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST09_02_OVERRIDE_VISIBILITY"
+        ],
+        "sourceIds": [
+          "ref-1b96953ab28fb39d"
+        ],
+        "kind": "important_rule",
+        "title": "Access and overriding are separate questions",
+        "paragraphs": [
+          "Private superclass members cannot be accessed directly by subclass code. Use the available superclass interface instead. An inherited accessible instance method can be overridden with a compatible signature; @Override helps the compiler reject accidental mismatches.",
+          "super.method() explicitly invokes superclass behavior from the subclass. Ordinary virtual instance calls are selected using the receiver’s runtime class after the compiler has checked what the declared type permits. Fields and static methods do not follow that same override-dispatch rule."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t09.trace",
+        "version": "1",
+        "topicId": "IP_T09_INHERITANCE",
+        "skillIds": [
+          "IP_SK09_02_INHERITANCE_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST09_02_OVERRIDE_VISIBILITY"
+        ],
+        "sourceIds": [
+          "ref-1b96953ab28fb39d"
+        ],
+        "kind": "worked_example",
+        "title": "Constructor order is not method-dispatch order",
+        "paragraphs": [
+          "Creating Child prints base then child. Calling item.value() afterward prints7 even though item is declared Base. The superclass constructor and the overridden method answer different questions: initialization order versus runtime instance behavior."
+        ],
+        "code": "class Program {\n    static class Base {\n        Base() { System.out.println(\"base\"); }\n        int value() { return 2; }\n    }\n    static class Child extends Base {\n        Child() { super(); System.out.println(\"child\"); }\n        @Override int value() { return 7; }\n    }\n    public static void main(String[] args) {\n        Base item = new Child();\n        System.out.println(item.value());\n    }\n}"
+      },
+      {
+        "id": "ds.block.ip.t09.recap",
+        "version": "1",
+        "topicId": "IP_T09_INHERITANCE",
+        "skillIds": [
+          "IP_SK09_01_DESIGN_HIERARCHY",
+          "IP_SK09_02_INHERITANCE_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST09_01_HIERARCHY",
+          "IP_ST09_02_OVERRIDE_VISIBILITY"
+        ],
+        "sourceIds": [
+          "ref-1b96953ab28fb39d"
+        ],
+        "kind": "recap",
+        "title": "Review the hierarchy from a caller’s perspective",
+        "paragraphs": [
+          "State the parent promise, decide whether the child satisfies it, trace constructor chaining and check visibility. Use @Override for intended overrides, and use composition when the relation is has-a rather than is-a."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t09.substitution",
+      "version": "1",
+      "topicId": "IP_T09_INHERITANCE",
+      "skillIds": [
+        "IP_SK09_01_DESIGN_HIERARCHY"
+      ],
+      "subtopicIds": [
+        "IP_ST09_01_HIERARCHY"
+      ],
+      "sourceIds": [
+        "ref-1b96953ab28fb39d"
+      ],
+      "prompt": "Why is sharing a few fields not enough to justify inheritance?",
+      "answer": "A subtype must be usable under the parent’s behavioral contract. Composition may share or contain data without making that substitutability claim."
+    },
+    {
+      "id": "ds.card.ip.t09.has-a",
+      "version": "1",
+      "topicId": "IP_T09_INHERITANCE",
+      "skillIds": [
+        "IP_SK09_01_DESIGN_HIERARCHY"
+      ],
+      "subtopicIds": [
+        "IP_ST09_01_HIERARCHY"
+      ],
+      "sourceIds": [
+        "ref-1b96953ab28fb39d"
+      ],
+      "prompt": "A Report stores a List of entries. Should Report extend ArrayList for that reason alone?",
+      "answer": "No. Storage is a has-a relationship. A private list plus suitable report operations usually expresses it without exposing every list operation as report behavior."
+    },
+    {
+      "id": "ds.card.ip.t09.chain",
+      "version": "1",
+      "topicId": "IP_T09_INHERITANCE",
+      "skillIds": [
+        "IP_SK09_02_INHERITANCE_TRACE"
+      ],
+      "subtopicIds": [
+        "IP_ST09_02_OVERRIDE_VISIBILITY"
+      ],
+      "sourceIds": [
+        "ref-1b96953ab28fb39d"
+      ],
+      "prompt": "In new Child(), does the Child constructor body run before its superclass constructor?",
+      "answer": "No. The superclass constructor establishes its part first. The subclass invokes an appropriate accessible super constructor before its own constructor body proceeds."
+    },
+    {
+      "id": "ds.card.ip.t09.private-super",
+      "version": "1",
+      "topicId": "IP_T09_INHERITANCE",
+      "skillIds": [
+        "IP_SK09_02_INHERITANCE_TRACE"
+      ],
+      "subtopicIds": [
+        "IP_ST09_02_OVERRIDE_VISIBILITY"
+      ],
+      "sourceIds": [
+        "ref-1b96953ab28fb39d"
+      ],
+      "prompt": "Can a subclass directly access a private field declared by its superclass?",
+      "answer": "No. It must use an accessible interface supplied by the superclass. Inheritance does not remove Java access restrictions."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t09.hierarchy-review",
+      "version": "1",
+      "topicId": "IP_T09_INHERITANCE",
+      "skillIds": [
+        "IP_SK09_01_DESIGN_HIERARCHY",
+        "IP_SK09_02_INHERITANCE_TRACE"
+      ],
+      "subtopicIds": [
+        "IP_ST09_01_HIERARCHY",
+        "IP_ST09_02_OVERRIDE_VISIBILITY"
+      ],
+      "sourceIds": [
+        "ref-1b96953ab28fb39d"
+      ],
+      "title": "Review a useful hierarchy and a misleading one",
+      "prompt": "A DocumentExporter promises export(text) for any non-null text. PlainExporter and TaggedExporter produce different formats. Separately, a ReadingLog stores an ordered list of titles. Decide where inheritance or composition fits, state constructor responsibilities, and explain how a subclass uses a private superclass field.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Substitutability and the two relationships"
+        },
+        {
+          "id": "step2",
+          "label": "Constructor chaining and state initialization"
+        },
+        {
+          "id": "step3",
+          "label": "Visibility, overrides and tests of the parent contract"
+        }
+      ],
+      "rubric": [
+        "Justifies exporters by a shared behavioral contract rather than names alone.",
+        "Uses composition for the reading log’s list unless a separate is-a contract is genuinely required.",
+        "Places superclass initialization before subclass construction and chooses accessible constructors.",
+        "Does not claim direct access to private superclass fields."
+      ],
+      "reference": [
+        "Exporter implementations can be interchangeable if both accept the promised non-null inputs and produce results meeting their own documented formats. An abstract parent or interface is a possible design.",
+        "ReadingLog can store a private list and expose log-specific behavior. Extending ArrayList solely to obtain storage exposes operations that may bypass the log’s rules.",
+        "A subclass calls an appropriate super constructor and uses accessible methods to interact with private superclass state. Tests should exercise each subtype through the parent-facing contract."
+      ]
+    }
+  ]
+}

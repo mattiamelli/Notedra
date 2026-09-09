@@ -1,0 +1,318 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t20",
+    "version": "1",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t20.model",
+        "version": "1",
+        "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+        "skillIds": [
+          "IP_SK20_01_EXAM_SYNTHESIS",
+          "IP_SK20_02_EXAM_PRIORITIZE"
+        ],
+        "subtopicIds": [
+          "IP_ST20_01_SPEC_TO_PROGRAM"
+        ],
+        "sourceIds": [
+          "ref-556a1c1cc39b369a"
+        ],
+        "kind": "introduction",
+        "title": "Build a complete program from a specification",
+        "paragraphs": [
+          "Integrated programming joins modeling, parsing, processing, interfaces and tests into one coherent result. Completing a task is not evidence that every associated skill is correct. Review each requirement through a specific observable component."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t20.requirements",
+        "version": "1",
+        "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+        "skillIds": [
+          "IP_SK20_01_EXAM_SYNTHESIS"
+        ],
+        "subtopicIds": [
+          "IP_ST20_01_SPEC_TO_PROGRAM"
+        ],
+        "sourceIds": [
+          "ref-556a1c1cc39b369a"
+        ],
+        "kind": "procedure",
+        "title": "Turn the brief into a component checklist",
+        "paragraphs": [
+          "First list input formats, entities, required operations, outputs and failure rules. Mark what is fixed by the brief and what is a design decision. Identify file ownership, equality identity and any concurrency requirement before writing a large main method.",
+          "For an original repair-supply log, one useful split is SupplyEntry for validated values, SupplyParser for line decoding, SupplyService for totals and lookups, and SupplyCli for input/output. A list of entries is composition; a hierarchy is justified only if different entry kinds really satisfy a shared behavior contract.",
+          "Build a thin vertical slice: one input record → one object → one processing result → one displayed line. Then add required cases. This catches mismatched method contracts early while keeping the whole program compilable."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t20.component-evidence",
+        "version": "1",
+        "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+        "skillIds": [
+          "IP_SK20_01_EXAM_SYNTHESIS"
+        ],
+        "subtopicIds": [
+          "IP_ST20_01_SPEC_TO_PROGRAM"
+        ],
+        "sourceIds": [
+          "ref-556a1c1cc39b369a"
+        ],
+        "kind": "worked_example",
+        "title": "Connect each requirement to its own evidence",
+        "paragraphs": [
+          "Assume a new practice brief needs item-code/quantity records, totals by code and a command-line report. The table shows how evidence can be local without pretending that one working command proves every skill. Names and formats here are authored DelftStudy examples, not a copied assessment.",
+          "Write tests against externally visible requirements. Keep parsing separate from filesystem access and computation separate from console interaction. Include equality tests only where value identity is actually required, and resource tests at the boundary that owns the handles."
+        ],
+        "table": {
+          "headers": [
+            "Requirement",
+            "Component",
+            "Evidence to inspect"
+          ],
+          "rows": [
+            [
+              "Valid records become typed entries",
+              "Parser + model",
+              "Valid zero/boundary rows; required fields; malformed row policy"
+            ],
+            [
+              "Quantities aggregate by code",
+              "Processing service",
+              "Repeated code; absent code; exact total; stated overflow policy"
+            ],
+            [
+              "Equal codes behave as one key",
+              "Value key",
+              "Separate equal instances; unequal fields; null; matching hashes"
+            ],
+            [
+              "Output matches the brief",
+              "Formatter + CLI",
+              "Representative command input, required lines and clean termination"
+            ],
+            [
+              "Files are safely handled",
+              "I/O boundary",
+              "Successful close, failure close and meaningful error propagation"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.ip.t20.priorities",
+        "version": "1",
+        "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+        "skillIds": [
+          "IP_SK20_02_EXAM_PRIORITIZE"
+        ],
+        "subtopicIds": [
+          "IP_ST20_01_SPEC_TO_PROGRAM"
+        ],
+        "sourceIds": [
+          "ref-556a1c1cc39b369a"
+        ],
+        "kind": "procedure",
+        "title": "Prioritize dependencies and keep validating",
+        "paragraphs": [
+          "Before coding, reserve time for a final whole-project compilation and tests. Start with a minimal compiling structure, then the domain model and parser contracts that other features depend on. Implement and test a small useful processing path before adding optional refinements.",
+          "If blocked on one part, record the missing contract and work on an independent required component. Do not hide an unfinished parser behind hardcoded data and call the whole program complete. A partial implementation can be described honestly; it is not a reason to invent successful results.",
+          "Use a requirement checklist to decide what remains, then run the complete input-to-output scenario. Revisit edge cases and failure behavior, inspect submission files and avoid last-minute changes that have not been compiled. The 15/30/60-minute labels in this course are authored practice design, not official assessment durations."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t20.threads",
+        "version": "1",
+        "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+        "skillIds": [
+          "IP_SK20_01_EXAM_SYNTHESIS"
+        ],
+        "subtopicIds": [
+          "IP_ST20_01_SPEC_TO_PROGRAM"
+        ],
+        "sourceIds": [
+          "ref-556a1c1cc39b369a"
+        ],
+        "kind": "important_rule",
+        "title": "Integrate threads only for an explicit need",
+        "paragraphs": [
+          "When a brief requires a background computation, define which data the worker reads, what is mutable, how results reach the caller, and when the operation counts as complete. Use immutable input snapshots where suitable and protect any shared mutable result.",
+          "A worker thread does not automatically make an operation faster. Running an ordinary method called run does not start a worker, and returning before completion does not prove a result. Keep the threading requirement in its own review component instead of awarding every associated skill for one successful program launch."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t20.recap",
+        "version": "1",
+        "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+        "skillIds": [
+          "IP_SK20_01_EXAM_SYNTHESIS",
+          "IP_SK20_02_EXAM_PRIORITIZE"
+        ],
+        "subtopicIds": [
+          "IP_ST20_01_SPEC_TO_PROGRAM"
+        ],
+        "sourceIds": [
+          "ref-556a1c1cc39b369a"
+        ],
+        "kind": "recap",
+        "title": "Integration needs explicit evidence",
+        "paragraphs": [
+          "Read the brief, choose responsibilities, build a compiling vertical slice, test each contract and then verify the complete program. Authored exam-style tasks preserve integrated reasoning without awarding broad fake correctness or predicting an exam grade."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t20.vertical-slice",
+      "version": "1",
+      "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "skillIds": [
+        "IP_SK20_01_EXAM_SYNTHESIS"
+      ],
+      "subtopicIds": [
+        "IP_ST20_01_SPEC_TO_PROGRAM"
+      ],
+      "sourceIds": [
+        "ref-556a1c1cc39b369a"
+      ],
+      "prompt": "What is a useful first vertical slice in an integrated program?",
+      "answer": "Read one valid input record into a typed model, run one required processing operation and display its result. Compile and test that path before multiplying features."
+    },
+    {
+      "id": "ds.card.ip.t20.evidence",
+      "version": "1",
+      "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "skillIds": [
+        "IP_SK20_01_EXAM_SYNTHESIS"
+      ],
+      "subtopicIds": [
+        "IP_ST20_01_SPEC_TO_PROGRAM"
+      ],
+      "sourceIds": [
+        "ref-556a1c1cc39b369a"
+      ],
+      "prompt": "Does a program that launches successfully prove every mapped skill correct?",
+      "answer": "No. Inspect explicit requirements through component tests or rubrics: parser behavior, domain invariants, processing, equality, I/O and any thread coordination. Integration remains the overall task."
+    },
+    {
+      "id": "ds.card.ip.t20.prioritize",
+      "version": "1",
+      "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "skillIds": [
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "subtopicIds": [
+        "IP_ST20_01_SPEC_TO_PROGRAM"
+      ],
+      "sourceIds": [
+        "ref-556a1c1cc39b369a"
+      ],
+      "prompt": "How should you choose the next component when time is limited?",
+      "answer": "Follow required dependencies and observable value: keep a compiling program, unblock model/parser/service contracts, and test a small complete path. Defer optional refinement, not final validation."
+    },
+    {
+      "id": "ds.card.ip.t20.final-check",
+      "version": "1",
+      "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "skillIds": [
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "subtopicIds": [
+        "IP_ST20_01_SPEC_TO_PROGRAM"
+      ],
+      "sourceIds": [
+        "ref-556a1c1cc39b369a"
+      ],
+      "prompt": "What belongs in the final integrated-program check?",
+      "answer": "Compile all source and test files, run requirement and edge/failure tests, exercise the full input-to-output path, check resource/error behavior, and inspect the files to be submitted."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t20.integration-plan",
+      "version": "1",
+      "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "skillIds": [
+        "IP_SK20_01_EXAM_SYNTHESIS",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "subtopicIds": [
+        "IP_ST20_01_SPEC_TO_PROGRAM"
+      ],
+      "sourceIds": [
+        "ref-556a1c1cc39b369a"
+      ],
+      "title": "Plan a complete repair-supply log",
+      "prompt": "Design an original command-line tool that reads item-code|quantity records, rejects malformed input, reports totals for a requested code, and lists all known codes. Separate value identity, parsing, processing, output and tests. This is unscored design practice; use the coding assignments for a full implementation.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Requirements, typed model and relationships"
+        },
+        {
+          "id": "step2",
+          "label": "Component contracts and sample input-to-output trace"
+        },
+        {
+          "id": "step3",
+          "label": "Requirement-to-test/rubric evidence"
+        },
+        {
+          "id": "step4",
+          "label": "Order of implementation and final verification"
+        }
+      ],
+      "rubric": [
+        "The domain model stores typed values and enforces stated invariants.",
+        "Parsing is independent from processing; filename/input acquisition belongs at the boundary.",
+        "Each required behavior has its own test or inspection criterion, including failure and resource paths.",
+        "No whole-task completion is converted to correctness for all skills."
+      ],
+      "reference": [
+        "One approach uses an immutable ItemCode key, a validated Entry, a parser over Reader, a totals service and a thin CLI. Two records for code R7 with quantities2 and5 produce total7; an absent code produces the explicitly specified empty/zero result.",
+        "Test separate equal keys, malformed later rows, repeated codes, empty input, output lines and I/O failure. An alternative architecture is valid if the same requirements remain observable."
+      ]
+    },
+    {
+      "id": "ds.guided.ip.t20.prioritization",
+      "version": "1",
+      "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+      "skillIds": [
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "subtopicIds": [
+        "IP_ST20_01_SPEC_TO_PROGRAM"
+      ],
+      "sourceIds": [
+        "ref-556a1c1cc39b369a"
+      ],
+      "title": "Recover from a blocked component",
+      "prompt": "You have a compiling model and formatter, a parser failing on the final empty field, an unfinished total calculation, and 20 minutes left in an authored practice session. Plan the remaining work without hiding defects or adding unrelated features.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Dependency-based next actions"
+        },
+        {
+          "id": "step2",
+          "label": "Small tests and a useful complete path"
+        },
+        {
+          "id": "step3",
+          "label": "Final acceptance and honest limitations"
+        }
+      ],
+      "rubric": [
+        "The parser failure is isolated with a minimal failing row and a stated format policy.",
+        "A small service test can proceed independently where appropriate.",
+        "Time is retained for whole-project compilation and integration checks.",
+        "Unfinished behavior is reported rather than replaced with fake success."
+      ],
+      "reference": [
+        "Create a focused parser regression for the final field, then correct splitting/validation under the format contract. Implement totals from already validated model values with a tiny repeated-code test.",
+        "Connect one valid file to one command and the formatter. Rerun compilation, unit tests and the integration path, then list any remaining failure cases honestly. This plan is a reasoned option rather than one uniquely graded answer."
+      ]
+    }
+  ]
+}

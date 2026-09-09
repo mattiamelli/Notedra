@@ -1,0 +1,65 @@
+{
+  "id": "ds.reference.ip.capacity-shelf",
+  "version": "1",
+  "assignmentId": "ds.assignment.ip.capacity-shelf",
+  "files": [
+    {
+      "name": "CapacityShelf.java",
+      "language": "java",
+      "content": "import java.util.Arrays;\npublic final class CapacityShelf {\n    private final String[] labels;\n    private int size;\n    public CapacityShelf(int capacity) {\n        if (capacity < 0) throw new IllegalArgumentException(\"Negative capacity\");\n        labels = new String[capacity];\n    }\n    public int size() { return size; }\n    private static void validate(String label) {\n        if (label == null || label.isEmpty()) throw new IllegalArgumentException(\"Missing label\");\n    }\n    private int indexOf(String label) {\n        for (int i = 0; i < size; i++) if (labels[i].equals(label)) return i;\n        return -1;\n    }\n    public boolean add(String label) {\n        validate(label);\n        if (indexOf(label) >= 0 || size == labels.length) return false;\n        labels[size++] = label;\n        return true;\n    }\n    public boolean remove(String label) {\n        validate(label);\n        int index = indexOf(label);\n        if (index < 0) return false;\n        for (int i = index; i < size - 1; i++) labels[i] = labels[i + 1];\n        labels[--size] = null;\n        return true;\n    }\n    public String[] snapshot() { return Arrays.copyOf(labels, size); }\n}\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "shelf-cycle",
+      "name": "Mutation lifecycle",
+      "requirementIds": [
+        "invariant",
+        "mutation"
+      ],
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL",
+        "IP_SK06_02_REP_INVARIANT",
+        "IP_SK06_03_COLLECTION_SEMANTICS",
+        "IP_SK05_02_ARRAY_PROCESS"
+      ],
+      "description": "With capacity 3 add ink, chalk, wax; remove chalk; add clay.",
+      "expected": "Snapshots progress to [ink, wax, clay] with size 3; adding a fourth distinct label returns false."
+    },
+    {
+      "id": "shelf-alias",
+      "name": "Snapshot ownership",
+      "requirementIds": [
+        "isolation"
+      ],
+      "skillIds": [
+        "IP_SK05_03_ARRAY_ALIAS",
+        "IP_SK04_04_ENCAPSULATION",
+        "IP_SK07_02_API_USE"
+      ],
+      "description": "Change element 0 in a snapshot and request a new snapshot.",
+      "expected": "The shelf still starts with ink."
+    },
+    {
+      "id": "shelf-boundaries",
+      "name": "Boundary and invalid operations",
+      "requirementIds": [
+        "boundaries",
+        "invariant"
+      ],
+      "skillIds": [
+        "IP_SK06_01_CONTAINER_IMPL",
+        "IP_SK06_02_REP_INVARIANT",
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES"
+      ],
+      "description": "Try zero/negative capacity, duplicate labels, null/empty labels and removing missing/first/last labels.",
+      "expected": "No invariant violation; specified exceptions and booleans hold."
+    }
+  ],
+  "reasoning": [
+    "The active prefix has exactly size elements. Shifting a removed suffix left preserves order; clearing the old last active cell restores a null tail.",
+    "A copy has a different array identity. Strings themselves are immutable, so sharing their references does not expose mutable label objects.",
+    "These are authored reference requirements and code. Revealing them does not run tests on your code or record broad skill correctness."
+  ]
+}

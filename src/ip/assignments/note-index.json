@@ -1,0 +1,226 @@
+{
+  "id": "ds.assignment.ip.note-index",
+  "version": "1",
+  "title": "Coordinate a parallel note index",
+  "minutes": 60,
+  "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+  "relatedTopicIds": [
+    "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "IP_T17_PROGRAM_DESIGN",
+    "IP_T07_COMPOSITION_LIBRARIES",
+    "IP_T19_THREADS_CONCURRENCY",
+    "IP_T15_IO_PARSING",
+    "IP_T08_TESTING"
+  ],
+  "skillIds": [
+    "IP_SK17_01_DOMAIN_MODEL",
+    "IP_SK17_02_DECOMPOSE",
+    "IP_SK07_01_COMPOSE_MODEL",
+    "IP_SK19_01_THREAD_RUN",
+    "IP_SK19_02_SYNC",
+    "IP_SK15_01_PARSE_FILE",
+    "IP_SK15_02_WRITE_FILE",
+    "IP_SK15_03_RESOURCE_SAFETY",
+    "IP_SK20_01_EXAM_SYNTHESIS",
+    "IP_SK08_01_WRITE_TESTS",
+    "IP_SK08_02_TEST_BOUNDARIES",
+    "IP_SK20_02_EXAM_PRIORITIZE"
+  ],
+  "subtopicIds": [
+    "IP_ST17_01_DOMAIN_MODEL",
+    "IP_ST17_02_APP_DECOMPOSE",
+    "IP_ST07_01_COMPOSITION",
+    "IP_ST19_01_THREAD_LIFECYCLE",
+    "IP_ST19_02_SHARED_STATE",
+    "IP_ST15_01_FILE_READ_PARSE",
+    "IP_ST15_02_WRITE_OUTPUT",
+    "IP_ST15_03_RESOURCE_SAFETY",
+    "IP_ST20_01_SPEC_TO_PROGRAM",
+    "IP_ST08_01_UNIT_TESTS"
+  ],
+  "sourceIds": [
+    "ref-15f80f1f4bb2f1f3",
+    "ref-f7af58ce8943d54b",
+    "ref-ea0f1a1b1d127fd4",
+    "ref-8c6eff249b686f68",
+    "ref-cc566cb126fff995",
+    "ref-556a1c1cc39b369a",
+    "ref-18b7de6140eaf782"
+  ],
+  "evidenceIds": [
+    "ip-t20",
+    "ip-t17",
+    "ip-t07",
+    "ip-t19",
+    "ip-t15",
+    "ip-t08",
+    "ip-integrated-current"
+  ],
+  "instructions": [
+    "Build an original word-frequency index for small note files. Every physical line contains one token of 1\u201312 lowercase ASCII letters; blank/malformed lines are rejected. Each input file becomes one immutable batch of tokens.",
+    "Use a shared TokenCounter with synchronized record(token) and snapshot() methods. Each NoteWorker implements Runnable and records one batch. Start one Thread per batch, start all before joining, join all before returning the completed snapshot. Validate and copy batches before starting any worker.",
+    "NoteIndexCli.run(paths, out, err) needs at least one UTF-8 input path. Read and validate input before starting threads. Print sorted token=count lines after successful completion. Return 0 on success, 1 for I/O/format failure and 2 for invalid argument count; propagate InterruptedException rather than returning a partial index.",
+    "Do not print from workers or claim a worker order/speed improvement. A synchronized method protects one shared counter monitor; join waits for completion, it does not itself make increments atomic.",
+    "Race self-check: imagine two threads each doing one unsynchronized read-modify-write increment on an integer initially 0. Show an interleaving that loses an update and one that preserves both. Their order is not predetermined. Observing a successful run does not prove race freedom.",
+    "This uses the current integrated assessment mechanism of required thread-based processing with wholly new surface content. Component review is unscored; it does not assign broad skill correctness.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "TokenCounter.java",
+      "language": "java",
+      "content": "import java.util.Map;\npublic final class TokenCounter {\n    public void record(String token) { /* protect the read-modify-write */ }\n    public Map<String,Long> snapshot() { throw new UnsupportedOperationException(); }\n}\n"
+    },
+    {
+      "name": "NoteWorker.java",
+      "language": "java",
+      "content": "import java.util.List;\npublic final class NoteWorker implements Runnable {\n    public NoteWorker(TokenCounter counter, List<String> tokens) { /* store references */ }\n    public void run() { /* process this batch */ }\n}\n"
+    },
+    {
+      "name": "NoteIndex.java",
+      "language": "java",
+      "content": "import java.util.*;\npublic final class NoteIndex {\n    public static Map<String,Long> count(List<List<String>> batches) throws InterruptedException { throw new UnsupportedOperationException(); }\n}\n"
+    },
+    {
+      "name": "NoteIndexCli.java",
+      "language": "java",
+      "content": "import java.io.PrintStream;\npublic final class NoteIndexCli {\n    public static int run(String[] paths, PrintStream out, PrintStream err) throws InterruptedException { throw new UnsupportedOperationException(); }\n    public static void main(String[] args) throws InterruptedException { run(args, System.out, System.err); }\n}\n"
+    },
+    {
+      "name": "note-a.data",
+      "language": "text",
+      "content": "lumen\nink\nlumen\n"
+    },
+    {
+      "name": "note-b.data",
+      "language": "text",
+      "content": "ink\nglow\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "design",
+      "text": "Separate token validation, shared counter, per-batch Runnable, coordinator and CLI; copy/validate batches before starting workers.",
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE",
+        "IP_SK07_01_COMPOSE_MODEL"
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "text": "Call Thread.start for every worker and join every worker before returning totals; distinguish start from a direct run call and propagate interruption without claiming completion, including an already-interrupted coordinator before workers start.",
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN"
+      ]
+    },
+    {
+      "id": "atomicity",
+      "text": "Use the same shared counter monitor for atomic read-modify-write and snapshot; explain a lost-update interleaving and avoid claiming a fixed schedule.",
+      "skillIds": [
+        "IP_SK19_02_SYNC"
+      ]
+    },
+    {
+      "id": "io",
+      "text": "Read validated UTF-8 token files with owned resource cleanup and print one sorted token=count line per token after completion.",
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK20_01_EXAM_SYNTHESIS"
+      ]
+    },
+    {
+      "id": "tests",
+      "text": "Test multiple batches, empty batches, repeated tokens, malformed input, snapshot isolation and CLI failures; use reasoning about synchronization rather than repeated lucky runs as the guarantee.",
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-design",
+      "text": "Review evidence for: Separate token validation, shared counter, per-batch Runnable, coordinator and CLI; copy/validate batches before starting workers.",
+      "requirementIds": [
+        "design"
+      ],
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE",
+        "IP_SK07_01_COMPOSE_MODEL"
+      ],
+      "testIds": [
+        "index-isolation"
+      ]
+    },
+    {
+      "id": "rubric-lifecycle",
+      "text": "Review evidence for: Call Thread.start for every worker and join every worker before returning totals; distinguish start from a direct run call and propagate interruption without claiming completion, including an already-interrupted coordinator before workers start.",
+      "requirementIds": [
+        "lifecycle"
+      ],
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN"
+      ],
+      "testIds": [
+        "index-counts",
+        "index-race"
+      ]
+    },
+    {
+      "id": "rubric-atomicity",
+      "text": "Review evidence for: Use the same shared counter monitor for atomic read-modify-write and snapshot; explain a lost-update interleaving and avoid claiming a fixed schedule.",
+      "requirementIds": [
+        "atomicity"
+      ],
+      "skillIds": [
+        "IP_SK19_02_SYNC"
+      ],
+      "testIds": [
+        "index-counts",
+        "index-isolation",
+        "index-race"
+      ]
+    },
+    {
+      "id": "rubric-io",
+      "text": "Review evidence for: Read validated UTF-8 token files with owned resource cleanup and print one sorted token=count line per token after completion.",
+      "requirementIds": [
+        "io"
+      ],
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK15_02_WRITE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY",
+        "IP_SK20_01_EXAM_SYNTHESIS"
+      ],
+      "testIds": [
+        "index-cli"
+      ]
+    },
+    {
+      "id": "rubric-tests",
+      "text": "Review evidence for: Test multiple batches, empty batches, repeated tokens, malformed input, snapshot isolation and CLI failures; use reasoning about synchronization rather than repeated lucky runs as the guarantee.",
+      "requirementIds": [
+        "tests"
+      ],
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK20_02_EXAM_PRIORITIZE"
+      ],
+      "testIds": [
+        "index-counts",
+        "index-isolation",
+        "index-cli",
+        "index-race"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.note-index"
+}

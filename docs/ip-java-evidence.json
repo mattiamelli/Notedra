@@ -1,0 +1,360 @@
+{
+  "jdk": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)",
+  "boundary": "Only checked-in original DelftStudy fixtures compiled/run during development. No learner Java execution. Race guarantees are reasoned independently, never inferred from a sample execution.",
+  "results": [
+    {
+      "id": "ds.practice.ip-division",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "6",
+      "reasoning": "Both operands of 7 / 2 are int, so division truncates toward zero to 3. Multiplication then produces 6."
+    },
+    {
+      "id": "ds.practice.ip-cast",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "3.0",
+      "reasoning": "The parenthesized integer division produces 3. Casting that result gives 3.0; (double)7 / 2 would instead produce 3.5."
+    },
+    {
+      "id": "ds.practice.ip-overflow",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "-2147483648",
+      "reasoning": "Java int arithmetic wraps modulo 2^32; adding one to 2147483647 yields the signed value -2147483648. This operation does not throw an overflow exception."
+    },
+    {
+      "id": "ds.practice.ip-narrow-assignment",
+      "result": "PASS",
+      "kind": "expected compiler rejection",
+      "reasoning": "A double value cannot be implicitly assigned to int. An explicit narrowing cast would truncate, but no cast appears here."
+    },
+    {
+      "id": "ds.practice.ip-reference-type",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "9",
+      "reasoning": "Assignment copies the reference value, so both variables refer to the same array. Writing through b changes the array read through a."
+    },
+    {
+      "id": "ds.practice.ip-method-return",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "8",
+      "reasoning": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8."
+    },
+    {
+      "id": "ds.practice.ip-pass-value",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "4:9",
+      "reasoning": "The method receives copies of 4 and the array reference. Assigning n or a changes only parameter variables; a[0]=9 mutates the shared array before the local reference is rebound."
+    },
+    {
+      "id": "ds.practice.ip-scope",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "2:5",
+      "reasoning": "The local level shadows the field for the unqualified name. this.level explicitly reads the object field, which remains 5."
+    },
+    {
+      "id": "ds.practice.ip-constructor",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "5",
+      "reasoning": "The parameter is 4. this.value selects the field and receives 5, replacing its default zero value during construction."
+    },
+    {
+      "id": "ds.practice.ip-static",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "2:5:2",
+      "reasoning": "Each object has its own value field, while both constructors increment the single class-level count."
+    },
+    {
+      "id": "ds.practice.ip-array-bound",
+      "result": "PASS",
+      "kind": "RUNTIME_ERROR",
+      "stdout": "",
+      "reasoning": "Indices 0 and 1 are valid. The loop also attempts index 2, causing ArrayIndexOutOfBoundsException before the print statement."
+    },
+    {
+      "id": "ds.practice.ip-alias",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "6",
+      "reasoning": "a and b refer to the same array. b[1] becomes 4+2, so reading a[1] returns 6."
+    },
+    {
+      "id": "ds.practice.ip-recursion",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "10",
+      "reasoning": "Calls descend to total(0)=0, then return 1,3,6,10 while adding each suspended n. The stated input is nonnegative."
+    },
+    {
+      "id": "ds.practice.ip-list-set",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "3:2",
+      "reasoning": "The list keeps all three entries. The set contains two distinct Integer values, 2 and 5. No set iteration order is assumed."
+    },
+    {
+      "id": "ds.practice.ip-api-remove",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "[7, 4]",
+      "reasoning": "Integer.valueOf(4) chooses remove(Object), removing the first equal value 4. remove(int) would interpret its argument as an index."
+    },
+    {
+      "id": "ds.practice.ip-constructor-chain",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "PC",
+      "reasoning": "The child constructor implicitly calls super() first. Parent construction prints P before the child body prints C."
+    },
+    {
+      "id": "ds.practice.ip-dispatch",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "child-object",
+      "reasoning": "At compile time the receiver type Parent exposes show(Object). At runtime the Child override of that selected signature runs. The Child-only show(String) overload is not selected through Parent."
+    },
+    {
+      "id": "ds.practice.ip-equality",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "false:true:1",
+      "reasoning": "The two new expressions create different objects, so == is false. equals compares n, and equal hashes allow the HashSet to retain one logical value. equals(null) is false because null is not an instance of Key."
+    },
+    {
+      "id": "ds.practice.ip-hash-collision",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "true:false",
+      "reasoning": "Both String hashes are 2112: 65*31+97 and 66*31+66. Their contents differ, so equals is false. Equal objects must hash equally, but the converse is not required."
+    },
+    {
+      "id": "ds.practice.ip-equals-overload",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "true:false",
+      "reasoning": "The Key-typed call selects equals(Key). The Object-typed call uses equals(Object), which was not overridden, so it retains identity equality. @Override would expose this signature error."
+    },
+    {
+      "id": "ds.practice.ip-exception-flow",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "CF",
+      "reasoning": "Parsing throws before A can print. The matching catch prints C, and finally prints F as the try/catch statement completes."
+    },
+    {
+      "id": "ds.practice.ip-checked-exception",
+      "result": "PASS",
+      "kind": "expected compiler rejection",
+      "reasoning": "main neither catches nor declares IOException, so javac rejects the program. No runtime path occurs until the checked-exception obligation is satisfied."
+    },
+    {
+      "id": "ds.practice.ip-trailing-field",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "3",
+      "reasoning": "The literal separator is escaped for the regex, and negative split limit retains the trailing empty string. The fields are oak, 2, and empty."
+    },
+    {
+      "id": "ds.practice.ip-generic-invariance",
+      "result": "PASS",
+      "kind": "expected compiler rejection",
+      "reasoning": "List<Integer> is not a subtype of List<Number>. Otherwise a Double could be inserted through the Number view into an Integer list."
+    },
+    {
+      "id": "ds.practice.ip-stream",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "[6, 12]",
+      "reasoning": "Filtering keeps 4,2; mapping produces 12,6; sorting produces 6,12; the terminal toList collects that order. Intermediate operations describe a lazy pipeline until the terminal operation requests results."
+    },
+    {
+      "id": "ds.practice.ip-optional",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "7",
+      "reasoning": "No element passes the filter, so findFirst returns an empty Optional. orElse supplies the stated fallback 7. It does not return null."
+    },
+    {
+      "id": "ds.practice.ip-lambda",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "false",
+      "reasoning": "4%3 is 1, but the equality test compares that remainder with zero, producing false. Predicate.test returns boolean."
+    },
+    {
+      "id": "ds.practice.ip-var",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "3",
+      "reasoning": "The initializer infers int. var does not make n dynamically typed, so n/2 uses integer division and yields 3."
+    },
+    {
+      "id": "ds.practice.ip-record",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "true",
+      "reasoning": "Generated record equality compares the declared components. Equal String contents and equal int values make these records equal, even though the instances differ. Reference components can still point to mutable objects; records are not automatically deeply immutable."
+    },
+    {
+      "id": "ds.practice.ip-direct-run",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "WM",
+      "reasoning": "Calling run directly executes the Runnable on the calling thread. It completes before the following M print; start would create concurrent execution."
+    },
+    {
+      "id": "ds.practice.ip-joined-sync",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "200",
+      "reasoning": "Each add uses the same counter monitor, preventing lost updates. Both joins wait for completion and make completed worker actions visible; exactly 200 increments precede the read. This assumes normal completion, as declared by the task."
+    },
+    {
+      "id": "ip-t01-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "2.0 2.75 -126\n-2147483648\n",
+      "reasoning": "11/4 first performs integer division (2), then widens to 2.0; casting an operand first makes 11.0/4=2.75. Narrowing 130 to eight bits gives signed -126. Adding one to the maximum signed 32-bit int wraps to its minimum."
+    },
+    {
+      "id": "ip-t03-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "3 7\n",
+      "reasoning": "The primitive parameter is a copy of 3; assigning 9 cannot change the caller variable. The reference parameter initially refers to the same array, so the mutation writes 7. Rebinding that local parameter to a new array does not change the caller reference."
+    },
+    {
+      "id": "ip-t04-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "13 20 2\n",
+      "reasoning": "Constructing two objects increments the one shared created field twice. first and alias refer to the same Meter, so adding3 changes its units10→13; the second object keeps20."
+    },
+    {
+      "id": "ip-t05-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "2 9 8\n17\n",
+      "reasoning": "b aliases a, so the shared second element becomes9. clone makes a different primitive array, leaving a[0]=2 when c[0]=8. Recursive prefix sums have lengths3,2,1,0 and unwind as0+2+9+6=17."
+    },
+    {
+      "id": "ip-t06-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "false\n[7, 4]\n",
+      "reasoning": "Three adds fill logical positions0,1,2. A fourth is rejected before mutation. Removing first4 shifts7 and4 left and reduces size3→2; the remaining4 is retained because this is list semantics."
+    },
+    {
+      "id": "ip-t07-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "dawn\ndusk 2\n",
+      "reasoning": "Indexed insertion at1 shifts noon right, producing[dawn,dusk,noon]. Removing index0 returns dawn and shifts remaining values; get0=dusk and size2."
+    },
+    {
+      "id": "ip-t09-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "base\nchild\n7\n",
+      "reasoning": "Child construction first invokes Base, then its own body. The variable is statically Base but references a Child, so virtual instance method dispatch calls Child.value and returns7."
+    },
+    {
+      "id": "ip-t10-trace",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "detailed\nstring\n",
+      "reasoning": "The static argument type Object selects label(Object); the runtime Detailed receiver overrides that signature, yielding detailed. The String literal selects label(String), which Detailed inherits unchanged, yielding string."
+    },
+    {
+      "id": "ip-late-t11-value",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "equality contracts verified\n",
+      "reasoning": "Pair identity is (zone,slot); three equal independently allocated values establish the tested transitive chain. Both fields vary independently; null receiver argument is false while two null zone fields agree. HashSet merges equal pair values by contract, without assuming every unequal pair has a different hash."
+    },
+    {
+      "id": "ip-late-t12-flow",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "recover\nclose\nafter\n",
+      "reasoning": "Parsing non-numeric text throws before parsed is reached; NumberFormatException matches, then finally completes, then the following statement runs."
+    },
+    {
+      "id": "ip-late-t14-strings",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "amber:7\n",
+      "reasoning": "The escaped delimiter splits into amber and space-7-space; trim gives7 and a positive count, then the formatter joins with colon."
+    },
+    {
+      "id": "ip-late-t15-read",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "cedar=0\nmaple=12\nmalformed, I/O and ownership checks verified\n",
+      "reasoning": "The two valid records preserve order and zero is allowed. Each explicitly malformed second line fails at row2 rather than returning the earlier valid partial list; empty input contains no lines. The parser borrows a Reader and must leave it open; the owning try-with-resources closes on failure. Writer behavior is checked for exact newlines, empty output, and propagated failures."
+    },
+    {
+      "id": "ip-late-t16-lambda",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "true\n",
+      "reasoning": "twice maps6 to12; the predicate accepts values at least10."
+    },
+    {
+      "id": "ip-late-t16-pipeline",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "[6, 8, 12]\n",
+      "reasoning": "Filter retains6,4,3; map doubles to12,8,6; sorted ascending yields6,8,12. No stateful callback or parallel schedule is involved."
+    },
+    {
+      "id": "ip-late-t16-optional",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "NO MATCH\n",
+      "reasoning": "Neither source name begins with z, so findFirst is empty, the uppercase mapper is not used, and orElse supplies NO MATCH."
+    },
+    {
+      "id": "ip-late-t18-syntax",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "8\n",
+      "reasoning": "NORMAL selects exactly its arrow branch whose value is8; the enum cases are exhaustive and there is no statement-switch fall-through."
+    },
+    {
+      "id": "ip-late-t18-compare",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "[Slot[aisle=A, position=2], Slot[aisle=A, position=8], Slot[aisle=B, position=1]]\n",
+      "reasoning": "A precedes B lexicographically. Equal aisles compare integer positions2 before8. Integer.compare preserves ordering even at opposite integer bounds. The separate record check demonstrates a final component reference can still observe mutation of its referenced list."
+    },
+    {
+      "id": "ip-late-t19-synchronized",
+      "result": "PASS",
+      "kind": "RUN",
+      "stdout": "8\n",
+      "reasoning": "Each of two workers performs exactly four increments protected by one common counter monitor; both joins complete before value reads. Thus eight updates survive without assuming the order of the workers."
+    }
+  ],
+  "reasonedConcurrency": [
+    {
+      "exerciseId": "ds.practice.ip-race",
+      "category": "REASONED_CONCURRENCY",
+      "expected": "Possible outcomes: 1,2",
+      "reasoning": "Both workers can read 0 before either writes 1, losing one increment; serialized updates can produce 2. join waits for completion but does not make n++ atomic. No single observed run proves a scheduling guarantee."
+    },
+    {
+      "exerciseId": "ds.practice.ip-missing-join",
+      "category": "REASONED_CONCURRENCY",
+      "expected": "Possible outcomes: 0,1",
+      "reasoning": "The main read may occur before the worker write, so 0 is possible. An execution observing the write can print 1. start does not wait for the worker to finish or establish a completed-worker result for this read."
+    }
+  ]
+}

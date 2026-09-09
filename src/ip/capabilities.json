@@ -1,0 +1,162 @@
+[
+  {
+    "topicId": "IP_T01_JAVA_BASICS",
+    "lessonId": "ds.lesson.ip.t01",
+    "cardCount": 10,
+    "exerciseCount": 5,
+    "guidedCount": 1,
+    "assignmentCount": 0
+  },
+  {
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "lessonId": "ds.lesson.ip",
+    "cardCount": 8,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "assignmentCount": 1
+  },
+  {
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "lessonId": "ds.lesson.ip.t03",
+    "cardCount": 8,
+    "exerciseCount": 3,
+    "guidedCount": 1,
+    "assignmentCount": 2
+  },
+  {
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "lessonId": "ds.lesson.ip.t04",
+    "cardCount": 8,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "assignmentCount": 4
+  },
+  {
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "lessonId": "ds.lesson.ip.t05",
+    "cardCount": 8,
+    "exerciseCount": 3,
+    "guidedCount": 1,
+    "assignmentCount": 2
+  },
+  {
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "lessonId": "ds.lesson.ip.t06",
+    "cardCount": 6,
+    "exerciseCount": 1,
+    "guidedCount": 1,
+    "assignmentCount": 2
+  },
+  {
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "lessonId": "ds.lesson.ip.t07",
+    "cardCount": 4,
+    "exerciseCount": 1,
+    "guidedCount": 1,
+    "assignmentCount": 5
+  },
+  {
+    "topicId": "IP_T08_TESTING",
+    "lessonId": "ds.lesson.ip.t08",
+    "cardCount": 6,
+    "exerciseCount": 0,
+    "guidedCount": 1,
+    "assignmentCount": 8
+  },
+  {
+    "topicId": "IP_T09_INHERITANCE",
+    "lessonId": "ds.lesson.ip.t09",
+    "cardCount": 4,
+    "exerciseCount": 1,
+    "guidedCount": 1,
+    "assignmentCount": 1
+  },
+  {
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "lessonId": "ds.lesson.ip.t10",
+    "cardCount": 4,
+    "exerciseCount": 1,
+    "guidedCount": 1,
+    "assignmentCount": 1
+  },
+  {
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "lessonId": "ds.lesson.ip.t11",
+    "cardCount": 6,
+    "exerciseCount": 3,
+    "guidedCount": 1,
+    "assignmentCount": 2
+  },
+  {
+    "topicId": "IP_T12_EXCEPTIONS",
+    "lessonId": "ds.lesson.ip.t12",
+    "cardCount": 4,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "assignmentCount": 4
+  },
+  {
+    "topicId": "IP_T13_DEBUGGING",
+    "lessonId": "ds.lesson.ip.t13",
+    "cardCount": 2,
+    "exerciseCount": 0,
+    "guidedCount": 1,
+    "assignmentCount": 1
+  },
+  {
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "lessonId": "ds.lesson.ip.t14",
+    "cardCount": 6,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "assignmentCount": 4
+  },
+  {
+    "topicId": "IP_T15_IO_PARSING",
+    "lessonId": "ds.lesson.ip.t15",
+    "cardCount": 6,
+    "exerciseCount": 0,
+    "guidedCount": 1,
+    "assignmentCount": 4
+  },
+  {
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "lessonId": "ds.lesson.ip.t16",
+    "cardCount": 6,
+    "exerciseCount": 3,
+    "guidedCount": 1,
+    "assignmentCount": 1
+  },
+  {
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "lessonId": "ds.lesson.ip.t17",
+    "cardCount": 4,
+    "exerciseCount": 0,
+    "guidedCount": 1,
+    "assignmentCount": 4
+  },
+  {
+    "topicId": "IP_T18_MODERN_JAVA",
+    "lessonId": "ds.lesson.ip.t18",
+    "cardCount": 4,
+    "exerciseCount": 2,
+    "guidedCount": 1,
+    "assignmentCount": 3
+  },
+  {
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "lessonId": "ds.lesson.ip.t19",
+    "cardCount": 4,
+    "exerciseCount": 4,
+    "guidedCount": 1,
+    "assignmentCount": 1
+  },
+  {
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "lessonId": "ds.lesson.ip.t20",
+    "cardCount": 4,
+    "exerciseCount": 0,
+    "guidedCount": 2,
+    "assignmentCount": 3
+  }
+]

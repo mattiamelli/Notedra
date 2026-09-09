@@ -1,3 +1,4 @@
+import {ipBuildGuard} from './scripts/ip-content';
 import {enrichmentGuard} from './scripts/enrichment';
 import { rlBuildGuard } from './scripts/rl-content';
 import { coBuildGuard } from './scripts/co-content';
@@ -11,6 +12,6 @@ import { studentReferencesGuard } from './scripts/student-references-guard';
 import { academicIndexGuard } from './scripts/academic-index-guard';
 
 export default defineConfig({
-  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), enrichmentGuard(), react(), tailwindcss()],
+  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), enrichmentGuard(), ipBuildGuard(), react(), tailwindcss()],
   test: { include: ['tests/**/*.test.{ts,tsx}'], environment: 'node' },
 });

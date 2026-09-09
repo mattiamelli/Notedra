@@ -1,0 +1,111 @@
+{
+  "id": "ds.assignment.ip.grid-key",
+  "version": "1",
+  "title": "A value key with an honest equality contract",
+  "minutes": 15,
+  "topicId": "IP_T11_EQUALITY_HASHING",
+  "relatedTopicIds": [
+    "IP_T11_EQUALITY_HASHING",
+    "IP_T04_CLASSES_OBJECTS"
+  ],
+  "skillIds": [
+    "IP_SK04_04_ENCAPSULATION",
+    "IP_SK11_01_EQUALS_IMPL",
+    "IP_SK11_03_EQUALITY_EDGE",
+    "IP_SK11_02_HASH_CONTRACT"
+  ],
+  "subtopicIds": [
+    "IP_ST04_02_INSTANCE_STATIC",
+    "IP_ST11_01_EQUALS",
+    "IP_ST11_03_BINDING_EQUALITY",
+    "IP_ST11_02_HASH"
+  ],
+  "sourceIds": [
+    "ref-6faf9172baf75824",
+    "ref-f3d7a5431ab68a61"
+  ],
+  "evidenceIds": [
+    "ip-t11",
+    "ip-t04"
+  ],
+  "instructions": [
+    "Implement immutable GridKey(row, column), with integer coordinates and accessors. Two keys are equal exactly when both coordinates are equal.",
+    "Use a final class and implement equals(Object) and hashCode(). Explain why different keys may share a hash code without being equal.",
+    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
+  ],
+  "starterFiles": [
+    {
+      "name": "GridKey.java",
+      "language": "java",
+      "content": "public final class GridKey {\n    public GridKey(int row, int column) { /* initialize fields */ }\n    // Add accessors, equals(Object) and hashCode().\n}\n"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "state",
+      "text": "Store both coordinates privately and immutably; expose their values without setters.",
+      "skillIds": [
+        "IP_SK04_04_ENCAPSULATION"
+      ]
+    },
+    {
+      "id": "equality",
+      "text": "Implement reflexive, symmetric, transitive and consistent value equality; reject null and unrelated types.",
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_03_EQUALITY_EDGE"
+      ]
+    },
+    {
+      "id": "hash",
+      "text": "Equal keys must have equal hash codes and behave as one logical key in a HashSet; hash collisions must not imply equality.",
+      "skillIds": [
+        "IP_SK11_02_HASH_CONTRACT"
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rubric-state",
+      "text": "Review evidence for: Store both coordinates privately and immutably; expose their values without setters.",
+      "requirementIds": [
+        "state"
+      ],
+      "skillIds": [
+        "IP_SK04_04_ENCAPSULATION"
+      ],
+      "testIds": [
+        "key-contract"
+      ]
+    },
+    {
+      "id": "rubric-equality",
+      "text": "Review evidence for: Implement reflexive, symmetric, transitive and consistent value equality; reject null and unrelated types.",
+      "requirementIds": [
+        "equality"
+      ],
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_03_EQUALITY_EDGE"
+      ],
+      "testIds": [
+        "key-contract"
+      ]
+    },
+    {
+      "id": "rubric-hash",
+      "text": "Review evidence for: Equal keys must have equal hash codes and behave as one logical key in a HashSet; hash collisions must not imply equality.",
+      "requirementIds": [
+        "hash"
+      ],
+      "skillIds": [
+        "IP_SK11_02_HASH_CONTRACT"
+      ],
+      "testIds": [
+        "key-hash"
+      ]
+    }
+  ],
+  "referenceId": "ds.reference.ip.grid-key"
+}

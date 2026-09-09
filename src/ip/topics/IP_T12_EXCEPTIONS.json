@@ -1,0 +1,222 @@
+{
+  "lesson": {
+    "id": "ds.lesson.ip.t12",
+    "version": "1",
+    "topicId": "IP_T12_EXCEPTIONS",
+    "blocks": [
+      {
+        "id": "ds.block.ip.t12.model",
+        "version": "1",
+        "topicId": "IP_T12_EXCEPTIONS",
+        "skillIds": [
+          "IP_SK12_01_CLASSIFY_FAILURE",
+          "IP_SK12_02_EXCEPTION_FLOW"
+        ],
+        "subtopicIds": [
+          "IP_ST12_01_ERROR_CLASS",
+          "IP_ST12_02_EXCEPTION_FLOW"
+        ],
+        "sourceIds": [
+          "ref-7034e3454bddea79"
+        ],
+        "kind": "introduction",
+        "title": "A failure has a phase and a path",
+        "paragraphs": [
+          "A compiler rejection, an exception during execution and an incorrect returned value are different observations. Classify the failure first; then identify where control transfers and where cleanup belongs."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t12.classification",
+        "version": "1",
+        "topicId": "IP_T12_EXCEPTIONS",
+        "skillIds": [
+          "IP_SK12_01_CLASSIFY_FAILURE"
+        ],
+        "subtopicIds": [
+          "IP_ST12_01_ERROR_CLASS"
+        ],
+        "sourceIds": [
+          "ref-7034e3454bddea79"
+        ],
+        "kind": "concept",
+        "title": "Compile, execute, or produce a wrong result",
+        "paragraphs": [
+          "Using an out-of-scope variable or assigning a String to int is a compile-time error. Reading beyond an array boundary or parsing non-numeric input can throw at runtime. Returning 2 for a specification that requires 3 may finish normally but is still a logic defect.",
+          "Integer overflow wraps in Java without throwing an arithmetic exception. Integer division by zero throws ArithmeticException. Floating-point division has different rules: nonzero finite values divided by zero produce signed infinity, while zero divided by zero produces NaN.",
+          "RuntimeException subclasses are unchecked. A checked exception such as IOException must be caught or declared when it can escape. Do not label checked exceptions as checked RuntimeExceptions, or indiscriminately catch programming errors instead of repairing their cause."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t12.flow",
+        "version": "1",
+        "topicId": "IP_T12_EXCEPTIONS",
+        "skillIds": [
+          "IP_SK12_02_EXCEPTION_FLOW"
+        ],
+        "subtopicIds": [
+          "IP_ST12_02_EXCEPTION_FLOW"
+        ],
+        "sourceIds": [
+          "ref-7034e3454bddea79"
+        ],
+        "kind": "code_example",
+        "title": "Trace the throw, matching catch and finally",
+        "paragraphs": [
+          "The parse below throws NumberFormatException, so the remaining try statement is skipped. The matching catch prints recover; finally then prints close; execution continues after the construct. The output is recover, close, after on separate lines.",
+          "If no catch in the current method matches, the exception propagates outward through callers. A finally block normally runs as control leaves its try/catch, including during propagation. Do not rely on cleanup after the try when an exception could bypass it."
+        ],
+        "code": "try {\n    Integer.parseInt(\"not-an-int\");\n    System.out.println(\"parsed\");\n} catch (NumberFormatException failure) {\n    System.out.println(\"recover\");\n} finally {\n    System.out.println(\"close\");\n}\nSystem.out.println(\"after\");"
+      },
+      {
+        "id": "ds.block.ip.t12.custom",
+        "version": "1",
+        "topicId": "IP_T12_EXCEPTIONS",
+        "skillIds": [
+          "IP_SK12_02_EXCEPTION_FLOW"
+        ],
+        "subtopicIds": [
+          "IP_ST12_02_EXCEPTION_FLOW"
+        ],
+        "sourceIds": [
+          "ref-7034e3454bddea79"
+        ],
+        "kind": "procedure",
+        "title": "Use exceptions to preserve a useful boundary",
+        "paragraphs": [
+          "A parser can reject a malformed record with a domain-specific exception carrying the line number and reason. The parser should not invent a valid record or print a menu; the caller chooses whether to reject the file or report the record according to the stated specification.",
+          "Use throw to raise an exception object. Use throws on the method declaration to expose a possible checked failure. A custom checked exception extends Exception; a custom unchecked exception extends RuntimeException. Catch a type you can handle, and keep resource cleanup separate from recovery decisions."
+        ]
+      },
+      {
+        "id": "ds.block.ip.t12.recap",
+        "version": "1",
+        "topicId": "IP_T12_EXCEPTIONS",
+        "skillIds": [
+          "IP_SK12_01_CLASSIFY_FAILURE",
+          "IP_SK12_02_EXCEPTION_FLOW"
+        ],
+        "subtopicIds": [
+          "IP_ST12_01_ERROR_CLASS",
+          "IP_ST12_02_EXCEPTION_FLOW"
+        ],
+        "sourceIds": [
+          "ref-7034e3454bddea79"
+        ],
+        "kind": "recap",
+        "title": "Trace control before guessing output",
+        "paragraphs": [
+          "Locate the failing operation, match a handler by type, skip statements bypassed by the throw, and account for cleanup. Errors in results still need tests even when every exception is handled."
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "ds.card.ip.t12.phase",
+      "version": "1",
+      "topicId": "IP_T12_EXCEPTIONS",
+      "skillIds": [
+        "IP_SK12_01_CLASSIFY_FAILURE"
+      ],
+      "subtopicIds": [
+        "IP_ST12_01_ERROR_CLASS"
+      ],
+      "sourceIds": [
+        "ref-7034e3454bddea79"
+      ],
+      "prompt": "A program compiles and prints the wrong total without throwing. What kind of failure is that?",
+      "answer": "A logic/result defect. Successful compilation and absence of exceptions do not show that the program meets its specification."
+    },
+    {
+      "id": "ds.card.ip.t12.checked",
+      "version": "1",
+      "topicId": "IP_T12_EXCEPTIONS",
+      "skillIds": [
+        "IP_SK12_01_CLASSIFY_FAILURE"
+      ],
+      "subtopicIds": [
+        "IP_ST12_01_ERROR_CLASS"
+      ],
+      "sourceIds": [
+        "ref-7034e3454bddea79"
+      ],
+      "prompt": "Is RuntimeException a checked exception family?",
+      "answer": "No. RuntimeException subclasses are unchecked. Checked exceptions such as IOException have a catch-or-declare obligation; Error is also unchecked."
+    },
+    {
+      "id": "ds.card.ip.t12.throw-throws",
+      "version": "1",
+      "topicId": "IP_T12_EXCEPTIONS",
+      "skillIds": [
+        "IP_SK12_02_EXCEPTION_FLOW"
+      ],
+      "subtopicIds": [
+        "IP_ST12_02_EXCEPTION_FLOW"
+      ],
+      "sourceIds": [
+        "ref-7034e3454bddea79"
+      ],
+      "prompt": "What is the difference between throw and throws?",
+      "answer": "throw transfers control by raising an exception object. throws declares possible exception types in a method contract; it does not itself throw anything."
+    },
+    {
+      "id": "ds.card.ip.t12.cleanup",
+      "version": "1",
+      "topicId": "IP_T12_EXCEPTIONS",
+      "skillIds": [
+        "IP_SK12_02_EXCEPTION_FLOW"
+      ],
+      "subtopicIds": [
+        "IP_ST12_02_EXCEPTION_FLOW"
+      ],
+      "sourceIds": [
+        "ref-7034e3454bddea79"
+      ],
+      "prompt": "A statement in try throws, its matching catch completes, and finally prints a marker. What runs next?",
+      "answer": "The catch runs, then finally, then the statement after the try/catch/finally. Statements remaining after the throw inside try are skipped."
+    }
+  ],
+  "guided": [
+    {
+      "id": "ds.guided.ip.t12.failure-boundary",
+      "version": "1",
+      "topicId": "IP_T12_EXCEPTIONS",
+      "skillIds": [
+        "IP_SK12_01_CLASSIFY_FAILURE",
+        "IP_SK12_02_EXCEPTION_FLOW"
+      ],
+      "subtopicIds": [
+        "IP_ST12_01_ERROR_CLASS",
+        "IP_ST12_02_EXCEPTION_FLOW"
+      ],
+      "sourceIds": [
+        "ref-7034e3454bddea79"
+      ],
+      "title": "Design an error boundary",
+      "prompt": "An importer reads a row whose count must be a positive integer. Specify what happens for a missing field, non-numeric text, zero and an unreadable file. Keep domain validation and resource failures distinct.",
+      "fields": [
+        {
+          "id": "step1",
+          "label": "Input contract and failure categories"
+        },
+        {
+          "id": "step2",
+          "label": "Where to throw, catch or propagate"
+        },
+        {
+          "id": "step3",
+          "label": "Cleanup and observable tests"
+        }
+      ],
+      "rubric": [
+        "All four cases have explicit outcomes; invalid data is not silently replaced.",
+        "A recoverable UI boundary reports errors while reusable parsing exposes them.",
+        "Tests distinguish parser validation from IOException and check cleanup on success/failure."
+      ],
+      "reference": [
+        "One policy rejects the whole import: malformed/invalid rows raise a line-numbered format exception, and I/O failures propagate as IOException. A caller reports each category without manufacturing records.",
+        "Use try-with-resources for owned handles and boundary tests for blank, non-numeric and nonpositive counts. A different reject/skip policy is valid only if the requirements explicitly permit it."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,946 @@
+{
+  "purpose": "Development verification of original authored references only. No learner Java was executed or graded.",
+  "javaVersion": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)",
+  "compilerVersion": "javac 21.0.12.1",
+  "compileCommand": "javac --release 21 -Xlint:all -Werror -encoding UTF-8 -d <isolated temporary directory> <fixed authored Java files> Check.java ReferenceCheck.java",
+  "executeCommand": "java -ea -cp <isolated temporary directory> ReferenceCheck",
+  "junitStatus": "NOT RUN: JUnit-reference.txt is an illustrative JUnit 5 excerpt. Equivalent behavioral requirements ran in the plain-Java harness.",
+  "assertionCount": 144,
+  "results": [
+    {
+      "slug": "array-window",
+      "assignmentId": "ds.assignment.ip.array-window",
+      "referenceId": "ds.reference.ip.array-window",
+      "referenceSha256": "4b2aa5e0311f8a5dd403df98dc66b6afe9c1e34d59567d3414e2f8beb931aa8b",
+      "harnessSha256": "bd0cd7824267675b1e22a80ab16d70ffcb3d95c07bf01e886089bac7a20b9324",
+      "javaFiles": [
+        "WindowCounts.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "The window [1,4) reads only 7,7,2, so exactly two values meet 7. In [0,5), the final 9 adds one more.",
+        "The loop stops before to, so to == length never becomes an array access. It reads the array but never assigns an element."
+      ],
+      "checks": [
+        {
+          "id": "window",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "whole",
+          "actual": "3",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "last",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "unchanged",
+          "actual": "[4, 7, 7, 2, 9]",
+          "result": "PASS"
+        },
+        {
+          "id": "null",
+          "actual": "NullPointerException",
+          "result": "PASS"
+        },
+        {
+          "id": "negative",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "beyond",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "reversed",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "grid-key",
+      "assignmentId": "ds.assignment.ip.grid-key",
+      "referenceId": "ds.reference.ip.grid-key",
+      "referenceSha256": "856a275eb54799ef32d28c4bd46915aefb1f5e67a9050c71f8fba03deb657aeb",
+      "harnessSha256": "b3ef414bfc727ca16e29afd7296f5857f4c90d7c943b0dada6cf0c475b2b5808",
+      "javaFiles": [
+        "GridKey.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "A final class makes the chosen equality domain explicit: subclasses cannot add equality-relevant state. Each equality comparison uses the same two immutable fields.",
+        "Both (0,31) and (1,0) hash to 31. Their different coordinates keep equals false. A HashSet uses equality as well as hashing."
+      ],
+      "checks": [
+        {
+          "id": "coordinates",
+          "actual": "0,31",
+          "result": "PASS"
+        },
+        {
+          "id": "identity",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "reflexive",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "symmetric",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "transitive",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "null",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "unrelated",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "different-column",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "collision",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "set-size",
+          "actual": "2",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "batch-token",
+      "assignmentId": "ds.assignment.ip.batch-token",
+      "referenceId": "ds.reference.ip.batch-token",
+      "referenceSha256": "2e96bb5da998efe7688c76bea69bf1f3102d676986b4e88e9772daadcb05cdad",
+      "harnessSha256": "3b1c485fa62f1649e0d4ee0a9d45a681345357ae4006c54d79a145256c048fd7",
+      "javaFiles": [
+        "BatchToken.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "Keeping trailing empty fields with split(\"@\", -1) distinguishes a missing quantity. Exactly two fields rejects extra separators.",
+        "After checking 1–3 ASCII digits, Integer.parseInt cannot overflow and yields a value from 0 through 999. Leading zeros do not change the base."
+      ],
+      "checks": [
+        {
+          "id": "zero",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "leading-zero",
+          "actual": "7",
+          "result": "PASS"
+        },
+        {
+          "id": "maximum",
+          "actual": "999",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-0",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-1",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-2",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-3",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-4",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-5",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-6",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-7",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-8",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-9",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-10",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "boundary-tests",
+      "assignmentId": "ds.assignment.ip.boundary-tests",
+      "referenceId": "ds.reference.ip.boundary-tests",
+      "referenceSha256": "2b61125427401dfc7bd4adc4ef6f783b24614fcb717cb630ed2dd12816296980",
+      "harnessSha256": "b9a95c2c70a6db1d19e7ad3210f49a16706b1f1017b32b554a29a364367ab2e9",
+      "javaFiles": [
+        "Clamp.java"
+      ],
+      "excludedIllustrativeFiles": [
+        "JUnit-reference.txt"
+      ],
+      "independentReasoning": [
+        "For a closed interval, values on either boundary remain unchanged. A one-point interval maps every input to that one point.",
+        "The function has no console or file dependency. An assertion against an independently chosen expected value checks behavior; a test that merely calls the function or achieves high coverage can miss wrong results.",
+        "The JUnit excerpt uses genuine assertEquals/assertThrows contracts but is labelled unexecuted. Equivalent cases are checked by the trusted plain-Java development harness."
+      ],
+      "checks": [
+        {
+          "id": "range-0",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "range-1",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "range-2",
+          "actual": "5",
+          "result": "PASS"
+        },
+        {
+          "id": "range-3",
+          "actual": "8",
+          "result": "PASS"
+        },
+        {
+          "id": "range-4",
+          "actual": "8",
+          "result": "PASS"
+        },
+        {
+          "id": "degenerate--1",
+          "actual": "3",
+          "result": "PASS"
+        },
+        {
+          "id": "degenerate-3",
+          "actual": "3",
+          "result": "PASS"
+        },
+        {
+          "id": "degenerate-9",
+          "actual": "3",
+          "result": "PASS"
+        },
+        {
+          "id": "reversed",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "label-stream",
+      "assignmentId": "ds.assignment.ip.label-stream",
+      "referenceId": "ds.reference.ip.label-stream",
+      "referenceSha256": "8318c700b48b2a928ad3718c803816497a1060ca6cb6ee6aa04fed4aa74b66d9",
+      "harnessSha256": "d51be3300d8ece0dc64e612d8cb841855593c76206f67c4235d60180addf7e2b",
+      "javaFiles": [
+        "LabelStream.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "After trimming, elm, oak and ash have length three and are removed. birch occurs twice and remains twice because no distinct operation was requested.",
+        "Natural String order places birch before cedar. findFirst returns an Optional, including an empty Optional when no element survives."
+      ],
+      "checks": [
+        {
+          "id": "cleaned",
+          "actual": "[birch, birch, cedar]",
+          "result": "PASS"
+        },
+        {
+          "id": "unchanged",
+          "actual": " elm ",
+          "result": "PASS"
+        },
+        {
+          "id": "first",
+          "actual": "Optional[birch]",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "Optional.empty",
+          "result": "PASS"
+        },
+        {
+          "id": "case-sensitive",
+          "actual": "[Amber, zinc]",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "capacity-shelf",
+      "assignmentId": "ds.assignment.ip.capacity-shelf",
+      "referenceId": "ds.reference.ip.capacity-shelf",
+      "referenceSha256": "b930a4f723725c4e78688e5ab73b913f73e084f8fa3705c7e6b38d7cbc39be81",
+      "harnessSha256": "879601c8f64d8202e01e78db96a7b5e475dd7fd70f5b0db828870bb2b1071c11",
+      "javaFiles": [
+        "CapacityShelf.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "The active prefix has exactly size elements. Shifting a removed suffix left preserves order; clearing the old last active cell restores a null tail.",
+        "A copy has a different array identity. Strings themselves are immutable, so sharing their references does not expose mutable label objects."
+      ],
+      "checks": [
+        {
+          "id": "add-first",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "duplicate",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "full",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "remove-middle",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "order",
+          "actual": "[ink, wax, clay]",
+          "result": "PASS"
+        },
+        {
+          "id": "size",
+          "actual": "3",
+          "result": "PASS"
+        },
+        {
+          "id": "defensive-copy",
+          "actual": "ink",
+          "result": "PASS"
+        },
+        {
+          "id": "absent",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "ends",
+          "actual": "[wax]",
+          "result": "PASS"
+        },
+        {
+          "id": "zero-capacity",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "negative-capacity",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "null-label",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "empty-label",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "alert-policies",
+      "assignmentId": "ds.assignment.ip.alert-policies",
+      "referenceId": "ds.reference.ip.alert-policies",
+      "referenceSha256": "18c8bae9711f12a78d68e9a8f962557fb6ac6637a401cab50a14e7902c46e61e",
+      "harnessSha256": "1a11e5e7eaced9ca7d6d2db48e2fd602aae75e4c64d7bd528c1e80ab514e4eda",
+      "javaFiles": [
+        "AlertRule.java",
+        "ThresholdAlert.java",
+        "HighAlert.java",
+        "LowAlert.java",
+        "RuleSet.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "At the threshold neither strict rule matches. The interface declares a callable operation while each runtime object supplies its override.",
+        "RuleSet owns a list copy, so clearing the caller list cannot change its rule collection. It delegates behavior rather than testing object class names. Null list/elements are rejected by List.copyOf."
+      ],
+      "checks": [
+        {
+          "id": "high",
+          "actual": "false,false,true",
+          "result": "PASS"
+        },
+        {
+          "id": "low",
+          "actual": "true,false,false",
+          "result": "PASS"
+        },
+        {
+          "id": "composed",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "null-rules",
+          "actual": "NullPointerException",
+          "result": "PASS"
+        },
+        {
+          "id": "null-element",
+          "actual": "NullPointerException",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "reading-export",
+      "assignmentId": "ds.assignment.ip.reading-export",
+      "referenceId": "ds.reference.ip.reading-export",
+      "referenceSha256": "2d48db94ab797929a7fc5c2b201b2798f12a39b2f9be033d2d62628d6fa8ce07",
+      "harnessSha256": "8a84dbbbf8c03b3ba029fc92cf8702216ae7fd5558b3d3c09a92128424ce4a36",
+      "javaFiles": [
+        "Reading.java",
+        "ReadingFormatException.java",
+        "ReadingExport.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "The parser operates before the destination writer is created, so a malformed input record cannot truncate a pre-existing output. This is not a guarantee of atomic replacement if writing later fails.",
+        "Integer.toString after parsing rejects signs/leading zeros not in the declared grammar; bounds reject values outside -50..150. Parsing syntax is input validation, not grading learner source text.",
+        "parse borrows the Reader and does not close it. convert owns resources it opens, so its try-with-resources blocks close them on normal and exceptional exits."
+      ],
+      "checks": [
+        {
+          "id": "parsed",
+          "actual": "[Reading[channel=north, value=12], Reading[channel=south, value=-4], Reading[channel=north, value=0]]",
+          "result": "PASS"
+        },
+        {
+          "id": "borrowed-open",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "bounds",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "terminal-newline",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-1",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-2",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-3",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-4",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-5",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-6",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-7",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-8",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "line-number",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "io-failure",
+          "actual": "IOException",
+          "result": "PASS"
+        },
+        {
+          "id": "formatted",
+          "actual": "NORTH:12\nSOUTH:-4\nNORTH:0\n",
+          "result": "PASS"
+        },
+        {
+          "id": "parse-preserves-output",
+          "actual": "ReadingFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "preserved",
+          "actual": "KEEP",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "material-ledger",
+      "assignmentId": "ds.assignment.ip.material-ledger",
+      "referenceId": "ds.reference.ip.material-ledger",
+      "referenceSha256": "577e8010aecd479a36615d9aeffd262d8d52ade509ea7868f0c47b306bf76179",
+      "harnessSha256": "8c468b325f4ad6dc02368aa5dc5a0292d7aef19cd19a652eeb62e8d8fcbe9fca",
+      "javaFiles": [
+        "MaterialKey.java",
+        "StockEntry.java",
+        "LedgerParser.java",
+        "LedgerTotals.java",
+        "LedgerCli.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "EAST/resin appears twice, with 4+7=11 units. WEST/wire has 9 and EAST/wire has 0. Sorting keys by area then material produces EAST/resin, EAST/wire, WEST/wire.",
+        "MaterialKey is final and immutable; equality and hash use the same two fields. StockEntry composes the key. Aggregation uses value keys rather than reference identity.",
+        "The parser owns no borrowed reader. The CLI owns both file resources and finishes parsing before it opens output. This prevents truncation on parse failure, not all possible partial writes.",
+        "The parser creates an ArrayList-backed dataset, bounded by an integer-indexed backing array. At most Integer.MAX_VALUE entries with at most 1000 units each fit in long. Different collection sources would need their own explicit bound or checked arithmetic.",
+        "Each rubric component has its own requirements and test specifications. These describe review evidence; no single completion action awards all mapped skills."
+      ],
+      "checks": [
+        {
+          "id": "key-contract",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "key-not-null",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "key-different",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "bad-key",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "bad-units",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "parsed",
+          "actual": "4",
+          "result": "PASS"
+        },
+        {
+          "id": "totals",
+          "actual": "[EAST/resin=11, EAST/wire=0, WEST/wire=9]",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-0",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-1",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-2",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-3",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-4",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-5",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-6",
+          "actual": "Invalid material record at line 2",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-success",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-message",
+          "actual": "Wrote 3 totals.",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-output",
+          "actual": "EAST/resin=11\nEAST/wire=0\nWEST/wire=9\n",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-usage",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-missing",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-malformed",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-preserves",
+          "actual": "KEEP",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "air-audit",
+      "assignmentId": "ds.assignment.ip.air-audit",
+      "referenceId": "ds.reference.ip.air-audit",
+      "referenceSha256": "efd7043edafd4c223ab59ece03a88a6c8392225ad3651a2b6ded91b258deed79",
+      "harnessSha256": "e90b0b1814b16c0135dca562399807d2046661454bcb438566702d426afe94fa",
+      "javaFiles": [
+        "Sample.java",
+        "SampleFormatException.java",
+        "AirAudit.java",
+        "AirAuditCli.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "At threshold 700, LAB readings 800 and 700 have one strict exceedance; STUDIO readings 400 and 900 also have one. Both zones have count two and respective peaks 800 and 900.",
+        "Sample numbers identify records within a zone. A duplicate composite identifier is rejected, while LAB/1 and STUDIO/1 are different identifiers. Colon cannot appear in a validated zone, so the duplicate-detection key is unambiguous.",
+        "Malformed input is a checked I/O-domain failure, not a successful report. The parser reports the physical line and stops; the CLI converts errors to its declared status without manufacturing partial totals.",
+        "The parser borrows a Reader. The service closes file resources and delays output creation until validated report lines exist. A later write failure can still leave partial output; this assignment does not promise transactional filesystem replacement."
+      ],
+      "checks": [
+        {
+          "id": "report",
+          "actual": "[LAB count=2 peak=800 alerts=1, STUDIO count=2 peak=900 alerts=1]",
+          "result": "PASS"
+        },
+        {
+          "id": "borrowed-open",
+          "actual": "false",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-0",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-1",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-2",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-3",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-4",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-5",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-6",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-7",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-8",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "malformed-9",
+          "actual": "SampleFormatException",
+          "result": "PASS"
+        },
+        {
+          "id": "duplicate-line",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "different-zones",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "threshold-negative",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "threshold-high",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "io-failure",
+          "actual": "IOException",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-success",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "formatted",
+          "actual": "LAB count=2 peak=800 alerts=1\nSTUDIO count=2 peak=900 alerts=1\n",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-usage",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-threshold",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-missing",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-malformed",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "preserved",
+          "actual": "KEEP",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "note-index",
+      "assignmentId": "ds.assignment.ip.note-index",
+      "referenceId": "ds.reference.ip.note-index",
+      "referenceSha256": "02be03942c1558d34b6b149785752a4f0524c82f874a51737f2a54e37e4bdcbd",
+      "harnessSha256": "eb034d19d464d6c6aaf2574fee88d078a48f6f8fe512f59502ca1050db202ee8",
+      "javaFiles": [
+        "TokenCounter.java",
+        "NoteWorker.java",
+        "NoteIndex.java",
+        "NoteIndexCli.java"
+      ],
+      "excludedIllustrativeFiles": [],
+      "independentReasoning": [
+        "The three fixed batches contain seven tokens: glow twice, ink twice and lumen three times. Every synchronized record call performs one indivisible map update on the same counter object.",
+        "Every worker is joined before snapshot. Completion and visibility after joins combine with synchronized atomic updates to justify the final counts; the result does not require any particular worker order.",
+        "Calling run directly executes on the calling thread. start creates a separate execution thread. Waiting with join does not stop two unsynchronized increments from interleaving.",
+        "For the conceptual two-increment integer race, read0/read0/write1/write1 yields 1; read0/write1/read1/write2 yields 2. This open self-check asks for possible interleavings, not one promised schedule or a fake numerical grade.",
+        "For the supplied ArrayList-backed file batches, the maximum indexed outer and inner array sizes imply a total below Long.MAX_VALUE; different collection sources need their own bound or checked arithmetic. An already-interrupted coordinator throws before starting workers; interruption while joining propagates instead of returning an incomplete snapshot. Threads are a learning mechanism here, not a speed claim or a production thread-pool design."
+      ],
+      "checks": [
+        {
+          "id": "completed-counts",
+          "actual": "{glow=2, ink=2, lumen=3}",
+          "result": "PASS"
+        },
+        {
+          "id": "empty",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "empty-batch",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "snapshot-isolation",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "invalid-token",
+          "actual": "IllegalArgumentException",
+          "result": "PASS"
+        },
+        {
+          "id": "null-batch",
+          "actual": "NullPointerException",
+          "result": "PASS"
+        },
+        {
+          "id": "interrupted-propagates",
+          "actual": "true",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-success",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-output",
+          "actual": "glow=1\nink=2\nlumen=2\n",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-usage",
+          "actual": "2",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-invalid",
+          "actual": "1",
+          "result": "PASS"
+        },
+        {
+          "id": "no-partial-output",
+          "actual": "0",
+          "result": "PASS"
+        },
+        {
+          "id": "cli-missing",
+          "actual": "1",
+          "result": "PASS"
+        }
+      ]
+    }
+  ]
+}
