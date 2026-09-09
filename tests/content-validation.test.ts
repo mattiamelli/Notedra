@@ -41,6 +41,13 @@ describe('trusted Content Pack v1.0.1', () => {
     expect(result.valid).toBe(false);
     expect(result.issues[0].code).toBe('SCHEMA');
   });
+  it('compiles changed schema contents even when the schema ID is unchanged', () => {
+    const changed = {...(schema as object), not: {}};
+    const result = validateContentData(pack, changed);
+    expect(result.valid).toBe(false);
+    expect(result.issues.every(issue => issue.code === 'SCHEMA')).toBe(true);
+    expect(validateContentData(pack, schema).valid).toBe(true);
+  });
   it('does not modify source objects or release bytes during validation', () => {
     const before = JSON.stringify(pack);
     const bytes = Buffer.from(files.get(HANDOFF_FILE)!);

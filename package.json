@@ -8,12 +8,12 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc --noEmit && vite build",
+    "build": "node --import tsx scripts/validate-content.ts && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "validate:content": "tsx scripts/validate-content.ts"
+    "validate:content": "node --import tsx scripts/validate-content.ts"
   },
   "dependencies": {
     "react": "19.2.6",

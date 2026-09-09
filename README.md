@@ -49,7 +49,37 @@ npm run build
 npm run preview
 ```
 
-`npm run build` type-checks the project and creates a static application in `dist/`. Serve that directory through any static HTTP host. No server-side application code is required. The optional `.openai/hosting.json` is deployment metadata for the prepared Sites preview and is not needed for local development.
+`npm run build` validates the trusted Content Pack, type-checks the project, and creates a static application in `dist/`. Vite also enforces content validation for direct production builds. Serve `dist/` through any static HTTP host. No server-side application code is required. The optional `.openai/hosting.json` is deployment metadata for the prepared Sites preview and is not needed for local development.
+
+## Academic Content Source of Truth
+
+The supported academic source is **DelftStudy Content Pack v1.0.1**, using **schema 1.1.0 (JSON Schema 2020-12)**. The nine original release files are preserved byte-for-byte in [`content-pack/v1.0.1/`](content-pack/v1.0.1/).
+
+- Academic source of truth: [`DelftStudy_Codex_Handoff_Pack.json`](content-pack/v1.0.1/DelftStudy_Codex_Handoff_Pack.json).
+- Operational rules: [`INSTRUCTIONS_FOR_CODEX.md`](content-pack/v1.0.1/INSTRUCTIONS_FOR_CODEX.md).
+- Schema: [`DelftStudy_Content_Pack.schema.json`](content-pack/v1.0.1/DelftStudy_Content_Pack.schema.json).
+- **v1.0.0 must not be used**, merged, or used to infer missing data.
+- `UNKNOWN`, `UNVERIFIED`, `PARTIALLY_UNVERIFIED`, and `LOW` values must remain unresolved unless verified against an original source. Uncertain mappings cannot generate source-derived variants, update individual skill mastery, contribute weighted exam readiness, or count as verified historical evidence. Uncertainty in a source locator or difficulty component remains distinct from mapping confidence.
+- Source-document records and PDF hashes are embedded; the **90 original PDF binaries and full PDF text are not**. The validator does not open or hash those PDFs.
+
+This integration establishes the trusted source and development safeguards only. It introduces no course pages, generators, mastery/readiness engine, or other product features. The Assembly Visualizer remains unchanged. The full handoff JSON is not imported into the frontend; the production guard rejects browser imports from the pack and validation-tooling directories.
+
+```bash
+npm run validate:content
+npm test
+npm run typecheck
+npm run build
+```
+
+These scripts also work with `pnpm` in place of `npm`. Release/CI jobs must run the tests and production build; a failing content check exits unsuccessfully and blocks production output.
+
+Validation checks the exact canonical counts, canonical IDs and references, all eight relation tables, prerequisite cycles/course boundaries, uncertainty policies, and historical frequency aggregated by unique eligible assessment documents. Practice/example documents never count as official sittings. Diagnostic fields explicitly including low-confidence or practice evidence are kept separate from verified counts; fields explicitly named reference counts remain reference counts.
+
+All eight manifest payload checksums and file sizes are checked. Because the supplied manifest deliberately omits its self-checksum, its SHA-256 is independently pinned in the validator. `.gitattributes` prevents line-ending conversion of the release files. Do not fix validation failures by editing academic data or regenerating hashes; obtain and review a new audited release as a separate change.
+
+Ajv and tsx are development-only dependencies. Ajv's 2020-12 implementation validates the supplied schema directly. Its optional `strictRequired` lint is disabled because conditional requirements refer to properties declared in parent schemas; required-field validation stays enabled. Schema compilation is cached by content hash, so repeated validation is safe and a changed schema cannot reuse a stale compiled schema merely by retaining its `$id`.
+
+The mutation tests operate on in-memory copies. Separate build tests prove that Vite rejects invalid content and full handoff imports, including raw imports. See the [Step 1 verification report](docs/content-integration-status.md) for exact results and the complete file inventory.
 
 ## Using the workbench
 
@@ -168,6 +198,15 @@ tests/
   instructions.test.ts
   executor.test.ts
   visualization.test.ts
+  content-validation.test.ts
+  content-build.test.ts
+scripts/
+  validate-content.ts
+  content/           # Development-only schema, integrity, policy, frequency and build checks
+content-pack/
+  v1.0.1/            # Nine immutable audited release files
+docs/
+  content-integration-status.md
 ```
 
 The engine imports no React or browser APIs. The UI renders engine snapshots; it never implements instruction behavior. Runtime dependencies are limited to React and React DOM. Vite, strict TypeScript, Tailwind CSS, and Vitest provide development tooling.
@@ -177,6 +216,7 @@ The engine imports no React or browser APIs. The UI renders engine snapshots; it
 ```bash
 npm test
 npm run test:watch
+npm run validate:content
 npm run typecheck
 npm run build
 ```
@@ -222,4 +262,4 @@ Final verification completed on 9 September 2026:
 - Responsive layouts were checked at 360, 768, and 1440 pixels, with no page or stack-cell horizontal overflow.
 - The production browser reported no console warnings or errors during these checks.
 
-No roadmap features or Content Pack integrations are included in this MVP.
+This records the original Assembly MVP baseline. Step 1 subsequently added the trusted Content Pack and development validation infrastructure described above; it did not change Assembly behavior or add roadmap features.
