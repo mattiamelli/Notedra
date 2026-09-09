@@ -11,10 +11,11 @@
 
 1. Baseline inspected and verified.
 2. All nine supplied v1.0.1 files extracted byte-for-byte to `content-pack/v1.0.1/`. Eight manifest checksums verified; the manifest intentionally omits its self-hash.
+3. Development validator and 38 content integrity tests completed. The original 101 tests plus all 38 new tests pass (139 total), and strict TypeScript checking passes. The release files remain untouched. Ajv and tsx are development-only dependencies.
 
 ## Resume point
 
-Next: implement and test a Node/TypeScript development validator, gate production builds, and complete final verification. Do not start product features or Step 2.
+Next: gate production builds, document the academic source of truth, and complete final verification. Do not start product features or Step 2.
 
 ## Baseline production SHA-256
 

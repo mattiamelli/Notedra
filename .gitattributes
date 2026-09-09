@@ -1,0 +1,2 @@
+# Preserve the audited release bytes across platforms and Git configurations.
+content-pack/v1.0.1/** -text
