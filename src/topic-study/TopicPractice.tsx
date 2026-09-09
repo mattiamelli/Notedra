@@ -3,8 +3,9 @@ import { allExercises as catalog,exercisePath,attemptPath } from '../practice/ca
 import { resolveAttempt } from '../practice/service';
 import { useLearning } from '../learning/LearningProvider';
 import { EmptyState } from '../shell/PageParts';
-export function TopicPractice({topicId}:{topicId:string}){
+export function TopicPractice({topicId,hasStudyActivities=false}:{topicId:string;hasStudyActivities?:boolean}){
  const learning=useLearning();const exercises=catalog.filter(e=>e.topicId===topicId);
+ if(!exercises.length&&hasStudyActivities)return <section><h2>Practice</h2><p>No automatically graded exercises for this topic. Use the guided activities or specialized tool on this page.</p></section>;
  if(!exercises.length)return <EmptyState title="Topic practice is not available yet"><p>No authored exercises are available for this topic.</p></EmptyState>;
  return <section><h2>Practice</h2><p>{exercises.length} authored exercises from the shared Practice catalog. Saved work opens in the same runner; these are not official exam questions.</p><div className="ds-practice-grid">{exercises.map(exercise=>{
  const attempts=learning?.snapshot?.data.attempts.filter(a=>a.templateRef===exercise.id&&a.topicId===topicId)??[];
