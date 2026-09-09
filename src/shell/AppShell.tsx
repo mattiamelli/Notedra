@@ -5,7 +5,7 @@ import { ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext, productA
 import { ShellIcon } from './ShellIcon';
 
 export function AppShell() {
-  const {pathname} = useLocation();
+  const {pathname, hash} = useLocation();
   const context = pageContext(pathname);
   const tool = pathname.replace(/\/+$/, '') === ASSEMBLY_TOOL_PATH;
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -20,11 +20,12 @@ export function AppShell() {
     document.title = `${context.title} · DelftStudy`;
     if (previousPath.current !== pathname) {
       setNavigationOpen(false);
-      content.current?.focus();
+      if(document.activeElement?.getAttribute('role') !== 'tab') content.current?.focus();
       window.scrollTo(0, 0);
       previousPath.current = pathname;
     }
-  }, [pathname, context.title]);
+    if(hash){const target=document.getElementById(hash.slice(1));if(target&&content.current?.contains(target)){target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView?.({block:'start'});}}
+  }, [pathname, context.title, hash]);
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && navigationOpen) { setNavigationOpen(false); menuButton.current?.focus(); }

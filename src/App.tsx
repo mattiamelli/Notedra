@@ -23,6 +23,7 @@ export function AppRoutes() {
     {courses.map(course => <Route key={course.subject_id} path={course.path} caseSensitive>
       <Route index element={<CoursePage course={course}/>}/>
       <Route path=":topicId" caseSensitive element={<TopicPage course={course}/>}/>
+      <Route path=":topicId/:mode" caseSensitive element={<TopicPage course={course}/>}/>
     </Route>)}
     <Route path={ASSEMBLY_TOOL_PATH} caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Assembly workbench…</p>}><AssemblyWorkbench/></Suspense>}/>
     <Route path="practice" caseSensitive element={<PracticePage/>}/>

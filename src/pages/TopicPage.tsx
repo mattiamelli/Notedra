@@ -1,43 +1,31 @@
-import { catalog } from '../practice/catalog';
-import { useState, type KeyboardEvent } from 'react';
-import { Link, useParams } from 'react-router';
-import { ASSEMBLY_TOPIC_ID, type Course, topicsFor } from '../academic/navigation';
-import type { AcademicTopic } from '../academic/types';
-import { AssemblyToolCard, EmptyState, PageHeading } from '../shell/PageParts';
+import { type KeyboardEvent } from 'react';
+import { Link,useNavigate,useParams } from 'react-router';
+import { ASSEMBLY_TOPIC_ID,type Course } from '../academic/navigation';
+import { AssemblyToolCard,EmptyState,PageHeading } from '../shell/PageParts';
 import { NotFoundPage } from './NotFoundPage';
-const studyModes = [
-  {label: 'Overview', title: 'Study materials are not available yet', message: 'This topic has a place in your course catalogue. Study materials will be added in a future update.'},
-  {label: 'Mental Map', title: 'Mental maps are not available yet', message: 'Visual topic maps will appear here in a future update.'},
-  {label: 'Flashcards', title: 'Flashcards are not available yet', message: 'Topic flashcards will appear here when the flashcard tools are ready.'},
-  {label: 'Practice', title: 'Topic practice is not available yet', message: 'Exercises for this topic will appear here when practice is available.'},
-  {label: 'Exam-style', title: 'Exam-style practice is not available yet', message: 'Exam-style questions for this topic will be available in a future update.'},
-  {label: 'Mistakes', title: 'Topic mistake review is not available yet', message: 'You will be able to revisit mistakes here once practice attempts can be recorded.'},
-] as const;
-export function TopicPage({course}: {course: Course}) {
-  const {topicId} = useParams();
-  const topic = topicsFor(course.subject_id).find(item => item.topic_id === topicId);
-  return topic ? <TopicContent key={topic.topic_id} course={course} topic={topic}/> : <NotFoundPage/>;
+import { topicStudy } from '../topic-study/content';
+import { isStudyMode,studyModes,type StudyMode,type StudyTopic } from '../topic-study/types';
+import { MentalMap,TopicOverview,studyPath } from '../topic-study/AcademicViews';
+import { FlashcardMode,LearnMode } from '../topic-study/AuthoredViews';
+import { TopicPractice } from '../topic-study/TopicPractice';
+import '../topic-study/topic-study.css';
+export function TopicPage({course}:{course:Course}){
+ const {topicId,mode='overview'}=useParams();const topic=topicStudy.topics.find(t=>t.id===topicId&&t.subjectId===course.subject_id);
+ return topic&&isStudyMode(mode)?<TopicContent key={topic.id} course={course} topic={topic} mode={mode}/>:<NotFoundPage/>;
 }
-function TopicContent({course, topic}: {course: Course; topic: AcademicTopic}) {
-  const [selected, setSelected] = useState(0);
-  const current = studyModes[selected];
-  function moveTab(event: KeyboardEvent<HTMLButtonElement>, index: number) {
-    let next = index;
-    if (event.key === 'ArrowRight') next = (index + 1) % studyModes.length;
-    else if (event.key === 'ArrowLeft') next = (index + studyModes.length - 1) % studyModes.length;
-    else if (event.key === 'Home') next = 0;
-    else if (event.key === 'End') next = studyModes.length - 1;
-    else return;
-    event.preventDefault(); setSelected(next);
-    document.getElementById(`study-mode-${next}`)?.focus();
-  }
-  return <>
-    <PageHeading eyebrow={`${course.code} · TOPIC ${String(topic.order).padStart(2, '0')}`} title={topic.name}><p><Link to={course.path} className="ds-text-link">{course.name}</Link></p><code className="ds-topic-id">{topic.topic_id}</code></PageHeading>
-    <div className="ds-mode-tabs" role="tablist" aria-label="Topic study modes">{studyModes.map((mode, i) => <button key={mode.label} id={`study-mode-${i}`} role="tab" aria-selected={selected === i} aria-controls="study-mode-panel" tabIndex={selected === i ? 0 : -1} onClick={() => setSelected(i)} onKeyDown={event => moveTab(event, i)}>{mode.label}</button>)}</div>
-    <section id="study-mode-panel" className="ds-mode-panel" role="tabpanel" aria-labelledby={`study-mode-${selected}`} tabIndex={0}>
-      {selected === 0 && topic.topic_id === ASSEMBLY_TOPIC_ID && <AssemblyToolCard/>}
-      {(selected === 0 || selected === 3) && catalog.some(exercise => exercise.topicId === topic.topic_id) && <p className="ds-practice-topic"><Link className="ds-button" to={`/practice?subject=${topic.subject_id}&topic=${topic.topic_id}`}>Open authored practice for this topic</Link></p>}
-      {!(selected === 3 && catalog.some(exercise => exercise.topicId === topic.topic_id)) && <EmptyState title={current.title}><p>{current.message}</p></EmptyState>}
-    </section>
-  </>;
+function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:StudyMode}){
+ const navigate=useNavigate();const selected=studyModes.findIndex(m=>m.id===mode);
+ function choose(index:number){navigate(studyPath(topic,studyModes[index].id));}
+ function move(event:KeyboardEvent<HTMLButtonElement>,index:number){let next=index;
+  if(event.key==='ArrowRight')next=(index+1)%studyModes.length;else if(event.key==='ArrowLeft')next=(index+studyModes.length-1)%studyModes.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=studyModes.length-1;else return;
+  event.preventDefault();choose(next);document.getElementById(`study-mode-${next}`)?.focus();
+ }
+ return <div className="ds-topic-study"><PageHeading eyebrow={`${course.code} · TOPIC ${topic.id.match(/_T(\d+)/)?.[1]??''}`} title={topic.name}><p><Link className="ds-text-link" to={course.path}>{course.name}</Link></p><code className="ds-topic-id">{topic.id}</code></PageHeading>
+ <div className="ds-study-mode-tabs" role="tablist" aria-label="Topic study modes">{studyModes.map((m,i)=><button key={m.id} id={`study-mode-${i}`} role="tab" aria-selected={mode===m.id} aria-controls="study-mode-panel" tabIndex={mode===m.id?0:-1} onClick={()=>choose(i)} onKeyDown={e=>move(e,i)}>{m.label}</button>)}</div>
+ <section id="study-mode-panel" className="ds-mode-panel" role="tabpanel" aria-labelledby={`study-mode-${selected}`} tabIndex={0}>
+ {mode==='overview'&&<>{topic.id===ASSEMBLY_TOPIC_ID&&<AssemblyToolCard/>}<TopicOverview topic={topic}/><div className="ds-study-next"><Link className="ds-button" to={studyPath(topic,'learn')}>Open Learn</Link><Link className="ds-text-link" to={studyPath(topic,'mental-map')}>Explore Mental Map</Link></div></>}
+ {mode==='learn'&&<LearnMode topic={topic}/>}{mode==='mental-map'&&<MentalMap topic={topic}/>}{mode==='flashcards'&&<FlashcardMode key={topic.id} topic={topic}/>}{mode==='practice'&&<TopicPractice topicId={topic.id}/>}
+ {mode==='exam-style'&&<EmptyState title="Exam-style practice is not available yet"><p>Exam-style exercises have not been authored for this topic. The shared Practice items are introductory authored study exercises.</p></EmptyState>}
+ {mode==='mistakes'&&<EmptyState title="Topic mistake review is not available yet"><p>Saved answers are not used to infer a mistake profile. Topic mistake review is not available.</p></EmptyState>}
+ </section></div>;
 }

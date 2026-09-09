@@ -1,0 +1,402 @@
+[
+  {
+    "id": "ds.card.co.weights",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_01_RADIX_CONVERT"
+    ],
+    "subtopicIds": [
+      "CO_ST04_01_RADIX"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "How do you decode digits in base b?",
+    "answer": "Multiply each digit by its positional weight b^i, counting i = 0 from the right, then add. Every digit must be smaller than b."
+  },
+  {
+    "id": "ds.card.co.carry",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_02_RADIX_ARITH"
+    ],
+    "subtopicIds": [
+      "CO_ST04_01_RADIX"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "When does a carry occur in base-b addition?",
+    "answer": "When a column total is at least b. Write the remainder modulo b in that column and carry the quotient into the next column."
+  },
+  {
+    "id": "ds.card.co.sign-magnitude",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "How do sign-and-magnitude and ones’ complement represent negative values?",
+    "answer": "Sign-and-magnitude uses a sign bit plus magnitude. Ones’ complement flips every bit of the positive encoding. Both have positive and negative zero."
+  },
+  {
+    "id": "ds.card.co.twos",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_03_SIGNED_ENCODE"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "How do you negate a fixed-width twos’ complement bit pattern?",
+    "answer": "Flip all bits and add one, keeping the declared width. The most negative value has no representable positive counterpart at that width."
+  },
+  {
+    "id": "ds.card.co.range",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "What ranges fit in n unsigned or n twos’ complement bits?",
+    "answer": "Unsigned: 0 through 2^n−1. Twos’ complement: −2^(n−1) through 2^(n−1)−1."
+  },
+  {
+    "id": "ds.card.co.overflow",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_04_OVERFLOW"
+    ],
+    "subtopicIds": [
+      "CO_ST04_02_SIGNED_INTEGER"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "What signals signed overflow when adding in twos’ complement?",
+    "answer": "Two operands with the same sign producing a result with the opposite sign. Check the mathematical result against the signed range; carry-out alone is insufficient."
+  },
+  {
+    "id": "ds.card.co.bcd-excess",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_05_BCD_EXCESS"
+    ],
+    "subtopicIds": [
+      "CO_ST04_03_OTHER_ENCODINGS"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "How do BCD and excess encodings differ?",
+    "answer": "BCD represents each decimal digit in its own four-bit group. Excess encoding stores the value plus a specified bias as an unsigned code; subtract the bias to decode."
+  },
+  {
+    "id": "ds.card.co.endian",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "skillIds": [
+      "CO_SK04_06_ENDIAN"
+    ],
+    "subtopicIds": [
+      "CO_ST04_03_OTHER_ENCODINGS"
+    ],
+    "sourceIds": [
+      "ref-0bdffbfe1e3a0c74",
+      "ref-d34d5054a177a3a8"
+    ],
+    "prompt": "What does little-endian put at the lowest address of a multi-byte value?",
+    "answer": "Its least significant byte. Big-endian puts the most significant byte first. Neither convention reverses the bits inside each byte."
+  },
+  {
+    "id": "ds.card.rl.or",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "Does p ∨ q exclude the case where both are true?",
+    "answer": "No. Propositional ∨ is inclusive OR: it is true when at least one input is true, including when both are true."
+  },
+  {
+    "id": "ds.card.rl.necessary",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_02_NEC_SUFF"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "In p → q, which condition is necessary and which is sufficient?",
+    "answer": "p is sufficient for q; q is necessary for p. The equivalent contrapositive is ¬q → ¬p, not the converse q → p."
+  },
+  {
+    "id": "ds.card.rl.rows",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_03_TRUTH_TABLE"
+    ],
+    "subtopicIds": [
+      "RL_ST01_02_TRUTH_VALID"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "What must be kept fixed when comparing two truth-table columns?",
+    "answer": "The valuation of each atomic proposition in each row. Compare the final values for the same inputs, and include every valuation."
+  },
+  {
+    "id": "ds.card.rl.validity",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_04_PROP_VALIDITY"
+    ],
+    "subtopicIds": [
+      "RL_ST01_02_TRUTH_VALID"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "What kind of row disproves an argument’s validity?",
+    "answer": "A row making every premise true and the conclusion false. If no such row exists, the argument is valid."
+  },
+  {
+    "id": "ds.card.rl.equivalence",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_05_EQUIV"
+    ],
+    "subtopicIds": [
+      "RL_ST01_02_TRUTH_VALID"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "How can you refute a claimed equivalence?",
+    "answer": "Give one valuation on which the formulas have different truth values. To establish equivalence by table, their final columns must agree on every valuation."
+  },
+  {
+    "id": "ds.card.rl.normal",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_06_NORMAL_FORM"
+    ],
+    "subtopicIds": [
+      "RL_ST01_03_NORMAL_FORMS"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "What distinguishes DNF from CNF?",
+    "answer": "DNF is a disjunction of conjunctions of literals. CNF is a conjunction of disjunctions of literals. A literal is an atom or a negated atom."
+  },
+  {
+    "id": "ds.card.rl.sat",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_07_SAT_PROP"
+    ],
+    "subtopicIds": [
+      "RL_ST01_04_SAT_EXPLOSION"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "What is the difference between satisfiable and tautological?",
+    "answer": "Satisfiable means true in at least one valuation. Tautological means true in every valuation. A satisfiable formula need not be a tautology."
+  },
+  {
+    "id": "ds.card.rl.explosion",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_07_SAT_PROP"
+    ],
+    "subtopicIds": [
+      "RL_ST01_04_SAT_EXPLOSION"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236",
+      "ref-f94740dccc877761"
+    ],
+    "prompt": "Why do inconsistent premises semantically entail any conclusion?",
+    "answer": "No valuation makes all the premises true, so no premise-true/conclusion-false counterexample exists. This does not make the conclusion itself a tautology."
+  },
+  {
+    "id": "ds.card.ip.interval",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_01_BOOLEAN_CONDITIONS"
+    ],
+    "subtopicIds": [
+      "IP_ST02_01_BOOLEAN_BRANCH"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "How do you test that an integer x is in the inclusive interval [low, high]?",
+    "answer": "Use x >= low && x <= high. Both comparisons must be true."
+  },
+  {
+    "id": "ds.card.ip.short-circuit",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_01_BOOLEAN_CONDITIONS"
+    ],
+    "subtopicIds": [
+      "IP_ST02_01_BOOLEAN_BRANCH"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "When does Java skip the right operand of && or ||?",
+    "answer": "&& skips it when the left operand is false. || skips it when the left operand is true."
+  },
+  {
+    "id": "ds.card.ip.branch",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_02_BRANCH_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST02_01_BOOLEAN_BRANCH"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "How many branches of one if / else-if / else chain are selected?",
+    "answer": "At most one. Conditions are tried in order; the first true branch runs, or the final else if none is true."
+  },
+  {
+    "id": "ds.card.ip.switch",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_02_BRANCH_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST02_01_BOOLEAN_BRANCH"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "What does break prevent in a traditional colon-style switch?",
+    "answer": "Fall-through into later cases after the selected case. Without a break or other control transfer, execution continues through following statements."
+  },
+  {
+    "id": "ds.card.ip.loop-order",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_03_LOOP_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST02_02_LOOPS"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "What is the normal execution order of a simple for loop?",
+    "answer": "Initialization once, then condition test, body, update, and another test. A false condition exits; break/continue can change the path."
+  },
+  {
+    "id": "ds.card.ip.while",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_03_LOOP_TRACE"
+    ],
+    "subtopicIds": [
+      "IP_ST02_02_LOOPS"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "Can a while body execute zero times? What about do-while?",
+    "answer": "Yes: while tests first. A do-while body executes at least once because its condition is tested after the body."
+  },
+  {
+    "id": "ds.card.ip.reduce",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_04_LOOP_IMPLEMENT"
+    ],
+    "subtopicIds": [
+      "IP_ST02_02_LOOPS"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "Where should the initial sum or count be set for a reduction?",
+    "answer": "Before the loop. Update it for each accepted item; reinitializing inside the loop loses previous contributions."
+  },
+  {
+    "id": "ds.card.ip.search",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "skillIds": [
+      "IP_SK02_04_LOOP_IMPLEMENT"
+    ],
+    "subtopicIds": [
+      "IP_ST02_02_LOOPS"
+    ],
+    "sourceIds": [
+      "ref-c6ef6c6bd94aa16c"
+    ],
+    "prompt": "What two outcomes must an iterative search represent?",
+    "answer": "A found match and no match. Stop or remember the match deliberately, and use a result convention that cannot be confused with a valid result."
+  }
+]

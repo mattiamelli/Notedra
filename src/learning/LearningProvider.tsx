@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router';
-import { academicIndex, ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_ID, courses, topicPath } from '../academic/navigation';
+import { resolveStudyRoute, academicIndex, ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_ID, courses, topicPath } from '../academic/navigation';
 import { errorMessage, type Backup, type Dataset, type LoadedState, type TopicIdentity } from './contracts';
 import { IndexedStudentRepository, type StudentRepository } from './repository';
 
@@ -85,7 +85,7 @@ function ResumeRecorder() {
     if (!ready || lastVisit.current === key) return;
     lastVisit.current = key;
     const canonicalPath = pathname.replace(/\/+$/, '') || '/';
-    const topic = academicIndex.topics.find(item => topicPath(item) === canonicalPath || (canonicalPath === ASSEMBLY_TOOL_PATH && item.topic_id === ASSEMBLY_TOPIC_ID));
+    const topic = resolveStudyRoute(canonicalPath)?.topic ?? academicIndex.topics.find(item => topicPath(item) === canonicalPath || (canonicalPath === ASSEMBLY_TOOL_PATH && item.topic_id === ASSEMBLY_TOPIC_ID));
     if (topic) recordVisit({subjectId: topic.subject_id, topicId: topic.topic_id});
   }, [pathname, key, ready, recordVisit]);
   return null;

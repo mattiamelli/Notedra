@@ -20,7 +20,7 @@ async function load(repo:StudentRepository){let state!:LoadedState;await act(asy
 async function mount(repo:StudentRepository,path='/practice'){await act(async()=>root.render(<MemoryRouter initialEntries={[path]}><LearningProvider createRepository={()=>repo}><AppRoutes/></LearningProvider></MemoryRouter>));await settle();}
 function button(name:string){const found=[...container.querySelectorAll('button')].find(item=>item.textContent===name);expect(found,name).toBeDefined();return found!;}
 async function click(name:string){await act(async()=>button(name).click());await settle();}
-async function fill(value:string){const input=container.querySelector<HTMLInputElement>('.ds-practice-answer input')!;await act(async()=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));});}
+async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>{await new Promise(resolve=>setTimeout(resolve,0));});expect(container.querySelector('.ds-practice-answer input')).not.toBeNull();});const input=container.querySelector<HTMLInputElement>('.ds-practice-answer input')!;await act(async()=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));});}
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
   it('browsing/filtering the six-item catalog creates no attempts',async()=>{

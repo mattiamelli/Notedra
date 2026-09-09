@@ -1,3 +1,4 @@
+import { topicStudyGuard } from './scripts/topic-content';
 import { practiceBuildGuard } from './scripts/practice-catalog';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -7,6 +8,6 @@ import { studentReferencesGuard } from './scripts/student-references-guard';
 import { academicIndexGuard } from './scripts/academic-index-guard';
 
 export default defineConfig({
-  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), react(), tailwindcss()],
+  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), react(), tailwindcss()],
   test: { include: ['tests/**/*.test.{ts,tsx}'], environment: 'node' },
 });

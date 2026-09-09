@@ -1,3 +1,4 @@
+import { isStudyMode, studyModes } from '../topic-study/types';
 import generated from '../generated/academic-index.json';
 import type { AcademicIndex, AcademicTopic } from './types';
 
@@ -19,6 +20,11 @@ export function topicPath(topic: AcademicTopic): string {
   const course = courses.find(item => item.subject_id === topic.subject_id);
   if (!course) throw new Error(`Missing route for ${topic.subject_id}.`);
   return `${course.path}/${topic.topic_id}`;
+}
+export function resolveStudyRoute(pathname:string) {
+  const path=pathname.replace(/\/+$/, '');
+  for(const topic of academicIndex.topics){const base=topicPath(topic);if(path===base)return {topic,mode:'overview' as const};if(path.startsWith(base+'/')){const mode=path.slice(base.length+1);if(isStudyMode(mode))return {topic,mode};}}
+  return undefined;
 }
 export const ASSEMBLY_TOPIC_ID = 'CO_T06_ASSEMBLY_X86_64';
 export const assemblyTopic = academicIndex.topics.find(topic => topic.topic_id === ASSEMBLY_TOPIC_ID && topic.subject_id === 'CSE1400_CO')!;
@@ -43,9 +49,11 @@ export function pageContext(pathname: string): {title: string; breadcrumbs: Brea
   const course = courses.find(item => path === item.path || path.startsWith(`${item.path}/`));
   if (course) {
     if (path === course.path) return {title: course.name, breadcrumbs: [dashboard, {label: course.name}]};
-    const topic = topicsFor(course.subject_id).find(item => path === topicPath(item) || (item.topic_id === ASSEMBLY_TOPIC_ID && path === ASSEMBLY_TOOL_PATH));
+    const study = resolveStudyRoute(path);
+    const topic = study?.topic ?? (path === ASSEMBLY_TOOL_PATH ? assemblyTopic : undefined);
     if (topic) {
       const tool = path === ASSEMBLY_TOOL_PATH;
+      if(study && study.mode !== 'overview'){const label=studyModes.find(m=>m.id===study.mode)!.label;return {title:`${label} · ${topic.name}`,breadcrumbs:[dashboard,{label:course.short,to:course.path},{label:topic.name,to:topicPath(topic)},{label}]};}
       return {title: tool ? 'Assembly Visualizer' : topic.name, breadcrumbs: [dashboard, {label: course.short, to: course.path}, {label: topic.name, to: tool ? topicPath(topic) : undefined}, ...(tool ? [{label: 'Assembly Visualizer'}] : [])]};
     }
   }

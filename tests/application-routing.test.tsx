@@ -60,7 +60,7 @@ describe('application routes and canonical navigation', () => {
     expect(heading()).toBe(topic.name);
     expect(container.querySelector('.ds-topic-id')?.textContent).toBe(topic.topic_id);
     expect(container.querySelector('.ds-page-heading')?.textContent).toContain(courses.find(course => course.subject_id === topic.subject_id)!.name);
-    expect(container.querySelectorAll('[role="tab"]')).toHaveLength(6);
+    expect(container.querySelectorAll('[role="tab"]')).toHaveLength(7); // Step 5 adds deep-linkable Learn to the six existing modes.
   });
   it.each(productAreas)('renders the $title shell with a neutral empty state', async area => {
     await renderRoute(area.path);
@@ -136,12 +136,12 @@ describe('shell interaction and browser history', () => {
   });
   it('supports topic mode clicks and keyboard navigation while keeping study engines unavailable', async () => {
     await renderRoute(ASSEMBLY_TOPIC_PATH);
-    await click('#study-mode-2');
+    await click('#study-mode-3');
     expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Flashcards are not available yet');
-    const flashcards = container.querySelector<HTMLButtonElement>('#study-mode-2')!;
+    const flashcards = container.querySelector<HTMLButtonElement>('#study-mode-3')!;
     await act(async () => flashcards.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight', bubbles: true})));
-    expect(document.activeElement?.id).toBe('study-mode-3');
-    expect(container.querySelector('#study-mode-3')?.getAttribute('aria-selected')).toBe('true');
+    expect(document.activeElement?.id).toBe('study-mode-4');
+    expect(container.querySelector('#study-mode-4')?.getAttribute('aria-selected')).toBe('true');
     expect(container.querySelector('[role="tabpanel"]')?.textContent).toContain('Topic practice is not available yet');
   });
 });

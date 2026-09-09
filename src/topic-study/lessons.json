@@ -1,0 +1,717 @@
+[
+  {
+    "id": "ds.lesson.co",
+    "version": "1",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "blocks": [
+      {
+        "id": "ds.block.co.model",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_01_RADIX_CONVERT",
+          "CO_SK04_03_SIGNED_ENCODE",
+          "CO_SK04_05_BCD_EXCESS",
+          "CO_SK04_06_ENDIAN"
+        ],
+        "subtopicIds": [
+          "CO_ST04_01_RADIX",
+          "CO_ST04_02_SIGNED_INTEGER",
+          "CO_ST04_03_OTHER_ENCODINGS"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "introduction",
+        "title": "Bits need an interpretation",
+        "paragraphs": [
+          "A bit pattern alone does not tell you its value. First specify the number base, width and encoding. When bytes are stored in memory, also specify their order.",
+          "Keep the mathematical value separate from its representation. The same value can have several encodings, and the same bits can mean different values under different rules."
+        ]
+      },
+      {
+        "id": "ds.block.co.radix",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_01_RADIX_CONVERT"
+        ],
+        "subtopicIds": [
+          "CO_ST04_01_RADIX"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "procedure",
+        "title": "Use positional weights",
+        "paragraphs": [
+          "In base b, each digit is smaller than b. Positions from right to left have weights 1, b, b², and so on. Decode by multiplying each digit by its weight and adding.",
+          "To encode a nonnegative integer in a new base, repeatedly divide by that base and read the remainders from last to first. Leading zeroes change the written width, not the value."
+        ]
+      },
+      {
+        "id": "ds.block.co.radix-example",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_01_RADIX_CONVERT",
+          "CO_SK04_02_RADIX_ARITH"
+        ],
+        "subtopicIds": [
+          "CO_ST04_01_RADIX"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "One value, three bases",
+        "paragraphs": [
+          "Use a different value from the Practice items: 19 = 16 + 2 + 1, so its binary representation is 10011 and its hexadecimal representation is 13.",
+          "For binary addition, carry when a column totals two. 1011₂ + 0111₂ = 10010₂: the decimal check is 11 + 7 = 18. Five bits are needed for this unsigned result."
+        ],
+        "table": {
+          "headers": [
+            "Representation",
+            "Value in decimal"
+          ],
+          "rows": [
+            [
+              "10011₂",
+              "19"
+            ],
+            [
+              "13₁₆",
+              "19"
+            ],
+            [
+              "10010₂",
+              "18"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.co.signed",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_03_SIGNED_ENCODE"
+        ],
+        "subtopicIds": [
+          "CO_ST04_02_SIGNED_INTEGER"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "concept",
+        "title": "Choose the signed encoding",
+        "paragraphs": [
+          "For n bits, sign-and-magnitude uses one sign bit and n−1 magnitude bits. Ones’ complement negates by flipping all bits. Both encodings have two representations of zero and range −(2^(n−1)−1) through +(2^(n−1)−1).",
+          "Twos’ complement negates by flipping the bits and adding one within the fixed width. Its top bit has weight −2^(n−1); the other bit weights stay positive. Its range is −2^(n−1) through 2^(n−1)−1, with one zero."
+        ]
+      },
+      {
+        "id": "ds.block.co.signed-example",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_03_SIGNED_ENCODE"
+        ],
+        "subtopicIds": [
+          "CO_ST04_02_SIGNED_INTEGER"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "Encode −5 in four bits",
+        "paragraphs": [
+          "Start from +5 = 0101. Sign-and-magnitude sets the sign bit: 1101. Ones’ complement flips 0101 to 1010. Twos’ complement adds one to that result: 1011.",
+          "Check the twos’ complement decoding: −8 + 2 + 1 = −5. Do not read 1011 as unsigned eleven when the declared encoding is twos’ complement."
+        ],
+        "table": {
+          "headers": [
+            "Four-bit encoding",
+            "−5"
+          ],
+          "rows": [
+            [
+              "Sign-and-magnitude",
+              "1101"
+            ],
+            [
+              "Ones’ complement",
+              "1010"
+            ],
+            [
+              "Twos’ complement",
+              "1011"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.co.overflow",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_04_OVERFLOW"
+        ],
+        "subtopicIds": [
+          "CO_ST04_02_SIGNED_INTEGER"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "Check range before trusting the bits",
+        "paragraphs": [
+          "Unsigned n-bit integers range from 0 to 2^n−1. Four-bit twos’ complement ranges from −8 to 7. A result outside the declared range cannot be represented exactly.",
+          "In four-bit twos’ complement, 0110 + 0011 produces the low bits 1001. The mathematical result is 6 + 3 = 9, outside −8…7; interpreting 1001 gives −7. This is signed overflow.",
+          "For twos’ complement addition, two inputs with the same sign producing a result of the opposite sign signal signed overflow. A carry-out by itself is not a signed-overflow test."
+        ]
+      },
+      {
+        "id": "ds.block.co.encodings",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_05_BCD_EXCESS"
+        ],
+        "subtopicIds": [
+          "CO_ST04_03_OTHER_ENCODINGS"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "BCD and excess encodings",
+        "paragraphs": [
+          "Binary-coded decimal encodes each decimal digit separately in four bits. Decimal 27 is 0010 0111 in BCD; as an ordinary binary integer, 00100111 would mean 39. BCD nibbles for decimal digits range from 0000 to 1001.",
+          "An excess (biased) encoding stores value + bias as an unsigned code. Always state the bias: with four bits and bias 7, value −2 is stored as 0101 because −2 + 7 = 5. Decode by subtracting the bias."
+        ]
+      },
+      {
+        "id": "ds.block.co.endian",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_06_ENDIAN"
+        ],
+        "subtopicIds": [
+          "CO_ST04_03_OTHER_ENCODINGS"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "worked_example",
+        "title": "Byte order is a memory convention",
+        "paragraphs": [
+          "For a two-byte value 0x1234, big-endian stores byte 0x12 at the lower address and 0x34 next. Little-endian stores 0x34 first and 0x12 next.",
+          "Endianness changes the order of bytes in memory, not the order of bits inside a byte or the mathematical value. Keep byte order separate from signed interpretation."
+        ],
+        "table": {
+          "headers": [
+            "Order",
+            "Lower address",
+            "Next address"
+          ],
+          "rows": [
+            [
+              "Big-endian",
+              "0x12",
+              "0x34"
+            ],
+            [
+              "Little-endian",
+              "0x34",
+              "0x12"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.co.recap",
+        "version": "1",
+        "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+        "skillIds": [
+          "CO_SK04_01_RADIX_CONVERT",
+          "CO_SK04_02_RADIX_ARITH",
+          "CO_SK04_03_SIGNED_ENCODE",
+          "CO_SK04_04_OVERFLOW",
+          "CO_SK04_05_BCD_EXCESS",
+          "CO_SK04_06_ENDIAN"
+        ],
+        "subtopicIds": [
+          "CO_ST04_01_RADIX",
+          "CO_ST04_02_SIGNED_INTEGER",
+          "CO_ST04_03_OTHER_ENCODINGS"
+        ],
+        "sourceIds": [
+          "ref-0bdffbfe1e3a0c74",
+          "ref-d34d5054a177a3a8"
+        ],
+        "kind": "recap",
+        "title": "State the format, then calculate",
+        "paragraphs": [
+          "Before calculating, write down base, width and encoding. Use positional weights to check a conversion, test representability before accepting a fixed-width result, and label memory addresses when reasoning about byte order.",
+          "The available Practice items focus on radix conversion. They are a starting point, not coverage of every skill in this topic."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ds.lesson.rl",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "blocks": [
+      {
+        "id": "ds.block.rl.model",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_01_CONNECTIVE",
+          "RL_SK01_03_TRUTH_TABLE"
+        ],
+        "subtopicIds": [
+          "RL_ST01_01_CONNECTIVES",
+          "RL_ST01_02_TRUTH_VALID"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "introduction",
+        "title": "Reason about every valuation",
+        "paragraphs": [
+          "A proposition has a truth value under a valuation. A compound formula combines those values according to the definitions of its connectives. Distinguish a formula that happens to be true from one true under every valuation.",
+          "We use ¬ for not, ∧ for and, ∨ for inclusive or, → for implication and ↔ for equivalence of truth values."
+        ]
+      },
+      {
+        "id": "ds.block.rl.connectives",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_01_CONNECTIVE",
+          "RL_SK01_02_NEC_SUFF"
+        ],
+        "subtopicIds": [
+          "RL_ST01_01_CONNECTIVES"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "concept",
+        "title": "Read connectives precisely",
+        "paragraphs": [
+          "p ∧ q needs both inputs true; p ∨ q needs at least one. Negation reverses a truth value. p → q is false only when p is true and q is false. p ↔ q is true when both inputs agree.",
+          "In p → q, p is sufficient for q and q is necessary for p. The contrapositive ¬q → ¬p is equivalent to the original implication. The converse q → p and inverse ¬p → ¬q are equivalent to each other, but not generally to the original."
+        ]
+      },
+      {
+        "id": "ds.block.rl.table",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_03_TRUTH_TABLE"
+        ],
+        "subtopicIds": [
+          "RL_ST01_02_TRUTH_VALID"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "procedure",
+        "title": "Build columns before conclusions",
+        "paragraphs": [
+          "For two propositions, use rows (F,F), (F,T), (T,F), (T,T). First fill atomic inputs, then subformulas, then the final formula. A custom connective needs its own stated truth rule; do not guess it from its symbol.",
+          "To compare formulas, compare their final columns under the same row ordering. One differing row refutes equivalence."
+        ]
+      },
+      {
+        "id": "ds.block.rl.demorgan",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_03_TRUTH_TABLE",
+          "RL_SK01_05_EQUIV"
+        ],
+        "subtopicIds": [
+          "RL_ST01_02_TRUTH_VALID"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "worked_example",
+        "title": "Check a De Morgan equivalence",
+        "paragraphs": [
+          "Compare ¬(p ∧ q) with (¬p ∨ ¬q). The four rows below give matching final values, so the two formulas are equivalent for all valuations of p and q."
+        ],
+        "table": {
+          "headers": [
+            "p",
+            "q",
+            "¬(p ∧ q)",
+            "¬p ∨ ¬q"
+          ],
+          "rows": [
+            [
+              "F",
+              "F",
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T",
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "F",
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T",
+              "F",
+              "F"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "ds.block.rl.validity",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_04_PROP_VALIDITY"
+        ],
+        "subtopicIds": [
+          "RL_ST01_02_TRUTH_VALID"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "worked_example",
+        "title": "Search for a counterexample row",
+        "paragraphs": [
+          "An argument is valid exactly when no valuation makes all premises true and the conclusion false. For premises p → q and p, conclusion q must hold: a true p together with false q would make p → q false.",
+          "Do not affirm the consequent: premises p → q and q do not entail p. Set p = F and q = T; both premises are true and the conclusion p is false. This single row disproves that argument."
+        ]
+      },
+      {
+        "id": "ds.block.rl.forms",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_06_NORMAL_FORM",
+          "RL_SK01_03_TRUTH_TABLE",
+          "RL_SK01_05_EQUIV"
+        ],
+        "subtopicIds": [
+          "RL_ST01_02_TRUTH_VALID",
+          "RL_ST01_03_NORMAL_FORMS"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "worked_example",
+        "title": "DNF and CNF describe the same truth condition",
+        "paragraphs": [
+          "A literal is an atom or its negation. DNF is an OR of ANDs of literals; CNF is an AND of ORs of literals. They describe formula shape, not a different meaning.",
+          "For the condition ‘exactly one of p and q’, the DNF is (p ∧ ¬q) ∨ (¬p ∧ q). An equivalent CNF is (p ∨ q) ∧ (¬p ∨ ¬q). In row order FF, FT, TF, TT both have values F, T, T, F.",
+          "To construct a full DNF from a truth table, make a conjunction for each true row. To construct a full CNF, make a disjunction false on each false row, then conjoin those disjunctions. Parentheses keep each group explicit."
+        ]
+      },
+      {
+        "id": "ds.block.rl.sat",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_07_SAT_PROP"
+        ],
+        "subtopicIds": [
+          "RL_ST01_04_SAT_EXPLOSION"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "concept",
+        "title": "Satisfiable, tautological, or inconsistent",
+        "paragraphs": [
+          "A formula is satisfiable if at least one valuation makes it true; it is a tautology if every valuation does. A set of premises is satisfiable when some single valuation makes all of them true together.",
+          "If premises are inconsistent, no valuation makes them all true. There can therefore be no premise-true/conclusion-false counterexample: any conclusion follows semantically. This is vacuous validity (explosion), not evidence that an arbitrary conclusion is a tautology."
+        ]
+      },
+      {
+        "id": "ds.block.rl.pitfall",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_02_NEC_SUFF",
+          "RL_SK01_04_PROP_VALIDITY",
+          "RL_SK01_07_SAT_PROP"
+        ],
+        "subtopicIds": [
+          "RL_ST01_01_CONNECTIVES",
+          "RL_ST01_02_TRUTH_VALID",
+          "RL_ST01_04_SAT_EXPLOSION"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "common_pitfall",
+        "title": "Truth is not argument validity",
+        "paragraphs": [
+          "An argument can be valid even if its premises are false. Validity is a relationship between premises and conclusion across valuations. Also, ‘only if’ introduces a necessary condition; reversing an implication changes the claim."
+        ]
+      },
+      {
+        "id": "ds.block.rl.recap",
+        "version": "1",
+        "topicId": "RL_T01_PROP_LOGIC",
+        "skillIds": [
+          "RL_SK01_03_TRUTH_TABLE",
+          "RL_SK01_04_PROP_VALIDITY",
+          "RL_SK01_05_EQUIV",
+          "RL_SK01_06_NORMAL_FORM",
+          "RL_SK01_07_SAT_PROP"
+        ],
+        "subtopicIds": [
+          "RL_ST01_02_TRUTH_VALID",
+          "RL_ST01_03_NORMAL_FORMS",
+          "RL_ST01_04_SAT_EXPLOSION"
+        ],
+        "sourceIds": [
+          "ref-f034366671022236",
+          "ref-f94740dccc877761"
+        ],
+        "kind": "recap",
+        "title": "Keep the three tests separate",
+        "paragraphs": [
+          "For satisfiability, look for one true valuation. For equivalence, compare all final rows. For argument validity, look for all premises true and the conclusion false. Rewrite into normal forms without changing those truth values.",
+          "Continue with the available truth-table Practice items; they do not assess every reasoning skill in this topic."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ds.lesson.ip",
+    "version": "1",
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "blocks": [
+      {
+        "id": "ds.block.ip.model",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_01_BOOLEAN_CONDITIONS",
+          "IP_SK02_02_BRANCH_TRACE",
+          "IP_SK02_03_LOOP_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST02_01_BOOLEAN_BRANCH",
+          "IP_ST02_02_LOOPS"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "introduction",
+        "title": "Follow the next executed statement",
+        "paragraphs": [
+          "Start with the prerequisite topic Java basics and data: variables, types and expressions. Control flow decides which statement runs next and how often it runs.",
+          "Keep a small trace of variable values. Evaluate conditions using the current state, follow the selected branch, and record updates before testing again."
+        ]
+      },
+      {
+        "id": "ds.block.ip.conditions",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_01_BOOLEAN_CONDITIONS"
+        ],
+        "subtopicIds": [
+          "IP_ST02_01_BOOLEAN_BRANCH"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "concept",
+        "title": "Translate a condition before writing a branch",
+        "paragraphs": [
+          "For an inclusive integer interval from low to high, the condition is x >= low && x <= high. Use || when either condition may hold and ! to negate a boolean condition.",
+          "Java && and || short-circuit: && skips the right side after a false left side; || skips it after a true left side. Use == to compare primitive values; = assigns a value."
+        ]
+      },
+      {
+        "id": "ds.block.ip.branch",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_01_BOOLEAN_CONDITIONS",
+          "IP_SK02_02_BRANCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST02_01_BOOLEAN_BRANCH"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "code_example",
+        "title": "Trace an if / else-if chain",
+        "paragraphs": [
+          "With score = 7, the first condition is false and the second is true, so this prints pass. Once a branch is selected in this chain, the remaining alternatives are skipped. Braces make nesting explicit."
+        ],
+        "code": "int score = 7;\nif (score < 0) {\n    System.out.println(\"invalid\");\n} else if (score >= 6) {\n    System.out.println(\"pass\");\n} else {\n    System.out.println(\"retry\");\n}"
+      },
+      {
+        "id": "ds.block.ip.switch",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_02_BRANCH_TRACE"
+        ],
+        "subtopicIds": [
+          "IP_ST02_01_BOOLEAN_BRANCH"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "code_example",
+        "title": "A switch starts at its matching case",
+        "paragraphs": [
+          "This fixed example prints middle. In a traditional colon-style switch, execution can fall through to later cases unless it reaches break or another transfer of control. Here break prevents printing other after middle."
+        ],
+        "code": "int choice = 2;\nswitch (choice) {\n    case 1:\n        System.out.println(\"first\");\n        break;\n    case 2:\n        System.out.println(\"middle\");\n        break;\n    default:\n        System.out.println(\"other\");\n}"
+      },
+      {
+        "id": "ds.block.ip.loops",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_03_LOOP_TRACE",
+          "IP_SK02_04_LOOP_IMPLEMENT"
+        ],
+        "subtopicIds": [
+          "IP_ST02_02_LOOPS"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "procedure",
+        "title": "Separate initialization, test, body and update",
+        "paragraphs": [
+          "A while loop tests before each body execution, so it can execute zero times. A do-while tests after the body, so the body runs at least once. A for loop makes initialization, test and update visible in one header.",
+          "For a simple for loop with no continue or break, trace initialization once, then test → body → update → test. Record the last failing test too. The update must move the state toward termination for the intended inputs."
+        ]
+      },
+      {
+        "id": "ds.block.ip.aggregate",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_03_LOOP_TRACE",
+          "IP_SK02_04_LOOP_IMPLEMENT"
+        ],
+        "subtopicIds": [
+          "IP_ST02_02_LOOPS"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "worked_example",
+        "title": "Filter, count and aggregate in one traversal",
+        "paragraphs": [
+          "Traverse integers 1 through 5. Only odd values update the sum and count. After each iteration, (sum, count) is (1,1), (1,1), (4,2), (4,2), (9,3). The final print is 9 3.",
+          "Initialize the accumulator once before the loop. Here the filter is i % 2 != 0, the count increases by one per accepted value, and the sum increases by that value."
+        ],
+        "code": "int sum = 0;\nint count = 0;\nfor (int i = 1; i <= 5; i++) {\n    if (i % 2 != 0) {\n        sum += i;\n        count++;\n    }\n}\nSystem.out.println(sum + \" \" + count);"
+      },
+      {
+        "id": "ds.block.ip.search",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_03_LOOP_TRACE",
+          "IP_SK02_04_LOOP_IMPLEMENT"
+        ],
+        "subtopicIds": [
+          "IP_ST02_02_LOOPS"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "code_example",
+        "title": "Stop when a match is found",
+        "paragraphs": [
+          "This bounded search prints 4, the first integer between 1 and 6 divisible by 4. It tests 1, 2, 3, then 4; break exits the loop at the match. The initial −1 is a sentinel meaning no match in this chosen positive range."
+        ],
+        "code": "int found = -1;\nfor (int i = 1; i <= 6; i++) {\n    if (i % 4 == 0) {\n        found = i;\n        break;\n    }\n}\nSystem.out.println(found);"
+      },
+      {
+        "id": "ds.block.ip.pitfall",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_03_LOOP_TRACE",
+          "IP_SK02_04_LOOP_IMPLEMENT"
+        ],
+        "subtopicIds": [
+          "IP_ST02_02_LOOPS"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "common_pitfall",
+        "title": "Check boundaries and accumulator placement",
+        "paragraphs": [
+          "Read < and <= carefully: an inclusive upper bound processes the endpoint, an exclusive bound does not. Reinitializing a sum inside the loop discards earlier contributions. A missing update can prevent a while loop from terminating.",
+          "Before accepting a loop, trace a case with no accepted values and a boundary value. Tracing a supplied snippet and implementing a correct general loop are related but distinct skills."
+        ]
+      },
+      {
+        "id": "ds.block.ip.recap",
+        "version": "1",
+        "topicId": "IP_T02_CONTROL_FLOW",
+        "skillIds": [
+          "IP_SK02_01_BOOLEAN_CONDITIONS",
+          "IP_SK02_02_BRANCH_TRACE",
+          "IP_SK02_03_LOOP_TRACE",
+          "IP_SK02_04_LOOP_IMPLEMENT"
+        ],
+        "subtopicIds": [
+          "IP_ST02_01_BOOLEAN_BRANCH",
+          "IP_ST02_02_LOOPS"
+        ],
+        "sourceIds": [
+          "ref-c6ef6c6bd94aa16c"
+        ],
+        "kind": "recap",
+        "title": "Explain the path and the changing state",
+        "paragraphs": [
+          "State the condition, identify the branch or loop body, and record every relevant update. For a reduction, name the initial accumulator, accepted values and update rule. For a search, state when it stops and what represents no result.",
+          "The existing Java Practice items ask for fixed loop outputs. They do not compile your code or establish implementation mastery."
+        ]
+      }
+    ]
+  }
+]
