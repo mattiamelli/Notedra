@@ -1,3 +1,4 @@
+import {isReleaseRobots} from './release-robots';
 export interface IPBundleChunk {
   file: string;
   modules: string[];
@@ -107,7 +108,8 @@ export function validateIPBundle(chunks: IPBundleChunk[], files: IPBundleArtifac
     const path = artifact.file.replaceAll('\\', '/');
     const prefix = artifact.prefix.replace(/^\uFEFF/, '').trimStart();
     const content = artifact.content ?? artifact.prefix;
-    if (/\.(?:pdf|zip|txt|pages\.json)$/i.test(path)
+    const releaseRobots=isReleaseRobots(artifact);
+    if ((/\.(?:pdf|zip|txt|pages\.json)$/i.test(path)&&!releaseRobots)
       || /(?:^|\/)(?:content-pack|scripts|docs|tests)\//.test(path)
       || /(?:^|\/)(?:coverage|source-policy|oracles|java-oracles)\.json$/i.test(path)
       || /(?:Handoff|source[-_]inventory|source[-_]review|java[-_]evidence|java[-_]harness|content[-_]lock|ip[-_]baseline)/i.test(path)

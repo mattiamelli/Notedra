@@ -1,14 +1,49 @@
 {
   "emittedFiles": [
     {
+      "file": "404.html",
+      "bytes": 1567,
+      "gzipBytes": 576
+    },
+    {
+      "file": "_headers",
+      "bytes": 658,
+      "gzipBytes": 384
+    },
+    {
+      "file": "_redirects",
+      "bytes": 2684,
+      "gzipBytes": 807
+    },
+    {
       "file": "favicon.svg",
       "bytes": 214,
       "gzipBytes": 178
     },
     {
       "file": "index.html",
-      "bytes": 744,
-      "gzipBytes": 459
+      "bytes": 1567,
+      "gzipBytes": 576
+    },
+    {
+      "file": "manifest.webmanifest",
+      "bytes": 283,
+      "gzipBytes": 213
+    },
+    {
+      "file": "release-metadata.js",
+      "bytes": 13508,
+      "gzipBytes": 2661
+    },
+    {
+      "file": "robots.txt",
+      "bytes": 99,
+      "gzipBytes": 108
+    },
+    {
+      "file": "sitemap.xml",
+      "bytes": 4948,
+      "gzipBytes": 765
     },
     {
       "file": "assets/AccountPage-BcKacNNG.js",
@@ -644,10 +679,245 @@
       "file": "assets/useProgress-SU3igACF.js",
       "bytes": 11512,
       "gzipBytes": 5051
+    },
+    {
+      "file": "release/page-0.html",
+      "bytes": 1815,
+      "gzipBytes": 625
+    },
+    {
+      "file": "release/page-1.html",
+      "bytes": 1773,
+      "gzipBytes": 619
+    },
+    {
+      "file": "release/page-10.html",
+      "bytes": 1881,
+      "gzipBytes": 637
+    },
+    {
+      "file": "release/page-11.html",
+      "bytes": 1749,
+      "gzipBytes": 621
+    },
+    {
+      "file": "release/page-12.html",
+      "bytes": 1763,
+      "gzipBytes": 616
+    },
+    {
+      "file": "release/page-13.html",
+      "bytes": 1793,
+      "gzipBytes": 622
+    },
+    {
+      "file": "release/page-14.html",
+      "bytes": 1799,
+      "gzipBytes": 624
+    },
+    {
+      "file": "release/page-15.html",
+      "bytes": 1823,
+      "gzipBytes": 633
+    },
+    {
+      "file": "release/page-16.html",
+      "bytes": 1851,
+      "gzipBytes": 635
+    },
+    {
+      "file": "release/page-17.html",
+      "bytes": 1709,
+      "gzipBytes": 614
+    },
+    {
+      "file": "release/page-18.html",
+      "bytes": 1825,
+      "gzipBytes": 629
+    },
+    {
+      "file": "release/page-19.html",
+      "bytes": 1815,
+      "gzipBytes": 631
+    },
+    {
+      "file": "release/page-2.html",
+      "bytes": 1789,
+      "gzipBytes": 627
+    },
+    {
+      "file": "release/page-20.html",
+      "bytes": 1891,
+      "gzipBytes": 637
+    },
+    {
+      "file": "release/page-21.html",
+      "bytes": 1851,
+      "gzipBytes": 637
+    },
+    {
+      "file": "release/page-22.html",
+      "bytes": 1883,
+      "gzipBytes": 637
+    },
+    {
+      "file": "release/page-23.html",
+      "bytes": 1927,
+      "gzipBytes": 646
+    },
+    {
+      "file": "release/page-24.html",
+      "bytes": 1749,
+      "gzipBytes": 613
+    },
+    {
+      "file": "release/page-25.html",
+      "bytes": 1769,
+      "gzipBytes": 622
+    },
+    {
+      "file": "release/page-26.html",
+      "bytes": 1829,
+      "gzipBytes": 639
+    },
+    {
+      "file": "release/page-27.html",
+      "bytes": 1875,
+      "gzipBytes": 638
+    },
+    {
+      "file": "release/page-28.html",
+      "bytes": 1713,
+      "gzipBytes": 615
+    },
+    {
+      "file": "release/page-29.html",
+      "bytes": 1771,
+      "gzipBytes": 621
+    },
+    {
+      "file": "release/page-3.html",
+      "bytes": 1961,
+      "gzipBytes": 655
+    },
+    {
+      "file": "release/page-30.html",
+      "bytes": 1937,
+      "gzipBytes": 657
+    },
+    {
+      "file": "release/page-31.html",
+      "bytes": 1761,
+      "gzipBytes": 623
+    },
+    {
+      "file": "release/page-32.html",
+      "bytes": 1879,
+      "gzipBytes": 637
+    },
+    {
+      "file": "release/page-33.html",
+      "bytes": 1823,
+      "gzipBytes": 633
+    },
+    {
+      "file": "release/page-34.html",
+      "bytes": 1835,
+      "gzipBytes": 631
+    },
+    {
+      "file": "release/page-35.html",
+      "bytes": 1821,
+      "gzipBytes": 637
+    },
+    {
+      "file": "release/page-36.html",
+      "bytes": 1833,
+      "gzipBytes": 643
+    },
+    {
+      "file": "release/page-37.html",
+      "bytes": 1803,
+      "gzipBytes": 629
+    },
+    {
+      "file": "release/page-38.html",
+      "bytes": 1701,
+      "gzipBytes": 614
+    },
+    {
+      "file": "release/page-39.html",
+      "bytes": 1807,
+      "gzipBytes": 620
+    },
+    {
+      "file": "release/page-4.html",
+      "bytes": 1833,
+      "gzipBytes": 640
+    },
+    {
+      "file": "release/page-40.html",
+      "bytes": 1689,
+      "gzipBytes": 617
+    },
+    {
+      "file": "release/page-41.html",
+      "bytes": 2025,
+      "gzipBytes": 650
+    },
+    {
+      "file": "release/page-42.html",
+      "bytes": 1975,
+      "gzipBytes": 647
+    },
+    {
+      "file": "release/page-43.html",
+      "bytes": 1647,
+      "gzipBytes": 608
+    },
+    {
+      "file": "release/page-44.html",
+      "bytes": 1743,
+      "gzipBytes": 620
+    },
+    {
+      "file": "release/page-45.html",
+      "bytes": 1947,
+      "gzipBytes": 647
+    },
+    {
+      "file": "release/page-46.html",
+      "bytes": 1939,
+      "gzipBytes": 653
+    },
+    {
+      "file": "release/page-5.html",
+      "bytes": 1877,
+      "gzipBytes": 639
+    },
+    {
+      "file": "release/page-6.html",
+      "bytes": 1807,
+      "gzipBytes": 633
+    },
+    {
+      "file": "release/page-7.html",
+      "bytes": 1718,
+      "gzipBytes": 643
+    },
+    {
+      "file": "release/page-8.html",
+      "bytes": 1741,
+      "gzipBytes": 612
+    },
+    {
+      "file": "release/page-9.html",
+      "bytes": 1803,
+      "gzipBytes": 629
     }
   ],
-  "totalProductionBytes": 1878679,
-  "totalProductionGzipBytes": 545911,
+  "totalProductionBytes": 1988797,
+  "totalProductionGzipBytes": 581197,
   "authoredRLLazyBytes": 106036,
   "rlTopicChunks": [
     {
@@ -2610,8 +2880,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 744,
-      "gzipBytes": 459
+      "bytes": 1567,
+      "gzipBytes": 576
     }
   ],
   "checks": [
