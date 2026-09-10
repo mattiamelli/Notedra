@@ -1,0 +1,254 @@
+{
+  "baseline": "7b1661fbec8439405841ed72baeee983b78564db",
+  "phase": "Step 13 baseline only",
+  "initialRun": {
+    "timestamp": "2026-09-10T16:54:04.340325+00:00",
+    "results": [
+      {
+        "command": "pnpm run validate:content",
+        "exitCode": 0,
+        "seconds": 2.69,
+        "log": "/tmp/ds-step12-accepted/01.log"
+      },
+      {
+        "command": "pnpm run check:academic",
+        "exitCode": 0,
+        "seconds": 1.81,
+        "log": "/tmp/ds-step12-accepted/02.log"
+      },
+      {
+        "command": "pnpm run check:references",
+        "exitCode": 0,
+        "seconds": 1.85,
+        "log": "/tmp/ds-step12-accepted/03.log"
+      },
+      {
+        "command": "pnpm run validate:practice",
+        "exitCode": 0,
+        "seconds": 1.8,
+        "log": "/tmp/ds-step12-accepted/04.log"
+      },
+      {
+        "command": "pnpm run check:topics",
+        "exitCode": 0,
+        "seconds": 1.85,
+        "log": "/tmp/ds-step12-accepted/05.log"
+      },
+      {
+        "command": "pnpm run validate:topics",
+        "exitCode": 0,
+        "seconds": 1.96,
+        "log": "/tmp/ds-step12-accepted/06.log"
+      },
+      {
+        "command": "pnpm run validate:co",
+        "exitCode": 0,
+        "seconds": 2.17,
+        "log": "/tmp/ds-step12-accepted/07.log"
+      },
+      {
+        "command": "pnpm run check:co-bundle",
+        "exitCode": 0,
+        "seconds": 10.27,
+        "log": "/tmp/ds-step12-accepted/08.log"
+      },
+      {
+        "command": "pnpm run validate:rl",
+        "exitCode": 0,
+        "seconds": 3.37,
+        "log": "/tmp/ds-step12-accepted/09.log"
+      },
+      {
+        "command": "pnpm run check:rl-bundle",
+        "exitCode": 0,
+        "seconds": 11.05,
+        "log": "/tmp/ds-step12-accepted/10.log"
+      },
+      {
+        "command": "pnpm run validate:enrichment",
+        "exitCode": 0,
+        "seconds": 2.58,
+        "log": "/tmp/ds-step12-accepted/11.log"
+      },
+      {
+        "command": "pnpm run check:enrichment-bundle",
+        "exitCode": 0,
+        "seconds": 11.53,
+        "log": "/tmp/ds-step12-accepted/12.log"
+      },
+      {
+        "command": "pnpm run validate:ip",
+        "exitCode": 0,
+        "seconds": 3.64,
+        "log": "/tmp/ds-step12-accepted/13.log"
+      },
+      {
+        "command": "pnpm run check:ip-bundle",
+        "exitCode": 0,
+        "seconds": 11.65,
+        "log": "/tmp/ds-step12-accepted/14.log"
+      },
+      {
+        "command": "pnpm run validate:mistakes",
+        "exitCode": 0,
+        "seconds": 2.12,
+        "log": "/tmp/ds-step12-accepted/15.log"
+      },
+      {
+        "command": "pnpm run validate:adaptive",
+        "exitCode": 0,
+        "seconds": 1.41,
+        "log": "/tmp/ds-step12-accepted/16.log"
+      },
+      {
+        "command": "pnpm run check:adaptive-bundle",
+        "exitCode": 0,
+        "seconds": 10.18,
+        "log": "/tmp/ds-step12-accepted/17.log"
+      },
+      {
+        "command": "pnpm run validate:exam",
+        "exitCode": 0,
+        "seconds": 2.46,
+        "log": "/tmp/ds-step12-accepted/18.log"
+      },
+      {
+        "command": "pnpm run validate:exam-content",
+        "exitCode": 0,
+        "seconds": 2.43,
+        "log": "/tmp/ds-step12-accepted/19.log"
+      },
+      {
+        "command": "pnpm run check:exam-bundle",
+        "exitCode": 0,
+        "seconds": 15.61,
+        "log": "/tmp/ds-step12-accepted/20.log"
+      },
+      {
+        "command": "pnpm run validate:mastery",
+        "exitCode": 0,
+        "seconds": 2.78,
+        "log": "/tmp/ds-step12-accepted/21.log"
+      },
+      {
+        "command": "pnpm run validate:readiness",
+        "exitCode": 0,
+        "seconds": 2.16,
+        "log": "/tmp/ds-step12-accepted/22.log"
+      },
+      {
+        "command": "pnpm run check:progress-bundle",
+        "exitCode": 0,
+        "seconds": 16.09,
+        "log": "/tmp/ds-step12-accepted/23.log"
+      },
+      {
+        "command": "pnpm run validate:auth",
+        "exitCode": 0,
+        "seconds": 1.91,
+        "log": "/tmp/ds-step12-accepted/24.log"
+      },
+      {
+        "command": "pnpm run validate:sync",
+        "exitCode": 0,
+        "seconds": 1.99,
+        "log": "/tmp/ds-step12-accepted/25.log"
+      },
+      {
+        "command": "pnpm run validate:supabase-security",
+        "exitCode": 0,
+        "seconds": 1.77,
+        "log": "/tmp/ds-step12-accepted/26.log"
+      },
+      {
+        "command": "pnpm run check:cloud-bundle",
+        "exitCode": 0,
+        "seconds": 14.78,
+        "log": "/tmp/ds-step12-accepted/27.log"
+      },
+      {
+        "command": "pnpm test --maxWorkers=2",
+        "exitCode": 1,
+        "seconds": 86.92,
+        "log": "/tmp/ds-step12-accepted/28.log"
+      },
+      {
+        "command": "pnpm run typecheck",
+        "exitCode": 0,
+        "seconds": 22.94,
+        "log": "/tmp/ds-step12-accepted/29.log"
+      },
+      {
+        "command": "pnpm run build",
+        "exitCode": 0,
+        "seconds": 54.21,
+        "log": "/tmp/ds-step12-accepted/30.log"
+      },
+      {
+        "command": "pnpm run verify:ip-java",
+        "exitCode": 0,
+        "seconds": 78.16,
+        "log": "/tmp/ds-step12-accepted/31.log"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "seconds": 0.07,
+        "log": "/tmp/ds-step12-accepted/32.log"
+      }
+    ]
+  },
+  "reruns": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "1855 passed, 1 failed, 74 files; same Account route heading timing failure",
+      "log": "/tmp/ds-step13-baseline-tests-rerun.log"
+    },
+    {
+      "command": "pnpm exec vitest run tests/cloud-ui.test.tsx --maxWorkers=2",
+      "result": "12 tests passed, 1 file, unchanged tests; 2.70 seconds"
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "1856 tests passed, 74 files, unchanged tests; 51.36 seconds",
+      "log": "/tmp/ds-step13-baseline-tests-idle.log"
+    }
+  ],
+  "bundle": {
+    "initialJS": 497652,
+    "initialGzip": 131367,
+    "totalAssets": 1839860,
+    "totalGzip": 536202,
+    "owners": {
+      "/src/accounts/AccountPage.tsx": [
+        {
+          "file": "assets/AccountPage-RTUC3bgK.js",
+          "bytes": 5379,
+          "gzipBytes": 2042
+        }
+      ],
+      "/src/accounts/ConfiguredAccountRoot.tsx": [
+        {
+          "file": "assets/ConfiguredAccountRoot-C0SamtuO.js",
+          "bytes": 15694,
+          "gzipBytes": 5764
+        }
+      ],
+      "/src/cloud/coordinator.ts": [
+        {
+          "file": "assets/ConfiguredAccountRoot-C0SamtuO.js",
+          "bytes": 15694,
+          "gzipBytes": 5764
+        }
+      ],
+      "/node_modules/@supabase/supabase-js/": [
+        {
+          "file": "assets/supabase-C6pgQ0vL.js",
+          "bytes": 223730,
+          "gzipBytes": 58507
+        }
+      ]
+    }
+  },
+  "finalStep13Acceptance": "NOT RUN"
+}
