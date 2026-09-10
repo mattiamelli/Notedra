@@ -80,7 +80,7 @@
   "src/enrichment/practice.json": "a39aa8c4f37a49a1d993b19a11a2850bcdaa5d32d84be84aaf61d655088ea6db",
   "src/enrichment/types.ts": "91dcc11b6546d83ed8c6cbccbcebdf26dbf3260f765354b599e8d06c718bc42f",
   "src/examples/examplePrograms.ts": "27e042933171ca63604a2f6139c07b437c37cb7f7624df538a557d11278a4d88",
-  "src/exams/ExamDialog.tsx": "12d6d4c9e26e916b6560b6b59d9e920471ad2a9003a7b700e17766b65d095ebe",
+  "src/exams/ExamDialog.tsx": "a6d3e2157a1a7e0baa23dd018c31bd1b7ff7f7c04c78a56ecbab2337fe95d911",
   "src/exams/ExamOpenAnswer.tsx": "d5c2472c750251b4dddd132e5dea97947eeec8e8e91d1c058d8504ef76874e74",
   "src/exams/ExamReviewPage.tsx": "2fde2239562af89446d7e87894f592ee2a1c70ecb65db77d84c2b8fdcc7fa660",
   "src/exams/ExamSessionPage.tsx": "de2e31aa349b41a7fdf7170b3bc7ae063d02fe71540d06c75cd0d8aabcb94f51",

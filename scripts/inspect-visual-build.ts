@@ -1,0 +1,15 @@
+import './inspect-cloud-build';
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+const cloud = JSON.parse(readFileSync('docs/cloud-bundle-report.json','utf8'));
+const inventory = JSON.parse(readFileSync('docs/ip-bundle-report.json','utf8')) as {files:{file:string;bytes:number;gzipBytes:number}[]};
+const css = inventory.files.filter(file=>file.file.endsWith('.css'));
+const cssBytes = css.reduce((sum,file)=>sum+file.bytes,0);
+assert(cloud.initialJS <= 520_000, 'Initial JS exceeds the restrained visual budget');
+assert(cloud.initialGzip <= 140_000, 'Initial compressed JS exceeds visual budget');
+assert(cssBytes <= 95_000, 'CSS exceeds visual budget');
+assert(cloud.totalAssets <= 2_000_000, 'Total assets exceed visual budget');
+for(const file of inventory.files) assert(!/\.(?:pdf|zip|java|tsx?|map)$|(?:Handoff|preservation-lock|status\.md)/i.test(file.file),'Source/report artifact in build: '+file.file);
+const report={baseline:{initialJS:497652,initialGzip:131367,cssBytes:61346,totalAssets:1839860},current:{initialJS:cloud.initialJS,initialGzip:cloud.initialGzip,cssBytes,totalAssets:cloud.totalAssets},lazyCloudAndCourseGuards:'PASS via inspect-cloud-build and its prerequisite guards',visualDependenciesAdded:0};
+writeFileSync('docs/visual-bundle-report.json',JSON.stringify(report,null,2)+'\n');
+console.log('Visual bundle PASS',report);

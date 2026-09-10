@@ -43,7 +43,9 @@
     "validate:auth": "node --import tsx scripts/validate-auth.ts",
     "validate:sync": "node --import tsx scripts/validate-sync.ts",
     "validate:supabase-security": "node --import tsx scripts/validate-supabase-security.ts",
-    "check:cloud-bundle": "node --import tsx scripts/inspect-cloud-build.ts"
+    "check:cloud-bundle": "node --import tsx scripts/inspect-cloud-build.ts",
+    "validate:visual": "node --import tsx scripts/validate-visual.ts",
+    "check:visual-bundle": "node --import tsx scripts/inspect-visual-build.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

@@ -1,0 +1,16 @@
+{
+  "baseline": {
+    "initialJS": 497652,
+    "initialGzip": 131367,
+    "cssBytes": 61346,
+    "totalAssets": 1839860
+  },
+  "current": {
+    "initialJS": 498837,
+    "initialGzip": 131690,
+    "cssBytes": 78389,
+    "totalAssets": 1858188
+  },
+  "lazyCloudAndCourseGuards": "PASS via inspect-cloud-build and its prerequisite guards",
+  "visualDependenciesAdded": 0
+}

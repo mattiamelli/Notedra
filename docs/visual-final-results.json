@@ -1,0 +1,228 @@
+{
+  "timestamp": "2026-09-10T17:36:19.371757+00:00",
+  "results": [
+    {
+      "command": "pnpm run validate:content",
+      "exitCode": 0,
+      "seconds": 2.09,
+      "log": "/tmp/ds-step13-final/01.log"
+    },
+    {
+      "command": "pnpm run check:academic",
+      "exitCode": 0,
+      "seconds": 1.88,
+      "log": "/tmp/ds-step13-final/02.log"
+    },
+    {
+      "command": "pnpm run check:references",
+      "exitCode": 0,
+      "seconds": 1.94,
+      "log": "/tmp/ds-step13-final/03.log"
+    },
+    {
+      "command": "pnpm run validate:practice",
+      "exitCode": 0,
+      "seconds": 1.93,
+      "log": "/tmp/ds-step13-final/04.log"
+    },
+    {
+      "command": "pnpm run check:topics",
+      "exitCode": 0,
+      "seconds": 1.91,
+      "log": "/tmp/ds-step13-final/05.log"
+    },
+    {
+      "command": "pnpm run validate:topics",
+      "exitCode": 0,
+      "seconds": 1.88,
+      "log": "/tmp/ds-step13-final/06.log"
+    },
+    {
+      "command": "pnpm run validate:co",
+      "exitCode": 0,
+      "seconds": 1.91,
+      "log": "/tmp/ds-step13-final/07.log"
+    },
+    {
+      "command": "pnpm run check:co-bundle",
+      "exitCode": 0,
+      "seconds": 10.21,
+      "log": "/tmp/ds-step13-final/08.log"
+    },
+    {
+      "command": "pnpm run validate:rl",
+      "exitCode": 0,
+      "seconds": 3.14,
+      "log": "/tmp/ds-step13-final/09.log"
+    },
+    {
+      "command": "pnpm run check:rl-bundle",
+      "exitCode": 0,
+      "seconds": 9.63,
+      "log": "/tmp/ds-step13-final/10.log"
+    },
+    {
+      "command": "pnpm run validate:enrichment",
+      "exitCode": 0,
+      "seconds": 2.26,
+      "log": "/tmp/ds-step13-final/11.log"
+    },
+    {
+      "command": "pnpm run check:enrichment-bundle",
+      "exitCode": 0,
+      "seconds": 9.45,
+      "log": "/tmp/ds-step13-final/12.log"
+    },
+    {
+      "command": "pnpm run validate:ip",
+      "exitCode": 0,
+      "seconds": 2.82,
+      "log": "/tmp/ds-step13-final/13.log"
+    },
+    {
+      "command": "pnpm run check:ip-bundle",
+      "exitCode": 0,
+      "seconds": 9.95,
+      "log": "/tmp/ds-step13-final/14.log"
+    },
+    {
+      "command": "pnpm run validate:mistakes",
+      "exitCode": 0,
+      "seconds": 2.06,
+      "log": "/tmp/ds-step13-final/15.log"
+    },
+    {
+      "command": "pnpm run validate:adaptive",
+      "exitCode": 0,
+      "seconds": 1.45,
+      "log": "/tmp/ds-step13-final/16.log"
+    },
+    {
+      "command": "pnpm run check:adaptive-bundle",
+      "exitCode": 0,
+      "seconds": 9.48,
+      "log": "/tmp/ds-step13-final/17.log"
+    },
+    {
+      "command": "pnpm run validate:exam",
+      "exitCode": 0,
+      "seconds": 2.06,
+      "log": "/tmp/ds-step13-final/18.log"
+    },
+    {
+      "command": "pnpm run validate:exam-content",
+      "exitCode": 0,
+      "seconds": 1.37,
+      "log": "/tmp/ds-step13-final/19.log"
+    },
+    {
+      "command": "pnpm run check:exam-bundle",
+      "exitCode": 0,
+      "seconds": 9.57,
+      "log": "/tmp/ds-step13-final/20.log"
+    },
+    {
+      "command": "pnpm run validate:mastery",
+      "exitCode": 0,
+      "seconds": 2.14,
+      "log": "/tmp/ds-step13-final/21.log"
+    },
+    {
+      "command": "pnpm run validate:readiness",
+      "exitCode": 0,
+      "seconds": 1.62,
+      "log": "/tmp/ds-step13-final/22.log"
+    },
+    {
+      "command": "pnpm run check:progress-bundle",
+      "exitCode": 0,
+      "seconds": 9.51,
+      "log": "/tmp/ds-step13-final/23.log"
+    },
+    {
+      "command": "pnpm run validate:auth",
+      "exitCode": 0,
+      "seconds": 1.8,
+      "log": "/tmp/ds-step13-final/24.log"
+    },
+    {
+      "command": "pnpm run validate:sync",
+      "exitCode": 0,
+      "seconds": 1.3,
+      "log": "/tmp/ds-step13-final/25.log"
+    },
+    {
+      "command": "pnpm run validate:supabase-security",
+      "exitCode": 0,
+      "seconds": 1.23,
+      "log": "/tmp/ds-step13-final/26.log"
+    },
+    {
+      "command": "pnpm run check:cloud-bundle",
+      "exitCode": 0,
+      "seconds": 9.56,
+      "log": "/tmp/ds-step13-final/27.log"
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "seconds": 51.65,
+      "log": "/tmp/ds-step13-final/28.log"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "exitCode": 0,
+      "seconds": 11.33,
+      "log": "/tmp/ds-step13-final/29.log"
+    },
+    {
+      "command": "pnpm run build",
+      "exitCode": 0,
+      "seconds": 31.36,
+      "log": "/tmp/ds-step13-final/30.log"
+    },
+    {
+      "command": "pnpm run verify:ip-java",
+      "exitCode": 0,
+      "seconds": 69.67,
+      "log": "/tmp/ds-step13-final/31.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "seconds": 0.08,
+      "log": "/tmp/ds-step13-final/32.log"
+    },
+    {
+      "command": "pnpm run validate:visual",
+      "exitCode": 0,
+      "evidence": "347 protected baseline files unchanged; dependencies and visual integration checks passed."
+    },
+    {
+      "command": "pnpm run check:visual-bundle",
+      "exitCode": 0,
+      "evidence": "docs/visual-bundle-report.json; production build and inherited lazy-boundary gates passed."
+    }
+  ],
+  "tests": {
+    "passed": 1861,
+    "files": 76,
+    "durationSeconds": 48.74,
+    "skipped": 0
+  },
+  "browser": {
+    "engine": "Chromium",
+    "version": "152.0.7977.83",
+    "platform": "macOS",
+    "productionOrigin": "http://127.0.0.1:4222",
+    "flows": 20,
+    "widths": [
+      390,
+      768,
+      1280
+    ],
+    "documentOverflowCases": 0,
+    "finalWarningsAndErrors": 0,
+    "method": "Manual screenshots and DOM checks in Codex in-app browser; not a screenshot-diff automation suite."
+  }
+}

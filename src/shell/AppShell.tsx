@@ -34,7 +34,7 @@ export function AppShell() {
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [navigationOpen]);
   const Content = tool ? 'div' : 'main';
-  return <div className={`ds-app${tool ? ' ds-tool' : ''}`}>
+  return <div className={`ds-app${tool ? ' ds-tool' : ''}`} data-course={courses.find(course => pathname === course.path || pathname.startsWith(course.path+'/'))?.subject_id}>
     <a className="ds-skip-link" href="#ds-content">Skip to content</a>
     <header className="ds-topbar">
       <button ref={menuButton} className="ds-menu-button" aria-label={navigationOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={navigationOpen} aria-controls="ds-navigation" onClick={() => setNavigationOpen(open => !open)}><ShellIcon name={navigationOpen ? 'close' : 'menu'}/></button>
@@ -46,7 +46,7 @@ export function AppShell() {
       <nav aria-label="Primary navigation">
         <NavLink to="/" end className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="dashboard"/><span>Dashboard</span></NavLink>
         <div className="ds-nav-group">Courses</div>
-        {courses.map(course => <NavLink key={course.subject_id} to={course.path} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={course.icon}/><span>{course.name}</span></NavLink>)}
+        {courses.map(course => <NavLink key={course.subject_id} to={course.path} data-course={course.subject_id} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={course.icon}/><span>{course.name}</span></NavLink>)}
         <div className="ds-nav-group">Study</div>
         {productAreas.map(area => <NavLink key={area.path} to={area.path} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={area.icon}/><span>{area.title}</span></NavLink>)}
         <NavLink to="/account" className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="progress"/><span>Account & sync</span></NavLink>
