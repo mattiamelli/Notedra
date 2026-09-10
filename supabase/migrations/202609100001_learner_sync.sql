@@ -76,7 +76,12 @@ begin
 
   foreach collection in array array['attempts','reviews','exams','examReviews'] loop
     if jsonb_typeof(learner_payload->collection) is distinct from 'array' then raise exception 'Invalid learner collection' using errcode = '22023'; end if;
-    if jsonb_array_length(learner_payload->collection) > case collection when 'attempts' then 5000 when 'reviews' then 5000 when 'exams' then 250 else 16000 end
+    if jsonb_array_length(learner_payload->collection) > (case collection
+      when 'attempts' then 5000
+      when 'reviews' then 5000
+      when 'exams' then 250
+      else 16000
+    end)
       then raise exception 'Learner capacity exceeded' using errcode = '22023'; end if;
     row_key := case when collection in ('attempts','reviews') then 'attemptId' else 'sessionId' end;
     identities := array[]::text[];

@@ -1,6 +1,6 @@
 # Step 12 — Accounts + Supabase + Cloud Sync
 
-**STEP 12 IMPLEMENTATION AND LOCAL ACCEPTANCE COMPLETE — 32/32 final commands PASS; 1,856 tests / 74 files. REMOTE SUPABASE ACCEPTANCE — NOT RUN. Step 13 has not started.**
+**STEP 12 IMPLEMENTATION AND LOCAL ACCEPTANCE COMPLETE — 32/32 final commands PASS; 1,856 tests / 74 files. REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED. Step 13 has not started.**
 
 Starting clean accepted commit: `d6586e83045241727b6b62951da09231c7ee95db`. Original Step 12 specification: user attachment `6aa8e799-75f4-475f-ba9f-e628455993cc/pasted-text.txt`. Existing work must be continued, not reset.
 
@@ -35,9 +35,77 @@ Official documentation inspected on 10 September 2026:
 - [RLS policies and operation-specific testing](https://supabase.com/docs/guides/database/postgres/row-level-security)
 - [Browser-safe API keys](https://supabase.com/docs/guides/getting-started/api-keys)
 
-For an isolated test project, apply `supabase/migrations/202609100001_learner_sync.sql` with the Supabase SQL editor or a linked Supabase CLI migration workflow. Enable email/password authentication and email confirmation, configure the local site URL for the intended preview origin, and use disposable test accounts. Copy `.env.example` to `.env.local`, supplying only the project URL and browser-safe publishable (or legacy anon) key. Rebuild/restart Vite after configuration changes. Never use a service-role, signing, management or database secret in `VITE_*` variables. No public deployment was performed.
+For an isolated test project, apply `supabase/migrations/202609100001_learner_sync.sql` with the Supabase SQL editor or a linked Supabase CLI migration workflow. Enable email/password authentication, configure the local site URL for the intended preview origin, and use disposable test accounts. Copy `.env.example` to `.env.local`, supplying only the project URL and browser-safe publishable (or legacy anon) key. Rebuild/restart Vite after configuration changes. Never use a service-role, signing, management or database secret in `VITE_*` variables. No public deployment was performed.
 
-**REMOTE SUPABASE ACCEPTANCE — NOT RUN.** No usable Supabase project configuration was found in repository environment files or process environment. No Supabase CLI, PostgreSQL client or Docker runtime was found. SQL has not been executed against a database. Static policy checks are not proof of live RLS enforcement or production multi-device synchronization.
+**REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED.** Supabase is reachable with anonymous key, but email confirmation is currently enforced and blocks sign-in/token acquisition for fresh users. The local project also still needs the required SQL migration applied manually before we can run remote acceptance tests. Static policy checks are not proof of live RLS enforcement or multi-device synchronization.
+
+## Real Supabase remote acceptance
+
+**REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED.** Blocked until these dashboard actions are completed exactly in the target project:
+
+- Open the Supabase project and run the full SQL from `supabase/migrations/202609100001_learner_sync.sql` in **SQL Editor → New query → Run**.
+- In **Authentication → URL Configuration**, set:
+  - Site URL: `http://127.0.0.1:5173/`
+  - Redirect URLs:
+    - `http://127.0.0.1:5173/`
+    - `http://127.0.0.1:5173/**`
+- In **Authentication → Providers → Email**, keep **Enable email** on, then either:
+  - temporarily disable **Enable email confirmations** for acceptance, or
+  - confirm the two disposable test users before testing signed-in flows.
+- In **Authentication → Sign In / Sign Up**, leave options compatible with app-level email/password only (no OAuth or third-party providers required for this step).
+
+### Migration syntax correction applied
+
+The previous editor failure was caused by PostgreSQL parser treatment of a *simple CASE expression* used as the right-hand side of `>` without parentheses in line 79. The original fragment was:
+
+```sql
+jsonb_array_length(learner_payload->collection) >
+  case collection when ... else ... end
+```
+
+In PL/pgSQL `IF <expr> THEN` expects a complete expression after `>`, and the unparenthesized CASE expression in that position caused `ERROR: 42601` at parse time in the SQL Editor.
+
+The migration now uses the equivalent, grammar-valid form with explicit expression grouping:
+
+```sql
+jsonb_array_length(learner_payload->collection) >
+  (case collection
+    when 'attempts' then 5000
+    when 'reviews' then 5000
+    when 'exams' then 250
+    else 16000
+  end)
+```
+
+No other semantics were changed:
+
+- table definitions, keys, checks and ownership fields unchanged;
+- RLS enable/force and owner `USING`/`WITH CHECK` predicates unchanged;
+- public grants/revokes unchanged;
+- `sync_learner_snapshot` validation logic, CAS/revision semantics, immutable conflict checks, receipt idempotency and operation insert/revision advancement unchanged;
+- grants on the RPC changed only by keeping the same signature and execution-only grant.
+
+### Remote execution safety of the last failed run
+
+The migration is wrapped in:
+
+```sql
+begin;
+...
+commit;
+```
+
+All DDL, grants, function creation, RLS policies and grants are inside the transaction.
+
+Because of this structure, the prior failed execution is considered **safe to rerun the complete corrected file**:
+
+- **A. SAFE TO RERUN COMPLETE MIGRATION**  
+  The failed run reported a parse-time error before any object could commit; no prior partial commit is expected from the failed script.
+
+The strongest local verification available here:
+
+- full top-to-bottom file inspection for unbalanced control/transaction syntax (`BEGIN`/`END`, `IF`/`END IF`, `LOOP`/`END LOOP`, function body delimiters, `CASE` grouping, `BEGIN`/`COMMIT`);
+- no PostgreSQL parser/runtime available in this workspace (`psql`/`supabase`/`docker` absent), so actual execution can only be confirmed by running the corrected file in a real or local PostgreSQL-enabled environment/Supabase SQL Editor.
 
 ## RLS policy inventory
 
@@ -109,7 +177,7 @@ Client merge tests cover 100, 1,000 and 5,000 records, deterministic reversed-de
 
 See [accounts-security-review.md](accounts-security-review.md) for the distinct adversarial self-review, reproduced findings/fixes, extra independent-style verification (not an external audit), second security-assumption review and claim-evidence check. No known unresolved local acceptance defect remains.
 
-**REMOTE SUPABASE ACCEPTANCE — NOT RUN.** Signup/login against a real service, email delivery, executing the migration, live SELECT/INSERT/UPDATE/DELETE RLS negatives, real multi-device cloud persistence and server performance are unverified. This is permitted implementation/local acceptance under the supplied Step 12 specification; it is not live cloud security certification. Configure an isolated project and execute those remote checks before relying on a real deployment.
+**REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED.** Signup/login against a real service cannot yet continue because fresh users are blocked by `email_not_confirmed`, and the required migration has not been applied yet in the remote project. Live SELECT/INSERT/UPDATE/DELETE RLS negatives, real multi-device persistence, idempotency/conflict semantics, offline restore behavior, and production smoke examples therefore remain blocked pending manual dashboard actions.
 
 Other explicit NOT RUN items: Safari, Firefox, physical mobile hardware, full OS network disconnection, fresh offline boot, real disk-quota exhaustion, power loss and screen-reader audit. No service-worker caching/PWA or production deployment/hardening was added. Existing 5,000-attempt/250-exam/16 MB backup bounds remain; the sync base/pending journal and recovery require additional local storage. Account namespaces are not encryption. A previously sent request may commit remotely after sign-out, but its stale response cannot acknowledge into another profile. Sign-out uses the provider’s local-session scope; other devices stay signed in.
 
