@@ -3,6 +3,10 @@
     "before": "6e2dd04a2bd8db56086435eedac48c9665931e9b74ca729273660a3da76e9270",
     "after": "052c19b497d9261e6864dda8296e84623f15eec13dcd19174176edccc845d733"
   },
+  "src/cloud/supabase.ts": {
+    "before": "5590664736f7f8fc83a342b92d7f5c343bf1483adefb3f25ecd169abb9fd6b2c",
+    "after": "7e76ce18bc523c203f505871556eac1afdc0e0c02fc4b4c24760faddb8129311"
+  },
   "src/learning/StudentDataPanel.tsx": {
     "before": "bbb3b7ce2a30cba60f3495f6750daa1cc328cb2cbcdf06525919d4ccd6045764",
     "after": "2fa21e39541592d808ec28fc2dbf0766fd3b09cd23a9cfce394851eaacb11fdf"
@@ -10,6 +14,18 @@
   "src/shell/AppShell.tsx": {
     "before": "d7d7b71abdd598d3b908388533cae379d231574cb8b12911efef4a8972a026e0",
     "after": "05b89c684712c30c8731679bffa081265e4e3c5ebafbc0160624997ff8cecba6"
+  },
+  "tests/cloud-client.test.ts": {
+    "before": "e99b410d0c69513486732f83cf6490403530ac6a4377a85591c3ed5d29e484d9",
+    "after": "418d299949f2aeb56e95a3de71f9bbe0fdf9203c80f7574e2dce411e19601e7e"
+  },
+  "tests/cloud-security.test.ts": {
+    "before": "29e976fd9b9a11403a8d50f5573554269ec0bcaa1d4add3a0731ae5b127bdb0f",
+    "after": "375e67404bff4d0ebbb500dbe529f9e34e4f8e51f5d17012fb49ba0e1befeb3f"
+  },
+  "tests/cloud-sync.test.ts": {
+    "before": "7e11525f7c5b27252ea1ecf2ea3ee467664a8b1da947c8f1308e3b6341c2137b",
+    "after": "8bc1049de9a4b4d1264601e6dec3811e6051b93979fb379074b71f42a16bbf1a"
   },
   "tests/browser/verification.ts": {
     "before": "f28f951299e00dd831e8fa2bd07ca2504c09b5a5f8f8fdfb6abcb05dbc9ed48c",

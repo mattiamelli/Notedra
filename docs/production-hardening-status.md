@@ -1,6 +1,6 @@
 # Step 14 — Production hardening and security
 
-**PARTIAL — CONTINUATION REQUIRED. Local hardening verified: 37/37 commands PASS, 1,870 tests / 81 files. Final strict live Supabase acceptance is BLOCKED by repeated upstream request timeouts. Step 15 not started; no deployment or migration.**
+**COMPLETE — the Step 14 `PT409` correction is deployed by the project operator and remote acceptance passed. Local hardening: 37/37 commands PASS, 1,874 tests / 81 files. Step 15 not started.**
 
 Starting HEAD `6d1b9dfd3fb148ba7097e7ed238e600da2a81deb`, verified clean before edits. Fresh baseline: **34/34 commands PASS; 1,864 tests / 77 files**. Results are in `hardening-baseline-results.json`. Content Pack v1.0.1, academic schema 1.1.0, Student Schema 3 and IndexedDB 3 remain authoritative.
 
@@ -201,3 +201,127 @@ This checkpoint is coherent and locally green but **not the accepted completion 
 - `vite.config.ts`
 
 Runtime repairs are limited to auth action serialization, a route-local failure boundary and backup wording. Other modifications are tests, exact preservation checks, the stricter remote probe, build-only security gates and generated evidence. Design CSS, published academic content, graders, merge algorithms, storage contracts/repository, RLS SQL and Assembly engine remain unchanged.
+
+## Targeted remote continuation — 2026-09-10 UTC
+
+Started from clean checkpoint `97b064d5d82e8abbc5fda92ec7bcfd4a4dbfbf82`. Application code, the existing strict probe, RLS/CAS semantics and migrations remain unchanged. Step 15 was not started.
+
+Environment: Node `v24.19.0` is available through the installed runtime (not the default shell PATH); pnpm `11.19.0`. DNS resolved and unauthenticated HTTPS REST returned the expected 401 in both attempts. Both disposable users authenticated successfully in each attempt. Initial authenticated snapshot RPC and exact-operation replay returned 200 and passed the probe assertions. General connectivity and ordinary authenticated RPCs therefore worked.
+
+Exact failing endpoint: `POST https://obaljgxtosxnsljdtjjf.supabase.co/rest/v1/rpc/sync_learner_snapshot`. Scenario: a new operation ID with `expected_revision: 0` after revision 1 has been saved and replayed successfully. Required result: structured conflict code `40001`.
+
+| Attempt | Stale request finished (UTC) | Request duration | Actual result |
+| --- | --- | --- | --- |
+| 1 | 2026-09-10 20:00:35.018 | 125.271 seconds | HTTP 504, `upstream request timeout`, no structured conflict code |
+| 2 | 2026-09-10 20:03:57.509 | 124.933 seconds | HTTP 504, `upstream request timeout`, no structured conflict code |
+
+Exactly **2 attempts / 1 retry** were made in this continuation, more than 60 seconds apart after the first failure. Each used the existing probe unchanged. A temporary external fetch observer recorded only method/path/status/duration, never credentials, tokens or request/response bodies. Machine-readable evidence is appended in `hardening-remote-results.json`; transient logs are `/tmp/ds-step14-remote-resume-1.log` and `/tmp/ds-step14-remote-resume-2.log`. Four disposable accounts were created; no admin/service-role credentials or cleanup migration was used.
+
+Classification: **external/upstream infrastructure timeout**, not application PASS. The underlying cause remains unresolved; no application/security defect was established. The probe stops at stale revision rejection, so reused-operation conflict, own table SELECT/receipt access, cross-user SELECT/UPDATE/DELETE, spoofed INSERT, direct-write denial and reconnect/account-switch checks remain **NOT RUN in this continuation**. Authenticated User B signup passed, but its snapshot write occurs after the blocking assertion and was not reached.
+
+Fresh affected checks: `pnpm validate:supabase-security` PASS (2 tables / 8 owner policies; static only), `pnpm validate:security-final` PASS (521 repository files / 131 runtime files / 129 emitted assets), and `pnpm validate:hardening` PASS. The checkpoint's **37/37 validation commands, 1,870 tests across 81 files, typecheck, production build, Java and Chromium acceptance remain the last complete local evidence**; they were not rerun in this documentation-only continuation. This is not a new full-suite PASS. The remaining blocker is unchanged; no final Step 14 acceptance commit is justified.
+
+## RPC 504 diagnosis — 2026-09-10 (no implementation changes)
+
+**PARTIAL — REMOTE CONFLICT ACCEPTANCE BLOCKED BY UPSTREAM/DATABASE TIMEOUT. Classification E: UNKNOWN root cause.** The observed failure is an upstream HTTP 504; evidence does not distinguish A (database blocking) from C (PostgREST/provider infrastructure). B (SQL logic defect) is not proven. D (original harness/SDK defect) is not sufficient to explain it: one native-fetch reproduction without Supabase SDK produced the same result.
+
+### Checked-in branch trace
+
+Inspected `supabase/migrations/202609100001_learner_sync.sql` lines 39–120. This is the checked-in definition; **exact deployed definition, owner role, extra triggers and server settings were NOT independently retrieved**. No SQL connector/psql/database credentials are available here. No privileged credential was requested or used.
+
+- Lines 54–62 reject absent auth (`42501`) and invalid envelope (`22023`). Owner comes exclusively from `auth.uid()`; there is no caller-supplied owner to mismatch. Snapshot/receipt reads and writes use this owner. Direct table ownership enforcement is separately defined by RLS and revoked writes.
+- Lines 64–67 hash revision + payload, acquire the transaction-scoped owner advisory lock, then read the operation receipt. Every valid call passes through these operations.
+- Lines 68–70: an existing receipt with a different binding raises `23505`; an identical binding returns immediately. This path does **not** lock the snapshot row.
+- Lines 72–73: without a receipt, select the owner's snapshot `FOR UPDATE`, then compare revision (missing row = 0). A mismatch immediately raises `40001`. This branch contains no loop, insert or later validation.
+- Initial save also executes line 72 but finds no tuple to row-lock; 0 matches 0. Lines 74–108 validate content/history, with bounded collection loops (empty in this repro), then lines 110–115 upsert snapshot and insert receipt atomically.
+- A current-revision update follows the same snapshot lock, validates immutable history and writes the next revision. Receipt uniqueness waits can occur at line 114 on successful writes, **not after the stale branch's RAISE**.
+
+First operation after divergence from the passing idempotent path: line 72 `SELECT ... FOR UPDATE`. Compared with the initial save, the SQL statement is shared but now locks an existing tuple; the first unique instruction is line 73's `RAISE 40001`. Neither the HTTP result nor row reads reveal whether execution reached that RAISE.
+
+Lock order inside this function is owner advisory lock → receipt SELECT (no explicit row lock) → snapshot row lock → snapshot/receipt writes. Sequential calls for one owner should serialize; the checked-in function contains no inverted lock order or exception-catching retry loop. Other transactions, DDL, custom live triggers or external writers could still block it; their absence cannot be established here. The function is SECURITY DEFINER with an empty search_path and qualified application tables. No custom trigger is declared in this migration; foreign-key effects occur on writes, which the stale path should not reach. No sessions were terminated.
+
+### One controlled native HTTP reproduction
+
+Only one stale RPC was sent in this diagnosis, with no automatic retries. A new disposable user avoided overlapping prior acceptance sessions. All four learner collections were empty; content consisted only of version `1.0.1` and fingerprint, not course text or student answers. Signup and initial snapshot save returned HTTP 200. Read-only preflight SELECTs returned:
+
+- User: `bb8d31a1-a9c5-4a96-b8a8-7d068240e241`.
+- Server revision: `1`; saved operation: `b40c3670-1661-4393-b1ab-799666f481b6`.
+- Exactly one receipt: same operation, revision `1`, request hash `724cf8c046fb60071e5b82f81fc2d5ce7eebaa35659dea4218e995e30093a87c`.
+- Requested expected revision: `0`; new stale operation: `d38042b1-1de4-4883-9fe7-39357cf25483`; no existing receipt for it. Expected revision is not separately stored in a receipt; the request binding hash covers it.
+- Endpoint: `POST https://obaljgxtosxnsljdtjjf.supabase.co/rest/v1/rpc/sync_learner_snapshot`.
+- Response at `2026-09-10T20:11:07.127Z`: **HTTP 504**, body exactly `upstream request timeout`, elapsed **125,213 ms**. No structured SQLSTATE was returned.
+
+Postflight snapshot SELECT also failed at `2026-09-10T20:12:08.746Z`, after **61,619 ms**, with HTTP 504 and structured body:
+
+```json
+{"code":"PGRST003","details":null,"hint":null,"message":"Timed out acquiring connection from connection pool."}
+```
+
+This directly establishes connection-pool acquisition failure for the subsequent read (category C symptom). It does not prove the pool caused the earlier stale RPC failure or establish what occupied its connections (root-cause classification remains E). The script stopped on this read failure; the postflight receipt read was NOT RUN. Final row/receipt state therefore remains unverified. The preflight reads were successful; do not claim the row stayed unchanged after the timeout. No further request or retry was made. Exact sanitized events are retained under `diagnosis20260910` in `hardening-remote-results.json`.
+
+### Safest next manual diagnostic (not executed here)
+
+Use the project's Supabase SQL Editor with its normal project operator access; do not put database/admin secrets into the app. First retrieve the deployed definition and trigger metadata read-only and compare to the checked-in migration:
+
+```sql
+select p.oid::regprocedure as signature, pg_get_userbyid(p.proowner) as owner,
+       p.prosecdef, p.proconfig, pg_get_functiondef(p.oid)
+from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+where n.nspname = 'public' and p.proname = 'sync_learner_snapshot';
+select tgrelid::regclass as relation, tgname, tgisinternal,
+       pg_get_triggerdef(oid)
+from pg_trigger
+where tgrelid in ('public.learner_snapshots'::regclass,
+                 'public.learner_sync_operations'::regclass);
+```
+
+Inspect provider/PostgREST/database logs for the exact UTC window 20:09:01–20:11:08 and the disposable owner above. Look for SQLSTATE 40001, cancellation, pool exhaustion, transaction retries and wait events. If a carefully supervised future request is needed, have the operator capture activity **while it is waiting** (not merely afterwards):
+
+```sql
+with target as (
+  select pid from pg_stat_activity
+  where datname = current_database() and pid <> pg_backend_pid()
+    and state = 'active' and query ilike '%sync_learner_snapshot%'
+    and query_start > now() - interval '5 minutes'
+)
+select a.pid, a.state, a.xact_start, a.query_start,
+       a.wait_event_type, a.wait_event, pg_blocking_pids(a.pid) as blockers
+from pg_stat_activity a
+where a.pid in (select pid from target)
+   or a.pid in (select unnest(pg_blocking_pids(pid)) from target);
+```
+
+The activity filter identifies RPC candidates, not proven ownership; correlate the request timestamp/logs before attributing a PID. For a confirmed PID, inspect only `pg_locks` rows for that PID and its `pg_blocking_pids` (read-only). Do not terminate sessions or reapply migrations. No corrective SQL or migration is justified without this evidence. If RAISE 40001 appears promptly in database logs but HTTP still waits, escalate the paired timestamps/status to Supabase support; if a lock wait is identified, investigate its blocker with the operator.
+
+No code/SQL fix made; no migration required or proposed on current evidence. No local regression rerun is warranted for documentation-only diagnosis. Previous local and browser results remain historical checkpoint evidence, not new acceptance. Strict reused-operation/RLS mutation/reconnect checks remain unverified. Step 15 was not started.
+
+## Corrective `PT409` implementation — 2026-09-10
+
+The live log evidence changed the diagnosis: `sync_learner_snapshot` used PostgreSQL SQLSTATE `40001` for a permanent application stale-revision conflict. Supabase documents that affected PostgREST versions treat `40001` as retryable transaction failure, turning one RPC request into repeated database transactions. This explains the repeated `Stale cloud revision` log records, PostgREST timeout-manager termination, subsequent HTTP 504 and `PGRST003` pool-acquisition failure. The CAS comparison, owner advisory lock, row lock and receipt logic were correct; the error signal was not.
+
+New migration: `supabase/migrations/202609100002_stale_conflict_pt409.sql`.
+
+- It uses `create or replace function` with the existing signature, `SECURITY DEFINER`, empty search path, advisory lock, receipt lookup, snapshot `FOR UPDATE`, validation, upsert and grants unchanged.
+- Its only function-body semantic replacement is `raise exception 'Stale cloud revision' using errcode = '40001'` with `raise sqlstate 'PT409' using message = 'Stale cloud revision'`.
+- `PT409` is PostgREST's explicit application HTTP 409 contract, so it is not interpreted as a retryable serialization failure. The TypeScript adapter maps **only** the exact pair `PT409` / `Stale cloud revision` to `SyncError('CONFLICT')`; arbitrary HTTP 409-like codes, `PGRST003`, 504 and unknown outcomes remain network errors and retain the durable pending operation.
+
+`cloud-validation.ts` compares the replacement function byte-for-byte against the applied migration after the single permitted `40001 → PT409` replacement. Tests cover exact adapter normalization, non-stale PT409 rejection, PGRST003 retention as network failure, stale-pass release/no same-pass retry, idempotency, operation reuse, coalescing, timeout recovery and auth lifecycle. The local full suite passed **1,874 tests in 81 files**. The complete Step 14 local gate is **37/37 PASS**: full tests, all content/bundle/security validators, typecheck, production build, Java (49 fixtures and 11 assignments / 144 assertions), and diff check. The production bundle remains 503,057 bytes initial JS / 133,244 gzip; Vite's existing >500 kB advisory warning remains.
+
+The configured workspace has neither Supabase CLI nor `psql`, and only a browser publishable key. Applying a migration requires project-operator access and cannot be performed safely through the public Data API. The correction is therefore **not deployed**, no live acceptance probe was rerun against an unchanged function, and the deployed PostgREST version is **NOT CONFIRMED**. The previous Chromium acceptance is historical evidence; a fresh Chromium pass for this non-visual adapter/migration change is **NOT RUN** because the isolated current preview could not be kept alive by this execution environment. This does not affect the local gates, but prevents a claim of complete Step 14 acceptance.
+
+### Required operator action before remote acceptance
+
+Apply exactly `202609100002_stale_conflict_pt409.sql` through the project's normal Supabase migration workflow or SQL Editor, after confirming `202609100001_learner_sync.sql` is already present. Do not rerun the original migration. Then run `node --import tsx scripts/remote-supabase-acceptance.ts` from this repository using only the existing browser publishable key. Acceptance requires a single stale request to return promptly with code `PT409` and message `Stale cloud revision`, unchanged revision-1 snapshot, no stale-operation receipt, responsive subsequent reads, and the existing two-user RLS/idempotency/reconnect checks. Inspect the related logs to confirm that one stale request does not create the prior repeated `40001` pattern. If the environment supports it, record the deployed PostgREST version as evidence.
+
+## Final remote and browser acceptance — 2026-09-10 UTC
+
+This section supersedes the earlier pending-deployment text. The project operator confirmed that `202609100002_stale_conflict_pt409.sql` was applied through the normal Supabase workflow; it was **not** reapplied from this workspace. The exact existing strict remote probe then passed from a clean disposable-user run at `2026-09-10T20:56:50.209Z`–`20:56:55.642Z`.
+
+- DNS resolved and unauthenticated REST HTTPS returned 401. Two disposable account signups succeeded (HTTP 200). The first cloud write and exact-operation replay returned 200.
+- One deliberately stale CAS RPC returned HTTP 409 / `PT409` with the exact message `Stale cloud revision` in **151 ms**. The probe verified that revision 1 and its original operation remained unchanged and that the stale operation did not receive a receipt. No 504 or `PGRST003` occurred in this run.
+- Changed reuse of an operation ID was rejected (HTTP 409; the probe asserts SQLSTATE `23505`). User B's initial write succeeded. Own reads succeeded; cross-user SELECT was invisible; cross-user UPDATE, DELETE and spoofed INSERT were denied (HTTP 403); User B's data remained unchanged.
+- Reconnect and account switching returned the isolated cloud profile. The probe finished with `REMOTE ACCEPTANCE PASS: auth, snapshots, receipts, RLS isolation, idempotency, stale-CAS conflict, reconnect and account switch.` No service-role/admin credential was used.
+
+Fresh production-preview Chromium acceptance used the current built application at `http://127.0.0.1:4234/`. Dashboard startup completed without an error state. Account recovery reached the anonymous-local profile and Account & cloud sync page, where the optional sign-in and local recovery controls rendered correctly. The Assembly Visualizer loaded the Stack frame example and executed `pushq %rbp`: RSP changed from `0x1000` to `0x0FF8`, the prior RBP was shown at the pushed cell, the deterministic explanation appeared and execution history recorded step 1. This was a Chromium preview check; it did not use a real browser UI credential or claim Safari coverage.
+
+The deployed PostgREST version remains **NOT CONFIRMED** because it is not exposed through the browser-safe project interface. The behavioral result is nevertheless recorded precisely: the stale application conflict now returns promptly and all required remote authorization, idempotency and isolation checks pass. The existing Vite initial-chunk advisory (>500 kB) remains a non-blocking build warning. No Step 15 work was started.

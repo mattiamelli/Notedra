@@ -70,6 +70,17 @@ describe('sync coordinator and native-shaped transactional local adapter (fake-i
     const a=setup();await submit(a,'one');a.cloud.failPut=true;const first=a.sync.sync();expect(a.sync.sync()).toBe(first);await expect(first).rejects.toThrow();
     await new Promise(resolve=>setTimeout(resolve,20));expect(a.cloud.puts).toBe(1);a.repo.close();
   });
+  it('does not retry a confirmed stale operation in the same pass',async()=>{
+    const a=setup(),b=setup(a.cloud);await submit(a,'a');await submit(b,'b');a.cloud.onPut=async()=>{a.cloud.onPut=null;await b.sync.sync();};
+    await expect(a.sync.sync()).rejects.toThrow('Stale');expect(a.cloud.puts).toBe(2);await new Promise(resolve=>setTimeout(resolve,20));expect(a.cloud.puts).toBe(2);
+    expect((await a.local.read(a.controller.signal)).metadata.pending).toBeNull();a.repo.close();b.repo.close();
+  });
+  it('keeps idempotency and rejects a reused operation with different binding',async()=>{
+    const a=setup(),payload=projectLearner(emptyBackup()),operation=id();
+    const first=await a.cloud.put({expectedRevision:0,operationId:operation,payload});
+    expect((await a.cloud.put({expectedRevision:0,operationId:operation,payload})).revision).toBe(first.revision);
+    await expect(a.cloud.put({expectedRevision:1,operationId:operation,payload})).rejects.toThrow('Operation conflict');a.repo.close();
+  });
   it('reconciles a definite stale CAS on user retry without silently overwriting another device',async()=>{
     const a=setup(),b=setup(a.cloud);await submit(a,'a');await submit(b,'b');a.cloud.onPut=async()=>{a.cloud.onPut=null;await b.sync.sync();};
     await expect(a.sync.sync()).rejects.toThrow('Stale');expect((await a.local.read(a.controller.signal)).metadata.pending).toBeNull();await a.sync.sync();

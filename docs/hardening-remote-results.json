@@ -1,5 +1,5 @@
 {
-  "finalAcceptance": "BLOCKED",
+  "finalAcceptance": "PASS",
   "runs": [
     {
       "run": "historical weak-negative probe",
@@ -20,5 +20,293 @@
       "migrationChanged": false
     }
   ],
-  "unresolved": "Upstream request timeout instead of structured stale-CAS error; later strict checks not reached"
+  "unresolved": "None for the deployed PT409 correction; earlier timeout records are retained as historical diagnosis evidence.",
+  "continuation20260910": {
+    "checkpoint": "97b064d5d82e8abbc5fda92ec7bcfd4a4dbfbf82",
+    "node": "v24.19.0",
+    "pnpm": "11.19.0",
+    "endpoint": "https://obaljgxtosxnsljdtjjf.supabase.co/rest/v1/rpc/sync_learner_snapshot",
+    "scenario": "Fresh operation ID with expected_revision=0 after successful revision 1 snapshot and identical replay; expected SQLSTATE 40001",
+    "attemptCount": 2,
+    "retryCount": 1,
+    "runs": [
+      {
+        "attempt": 1,
+        "events": [
+          {
+            "started": "2026-09-10T19:58:26.411Z",
+            "node": "v24.19.0",
+            "host": "obaljgxtosxnsljdtjjf.supabase.co"
+          },
+          {
+            "at": "2026-09-10T19:58:28.535Z",
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200,
+            "durationMs": 1256
+          },
+          {
+            "at": "2026-09-10T19:58:28.979Z",
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200,
+            "durationMs": 437
+          },
+          {
+            "at": "2026-09-10T19:58:29.672Z",
+            "method": "POST",
+            "path": "/rest/v1/rpc/sync_learner_snapshot",
+            "status": 200,
+            "durationMs": 686
+          },
+          {
+            "at": "2026-09-10T19:58:29.744Z",
+            "method": "POST",
+            "path": "/rest/v1/rpc/sync_learner_snapshot",
+            "status": 200,
+            "durationMs": 69
+          },
+          {
+            "at": "2026-09-10T20:00:35.018Z",
+            "method": "POST",
+            "path": "/rest/v1/rpc/sync_learner_snapshot",
+            "status": 504,
+            "durationMs": 125271
+          },
+          {
+            "finished": "2026-09-10T20:00:35.021Z",
+            "exitCode": 1
+          }
+        ],
+        "output": "REMOTE ACCEPTANCE FAILED: stale revision did not produce a conflict: no error upstream request timeout",
+        "result": "BLOCKED: upstream HTTP 504, not application conflict",
+        "dns": "PASS",
+        "unauthenticatedHttpsStatus": 401
+      },
+      {
+        "attempt": 2,
+        "events": [
+          {
+            "started": "2026-09-10T20:01:46.707Z",
+            "node": "v24.19.0",
+            "host": "obaljgxtosxnsljdtjjf.supabase.co"
+          },
+          {
+            "at": "2026-09-10T20:01:49.984Z",
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200,
+            "durationMs": 2529
+          },
+          {
+            "at": "2026-09-10T20:01:50.896Z",
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200,
+            "durationMs": 905
+          },
+          {
+            "at": "2026-09-10T20:01:52.268Z",
+            "method": "POST",
+            "path": "/rest/v1/rpc/sync_learner_snapshot",
+            "status": 200,
+            "durationMs": 1365
+          },
+          {
+            "at": "2026-09-10T20:01:52.574Z",
+            "method": "POST",
+            "path": "/rest/v1/rpc/sync_learner_snapshot",
+            "status": 200,
+            "durationMs": 302
+          },
+          {
+            "at": "2026-09-10T20:03:57.509Z",
+            "method": "POST",
+            "path": "/rest/v1/rpc/sync_learner_snapshot",
+            "status": 504,
+            "durationMs": 124933
+          },
+          {
+            "finished": "2026-09-10T20:03:57.511Z",
+            "exitCode": 1
+          }
+        ],
+        "output": "REMOTE ACCEPTANCE FAILED: stale revision did not produce a conflict: no error upstream request timeout",
+        "result": "BLOCKED: upstream HTTP 504, not application conflict",
+        "dns": "PASS",
+        "unauthenticatedHttpsStatus": 401
+      }
+    ],
+    "freshRemotePass": [
+      "two disposable authenticated signups per attempt",
+      "initial own snapshot RPC acknowledgement",
+      "exact-operation idempotency"
+    ],
+    "notReached": [
+      "reused-operation conflicts",
+      "User B snapshot creation",
+      "own snapshot and operation SELECT",
+      "cross-user SELECT/UPDATE/DELETE",
+      "spoofed INSERT",
+      "direct own-write denial",
+      "reconnect/account switch isolation"
+    ],
+    "classification": "Upstream infrastructure timeout; underlying cause unresolved, no application/security defect established",
+    "applicationCodeChanged": false,
+    "probeChanged": false,
+    "migrationChanged": false,
+    "freshLocalGates": [
+      "validate:supabase-security PASS",
+      "validate:security-final PASS",
+      "validate:hardening PASS"
+    ],
+    "inheritedFullRegression": {
+      "tests": 1870,
+      "files": 81,
+      "validationCommands": 37,
+      "rerun": false
+    }
+  },
+  "diagnosis20260910": {
+    "classification": "E: unknown root cause; C connection-pool timeout directly observed on postflight SELECT",
+    "staleReproductionCount": 1,
+    "sdkUsed": false,
+    "events": [
+      {
+        "label": "signup",
+        "at": "2026-09-10T20:09:00.862Z",
+        "status": 200,
+        "durationMs": 1878
+      },
+      {
+        "owner": "bb8d31a1-a9c5-4a96-b8a8-7d068240e241",
+        "originalOperation": "b40c3670-1661-4393-b1ab-799666f481b6",
+        "staleOperation": "d38042b1-1de4-4883-9fe7-39357cf25483",
+        "expectedRevision": 0,
+        "payload": {
+          "schemaVersion": 3,
+          "content": {
+            "version": "1.0.1",
+            "fingerprint": "0290897dea04a92aeecee0e449baabcf781e91ead1577469e10a08700965a36e"
+          },
+          "attempts": [],
+          "reviews": [],
+          "exams": [],
+          "examReviews": []
+        }
+      },
+      {
+        "label": "initial",
+        "at": "2026-09-10T20:09:01.583Z",
+        "status": 200,
+        "durationMs": 717,
+        "body": {
+          "owner": "bb8d31a1-a9c5-4a96-b8a8-7d068240e241",
+          "schema": 1,
+          "payload": {
+            "exams": [],
+            "content": {
+              "version": "1.0.1",
+              "fingerprint": "0290897dea04a92aeecee0e449baabcf781e91ead1577469e10a08700965a36e"
+            },
+            "reviews": [],
+            "attempts": [],
+            "examReviews": [],
+            "schemaVersion": 3
+          },
+          "revision": 1,
+          "operationId": "b40c3670-1661-4393-b1ab-799666f481b6"
+        }
+      },
+      {
+        "label": "snapshot-before",
+        "at": "2026-09-10T20:09:01.720Z",
+        "status": 200,
+        "durationMs": 137,
+        "body": [
+          {
+            "user_id": "bb8d31a1-a9c5-4a96-b8a8-7d068240e241",
+            "revision": 1,
+            "operation_id": "b40c3670-1661-4393-b1ab-799666f481b6"
+          }
+        ]
+      },
+      {
+        "label": "receipts-before",
+        "at": "2026-09-10T20:09:01.914Z",
+        "status": 200,
+        "durationMs": 194,
+        "body": [
+          {
+            "user_id": "bb8d31a1-a9c5-4a96-b8a8-7d068240e241",
+            "operation_id": "b40c3670-1661-4393-b1ab-799666f481b6",
+            "revision": 1,
+            "request_hash": "724cf8c046fb60071e5b82f81fc2d5ce7eebaa35659dea4218e995e30093a87c"
+          }
+        ]
+      },
+      {
+        "label": "stale",
+        "at": "2026-09-10T20:11:07.127Z",
+        "status": 504,
+        "durationMs": 125213,
+        "body": "upstream request timeout"
+      },
+      {
+        "label": "snapshot-after",
+        "at": "2026-09-10T20:12:08.746Z",
+        "status": 504,
+        "durationMs": 61619,
+        "body": {
+          "code": "PGRST003",
+          "details": null,
+          "hint": null,
+          "message": "Timed out acquiring connection from connection pool."
+        }
+      }
+    ],
+    "deployedDefinitionVerified": false,
+    "locksActivityAvailable": false,
+    "postflightReceiptRead": "NOT RUN after snapshot read failed",
+    "codeChanged": false,
+    "migrationChanged": false
+  },
+  "pt409Correction20260910": {
+    "rootCause": "Application stale conflict used retryable SQLSTATE 40001; Supabase documented PostgREST retry behavior matches repeated live log failures.",
+    "migration": "supabase/migrations/202609100002_stale_conflict_pt409.sql",
+    "semanticChange": "Only stale expected-revision rejection changes from 40001 to PT409 with stable message Stale cloud revision.",
+    "adapterContract": "Only PT409 plus exact stable message maps to a definite application conflict; PGRST003, 504 and unknown outcomes remain NETWORK.",
+    "localVerification": {
+      "tests": 1874,
+      "testFiles": 81,
+      "step14Gates": 37,
+      "result": "PASS"
+    },
+    "remoteMigrationApplied": true,
+    "remoteMigrationEvidence": "Project operator confirmed normal-workflow application; this workspace did not reapply the migration.",
+    "remoteAcceptance": {
+      "result": "PASS",
+      "started": "2026-09-10T20:56:50.209Z",
+      "finished": "2026-09-10T20:56:55.642Z",
+      "staleConflict": {
+        "httpStatus": 409,
+        "code": "PT409",
+        "message": "Stale cloud revision",
+        "durationMs": 151,
+        "snapshotUnchanged": true,
+        "staleReceiptAbsent": true
+      },
+      "confirmed": [
+        "DNS and unauthenticated HTTPS 401",
+        "two disposable authenticated users",
+        "initial write and exact-operation idempotency",
+        "changed-operation conflict",
+        "own reads and two-user RLS isolation",
+        "cross-user select invisibility and update/delete/spoofed-insert denial",
+        "reconnect and account-switch isolation"
+      ],
+      "legacyTimeoutObserved": false
+    },
+    "postgrestVersion": "NOT CONFIRMED"
+  }
 }

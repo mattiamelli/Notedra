@@ -6,6 +6,16 @@ import {SyncError, validatePayload} from './model';
 
 type Adapters={auth:AuthAdapter;cloud:CloudRepository};
 const clients=new Map<string,Adapters>();
+type RemoteError={code?:string|null;message?:string|null};
+
+/** Only this stable RPC contract represents a definite stale CAS rejection. */
+export function normalizeCloudWriteError(error:RemoteError):SyncError {
+  if(error.code==='PT409'&&error.message==='Stale cloud revision') {
+    return new SyncError('CONFLICT','Cloud changed on another device. Retry sync to compare the saved versions.');
+  }
+  if(error.code==='23505'||error.code==='22023') return new SyncError('INVALID','Sync failed. Local data and the pending operation are preserved.');
+  return new SyncError('NETWORK','Sync failed. Local data and the pending operation are preserved.');
+}
 export function createSupabase(config:Extract<CloudConfig,{status:'configured'}>):Adapters {
   const identity=config.url+'\0'+config.key;
   const existing=clients.get(identity);if(existing)return existing;
@@ -27,7 +37,7 @@ export function createSupabase(config:Extract<CloudConfig,{status:'configured'}>
     async put(input,signal){
       validatePayload(input.payload);
       const {data,error}=await client.rpc('sync_learner_snapshot',{expected_revision:input.expectedRevision,operation:input.operationId,learner_payload:input.payload}).abortSignal(signal);
-      if(error){if(error.code==='40001')throw new SyncError('CONFLICT','Cloud changed on another device. Retry sync to compare the saved versions.');throw new SyncError(error.code==='23505'||error.code==='22023'?'INVALID':'NETWORK','Sync failed. Local data and the pending operation are preserved.');}
+      if(error)throw normalizeCloudWriteError(error);
       return data;
     },
   };

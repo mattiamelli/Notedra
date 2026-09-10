@@ -8,6 +8,7 @@ import {mergeLearner} from '../src/cloud/merge';
 import {emptyBackup,STUDENT_SCHEMA_VERSION} from '../src/learning/contracts';
 import {STUDENT_DB_VERSION} from '../src/learning/repository';
 export const sqlPath='supabase/migrations/202609100001_learner_sync.sql';
+export const staleConflictCorrectionPath='supabase/migrations/202609100002_stale_conflict_pt409.sql';
 export function validateSQL(sql:string):void {
   assert(!/using\s*\(\s*true\s*\)|with check\s*\(\s*true\s*\)|disable row level security/i.test(sql),'Permissive RLS');
   for(const [table,prefix] of [['learner_snapshots','snapshot'],['learner_sync_operations','operation']]){
@@ -29,8 +30,19 @@ export function checkSecrets(text:string):void {
     const payload=JSON.parse(Buffer.from(token.split('.')[1],'base64url').toString()) as {role?:unknown};assert(payload.role==='anon','Non-public JWT literal detected');
   }
 }
+export function validateStaleConflictCorrection(sql:string,original:string):void {
+  const start='create function public.sync_learner_snapshot';
+  const originalFunction=original.slice(original.indexOf(start));
+  assert.notEqual(originalFunction,'','Original sync function is missing');
+  const expected=originalFunction
+    .replace(start,'create or replace function public.sync_learner_snapshot')
+    .replace("raise exception 'Stale cloud revision' using errcode = '40001';","raise sqlstate 'PT409' using message = 'Stale cloud revision';");
+  const correction=sql.slice(sql.indexOf('create or replace function public.sync_learner_snapshot'));
+  assert.equal(correction,expected,'Corrective migration must only replace stale 40001 with the stable PT409 contract');
+  assert(!sql.includes("errcode = '40001'"),'Corrective migration must not retain retryable stale 40001');
+}
 function files(path:string):string[]{return readdirSync(path,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(join(path,e.name)):[join(path,e.name)]);}
-export function validateSecurity(){validateSQL(readFileSync(sqlPath,'utf8'));for(const f of files('src'))checkSecrets(readFileSync(f,'utf8'));assert(readFileSync('.gitignore','utf8').includes('.env.*'));return {tables:2,ownerPolicies:8,remoteEnforcement:'NOT RUN'};}
+export function validateSecurity(){const original=readFileSync(sqlPath,'utf8');validateSQL(original);validateStaleConflictCorrection(readFileSync(staleConflictCorrectionPath,'utf8'),original);for(const f of files('src'))checkSecrets(readFileSync(f,'utf8'));assert(readFileSync('.gitignore','utf8').includes('.env.*'));return {tables:2,ownerPolicies:8,remoteEnforcement:'NOT RUN'};}
 export function validateAuth(){
   assert.equal(cloudConfig(undefined,undefined).status,'unavailable');
   assert.equal(cloudConfig('https://project.supabase.co','sb_'+'secret_'+'x'.repeat(32)).status,'invalid');

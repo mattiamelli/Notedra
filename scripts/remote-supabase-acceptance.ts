@@ -43,8 +43,15 @@ async function main(){
   const opA=crypto.randomUUID(), firstA=await rpc(a,0,opA);
   expect(firstA.owner===a.id&&firstA.revision===1&&firstA.operationId===opA,'local-to-cloud RPC acknowledgement is invalid');
   const retryA=await rpc(a,0,opA);expect(retryA.revision===1,'identical operation is not idempotent');
-  const stale=await a.client.rpc('sync_learner_snapshot',{expected_revision:0,operation:crypto.randomUUID(),learner_payload:emptyPayload()});
-  expect(stale.error?.code==='40001',`stale revision did not produce a conflict: ${stale.error?.code??'no error'} ${stale.error?.message??''}`);
+  const staleOperation=crypto.randomUUID(),staleStarted=Date.now();
+  const stale=await a.client.rpc('sync_learner_snapshot',{expected_revision:0,operation:staleOperation,learner_payload:emptyPayload()});
+  const staleElapsed=Date.now()-staleStarted;
+  expect(stale.error?.code==='PT409'&&stale.error.message==='Stale cloud revision',`stale revision did not produce PT409: ${stale.error?.code??'no error'} ${stale.error?.message??''}`);
+  expect(staleElapsed<10_000,`stale revision took ${staleElapsed}ms instead of returning promptly`);
+  const afterStale=await a.client.from('learner_snapshots').select('revision,operation_id').eq('user_id',a.id).maybeSingle();
+  expect(!afterStale.error&&afterStale.data?.revision===1&&afterStale.data.operation_id===opA,'stale rejection changed the saved snapshot');
+  const staleReceipt=await a.client.from('learner_sync_operations').select('operation_id').eq('operation_id',staleOperation);
+  expect(!staleReceipt.error&&staleReceipt.data?.length===0,'stale rejection created a successful receipt');
   const reused=await a.client.rpc('sync_learner_snapshot',{expected_revision:1,operation:opA,learner_payload:emptyPayload()});
   expect(reused.error?.code==='23505',`operation reuse with changed request did not conflict: ${reused.error?.code??'no error'} ${reused.error?.message??''}`);
   const changedPayload=emptyPayload();changedPayload.content.version='conflicting-request';
