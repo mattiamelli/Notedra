@@ -4,13 +4,32 @@ A browser-based study workspace for a first-year Computer Science & Engineering 
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
 
+## Optional accounts and cloud sync — Step 12
+
+`/account` adds optional email/password accounts through Supabase. Without configuration or while logged out, the original local study profile works as before. Account profiles are kept separately in this browser. Copying anonymous history into an account requires an explicit choice; sign-out preserves the account profile and returns to anonymous study.
+
+Sync compares immutable attempts/exams and revisioned drafts/reviews using a saved common base. Conflicting history stops sync; timestamps do not choose a winner. Pending uploads retain a stable operation ID across failures. “Synced” follows remote acknowledgement and the required committed local transaction. Sync runs on account initialization and **Sync now**; later local work remains marked pending. Backups remain independent. A confirmed recovery action handles a restore that happened during sync without overwriting conflicting submissions.
+
+Only learner records and their content-version bindings are uploaded. No canonical lessons/banks, navigation history, telemetry or derived mastery/readiness indices are uploaded. Student Schema **3** and IndexedDB **3** are unchanged.
+
+For optional setup, apply the SQL migration in `supabase/migrations/`, enable Supabase email/password authentication with email confirmation, and copy `.env.example` to `.env.local`. Set only `VITE_SUPABASE_URL` and a browser-safe `VITE_SUPABASE_PUBLISHABLE_KEY`, then rebuild. Never use a service-role/admin key. See the [setup, policies, merge rules and acceptance evidence](docs/accounts-cloud-sync-status.md).
+
+```bash
+pnpm run validate:auth
+pnpm run validate:sync
+pnpm run validate:supabase-security
+pnpm run check:cloud-bundle
+```
+
+**Remote Supabase acceptance: NOT RUN** — no test project was configured. Policy checks are static, and cloud transport acceptance uses deterministic fakes. No claim of live RLS enforcement or production multi-device verification is made. Step 13 and later have not started.
+
 ## Evidence-based Progress — Step 11
 
 `/progress` separates **Learning Mastery**, **Exam Readiness**, factual **Coverage** and **Confidence**, with course, topic and skill explanations. Dashboard, course pages and topic overviews link to the details. Missing evidence stays unknown. These are transparent DelftStudy heuristics, not official grades, pass probabilities or validated measurements.
 
 Normal-practice mastery caps repeated answers to one exact item. Exam readiness uses separately bound objective quick/full components, recency and canonical breadth. CO breadth, R&L open reasoning and IP integrated-program practice have explicit gates. Open proofs/code and self-review never supply correctness or numeric readiness points; required ungraded work keeps readiness confidence below High. Current authored banks have limited objective diversity, so sparse/unknown results are expected.
 
-Indices are recalculated locally from immutable historical records; no mutable score is stored. **Student Schema 3 / IndexedDB 3 remain unchanged.** Existing Mistake Book, Study Path, exam history and Assembly behavior are preserved. No account, server, runtime LLM, analytics or network profiling is added.
+Indices are recalculated locally from immutable historical records; no mutable score is stored. **Student Schema 3 / IndexedDB 3 remain unchanged.** Existing Mistake Book, Study Path, exam history and Assembly behavior are preserved. The Progress layer adds no runtime LLM, analytics or network profiling; optional learner-state synchronization is described above.
 
 ```bash
 pnpm run validate:mastery
@@ -18,7 +37,7 @@ pnpm run validate:readiness
 pnpm run check:progress-bundle
 ```
 
-Read the [exact policy, acceptance evidence and limitations](docs/mastery-readiness-status.md), [performance measurements](docs/mastery-performance-results.json) and [production bundle inventory](docs/progress-bundle-report.json). Step 12 has not started.
+Read the [exact policy, acceptance evidence and limitations](docs/mastery-readiness-status.md), [performance measurements](docs/mastery-performance-results.json) and [production bundle inventory](docs/progress-bundle-report.json). Step 12 optional accounts are described above.
 
 ## Mock Exams — Step 10
 
@@ -36,7 +55,7 @@ pnpm run validate:exam-content
 pnpm run check:exam-bundle
 ```
 
-The route, course banks, open editor, review and reference payloads load separately. See [Step 10 acceptance evidence](docs/exam-engine-status.md), [source review](docs/exam-source-review.md) and [measured production payloads](docs/exam-bundle-report.json). Step 11 adds the separate Progress layer above; Step 12 and later are not implemented.
+The route, course banks, open editor, review and reference payloads load separately. See [Step 10 acceptance evidence](docs/exam-engine-status.md), [source review](docs/exam-source-review.md) and [measured production payloads](docs/exam-bundle-report.json). Step 11 adds the separate Progress layer above; Step 12 adds optional accounts above; Step 13 and later are not implemented.
 
 ## Mistake Book and Study Path
 
@@ -44,7 +63,7 @@ The route, course banks, open editor, review and reference payloads load separat
 
 **Study Path** (`/study-plan`) gives up to four explained next actions from existing Learn, Flashcards, Practice, guides, workspaces or coding tasks. Choose 10/20/30/45/60+ minutes. Canonical prerequisites, recent repeated errors, later successful attempts, diverse activities and repeated-retry limits determine the order. Times are estimates or authored durations. This recommendation engine remains independent of the separate mastery/readiness indices and does not predict grades.
 
-Step 9 introduced Schema 2 / DB 2; Step 10 now upgrades Schema 1/2 databases to Schema 3 / DB 3. Original submitted records remain unchanged. Step 9 added separate review workflow; Step 10 adds exam records. Backups include both, legacy imports migrate, failed upgrades/restores roll back, and stale generations cannot write. Everything stays local. Marked reviewed does not mean learned.
+Step 9 introduced Schema 2 / DB 2; Step 10 now upgrades Schema 1/2 databases to Schema 3 / DB 3. Original submitted records remain unchanged. Step 9 added separate review workflow; Step 10 adds exam records. Backups include both, legacy imports migrate, failed upgrades/restores roll back, and stale generations cannot write. Everything is saved locally first; optional account sync can copy learner records to Supabase. Marked reviewed does not mean learned.
 
 ```bash
 pnpm run validate:mistakes
@@ -52,7 +71,7 @@ pnpm run validate:adaptive
 pnpm run check:adaptive-bundle
 ```
 
-See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 is described above; Step 11 adds the separate Progress layer above; Step 12 and later are not implemented.
+See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 is described above; Step 11 adds the separate Progress layer above; Step 12 adds optional accounts above; Step 13 and later are not implemented.
 
 
 ## Supplemental learning and explanatory feedback
@@ -66,7 +85,7 @@ pnpm run validate:enrichment
 pnpm run check:enrichment-bundle
 ```
 
-The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Step 10 adds the mock exams described above; Step 11 adds the evidence indices above; Step 12 and later remain future work.
+The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Step 10 adds the mock exams described above; Step 11 adds the evidence indices above; Step 12 adds optional accounts above; Step 13 and later remain future work.
 
 ## Introduction to Programming
 
@@ -84,7 +103,7 @@ pnpm run verify:ip-java
 
 The first two commands validate canonical ownership, sources, published fingerprints, safe assessment policies and actual production payloads. The optional development-only Java check requires JDK 21; set `DELFTSTUDY_JAVA_HOME` to its installation directory if needed. It executes only checked-in authored fixtures and reference harnesses, never student answers. Illustrative JUnit snippets are specifications, not a claim that JUnit ran.
 
-See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). Step 9 adds the Mistake Book and Study Path described below. Mastery, accounts and deployment remain excluded. Shared mock exams are described above.
+See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). Step 9 adds the Mistake Book and Study Path described below. Mastery and optional accounts are described above; deployment remains excluded. Shared mock exams are described above.
 
 ## Application navigation
 
@@ -113,7 +132,7 @@ React Router's declarative `BrowserRouter` provides clean URLs and native Back/F
 
 The Assembly workbench opens at full viewport width so the shell does not change its responsive breakpoints. The menu, breadcrumbs and **Back to Assembly topic** link connect it to the surrounding application. Leaving the tool stops its running timer and removes its keyboard listeners. Returning starts a fresh execution using the locally saved source/preferences; existing history remains in memory only. Pending editor autosave is flushed on departure so a quick navigation cannot lose the current draft. Student records use the separate IndexedDB repository described below; the Assembly namespace and format are unchanged.
 
-Vite development and production-preview servers support refreshing deep links. A different static host must serve `index.html` for application routes (SPA fallback); no backend is required. Hosting configuration/deployment is outside this local-only task.
+Vite development and production-preview servers support refreshing deep links. A different static host must serve `index.html` for application routes (SPA fallback); no backend is required. Hosting configuration/deployment is outside this implementation step.
 
 ## Reasoning & Logic — Step 7
 
@@ -255,10 +274,10 @@ Drafts have canonical identity, explicit targeted skills, optional exercise iden
 - **Export student backup**, then keep the downloaded JSON somewhere safe. To transfer or restore, choose that file, review the contents, check the replacement confirmation and press **Replace student data**. Cancellation changes nothing. No automatic merge occurs.
 - **Export pre-restore recovery** downloads the immediately preceding dataset. Choose that file through the same confirmed restore flow to recover it. Each successful restore replaces the previous recovery snapshot; export an older recovery file before another restore if you need to retain it.
 - Backups cover only the student namespace. Assembly editor/preferences remain under `delftstudy:v1:` in localStorage; CPU execution history remains in memory. No blanket clear-browser-storage action exists.
-- Browser, device, hostname and port each define separate local storage. This is not cloud synchronization. Browser-data deletion, device failure and some crashes can lose local data even after a completed save. Exported backups provide a separate recovery copy.
+- Browser, device, hostname and port each define separate local storage. Anonymous profiles do not synchronize; configured account profiles can explicitly sync learner records. Browser-data deletion, device failure and some crashes can lose local data even after a completed save. Exported backups provide a separate recovery copy.
 - Schema 1/2 backups and databases migrate deliberately to Schema 3. Unknown future versions, different academic fingerprints and malformed persisted data are preserved and refused; there is no automatic corruption repair. Preserve existing browser data and use a compatible application/backup when incompatibility is reported.
 
-The only new dependency is **fake-indexeddb 6.2.5**, development-only for reproducible storage tests. Runtime dependencies remain React, React DOM and React Router. The existing deprecated **whatwg-encoding 3.1.1** is transitive through development-only jsdom 26.1.0 (also through html-encoding-sniffer 4.0.0); no broad upgrade was performed.
+Step 3 added **fake-indexeddb 6.2.5**, development-only for reproducible storage tests. Runtime dependencies include React, React DOM and React Router; Step 12 adds the lazy Supabase client described above. The existing deprecated **whatwg-encoding 3.1.1** is transitive through development-only jsdom 26.1.0 (also through html-encoding-sniffer 4.0.0); no broad upgrade was performed.
 
 The [Step 3 acceptance report](docs/learning-state-status.md) records exact tests, browser versions, the separate adversarial self-review, limitations and final verification. Native-browser checks can be reproduced with:
 

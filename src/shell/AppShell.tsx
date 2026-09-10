@@ -6,7 +6,7 @@ import { ShellIcon } from './ShellIcon';
 
 export function AppShell() {
   const {pathname, hash} = useLocation();
-  const context = pageContext(pathname);
+  const context = pathname.replace(/\/+$/, '') === '/account' ? {title:'Account & sync',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & sync'}]} : pageContext(pathname);
   const tool = pathname.replace(/\/+$/, '') === ASSEMBLY_TOOL_PATH;
   const [navigationOpen, setNavigationOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -49,6 +49,7 @@ export function AppShell() {
         {courses.map(course => <NavLink key={course.subject_id} to={course.path} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={course.icon}/><span>{course.name}</span></NavLink>)}
         <div className="ds-nav-group">Study</div>
         {productAreas.map(area => <NavLink key={area.path} to={area.path} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={area.icon}/><span>{area.title}</span></NavLink>)}
+        <NavLink to="/account" className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="progress"/><span>Account & sync</span></NavLink>
       </nav>
       <div className="ds-sidebar-footer"><span className="ds-footer-dot"/> Built for independent learning</div>
     </aside>

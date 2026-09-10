@@ -39,9 +39,14 @@
     "check:exam-bundle": "node --import tsx scripts/inspect-exam-build.ts",
     "validate:mastery": "node --import tsx scripts/validate-mastery.ts",
     "validate:readiness": "node --import tsx scripts/validate-readiness.ts",
-    "check:progress-bundle": "node --import tsx scripts/inspect-progress-build.ts"
+    "check:progress-bundle": "node --import tsx scripts/inspect-progress-build.ts",
+    "validate:auth": "node --import tsx scripts/validate-auth.ts",
+    "validate:sync": "node --import tsx scripts/validate-sync.ts",
+    "validate:supabase-security": "node --import tsx scripts/validate-supabase-security.ts",
+    "check:cloud-bundle": "node --import tsx scripts/inspect-cloud-build.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "2.116.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-router": "7.18.3"

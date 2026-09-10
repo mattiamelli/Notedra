@@ -9,7 +9,8 @@ import { TopicPage } from './pages/TopicPage';
 import { ProductAreaPage } from './pages/ProductAreaPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import './shell/shell.css';
-import { LearningProvider } from './learning/LearningProvider';
+import { AccountRoot } from './accounts/AccountRoot';
+const AccountPage=lazy(()=>import('./accounts/AccountPage').then(m=>({default:m.AccountPage})));
 
 const PracticePage = lazy(() => import('./practice/PracticePage').then(m => ({default:m.PracticePage})));
 const ExercisePage = lazy(() => import('./practice/ExercisePage').then(m => ({default:m.ExercisePage})));
@@ -38,11 +39,12 @@ export function AppRoutes() {
     <Route path="study-plan" caseSensitive element={<Suspense fallback={<p role="status">Loading Study Path…</p>}><StudyPathPage/></Suspense>}/>
     <Route path="exams/*" caseSensitive element={<Suspense fallback={<p role="status">Loading Mock Exams…</p>}><ExamsPage/></Suspense>}/>
     <Route path="progress" caseSensitive element={<Suspense fallback={<p role="status">Loading Progress…</p>}><ProgressPage/></Suspense>}/>
+    <Route path="account" caseSensitive element={<Suspense fallback={<p role="status">Loading Account…</p>}><AccountPage/></Suspense>}/>
     {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams','/progress'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
   </Route></Routes>;
 }
 
 export default function App() {
-  return <BrowserRouter><LearningProvider><AppRoutes/></LearningProvider></BrowserRouter>;
+  return <BrowserRouter><AccountRoot><AppRoutes/></AccountRoot></BrowserRouter>;
 }

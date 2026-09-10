@@ -85,10 +85,10 @@ describe('application routes and canonical navigation', () => {
 });
 
 describe('shell interaction and browser history', () => {
-  it('provides the desktop navigation, landmark, skip link and all nine primary destinations', async () => {
+  it('provides the desktop navigation, landmark, skip link and all ten primary destinations', async () => {
     await renderRoute('/');
     const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')];
-    expect(links.map(link => link.getAttribute('href'))).toEqual(['/', ...courses.map(course => course.path), ...productAreas.map(area => area.path)]);
+    expect(links.map(link => link.getAttribute('href'))).toEqual(['/', ...courses.map(course => course.path), ...productAreas.map(area => area.path), '/account']);
     expect(container.querySelectorAll('main')).toHaveLength(1);
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
     expect(document.title).toBe('Dashboard · DelftStudy');

@@ -1,0 +1,15 @@
+{
+  "before": "dd62e22e779e58c122d811d1eb83b15617e34c72eb8fb23f2ef1086c0b3081d8",
+  "after": "29d519e4760cd5e3a6c2701dc79b435d5c250d1892e49158f3dbdab865c5b14c",
+  "added": [
+    "@supabase/supabase-js@2.116.0",
+    "@supabase/auth-js@2.116.0",
+    "@supabase/functions-js@2.116.0",
+    "@supabase/postgrest-js@2.116.0",
+    "@supabase/realtime-js@2.116.0",
+    "@supabase/storage-js@2.116.0",
+    "@supabase/phoenix@0.4.5",
+    "iceberg-js@0.8.1",
+    "tslib@2.8.1"
+  ]
+}
