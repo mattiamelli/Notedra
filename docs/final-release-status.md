@@ -174,3 +174,13 @@ The current metadata, route privacy, artifact comparison, browser fix and docume
 4. Search Console ownership is an operator task requiring Google's actual verification file; instructions are ready, configuration/indexing not performed. Numeric browser version, field Web Vitals, offline fault injection and exhaustive accessibility remain explicitly NOT RUN, with the bounded smoke evidence above retained.
 
 **Confirm Email is not the only remaining blocker.** No Supabase Site URL/Redirect URL change is currently required. No provider migration, Step 16 or final acceptance commit was made; this is a clean, resumable **Step 15 PARTIAL** checkpoint.
+
+## Three HTTP blockers continuation — report-only checkpoint
+
+Starting HEAD `c81a111a84f30a6acc035463d3096e1d3064d971`; status and diff empty. Fresh live HEAD `/co` at `2026-09-10T23:09:56Z` still lacked the six required header families. No Supabase setting/API/signup was re-diagnosed; SU-469802 remains external.
+
+The installed Sites skill documents both static and standalone Worker ESM deployment on the same project. Its Worker starter returns custom headers/status through `Response`, with embedded assets; its packager accepts `dist/server/index.js` and hosting metadata. The current continuation implements that small response adapter, not a provider or framework migration. Public URL and project ID remain unchanged. `hosting/README.md` documents the separate generated packaging root and reproducible build steps.
+
+Focused tests: **41/41 PASS** (33 HTTP-delivery cases plus the 8 existing release tests). Typecheck PASS. Production build/content gates PASS (Vite7.96s). Production bundle and emitted-asset exclusions PASS (226 frontend files). Generated Worker local smoke covers all three courses, nested lesson, private route and missing JS/CSS/image/global route. Worker is 2,221,768 raw bytes / 520,340 gzip bytes, containing 90 public initial documents and 132 actual frontend assets. The canonical sitemap remains 47 URLs. No `src/` application file, scoring/answer semantics, storage, Auth/RLS, or content version changed. The accepted 1,894-test full-suite result is preserved; it was not unnecessarily rerun for this delivery-only change.
+
+CSP starts Report-Only to inspect real browser compatibility. Local response tests and a supported format are not live capability proof; the same-site deployment and actual HTTP/browser checks are still pending at this checkpoint. Do not claim the three blockers fixed until those live checks pass, and do not claim enforced CSP until its subsequent enforcement phase passes.

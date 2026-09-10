@@ -12,6 +12,13 @@ export function publicReleasePages():ReleasePage[] {
     {path:ASSEMBLY_TOOL_PATH,title:'x86-64 Assembly Visualizer · DelftStudy',description:'Step through AT&T x86-64 instructions and inspect registers, stack frames and function calls in your browser.'},
   ].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0);
 }
+// Keep the 47 canonical sitemap entries stable; lessons also receive their own initial head.
+export function publicDocumentPages():ReleasePage[] {
+  return [...publicReleasePages(),...academicIndex.topics.map(topic=>({
+    path:topicPath(topic)+'/learn',title:`Learn · ${topic.name} · DelftStudy`,
+    description:`Study ${topic.name} with explanations and worked examples in DelftStudy, an independent student study platform.`,
+  }))].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0);
+}
 export function escapeMarkup(value:string):string {return value.replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]!));}
 export function sitemap(pages:ReleasePage[]):string {
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.map(page=>`  <url><loc>${escapeMarkup(productionOrigin+page.path)}</loc></url>`).join('\n')+'\n</urlset>\n';
@@ -42,16 +49,16 @@ export function releaseBuildGuard():Plugin {
   let output='dist',supabaseOrigin='';
   return {name:'delftstudy-release',apply:'build',configResolved(config){output=config.build.outDir;supabaseOrigin=config.env.VITE_SUPABASE_URL??'';},closeBundle(){
     if(!supabaseOrigin)return; // Local-only builds remain available without cloud configuration.
-    const template=readFileSync(`${output}/index.html`,'utf8'),pages=publicReleasePages();
+    const template=readFileSync(`${output}/index.html`,'utf8'),pages=publicReleasePages(),documents=publicDocumentPages();
     mkdirSync(`${output}/release`,{recursive:true});
-    pages.forEach((page,index)=>writeFileSync(`${output}/release/page-${index}.html`,releaseHtml(template,page)));
+    documents.forEach((page,index)=>writeFileSync(`${output}/release/page-${index}.html`,releaseHtml(template,page)));
     writeFileSync(`${output}/index.html`,releaseHtml(template));
     writeFileSync(`${output}/404.html`,releaseHtml(template));
     writeFileSync(`${output}/robots.txt`,releaseRobotsText);
     writeFileSync(`${output}/sitemap.xml`,sitemap(pages));
-    writeFileSync(`${output}/release-metadata.js`,metadataScript(pages));
+    writeFileSync(`${output}/release-metadata.js`,metadataScript(documents));
     writeFileSync(`${output}/manifest.webmanifest`,JSON.stringify({name:'DelftStudy',short_name:'DelftStudy',description:'Independent computer science study tools',start_url:'/',display:'standalone',theme_color:'#0066ff',background_color:'#f0f7ff',icons:[{src:'/favicon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]})+'\n');
     writeFileSync(`${output}/_headers`,releaseHeaders(supabaseOrigin.replace(/\/$/,'')));
-    writeFileSync(`${output}/_redirects`,releaseRedirects(pages));
+    writeFileSync(`${output}/_redirects`,releaseRedirects(documents));
   }};
 }
