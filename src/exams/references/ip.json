@@ -1,0 +1,50 @@
+[
+  {
+    "itemId": "ds.exam.ip.model",
+    "version": "1",
+    "reference": "Use final fields, validate before assignment, and expose read access only. Reject null/blank IDs and values ≤0 with IllegalArgumentException. Example authored fixtures: gable/DRY/73/91 and ridge/FIRING/146/1170. Do not infer persistence or mutable setters.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.polymorphism",
+    "version": "1",
+    "reference": "An abstract method implemented in each subtype enables dynamic dispatch through Batch references. For positive ints use mass/denominator plus one if the remainder is nonzero to avoid overflow in mass+denominator−1. Fixtures 73 DRY→7 and 146 FIRING→34.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.equality",
+    "version": "1",
+    "reference": "Equality checks reference identity, null, exact class, then id equality. Hash combines exact class and id. Two DryBatch objects with the same id compare equal despite differing mass; a FiringBatch with the same id does not. Unequal instances may share a hash.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.parser",
+    "version": "1",
+    "reference": "Buffer the borrowed Reader without closing it; count physical lines including blanks. split(\";\",-1), validate field count/type/numbers and uniqueness in a local set, append only to a local result. Return after complete success. A late error cannot publish a partial list.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.streams",
+    "version": "1",
+    "reference": "Filter limit≤bound, sort with comparingInt(Batch::requiredMinutes).thenComparing(Batch::id), map to id and collect. Return an empty list when none qualify. Sorting a stream does not reorder the source list.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.application",
+    "version": "1",
+    "reference": "Parse command words in one controller, delegate queries and serialize id;kind;mass;limit. Use try-with-resources for a Writer you open, propagate/translate failure at the UI boundary and do not report export success before close succeeds. Continue after a malformed command, quit on explicit quit or input EOF.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.worker",
+    "version": "1",
+    "reference": "Copy the archive to an immutable snapshot; only the worker writes its result holder, and the caller reads after successful join. Use long accumulation. start creates concurrent execution; direct run runs on the caller. On interrupted join, preserve interruption and do not announce an available result.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.ip.tests",
+    "version": "1",
+    "reference": "A compact suite uses the fixtures gable/DRY/73/91 (7 minutes) and ridge/FIRING/146/1170 (34 minutes): total 41. Construct equal identities with different nonidentity data, malformed line after a valid line, a Reader throwing on read, and a Writer throwing on close. Assert outputs/exceptions and unchanged archive state. Repeatable join tests use synchronization, not sleeps.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  }
+]

@@ -1,0 +1,1078 @@
+{
+  "course": "CSE1300_RL",
+  "items": [
+    {
+      "id": "ds.exam.rl.rl-argument-counterrows",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T01_PROP_LOGIC",
+      "title": "Find counterexample rows for an argument",
+      "mechanism": "rl-argument-counterrows",
+      "questionType": "QT_EVALUATE_MODEL",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "RL_SK01_04_PROP_VALIDITY"
+      ],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_TRUTH_VALID",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "rl-exact",
+        "version": "1:sha256:0845ba46e0bf62986430db028d003339a911471972b292d86f2416f54864e6ff:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961"
+      },
+      "practiceRef": {
+        "id": "ds.practice.rl-argument-counterrows",
+        "version": "1:sha256:0845ba46e0bf62986430db028d003339a911471972b292d86f2416f54864e6ff:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961"
+      }
+    },
+    {
+      "id": "ds.exam.rl.rl-equivalence-rows",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T01_PROP_LOGIC",
+      "title": "Compare meanings across all valuations",
+      "mechanism": "rl-equivalence-rows",
+      "questionType": "QT_EVALUATE_MODEL",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "RL_SK01_05_EQUIV"
+      ],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_TRUTH_VALID",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "rl-exact",
+        "version": "1:sha256:806cdd50b77f23598efb18c106e46a0ae033856937e0bbdeb296b8de7fc09996:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961"
+      },
+      "practiceRef": {
+        "id": "ds.practice.rl-equivalence-rows",
+        "version": "1:sha256:806cdd50b77f23598efb18c106e46a0ae033856937e0bbdeb296b8de7fc09996:grader:c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961"
+      }
+    },
+    {
+      "id": "ds.exam.rl.formalization",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T02_FOL",
+      "title": "Translate with scope",
+      "mechanism": "formalization",
+      "questionType": "QT_TRANSLATE_FORMALIZE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2,
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_TRANSLATE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Domain: workshop objects and people. Define predicates and formalize: every inspected instrument was inspected by some technician, and no technician inspected every instrument. Translate your formulas back into English and discuss the case with no instruments.",
+      "rubric": [
+        {
+          "requirement": "Define symbols and domains.",
+          "skillIds": [],
+          "checks": [
+            "Define symbols and domains."
+          ]
+        },
+        {
+          "requirement": "Make dependent witnesses and negation scope explicit.",
+          "skillIds": [],
+          "checks": [
+            "Make dependent witnesses and negation scope explicit."
+          ]
+        },
+        {
+          "requirement": "Explain vacuous truth and allow equivalent formulas.",
+          "skillIds": [],
+          "checks": [
+            "Explain vacuous truth and allow equivalent formulas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.quantifiers",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T02_FOL",
+      "title": "Negation and witnesses",
+      "mechanism": "quantifiers",
+      "questionType": "QT_TRANSLATE_FORMALIZE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_MID_2025",
+          "filename": "R&L Midterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_TRANSLATE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Negate ∀x∃y(A(x)→(B(y)∧S(x,y))) until negations occur only on predicates. Explain what a witness to the negation must demonstrate.",
+      "rubric": [
+        {
+          "requirement": "Swap quantifiers when pushing negation.",
+          "skillIds": [],
+          "checks": [
+            "Swap quantifiers when pushing negation."
+          ]
+        },
+        {
+          "requirement": "Expand implication correctly.",
+          "skillIds": [],
+          "checks": [
+            "Expand implication correctly."
+          ]
+        },
+        {
+          "requirement": "Explain one x defeating every candidate y.",
+          "skillIds": [],
+          "checks": [
+            "Explain one x defeating every candidate y."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.countermodel",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T02_FOL",
+      "title": "Construct a countermodel",
+      "mechanism": "countermodel",
+      "questionType": "QT_CONSTRUCT_MODEL",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_MID_2025",
+          "filename": "R&L Midterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_MODEL_COUNTER",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Give a finite nonempty domain and relation T making ∀x∃y T(x,y) true but ∃y∀x T(x,y) false. Verify each formula in your structure.",
+      "rubric": [
+        {
+          "requirement": "List the whole domain and relation.",
+          "skillIds": [],
+          "checks": [
+            "List the whole domain and relation."
+          ]
+        },
+        {
+          "requirement": "Verify every universal instance.",
+          "skillIds": [],
+          "checks": [
+            "Verify every universal instance."
+          ]
+        },
+        {
+          "requirement": "Falsify each candidate common witness.",
+          "skillIds": [],
+          "checks": [
+            "Falsify each candidate common witness."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.proof-method",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T03_PROOF_METHODS",
+      "title": "Choose and justify a proof",
+      "mechanism": "proof-method",
+      "questionType": "QT_PROVE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_PROOF_METHOD",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Prove that the square of any odd integer leaves remainder 1 on division by 8. Identify your proof method and justify the step about two consecutive integers.",
+      "rubric": [
+        {
+          "requirement": "Take an arbitrary odd integer, including negative ones.",
+          "skillIds": [],
+          "checks": [
+            "Take an arbitrary odd integer, including negative ones."
+          ]
+        },
+        {
+          "requirement": "Justify the even product.",
+          "skillIds": [],
+          "checks": [
+            "Justify the even product."
+          ]
+        },
+        {
+          "requirement": "Conclude divisibility and identify the method.",
+          "skillIds": [],
+          "checks": [
+            "Conclude divisibility and identify the method."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.induction",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "title": "A recurrence proof",
+      "mechanism": "induction",
+      "questionType": "QT_PROVE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_INDUCTION",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Let d0=3 and d(n+1)=2d(n)+5 for n≥0. Prove d(n)=8·2^n−5 for all n≥0 by induction. Write a quantified induction step.",
+      "rubric": [
+        {
+          "requirement": "Check the actual base index.",
+          "skillIds": [],
+          "checks": [
+            "Check the actual base index."
+          ]
+        },
+        {
+          "requirement": "State an arbitrary induction hypothesis.",
+          "skillIds": [],
+          "checks": [
+            "State an arbitrary induction hypothesis."
+          ]
+        },
+        {
+          "requirement": "Use the recurrence and IH without assuming the conclusion.",
+          "skillIds": [],
+          "checks": [
+            "Use the recurrence and IH without assuming the conclusion."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.invariant",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "title": "Preservation and termination",
+      "mechanism": "invariant",
+      "questionType": "QT_PROVE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_INVARIANT",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "A finite list of integers is repeatedly shortened by replacing adjacent values x,y with x+y+1. Prove a formula for the final value in terms of the original sum S and length n≥1, independent of replacement order.",
+      "rubric": [
+        {
+          "requirement": "State and initialize an invariant.",
+          "skillIds": [],
+          "checks": [
+            "State and initialize an invariant."
+          ]
+        },
+        {
+          "requirement": "Verify every allowed replacement.",
+          "skillIds": [],
+          "checks": [
+            "Verify every allowed replacement."
+          ]
+        },
+        {
+          "requirement": "Use termination and the final length.",
+          "skillIds": [],
+          "checks": [
+            "Use termination and the final length."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.recursive-set",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T04_INDUCTION_RECURSION",
+      "title": "Structural induction",
+      "mechanism": "recursive-set",
+      "questionType": "QT_PROVE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_INDUCTION",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Define W by: ε is in W; if w is in W then [w] is in W; if u,v are in W then uv is in W; nothing else is in W. Prove every w in W has equally many opening and closing brackets.",
+      "rubric": [
+        {
+          "requirement": "Cover both constructor rules.",
+          "skillIds": [],
+          "checks": [
+            "Cover both constructor rules."
+          ]
+        },
+        {
+          "requirement": "Use the hypotheses for each child.",
+          "skillIds": [],
+          "checks": [
+            "Use the hypotheses for each child."
+          ]
+        },
+        {
+          "requirement": "Do not claim the converse without proof.",
+          "skillIds": [],
+          "checks": [
+            "Do not claim the converse without proof."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.sets",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T06_SET_THEORY",
+      "title": "Membership proof",
+      "mechanism": "sets",
+      "questionType": "QT_PROVE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_SET_FUNC_REL",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Prove A−(B∪C)=(A−B)∩(A−C) by element reasoning, then give finite sets showing why replacing the right-hand intersection by union is not valid in general.",
+      "rubric": [
+        {
+          "requirement": "Show both directions or an equivalence chain.",
+          "skillIds": [],
+          "checks": [
+            "Show both directions or an equivalence chain."
+          ]
+        },
+        {
+          "requirement": "Keep complements relative to A clear.",
+          "skillIds": [],
+          "checks": [
+            "Keep complements relative to A clear."
+          ]
+        },
+        {
+          "requirement": "Verify a counterexample to the altered claim.",
+          "skillIds": [],
+          "checks": [
+            "Verify a counterexample to the altered claim."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.relations",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+      "title": "Relation and function obligations",
+      "mechanism": "relations",
+      "questionType": "QT_PROVE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_SET_FUNC_REL",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "On Z define xRy iff x−y is divisible by 7. Prove R is an equivalence relation. Then consider f:Z→{0,…,6} sending an integer to its nonnegative remainder: is it injective, surjective, or bijective? Explain.",
+      "rubric": [
+        {
+          "requirement": "Prove three relation properties for arbitrary integers.",
+          "skillIds": [],
+          "checks": [
+            "Prove three relation properties for arbitrary integers."
+          ]
+        },
+        {
+          "requirement": "Use the declared domain and codomain.",
+          "skillIds": [],
+          "checks": [
+            "Use the declared domain and codomain."
+          ]
+        },
+        {
+          "requirement": "Give a collision and witnesses for all output values.",
+          "skillIds": [],
+          "checks": [
+            "Give a collision and witnesses for all output values."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.tree",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "title": "A recursive tree function",
+      "mechanism": "tree",
+      "questionType": "QT_CONSTRUCT_MODEL",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4,
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_TREE_GRAPH",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "For finite rooted ordered trees, define a recursive function counting internal nodes having an odd number of children. Specify the empty-tree and leaf cases and evaluate it on a root with three children: two leaves and a node with two leaf children.",
+      "rubric": [
+        {
+          "requirement": "Make recursive calls on smaller subtrees.",
+          "skillIds": [],
+          "checks": [
+            "Make recursive calls on smaller subtrees."
+          ]
+        },
+        {
+          "requirement": "Count the current node exactly once.",
+          "skillIds": [],
+          "checks": [
+            "Count the current node exactly once."
+          ]
+        },
+        {
+          "requirement": "Show the evaluation and boundary cases.",
+          "skillIds": [],
+          "checks": [
+            "Show the evaluation and boundary cases."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.graph",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T05_TREES_GRAPHS",
+      "title": "Construct and justify a DAG",
+      "mechanism": "graph",
+      "questionType": "QT_CONSTRUCT_MODEL",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_TREE_GRAPH",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Using vertices h,j,k,m,n, construct a directed acyclic graph with exactly two topological orderings and at least one incomparable pair. List both orders and justify that no others exist.",
+      "rubric": [
+        {
+          "requirement": "Give the complete edge set.",
+          "skillIds": [],
+          "checks": [
+            "Give the complete edge set."
+          ]
+        },
+        {
+          "requirement": "Check acyclicity.",
+          "skillIds": [],
+          "checks": [
+            "Check acyclicity."
+          ]
+        },
+        {
+          "requirement": "Prove exhaustiveness of the listed orders.",
+          "skillIds": [],
+          "checks": [
+            "Prove exhaustiveness of the listed orders."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.rl.transfer",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+      "title": "Resolve a finite constraint system",
+      "mechanism": "transfer",
+      "questionType": "QT_TRANSFER_CONSTRAINT",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "RL_PAT_FINAL_PUZZLE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Four inspection stages U,V,W,X each occupy one of slots 1–4. U is before W; V is immediately after U; X is not first; W is not last. Determine the schedule and justify uniqueness by considering the possible adjacent U,V placements.",
+      "rubric": [
+        {
+          "requirement": "Enumerate possible adjacent placements.",
+          "skillIds": [],
+          "checks": [
+            "Enumerate possible adjacent placements."
+          ]
+        },
+        {
+          "requirement": "Use every constraint.",
+          "skillIds": [],
+          "checks": [
+            "Use every constraint."
+          ]
+        },
+        {
+          "requirement": "Show why alternatives fail, not just a valid schedule.",
+          "skillIds": [],
+          "checks": [
+            "Show why alternatives fail, not just a valid schedule."
+          ]
+        }
+      ]
+    }
+  ],
+  "blueprints": [
+    {
+      "id": "ds.exam.rl.quick",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "mode": "quick",
+      "title": "Quick exam practice",
+      "durationMinutes": 30,
+      "slots": [
+        {
+          "id": "component-1",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.rl-argument-counterrows",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-2",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.formalization",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-3",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.induction",
+              "version": "1"
+            }
+          ]
+        }
+      ],
+      "constraints": {
+        "topics": [
+          "RL_T01_PROP_LOGIC",
+          "RL_T02_FOL",
+          "RL_T04_INDUCTION_RECURSION"
+        ],
+        "minOpen": 2,
+        "maxPerTopic": 1
+      },
+      "difficultyMix": {
+        "Easy": 0,
+        "Medium": 1,
+        "Hard": 2
+      },
+      "questionTypeMix": {
+        "QT_EVALUATE_MODEL": 1,
+        "QT_TRANSLATE_FORMALIZE": 1,
+        "QT_PROVE": 1
+      },
+      "timingPolicy": "ABSOLUTE_FREEZE_CONFIRM_V1",
+      "scoringPolicy": "EXACT_COMPONENTS_OPEN_UNSCORED_V1",
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2,
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode is predominantly open construction and proof. Equivalent valid answers are checked with rubrics rather than strings."
+    },
+    {
+      "id": "ds.exam.rl.full",
+      "version": "1",
+      "course": "CSE1300_RL",
+      "mode": "full",
+      "title": "Full authored mock",
+      "durationMinutes": 180,
+      "slots": [
+        {
+          "id": "component-1",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.rl-argument-counterrows",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-2",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.rl-equivalence-rows",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-3",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.formalization",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-4",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.quantifiers",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-5",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.countermodel",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-6",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.proof-method",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-7",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.induction",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-8",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.invariant",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-9",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.recursive-set",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-10",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.sets",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-11",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.relations",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-12",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.tree",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-13",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.graph",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-14",
+          "candidates": [
+            {
+              "id": "ds.exam.rl.transfer",
+              "version": "1"
+            }
+          ]
+        }
+      ],
+      "constraints": {
+        "topics": [
+          "RL_T01_PROP_LOGIC",
+          "RL_T02_FOL",
+          "RL_T03_PROOF_METHODS",
+          "RL_T04_INDUCTION_RECURSION",
+          "RL_T06_SET_THEORY",
+          "RL_T07_FUNCTIONS_RELATIONS",
+          "RL_T05_TREES_GRAPHS",
+          "RL_T09_TRANSFER_CONSTRAINT_PUZZLES"
+        ],
+        "minOpen": 12,
+        "maxPerTopic": 3
+      },
+      "difficultyMix": {
+        "Easy": 0,
+        "Medium": 2,
+        "Hard": 12
+      },
+      "questionTypeMix": {
+        "QT_EVALUATE_MODEL": 2,
+        "QT_TRANSLATE_FORMALIZE": 2,
+        "QT_CONSTRUCT_MODEL": 3,
+        "QT_PROVE": 6,
+        "QT_TRANSFER_CONSTRAINT": 1
+      },
+      "timingPolicy": "ABSOLUTE_FREEZE_CONFIRM_V1",
+      "scoringPolicy": "EXACT_COMPONENTS_OPEN_UNSCORED_V1",
+      "provenance": [
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            2,
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_MID_2025",
+          "filename": "R&L Midterm 2025.pdf",
+          "pages": [
+            2
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "RL_END_2025",
+          "filename": "R&L Endterm 2025.pdf",
+          "pages": [
+            4,
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode is predominantly open construction and proof. Equivalent valid answers are checked with rubrics rather than strings."
+    }
+  ]
+}

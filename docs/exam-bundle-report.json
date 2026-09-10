@@ -1,0 +1,157 @@
+{
+  "initialJS": 493966,
+  "initialGzip": 130037,
+  "totalAssets": 1569100,
+  "totalGzip": 458986,
+  "owners": {
+    "ExamsPage.tsx": {
+      "file": "assets/ExamsPage-DyenwpRj.js",
+      "bytes": 7052,
+      "gzipBytes": 2856,
+      "entry": false,
+      "imports": [
+        "assets/index-Bc3FncnF.js",
+        "assets/engine-CYJwkV83.js"
+      ],
+      "dynamicImports": [
+        "assets/co-BL8WV3S_.js",
+        "assets/rl-HWHw8i-v.js",
+        "assets/ip-GJiTBzVC.js",
+        "assets/ExamSessionPage-B9XusHXu.js",
+        "assets/ExamReviewPage-2WJ__7sB.js"
+      ],
+      "modules": [
+        "src/exams/catalog.ts",
+        "src/exams/exams.css",
+        "src/exams/ExamsPage.tsx"
+      ]
+    },
+    "ExamSessionPage.tsx": {
+      "file": "assets/ExamSessionPage-B9XusHXu.js",
+      "bytes": 8468,
+      "gzipBytes": 3290,
+      "entry": false,
+      "imports": [
+        "assets/index-Bc3FncnF.js",
+        "assets/ExerciseParts-DvpTrcBp.js",
+        "assets/evaluation-SsSsGyKL.js",
+        "assets/engine-CYJwkV83.js",
+        "assets/feedback-dBaQ8sEk.js",
+        "assets/service-C97VW0TQ.js",
+        "assets/EvidenceView-CeMs9ZGW.js",
+        "assets/evidence-1M3FZYVF.js"
+      ],
+      "dynamicImports": [
+        "assets/ExamOpenAnswer-D-a_Imxj.js"
+      ],
+      "modules": [
+        "src/exams/useExamDraft.ts",
+        "src/exams/ExamDialog.tsx",
+        "src/exams/ExamSessionPage.tsx"
+      ]
+    },
+    "ExamReviewPage.tsx": {
+      "file": "assets/ExamReviewPage-2WJ__7sB.js",
+      "bytes": 6154,
+      "gzipBytes": 2578,
+      "entry": false,
+      "imports": [
+        "assets/index-Bc3FncnF.js",
+        "assets/ExerciseParts-DvpTrcBp.js",
+        "assets/service-C97VW0TQ.js",
+        "assets/evaluation-SsSsGyKL.js",
+        "assets/engine-CYJwkV83.js",
+        "assets/feedback-dBaQ8sEk.js",
+        "assets/EvidenceView-CeMs9ZGW.js",
+        "assets/evidence-1M3FZYVF.js"
+      ],
+      "dynamicImports": [
+        "assets/co-8kIY2FBo.js",
+        "assets/rl-CRFBwHsJ.js",
+        "assets/ip-CZ92APWS.js"
+      ],
+      "modules": [
+        "src/exams/ExamReviewPage.tsx"
+      ]
+    },
+    "ExamOpenAnswer.tsx": {
+      "file": "assets/ExamOpenAnswer-D-a_Imxj.js",
+      "bytes": 958,
+      "gzipBytes": 543,
+      "entry": false,
+      "imports": [
+        "assets/index-Bc3FncnF.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/ExamOpenAnswer.tsx"
+      ]
+    },
+    "banks/co.json": {
+      "file": "assets/co-BL8WV3S_.js",
+      "bytes": 31788,
+      "gzipBytes": 5833,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/banks/co.json"
+      ]
+    },
+    "banks/rl.json": {
+      "file": "assets/rl-HWHw8i-v.js",
+      "bytes": 20990,
+      "gzipBytes": 4277,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/banks/rl.json"
+      ]
+    },
+    "banks/ip.json": {
+      "file": "assets/ip-GJiTBzVC.js",
+      "bytes": 23311,
+      "gzipBytes": 4365,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/banks/ip.json"
+      ]
+    },
+    "references/co.json": {
+      "file": "assets/co-8kIY2FBo.js",
+      "bytes": 5981,
+      "gzipBytes": 1934,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/references/co.json"
+      ]
+    },
+    "references/rl.json": {
+      "file": "assets/rl-CRFBwHsJ.js",
+      "bytes": 4989,
+      "gzipBytes": 1617,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/references/rl.json"
+      ]
+    },
+    "references/ip.json": {
+      "file": "assets/ip-CZ92APWS.js",
+      "bytes": 3988,
+      "gzipBytes": 1433,
+      "entry": false,
+      "imports": [],
+      "dynamicImports": [],
+      "modules": [
+        "src/exams/references/ip.json"
+      ]
+    }
+  }
+}

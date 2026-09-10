@@ -34,7 +34,7 @@ describe('bounded student contracts', () => {
     const submitted = attempt({status: 'SUBMITTED', submission: {operationId: 'same', submittedAt: position.visitedAt}});
     expect(() => validateBackup({...emptyBackup(), attempts: [submitted, {...submitted, attemptId: 'second'}]})).toThrow('Duplicate submission');
   });
-  it.each([{schemaVersion: 3}, {content: {version: '1.0.0', fingerprint: 'old'}}, {content: {version: '1.0.1', fingerprint: 'wrong'}}])('refuses incompatible versions %j', patch => {
+  it.each([{schemaVersion: 4}, {content: {version: '1.0.0', fingerprint: 'old'}}, {content: {version: '1.0.1', fingerprint: 'wrong'}}])('refuses incompatible versions %j', patch => {
     expect(() => validateBackup({...emptyBackup(), ...patch})).toThrow(expect.objectContaining({code: 'INCOMPATIBLE'}));
   });
   it('rejects malformed JSON, oversized backups and arbitrary resume URLs', () => {

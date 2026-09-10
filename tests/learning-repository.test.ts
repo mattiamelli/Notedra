@@ -129,8 +129,8 @@ describe('transactional student repository (fake-indexeddb)', () => {
   });
   it('refuses a newer IndexedDB version without deleting it', async () => {
     const factory = new IDBFactory();
-    await new Promise<void>(resolve => { const open = factory.open('future', 3); open.onsuccess = () => { open.result.close(); resolve(); }; });
+    await new Promise<void>(resolve => { const open = factory.open('future', 4); open.onsuccess = () => { open.result.close(); resolve(); }; });
     await expect(repository(factory, 'future').load()).rejects.toMatchObject({code: 'INCOMPATIBLE'});
-    expect((await factory.databases())[0].version).toBe(3);
+    expect((await factory.databases())[0].version).toBe(4);
   });
 });

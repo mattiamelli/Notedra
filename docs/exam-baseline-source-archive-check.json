@@ -1,0 +1,476 @@
+[
+  {
+    "subject": "CSE1100_IP",
+    "archive": "CSE 11B Introduction to Programming (IP).zip",
+    "canonicalDocuments": 28,
+    "matched": 28,
+    "files": [
+      {
+        "documentId": "IP_LEC_01",
+        "member": "IP Lectures/IP Lecture 1 - First Steps.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_02",
+        "member": "IP Lectures/IP Lecture 2 - Programming Structures.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_03",
+        "member": "IP Lectures/IP Lecture 3 - Methods.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_04",
+        "member": "IP Lectures/IP Lecture 4 - Classes.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_05",
+        "member": "IP Lectures/IP Lecture 5 - Arrays.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_06",
+        "member": "IP Lectures/IP Lecture 6 - Container Classes.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_07",
+        "member": "IP Lectures/IP Lecture 7 - Class Composition & Libraries.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_08",
+        "member": "IP Lectures/IP Lecture 8 - Unit Tests.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_09",
+        "member": "IP Lectures/IP Lecture 9 - Inheritance.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_10",
+        "member": "IP Lectures/IP Lecture 10 - Polymorphism.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_11",
+        "member": "IP Lectures/IP Lecture 11 - Equality & Hashcodes.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_12",
+        "member": "IP Lectures/IP Lecture 12 - Exceptions.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_13",
+        "member": "IP Lectures/IP Lecture 13 - Debugging.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_14",
+        "member": "IP Lectures/IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_15",
+        "member": "IP Lectures/IP Lecture 15 - Input Output Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_16",
+        "member": "IP Lectures/IP Lecture 16 - Input Output Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_17",
+        "member": "IP Lectures/IP Lecture 17 - Functional Java.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_18",
+        "member": "IP Lectures/IP Lecture 18 - Program Design.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_19",
+        "member": "IP Lectures/IP Lecture 19 - Modern Java.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_20",
+        "member": "IP Lectures/IP Lecture 20 - Threads.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_LEC_21",
+        "member": "IP Lectures/IP Lecture 21 - Exam Practice.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_RESIT_2024",
+        "member": "IP Programming Exams/IP Programming Resit 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_MOCK_2024",
+        "member": "IP Programming Exams/IP Programming Mock 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_MOCK_2023",
+        "member": "IP Programming Exams/IP Programming Mock 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_END_2024",
+        "member": "IP Programming Exams/IP Programming Endterm 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_END_2023",
+        "member": "IP Programming Exams/IP Programming Endterm 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_END_2021",
+        "member": "IP Programming Exams/IP Programming Endterm 2021.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "IP_END_2020",
+        "member": "IP Programming Exams/IP Programming Endterm 2020.pdf",
+        "matchesCanonicalSHA256": true
+      }
+    ]
+  },
+  {
+    "subject": "CSE1400_CO",
+    "archive": "CSE 11C Computer Organisation (CO).zip",
+    "canonicalDocuments": 29,
+    "matched": 29,
+    "files": [
+      {
+        "documentId": "CO_LEC_01",
+        "member": "CO Lectures/CO Lecture 1 - History.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_02",
+        "member": "CO Lectures/CO Lecture 2 - Assembly.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_03",
+        "member": "CO Lectures/CO Lecture 3 - Logic Circuits Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_04",
+        "member": "CO Lectures/CO Lecture 4 - Logic Circuits Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_05",
+        "member": "CO Lectures/CO Lecture 5 - Data Representation Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_06",
+        "member": "CO Lectures/CO Lecture 6 - Data Representation Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_07",
+        "member": "CO Lectures/CO Lecture 7 - ISA Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_08",
+        "member": "CO Lectures/CO Lecture 8 - ISA Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_09",
+        "member": "CO Lectures/CO Lecture 9 - BPU Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_10",
+        "member": "CO Lectures/CO Lecture 10 - BPU Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_11",
+        "member": "CO Lectures/CO Lecture 11 - IO.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_12",
+        "member": "CO Lectures/CO Lecture 12 - Memory.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_13",
+        "member": "CO Lectures/CO Lecture 13 - Caching.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_14",
+        "member": "CO Lectures/CO Lecture 14 - Pipelining.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_LEC_15",
+        "member": "CO Lectures/CO Lecture 15 - Parallel & Virtual Memory.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_END_FILE2020",
+        "member": "CO Exams/CO Endterms/CO Endterm 2020.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_END_FILE2025_SOL",
+        "member": "CO Exams/CO Endterms/CO Endterm 2025 Solutions.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_END_FILE2024",
+        "member": "CO Exams/CO Endterms/CO Endterm 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_END_FILE2023",
+        "member": "CO Exams/CO Endterms/CO Endterm 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_END_FILE2022",
+        "member": "CO Exams/CO Endterms/CO Endterm 2022.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_END_EXAMPLE",
+        "member": "CO Exams/CO Endterms/CO Endterm 2021.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_RESIT_2025_SOL",
+        "member": "CO Exams/CO Resits/CO Resit 2025 Solutions.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_RESIT_2024",
+        "member": "CO Exams/CO Resits/CO Resit 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_RESIT_2023",
+        "member": "CO Exams/CO Resits/CO Resit 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_MID_FILE2025_SOL",
+        "member": "CO Exams/CO Midterms/CO Midterm 2025 Solutions.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_MID_FILE2024",
+        "member": "CO Exams/CO Midterms/CO Midterm 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_MID_FILE2022",
+        "member": "CO Exams/CO Midterms/CO Midterm 2022.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_MID_EXAMPLE",
+        "member": "CO Exams/CO Midterms/CO Midterm 2021.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "CO_MID_FILE2020",
+        "member": "CO Exams/CO Midterms/CO Midterm 2020.pdf",
+        "matchesCanonicalSHA256": true
+      }
+    ]
+  },
+  {
+    "subject": "CSE1300_RL",
+    "archive": "CSE 11A Reasoning and Logic (R&L).zip",
+    "canonicalDocuments": 33,
+    "matched": 33,
+    "files": [
+      {
+        "documentId": "RL_LEC_00",
+        "member": "R&L Lectures/R&L Lecture 0 - Introduction.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_01",
+        "member": "R&L Lectures/R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_02",
+        "member": "R&L Lectures/R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_03",
+        "member": "R&L Lectures/R&L Lecture 3 - First-Order Logic.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_04",
+        "member": "R&L Lectures/R&L Lecture 4 - Methods of Proof Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_05",
+        "member": "R&L Lectures/R&L Lecture 5 - Methods of Proof Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_06",
+        "member": "R&L Lectures/R&L Lecture 6 - Induction and Recursion Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_07",
+        "member": "R&L Lectures/R&L Lecture 7 - Induction and Recursion Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_08",
+        "member": "R&L Lectures/R&L Lecture 8 - Induction and Recursion Part 3.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_09",
+        "member": "R&L Lectures/R&L Lecture 9 - Set Theory Part 1.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_10",
+        "member": "R&L Lectures/R&L Lecture 10 - Set Theory Part 2.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_11",
+        "member": "R&L Lectures/R&L Lecture 11 - Set Theory Part 3.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_12",
+        "member": "R&L Lectures/R&L Lecture 12 - Functions & Relations.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_13",
+        "member": "R&L Lectures/R&L Lecture 13 - The limitations of Set Theory.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_14",
+        "member": "R&L Lectures/R&L Lecture 14 - Functions on trees and graphs.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_15",
+        "member": "R&L Lectures/R&L Lecture 15 - Exam Prep.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_LEC_16",
+        "member": "R&L Lectures/R&L Lecture 16 - The Last One.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_END_FILE2020",
+        "member": "R&L Exams/R&L Endterms/R&L Endterm 2020.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_RESIT_2025",
+        "member": "R&L Exams/R&L Resits/R&L Resit 2025.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_RESIT_2024",
+        "member": "R&L Exams/R&L Resits/R&L Resit 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_RESIT_2023",
+        "member": "R&L Exams/R&L Resits/R&L Resit 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_RESIT_2022",
+        "member": "R&L Exams/R&L Resits/R&L Resit 2022.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_RESIT_2020",
+        "member": "R&L Exams/R&L Resits/R&L Resit 2020.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MID_2025",
+        "member": "R&L Exams/R&L Midterms/R&L Midterm 2025.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MID_2024",
+        "member": "R&L Exams/R&L Midterms/R&L Midterm 2024.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MID_2023",
+        "member": "R&L Exams/R&L Midterms/R&L Midterm 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MID_2022",
+        "member": "R&L Exams/R&L Midterms/R&L Midterm 2022.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MID_2020",
+        "member": "R&L Exams/R&L Midterms/R&L Midterm 2020.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MCQ_2023",
+        "member": "R&L Exams/R&L Midterms/R&L MCQ Test 2023.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MCQ_2021",
+        "member": "R&L Exams/R&L Midterms/R&L MCQ Test 2021.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_MCQ_2020",
+        "member": "R&L Exams/R&L Midterms/R&L MCQ Test 2020.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_END_2025",
+        "member": "R&L Exams/R&L Endterms/R&L Endterm 2025.pdf",
+        "matchesCanonicalSHA256": true
+      },
+      {
+        "documentId": "RL_END_2024",
+        "member": "R&L Exams/R&L Endterms/R&L Endterm 2024.pdf",
+        "matchesCanonicalSHA256": true
+      }
+    ]
+  }
+]

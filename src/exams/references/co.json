@@ -1,0 +1,86 @@
+[
+  {
+    "itemId": "ds.exam.co.boolean",
+    "version": "1",
+    "reference": "The six cells admit groups 0,2,4,6 (¬w) and 4,5,6,7 (u), yielding F=u∨¬w. An inverter and OR gate implement it. Explain why neither literal alone covers exactly the required cells.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.cmos",
+    "version": "1",
+    "reference": "00→1, 01→1, 10→1, 11→0: NAND. Pull-down conducts only for two high inputs; pull-up conducts for at least one low input. The networks are complementary in this ideal steady-state model.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.representation",
+    "version": "1",
+    "reference": "011011+001110=101001. Stored signed value is −23. There is no carry beyond bit 5, but signed overflow occurs because two positive operands produce a negative signed result.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.rounding",
+    "version": "1",
+    "reference": "Both are halfway cases. 1.0011 rounds up to 1.010 because the retained last bit of 1.001 is odd. 1.0101 rounds down to 1.010 because its retained last bit is even.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.stack",
+    "version": "1",
+    "reference": "RBP after push/mov is 0x17F8, lowest RSP is 0x17E0. The local at 0x17E8 contains 13. LEA produces RAX=0x17E8. Final RSP=RBP=0x1800; pop does not erase old memory.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.isa-tradeoff",
+    "version": "1",
+    "reference": "Stack: push J; push K; subtract second-from-top minus top; push L; multiply; pop result. Registers: subtract J,K into t; multiply t,L into result. Encoding size depends on operand fields and instruction count; fewer explicit operands need not imply fewer bytes overall.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.micro-schedule",
+    "version": "1",
+    "reference": "Issue R7→MAR with READ; while memory is pending move R6→X. Wait until completion, then MDR→ALU with X to Z, followed by Z→R9. Idle or independent work fills unused read-latency cycles. Two simultaneous bus drivers or reading MDR before completion is forbidden.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.interrupts",
+    "version": "1",
+    "reference": "Each A service occupies 43 μs including overhead, but there is no finite bound for B while higher-priority A remains continuously pending. Priority rotation or a service quota can prevent starvation; bound it only after specifying arrival/service limits.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.dma",
+    "version": "1",
+    "reference": "The CPU configures source/destination/length; DMA arbitrates for memory/bus transactions and signals completion. Contention can delay CPU memory access. Consume only after completion and any platform-required coherency/visibility work; DMA does not imply automatic synchronization with arbitrary code.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.memory",
+    "version": "1",
+    "reference": "Four chips provide each 24-bit word; eight depth banks give 512 Kiwords. Total 32 chips. A word address has 19 bits: low 16 select within a chip and high 3 select a bank.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.cache-reason",
+    "version": "1",
+    "reference": "Direct mapped: M,M,M,M,M,H; final lines contain 2 and 1. Fully associative: M,M,H,H,M,H; address 1 evicts 0 under LRU. Capacity is identical; conflicts explain the improvement.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.pipeline-reason",
+    "version": "1",
+    "reference": "Clock period is 8 ns. Nine jobs complete after 4+9−1=12 cycles, or 96 ns. Sequential: 9×20=180 ns. Single-job pipeline latency is 32 ns versus 20 ns; throughput improves despite higher latency.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.parallel",
+    "version": "1",
+    "reference": "Runtime 42+168/6=70 seconds; speedup 3. The ideal limit is 210/42=5. Synchronization, load imbalance or memory contention may add cost; state which assumption breaks.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  },
+  {
+    "itemId": "ds.exam.co.virtual",
+    "version": "1",
+    "reference": "There are 2^17 virtual pages, so the flat table needs 2^19 bytes=512 KiB. The low 13 address bits are the offset and survive translation. Larger pages reduce table entries but can increase internal fragmentation; no universal performance win follows.",
+    "reasoning": "Use the requirements as separate checks. Other valid constructions are welcome. Self-review records workflow only; it does not verify correctness."
+  }
+]

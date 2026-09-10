@@ -11,6 +11,6 @@ it.each(items)('$id: wrong feedback, immutable reload, idempotency and retry pre
  state=await service.submit(draft,answer,'submit',state.data);const submitted=state.data.attempts[0];expect(feedbackFor(submitted)).toMatchObject({status:'GRADED',correct:false});expect(explainAnswer(e,answer,feedbackFor(submitted))!.remember).toBeTruthy();
  expect((await repository(factory).load()).data.attempts[0]).toEqual(submitted);expect((await service.submit(draft,answer,'submit',loaded.data)).data.attempts[0]).toEqual(submitted);
  await expect(service.submit(draft,e.reference,'submit',loaded.data)).rejects.toMatchObject({code:'CONFLICT'});
- const retry=await service.retry(submitted,'second',state.data);expect(retry.data.attempts[0]).toEqual(submitted);expect(retry.data.attempts[1].attemptId).toBe('second');expect(retry.data.attempts[1].status).toBe('DRAFT');expect(evidencePolicy(submitted).eligible).toBe(false);expect(STUDENT_SCHEMA_VERSION).toBe(2);
+ const retry=await service.retry(submitted,'second',state.data);expect(retry.data.attempts[0]).toEqual(submitted);expect(retry.data.attempts[1].attemptId).toBe('second');expect(retry.data.attempts[1].status).toBe('DRAFT');expect(evidencePolicy(submitted).eligible).toBe(false);expect(STUDENT_SCHEMA_VERSION).toBe(3);
  expect(submitted).not.toHaveProperty('misconception');expect(submitted).not.toHaveProperty('grade');expect(resolveAttempt({...submitted,exercise:{...submitted.exercise!,version:'different'}}).status).toBe('UNAVAILABLE');
 });

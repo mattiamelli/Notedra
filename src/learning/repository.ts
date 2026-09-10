@@ -1,9 +1,11 @@
+import type {ExamBank, ExamResponse, ExamSession} from '../exams/types';
+import {validateExamSession} from '../exams/records';
 import {
   CONTENT, LearningError, emptyBackup, migrateBackup, migrateDataset, toBackup, validateAttempt, validateBackup, validateDataset, validateResume,
   type Answer, type Attempt, type AttemptIdentity, type Backup, type Dataset, type LoadedState, type ResumePosition, type WriteToken,
 } from './contracts';
 
-export const STUDENT_DB_VERSION = 2;
+export const STUDENT_DB_VERSION = 3;
 export const STUDENT_DATABASE = 'delftstudy-student-v1';
 export interface DraftInput extends AttemptIdentity { attemptId?: string; answer: Answer; hintsUsed?: number | null; solutionViewed?: boolean | null; }
 export interface StudentRepository {
@@ -14,6 +16,11 @@ export interface StudentRepository {
   submit(id: string, revision: number, operationId: string, answer: Answer, expected: WriteToken): Promise<LoadedState>;
   abandon(id: string, revision: number, expected: WriteToken): Promise<LoadedState>;
   setReviewed(id: string, revision: number, reviewed: boolean, expected: WriteToken): Promise<LoadedState>;
+  startExam(bank: ExamBank, blueprintId: string, seed: string, sessionId: string, expected: WriteToken): Promise<LoadedState>;
+  saveExam(id: string, revision: number, responses: ExamResponse[], flagged: string[], expected: WriteToken): Promise<LoadedState>;
+  submitExam(snapshot: ExamSession, operationId: string, bank: ExamBank, expected: WriteToken): Promise<LoadedState>;
+  abandonExam(id: string, revision: number, expected: WriteToken): Promise<LoadedState>;
+  reviewExam(id: string, itemId: string, revision: number, reviewed: boolean, expected: WriteToken): Promise<LoadedState>;
   exportBackup(): Promise<Backup>;
   exportRecovery(): Promise<Backup>;
   restore(backup: unknown, expected: Dataset): Promise<LoadedState>;
@@ -205,6 +212,64 @@ export class IndexedStudentRepository implements StudentRepository {
       if ((existing?.revision ?? 0) !== revision) conflict('Review state changed in another tab. Reload before changing it.');
       const record = {attemptId: id, reviewedAt: reviewed ? this.now() : null, revision: revision + 1};
       if (existing) Object.assign(existing, record); else state.data.reviews.push(record);
+      state.data.revision++;
+    });
+  }
+  async startExam(bank: ExamBank, blueprintId: string, seed: string, sessionId: string, expected: WriteToken) {
+    const copy = structuredClone(bank);
+    const {startSession} = await import('../exams/engine');
+    return this.mutate(expected, state => {
+      if (state.data.exams.some(s => s.sessionId === sessionId)) conflict('Exam session ID already exists. A retake needs a new session.');
+      const blueprint = copy.blueprints.find(b => b.id === blueprintId);
+      if (!blueprint) throw new LearningError('INCOMPATIBLE', 'Exam blueprint unavailable.');
+      state.data.exams.push(startSession(blueprint, copy, seed, sessionId, Date.parse(this.now()))); state.data.revision++;
+    });
+  }
+  private exam(data: Dataset, id: string, revision: number): ExamSession {
+    const session = data.exams.find(s => s.sessionId === id);
+    if (!session || session.revision !== revision) conflict('Exam changed in another tab. Reload saved data before writing.');
+    if (session.status !== 'IN_PROGRESS') conflict('Submitted or abandoned exams are locked. Start a new exam to retry.');
+    return session;
+  }
+  saveExam(id: string, revision: number, responses: ExamResponse[], flagged: string[], expected: WriteToken) {
+    const copy = structuredClone({responses, flagged});
+    return this.mutate(expected, state => {
+      const session = this.exam(state.data, id, revision);
+      const now = [this.now(), session.updatedAt].sort().at(-1)!;
+      if (now >= session.deadlineAt) conflict('Time has expired. Your previously saved responses are preserved. Confirm submission to finish.');
+      session.responses = copy.responses; session.flagged = copy.flagged;
+      session.updatedAt = now; session.revision++; state.data.revision++;
+    });
+  }
+  async submitExam(snapshot: ExamSession, operationId: string, bank: ExamBank, expected: WriteToken) {
+    const original = structuredClone(snapshot), content = structuredClone(bank); validateExamSession(original);
+    // Loading code happens before opening the transaction; no network/async gaps inside the write scope.
+    const {evaluateSubmission} = await import('../exams/evaluation');
+    return this.mutate(expected, state => {
+      const used = state.data.exams.find(s => s.submission?.operationId === operationId);
+      if (used) {
+        if (same(used, {...original, status: used.status, revision: used.revision, updatedAt: used.updatedAt, submission: used.submission})) return;
+        conflict('Exam submission operation already exists with conflicting content.');
+      }
+      if (state.data.attempts.some(a => a.submission?.operationId === operationId)) conflict('Submission operation ID is already used.');
+      const session = this.exam(state.data, original.sessionId, original.revision);
+      if (!same(session, original)) conflict('The submitted exam snapshot differs from saved data. Reload before submitting.');
+      const submittedAt = [this.now(),session.updatedAt].sort().at(-1)!;
+      const {evaluations, attempts, evidence} = evaluateSubmission(session, content, submittedAt);
+      session.status = 'SUBMITTED'; session.updatedAt = submittedAt; session.revision++;
+      session.submission = {operationId, submittedAt, evaluations, evidence};
+      state.data.attempts.push(...attempts); state.data.revision++;
+    });
+  }
+  abandonExam(id: string, revision: number, expected: WriteToken) {
+    return this.mutate(expected, state => {const session = this.exam(state.data,id,revision); session.status='ABANDONED';session.updatedAt=[this.now(),session.updatedAt].sort().at(-1)!;session.revision++;state.data.revision++;});
+  }
+  reviewExam(id: string, itemId: string, revision: number, reviewed: boolean, expected: WriteToken) {
+    return this.mutate(expected,state=>{
+      const existing=state.data.examReviews.find(r=>r.sessionId===id&&r.itemId===itemId);
+      if ((existing?.revision??0)!==revision) conflict('Exam review changed in another tab. Reload before changing it.');
+      const record={sessionId:id,itemId,revision:revision+1,reviewedAt:reviewed?this.now():null};
+      if(existing)Object.assign(existing,record);else state.data.examReviews.push(record);
       state.data.revision++;
     });
   }

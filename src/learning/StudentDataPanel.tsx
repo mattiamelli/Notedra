@@ -50,7 +50,7 @@ export function StudentDataPanel() {
       <button className="ds-button" disabled={!learning || learning.phase === 'busy' || reading} onClick={() => { setPending(null); setError(''); learning?.refresh(); }}>Reload saved data</button>
     </div>
     {pending && <div className="ds-restore-confirm" role="group" aria-labelledby="restore-title">
-      <h3 id="restore-title">Review replacement</h3><p>{pending.name}: {pending.backup.attempts.length} stored attempts; {pending.backup.resume ? 'a saved topic' : 'no saved topic'}.</p>
+      <h3 id="restore-title">Review replacement</h3><p>{pending.name}: {pending.backup.attempts.length} stored attempts; {pending.backup.exams.length} exam sessions; {pending.backup.resume ? 'a saved topic' : 'no saved topic'}.</p>
       <p>This replaces all student records in this browser’s current origin. The current records will be retained as a downloadable pre-restore recovery backup.</p>
       <label><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)}/> I understand this replaces my current student data.</label>
       <div className="ds-storage-actions"><button className="ds-button" disabled={!confirmed || unavailable} onClick={() => void restore()}>Replace student data</button><button className="ds-button" disabled={learning?.phase === 'busy'} onClick={() => { setPending(null); setConfirmed(false); }}>Cancel restore</button></div>

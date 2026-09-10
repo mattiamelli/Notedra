@@ -1,0 +1,5 @@
+import type {Answer} from '../learning/contracts';
+import type {ExamItem} from './types';
+export default function ExamOpenAnswer({item,answer,disabled,onChange}:{item:ExamItem;answer:Answer;disabled:boolean;onChange:(a:Answer)=>void}){
+ return <div><label className="exam-answer">{item.responseType==='code'?'Your Java / implementation notes':'Your reasoning'}<textarea aria-describedby="exam-open-policy" spellCheck={false} rows={item.responseType==='code'?16:10} maxLength={16000} disabled={disabled} value={typeof answer.value==='string'?answer.value:''} onChange={e=>onChange({kind:item.responseType==='code'?'code':'text',value:e.target.value})}/></label><p id="exam-open-policy">{item.responseType==='code'?'Java is saved as text. It is not compiled, executed or scored.':'Open work is reviewed using a rubric; no automatic correctness is assigned.'} Limit: 16,000 characters per component.</p><details><summary>Component requirements</summary><ul>{item.rubric?.map((r,n)=><li key={n}>{r.requirement}</li>)}</ul></details></div>;
+}

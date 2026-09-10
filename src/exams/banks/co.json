@@ -1,0 +1,1516 @@
+{
+  "course": "CSE1400_CO",
+  "items": [
+    {
+      "id": "ds.exam.co.co-signed-five",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+      "title": "Encode a signed integer",
+      "mechanism": "co-signed-five",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK04_03_SIGNED_ENCODE"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_REP_MIXED",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:5adbd23ccf867d5346f41fae2acdc65d3f8aecf1c52d140df577aa844628933b:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-signed-five",
+        "version": "1:sha256:5adbd23ccf867d5346f41fae2acdc65d3f8aecf1c52d140df577aa844628933b:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-fixed-signed",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "title": "Decode signed fixed point",
+      "mechanism": "co-fixed-signed",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK05_01_FIXED"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            9
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_REP_MIXED",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:f3599366896d20cd0225783b9e38a8a0413b3bde603998d7aaec41bd09127a91:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-fixed-signed",
+        "version": "1:sha256:f3599366896d20cd0225783b9e38a8a0413b3bde603998d7aaec41bd09127a91:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-isa-capacity",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T07_ISA",
+      "title": "Count opcode choices",
+      "mechanism": "co-isa-capacity",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK07_01_ISA_BITS"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            10
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:ddecd93dcaa26228ab248e79ceab245eb48660b6962df99fcda2b1e33c15e6f1:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-isa-capacity",
+        "version": "1:sha256:ddecd93dcaa26228ab248e79ceab245eb48660b6962df99fcda2b1e33c15e6f1:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-micro-transfer",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "title": "Trace fixed microoperations",
+      "mechanism": "co-micro-transfer",
+      "questionType": "QT_TRACE_STATE",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK08_01_MICRO_TRACE"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_MICROCODE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:74d3e6238026d23875d51a458149244485410e77bf2e30fe227e3b3d5d81a014:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-micro-transfer",
+        "version": "1:sha256:74d3e6238026d23875d51a458149244485410e77bf2e30fe227e3b3d5d81a014:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-address-alias",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "title": "Find the highest address alias",
+      "mechanism": "co-address-alias",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK09_02_IO_ADDRESS"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            5,
+            6
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_IO_ALIAS",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:88a0a6d9efac6fc888be30c3859bcd22df78c4a8d685cc2f3344a896c24a852e:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-address-alias",
+        "version": "1:sha256:88a0a6d9efac6fc888be30c3859bcd22df78c4a8d685cc2f3344a896c24a852e:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-cache-tag-width",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T11_CACHE",
+      "title": "Separate cache address fields",
+      "mechanism": "co-cache-tag-width",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK11_01_CACHE_BITS"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            7
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_CACHE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:11de9130524e0174d2be2fbd417a1b1b23ca9c6a85130c60fcc18bea2ce053b8:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-cache-tag-width",
+        "version": "1:sha256:11de9130524e0174d2be2fbd417a1b1b23ca9c6a85130c60fcc18bea2ce053b8:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-pipeline-total",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T12_PIPELINE",
+      "title": "Count pipeline completion cycles",
+      "mechanism": "co-pipeline-total",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK12_01_PIPE_PERF"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_RESIT_2025_SOL",
+          "filename": "CO Resit 2025 Solutions.pdf",
+          "pages": [
+            17
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_PIPE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:8825a7a5fc1addb2702f428828aad08f3d6894f44a52f24428927eee4087ed08:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-pipeline-total",
+        "version": "1:sha256:8825a7a5fc1addb2702f428828aad08f3d6894f44a52f24428927eee4087ed08:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.co-vm-translate",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "title": "Translate while preserving the offset",
+      "mechanism": "co-vm-translate",
+      "questionType": "QT_TRACE_STATE",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "CO_SK14_01_VM_TRANSLATE"
+      ],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            11
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_VM_AMDAHL",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "co-exact",
+        "version": "1:sha256:0bbf588dbef72ccdde785d60cd6a1bdb5fc22010b7dd82eb85bf2568ce71003b:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      },
+      "practiceRef": {
+        "id": "ds.practice.co-vm-translate",
+        "version": "1:sha256:0bbf588dbef72ccdde785d60cd6a1bdb5fc22010b7dd82eb85bf2568ce71003b:grader:613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c"
+      }
+    },
+    {
+      "id": "ds.exam.co.boolean",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T02_BOOLEAN_KMAP",
+      "title": "From minterms to a circuit",
+      "mechanism": "boolean",
+      "questionType": "QT_DESIGN_ARCHITECTURE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_KMAP_CONTEXT",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "For three inputs u,v,w, F is true on minterms 0,2,4,5,6,7 (u is most significant). Give a Gray-ordered map, a minimum sum of products and a gate-level description. Show which cells each group covers.",
+      "rubric": [
+        {
+          "requirement": "All eight cells and Gray ordering are explicit.",
+          "skillIds": [],
+          "checks": [
+            "All eight cells and Gray ordering are explicit."
+          ]
+        },
+        {
+          "requirement": "Groups wrap only along Gray adjacency; every required minterm is covered.",
+          "skillIds": [],
+          "checks": [
+            "Groups wrap only along Gray adjacency; every required minterm is covered."
+          ]
+        },
+        {
+          "requirement": "The expression and circuit agree on all valuations.",
+          "skillIds": [],
+          "checks": [
+            "The expression and circuit agree on all valuations."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.cmos",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+      "title": "Complementary conduction",
+      "mechanism": "cmos",
+      "questionType": "QT_EXPLAIN_COMPARE",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            3,
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "An ideal CMOS gate has two parallel PMOS devices between supply and output, and two series NMOS devices between output and ground, driven by u and v. Give the output for each input pair and explain why stable inputs do not short supply to ground.",
+      "rubric": [
+        {
+          "requirement": "Trace both networks for all four pairs.",
+          "skillIds": [],
+          "checks": [
+            "Trace both networks for all four pairs."
+          ]
+        },
+        {
+          "requirement": "Explain complementary conduction rather than naming a gate only.",
+          "skillIds": [],
+          "checks": [
+            "Explain complementary conduction rather than naming a gate only."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.representation",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+      "title": "Carry versus signed overflow",
+      "mechanism": "representation",
+      "questionType": "QT_EXPLAIN_COMPARE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_REP_MIXED",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Using 6-bit two’s complement, add decimal 27 and 14. Show the encoded inputs, the six stored bits, their signed interpretation, and whether there is unsigned carry and signed overflow.",
+      "rubric": [
+        {
+          "requirement": "Show the bit addition, not only the decimal sum.",
+          "skillIds": [],
+          "checks": [
+            "Show the bit addition, not only the decimal sum."
+          ]
+        },
+        {
+          "requirement": "Distinguish unsigned carry from signed range overflow.",
+          "skillIds": [],
+          "checks": [
+            "Distinguish unsigned carry from signed range overflow."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.rounding",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+      "title": "Quantization and rounding",
+      "mechanism": "rounding",
+      "questionType": "QT_EXPLAIN_COMPARE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            9
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_REP_MIXED",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Use normalized binary significands 1.b1b2b3 with round-to-nearest, ties-to-even. Represent 1.0011₂ and 1.0101₂. State the discarded portion and rounding direction for each. Exponents are zero and remain in range.",
+      "rubric": [
+        {
+          "requirement": "Identify both halfway cases.",
+          "skillIds": [],
+          "checks": [
+            "Identify both halfway cases."
+          ]
+        },
+        {
+          "requirement": "Apply ties-to-even to the retained bit, not the discarded bit.",
+          "skillIds": [],
+          "checks": [
+            "Apply ties-to-even to the retained bit, not the discarded bit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.stack",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T06_ASSEMBLY_X86_64",
+      "title": "Explain a stack frame trace",
+      "mechanism": "stack",
+      "questionType": "QT_TRACE_STATE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            11
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_ASM_TRACE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Start with RSP=RBP=0x1800 and RDI=13. Trace: pushq %rbp; movq %rsp,%rbp; subq $24,%rsp; movq %rdi,-16(%rbp); leaq -16(%rbp),%rax; movq %rbp,%rsp; popq %rbp. Give final RAX/RSP/RBP and distinguish the address from its stored value.",
+      "rubric": [
+        {
+          "requirement": "Show pointer values at prologue and epilogue.",
+          "skillIds": [],
+          "checks": [
+            "Show pointer values at prologue and epilogue."
+          ]
+        },
+        {
+          "requirement": "Keep the address 0x17E8 separate from the stored integer.",
+          "skillIds": [],
+          "checks": [
+            "Keep the address 0x17E8 separate from the stored integer."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.isa-tradeoff",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T07_ISA",
+      "title": "Encoding versus implementation",
+      "mechanism": "isa-tradeoff",
+      "questionType": "QT_DESIGN_ARCHITECTURE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            9,
+            10
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Compare a stack ISA with a register ISA when computing (J−K)×L. Give an abstract instruction sequence for each and discuss instruction size and implicit operands. Define your instruction conventions.",
+      "rubric": [
+        {
+          "requirement": "Preserve subtraction order.",
+          "skillIds": [],
+          "checks": [
+            "Preserve subtraction order."
+          ]
+        },
+        {
+          "requirement": "Declare conventions and separate encoding costs from execution performance.",
+          "skillIds": [],
+          "checks": [
+            "Declare conventions and separate encoding costs from execution performance."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.micro-schedule",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T08_BPU_MICROCODE",
+      "title": "Schedule a dependent memory read",
+      "mechanism": "micro-schedule",
+      "questionType": "QT_DESIGN_ARCHITECTURE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            3,
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_MICROCODE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "A single-bus machine needs MDR←memory[R7], then R9←MDR+R6. Memory completes three cycles after READ; only one source may drive the bus per cycle. Give a legal schedule using MAR,X,Z and explain one useful overlap and one forbidden overlap.",
+      "rubric": [
+        {
+          "requirement": "Respect memory completion and single-bus conflicts.",
+          "skillIds": [],
+          "checks": [
+            "Respect memory completion and single-bus conflicts."
+          ]
+        },
+        {
+          "requirement": "Identify independent work rather than claiming the memory wait disappears.",
+          "skillIds": [],
+          "checks": [
+            "Identify independent work rather than claiming the memory wait disappears."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.interrupts",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T09_IO_INTERRUPTS",
+      "title": "Interrupt response and starvation",
+      "mechanism": "interrupts",
+      "questionType": "QT_EXPLAIN_COMPARE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Device A has fixed priority above B. Entry overhead is 7 μs, A service is 31 μs and return is 5 μs. B becomes pending just as A starts, and A reasserts immediately after every return. Explain whether B has a finite worst-case response bound under this policy and propose a policy change.",
+      "rubric": [
+        {
+          "requirement": "Separate one service duration from B’s unbounded waiting.",
+          "skillIds": [],
+          "checks": [
+            "Separate one service duration from B’s unbounded waiting."
+          ]
+        },
+        {
+          "requirement": "Explain how the proposed policy affects arbitration.",
+          "skillIds": [],
+          "checks": [
+            "Explain how the proposed policy affects arbitration."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.dma",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "title": "DMA is not free CPU work",
+      "mechanism": "dma",
+      "questionType": "QT_EXPLAIN_COMPARE",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            5,
+            7
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "A sensor transfers a buffer using DMA while the CPU processes another buffer. Explain setup, bus ownership, completion notification, and why CPU execution may still slow down. State what must happen before the CPU consumes the new buffer.",
+      "rubric": [
+        {
+          "requirement": "Distinguish control setup from data movement.",
+          "skillIds": [],
+          "checks": [
+            "Distinguish control setup from data movement."
+          ]
+        },
+        {
+          "requirement": "Discuss contention and completion before consumption.",
+          "skillIds": [],
+          "checks": [
+            "Discuss contention and completion before consumption."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.memory",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T10_DMA_MEMORY",
+      "title": "Width and depth expansion",
+      "mechanism": "memory",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            7
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Build 512 Kiwords of 24-bit memory from 64 Kiword × 6-bit chips. Give chips in parallel, banks in depth, total chips, and word-address bits. Explain the role of high address bits.",
+      "rubric": [
+        {
+          "requirement": "Separate width from depth.",
+          "skillIds": [],
+          "checks": [
+            "Separate width from depth."
+          ]
+        },
+        {
+          "requirement": "Label word addressing so byte offsets are not invented.",
+          "skillIds": [],
+          "checks": [
+            "Label word addressing so byte offsets are not invented."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.cache-reason",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T11_CACHE",
+      "title": "Explain cache conflict misses",
+      "mechanism": "cache-reason",
+      "questionType": "QT_TRACE_STATE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            9
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_CACHE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "An empty direct-mapped cache has two lines, one word per line. Access word addresses 0,2,0,2,1,1. Show hits/misses and final contents. Would a two-line fully associative LRU cache change this sequence?",
+      "rubric": [
+        {
+          "requirement": "Trace line state after each access.",
+          "skillIds": [],
+          "checks": [
+            "Trace line state after each access."
+          ]
+        },
+        {
+          "requirement": "Use LRU recency correctly and distinguish conflict from capacity.",
+          "skillIds": [],
+          "checks": [
+            "Use LRU recency correctly and distinguish conflict from capacity."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.pipeline-reason",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T12_PIPELINE",
+      "title": "Latency and throughput",
+      "mechanism": "pipeline-reason",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_RESIT_2025_SOL",
+          "filename": "CO Resit 2025 Solutions.pdf",
+          "pages": [
+            17
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_PIPE",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "A four-stage pipeline takes 3,7,4,6 ns per stage, plus 1 ns register overhead per stage. For nine independent jobs and no stalls, compare pipelined completion time to sequential processing without registers. Explain why a single job may be slower.",
+      "rubric": [
+        {
+          "requirement": "Include register overhead in the clock.",
+          "skillIds": [],
+          "checks": [
+            "Include register overhead in the clock."
+          ]
+        },
+        {
+          "requirement": "Distinguish fill/drain time from steady-state throughput.",
+          "skillIds": [],
+          "checks": [
+            "Distinguish fill/drain time from steady-state throughput."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.parallel",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T13_PARALLELISM",
+      "title": "Amdahl and a practical limit",
+      "mechanism": "parallel",
+      "questionType": "QT_CALCULATE_CONVERT",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_RESIT_2025_SOL",
+          "filename": "CO Resit 2025 Solutions.pdf",
+          "pages": [
+            19
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_VM_AMDAHL",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "A workload takes 210 seconds: 42 seconds must stay serial. Assuming ideal division of all other work over six cores, compute runtime and speedup. Give the infinite-core limit and one practical reason the ideal runtime may be optimistic.",
+      "rubric": [
+        {
+          "requirement": "Weight fractions by original execution time.",
+          "skillIds": [],
+          "checks": [
+            "Weight fractions by original execution time."
+          ]
+        },
+        {
+          "requirement": "Explain a concrete overhead rather than promising linear scaling.",
+          "skillIds": [],
+          "checks": [
+            "Explain a concrete overhead rather than promising linear scaling."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds.exam.co.virtual",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "topicId": "CO_T14_VIRTUAL_MEMORY",
+      "title": "Page tables and offsets",
+      "mechanism": "virtual",
+      "questionType": "QT_EXPLAIN_COMPARE",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 4,
+      "skillIds": [],
+      "provenance": [
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            11
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "CO_PAT_VM_AMDAHL",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "text",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "A process has a 30-bit virtual byte address and 8 KiB pages. A flat table uses 4-byte entries. Compute its table size and explain how translating a page number preserves the offset. Discuss one cost of choosing larger pages.",
+      "rubric": [
+        {
+          "requirement": "Keep virtual page count distinct from physical frame count.",
+          "skillIds": [],
+          "checks": [
+            "Keep virtual page count distinct from physical frame count."
+          ]
+        },
+        {
+          "requirement": "Explain both translation and a page-size tradeoff.",
+          "skillIds": [],
+          "checks": [
+            "Explain both translation and a page-size tradeoff."
+          ]
+        }
+      ]
+    }
+  ],
+  "blueprints": [
+    {
+      "id": "ds.exam.co.quick",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "mode": "quick",
+      "title": "Quick exam practice",
+      "durationMinutes": 30,
+      "slots": [
+        {
+          "id": "component-1",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-signed-five",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-2",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-cache-tag-width",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-3",
+          "candidates": [
+            {
+              "id": "ds.exam.co.boolean",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-4",
+          "candidates": [
+            {
+              "id": "ds.exam.co.pipeline-reason",
+              "version": "1"
+            }
+          ]
+        }
+      ],
+      "constraints": {
+        "topics": [
+          "CO_T04_DATA_REP_RADIX_INTEGER",
+          "CO_T11_CACHE",
+          "CO_T02_BOOLEAN_KMAP",
+          "CO_T12_PIPELINE"
+        ],
+        "minOpen": 2,
+        "maxPerTopic": 1
+      },
+      "difficultyMix": {
+        "Easy": 0,
+        "Medium": 2,
+        "Hard": 2
+      },
+      "questionTypeMix": {
+        "QT_CALCULATE_CONVERT": 3,
+        "QT_DESIGN_ARCHITECTURE": 1
+      },
+      "timingPolicy": "ABSOLUTE_FREEZE_CONFIRM_V1",
+      "scoringPolicy": "EXACT_COMPONENTS_OPEN_UNSCORED_V1",
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            7
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_RESIT_2025_SOL",
+          "filename": "CO Resit 2025 Solutions.pdf",
+          "pages": [
+            17
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines early and late technical breadth; exact components assess only their declared final value, while explanation components are unscored."
+    },
+    {
+      "id": "ds.exam.co.full",
+      "version": "1",
+      "course": "CSE1400_CO",
+      "mode": "full",
+      "title": "Full authored mock",
+      "durationMinutes": 180,
+      "slots": [
+        {
+          "id": "component-1",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-signed-five",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-2",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-fixed-signed",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-3",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-isa-capacity",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-4",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-micro-transfer",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-5",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-address-alias",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-6",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-cache-tag-width",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-7",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-pipeline-total",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-8",
+          "candidates": [
+            {
+              "id": "ds.exam.co.co-vm-translate",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-9",
+          "candidates": [
+            {
+              "id": "ds.exam.co.boolean",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-10",
+          "candidates": [
+            {
+              "id": "ds.exam.co.cmos",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-11",
+          "candidates": [
+            {
+              "id": "ds.exam.co.representation",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-12",
+          "candidates": [
+            {
+              "id": "ds.exam.co.rounding",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-13",
+          "candidates": [
+            {
+              "id": "ds.exam.co.stack",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-14",
+          "candidates": [
+            {
+              "id": "ds.exam.co.isa-tradeoff",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-15",
+          "candidates": [
+            {
+              "id": "ds.exam.co.micro-schedule",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-16",
+          "candidates": [
+            {
+              "id": "ds.exam.co.interrupts",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-17",
+          "candidates": [
+            {
+              "id": "ds.exam.co.dma",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-18",
+          "candidates": [
+            {
+              "id": "ds.exam.co.memory",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-19",
+          "candidates": [
+            {
+              "id": "ds.exam.co.cache-reason",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-20",
+          "candidates": [
+            {
+              "id": "ds.exam.co.pipeline-reason",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-21",
+          "candidates": [
+            {
+              "id": "ds.exam.co.parallel",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-22",
+          "candidates": [
+            {
+              "id": "ds.exam.co.virtual",
+              "version": "1"
+            }
+          ]
+        }
+      ],
+      "constraints": {
+        "topics": [
+          "CO_T04_DATA_REP_RADIX_INTEGER",
+          "CO_T05_DATA_REP_FIXED_FLOAT",
+          "CO_T07_ISA",
+          "CO_T08_BPU_MICROCODE",
+          "CO_T09_IO_INTERRUPTS",
+          "CO_T11_CACHE",
+          "CO_T12_PIPELINE",
+          "CO_T14_VIRTUAL_MEMORY",
+          "CO_T02_BOOLEAN_KMAP",
+          "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+          "CO_T06_ASSEMBLY_X86_64",
+          "CO_T10_DMA_MEMORY",
+          "CO_T13_PARALLELISM"
+        ],
+        "minOpen": 14,
+        "maxPerTopic": 2
+      },
+      "difficultyMix": {
+        "Easy": 0,
+        "Medium": 11,
+        "Hard": 11
+      },
+      "questionTypeMix": {
+        "QT_CALCULATE_CONVERT": 9,
+        "QT_TRACE_STATE": 4,
+        "QT_DESIGN_ARCHITECTURE": 3,
+        "QT_EXPLAIN_COMPARE": 6
+      },
+      "timingPolicy": "ABSOLUTE_FREEZE_CONFIRM_V1",
+      "scoringPolicy": "EXACT_COMPONENTS_OPEN_UNSCORED_V1",
+      "provenance": [
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            9
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            10
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            5,
+            6
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            7
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_RESIT_2025_SOL",
+          "filename": "CO Resit 2025 Solutions.pdf",
+          "pages": [
+            17
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            11
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            3,
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            11
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_MID_FILE2025_SOL",
+          "filename": "CO Midterm 2025 Solutions.pdf",
+          "pages": [
+            9,
+            10
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            3,
+            4
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            5
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            5,
+            7
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_END_FILE2025_SOL",
+          "filename": "CO Endterm 2025 Solutions.pdf",
+          "pages": [
+            9
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "CO_RESIT_2025_SOL",
+          "filename": "CO Resit 2025 Solutions.pdf",
+          "pages": [
+            19
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines early and late technical breadth; exact components assess only their declared final value, while explanation components are unscored."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "src/exams/banks/rl.json": "c2cb98f203909bf5f376a2b7f243be96f22e600997bea0616edddcce30e6625d",
+  "src/exams/banks/co.json": "ef53e2d550236e81d4848db439e181f06122b42c9c83380c0d6f2397bfffb1f4",
+  "src/exams/banks/ip.json": "ba4d091377a0ab747cc95d55566ede9fb294b992f2581cfef8ce494856668088",
+  "src/exams/references/rl.json": "dde7833e2590d77b31958408a0001478f5fcbf1c02d8efc78eaf01006f0cfb62",
+  "src/exams/references/co.json": "0ff0d1474d3853e8832ed274a2be96d3fe5a9a802f23c3e2b31a1254c6a58c5e",
+  "src/exams/references/ip.json": "02ab6742a93c1769256fd43784ffd0ee180c0a9c1ae94dd4d66f5dc774a2d900",
+  "src/exams/engine.ts": "2e9210881be9f59c96ff45ffacebeffe2a2e311186120d0d409310cc1683d484",
+  "src/exams/evaluation.ts": "2445a6672e24040f8ba0ddb294547a4d00045d1845feb8e18d6da5d5b3e103e6"
+}

@@ -1,6 +1,7 @@
+import {validateExamData, type ExamSession, type ExamReview} from '../exams/records';
 import references from '../generated/student-references.json';
 
-export const STUDENT_SCHEMA_VERSION = 2 as const;
+export const STUDENT_SCHEMA_VERSION = 3 as const;
 export const CONTENT = Object.freeze(references.content);
 export const MAX_BACKUP_BYTES = 16_000_000;
 export const MAX_ATTEMPTS = 5000;
@@ -37,6 +38,8 @@ export interface Backup {
   resume: ResumePosition | null;
   attempts: Attempt[];
   reviews: ReviewRecord[];
+  exams: ExamSession[];
+  examReviews: ExamReview[];
 }
 export interface Dataset extends Backup { generation: string; revision: number; }
 export interface LoadedState { data: Dataset; hasRecovery: boolean; }
@@ -112,7 +115,7 @@ export function validateAttempt(value: unknown): asserts value is Attempt {
   else if ('submission' in row) fail('Only submitted attempts may contain submission metadata.');
 }
 export function validateBackup(value: unknown): asserts value is Backup {
-  const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'reviews']);
+  const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'reviews', 'exams', 'examReviews']);
   if (row.schemaVersion !== STUDENT_SCHEMA_VERSION) throw new LearningError('INCOMPATIBLE', 'Unsupported student schema version. Existing data has been preserved.');
   const content = object(row.content, ['version', 'fingerprint']);
   if (content.version !== CONTENT.version || content.fingerprint !== CONTENT.fingerprint) throw new LearningError('INCOMPATIBLE', 'Academic pack version/fingerprint differs. No data was replaced.');
@@ -134,10 +137,11 @@ export function validateBackup(value: unknown): asserts value is Backup {
     if (reviewIds.has(review.attemptId)) fail('Duplicate review attempt IDs.');
     reviewIds.add(review.attemptId);
   }
+  validateExamData(row.exams, row.examReviews, attempts);
   if (new TextEncoder().encode(JSON.stringify(value)).length > MAX_BACKUP_BYTES) fail('Student backup exceeds 16 MB.');
 }
 export function validateDataset(value: unknown): asserts value is Dataset {
-  const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'reviews', 'generation', 'revision']);
+  const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'reviews', 'exams', 'examReviews', 'generation', 'revision']);
   string(row.generation); integer(row.revision);
   const {generation: _generation, revision: _revision, ...backup} = row;
   validateBackup(backup);
@@ -153,7 +157,7 @@ export function parseBackup(text: string): Backup {
   try { value = JSON.parse(text); } catch { fail('Backup is not valid JSON.'); }
   return migrateBackup(value);
 }
-export const emptyBackup = (): Backup => ({schemaVersion: STUDENT_SCHEMA_VERSION, content: {...CONTENT}, resume: null, attempts: [], reviews: []});
+export const emptyBackup = (): Backup => ({schemaVersion: STUDENT_SCHEMA_VERSION, content: {...CONTENT}, resume: null, attempts: [], reviews: [], exams: [], examReviews: []});
 export function errorMessage(error: unknown) {
   if (error instanceof LearningError) return error.message;
   return 'Local storage failed. Keep your backup, check browser storage permissions/space, and retry. Existing data was not reset.';
@@ -164,16 +168,21 @@ export function migrateBackup(value: unknown): Backup {
   if (typeof value === 'object' && value !== null && 'schemaVersion' in value && value.schemaVersion === 1) {
     const legacy = object(value, ['schemaVersion', 'content', 'resume', 'attempts']);
     if (!Array.isArray(legacy.attempts) || legacy.attempts.length > 1000 || new TextEncoder().encode(JSON.stringify(value)).length > 4_000_000) fail('Legacy backup exceeds Schema 1 limits.');
-    const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, reviews: []};
+    const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, reviews: [], exams: [], examReviews: []};
     validateBackup(upgraded);
     return upgraded;
+  }
+  if (typeof value === 'object' && value !== null && 'schemaVersion' in value && value.schemaVersion === 2) {
+    const legacy = object(value, ['schemaVersion','content','resume','attempts','reviews']);
+    const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, exams: [], examReviews: []};
+    validateBackup(upgraded); return upgraded;
   }
   validateBackup(value);
   return structuredClone(value);
 }
 export function migrateDataset(value: unknown, newGeneration: string): Dataset {
-  if (typeof value === 'object' && value !== null && 'schemaVersion' in value && value.schemaVersion === 1) {
-    const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'generation', 'revision']);
+  if (typeof value === 'object' && value !== null && 'schemaVersion' in value && (value.schemaVersion === 1 || value.schemaVersion === 2)) {
+    const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', ...(value.schemaVersion === 2 ? ['reviews'] : []), 'generation', 'revision']);
     string(row.generation); integer(row.revision); string(newGeneration);
     if (row.generation === newGeneration) throw new LearningError('CONFLICT', 'Migration needs a new dataset generation.');
     const {generation: _generation, revision, ...backup} = row;

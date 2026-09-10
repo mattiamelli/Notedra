@@ -8,7 +8,7 @@ import {validateAdaptiveBundle} from '../scripts/adaptive-bundle';
 import {allExercises} from '../src/practice/catalog';
 import {record,text,CLOCK} from './helpers/adaptive';
 it('review: incomplete legacy storage rolls back version and preserves recovery bytes',async()=>{
- const factory=new IDBFactory(),name='incomplete-migration';const {reviews:_reviews,...empty}=emptyBackup();const recovery={...empty,schemaVersion:1};
+ const factory=new IDBFactory(),name='incomplete-migration';const {reviews:_reviews,exams:_exams,examReviews:_examReviews,...empty}=emptyBackup();const recovery={...empty,schemaVersion:1};
  const db=await new Promise<IDBDatabase>(resolve=>{const r=factory.open(name,1);r.onupgradeneeded=()=>r.result.createObjectStore('student');r.onsuccess=()=>resolve(r.result);});
  await new Promise<void>(resolve=>{const tx=db.transaction('student','readwrite');tx.objectStore('student').put(recovery,'recovery');tx.oncomplete=()=>resolve();});db.close();
  await expect(new IndexedStudentRepository({factory,name}).load()).rejects.toMatchObject({code:'STORAGE'});

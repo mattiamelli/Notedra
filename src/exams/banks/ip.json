@@ -1,0 +1,968 @@
+{
+  "course": "CSE1100_IP",
+  "items": [
+    {
+      "id": "ds.exam.ip.ip-dispatch",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "title": "Overload selection and overriding",
+      "mechanism": "ip-dispatch",
+      "questionType": "QT_CODE_PREDICTION",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_VARIANTS",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "choice",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "ip-fixed-choice",
+        "version": "1:sha256:7171342f0cdccea1be453756db307453a10ad0ef8d94628cdfc5cab58c0d4f25:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58"
+      },
+      "practiceRef": {
+        "id": "ds.practice.ip-dispatch",
+        "version": "1:sha256:7171342f0cdccea1be453756db307453a10ad0ef8d94628cdfc5cab58c0d4f25:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58"
+      }
+    },
+    {
+      "id": "ds.exam.ip.ip-array-bound",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T05_ARRAYS_RECURSION",
+      "title": "The last valid index",
+      "mechanism": "ip-array-bound",
+      "questionType": "QT_DEBUG_DIAGNOSE",
+      "difficulty": "Medium",
+      "difficultyReason": "Coordinate several rules and justify intermediate steps.",
+      "weight": 2,
+      "skillIds": [
+        "IP_SK05_01_ARRAY_TRAVERSE"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": null,
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "choice",
+      "evaluation": "DETERMINISTIC",
+      "evaluator": {
+        "id": "ip-fixed-choice",
+        "version": "1:sha256:c321d7016184e769261f87bd82e2c169993a305370abe44b84cdf2d1cdef7cad:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58"
+      },
+      "practiceRef": {
+        "id": "ds.practice.ip-array-bound",
+        "version": "1:sha256:c321d7016184e769261f87bd82e2c169993a305370abe44b84cdf2d1cdef7cad:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58"
+      }
+    },
+    {
+      "id": "ds.exam.ip.model",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T04_CLASSES_OBJECTS",
+      "title": "GlazeLab · model and invariants",
+      "mechanism": "model",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK04_01_MODEL_CLASS",
+        "IP_SK04_02_CONSTRUCTOR_STATE",
+        "IP_SK04_04_ENCAPSULATION"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_FULL_APP",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Define immutable Batch data with id, mass and limit. Reject blank IDs and nonpositive numbers. Specify constructors/accessors and explain how invalid state is prevented. Add a sample of each valid kind.",
+      "rubric": [
+        {
+          "requirement": "Valid constructor retains all fields.",
+          "skillIds": [
+            "IP_SK04_01_MODEL_CLASS",
+            "IP_SK04_02_CONSTRUCTOR_STATE",
+            "IP_SK04_04_ENCAPSULATION"
+          ],
+          "checks": [
+            "Valid constructor retains all fields."
+          ]
+        },
+        {
+          "requirement": "Null/blank ID and zero/negative numeric inputs throw.",
+          "skillIds": [
+            "IP_SK04_01_MODEL_CLASS",
+            "IP_SK04_02_CONSTRUCTOR_STATE",
+            "IP_SK04_04_ENCAPSULATION"
+          ],
+          "checks": [
+            "Null/blank ID and zero/negative numeric inputs throw."
+          ]
+        },
+        {
+          "requirement": "State cannot be mutated through public accessors.",
+          "skillIds": [
+            "IP_SK04_01_MODEL_CLASS",
+            "IP_SK04_02_CONSTRUCTOR_STATE",
+            "IP_SK04_04_ENCAPSULATION"
+          ],
+          "checks": [
+            "State cannot be mutated through public accessors."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.polymorphism",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T10_POLYMORPHISM_BINDING",
+      "title": "GlazeLab · type-specific behaviour",
+      "mechanism": "polymorphism",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK10_01_POLY_DESIGN",
+        "IP_SK10_02_DISPATCH_TRACE"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_VARIANTS",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Extend the model using a Batch abstraction with DryBatch and FiringBatch. Both expose requiredMinutes(): DRY rounds mass/12 upward; FIRING rounds mass/9 upward then adds 17. Process a list of Batch polymorphically without type switches.",
+      "rubric": [
+        {
+          "requirement": "Call through Batch references and dispatch to the subtype.",
+          "skillIds": [
+            "IP_SK10_01_POLY_DESIGN",
+            "IP_SK10_02_DISPATCH_TRACE"
+          ],
+          "checks": [
+            "Call through Batch references and dispatch to the subtype."
+          ]
+        },
+        {
+          "requirement": "Verify exact multiple and remainder cases.",
+          "skillIds": [
+            "IP_SK10_01_POLY_DESIGN",
+            "IP_SK10_02_DISPATCH_TRACE"
+          ],
+          "checks": [
+            "Verify exact multiple and remainder cases."
+          ]
+        },
+        {
+          "requirement": "Avoid integer overflow in rounding.",
+          "skillIds": [
+            "IP_SK10_01_POLY_DESIGN",
+            "IP_SK10_02_DISPATCH_TRACE"
+          ],
+          "checks": [
+            "Avoid integer overflow in rounding."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.equality",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T11_EQUALITY_HASHING",
+      "title": "GlazeLab · identity contract",
+      "mechanism": "equality",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK11_01_EQUALS_IMPL",
+        "IP_SK11_02_HASH_CONTRACT",
+        "IP_SK11_03_EQUALITY_EDGE"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_EQUAL_TEST",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Define equality by exact runtime kind and id only. Implement equals and hashCode consistently for the Batch hierarchy. Explain why mass and limit are excluded and give collision/equality tests.",
+      "rubric": [
+        {
+          "requirement": "Verify reflexivity, symmetry, transitivity and null.",
+          "skillIds": [
+            "IP_SK11_01_EQUALS_IMPL",
+            "IP_SK11_02_HASH_CONTRACT",
+            "IP_SK11_03_EQUALITY_EDGE"
+          ],
+          "checks": [
+            "Verify reflexivity, symmetry, transitivity and null."
+          ]
+        },
+        {
+          "requirement": "Equal instances have equal hash codes.",
+          "skillIds": [
+            "IP_SK11_01_EQUALS_IMPL",
+            "IP_SK11_02_HASH_CONTRACT",
+            "IP_SK11_03_EQUALITY_EDGE"
+          ],
+          "checks": [
+            "Equal instances have equal hash codes."
+          ]
+        },
+        {
+          "requirement": "Test same id across kinds and changed non-identity fields.",
+          "skillIds": [
+            "IP_SK11_01_EQUALS_IMPL",
+            "IP_SK11_02_HASH_CONTRACT",
+            "IP_SK11_03_EQUALITY_EDGE"
+          ],
+          "checks": [
+            "Test same id across kinds and changed non-identity fields."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.parser",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T15_IO_PARSING",
+      "title": "GlazeLab · transactional file import",
+      "mechanism": "parser",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK15_01_PARSE_FILE",
+        "IP_SK15_03_RESOURCE_SAFETY"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_FULL_APP",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Implement readBatches(Reader) returning a new list only if every nonblank line is valid. Do not close a borrowed Reader. Require exactly four semicolon fields (preserve empty trailing fields), known kind, valid ints and no duplicate id across kinds. Report a line number on malformed data; propagate I/O failures.",
+      "rubric": [
+        {
+          "requirement": "Empty input gives an empty list.",
+          "skillIds": [
+            "IP_SK15_01_PARSE_FILE",
+            "IP_SK15_03_RESOURCE_SAFETY"
+          ],
+          "checks": [
+            "Empty input gives an empty list."
+          ]
+        },
+        {
+          "requirement": "Bad final field, unknown kind and duplicate id fail with the physical line.",
+          "skillIds": [
+            "IP_SK15_01_PARSE_FILE",
+            "IP_SK15_03_RESOURCE_SAFETY"
+          ],
+          "checks": [
+            "Bad final field, unknown kind and duplicate id fail with the physical line."
+          ]
+        },
+        {
+          "requirement": "Injected IOException propagates and caller retains reader ownership.",
+          "skillIds": [
+            "IP_SK15_01_PARSE_FILE",
+            "IP_SK15_03_RESOURCE_SAFETY"
+          ],
+          "checks": [
+            "Injected IOException propagates and caller retains reader ownership."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.streams",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T16_FUNCTIONAL_JAVA",
+      "title": "GlazeLab · a deterministic query",
+      "mechanism": "streams",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK16_01_LAMBDA",
+        "IP_SK16_02_STREAM_PIPE"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_CLI_FILTER",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Implement a side-effect-free query selecting batches whose limit is at most a supplied bound, sorted by requiredMinutes then id. Return IDs without changing the archive. Define empty-result behaviour and test equal durations.",
+      "rubric": [
+        {
+          "requirement": "Include the boundary equal to the bound.",
+          "skillIds": [
+            "IP_SK16_01_LAMBDA",
+            "IP_SK16_02_STREAM_PIPE"
+          ],
+          "checks": [
+            "Include the boundary equal to the bound."
+          ]
+        },
+        {
+          "requirement": "Break duration ties by case-sensitive id order.",
+          "skillIds": [
+            "IP_SK16_01_LAMBDA",
+            "IP_SK16_02_STREAM_PIPE"
+          ],
+          "checks": [
+            "Break duration ties by case-sensitive id order."
+          ]
+        },
+        {
+          "requirement": "Verify source order unchanged and empty input.",
+          "skillIds": [
+            "IP_SK16_01_LAMBDA",
+            "IP_SK16_02_STREAM_PIPE"
+          ],
+          "checks": [
+            "Verify source order unchanged and empty input."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.application",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T17_PROGRAM_DESIGN",
+      "title": "GlazeLab · application and command loop",
+      "mechanism": "application",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK17_01_DOMAIN_MODEL",
+        "IP_SK17_02_DECOMPOSE"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_FULL_APP",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Design a command loop supporting list, below <limit>, export <path> and quit. Use the prior components. Keep archive state unchanged after invalid commands/import failures. Define a line-oriented export format and separate display errors from domain logic.",
+      "rubric": [
+        {
+          "requirement": "Demonstrate list and below through the same archive.",
+          "skillIds": [
+            "IP_SK17_01_DOMAIN_MODEL",
+            "IP_SK17_02_DECOMPOSE"
+          ],
+          "checks": [
+            "Demonstrate list and below through the same archive."
+          ]
+        },
+        {
+          "requirement": "Invalid number/unknown command does not change state.",
+          "skillIds": [
+            "IP_SK17_01_DOMAIN_MODEL",
+            "IP_SK17_02_DECOMPOSE"
+          ],
+          "checks": [
+            "Invalid number/unknown command does not change state."
+          ]
+        },
+        {
+          "requirement": "Export re-imports to equivalent data and write/close errors are surfaced.",
+          "skillIds": [
+            "IP_SK17_01_DOMAIN_MODEL",
+            "IP_SK17_02_DECOMPOSE"
+          ],
+          "checks": [
+            "Export re-imports to equivalent data and write/close errors are surfaced."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.worker",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T19_THREADS_CONCURRENCY",
+      "title": "GlazeLab · worker lifecycle",
+      "mechanism": "worker",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK19_01_THREAD_RUN",
+        "IP_SK19_02_SYNC"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_IO_THREAD",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Compute the total requiredMinutes on a worker Thread over an immutable snapshot. Wait for completion before printing the total. Explain your ownership/visibility strategy, interruption handling and why calling run directly is different.",
+      "rubric": [
+        {
+          "requirement": "Caller reads only after successful join.",
+          "skillIds": [
+            "IP_SK19_01_THREAD_RUN",
+            "IP_SK19_02_SYNC"
+          ],
+          "checks": [
+            "Caller reads only after successful join."
+          ]
+        },
+        {
+          "requirement": "Worker input does not mutate during calculation.",
+          "skillIds": [
+            "IP_SK19_01_THREAD_RUN",
+            "IP_SK19_02_SYNC"
+          ],
+          "checks": [
+            "Worker input does not mutate during calculation."
+          ]
+        },
+        {
+          "requirement": "Handle empty archive, large total and interruption.",
+          "skillIds": [
+            "IP_SK19_01_THREAD_RUN",
+            "IP_SK19_02_SYNC"
+          ],
+          "checks": [
+            "Handle empty archive, large total and interruption."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    },
+    {
+      "id": "ds.exam.ip.tests",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "topicId": "IP_T08_TESTING",
+      "title": "GlazeLab · reference test specification",
+      "mechanism": "tests",
+      "questionType": "QT_CODE_IMPLEMENTATION",
+      "difficulty": "Hard",
+      "difficultyReason": "Construct and justify a multi-stage solution with boundary cases.",
+      "weight": 6,
+      "skillIds": [
+        "IP_SK08_01_WRITE_TESTS",
+        "IP_SK08_02_TEST_BOUNDARIES",
+        "IP_SK08_03_TESTABILITY"
+      ],
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "patternId": "IP_PAT_EQUAL_TEST",
+      "generationEligibility": "FIXED_AUTHORED_ONLY",
+      "responseType": "code",
+      "evaluation": "RUBRIC",
+      "evaluator": {
+        "id": "rubric-self-review",
+        "version": "1"
+      },
+      "prompt": "Write a test plan and representative Java test methods linking requirements to assertions. Include model invariants, rounding, equality/hash, late malformed import, deterministic query ordering, export failure and worker completion. Tests are reviewed as text.",
+      "rubric": [
+        {
+          "requirement": "Each assertion names the requirement it verifies.",
+          "skillIds": [
+            "IP_SK08_01_WRITE_TESTS",
+            "IP_SK08_02_TEST_BOUNDARIES",
+            "IP_SK08_03_TESTABILITY"
+          ],
+          "checks": [
+            "Each assertion names the requirement it verifies."
+          ]
+        },
+        {
+          "requirement": "Cover normal, boundary and failure cases.",
+          "skillIds": [
+            "IP_SK08_01_WRITE_TESTS",
+            "IP_SK08_02_TEST_BOUNDARIES",
+            "IP_SK08_03_TESTABILITY"
+          ],
+          "checks": [
+            "Cover normal, boundary and failure cases."
+          ]
+        },
+        {
+          "requirement": "Do not treat compiling tests or completion as correctness of all components.",
+          "skillIds": [
+            "IP_SK08_01_WRITE_TESTS",
+            "IP_SK08_02_TEST_BOUNDARIES",
+            "IP_SK08_03_TESTABILITY"
+          ],
+          "checks": [
+            "Do not treat compiling tests or completion as correctness of all components."
+          ]
+        }
+      ],
+      "context": "Build GlazeLab, a local archive of ceramic test batches. Input records use id;kind;mass;limit where kind is DRY or FIRING, mass and limit are positive integers in grams and degrees. IDs are case-sensitive and unique. There is no network or database. Keep model, parsing, processing and command handling separate. The eight implementation components below belong to this one application. Java is saved as text only: this browser does not compile, run or score it. Use Java 21 and the standard library. You may cross-reference code from another component."
+    }
+  ],
+  "blueprints": [
+    {
+      "id": "ds.exam.ip.quick",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "mode": "quick",
+      "title": "Quick exam practice",
+      "durationMinutes": 30,
+      "slots": [
+        {
+          "id": "component-1",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.ip-dispatch",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-2",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.ip-array-bound",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-3",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.model",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-4",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.equality",
+              "version": "1"
+            }
+          ]
+        }
+      ],
+      "constraints": {
+        "topics": [
+          "IP_T10_POLYMORPHISM_BINDING",
+          "IP_T05_ARRAYS_RECURSION",
+          "IP_T04_CLASSES_OBJECTS",
+          "IP_T11_EQUALITY_HASHING"
+        ],
+        "minOpen": 2,
+        "maxPerTopic": 1
+      },
+      "difficultyMix": {
+        "Easy": 0,
+        "Medium": 2,
+        "Hard": 2
+      },
+      "questionTypeMix": {
+        "QT_CODE_PREDICTION": 1,
+        "QT_DEBUG_DIAGNOSE": 1,
+        "QT_CODE_IMPLEMENTATION": 2
+      },
+      "timingPolicy": "ABSOLUTE_FREEZE_CONFIRM_V1",
+      "scoringPolicy": "EXACT_COMPONENTS_OPEN_UNSCORED_V1",
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines two exact code probes with eight connected GlazeLab programming components; arbitrary code remains unexecuted and unscored."
+    },
+    {
+      "id": "ds.exam.ip.full",
+      "version": "1",
+      "course": "CSE1100_IP",
+      "mode": "full",
+      "title": "Full authored mock",
+      "durationMinutes": 180,
+      "slots": [
+        {
+          "id": "component-1",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.ip-dispatch",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-2",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.ip-array-bound",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-3",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.model",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-4",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.polymorphism",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-5",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.equality",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-6",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.parser",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-7",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.streams",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-8",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.application",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-9",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.worker",
+              "version": "1"
+            }
+          ]
+        },
+        {
+          "id": "component-10",
+          "candidates": [
+            {
+              "id": "ds.exam.ip.tests",
+              "version": "1"
+            }
+          ]
+        }
+      ],
+      "constraints": {
+        "topics": [
+          "IP_T10_POLYMORPHISM_BINDING",
+          "IP_T05_ARRAYS_RECURSION",
+          "IP_T04_CLASSES_OBJECTS",
+          "IP_T11_EQUALITY_HASHING",
+          "IP_T15_IO_PARSING",
+          "IP_T16_FUNCTIONAL_JAVA",
+          "IP_T17_PROGRAM_DESIGN",
+          "IP_T19_THREADS_CONCURRENCY",
+          "IP_T08_TESTING"
+        ],
+        "minOpen": 8,
+        "maxPerTopic": 2
+      },
+      "difficultyMix": {
+        "Easy": 0,
+        "Medium": 2,
+        "Hard": 8
+      },
+      "questionTypeMix": {
+        "QT_CODE_PREDICTION": 1,
+        "QT_DEBUG_DIAGNOSE": 1,
+        "QT_CODE_IMPLEMENTATION": 8
+      },
+      "timingPolicy": "ABSOLUTE_FREEZE_CONFIRM_V1",
+      "scoringPolicy": "EXACT_COMPONENTS_OPEN_UNSCORED_V1",
+      "provenance": [
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        },
+        {
+          "documentId": "IP_END_2024",
+          "filename": "IP Programming Endterm 2024.pdf",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "era": "CURRENT",
+          "role": "MECHANISM_ONLY"
+        }
+      ],
+      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines two exact code probes with eight connected GlazeLab programming components; arbitrary code remains unexecuted and unscored."
+    }
+  ]
+}

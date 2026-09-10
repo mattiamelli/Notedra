@@ -1,8 +1,26 @@
-# DelftStudy — Topic Learning, Practice & x86-64 Assembly Visualizer
+# DelftStudy — Learning, Practice, Mock Exams & Assembly Visualizer
 
-A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation, nine Reasoning & Logic and 20 Introduction to Programming topics, review 270 flashcards, practise 100 authored exercises with deterministic feedback, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
+A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation, nine Reasoning & Logic and 20 Introduction to Programming topics, review 270 flashcards, practise 100 authored exercises with deterministic feedback, take a timed authored mock, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
+
+## Mock Exams — Step 10
+
+`/exams` provides quick practice (30 minutes) and full authored mocks (180 minutes) for CO, R&L and IP. Six versioned blueprints select from 46 fixed components: CO 22, R&L 14 and IP 10. Quick sets contain 4, 3 and 4 components. Timing, difficulty and weights are DelftStudy practice design, not official exam predictions. Seeds reconstruct the fixed selection; they do not generate fresh questions.
+
+Draft answers and flags autosave locally. Reload keeps the absolute deadline. At expiry, editing freezes and you explicitly confirm submission of saved responses. Submission atomically locks answers, exact content/grader versions and objective results. Retakes create new sessions; history and per-question review preserve the originals. Save conflicts and failures are visible.
+
+Twelve existing exact Practice items supply objective scoring and explanatory feedback. The 34 open components use separate rubrics and references; proof text and learner Java remain unexecuted and unscored. The IP full mock is a connected eight-component programming specification plus two exact probes. Only eligible exact component evidence reaches the existing Mistake Book and Study Path. Open completion and self-review produce no skill correctness, mastery, readiness or predicted grade.
+
+Student Schema **3** / IndexedDB **3** add exam sessions and separate exam review records. Schema 1/2 imports and database upgrades preserve prior attempts and reviews; active/recovery replacement and epoch checks remain transactional. Local storage is not a guarantee against browser-data deletion or device failure: export backups from Student Data. Supported bounds remain 5,000 attempts / 16 MB, with 250 exam sessions.
+
+```bash
+pnpm run validate:exam
+pnpm run validate:exam-content
+pnpm run check:exam-bundle
+```
+
+The route, course banks, open editor, review and reference payloads load separately. See [Step 10 acceptance evidence](docs/exam-engine-status.md), [source review](docs/exam-source-review.md) and [measured production payloads](docs/exam-bundle-report.json). Step 11 and later are not implemented.
 
 ## Mistake Book and Study Path
 
@@ -10,7 +28,7 @@ DelftStudy makes stack frames and function calls visible. It uses a real, determ
 
 **Study Path** (`/study-plan`) gives up to four explained next actions from existing Learn, Flashcards, Practice, guides, workspaces or coding tasks. Choose 10/20/30/45/60+ minutes. Canonical prerequisites, recent repeated errors, later successful attempts, diverse activities and repeated-retry limits determine the order. Times are estimates or authored durations; there is no mastery/readiness or predicted grade.
 
-Student Schema 1 / DB 1 upgrade atomically to Schema 2 / DB 2. Original submitted records remain unchanged. Only separate review workflow is added; backups include it, legacy imports migrate, failed upgrades/restores roll back, and stale generations cannot write. Everything stays local. Marked reviewed does not mean learned.
+Step 9 introduced Schema 2 / DB 2; Step 10 now upgrades Schema 1/2 databases to Schema 3 / DB 3. Original submitted records remain unchanged. Step 9 added separate review workflow; Step 10 adds exam records. Backups include both, legacy imports migrate, failed upgrades/restores roll back, and stale generations cannot write. Everything stays local. Marked reviewed does not mean learned.
 
 ```bash
 pnpm run validate:mistakes
@@ -18,7 +36,7 @@ pnpm run validate:adaptive
 pnpm run check:adaptive-bundle
 ```
 
-See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 and later are not implemented.
+See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 is described above; Step 11 and later are not implemented.
 
 
 ## Supplemental learning and explanatory feedback
@@ -32,7 +50,7 @@ pnpm run validate:enrichment
 pnpm run check:enrichment-bundle
 ```
 
-The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Steps 10 and later remain future work.
+The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Step 10 adds the mock exams described above; Step 11 and later remain future work.
 
 ## Introduction to Programming
 
@@ -40,7 +58,7 @@ All 20 IP topics and 56 canonical skills have guided Learn content, two flashcar
 
 The Coding Workbench supports editable starter files, keyboard file tabs, copy/reset, requirement rubrics and separately loaded reference implementations/test specifications. **Drafts are ephemeral:** copy files before navigating or reloading. **Learner Java is never executed or automatically graded.** Test specifications and one valid reference help self-review; revealing them does not mean tests passed. Submitted fixed-prediction attempts continue to use the existing immutable local-storage lifecycle.
 
-The integrated assignments use original contexts and explicit component evidence. They do not award broad skill correctness. Source PDFs, ZIPs, the full Handoff and build validators are excluded from browser bundles. Lessons, assignments, workbench and reference solutions load separately on demand. Step 9 safely migrates student records to Schema 2 / IndexedDB 2; original attempts and bindings remain unchanged.
+The integrated assignments use original contexts and explicit component evidence. They do not award broad skill correctness. Source PDFs, ZIPs, the full Handoff and build validators are excluded from browser bundles. Lessons, assignments, workbench and reference solutions load separately on demand. Step 9 introduced Schema 2 / IndexedDB 2, followed by the Step 10 migration to version 3; original attempts and bindings remain unchanged.
 
 ```bash
 pnpm run validate:ip
@@ -50,7 +68,7 @@ pnpm run verify:ip-java
 
 The first two commands validate canonical ownership, sources, published fingerprints, safe assessment policies and actual production payloads. The optional development-only Java check requires JDK 21; set `DELFTSTUDY_JAVA_HOME` to its installation directory if needed. It executes only checked-in authored fixtures and reference harnesses, never student answers. Illustrative JUnit snippets are specifications, not a claim that JUnit ran.
 
-See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). Step 9 adds the Mistake Book and Study Path described below. Mastery, global mock-exam orchestration, accounts and deployment remain excluded.
+See [Step 8 status and acceptance evidence](docs/introduction-programming-status.md), the [complete coverage inventory](docs/ip-coverage-inventory.md), [targeted source review](docs/ip-source-review.md) and [adversarial self-review](docs/ip-adversarial-review.md). Step 9 adds the Mistake Book and Study Path described below. Mastery, accounts and deployment remain excluded. Shared mock exams are described above.
 
 ## Application navigation
 
@@ -65,10 +83,13 @@ The Dashboard links to three courses, all 43 canonical topics, the Assembly work
 | `/co/:topicId`, `/rl/:topicId`, `/ip/:topicId` | Canonical Overview; IDs are case-sensitive and must belong to the course |
 | Append `/learn`, `/mental-map`, `/flashcards`, `/practice`, `/exam-style` or `/mistakes` | Stable topic study mode; explicit `/overview` also works |
 | `/co/CO_T06_ASSEMBLY_X86_64/visualizer` | Full Assembly workbench |
-| `/practice` | 61 authored exercises, course filter and actual saved attempts |
+| `/practice` | 100 authored exercises, course filter and actual saved attempts |
 | `/practice/:exerciseId` | Exercise preview and explicit Start |
 | `/practice/:exerciseId/attempts/:attemptId` | Saved draft or immutable submitted-answer review |
-| `/exams`, `/mistakes`, `/study-plan` | Neutral, navigable placeholders for future study tools |
+| `/exams`, `/exams/history` | Authored mock setup and local exam history |
+| `/exams/:courseId/setup` | Quick/full course exam configuration |
+| `/exams/sessions/:sessionId`, `/exams/review/:sessionId` | Saved session and immutable submitted review |
+| `/mistakes`, `/study-plan` | Factual Mistake Book and deterministic next activities |
 | `/progress` | Unassessed progress placeholder plus local student backup/restore controls |
 | Any unknown route or invalid course/topic association | Not Found, with a working Dashboard link |
 
@@ -86,7 +107,7 @@ Six calculation workspaces cover propositional truth/equivalence/validity, finit
 
 Proofs, translations and open constructions accept multiple valid approaches. Write working notes, then reveal the rubric and reference reasoning. These notes are temporary page state, not saved attempts, and never receive an automatic correctness score. Fixed exact-answer exercises use the existing immutable Practice service and IndexedDB transactions. Finite checks do not establish infinite theorems or learning mastery.
 
-New content and tools load on demand. Academic taxonomy/projections, all CO content and Assembly remain unchanged. Student Schema/DB 2 is described below. All 99 uncertain R&L mappings stay blocked; broad evidence remains topic-only. The new bounded puzzle uses a verified current mechanism and a separately exhaustive uniqueness check. Source references honestly identify normalized lecture ranges: no original PDFs were supplied or directly inspected.
+New content and tools load on demand. Academic taxonomy/projections, all CO content and Assembly remain unchanged. The current Student Schema/DB 3 is described above. All 99 uncertain R&L mappings stay blocked; broad evidence remains topic-only. The new bounded puzzle uses a verified current mechanism and a separately exhaustive uniqueness check. Source references honestly identify normalized lecture ranges: no original PDFs were supplied or directly inspected.
 
 ```bash
 pnpm run validate:rl
@@ -195,7 +216,7 @@ Three independent layers remain separate:
 
 1. Immutable Content Pack **1.0.1**, academic schema **1.1.0**.
 2. Generated navigation and minimal canonical reference projections.
-3. Mutable student schema **2**, in native IndexedDB database `delftstudy-student-v1` (database version 2).
+3. Mutable student schema **3**, in native IndexedDB database `delftstudy-student-v1` (database version 3).
 
 The new **69,985-byte** student projection contains pack version/SHA-256, 3 subject IDs, 43 topic/course associations, 105 subtopic/topic associations, 147 skill/subtopic associations, and 489 source mapping locators with their owning course/topic IDs. Source locators are used only to validate optional attempt references; they are not runnable exercises. No assessment content, mapping-confidence payloads, provenance or historical-frequency tables are included. The existing navigation projection remains 7,462 bytes. Both artifacts are deterministic and checked during direct Vite builds.
 
@@ -219,7 +240,7 @@ Drafts have canonical identity, explicit targeted skills, optional exercise iden
 - **Export pre-restore recovery** downloads the immediately preceding dataset. Choose that file through the same confirmed restore flow to recover it. Each successful restore replaces the previous recovery snapshot; export an older recovery file before another restore if you need to retain it.
 - Backups cover only the student namespace. Assembly editor/preferences remain under `delftstudy:v1:` in localStorage; CPU execution history remains in memory. No blanket clear-browser-storage action exists.
 - Browser, device, hostname and port each define separate local storage. This is not cloud synchronization. Browser-data deletion, device failure and some crashes can lose local data even after a completed save. Exported backups provide a separate recovery copy.
-- Schema 1 backups and databases migrate deliberately to Schema 2. Unknown future versions, different academic fingerprints and malformed persisted data are preserved and refused; there is no automatic corruption repair. Preserve existing browser data and use a compatible application/backup when incompatibility is reported.
+- Schema 1/2 backups and databases migrate deliberately to Schema 3. Unknown future versions, different academic fingerprints and malformed persisted data are preserved and refused; there is no automatic corruption repair. Preserve existing browser data and use a compatible application/backup when incompatibility is reported.
 
 The only new dependency is **fake-indexeddb 6.2.5**, development-only for reproducible storage tests. Runtime dependencies remain React, React DOM and React Router. The existing deprecated **whatwg-encoding 3.1.1** is transitive through development-only jsdom 26.1.0 (also through html-encoding-sniffer 4.0.0); no broad upgrade was performed.
 
@@ -252,7 +273,7 @@ Definitions, attempts and feedback are separate. `templateRef` identifies the au
 
 Pure graders return GRADED (0 or 1 raw item point), INCOMPLETE, INVALID, NOT_AUTOGRADABLE or ERROR. Only GRADED has points. No proof/keyword grading, free-form formula parser, learner-code execution, backend or AI is involved. Feedback is recomputed from the exact saved answer and locked definition; no feedback/evaluation fields are persisted, and raw attempts never become mastery/readiness evidence.
 
-Writes are serialized. A failed save/submission retains the form answer, and a stale revision or restore generation blocks further writes until a safe reload. Copy the displayed recovery text before reloading a conflicted form. Unknown original versions preserve the answer without grading it as incorrect. Schema 2 and database version 2 support 5,000 attempts /16 MB and preserve atomic recovery and original bindings. Unknown imported hint/solution exposure stays unknown.
+Writes are serialized. A failed save/submission retains the form answer, and a stale revision or restore generation blocks further writes until a safe reload. Copy the displayed recovery text before reloading a conflicted form. Unknown original versions preserve the answer without grading it as incorrect. Schema 3 and database version 3 support 5,000 attempts /16 MB and preserve atomic recovery and original bindings. Unknown imported hint/solution exposure stays unknown.
 
 ```bash
 pnpm run validate:practice
@@ -287,7 +308,7 @@ pnpm run check:topics
 pnpm run validate:topics
 ```
 
-Generation validates the trusted release and writes atomically; `check:topics` rejects missing or stale output. Direct Vite builds check academic ownership, source precision, full pilot skill coverage, exact inventories and immutable versions. See the [Step 5 acceptance report](docs/topic-learning-experience-status.md) for the complete inventories, 469-test results, real Chromium checks, bundle inspection and limitations. Step 6 is documented below; Steps 7–14 are not implemented.
+Generation validates the trusted release and writes atomically; `check:topics` rejects missing or stale output. Direct Vite builds check academic ownership, source precision, full pilot skill coverage, exact inventories and immutable versions. See the [Step 5 acceptance report](docs/topic-learning-experience-status.md) for the complete inventories, 469-test results, real Chromium checks, bundle inspection and limitations. This is historical Step 5 evidence; current Step 10 status is linked above.
 
 ## Using the workbench
 
@@ -382,7 +403,7 @@ All 14 canonical CO topics now have Learn and Flashcards, covering all 32 subtop
 - **Nine new workspaces:** Boolean truth, fixed/custom floating representation, ISA bit budgets, I/O aliases, memory organization/interleaving, cache LRU tracing, pipeline timing, Amdahl and VM translation. Every model states its assumptions and has reset, accessible results and reference/boundary tests.
 - **Existing Assembly Visualizer** remains the CO Assembly execution tool. New partial-register lesson examples are explicitly reading-only.
 
-New topic JSON is lazy-loaded by topic. Shared workspaces and Practice definitions load on demand; Assembly remains lazy. CO adds no dependencies or backend. The current student schema and IndexedDB version are 2; the Step 9 migration preserves existing submissions. Published content and grader changes require deliberate new versions and locks; builds never silently regenerate them.
+New topic JSON is lazy-loaded by topic. Shared workspaces and Practice definitions load on demand; Assembly remains lazy. CO adds no dependencies or backend. The current student schema and IndexedDB version are 3; deliberate migrations preserve existing submissions. Published content and grader changes require deliberate new versions and locks; builds never silently regenerate them.
 
 ```bash
 pnpm run validate:co
@@ -396,7 +417,7 @@ pnpm run build
 
 Final Step 6 verification: **614 passing tests in 25 files**, strict typecheck, production build and all content/lock gates. Actual Chromium 152.0.7977.64 checks covered all 14 topics, five saved graded flows with reload, all three Assembly examples, native storage regressions and 390/768/1280 layouts. Safari/Firefox were not run. No original CO lecture PDFs were supplied; all new references retain broad document precision, and no source-dependent diagrams were reconstructed. K-map grouping and open design grading remain deliberately unscored.
 
-The [complete Step 6 acceptance report](docs/computer-organisation-status.md) contains all lesson/skill/card/Practice/tool inventories, source limits, test evidence, self-review findings and payload sizes. [Production module inventory](docs/co-bundle-report.json). **Step 7 and later are not started.**
+The [complete Step 6 acceptance report](docs/computer-organisation-status.md) contains all lesson/skill/card/Practice/tool inventories, source limits, test evidence, self-review findings and payload sizes. [Production module inventory](docs/co-bundle-report.json). These results record the historical Step 6 baseline.
 
 ## Project structure
 
@@ -454,6 +475,12 @@ src/
     practice-lock.json
     grader-lock.json
     rl.css
+  exams/               # Shared typed engine, records, selection and exact evaluation
+    banks/              # Three separately loaded course banks and blueprints
+    references/         # Open reference approaches loaded only in review
+    ExamsPage.tsx        # Setup/history routes
+    ExamSessionPage.tsx  # Timer, autosave, flags and atomic submission
+    ExamReviewPage.tsx   # Immutable response and separate rubric review
   learning/
     contracts.ts       # Bounded runtime validation and unassessed policy
     repository.ts      # Native IndexedDB, revisions, epochs and atomic restore
