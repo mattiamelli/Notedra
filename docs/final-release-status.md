@@ -1,8 +1,8 @@
 # Step 15 — Public deployment and final release readiness
 
-**PARTIAL — public acceptance progressed; Confirm Email, hosting headers and server-side SEO/404 gates remain open. No final Step 15 acceptance commit; no Step 16.**
+**PARTIAL — the three HTTP delivery blockers are resolved and verified on production. The ONLY remaining Step 15 blocker is Supabase Confirm Email (SU-469802). No Step 16.**
 
-This is the current status. Earlier checkpoints are preserved in [final-release-history.md](final-release-history.md). The continuation started from `f3017bbb495b40bd6ccc99bad5d0f5902adbd445`, with empty status and diff. Step 14 remains accepted. No database migration, Auth setting, RLS policy, schema, grading rule or Assembly engine was changed.
+The table and final continuation below are current; dated sections preserve earlier observations. Earlier checkpoints are preserved in [final-release-history.md](final-release-history.md). The continuation started from `f3017bbb495b40bd6ccc99bad5d0f5902adbd445`, with empty status and diff. Step 14 remains accepted. No database migration, Auth setting, RLS policy, schema, grading rule or Assembly engine was changed.
 
 Production origin: **https://delftstudy-assembly.mattiamelli07.chatgpt.site/**. Existing Sites project `appgprj_6aa004e18c4881918fc92e84ebbe989b`, public access, saved version 3 at the start of this continuation. No new Site or provider migration.
 
@@ -12,14 +12,14 @@ Production origin: **https://delftstudy-assembly.mattiamelli07.chatgpt.site/**. 
 | --- | --- | --- |
 | HTTPS, stable origin, homepage | PASS | Fresh TLS-verified public curl and real browser |
 | Internal navigation, direct links, nested refresh | PASS | Course, exercise, exam review, Account and Assembly; browser route matrix below |
-| Nonexistent application routes | PARTIAL | Browser displays Page not found and noindex; HTTP remains 200 soft-404 |
-| Genuinely missing hashed/static asset | PARTIAL — FAIL | `/assets/release-check-missing.js` returns 200 HTML |
+| Nonexistent application routes | PASS | Version 6 returns actual HTTP 404 with noindex |
+| Genuinely missing hashed/static asset | PASS | Version 6: missing JS/CSS/SVG/ICO all actual HTTP 404 |
 | robots.txt | PASS | Actual text/plain, exact allow rule and correct sitemap directive |
 | Sitemap format, origin, uniqueness, exclusion, resolution | PASS | 47/47 unique public URLs, valid XML, HTTPS origin, all 200; this does not prove indexability |
-| Course title/description/canonical/OG/social metadata | PARTIAL | Correct rendered metadata; generic noindex HTML before JavaScript; see SEO limitation |
+| Course title/description/canonical/OG/social metadata | PASS | Version 6: 90 initial documents match expected title, description, single canonical and OG fields, before JavaScript |
 | Personal route noindex | PASS | Raw and rendered noindex for Account/Progress/Mistakes/Study Path/Practice/Exams; no learner serialization |
 | Favicon and manifest | PASS | Actual SVG and JSON at declared paths; installability was not tested |
-| Required HTTP security headers | PARTIAL — FAIL | None of the six required header families is present in sampled responses |
+| Required HTTP security headers | PASS | Version 6: actual enforced CSP, nosniff, Referrer-Policy, Permissions-Policy, frame protection and HSTS on 107 responses |
 | Supabase Site URL / Redirect URL | PASS — operator-confirmed | Exact values already confirmed saved; no new operator action for these URLs |
 | Signup / email confirmation | BLOCKED / INCONSISTENT | Supabase Support ticket SU-469802 |
 | A session refresh and manual upload | PASS | Disposable A, actual public UI; Pending → Syncing → Synced |
@@ -50,7 +50,7 @@ Both **Site URL** and the single production **Redirect URL** are already operato
 
 No repeat change is requested. The current signUp adapter relies on Site URL (no emailRedirectTo) and `detectSessionInUrl:false`; return after verification and sign in through `/account`. No invented `/auth/callback` or wildcard is required. Actual confirmation delivery/return remains unverified; dashboard settings were not independently read with privileged access.
 
-## Live HTTP, SEO and privacy
+## Historical version 3/4 HTTP, SEO and privacy (superseded by version 6 below)
 
 [release-live-http-results.json](release-live-http-results.json) records the fresh 66-response inspection begun `2026-09-10T22:30:45Z` and completed `22:30:59Z` (11 September locally). It contains response metadata, hashes, sizes and timings; cookies, tokens and body contents are not retained.
 
@@ -166,7 +166,7 @@ The source push was initially rejected twice by automatic approval review becaus
 
 The current metadata, route privacy, artifact comparison, browser fix and documentation claims were checked again after publishing. Final documentation changes do not change the deployed build; the deployment source remains the exact repair commit above, and later documentation-only checkpoints may be ahead of it.
 
-### Remaining before Step 15 COMPLETE
+### Historical remaining items at c81a111 (superseded below)
 
 1. Supabase resolves SU-469802 and a fresh disposable signup proves confirmation email delivery/return and required pre-confirmation behavior.
 2. The host supplies real CSP/frame protection and the other required response policies. Retest after Report-Only validation and enforcement; do not call absent headers a passing security gate.
@@ -184,3 +184,43 @@ The installed Sites skill documents both static and standalone Worker ESM deploy
 Focused tests: **41/41 PASS** (33 HTTP-delivery cases plus the 8 existing release tests). Typecheck PASS. Production build/content gates PASS (Vite7.96s). Production bundle and emitted-asset exclusions PASS (226 frontend files). Generated Worker local smoke covers all three courses, nested lesson, private route and missing JS/CSS/image/global route. Worker is 2,221,768 raw bytes / 520,340 gzip bytes, containing 90 public initial documents and 132 actual frontend assets. The canonical sitemap remains 47 URLs. No `src/` application file, scoring/answer semantics, storage, Auth/RLS, or content version changed. The accepted 1,894-test full-suite result is preserved; it was not unnecessarily rerun for this delivery-only change.
 
 CSP starts Report-Only to inspect real browser compatibility. Local response tests and a supported format are not live capability proof; the same-site deployment and actual HTTP/browser checks are still pending at this checkpoint. Do not claim the three blockers fixed until those live checks pass, and do not claim enforced CSP until its subsequent enforcement phase passes.
+
+
+## Final three-blocker production acceptance — version 6
+
+**PARTIAL overall; all three requested technical blockers PASS. The ONLY remaining acceptance blocker is Supabase Confirm Email, ticket SU-469802.** Search Console ownership/submission is an operator task with prepared instructions, not a code blocker; Google indexing is not claimed. No Auth setting, migration, RLS, learner data model, scoring, exam-binding repair or Assembly engine changed. No Step 16.
+
+Started from clean `c81a111a84f30a6acc035463d3096e1d3064d971`. Implementation `ea0441cba4e662a237857c811c28ea4a9fd4da71` was published as version 5, deployment `appgdep_6aa33a7f1b1c81919367c24b1de05faf`, succeeded `2026-09-10T23:17:27.568635+00:00`. Actual `/co` HTTP 200 supplied Report-Only CSP plus the other five header families. Production Chromium loaded dashboard, Account and Assembly and executed RDI=5 without captured warnings/errors. This bounded compatibility check preceded enforcement.
+
+Enforcement source **`54ad1f2cdd68a740af0900c2ab0ad687907303ae`**, saved version **6**, version ID `appgprj_6aa004e18c4881918fc92e84ebbe989b~appgver_1c34400b1eec81918f3bdf82819c698a`, deployment `appgdep_6aa33b458a988191923ae0495f19a458`, succeeded `2026-09-10T23:20:48.260409+00:00`. Archive SHA-256 `513415c895dec2c8d98f95800523d51d828fd89a8c443aa2fdc1572619df408f`. Same existing project, audience and HTTPS origin; **no hosting-provider change required**. Supported Worker ESM HTTP responses meet the requirements that the prior static fallback did not. No SSR framework or application redesign.
+
+### Actual HTTPS acceptance
+
+[release-http-delivery-results.json](release-http-delivery-results.json) records **107/107 PASS** responses with timestamps, exact relevant headers, initial metadata, status and asset-byte comparisons. No cookies, tokens or learner bodies retained.
+
+| Gate | Actual result |
+| --- | --- |
+| All public course/topic/tool/lesson documents | 90/90 HTTP 200; initial title, description, canonical, OG and robots match expected build documents. Includes all three courses and their nested lessons. |
+| Sitemap | Original 47 public URLs retained, every one included in the successful document checks; served XML matches build bytes. Extra 43 lessons have their own canonical metadata without expanding sitemap. |
+| Application deep links | Root, Account, Progress, topic mistakes, dotted exercise ID and exam review shape HTTP 200, generic noindex shell. No learner-specific canonical. |
+| Missing assets | `/assets/missing-step15.js`, `/missing-step15.css`, `/missing-step15.svg`, `/missing-step15.ico`: real HTTP 404. |
+| Unknown route | `/does-not-exist-step15`: HTTP 404, noindex. |
+| Real assets | Initial JS/CSS, robots, sitemap, favicon and manifest HTTP 200 and byte-for-byte match. |
+| CSP | Actual `Content-Security-Policy` enforced; Report-Only phase completed first. Self scripts/styles; no eval; only configured Supabase HTTPS connect; object/base/frame disabled. Style attributes remain explicitly allowed for existing dynamic layouts. |
+| Other headers | `X-Content-Type-Options: nosniff`; `Referrer-Policy: strict-origin-when-cross-origin`; Permissions-Policy disables camera, microphone, geolocation, payment, USB; `X-Frame-Options: DENY`; `Strict-Transport-Security: max-age=300`. No preload/subdomain HSTS claim. |
+
+The first Python urllib collector could not use its default CA bundle; using the system CA then received edge HTTP 403 responses. These were **not PASS**. Normal TLS-verifying curl and the real browser succeeded; the final evidence was collected with curl, with no disabled certificate validation, credentials, challenge bypass or Supabase request. This transport-specific edge behavior remains an external limitation; crawler indexing is not certified.
+
+### Fresh checks and bounded production browser review
+
+- Focused Vitest **41/41 PASS, 2 files** (33 new HTTP cases + 8 existing release cases), repeated after enforcement at 01:21 local, duration 1.37s.
+- TypeScript `tsc --noEmit` PASS, repeated after enforcement. Handler is included through imports from tests/build script.
+- Full production build with existing content/academic/course/practice/exam/mastery gates PASS earlier in this continuation; Vite 7.96s. Existing initial chunk warning above 500 kB remains. Enforcement changes only delivery policy, so the same validated frontend build was reused.
+- Production bundle validation PASS: 226 emitted frontend files; initial JS 503,057 bytes / local gzip 133,244 unchanged. No raw Handoff, source pack, privileged key, test harness or source map packaged. Hosting generator separately scans embedded assets and final Worker (2,221,756 bytes enforced).
+- Final security validator PASS: 536 repository files / 131 runtime files, 226 frontend artifacts; existing Student Schema 3 and IndexedDB 3 unchanged. Hardening validator PASS. These are static checks, distinct from the actual HTTP evidence above.
+- Accepted full regression **1,894 tests / 83 files**, Java and cloud/isolation evidence retained, **not rerun** unnecessarily for this bounded HTTP adapter. No fresh Auth/signup/email acceptance is claimed.
+- Real in-app Chromium: enforced policy loads Account, CO, CO lesson, R&L, IP, dashboard and Assembly. Assembly first push displayed RSP `0x0FF8`, stored RBP 4096 and correct explanation; Run completed stack-frame example with RAX 15 and RSP/RBP `0x1000`. Reset worked. Captured warning/error logs empty.
+- Mobile dashboard at 390×844 rendered correctly with page width/scrollWidth both 390; screenshot reviewed. Override reset; existing public dashboard tab retained. Numeric Chromium version unavailable through the supported API; no actual Safari/Firefox or physical-device certification claimed.
+- Adversarial self-review: traced asset allowlist vs SPA routes, dotted exercise IDs, private metadata, duplicate canonical prevention, 404 security headers, HEAD/304, artifact boundaries and no outbound/auth logic. No confirmed new defect. This is a self-review, not an independent audit.
+
+Files: `.openai/hosting.json`, `.gitignore`, `package.json`, `hosting/{handler.ts,policy.json,README.md}`, `scripts/{release.ts,build-hosting.ts}`, `tests/hosting.test.ts`, this status, HTTP evidence JSON, and four regenerated bundle inventories (adaptive/enrichment/IP/R&L). No `src/` product file changed. The generated staging directory is ignored; source commits were pushed only to the explicitly authorized existing Sites Git destination. Final documentation is committed separately from deployed source; no rebuild is required for documentation alone.
