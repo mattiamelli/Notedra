@@ -1,0 +1,480 @@
+{
+  "baseline": "2baf35885ea49d9625c90b6eec01b102741f33a4",
+  "initialRun": {
+    "timestamp": "2026-09-10T18:01:16.044277+00:00",
+    "results": [
+      {
+        "command": "pnpm run validate:content",
+        "exitCode": 0,
+        "seconds": 1.92,
+        "log": "/tmp/ds-visual-match-final/01.log"
+      },
+      {
+        "command": "pnpm run check:academic",
+        "exitCode": 0,
+        "seconds": 1.85,
+        "log": "/tmp/ds-visual-match-final/02.log"
+      },
+      {
+        "command": "pnpm run check:references",
+        "exitCode": 0,
+        "seconds": 1.92,
+        "log": "/tmp/ds-visual-match-final/03.log"
+      },
+      {
+        "command": "pnpm run validate:practice",
+        "exitCode": 0,
+        "seconds": 1.87,
+        "log": "/tmp/ds-visual-match-final/04.log"
+      },
+      {
+        "command": "pnpm run check:topics",
+        "exitCode": 0,
+        "seconds": 1.9,
+        "log": "/tmp/ds-visual-match-final/05.log"
+      },
+      {
+        "command": "pnpm run validate:topics",
+        "exitCode": 0,
+        "seconds": 1.92,
+        "log": "/tmp/ds-visual-match-final/06.log"
+      },
+      {
+        "command": "pnpm run validate:co",
+        "exitCode": 0,
+        "seconds": 1.95,
+        "log": "/tmp/ds-visual-match-final/07.log"
+      },
+      {
+        "command": "pnpm run check:co-bundle",
+        "exitCode": 0,
+        "seconds": 10.26,
+        "log": "/tmp/ds-visual-match-final/08.log"
+      },
+      {
+        "command": "pnpm run validate:rl",
+        "exitCode": 0,
+        "seconds": 3.14,
+        "log": "/tmp/ds-visual-match-final/09.log"
+      },
+      {
+        "command": "pnpm run check:rl-bundle",
+        "exitCode": 0,
+        "seconds": 9.29,
+        "log": "/tmp/ds-visual-match-final/10.log"
+      },
+      {
+        "command": "pnpm run validate:enrichment",
+        "exitCode": 0,
+        "seconds": 2.29,
+        "log": "/tmp/ds-visual-match-final/11.log"
+      },
+      {
+        "command": "pnpm run check:enrichment-bundle",
+        "exitCode": 0,
+        "seconds": 9.49,
+        "log": "/tmp/ds-visual-match-final/12.log"
+      },
+      {
+        "command": "pnpm run validate:ip",
+        "exitCode": 0,
+        "seconds": 2.86,
+        "log": "/tmp/ds-visual-match-final/13.log"
+      },
+      {
+        "command": "pnpm run check:ip-bundle",
+        "exitCode": 0,
+        "seconds": 9.64,
+        "log": "/tmp/ds-visual-match-final/14.log"
+      },
+      {
+        "command": "pnpm run validate:mistakes",
+        "exitCode": 0,
+        "seconds": 2.04,
+        "log": "/tmp/ds-visual-match-final/15.log"
+      },
+      {
+        "command": "pnpm run validate:adaptive",
+        "exitCode": 0,
+        "seconds": 1.38,
+        "log": "/tmp/ds-visual-match-final/16.log"
+      },
+      {
+        "command": "pnpm run check:adaptive-bundle",
+        "exitCode": 0,
+        "seconds": 9.58,
+        "log": "/tmp/ds-visual-match-final/17.log"
+      },
+      {
+        "command": "pnpm run validate:exam",
+        "exitCode": 0,
+        "seconds": 2.1,
+        "log": "/tmp/ds-visual-match-final/18.log"
+      },
+      {
+        "command": "pnpm run validate:exam-content",
+        "exitCode": 0,
+        "seconds": 1.39,
+        "log": "/tmp/ds-visual-match-final/19.log"
+      },
+      {
+        "command": "pnpm run check:exam-bundle",
+        "exitCode": 0,
+        "seconds": 9.63,
+        "log": "/tmp/ds-visual-match-final/20.log"
+      },
+      {
+        "command": "pnpm run validate:mastery",
+        "exitCode": 0,
+        "seconds": 2.15,
+        "log": "/tmp/ds-visual-match-final/21.log"
+      },
+      {
+        "command": "pnpm run validate:readiness",
+        "exitCode": 0,
+        "seconds": 1.74,
+        "log": "/tmp/ds-visual-match-final/22.log"
+      },
+      {
+        "command": "pnpm run check:progress-bundle",
+        "exitCode": 0,
+        "seconds": 10.24,
+        "log": "/tmp/ds-visual-match-final/23.log"
+      },
+      {
+        "command": "pnpm run validate:auth",
+        "exitCode": 0,
+        "seconds": 1.86,
+        "log": "/tmp/ds-visual-match-final/24.log"
+      },
+      {
+        "command": "pnpm run validate:sync",
+        "exitCode": 0,
+        "seconds": 1.38,
+        "log": "/tmp/ds-visual-match-final/25.log"
+      },
+      {
+        "command": "pnpm run validate:supabase-security",
+        "exitCode": 0,
+        "seconds": 1.55,
+        "log": "/tmp/ds-visual-match-final/26.log"
+      },
+      {
+        "command": "pnpm run check:cloud-bundle",
+        "exitCode": 0,
+        "seconds": 9.76,
+        "log": "/tmp/ds-visual-match-final/27.log"
+      },
+      {
+        "command": "pnpm test --maxWorkers=2",
+        "exitCode": 1,
+        "seconds": 52.57,
+        "log": "/tmp/ds-visual-match-final/28.log"
+      },
+      {
+        "command": "pnpm run typecheck",
+        "exitCode": 0,
+        "seconds": 11.48,
+        "log": "/tmp/ds-visual-match-final/29.log"
+      },
+      {
+        "command": "pnpm run build",
+        "exitCode": 0,
+        "seconds": 31.87,
+        "log": "/tmp/ds-visual-match-final/30.log"
+      },
+      {
+        "command": "pnpm run verify:ip-java",
+        "exitCode": 0,
+        "seconds": 69.43,
+        "log": "/tmp/ds-visual-match-final/31.log"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "seconds": 0.11,
+        "log": "/tmp/ds-visual-match-final/32.log"
+      },
+      {
+        "command": "pnpm run validate:visual",
+        "exitCode": 0,
+        "seconds": 1.61,
+        "log": "/tmp/ds-visual-match-final/33.log"
+      },
+      {
+        "command": "pnpm run check:visual-bundle",
+        "exitCode": 0,
+        "seconds": 10.31,
+        "log": "/tmp/ds-visual-match-final/34.log"
+      }
+    ]
+  },
+  "finalRerun": [
+    {
+      "command": "pnpm run check:visual-bundle",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-bundle.log"
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-tests.log"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-typecheck.log"
+    },
+    {
+      "command": "pnpm run validate:visual",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-preservation.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-diff.log"
+    }
+  ],
+  "effectiveFinalGates": [
+    {
+      "command": "pnpm run validate:content",
+      "exitCode": 0,
+      "seconds": 1.92,
+      "log": "/tmp/ds-visual-match-final/01.log"
+    },
+    {
+      "command": "pnpm run check:academic",
+      "exitCode": 0,
+      "seconds": 1.85,
+      "log": "/tmp/ds-visual-match-final/02.log"
+    },
+    {
+      "command": "pnpm run check:references",
+      "exitCode": 0,
+      "seconds": 1.92,
+      "log": "/tmp/ds-visual-match-final/03.log"
+    },
+    {
+      "command": "pnpm run validate:practice",
+      "exitCode": 0,
+      "seconds": 1.87,
+      "log": "/tmp/ds-visual-match-final/04.log"
+    },
+    {
+      "command": "pnpm run check:topics",
+      "exitCode": 0,
+      "seconds": 1.9,
+      "log": "/tmp/ds-visual-match-final/05.log"
+    },
+    {
+      "command": "pnpm run validate:topics",
+      "exitCode": 0,
+      "seconds": 1.92,
+      "log": "/tmp/ds-visual-match-final/06.log"
+    },
+    {
+      "command": "pnpm run validate:co",
+      "exitCode": 0,
+      "seconds": 1.95,
+      "log": "/tmp/ds-visual-match-final/07.log"
+    },
+    {
+      "command": "pnpm run check:co-bundle",
+      "exitCode": 0,
+      "seconds": 10.26,
+      "log": "/tmp/ds-visual-match-final/08.log"
+    },
+    {
+      "command": "pnpm run validate:rl",
+      "exitCode": 0,
+      "seconds": 3.14,
+      "log": "/tmp/ds-visual-match-final/09.log"
+    },
+    {
+      "command": "pnpm run check:rl-bundle",
+      "exitCode": 0,
+      "seconds": 9.29,
+      "log": "/tmp/ds-visual-match-final/10.log"
+    },
+    {
+      "command": "pnpm run validate:enrichment",
+      "exitCode": 0,
+      "seconds": 2.29,
+      "log": "/tmp/ds-visual-match-final/11.log"
+    },
+    {
+      "command": "pnpm run check:enrichment-bundle",
+      "exitCode": 0,
+      "seconds": 9.49,
+      "log": "/tmp/ds-visual-match-final/12.log"
+    },
+    {
+      "command": "pnpm run validate:ip",
+      "exitCode": 0,
+      "seconds": 2.86,
+      "log": "/tmp/ds-visual-match-final/13.log"
+    },
+    {
+      "command": "pnpm run check:ip-bundle",
+      "exitCode": 0,
+      "seconds": 9.64,
+      "log": "/tmp/ds-visual-match-final/14.log"
+    },
+    {
+      "command": "pnpm run validate:mistakes",
+      "exitCode": 0,
+      "seconds": 2.04,
+      "log": "/tmp/ds-visual-match-final/15.log"
+    },
+    {
+      "command": "pnpm run validate:adaptive",
+      "exitCode": 0,
+      "seconds": 1.38,
+      "log": "/tmp/ds-visual-match-final/16.log"
+    },
+    {
+      "command": "pnpm run check:adaptive-bundle",
+      "exitCode": 0,
+      "seconds": 9.58,
+      "log": "/tmp/ds-visual-match-final/17.log"
+    },
+    {
+      "command": "pnpm run validate:exam",
+      "exitCode": 0,
+      "seconds": 2.1,
+      "log": "/tmp/ds-visual-match-final/18.log"
+    },
+    {
+      "command": "pnpm run validate:exam-content",
+      "exitCode": 0,
+      "seconds": 1.39,
+      "log": "/tmp/ds-visual-match-final/19.log"
+    },
+    {
+      "command": "pnpm run check:exam-bundle",
+      "exitCode": 0,
+      "seconds": 9.63,
+      "log": "/tmp/ds-visual-match-final/20.log"
+    },
+    {
+      "command": "pnpm run validate:mastery",
+      "exitCode": 0,
+      "seconds": 2.15,
+      "log": "/tmp/ds-visual-match-final/21.log"
+    },
+    {
+      "command": "pnpm run validate:readiness",
+      "exitCode": 0,
+      "seconds": 1.74,
+      "log": "/tmp/ds-visual-match-final/22.log"
+    },
+    {
+      "command": "pnpm run check:progress-bundle",
+      "exitCode": 0,
+      "seconds": 10.24,
+      "log": "/tmp/ds-visual-match-final/23.log"
+    },
+    {
+      "command": "pnpm run validate:auth",
+      "exitCode": 0,
+      "seconds": 1.86,
+      "log": "/tmp/ds-visual-match-final/24.log"
+    },
+    {
+      "command": "pnpm run validate:sync",
+      "exitCode": 0,
+      "seconds": 1.38,
+      "log": "/tmp/ds-visual-match-final/25.log"
+    },
+    {
+      "command": "pnpm run validate:supabase-security",
+      "exitCode": 0,
+      "seconds": 1.55,
+      "log": "/tmp/ds-visual-match-final/26.log"
+    },
+    {
+      "command": "pnpm run check:cloud-bundle",
+      "exitCode": 0,
+      "seconds": 9.76,
+      "log": "/tmp/ds-visual-match-final/27.log"
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-tests.log"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-typecheck.log"
+    },
+    {
+      "command": "pnpm run build",
+      "exitCode": 0,
+      "seconds": 31.87,
+      "log": "/tmp/ds-visual-match-final/30.log"
+    },
+    {
+      "command": "pnpm run verify:ip-java",
+      "exitCode": 0,
+      "seconds": 69.43,
+      "log": "/tmp/ds-visual-match-final/31.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-diff.log"
+    },
+    {
+      "command": "pnpm run validate:visual",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-preservation.log"
+    },
+    {
+      "command": "pnpm run check:visual-bundle",
+      "exitCode": 0,
+      "log": "/tmp/ds-match-accepted-bundle.log"
+    }
+  ],
+  "tests": {
+    "passed": 1864,
+    "files": 77,
+    "skipped": 0,
+    "durationSeconds": 49.69
+  },
+  "browser": {
+    "engine": "Chromium in-app browser",
+    "widths": [
+      390,
+      768,
+      1280
+    ],
+    "surfaces": 15,
+    "documentOverflow": 0,
+    "visualScreenshots": "Dashboard at all three widths; 14 supporting surfaces at 390 and 1280; tablet widths measured on all 14. Fresh empty profile at 1280.",
+    "intermediateWidths": [
+      999,
+      1001,
+      1199,
+      1201
+    ],
+    "consoleWarningsErrors": 0
+  },
+  "bundle": {
+    "baseline": {
+      "initialJS": 498837,
+      "initialGzip": 131690,
+      "cssBytes": 78389,
+      "totalAssets": 1858188
+    },
+    "current": {
+      "initialJS": 502169,
+      "initialGzip": 132940,
+      "cssBytes": 88937,
+      "totalAssets": 1876258
+    },
+    "lazyCloudAndCourseGuards": "PASS via inspect-cloud-build and its prerequisite guards",
+    "visualDependenciesAdded": 0
+  }
+}

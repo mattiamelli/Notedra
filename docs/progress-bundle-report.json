@@ -1,23 +1,24 @@
 {
-  "initialJS": 498837,
-  "initialGzip": 131690,
-  "totalAssets": 1858188,
-  "totalGzip": 539784,
+  "initialJS": 502169,
+  "initialGzip": 132940,
+  "totalAssets": 1876258,
+  "totalGzip": 544848,
   "owners": {
     "ProgressPage.tsx": {
-      "file": "assets/ProgressPage-CyXIjG7s.js",
-      "bytes": 4440,
-      "gzipBytes": 1845,
+      "file": "assets/ProgressPage-NexmuY0c.js",
+      "bytes": 4479,
+      "gzipBytes": 1858,
       "entry": false,
       "imports": [
-        "assets/index-6VGHh-kq.js",
-        "assets/progress-C7voIHzL.js",
-        "assets/catalog-DWoUReGR.js",
-        "assets/service-BdMQGASQ.js",
-        "assets/evidence-D3nByEDI.js",
-        "assets/feedback-DnD7FwK5.js",
-        "assets/engine-GRv2v7hn.js",
-        "assets/evaluation-C0lC9UME.js"
+        "assets/index-ewBIw7OE.js",
+        "assets/useProgress-aW_WH9ha.js",
+        "assets/progress-WZaDxg_6.js",
+        "assets/catalog-CPQCW9eU.js",
+        "assets/service-4O87oV27.js",
+        "assets/evidence-rOp_l_dP.js",
+        "assets/feedback-Bbh6nVDl.js",
+        "assets/engine-C2BwmAV-.js",
+        "assets/evaluation-DNfwh_Hk.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -25,19 +26,20 @@
       ]
     },
     "ProgressSummary.tsx": {
-      "file": "assets/ProgressSummary-DSer07J2.js",
-      "bytes": 1912,
-      "gzipBytes": 865,
+      "file": "assets/ProgressSummary-DC7mGJPi.js",
+      "bytes": 1951,
+      "gzipBytes": 878,
       "entry": false,
       "imports": [
-        "assets/index-6VGHh-kq.js",
-        "assets/progress-C7voIHzL.js",
-        "assets/catalog-DWoUReGR.js",
-        "assets/service-BdMQGASQ.js",
-        "assets/evidence-D3nByEDI.js",
-        "assets/feedback-DnD7FwK5.js",
-        "assets/engine-GRv2v7hn.js",
-        "assets/evaluation-C0lC9UME.js"
+        "assets/index-ewBIw7OE.js",
+        "assets/useProgress-aW_WH9ha.js",
+        "assets/progress-WZaDxg_6.js",
+        "assets/catalog-CPQCW9eU.js",
+        "assets/service-4O87oV27.js",
+        "assets/evidence-rOp_l_dP.js",
+        "assets/feedback-Bbh6nVDl.js",
+        "assets/engine-C2BwmAV-.js",
+        "assets/evaluation-DNfwh_Hk.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -45,18 +47,18 @@
       ]
     },
     "mastery.ts": {
-      "file": "assets/progress-C7voIHzL.js",
-      "bytes": 13447,
-      "gzipBytes": 5541,
+      "file": "assets/useProgress-aW_WH9ha.js",
+      "bytes": 11512,
+      "gzipBytes": 5052,
       "entry": false,
       "imports": [
-        "assets/index-6VGHh-kq.js",
-        "assets/catalog-DWoUReGR.js",
-        "assets/service-BdMQGASQ.js",
-        "assets/evidence-D3nByEDI.js",
-        "assets/feedback-DnD7FwK5.js",
-        "assets/engine-GRv2v7hn.js",
-        "assets/evaluation-C0lC9UME.js"
+        "assets/index-ewBIw7OE.js",
+        "assets/catalog-CPQCW9eU.js",
+        "assets/service-4O87oV27.js",
+        "assets/evidence-rOp_l_dP.js",
+        "assets/feedback-Bbh6nVDl.js",
+        "assets/engine-C2BwmAV-.js",
+        "assets/evaluation-DNfwh_Hk.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -64,24 +66,22 @@
         "src/progress/mastery.ts",
         "src/progress/readiness.ts",
         "src/progress/derive.ts",
-        "src/progress/useProgress.ts",
-        "src/progress/IndexCard.tsx",
-        "src/progress/progress.css"
+        "src/progress/useProgress.ts"
       ]
     },
     "readiness.ts": {
-      "file": "assets/progress-C7voIHzL.js",
-      "bytes": 13447,
-      "gzipBytes": 5541,
+      "file": "assets/useProgress-aW_WH9ha.js",
+      "bytes": 11512,
+      "gzipBytes": 5052,
       "entry": false,
       "imports": [
-        "assets/index-6VGHh-kq.js",
-        "assets/catalog-DWoUReGR.js",
-        "assets/service-BdMQGASQ.js",
-        "assets/evidence-D3nByEDI.js",
-        "assets/feedback-DnD7FwK5.js",
-        "assets/engine-GRv2v7hn.js",
-        "assets/evaluation-C0lC9UME.js"
+        "assets/index-ewBIw7OE.js",
+        "assets/catalog-CPQCW9eU.js",
+        "assets/service-4O87oV27.js",
+        "assets/evidence-rOp_l_dP.js",
+        "assets/feedback-Bbh6nVDl.js",
+        "assets/engine-C2BwmAV-.js",
+        "assets/evaluation-DNfwh_Hk.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -89,24 +89,22 @@
         "src/progress/mastery.ts",
         "src/progress/readiness.ts",
         "src/progress/derive.ts",
-        "src/progress/useProgress.ts",
-        "src/progress/IndexCard.tsx",
-        "src/progress/progress.css"
+        "src/progress/useProgress.ts"
       ]
     },
     "evidence.ts": {
-      "file": "assets/progress-C7voIHzL.js",
-      "bytes": 13447,
-      "gzipBytes": 5541,
+      "file": "assets/useProgress-aW_WH9ha.js",
+      "bytes": 11512,
+      "gzipBytes": 5052,
       "entry": false,
       "imports": [
-        "assets/index-6VGHh-kq.js",
-        "assets/catalog-DWoUReGR.js",
-        "assets/service-BdMQGASQ.js",
-        "assets/evidence-D3nByEDI.js",
-        "assets/feedback-DnD7FwK5.js",
-        "assets/engine-GRv2v7hn.js",
-        "assets/evaluation-C0lC9UME.js"
+        "assets/index-ewBIw7OE.js",
+        "assets/catalog-CPQCW9eU.js",
+        "assets/service-4O87oV27.js",
+        "assets/evidence-rOp_l_dP.js",
+        "assets/feedback-Bbh6nVDl.js",
+        "assets/engine-C2BwmAV-.js",
+        "assets/evaluation-DNfwh_Hk.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -114,24 +112,22 @@
         "src/progress/mastery.ts",
         "src/progress/readiness.ts",
         "src/progress/derive.ts",
-        "src/progress/useProgress.ts",
-        "src/progress/IndexCard.tsx",
-        "src/progress/progress.css"
+        "src/progress/useProgress.ts"
       ]
     },
     "derive.ts": {
-      "file": "assets/progress-C7voIHzL.js",
-      "bytes": 13447,
-      "gzipBytes": 5541,
+      "file": "assets/useProgress-aW_WH9ha.js",
+      "bytes": 11512,
+      "gzipBytes": 5052,
       "entry": false,
       "imports": [
-        "assets/index-6VGHh-kq.js",
-        "assets/catalog-DWoUReGR.js",
-        "assets/service-BdMQGASQ.js",
-        "assets/evidence-D3nByEDI.js",
-        "assets/feedback-DnD7FwK5.js",
-        "assets/engine-GRv2v7hn.js",
-        "assets/evaluation-C0lC9UME.js"
+        "assets/index-ewBIw7OE.js",
+        "assets/catalog-CPQCW9eU.js",
+        "assets/service-4O87oV27.js",
+        "assets/evidence-rOp_l_dP.js",
+        "assets/feedback-Bbh6nVDl.js",
+        "assets/engine-C2BwmAV-.js",
+        "assets/evaluation-DNfwh_Hk.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -139,9 +135,7 @@
         "src/progress/mastery.ts",
         "src/progress/readiness.ts",
         "src/progress/derive.ts",
-        "src/progress/useProgress.ts",
-        "src/progress/IndexCard.tsx",
-        "src/progress/progress.css"
+        "src/progress/useProgress.ts"
       ]
     }
   },

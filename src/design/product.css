@@ -159,3 +159,97 @@ body { background: var(--ds-page); color: var(--ds-text); color-scheme: light; }
   .ds-app .ds-main .ds-mistake-filters { grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--ds-space-3); }
 }
 .ds-app .ds-skip-link { background: var(--ds-primary); color: var(--ds-on-primary); }
+
+/* Step 13 reference match: cool white, blue navigation, illustrated course headers. */
+.ds-app { background: radial-gradient(ellipse at 85% 0%,#dceeff88,transparent 48%),var(--ds-page); }
+.ds-app:not(.ds-tool) { grid-template-columns: 232px minmax(0,1fr); }
+.ds-app .ds-topbar { background: #ffffffa8; border-bottom: 0; padding: 14px 24px; gap: 20px; }
+.ds-app .ds-breadcrumbs { flex: 1; background: var(--ds-soft); border: 1px solid var(--ds-line); border-radius: 24px; padding: 10px 16px; }
+.ds-app .ds-breadcrumbs ol { font-size: .875rem; }
+.ds-header-account { display: flex; align-items: center; gap: 10px; color: var(--ds-ink); font-size: .875rem; flex-shrink: 0; }
+.ds-avatar { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #ddebff; color: var(--ds-primary); font-weight: 750; border: 2px solid white; flex-shrink: 0; }
+.ds-header-account small,.ds-sidebar-footer small { display: block; margin-top: 3px; color: var(--ds-support); font-size: .75rem; }
+.ds-app .ds-sidebar { margin: 12px 10px; height: calc(100svh - 24px); top: 12px; border: 1px solid #fff; border-radius: 18px; padding: 26px 10px 14px; background: #ffffffbd; box-shadow: 0 4px 24px #387cbe08; }
+.ds-app .ds-brand { color: var(--ds-ink); margin: 0 10px 12px; font-size: 24px; letter-spacing: -1px; gap: 7px; }
+.ds-app .ds-brand strong { font-weight: 750; }
+.ds-app .ds-brand-mark { color: var(--ds-primary); background: transparent; width: 33px; height: 40px; }
+.ds-brand-tagline { color: var(--ds-support); font-size: .875rem; line-height: 1.4; margin: 0 16px 25px; }
+.ds-app .ds-nav-link { padding: 12px; gap: 14px; min-height: 48px; font-size: .875rem; margin-bottom: 5px; color: var(--ds-nav-text); }
+.ds-app .ds-nav-link svg { color: #0756bd; width: 22px; height: 22px; }
+.ds-app .ds-nav-link:hover { background: var(--ds-soft); color: var(--ds-primary); }
+.ds-app .ds-nav-link.active,.ds-app .ds-nav-link[data-course].active { background: var(--ds-nav-active); color: var(--ds-primary); box-shadow: none; }
+.ds-app .ds-nav-group { padding: 6px 12px; font-size: .75rem; letter-spacing: .08em; }
+.ds-app .ds-sidebar-footer { display: block; padding: 22px 7px 0; }
+.ds-sidebar-footer>a { display: flex; gap: 9px; align-items: center; color: var(--ds-ink); font-size: .8125rem; }
+.ds-sidebar-note { background: linear-gradient(140deg,#eef7ff,#dfedff); border-radius: 14px; color: #244b89; font: italic 1.05rem/1.4 Georgia,serif; padding: 24px 17px; margin: 0 0 18px; }
+.ds-app .ds-sidebar :focus-visible { outline-color: var(--ds-focus)!important; }
+.ds-app .ds-main { padding: 28px 24px 40px; max-width: 1560px; }
+.ds-app .ds-main h1 { letter-spacing: -.045em; }
+.ds-app .ds-main .ds-course-card { border: 1px solid var(--ds-line); padding: 0; gap: 0; overflow: hidden; border-radius: 9px; box-shadow: 0 3px 12px #1e6caa09; display: block; }
+.ds-app .ds-main .ds-course-card:hover { background: var(--ds-paper); border-color: var(--ds-course-color); }
+.ds-course-art { position: relative; height: 112px; overflow: hidden; }
+.ds-course-art>svg { width: 100%; height: 100%; display: block; }
+.ds-course-tag { position: absolute; top: 16px; left: 14px; padding: 6px 12px; background: #0874e6; border-radius: 12px; color: white; font-size: .875rem; font-weight: 700; }
+.ds-tone-violet .ds-course-tag { background: #007d80; }.ds-tone-blue .ds-course-tag { background: #6740d0; }
+.ds-course-body { padding: 12px 14px; }
+.ds-app .ds-main .ds-course-card h3 { font-size: 1rem; line-height: 1.3; font-weight: 700; margin: 0 0 5px; }
+.ds-app .ds-course-card p.ds-course-subtitle { font-size: .8125rem; line-height: 1.4; color: var(--ds-support); margin: 0; }
+.ds-course-meta { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .75rem; color: var(--ds-support); margin: 16px 0 8px; }
+.ds-course-meta>span { display: inline-flex; align-items: center; gap: 6px; }
+.ds-app .ds-course-card .ds-card-action { padding-top: 9px; margin-top: 0; font-size: .8125rem; color: var(--ds-primary); }
+.ds-app .ds-main .ds-dashboard-greeting { display: flex; justify-content: space-between; align-items: center; position: relative; margin: 4px 0 26px; gap: 20px; }
+.ds-app .ds-dashboard-greeting h1.ds-dashboard-label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 6px; color: var(--ds-support); }
+.ds-app .ds-dashboard-greeting p.ds-greeting-title { font-size: clamp(1.85rem,3vw,2.65rem); margin: 0; line-height: 1.15; letter-spacing: -.045em; font-weight: 750; color: var(--ds-ink); }
+.ds-dashboard-greeting .ds-greeting-title span { color: var(--ds-primary); }
+.ds-app .ds-dashboard-greeting p { color: var(--ds-support); margin: 8px 0 0; }
+.ds-app .ds-dashboard-greeting .ds-greeting-note { font-size: .8125rem; white-space: nowrap; align-self: flex-end; }
+.ds-dashboard-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(280px,.95fr); gap: 16px; align-items: start; }
+.ds-app .ds-dash-panel { background: var(--ds-paper); border: 1px solid #e5f0fc; border-radius: 12px; padding: 18px; box-shadow: 0 5px 22px #367bbe06; min-width: 0; }
+.ds-app .ds-main .ds-dash-panel h2 { display: flex; align-items: center; gap: 10px; font-size: 1.125rem; font-weight: 700; letter-spacing: -.025em; margin: 0 0 12px; }
+.ds-dash-panel h2>svg { color: #0079ee; width: 24px; height: 24px; flex-shrink: 0; }
+.ds-app .ds-dash-panel p { font-size: .875rem; line-height: 1.55; margin: 8px 0 14px; }
+.ds-app .ds-dash-panel .ds-section-heading { margin-bottom: 8px; gap: 10px; }
+.ds-app .ds-dash-panel .ds-section-heading h2 { margin: 0; }
+.ds-app .ds-dash-panel .ds-section-heading>span { font-size: .75rem; }
+.ds-dash-plan { grid-column: 1/3; grid-row: 1; }.ds-dash-readiness { grid-column: 3; grid-row: 1; }
+.ds-dash-courses { grid-column: 1/3; grid-row: 2; }.ds-dash-practice { grid-column: 3; grid-row: 2; }
+.ds-dash-mastery { grid-column: 1; grid-row: 3; }.ds-dash-continue { grid-column: 2; grid-row: 3; }.ds-dash-tools { grid-column: 3; grid-row: 3; }
+.ds-dashboard-plan { list-style: none; margin: 8px 0; padding: 0; }
+.ds-dashboard-plan li { display: grid; grid-template-columns: 30px minmax(0,1fr) auto; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--ds-line); }
+.ds-app .ds-dashboard-plan h3 { font-size: .9375rem; margin: 0 0 3px; }
+.ds-app .ds-dashboard-plan p { font-size: .8125rem; line-height: 1.5; margin: 0 0 6px; color: var(--ds-support); }
+.ds-dashboard-plan small { color: var(--ds-support); font-size: .75rem; }
+.ds-plan-number { width: 30px; height: 30px; border: 1px solid #a9caed; border-radius: 50%; color: var(--ds-primary); display: grid; place-items: center; font-weight: 600; background: #eff7ff; }
+.ds-app .ds-dashboard-plan .ds-button { padding: 6px 14px; font-size: .8125rem; background: var(--ds-soft); border-color: #c9e0ff; }
+.ds-app .ds-main a.ds-dash-footer { display: flex; align-items: center; gap: 10px; color: var(--ds-primary); padding-top: 12px; font-size: .875rem; }
+.ds-plan-empty { display: flex; gap: 18px; align-items: center; min-height: 182px; padding: 16px 10px; background: linear-gradient(100deg,#f9fcff,#fff); border-radius: 8px; }
+.ds-plan-empty>.ds-plan-number { width: 58px; height: 58px; flex-shrink: 0; border-radius: 18px; border: none; background: var(--ds-soft); }
+.ds-app .ds-plan-empty h3 { font-size: 1rem; margin: 0; }
+.ds-app .ds-main .ds-dash-caption { color: var(--ds-support); font-size: .8125rem; line-height: 1.5; }
+.ds-readiness-list>a { display: flex; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--ds-line); font-size: .875rem; }
+.ds-readiness-list>a>div { flex: 1; min-width: 0; }
+.ds-readiness-list small { display: block; color: var(--ds-support); font-size: .75rem; margin-top: 3px; }
+.ds-course-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ds-course-color); flex-shrink: 0; }
+.ds-readiness-value { width: 80px; text-align: right; font-size: .8125rem; line-height: 1.35; color: var(--ds-support); }
+.ds-readiness-value b { font-size: 1.8rem; line-height: 1; color: var(--ds-ink); }
+.ds-app .ds-main .ds-dash-practice .ds-button-primary { width: 100%; justify-content: center; }
+.ds-dash-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .8125rem; margin-top: 18px; }
+.ds-mastery-list>a { display: flex; align-items: center; gap: 10px; font-size: .8125rem; padding: 12px 0; border-bottom: 1px solid var(--ds-line); }
+.ds-mastery-list>a>span { font-weight: 750; color: var(--ds-course-color); min-width: 30px; }
+.ds-mastery-list>a>div { flex: 1; min-width: 0; }
+.ds-mastery-list small { display: block; color: var(--ds-support); font-size: .75rem; margin-top: 4px; }
+.ds-app .ds-dash-continue .ds-resume { display: block; border: 0; box-shadow: none; padding: 10px 0; margin: 0; border-bottom: 1px solid var(--ds-line); }
+.ds-app .ds-dash-continue .ds-resume h2 { font-size: .9375rem; margin-bottom: 4px; }
+.ds-app .ds-dash-continue .ds-resume p { margin: 0 0 6px; font-size: .8125rem; }
+.ds-app .ds-dash-continue a { font-size: .8125rem; }
+.ds-dash-continue:has(.ds-resume) .ds-continue-hint { display: none; }
+.ds-app .ds-main .ds-dash-tools .ds-button { font-size: .8125rem; }
+@media(min-width:1001px) and (max-height:850px) { .ds-sidebar-note { display: none; } }
+@media(max-width:1200px) and (min-width:1001px) { .ds-dashboard-grid { grid-template-columns: minmax(0,1fr) 290px; }.ds-dash-plan,.ds-dash-courses,.ds-dash-mastery { grid-column: 1; }.ds-dash-readiness,.ds-dash-practice,.ds-dash-continue,.ds-dash-tools { grid-column: 2; }.ds-dash-continue { grid-row: 3; }.ds-dash-tools { grid-row: 4; }.ds-dashboard .ds-course-grid { grid-template-columns: 1fr; }.ds-app .ds-greeting-note { display:none; } }
+@media(max-width:1000px) { .ds-app:not(.ds-tool) { display: block; }.ds-app .ds-sidebar { height: auto; position: static; margin: 0 12px 12px; }.ds-app .ds-sidebar-footer { display:none; }.ds-app .ds-brand-tagline { margin-bottom: 12px; }.ds-dashboard-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }.ds-dash-plan { grid-column:1/3; grid-row:1; }.ds-dash-readiness { grid-column:1; grid-row:3; }.ds-dash-courses { grid-column:1/3; grid-row:2; }.ds-dash-practice { grid-column:2; grid-row:3; }.ds-dash-mastery { grid-column:1; grid-row:4; }.ds-dash-continue { grid-column:2; grid-row:4; }.ds-dash-tools { grid-column:1/3; grid-row:5; }.ds-app .ds-greeting-note { display:none; } }
+@media(max-width:650px) { .ds-app .ds-main { padding:24px 14px; }.ds-app .ds-topbar { padding:12px 14px; gap:10px; }.ds-header-account>span:last-child { display:none; }.ds-app .ds-breadcrumbs { padding:8px 10px; }.ds-app .ds-breadcrumbs ol { font-size:.8125rem; }.ds-dashboard-grid { display:flex; flex-direction:column; gap:14px; }.ds-dash-panel { width:100%; }.ds-dash-plan { order:1; }.ds-dash-courses { order:2; }.ds-dash-readiness { order:3; }.ds-dash-practice { order:4; }.ds-dash-mastery { order:5; }.ds-dash-continue { order:6; }.ds-dash-tools { order:7; }.ds-app .ds-dash-panel { padding:16px; }.ds-dashboard .ds-course-grid { grid-template-columns:1fr; }.ds-course-art { height:132px; }.ds-app .ds-dashboard-greeting { margin:0 0 22px; }.ds-dashboard-plan li { grid-template-columns:26px minmax(0,1fr); }.ds-dashboard-plan li>.ds-button { grid-column:2; justify-self:start; }.ds-plan-empty { padding:10px 0; align-items:flex-start; gap:12px; }.ds-plan-empty>.ds-plan-number { width:38px; height:38px; }.ds-app.ds-tool .ds-sidebar-footer { display:none; } }
+.ds-dashboard-grid { align-items: stretch; }
+.ds-readiness-list>a { padding: 8px 0; }
+.ds-readiness-list small { line-height: 1.35; }
+.ds-app .ds-dash-readiness .ds-dash-caption { margin-bottom: 4px; }
+.ds-app.ds-tool .ds-topbar { background: var(--ds-paper); }

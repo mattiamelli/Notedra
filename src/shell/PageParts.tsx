@@ -1,3 +1,4 @@
+import { CourseArtwork } from './CourseArtwork';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ASSEMBLY_TOOL_PATH, type Course, topicsFor } from '../academic/navigation';
@@ -8,9 +9,10 @@ export function PageHeading({eyebrow, title, children}: {eyebrow?: string; title
 }
 export function CourseCard({course}: {course: Course}) {
   return <Link to={course.path} className={`ds-course-card ds-tone-${course.tone}`}>
-    <div className="ds-card-top"><span className="ds-course-symbol"><ShellIcon name={course.icon} size={25}/></span><span className="ds-course-code">{course.code}</span></div>
-    <h3>{course.name}</h3><p>{topicsFor(course.subject_id).length} topics</p>
-    <span className="ds-card-action">Browse topics <ShellIcon name="arrow" size={17}/></span>
+    <CourseArtwork course={course}/>
+    <div className="ds-course-body"><h3>{course.name}</h3><p className="ds-course-subtitle">{course.short==='CO'?'Computer architecture':course.short==='R&L'?'Reasoning, proofs & logic':'Java & problem solving'}</p>
+    <div className="ds-course-meta"><span><ShellIcon name="book" size={15}/>{topicsFor(course.subject_id).length} topics</span><span>{course.code}</span></div>
+    <span className="ds-card-action">Browse topics <ShellIcon name="arrow" size={17}/></span></div>
   </Link>;
 }
 export function EmptyState({icon = 'book', title, children}: {icon?: ShellIconName; title: string; children: ReactNode}) {

@@ -1,17 +1,21 @@
-import {ProgressLoader} from '../progress/ProgressLoader';
+import {lazy, Suspense} from 'react';
 import {SummaryLoader} from '../adaptive/SummaryLoader';
-import { ResumeLink } from '../learning/LearningProvider';
-import { Link } from 'react-router';
-import { academicIndex, courses, productAreas } from '../academic/navigation';
-import { AssemblyToolCard, CourseCard, PageHeading } from '../shell/PageParts';
-import { ShellIcon } from '../shell/ShellIcon';
+import {ResumeLink} from '../learning/LearningProvider';
+import {Link} from 'react-router';
+import {academicIndex, courses, ASSEMBLY_TOOL_PATH} from '../academic/navigation';
+import {CourseCard} from '../shell/PageParts';
+import {ShellIcon} from '../shell/ShellIcon';
+const DashboardInsights = lazy(()=>import('./DashboardInsights'));
 export function DashboardPage() {
-  return <>
-    <div className="ds-welcome"><div><PageHeading eyebrow="DELFTSTUDY · YOUR STUDY SPACE" title="Dashboard"><p>Build understanding, one idea at a time.</p></PageHeading><div className="ds-dashboard-actions"><Link className="ds-button ds-button-primary" to="/study-plan">Choose your next step <ShellIcon name="arrow" size={17}/></Link><Link className="ds-button" to="/exams">Mock Exams</Link></div></div><svg className="ds-welcome-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M12 20 50 10 88 20v60L50 90 12 80Z" stroke="currentColor" strokeWidth="2"/><path d="M50 10v80M12 40l38 10 38-10M12 60l38 10 38-10" stroke="currentColor" strokeWidth="2"/><circle cx="50" cy="50" r="6" fill="currentColor"/></svg></div>
-    <ResumeLink/><SummaryLoader/>
-    <section className="ds-section" aria-labelledby="courses-title"><div className="ds-section-heading"><h2 id="courses-title">Your courses</h2><span>{courses.length} courses · {academicIndex.topics.length} topics</span></div><div className="ds-course-grid">{courses.map(course => <CourseCard key={course.subject_id} course={course}/>)}</div></section>
-    <section className="ds-section" aria-labelledby="tools-title"><div className="ds-section-heading"><h2 id="tools-title">Available tools</h2><span>{courses.find(course => course.subject_id === 'CSE1400_CO')!.name}</span></div><AssemblyToolCard/></section>
-    <section className="ds-section" aria-labelledby="study-title"><div className="ds-section-heading"><h2 id="study-title">Study areas</h2><span>Explore what’s next</span></div><div className="ds-shortcuts">{productAreas.map(area => <Link to={area.path} key={area.path}><ShellIcon name={area.icon}/><span>{area.title}</span><ShellIcon name="arrow" size={15}/></Link>)}</div></section>
-    <ProgressLoader/>
-  </>;
+  return <div className="ds-dashboard">
+    <header className="ds-dashboard-greeting"><div><h1 className="ds-dashboard-label">Dashboard</h1><p className="ds-greeting-title">Welcome to <span>DelftStudy</span></p><p>Build understanding today. Take your next step with confidence.</p></div><p className="ds-greeting-note">Learn · Practice · Reflect</p></header>
+    <div className="ds-dashboard-grid">
+      <Suspense fallback={<section className="ds-dash-panel ds-dash-plan"><h2>Your Study Path</h2><p role="status">Loading your local study evidence…</p><Link to="/study-plan">Open Study Path →</Link></section>}><DashboardInsights>
+      <section className="ds-dash-panel ds-dash-courses" aria-labelledby="courses-title"><div className="ds-section-heading"><h2 id="courses-title"><ShellIcon name="book"/>Your courses</h2><span>{courses.length} courses · {academicIndex.topics.length} topics</span></div><div className="ds-course-grid">{courses.map(course=><CourseCard key={course.subject_id} course={course}/>)}</div></section>
+      <section className="ds-dash-panel ds-dash-practice"><h2><ShellIcon name="practice"/>Practice, one idea at a time</h2><p>Choose a course and work through authored exercises with explanatory feedback.</p><Link className="ds-button ds-button-primary" to="/practice">Open Practice <ShellIcon name="arrow" size={17}/></Link><div className="ds-dash-links"><Link to="/mistakes">Review Mistake Book</Link><Link to="/exams">Try a mock exam</Link></div></section>
+      </DashboardInsights></Suspense>
+      <section className="ds-dash-panel ds-dash-continue"><h2><ShellIcon name="calendar"/>Continue learning</h2><ResumeLink/><SummaryLoader/><p className="ds-continue-hint">Choose a course above, or return to your saved work.</p><Link to="/progress">View your learning evidence →</Link></section>
+      <section className="ds-dash-panel ds-dash-tools"><h2><ShellIcon name="cpu"/>See the machine in motion</h2><p>Follow registers, stack frames and function calls, one instruction at a time.</p><Link className="ds-button" to={ASSEMBLY_TOOL_PATH}>Open Assembly Visualizer <ShellIcon name="arrow" size={17}/></Link></section>
+    </div>
+  </div>;
 }

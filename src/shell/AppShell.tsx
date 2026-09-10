@@ -39,11 +39,11 @@ export function AppShell() {
     <header className="ds-topbar">
       <button ref={menuButton} className="ds-menu-button" aria-label={navigationOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={navigationOpen} aria-controls="ds-navigation" onClick={() => setNavigationOpen(open => !open)}><ShellIcon name={navigationOpen ? 'close' : 'menu'}/></button>
       <nav className="ds-breadcrumbs" aria-label="Breadcrumb"><ol>{context.breadcrumbs.map((crumb, i) => <li key={`${i}-${crumb.label}`}>{crumb.to ? <Link to={crumb.to}>{crumb.label}</Link> : <span aria-current="page">{crumb.label}</span>}</li>)}</ol></nav>
-      <span className="ds-local"><i/> Personal study space</span>
+      <Link className="ds-header-account" to="/account" aria-label="Account & sync"><span className="ds-avatar">DS</span><span>Your study space<small>Account & sync</small></span></Link>
     </header>
     <aside className={`ds-sidebar${navigationOpen ? ' is-open' : ''}`} id="ds-navigation">
       <Link className="ds-brand" to="/" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span>Delft<strong>Study</strong></span></Link>
-      <nav aria-label="Primary navigation">
+      <p className="ds-brand-tagline">Learn deeper.<br/>Go further.</p><nav aria-label="Primary navigation">
         <NavLink to="/" end className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="dashboard"/><span>Dashboard</span></NavLink>
         <div className="ds-nav-group">Courses</div>
         {courses.map(course => <NavLink key={course.subject_id} to={course.path} data-course={course.subject_id} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={course.icon}/><span>{course.name}</span></NavLink>)}
@@ -51,7 +51,7 @@ export function AppShell() {
         {productAreas.map(area => <NavLink key={area.path} to={area.path} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={area.icon}/><span>{area.title}</span></NavLink>)}
         <NavLink to="/account" className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="progress"/><span>Account & sync</span></NavLink>
       </nav>
-      <div className="ds-sidebar-footer"><span className="ds-footer-dot"/> Built for independent learning</div>
+      <div className="ds-sidebar-footer"><p className="ds-sidebar-note">Small steps.<br/>Deeper understanding.</p><Link to="/account" onClick={closeNavigation}><span className="ds-avatar">DS</span><span>Your study space<small>Account & sync</small></span></Link></div>
     </aside>
     <Content ref={element => {content.current = element;}} id="ds-content" tabIndex={-1} className={tool ? 'ds-tool-content' : 'ds-main'}>
       {tool && <Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> Back to Assembly topic</Link>}

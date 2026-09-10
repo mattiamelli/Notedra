@@ -3,8 +3,8 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 
-const baseline = 'd75dec654bde3a165a983d68bbac9637a8d0190c';
-const presentation = new Set(['src/main.tsx','src/pages/CoursePage.tsx','src/pages/DashboardPage.tsx','src/shell/AppShell.tsx','public/favicon.svg','src/exams/ExamDialog.tsx']);
+const baseline = '2baf35885ea49d9625c90b6eec01b102741f33a4';
+const presentation = new Set(['src/pages/DashboardPage.tsx','src/shell/AppShell.tsx','src/shell/PageParts.tsx','src/design/tokens.css','src/design/product.css','public/favicon.svg']);
 const tree = execFileSync('git',['ls-tree','-r',baseline,'--','src','tests','content-pack','supabase','public'],{encoding:'utf8'}).trim().split('\n');
 let protectedFiles = 0;
 for (const entry of tree) {

@@ -1,6 +1,6 @@
 # Step 13 — Visual identity and product design
 
-**COMPLETE — Step 13 accepted.** The historical checkpoint evidence below is retained and clearly separated from the final continuation evidence. Step 14 has not started.
+**COMPLETE — Step 13 visual match patch accepted.** The original acceptance evidence below is historical. The final section records the new reference-match patch. Step 14 has not started.
 
 Authoritative specification: `/Users/mattiamelli/.codex/attachments/43808093-22fc-4962-8741-ff0132671470/pasted-text.txt`. Continuation specification: attachment `073a4810-04e9-47c7-aab3-15c6b8cf7f3a`. Continued from `d75dec654bde3a165a983d68bbac9637a8d0190c` after verifying HEAD, clean status and recent history. The sections through “Checkpoint verification” describe the earlier checkpoint, not the final application.
 
@@ -259,3 +259,69 @@ Every PASS above has a current command or rendered-browser observation. Mocked D
 Post-build keyboard checks additionally verified filter Tab navigation (Course to Topic), account Email to Password focus, exam Next/Previous with the saved answer still `11010`, and the longer AirAuditCli.java file at 390px. The actual quantified R&L negation example was inspected at 390px with readable wrapping. The final browser console query again returned no warnings/errors. The viewport override was reset and the accepted Dashboard left open for the user.
 
 Release identity: the final Step 13 release is the Git commit containing this completed report and the implementation inventory above, titled **feat: complete Step 13 DelftStudy product identity**. Its exact hash and post-commit clean status are reported in the completion message (a commit cannot embed its own hash). Original accepted baseline `7b1661fbec8439405841ed72baeee983b78564db`; preserved continuation checkpoint `d75dec654bde3a165a983d68bbac9637a8d0190c`. No Step 14 or later feature was started.
+
+
+## Step 13 visual match patch — reference supplied 10 September 2026
+
+Starting accepted commit: `2baf35885ea49d9625c90b6eec01b102741f33a4`, verified clean before editing. Authoritative request: attachment `831ac8c4-f1c5-4f41-b172-27c06c6c6240`. Primary visual reference: user-supplied `47EE4458-71D3-439F-A0E9-2AD63AFC75AD.PNG` (the bright white/blue Drift Study dashboard). The image is a visual reference; its names, dates, percentages and course data are not authoritative DelftStudy content.
+
+### What changed
+
+The previous evergreen/paper direction is replaced with the reference's cool white, pale blue and navy design language. The Dashboard now uses the reference's wide study-plan panel, narrow readiness column, illustrated course row, and lower mastery/resume/practice/tool panels. This changes composition and density, not only color.
+
+- Palette: page `#f0f7ff`, white cards, navy headings `#081747`, body `#263c68`, support `#526b96`, primary blue `#0061ed`, selected navigation `#d9ebff`, cool borders `#dfebfa`.
+- Courses: CO blue/cyan `#005caf`; R&L teal `#007568`; IP violet `#6235b7`. Existing course names and icons accompany colors.
+- Sidebar: inset rounded light panel, blue active navigation, compact brand/tagline, lower study note and real Account & sync link. Header keeps functional breadcrumbs and compact account access.
+- Dashboard: large greeting with blue DelftStudy wordmark; genuine Study Path recommendations rendered using the existing recommender with its unchanged 20-minute default, exact order, explanations, estimated durations and destinations. It does not display task-completion circles.
+- Readiness/mastery: separate compact panels project the existing `useProgress` result by course; coverage/confidence remain visible and unknown stays explicit. Full detail remains one click away in Progress. The display does not introduce an overall readiness average or pass prediction.
+- Course cards: original lightweight SVG hardware traces, logic gates and Java source headers, named tags, subtitles, real canonical topic counts and direct course links. No image library or downloaded artwork. The user explicitly allowed original SVG assets; no copy of the supplied card artwork was used.
+- Typography: existing native sans-serif, bold navy greeting/section titles, smaller muted metadata; no font download. Body reading styles and the 44px minimum control height remain.
+- Surfaces: compact white panels, cool soft borders, restrained blue shadows and rounded controls. Global token changes carry into courses, study modes, feedback, Mistakes, Study Path, Progress, Exams and Account. Assembly retains its dark technical workspace inside the bright shell.
+- Accessibility: existing token contrast tests retained with unchanged thresholds; sidebar focus now uses blue on the light navigation surface. No additional animation was introduced; existing reduced-motion suppression remains.
+
+### Intentional adaptations of the reference
+
+No search service currently exists, so the top search slot is adapted to real breadcrumb navigation rather than presenting an inert search field. Account access uses “Your study space”, not a fabricated signed-in name. The header has no fake notification badge. No fake upcoming exam dates, streaks, heatmaps, generated questions, task-completion fractions, course completion percentages or activity timestamps were added. The nearest real features fill those positions: Study Path, actual evidence indices, authored Practice, saved resume/mistake evidence and Assembly. IP remains Java, not the reference's C/C++. No backend, grading, storage, auth or security feature was added.
+
+### Preservation and projection tests
+
+The visual preservation baseline now pins the accepted Step 13 commit. Only the explicit visual files (`DashboardPage`, `AppShell`, `PageParts`, palette/adapter CSS, favicon) are excluded from byte-for-byte preservation; ExamDialog is now protected again. The existing engine/content/storage/security files and all previously accepted tests stay unchanged. Three new tests in `tests/dashboard-projection.test.tsx` cover:
+
+1. Empty evidence produces unknown and an honest no-recommendations state, without numeric progress or fabricated completion.
+2. Actual derived per-course mastery/readiness indices and coverage map to the right course links, while source records remain unchanged.
+3. The Dashboard displays the existing recommender's exact order, reasons, durations and destinations.
+
+These are mocked-hook presentation tests using the real derivation/recommendation functions and trusted test fixtures, not native-browser storage tests. The first focused run passed all seven tests (four retained contrast tests plus three projections).
+
+### Final validation and production review
+
+The requested existing gates, typecheck, production build, Java verification and both visual gates were executed. The first full suite reported 1,856 passed / 8 failed because the visible greeting replaced the established Dashboard heading. This was fixed in the product, preserving the existing tests and the literal Dashboard page title; the greeting remains a separate presentation element. The targeted routing rerun passed all 72 tests. The fresh full-suite reruns passed. The last run after the final Assembly frame adjustment passed **1,864 tests in 77 files**, with no skipped tests, in **49.69 seconds**.
+
+Adversarial self-review also found a visual/DOM ordering mismatch in the first dashboard composition. The final layout keeps plan, readiness, courses, Practice and mastery in matching reading order. The compact mobile account link now has an explicit Account & sync accessible name. These refinements change no learning or persistence logic.
+
+The new visual gate protects **349 accepted baseline files** byte-for-byte, including the previous dialog fix and every accepted test. Runtime/build dependencies are unchanged. The final visual bundle gate passes the existing budgets: initial JS **502,169 B** (gzip **132,940 B**), CSS **88,937 B**, total assets **1,876,258 B**. Relative to the accepted Step 13 baseline: +3,332 B initial JS (+0.67%), +1,250 B gzip (+0.95%), +10,548 B CSS, +18,070 B total (+0.97%). The new evidence projection is lazy-loaded; existing cloud, exam and course boundaries pass. Vite emits its advisory >500 kB chunk warning because the initial chunk is just above that threshold; the unchanged explicit 520 kB / 140 kB gzip budgets still pass. No dependency or external font was added.
+
+**Final status: all 34 effective final gates PASS.** The accepted rerun repeated the production visual-bundle build, full tests, TypeScript, visual preservation and whitespace checks after the last presentation refinement. Content, all existing feature gates, Java and lazy-boundary checks also passed during this patch. Java again verified **49 compiled fixtures and 11 assignment references / 144 assertions**. The initial failed test run is retained separately in [visual-match-results.json](visual-match-results.json), not relabeled as a pass.
+
+Production browser acceptance used the real in-app Chromium browser and the production build at `http://127.0.0.1:4222`. Dashboard screenshots were inspected at 390, 768 and 1280px. Fourteen supporting surfaces (CO, R&L, IP, Learn, Practice, actual wrong-answer feedback, Mistakes, Study Path, Progress, Exams, saved exam review, Account, IP Workbench and Assembly) were visually inspected at 390 and 1280px; all fourteen were also loaded and measured at 768px. **All 45 surface/width checks had document scroll width equal to viewport width.** Dashboard breakpoint neighbors 999/1001 and 1199/1201px also had no document overflow. Native selects may abbreviate long selected text when closed; full options remain available. Editor-internal scrolling and decorative SVG cropping are intentional, not document overflow.
+
+A fresh separate local origin at `http://127.0.0.1:4231` verified the actual empty Dashboard: all three readiness indices stayed unknown, mastery stayed unknown, and no recommendations, activity history or completion claims were invented. Its lower panels were also visually inspected. This did not clear or replace the existing study profile. The temporary test tab was closed afterward.
+
+Native interaction checks: mobile navigation opens and Escape restores focus to Open navigation; the new readiness link opens `/progress?course=CSE1400_CO`; the actual first recommendation opens the existing immutable Practice attempt. Assembly arithmetic Run produced RAX=8, Previous restored RAX=5, and Reset worked with RSP/RBP=0x1000. The final Assembly frame was re-inspected after changing its translucent header to opaque white. Its dark tracing area was retained. The final browser console query returned no warnings/errors. Temporary viewport overrides were reset and the Dashboard left open.
+
+The visual self-review compared the final Dashboard directly against the supplied reference. **The overall visual match is close** in cool white/blue/navy palette, light inset sidebar, blue greeting, broad plan/narrow summary composition, white rounded panels and illustrated three-course row. It is intentionally not pixel-identical: real evidence requires longer qualification text, unknown states replace fictional charts, original vector headers replace photographic artwork, and unsupported reference panels are adapted as listed above. These differences preserve academic honesty and implemented functionality. The existing full-app evidence tests remain intact.
+
+Accessibility evidence combines the unchanged four numeric contrast tests, native focus/navigation observations, DOM order review and responsive inspection. No color-only status was introduced. OS reduced-motion toggling, screen-reader certification, Safari and Firefox were **NOT RUN**; the retained reduced-motion rule was statically verified. Remote Supabase acceptance was not repeated; its code, schema and policies remain protected and the static/security regression gates passed. No new exam submission, account mutation or cloud synchronization was performed for this visual patch.
+
+Changed files in this patch:
+- `src/design/tokens.css`, `src/design/product.css`: replacement palette and cross-product/reference layout adapters.
+- `src/pages/DashboardPage.tsx`, new `src/pages/DashboardInsights.tsx`: dashboard composition and lazy projections of existing results.
+- `src/shell/AppShell.tsx`, `src/shell/PageParts.tsx`, new `src/shell/CourseArtwork.tsx`: light shell, account links, course cards and original artwork.
+- `public/favicon.svg`: matching blue brand mark.
+- `scripts/validate-visual.ts`: accepted-baseline preservation scope; `scripts/inspect-visual-build.ts`: comparison baseline updated, budgets unchanged.
+- New `tests/dashboard-projection.test.tsx`: three meaningful evidence/ordering/immutability presentation tests.
+- `docs/visual-identity-status.md`, new `docs/visual-match-results.json`, `docs/visual-bundle-report.json`, and the eight existing feature bundle reports: actual refreshed evidence.
+
+Student Schema 3, IndexedDB 3, academic content, grading, ranking, mastery/readiness formulas, exam timer/scoring, authentication, cloud/RLS and Assembly engine remain unchanged. No existing test or preservation-lock digest was weakened or rewritten. No dependency was added. The Sites registration/configuration was reused read-only; no deployment was requested or performed.
+
+Release commit title: **feat: match DelftStudy to the supplied blue dashboard reference**. The completion message records the exact hash and post-commit Git status; the commit cannot embed its own hash. **Stop after this Step 13 patch. Step 14 has not started.**
