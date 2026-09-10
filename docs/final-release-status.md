@@ -25,7 +25,7 @@ Production origin: **https://delftstudy-assembly.mattiamelli07.chatgpt.site/**. 
 | A session refresh and manual upload | PASS | Disposable A, actual public UI; Pending → Syncing → Synced |
 | B sign-in/logout/session persistence | PASS | Disposable authorized Gmail alias, real public Auth and browser |
 | A / B / anonymous profile separation | PASS, bounded UI scope | Cross-profile attempt routes unavailable; anonymous draft preserved; no adopt/copy action |
-| B cloud-to-local recovery | PARTIAL | Data returned after empty local restore; a real exam binding defect was found and repaired locally; publication/recheck pending |
+| B cloud-to-local recovery | PASS after repair | Empty local restore recovered saved answer/exam; exact historical component and rubric now resolve on the real public version 4 |
 | Desktop/tablet/mobile smoke | PASS, bounded | 31 route/viewport checks with no horizontal page overflow; not device certification |
 | Keyboard/forms/dialogs | PASS, bounded | Visible menu focus, Enter, Escape, form save, exam submission and review; exhaustive focus trapping NOT RUN |
 | Browser console | PASS, bounded | No captured warn/error entries on public test tab at review time |
@@ -154,4 +154,23 @@ Fresh repair gates completed on 11 September local time:
 
 The original 1,882 tests are preserved; 12 regressions were added. No source pack, full Handoff, privileged key, test harness or source map entered the production artifact. Current module graph remains 503,057 initial JS bytes / 133,244 local gzip; metadata script adds 13,508 bytes as before. Artifact inventory graph reports 1,877,934 bytes and CSS88,955. These inventory totals differ from the full release output and are not CDN transfer measurements.
 
-Publication and real cloud-restored exam recheck remain pending at this source checkpoint. Step 15 remains PARTIAL regardless of that repair while external email and hosting gates remain open.
+### Published repair and fresh final verification
+
+Repair source **`d6f4a8644f5cefcaa80518b193383e152afe1dce`**, saved version **4**, version ID `appgprj_6aa004e18c4881918fc92e84ebbe989b~appgver_f693f61594cc81919df066fa488035af`, deployment `appgdep_6aa335d3b7bc8191941780bfba22ef24`. Sites reported succeeded at `2026-09-10T22:57:39.973094+00:00` on the unchanged public URL. Artifact archive hash: `sha256:9fb2a913045c0dcd17d659a32a4cab3229c04fa5d316b2791e194a108d379674`, 184 packaged files including hosting metadata.
+
+The source push was initially rejected twice by automatic approval review because it requested explicit authorization to export versioned repository contents to the registered Git host. After confirming the connector-provided destination and unchanged source packs, the operator explicitly approved that exact push to the existing Sites repository on git.chatgpt-team.site. The push then succeeded. No alternative destination or approval bypass was used.
+
+**Live regression PASS:** reopening the *same already cloud-recovered* B exam on version 4 displayed Encode a signed integer, exact version 1, immutable answer 11010, original 2/4 objective total and explanatory feedback; no historical-unavailable alert. The third open component also displayed its original question, rubric and reference, with Unanswered and no automatic score. No saved records were rewritten to obtain this result. B remained Synced; final sign-out returned to the separate anonymous profile. Viewport override was reset and the public dashboard left open. Final captured browser warning/error log was empty.
+
+[release-live-http-after-repair.json](release-live-http-after-repair.json) records another **66 fresh responses**, `22:58:32–22:58:43 UTC`, after publication. All 47 sitemap URLs still resolve on the same HTTPS origin. Newly published initial JS `/assets/index-Df_r97Yw.js`, CSS and metadata script match the current built hashes; real gzip bytes are unchanged from the earlier measurements. Required headers, raw public canonical/noindex routing and missing-asset 404 remain failed, honestly unchanged by this application repair.
+
+The current metadata, route privacy, artifact comparison, browser fix and documentation claims were checked again after publishing. Final documentation changes do not change the deployed build; the deployment source remains the exact repair commit above, and later documentation-only checkpoints may be ahead of it.
+
+### Remaining before Step 15 COMPLETE
+
+1. Supabase resolves SU-469802 and a fresh disposable signup proves confirmation email delivery/return and required pre-confirmation behavior.
+2. The host supplies real CSP/frame protection and the other required response policies. Retest after Report-Only validation and enforcement; do not call absent headers a passing security gate.
+3. Public course documents need correct initial indexability/canonical/social metadata, with application-only fallback and real missing-asset 404. Sitemap XML itself is already valid, but public indexing readiness is not.
+4. Search Console ownership is an operator task requiring Google's actual verification file; instructions are ready, configuration/indexing not performed. Numeric browser version, field Web Vitals, offline fault injection and exhaustive accessibility remain explicitly NOT RUN, with the bounded smoke evidence above retained.
+
+**Confirm Email is not the only remaining blocker.** No Supabase Site URL/Redirect URL change is currently required. No provider migration, Step 16 or final acceptance commit was made; this is a clean, resumable **Step 15 PARTIAL** checkpoint.
