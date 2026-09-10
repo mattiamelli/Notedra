@@ -16,6 +16,12 @@ export class AccountSession {
   private unsubscribe:(()=>void)|null=null;
   private closed=false;
   private signingOut=false;
+  private operationPending=false;
+  private beginOperation():void {
+    if(this.closed)throw Error('Account session is closed. Reload to reconnect.');
+    if(this.operationPending)throw Error('Another account action is in progress. Wait for it to finish, then retry.');
+    this.operationPending=true;
+  }
   constructor(private readonly adapter:AuthAdapter) {}
   snapshot=():AuthState=>this.state;
   subscribe=(listener:()=>void):(()=>void)=>{this.listeners.add(listener);return()=>{this.listeners.delete(listener);};};
@@ -40,17 +46,17 @@ export class AccountSession {
     catch{if(this.state.epoch===epoch)this.failed('Account session could not be restored. Continue locally or retry sign-in.');}
   }
   async signIn(email:string,password:string):Promise<void> {
-    this.signingOut=false;
-    try{await this.adapter.signIn(email,password);}catch{throw Error('Sign-in failed. Check your email, password, email verification and connection.');}
+    this.beginOperation();this.signingOut=false;
+    try{await this.adapter.signIn(email,password);}catch{throw Error('Sign-in failed. Check your email, password, email verification and connection.');}finally{this.operationPending=false;}
   }
   async signUp(email:string,password:string):Promise<{verificationRequired:boolean}> {
-    this.signingOut=false;
-    try{return await this.adapter.signUp(email,password);}catch{throw Error('Account creation failed. Check the details and connection, then retry.');}
+    this.beginOperation();this.signingOut=false;
+    try{return await this.adapter.signUp(email,password);}catch{throw Error('Account creation failed. Check the details and connection, then retry.');}finally{this.operationPending=false;}
   }
   async signOut():Promise<void> {
-    this.signingOut=true;this.publish(null,'Signing out… Account data remains saved separately in this browser.');
+    this.beginOperation();this.signingOut=true;this.publish(null,'Signing out… Account data remains saved separately in this browser.');
     try{await this.adapter.signOut();this.publish(null,'Signed out. Your account data is preserved in its separate local profile.');}
-    catch{this.failed('Sign-out could not be confirmed. Account data is hidden. Retry sign-out before leaving a shared browser.');throw Error(this.state.message);}
+    catch{this.failed('Sign-out could not be confirmed. Account data is hidden. Retry sign-out before leaving a shared browser.');throw Error(this.state.message);}finally{this.operationPending=false;}
   }
   close():void {this.closed=true;this.abort.abort();this.unsubscribe?.();this.listeners.clear();}
 }

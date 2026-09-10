@@ -1,3 +1,4 @@
+import {beforeHardening} from './hardening-preservation';
 import assert from 'node:assert/strict';
 import {readFileSync,readdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -30,7 +31,7 @@ export function validateReadiness(){
 export function progressBuildGuard(){return {name:'progress-evidence-integrity',buildStart(){validateMastery();validateReadiness();}};}
 
 function preservedBytes(file:string){
- const data=readFileSync(file);
+ const data=beforeHardening(file,readFileSync(file));
  if(file==='src/practice/ExerciseParts.tsx')return data.toString().replace('Eligible saved evidence is interpreted separately in Progress; this item point is not a mastery or readiness score.','This item feedback does not update mastery or exam readiness.');
  if(file==='src/practice/AttemptPage.tsx')return data.toString().replace('Learning evidence summaries are available in Progress.','No learning score is calculated.');
  if(file==='src/exams/ExamsPage.tsx')return data.toString().replace('No official grade is provided. See Progress for separate evidence indices with coverage, confidence and limitations.','No official grade or exam-readiness estimate is provided.');

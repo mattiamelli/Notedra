@@ -1,0 +1,24 @@
+{
+  "finalAcceptance": "BLOCKED",
+  "runs": [
+    {
+      "run": "historical weak-negative probe",
+      "output": "REMOTE ACCEPTANCE PASS: auth, snapshots, receipts, RLS isolation, idempotency, stale-CAS conflict, reconnect and account switch.",
+      "result": "PASS (weaker assertions; superseded)",
+      "migrationChanged": false
+    },
+    {
+      "run": "strict-code probe",
+      "output": "REMOTE ACCEPTANCE FAILED: stale revision did not produce a conflict: no error upstream request timeout",
+      "result": "FAIL",
+      "migrationChanged": false
+    },
+    {
+      "run": "single strict-code retry",
+      "output": "REMOTE ACCEPTANCE FAILED: stale revision did not produce a conflict: no error upstream request timeout",
+      "result": "FAIL",
+      "migrationChanged": false
+    }
+  ],
+  "unresolved": "Upstream request timeout instead of structured stale-CAS error; later strict checks not reached"
+}

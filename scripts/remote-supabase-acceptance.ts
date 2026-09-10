@@ -44,9 +44,12 @@ async function main(){
   expect(firstA.owner===a.id&&firstA.revision===1&&firstA.operationId===opA,'local-to-cloud RPC acknowledgement is invalid');
   const retryA=await rpc(a,0,opA);expect(retryA.revision===1,'identical operation is not idempotent');
   const stale=await a.client.rpc('sync_learner_snapshot',{expected_revision:0,operation:crypto.randomUUID(),learner_payload:emptyPayload()});
-  expect(!!stale.error,`stale revision did not produce a conflict: ${stale.error?.code??'no error'} ${stale.error?.message??''}`);
+  expect(stale.error?.code==='40001',`stale revision did not produce a conflict: ${stale.error?.code??'no error'} ${stale.error?.message??''}`);
   const reused=await a.client.rpc('sync_learner_snapshot',{expected_revision:1,operation:opA,learner_payload:emptyPayload()});
-  expect(!!reused.error,`operation reuse with changed request did not conflict: ${reused.error?.code??'no error'} ${reused.error?.message??''}`);
+  expect(reused.error?.code==='23505',`operation reuse with changed request did not conflict: ${reused.error?.code??'no error'} ${reused.error?.message??''}`);
+  const changedPayload=emptyPayload();changedPayload.content.version='conflicting-request';
+  const changed=await a.client.rpc('sync_learner_snapshot',{expected_revision:0,operation:opA,learner_payload:changedPayload});
+  expect(changed.error?.code==='23505','same operation with changed payload did not return the receipt conflict code');
   const opB=crypto.randomUUID(),firstB=await rpc(b,0,opB);expect(firstB.owner===b.id&&firstB.revision===1,'second user cannot create an independent snapshot');
 
   const ownA=await a.client.from('learner_snapshots').select('user_id,revision,operation_id').eq('user_id',a.id);
@@ -58,11 +61,23 @@ async function main(){
   const crossOperation=await a.client.from('learner_sync_operations').select('user_id').eq('user_id',b.id);
   expect(!crossOperation.error&&crossOperation.data?.length===0,'RLS exposed User B receipt to User A');
   const crossUpdate=await a.client.from('learner_snapshots').update({revision:99}).eq('user_id',b.id).select('revision');
-  expect(!!crossUpdate.error||crossUpdate.data?.length===0,'RLS allowed User A to update User B snapshot');
+  expect(crossUpdate.error?crossUpdate.error.code==='42501':crossUpdate.data?.length===0,'RLS allowed User A to update User B snapshot');
   const crossDelete=await a.client.from('learner_snapshots').delete().eq('user_id',b.id).select('user_id');
-  expect(!!crossDelete.error||crossDelete.data?.length===0,'RLS allowed User A to delete User B snapshot');
+  expect(crossDelete.error?crossDelete.error.code==='42501':crossDelete.data?.length===0,'RLS allowed User A to delete User B snapshot');
   const spoof=await a.client.from('learner_snapshots').insert({user_id:b.id,revision:1,operation_id:crypto.randomUUID(),schema_version:1,payload:emptyPayload()});
-  expect(!!spoof.error,'direct insert claiming another user was not denied');
+  expect(spoof.error?.code==='42501','direct insert claiming another user was not denied');
+  for(const table of ['learner_snapshots','learner_sync_operations']){
+    const ownWrite=await a.client.from(table).update({revision:99}).eq('user_id',a.id);
+    expect(ownWrite.error?.code==='42501','direct own-table write could bypass the RPC');
+  }
+  const receiptUpdate=await a.client.from('learner_sync_operations').update({revision:99}).eq('user_id',b.id).select('revision');
+  expect(receiptUpdate.error?receiptUpdate.error.code==='42501':receiptUpdate.data?.length===0,'cross-user receipt update was not denied');
+  const receiptDelete=await a.client.from('learner_sync_operations').delete().eq('user_id',b.id).select('operation_id');
+  expect(receiptDelete.error?receiptDelete.error.code==='42501':receiptDelete.data?.length===0,'cross-user receipt delete was not denied');
+  const receiptSpoof=await a.client.from('learner_sync_operations').insert({user_id:b.id,operation_id:crypto.randomUUID(),revision:1,request_hash:'0'.repeat(64)});
+  expect(receiptSpoof.error?.code==='42501','spoofed receipt insert was not denied');
+  const bReceipt=await b.client.from('learner_sync_operations').select('operation_id,revision').eq('operation_id',opB);
+  expect(!bReceipt.error&&bReceipt.data?.length===1&&bReceipt.data[0].revision===1,'User B receipt changed');
   const bStill=await b.client.from('learner_snapshots').select('user_id,revision').eq('user_id',b.id);
   expect(!bStill.error&&bStill.data?.length===1&&bStill.data[0].revision===1,'cross-user mutation changed User B history');
 

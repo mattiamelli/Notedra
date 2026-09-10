@@ -1,0 +1,199 @@
+{
+  "browser": "Chromium 152.0.7977.83 on macOS",
+  "productionOrigin": "http://127.0.0.1:4232",
+  "nativeOrigin": "http://127.0.0.1:4233",
+  "responsive": [
+    {
+      "surface": "Account sign-in",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Progress and backup",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Mistakes",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Study Path",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Exam review",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "IP Workbench",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Assembly",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Account sign-in",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Progress and backup",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Mistakes",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Study Path",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Exam review",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "IP Workbench",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Assembly",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Account sign-in",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "Progress and backup",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "Mistakes",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "Study Path",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "Exam review",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "IP Workbench",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "Assembly",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    },
+    {
+      "surface": "Live immutable sync conflict",
+      "width": 390,
+      "documentWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "surface": "Live immutable sync conflict",
+      "width": 768,
+      "documentWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "surface": "Live immutable sync conflict",
+      "width": 1280,
+      "documentWidth": 1280,
+      "scrollWidth": 1280
+    }
+  ],
+  "native": {
+    "core": {
+      "passed": 13,
+      "failed": 0,
+      "initialFailure": "obsolete DB 2 helper prevented corruption scenario; fixed to STUDENT_DB_VERSION, rerun passed"
+    },
+    "step9": 14,
+    "exams": 9,
+    "sync": 9,
+    "actualReloadChecks": 3,
+    "cloudTransport": "deterministic fake; native IndexedDB"
+  },
+  "productionFlows": {
+    "anonymous": "empty Dashboard unknown; wrong Practice and correct new retry retained distinct IDs",
+    "realAccount": "disposable signup, Synced, no anonymous mistakes adopted, sign-out, sign-in, Synced",
+    "practiceWrongAttempt": "db0045ee-2952-4955-a659-8128c1d5b7a8",
+    "practiceRetryAttempt": "99cb794b-368e-4a3b-84c5-0357ca370868",
+    "exam": "quick CO: 2 answered, 2 unanswered, 1 flagged; 2/4 objective points, open weight 8 unscored; HTML-like response literal with zero img[onerror] nodes",
+    "dialog": "Escape returned focus to Finish and submit at 390 px, confirmation saved review",
+    "backup": "export prepared; valid empty backup uploaded through file chooser, explicit keyboard confirmation; restore completed and recovery export available",
+    "studyPath": "first action opened exact linked CO radix Learn destination",
+    "workbench": "edited test text, Copy current file returned exact text, Reset starter files invoked, test specifications revealed; no code executed",
+    "assembly": {
+      "arithmetic": 8,
+      "stackFrame": 15,
+      "functionCall": 7,
+      "functionRBX": 7,
+      "finalRSP": 4096,
+      "finalRBP": 4096,
+      "previousAndReset": "PASS"
+    },
+    "missingModule": "removed one asset from temp copied preview; page alert preserved shell; Go to Dashboard recovered; restored asset and linked Study Path action worked",
+    "cloudConflict": "Signed into isolated disposable account; restored and synced original test submission; restored differing answer under same ID; sync rejected with Conflict requires attention; original remote history retained by failed local merge."
+  },
+  "console": {
+    "normalFlows": "no warnings/errors observed before missing-asset fault",
+    "deliberateFault": "one expected Failed to fetch dynamically imported module error; not suppressed"
+  },
+  "notRun": [
+    "Safari",
+    "Firefox",
+    "physical mobile hardware",
+    "screen-reader certification",
+    "real disk quota/power failure",
+    "real two physical devices",
+    "production-host CSP/HSTS enforcement",
+    "full OS offline boot"
+  ]
+}

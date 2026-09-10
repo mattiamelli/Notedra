@@ -1,3 +1,4 @@
+import {hardeningBuildGuard} from './scripts/hardening-validation';
 import {progressBuildGuard} from './scripts/progress-validation';
 import {cloudBuildGuard} from './scripts/cloud-validation';
 import {examBuildGuard} from './scripts/exam-validation';
@@ -16,7 +17,7 @@ import { studentReferencesGuard } from './scripts/student-references-guard';
 import { academicIndexGuard } from './scripts/academic-index-guard';
 
 export default defineConfig({
-  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), enrichmentGuard(), ipBuildGuard(), adaptiveBuildGuard(), examBuildGuard(), progressBuildGuard(), cloudBuildGuard(), react(), tailwindcss()],
+  plugins: [hardeningBuildGuard(), contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), enrichmentGuard(), ipBuildGuard(), adaptiveBuildGuard(), examBuildGuard(), progressBuildGuard(), cloudBuildGuard(), react(), tailwindcss()],
   test: { include: ['tests/**/*.test.{ts,tsx}'], environment: 'node' },
   build: {rollupOptions:{output:{manualChunks(id){if(id.includes('/node_modules/@supabase/')||id.includes('/node_modules/iceberg-js/')||id.includes('/node_modules/tslib/'))return 'supabase';}}}},
 });

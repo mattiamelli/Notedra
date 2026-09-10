@@ -39,7 +39,7 @@ export function StudentDataPanel() {
   }
   return <section className="ds-storage ds-section" aria-labelledby="storage-heading">
     <div className="ds-section-heading"><h2 id="storage-heading">Your student data</h2><span>Stored on this device</span></div>
-    <p>Student data stays in this browser and site origin. It is not cloud-synced. Another browser, device, host or port has separate data; use a backup to transfer it.</p>
+    <p>This backup contains the current local profile. Anonymous study stays on this device; signed-in profiles can also sync through Account. Another browser, device, host or port has separate local data.</p>
     <p>Browser-data deletion or device failure can remove local data. A successful save confirms a completed local transaction, not protection against every OS crash. Keep an exported backup.</p>
     <p role="status">{reading ? 'Reading and validating backup…' : learning?.message ?? 'Student storage is not connected.'}</p>
     {error && <p role="alert" className="ds-storage-error">{error}</p>}
@@ -51,7 +51,7 @@ export function StudentDataPanel() {
     </div>
     {pending && <div className="ds-restore-confirm" role="group" aria-labelledby="restore-title">
       <h3 id="restore-title">Review replacement</h3><p>{pending.name}: {pending.backup.attempts.length} stored attempts; {pending.backup.exams.length} exam sessions; {pending.backup.resume ? 'a saved topic' : 'no saved topic'}.</p>
-      <p>This replaces all student records in this browser’s current origin. The current records will be retained as a downloadable pre-restore recovery backup.</p>
+      <p>This replaces the student records in the current local profile, not other account profiles. The current records will be retained as a downloadable pre-restore recovery backup.</p>
       <label><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)}/> I understand this replaces my current student data.</label>
       <div className="ds-storage-actions"><button className="ds-button" disabled={!confirmed || unavailable} onClick={() => void restore()}>Replace student data</button><button className="ds-button" disabled={learning?.phase === 'busy'} onClick={() => { setPending(null); setConfirmed(false); }}>Cancel restore</button></div>
     </div>}

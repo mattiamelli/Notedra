@@ -1,4 +1,4 @@
-import { IndexedStudentRepository } from '../../src/learning/repository';
+import { IndexedStudentRepository, STUDENT_DB_VERSION } from '../../src/learning/repository';
 import { emptyBackup, parseBackup, type Backup, type Dataset } from '../../src/learning/contracts';
 const prefix = 'delftstudy-isolated-acceptance-';
 const position = {subjectId: 'CSE1400_CO', topicId: 'CO_T06_ASSEMBLY_X86_64', visitedAt: '2026-09-09T12:00:00.000Z'};
@@ -13,7 +13,7 @@ async function rejects(operation: () => Promise<unknown>, code: string) {
   try { await operation(); } catch (error) { assert(typeof error === 'object' && error !== null && 'code' in error && error.code === code, `Expected ${code}, got ${String(error)}`); return; }
   throw new Error(`Expected ${code}, but operation succeeded.`);
 }
-function open(name: string, version = 2) { return new Promise<IDBDatabase>((resolve, reject) => { const req = indexedDB.open(name, version); req.onupgradeneeded = () => { if (!req.result.objectStoreNames.contains('student')) req.result.createObjectStore('student'); }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error); }); }
+function open(name: string, version = STUDENT_DB_VERSION) { return new Promise<IDBDatabase>((resolve, reject) => { const req = indexedDB.open(name, version); req.onupgradeneeded = () => { if (!req.result.objectStoreNames.contains('student')) req.result.createObjectStore('student'); }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error); }); }
 async function raw(name: string, data: unknown) {
   const db = await open(name);
   await new Promise<void>((resolve, reject) => { const tx = db.transaction('student', 'readwrite'); tx.objectStore('student').put(data, 'active'); tx.oncomplete = () => resolve(); tx.onabort = () => reject(tx.error); }); db.close();

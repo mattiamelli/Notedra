@@ -1,0 +1,133 @@
+{
+  "command": "pnpm audit --json",
+  "scope": "Registry response; production/dev applicability reviewed separately",
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 1,
+      "moderate": 3,
+      "high": 0,
+      "critical": 1
+    },
+    "dependencies": 15,
+    "devDependencies": 269,
+    "optionalDependencies": 121,
+    "totalDependencies": 284
+  },
+  "advisories": [
+    {
+      "findings": [
+        {
+          "version": "8.17.1",
+          "paths": [
+            ".>ajv"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1113715,
+      "title": "ajv has ReDoS when using `$data` option",
+      "module_name": "ajv",
+      "vulnerable_versions": ">=7.0.0-alpha.0 <8.18.0",
+      "patched_versions": ">=8.18.0",
+      "severity": "moderate",
+      "cwe": "CWE-400, CWE-1333",
+      "github_advisory_id": "GHSA-2g4f-4pwh-qvx6",
+      "url": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6"
+    },
+    {
+      "findings": [
+        {
+          "version": "0.27.3",
+          "paths": [
+            ".>@tailwindcss/vite>vite>esbuild",
+            ".>@vitejs/plugin-react>vite>esbuild",
+            ".>vite>esbuild",
+            ".>vitest>@vitest/mocker>vite>esbuild",
+            ".>vitest>vite>esbuild"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1120680,
+      "title": "esbuild allows arbitrary file read when running the development server on Windows",
+      "module_name": "esbuild",
+      "vulnerable_versions": ">=0.27.3 <0.28.1",
+      "patched_versions": ">=0.28.1",
+      "severity": "low",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-g7r4-m6w7-qqqr",
+      "url": "https://github.com/advisories/GHSA-g7r4-m6w7-qqqr"
+    },
+    {
+      "findings": [
+        {
+          "version": "4.0.18",
+          "paths": [
+            ".>vitest"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1139529,
+      "title": "When Vitest UI server is listening, arbitrary file can be read and executed",
+      "module_name": "vitest",
+      "vulnerable_versions": ">=4.0.0 <4.1.0",
+      "patched_versions": ">=4.1.0",
+      "severity": "critical",
+      "cwe": "CWE-22, CWE-862",
+      "github_advisory_id": "GHSA-5xrq-8626-4rwp",
+      "url": "https://github.com/advisories/GHSA-5xrq-8626-4rwp"
+    },
+    {
+      "findings": [
+        {
+          "version": "4.0.18",
+          "paths": [
+            ".>vitest"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1193683,
+      "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+      "module_name": "vitest",
+      "vulnerable_versions": ">=2.1.0 <4.1.11",
+      "patched_versions": ">=4.1.11",
+      "severity": "moderate",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-82fw-gwwq-j7x9",
+      "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+    },
+    {
+      "findings": [
+        {
+          "version": "4.0.18",
+          "paths": [
+            ".>vitest>@vitest/mocker"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1193684,
+      "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+      "module_name": "@vitest/mocker",
+      "vulnerable_versions": ">=2.1.0 <4.1.11",
+      "patched_versions": ">=4.1.11",
+      "severity": "moderate",
+      "cwe": "CWE-22",
+      "github_advisory_id": "GHSA-82fw-gwwq-j7x9",
+      "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+    }
+  ]
+}

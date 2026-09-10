@@ -1,0 +1,209 @@
+{
+  "timestamp": "2026-09-10T19:07:13.338701+00:00",
+  "results": [
+    {
+      "command": "pnpm run validate:content",
+      "exitCode": 0,
+      "seconds": 2.15,
+      "log": "/tmp/ds-hardening-baseline/01.log"
+    },
+    {
+      "command": "pnpm run check:academic",
+      "exitCode": 0,
+      "seconds": 1.94,
+      "log": "/tmp/ds-hardening-baseline/02.log"
+    },
+    {
+      "command": "pnpm run check:references",
+      "exitCode": 0,
+      "seconds": 1.9,
+      "log": "/tmp/ds-hardening-baseline/03.log"
+    },
+    {
+      "command": "pnpm run validate:practice",
+      "exitCode": 0,
+      "seconds": 1.97,
+      "log": "/tmp/ds-hardening-baseline/04.log"
+    },
+    {
+      "command": "pnpm run check:topics",
+      "exitCode": 0,
+      "seconds": 1.94,
+      "log": "/tmp/ds-hardening-baseline/05.log"
+    },
+    {
+      "command": "pnpm run validate:topics",
+      "exitCode": 0,
+      "seconds": 1.99,
+      "log": "/tmp/ds-hardening-baseline/06.log"
+    },
+    {
+      "command": "pnpm run validate:co",
+      "exitCode": 0,
+      "seconds": 1.99,
+      "log": "/tmp/ds-hardening-baseline/07.log"
+    },
+    {
+      "command": "pnpm run check:co-bundle",
+      "exitCode": 0,
+      "seconds": 10.02,
+      "log": "/tmp/ds-hardening-baseline/08.log"
+    },
+    {
+      "command": "pnpm run validate:rl",
+      "exitCode": 0,
+      "seconds": 3.19,
+      "log": "/tmp/ds-hardening-baseline/09.log"
+    },
+    {
+      "command": "pnpm run check:rl-bundle",
+      "exitCode": 0,
+      "seconds": 9.34,
+      "log": "/tmp/ds-hardening-baseline/10.log"
+    },
+    {
+      "command": "pnpm run validate:enrichment",
+      "exitCode": 0,
+      "seconds": 2.21,
+      "log": "/tmp/ds-hardening-baseline/11.log"
+    },
+    {
+      "command": "pnpm run check:enrichment-bundle",
+      "exitCode": 0,
+      "seconds": 9.42,
+      "log": "/tmp/ds-hardening-baseline/12.log"
+    },
+    {
+      "command": "pnpm run validate:ip",
+      "exitCode": 0,
+      "seconds": 2.81,
+      "log": "/tmp/ds-hardening-baseline/13.log"
+    },
+    {
+      "command": "pnpm run check:ip-bundle",
+      "exitCode": 0,
+      "seconds": 9.82,
+      "log": "/tmp/ds-hardening-baseline/14.log"
+    },
+    {
+      "command": "pnpm run validate:mistakes",
+      "exitCode": 0,
+      "seconds": 1.95,
+      "log": "/tmp/ds-hardening-baseline/15.log"
+    },
+    {
+      "command": "pnpm run validate:adaptive",
+      "exitCode": 0,
+      "seconds": 1.57,
+      "log": "/tmp/ds-hardening-baseline/16.log"
+    },
+    {
+      "command": "pnpm run check:adaptive-bundle",
+      "exitCode": 0,
+      "seconds": 10.13,
+      "log": "/tmp/ds-hardening-baseline/17.log"
+    },
+    {
+      "command": "pnpm run validate:exam",
+      "exitCode": 0,
+      "seconds": 2.13,
+      "log": "/tmp/ds-hardening-baseline/18.log"
+    },
+    {
+      "command": "pnpm run validate:exam-content",
+      "exitCode": 0,
+      "seconds": 1.54,
+      "log": "/tmp/ds-hardening-baseline/19.log"
+    },
+    {
+      "command": "pnpm run check:exam-bundle",
+      "exitCode": 0,
+      "seconds": 9.75,
+      "log": "/tmp/ds-hardening-baseline/20.log"
+    },
+    {
+      "command": "pnpm run validate:mastery",
+      "exitCode": 0,
+      "seconds": 2.11,
+      "log": "/tmp/ds-hardening-baseline/21.log"
+    },
+    {
+      "command": "pnpm run validate:readiness",
+      "exitCode": 0,
+      "seconds": 1.35,
+      "log": "/tmp/ds-hardening-baseline/22.log"
+    },
+    {
+      "command": "pnpm run check:progress-bundle",
+      "exitCode": 0,
+      "seconds": 10.19,
+      "log": "/tmp/ds-hardening-baseline/23.log"
+    },
+    {
+      "command": "pnpm run validate:auth",
+      "exitCode": 0,
+      "seconds": 1.82,
+      "log": "/tmp/ds-hardening-baseline/24.log"
+    },
+    {
+      "command": "pnpm run validate:sync",
+      "exitCode": 0,
+      "seconds": 1.35,
+      "log": "/tmp/ds-hardening-baseline/25.log"
+    },
+    {
+      "command": "pnpm run validate:supabase-security",
+      "exitCode": 0,
+      "seconds": 1.26,
+      "log": "/tmp/ds-hardening-baseline/26.log"
+    },
+    {
+      "command": "pnpm run check:cloud-bundle",
+      "exitCode": 0,
+      "seconds": 10.02,
+      "log": "/tmp/ds-hardening-baseline/27.log"
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "seconds": 53.59,
+      "log": "/tmp/ds-hardening-baseline/28.log"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "exitCode": 0,
+      "seconds": 12.5,
+      "log": "/tmp/ds-hardening-baseline/29.log"
+    },
+    {
+      "command": "pnpm run build",
+      "exitCode": 0,
+      "seconds": 35.59,
+      "log": "/tmp/ds-hardening-baseline/30.log"
+    },
+    {
+      "command": "pnpm run verify:ip-java",
+      "exitCode": 0,
+      "seconds": 67.92,
+      "log": "/tmp/ds-hardening-baseline/31.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "/tmp/ds-hardening-baseline/32.log"
+    },
+    {
+      "command": "pnpm run validate:visual",
+      "exitCode": 0,
+      "seconds": 1.51,
+      "log": "/tmp/ds-hardening-baseline/33.log"
+    },
+    {
+      "command": "pnpm run check:visual-bundle",
+      "exitCode": 0,
+      "seconds": 11.44,
+      "log": "/tmp/ds-hardening-baseline/34.log"
+    }
+  ]
+}

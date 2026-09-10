@@ -45,7 +45,10 @@
     "validate:supabase-security": "node --import tsx scripts/validate-supabase-security.ts",
     "check:cloud-bundle": "node --import tsx scripts/inspect-cloud-build.ts",
     "validate:visual": "node --import tsx scripts/validate-visual.ts",
-    "check:visual-bundle": "node --import tsx scripts/inspect-visual-build.ts"
+    "check:visual-bundle": "node --import tsx scripts/inspect-visual-build.ts",
+    "validate:hardening": "node --import tsx scripts/validate-hardening.ts",
+    "validate:security-final": "node --import tsx scripts/validate-security-final.ts",
+    "check:production-bundle": "node --import tsx scripts/inspect-production-build.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",
