@@ -1,8 +1,24 @@
-# DelftStudy — Learning, Practice, Mock Exams & Assembly Visualizer
+# DelftStudy — Learning, Practice, Progress & Assembly Visualizer
 
 A browser-based study workspace for a first-year Computer Science & Engineering student at TU Delft. Explore canonical topics and learning maps, study all 14 Computer Organisation, nine Reasoning & Logic and 20 Introduction to Programming topics, review 270 flashcards, practise 100 authored exercises with deterministic feedback, take a timed authored mock, or open the working x86-64 Assembly Visualizer to inspect registers, stack frames, and execution.
 
 DelftStudy makes stack frames and function calls visible. It uses a real, deterministic simulation engine; no AI service, backend, remote database, account, or login is needed to run the application.
+
+## Evidence-based Progress — Step 11
+
+`/progress` separates **Learning Mastery**, **Exam Readiness**, factual **Coverage** and **Confidence**, with course, topic and skill explanations. Dashboard, course pages and topic overviews link to the details. Missing evidence stays unknown. These are transparent DelftStudy heuristics, not official grades, pass probabilities or validated measurements.
+
+Normal-practice mastery caps repeated answers to one exact item. Exam readiness uses separately bound objective quick/full components, recency and canonical breadth. CO breadth, R&L open reasoning and IP integrated-program practice have explicit gates. Open proofs/code and self-review never supply correctness or numeric readiness points; required ungraded work keeps readiness confidence below High. Current authored banks have limited objective diversity, so sparse/unknown results are expected.
+
+Indices are recalculated locally from immutable historical records; no mutable score is stored. **Student Schema 3 / IndexedDB 3 remain unchanged.** Existing Mistake Book, Study Path, exam history and Assembly behavior are preserved. No account, server, runtime LLM, analytics or network profiling is added.
+
+```bash
+pnpm run validate:mastery
+pnpm run validate:readiness
+pnpm run check:progress-bundle
+```
+
+Read the [exact policy, acceptance evidence and limitations](docs/mastery-readiness-status.md), [performance measurements](docs/mastery-performance-results.json) and [production bundle inventory](docs/progress-bundle-report.json). Step 12 has not started.
 
 ## Mock Exams — Step 10
 
@@ -10,7 +26,7 @@ DelftStudy makes stack frames and function calls visible. It uses a real, determ
 
 Draft answers and flags autosave locally. Reload keeps the absolute deadline. At expiry, editing freezes and you explicitly confirm submission of saved responses. Submission atomically locks answers, exact content/grader versions and objective results. Retakes create new sessions; history and per-question review preserve the originals. Save conflicts and failures are visible.
 
-Twelve existing exact Practice items supply objective scoring and explanatory feedback. The 34 open components use separate rubrics and references; proof text and learner Java remain unexecuted and unscored. The IP full mock is a connected eight-component programming specification plus two exact probes. Only eligible exact component evidence reaches the existing Mistake Book and Study Path. Open completion and self-review produce no skill correctness, mastery, readiness or predicted grade.
+Twelve existing exact Practice items supply objective scoring and explanatory feedback. The 34 open components use separate rubrics and references; proof text and learner Java remain unexecuted and unscored. The IP full mock is a connected eight-component programming specification plus two exact probes. Only eligible exact component evidence reaches the existing Mistake Book and Study Path. Open completion and self-review produce no skill correctness or objective points. Step 11 records open practice breadth separately from numeric mastery/readiness.
 
 Student Schema **3** / IndexedDB **3** add exam sessions and separate exam review records. Schema 1/2 imports and database upgrades preserve prior attempts and reviews; active/recovery replacement and epoch checks remain transactional. Local storage is not a guarantee against browser-data deletion or device failure: export backups from Student Data. Supported bounds remain 5,000 attempts / 16 MB, with 250 exam sessions.
 
@@ -20,13 +36,13 @@ pnpm run validate:exam-content
 pnpm run check:exam-bundle
 ```
 
-The route, course banks, open editor, review and reference payloads load separately. See [Step 10 acceptance evidence](docs/exam-engine-status.md), [source review](docs/exam-source-review.md) and [measured production payloads](docs/exam-bundle-report.json). Step 11 and later are not implemented.
+The route, course banks, open editor, review and reference payloads load separately. See [Step 10 acceptance evidence](docs/exam-engine-status.md), [source review](docs/exam-source-review.md) and [measured production payloads](docs/exam-bundle-report.json). Step 11 adds the separate Progress layer above; Step 12 and later are not implemented.
 
 ## Mistake Book and Study Path
 
 **Mistakes** (`/mistakes`) keeps factual wrong-answer history, exact answer-pattern matches, repetition counts, course/topic/skill/recency filters, reviewed/undo and immutable retry links. Only valid deterministic submissions count. Unknown original versions remain visibly limited; open proofs, coding drafts, page visits and workspace interactions never become correctness evidence.
 
-**Study Path** (`/study-plan`) gives up to four explained next actions from existing Learn, Flashcards, Practice, guides, workspaces or coding tasks. Choose 10/20/30/45/60+ minutes. Canonical prerequisites, recent repeated errors, later successful attempts, diverse activities and repeated-retry limits determine the order. Times are estimates or authored durations; there is no mastery/readiness or predicted grade.
+**Study Path** (`/study-plan`) gives up to four explained next actions from existing Learn, Flashcards, Practice, guides, workspaces or coding tasks. Choose 10/20/30/45/60+ minutes. Canonical prerequisites, recent repeated errors, later successful attempts, diverse activities and repeated-retry limits determine the order. Times are estimates or authored durations. This recommendation engine remains independent of the separate mastery/readiness indices and does not predict grades.
 
 Step 9 introduced Schema 2 / DB 2; Step 10 now upgrades Schema 1/2 databases to Schema 3 / DB 3. Original submitted records remain unchanged. Step 9 added separate review workflow; Step 10 adds exam records. Backups include both, legacy imports migrate, failed upgrades/restores roll back, and stale generations cannot write. Everything stays local. Marked reviewed does not mean learned.
 
@@ -36,21 +52,21 @@ pnpm run validate:adaptive
 pnpm run check:adaptive-bundle
 ```
 
-See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 is described above; Step 11 and later are not implemented.
+See [Step 9 design and acceptance evidence](docs/mistake-adaptive-status.md) and [adversarial self-review](docs/mistake-adaptive-review.md). Step 10 is described above; Step 11 adds the separate Progress layer above; Step 12 and later are not implemented.
 
 
 ## Supplemental learning and explanatory feedback
 
 The maintenance patch adds 12 targeted cards (CO 79→85; R&L 67→73), six original controlled exercises, six optional skill-map cues and two open reasoning self-checks. Sixteen selected exercises have version-bound, answer-specific explanations with a reference, worked reasoning and concept reminder. An authored error pattern is shown only when supported by the submitted answer; other wrong responses get a verified explanation without a diagnosis. Retry creates a new attempt and preserves the submitted answer.
 
-Proofs and other open answers remain unscored. Supplemental notes are temporary, and Step 9 derives a factual Mistake Book and deterministic Study Path from exact submitted practice evidence. Review workflow is stored separately; no mastery score is calculated. The trusted pack, existing published content and all Assembly behavior remain unchanged. Raw PDFs and source-review artifacts are not shipped to browsers. See the [maintenance acceptance report](docs/supplemental-learning-enrichment-status.md) for source verification, before/after inventories, tests and browser limitations.
+Proofs and other open answers remain unscored. Supplemental notes are temporary, and Step 9 derives a factual Mistake Book and deterministic Study Path from exact submitted practice evidence. Review workflow is stored separately and earns no correctness; Step 11 derives learning evidence in Progress. The trusted pack, existing published content and all Assembly behavior remain unchanged. Raw PDFs and source-review artifacts are not shipped to browsers. See the [maintenance acceptance report](docs/supplemental-learning-enrichment-status.md) for source verification, before/after inventories, tests and browser limitations.
 
 ```bash
 pnpm run validate:enrichment
 pnpm run check:enrichment-bundle
 ```
 
-The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Step 10 adds the mock exams described above; Step 11 and later remain future work.
+The enrichment validator runs during development startup and production builds. The bundle check rebuilds and checks the final module graph and emitted assets. `src/enrichment/` owns the new authoring/feedback code; the existing practice catalogue/service continue to own attempt lifecycle and historical resolution. No new dependency is needed. Step 8 extends this same architecture for IP. Step 9 adds Mistake Book and Study Path; Step 10 adds the mock exams described above; Step 11 adds the evidence indices above; Step 12 and later remain future work.
 
 ## Introduction to Programming
 
@@ -114,7 +130,7 @@ pnpm run validate:rl
 pnpm run check:rl-bundle
 ```
 
-See [Step 7 acceptance evidence](docs/reasoning-logic-status.md) and the [production module inventory](docs/rl-bundle-report.json). IP is complete from Step 8 and the local Study Path from Step 9. Global exams, mastery/readiness and later steps remain outside this implementation.
+See [Step 7 acceptance evidence](docs/reasoning-logic-status.md) and the [production module inventory](docs/rl-bundle-report.json). IP is complete from Step 8 and the local Study Path from Step 9. Global exams and mastery/readiness were outside Step 7; their current Step 10/11 implementations are described above.
 
 ## Assembly features
 
@@ -229,7 +245,7 @@ pnpm run check:references
 
 Drafts have canonical identity, explicit targeted skills, optional exercise identity/version and source/template references, bounded text/choice/code answers, timestamps, revisions, and nullable hint/solution exposure. Unknown exposure stays unknown. Code is stored as text and never executed. Draft edits require the current revision; submitted/abandoned attempts cannot be edited. Repeating an identical submission operation is idempotent; conflicting reuse rejects. Retrying creates a new attempt ID. Future evaluation must use a separate evidence contract/store without rewriting original submissions.
 
-**Every raw attempt remains UNASSESSED and ineligible for derived evidence**, including ungraded submissions, uncertain mappings, broad topic mappings and integrated IP work. Step 4 computes only per-item feedback in memory; it stores no evaluation and calculates no readiness or skill credit. Imported confidence, correctness, eligibility and mastery fields are rejected. Unknown source-page locators/difficulty are not reinterpreted as mapping confidence.
+**Unbound raw attempts remain UNASSESSED and ineligible for derived evidence**, including ungraded submissions, uncertain mappings, broad topic mappings and integrated IP work. Step 4 originally computed only per-item feedback in memory; Steps 9–11 additionally interpret eligible, exactly bound fixed Practice attempts, with exam components classified separately. Imported confidence, correctness, eligibility and mastery fields are rejected. Unknown source-page locators/difficulty are not reinterpreted as mapping confidence.
 
 ### Local saving, conflicts and backups
 
@@ -271,7 +287,7 @@ Each item shows its canonical topic/skill and lecture filename with the pack's a
 
 Definitions, attempts and feedback are separate. `templateRef` identifies the authored definition; `exercise.id` identifies a unique attempt instance; `exercise.version` locks the definition and executable grader SHA-256. Published versions must not be edited in place. New content/grading behavior requires a new version and lock, with old support retained or an explicit original-version-unavailable state. Builds verify fingerprints and source ownership; **do not regenerate locks merely to silence a failure**.
 
-Pure graders return GRADED (0 or 1 raw item point), INCOMPLETE, INVALID, NOT_AUTOGRADABLE or ERROR. Only GRADED has points. No proof/keyword grading, free-form formula parser, learner-code execution, backend or AI is involved. Feedback is recomputed from the exact saved answer and locked definition; no feedback/evaluation fields are persisted, and raw attempts never become mastery/readiness evidence.
+Pure graders return GRADED (0 or 1 raw item point), INCOMPLETE, INVALID, NOT_AUTOGRADABLE or ERROR. Only GRADED has points. No proof/keyword grading, free-form formula parser, learner-code execution, backend or AI is involved. Feedback is recomputed from the exact saved answer and locked definition; no feedback/evaluation fields are persisted, and unbound raw attempts never become mastery/readiness evidence.
 
 Writes are serialized. A failed save/submission retains the form answer, and a stale revision or restore generation blocks further writes until a safe reload. Copy the displayed recovery text before reloading a conflicted form. Unknown original versions preserve the answer without grading it as incorrect. Schema 3 and database version 3 support 5,000 attempts /16 MB and preserve atomic recovery and original bindings. Unknown imported hint/solution exposure stays unknown.
 
@@ -298,7 +314,7 @@ The three published pilots retain their guided lessons and eight cards each:
 
 Lessons use safe typed blocks with stable IDs, versions, canonical skill/subtopic associations and source references. These are authored DelftStudy explanations, not official TU Delft wording. Source disclosures preserve broad document ranges and UNKNOWN precision; no exact supporting slide or downloadable PDF is invented. All pilot examples have independent arithmetic, logical or Java-trace checks.
 
-Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Step 5 Topic Practice reused the six original definitions and the same Start/Resume/Review runner; Step 6 expands this shared catalog for CO. Steps 7 and 8 complete R&L and IP learning content. IP Exam-style links to authored integrated coding tasks; no global exam engine or inferred mistake profile is implemented.
+Cards support reveal/hide, previous/next, shuffle and reset while retaining identity. Card order and reveal state live only in memory. There is no completion, scoring, mastery update or review scheduling. Step 5 Topic Practice reused the six original definitions and the same Start/Resume/Review runner; Step 6 expands this shared catalog for CO. Steps 7 and 8 complete R&L and IP learning content. IP Exam-style links to authored integrated coding tasks; the later global exam engine and factual Mistake Book are described above.
 
 The deterministic `src/generated/topic-study.json` is **84,049 bytes** and contains only topic-page academic fields plus 106 deduplicated source references. Authored lessons are **27,195 bytes** (3 lessons, 27 blocks); flashcards are **12,214 bytes** (24 cards). The separate content lock has 54 SHA-256 entries for lessons, blocks and cards. Published educational text cannot change silently: use a new content version and an explicitly reviewed lock. Normal builds never regenerate locks. The academic pack and existing Practice locks remain unchanged. The deliberate Step 9 student migration is described below.
 

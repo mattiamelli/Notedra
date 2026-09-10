@@ -48,5 +48,5 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
     </form>
     {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>Retry as new attempt</button></>}
     {attempt.status==='ABANDONED'&&<p>This attempt was abandoned. Its saved answer is preserved.</p>}
-    <p className="ds-storage-note">Attempt {attempt.attemptId} · Revision {attempt.revision}. Hint use: {attempt.hintsUsed===null?'unknown':attempt.hintsUsed}. Prior solution exposure: {attempt.solutionViewed===null?'unknown':attempt.solutionViewed?'recorded':'not recorded'}. No learning score is calculated.</p></>;
+    <p className="ds-storage-note">Attempt {attempt.attemptId} · Revision {attempt.revision}. Hint use: {attempt.hintsUsed===null?'unknown':attempt.hintsUsed}. Prior solution exposure: {attempt.solutionViewed===null?'unknown':attempt.solutionViewed?'recorded':'not recorded'}. Learning evidence summaries are available in Progress.</p></>;
 }

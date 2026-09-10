@@ -1,3 +1,4 @@
+import {progressBuildGuard} from './scripts/progress-validation';
 import {examBuildGuard} from './scripts/exam-validation';
 import {adaptiveBuildGuard} from './scripts/mistake-adaptive-validation';
 import {ipBuildGuard} from './scripts/ip-content';
@@ -14,6 +15,6 @@ import { studentReferencesGuard } from './scripts/student-references-guard';
 import { academicIndexGuard } from './scripts/academic-index-guard';
 
 export default defineConfig({
-  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), enrichmentGuard(), ipBuildGuard(), adaptiveBuildGuard(), examBuildGuard(), react(), tailwindcss()],
+  plugins: [contentBuildGuard(), academicIndexGuard(), studentReferencesGuard(), practiceBuildGuard(), topicStudyGuard(), coBuildGuard(), rlBuildGuard(), enrichmentGuard(), ipBuildGuard(), adaptiveBuildGuard(), examBuildGuard(), progressBuildGuard(), react(), tailwindcss()],
   test: { include: ['tests/**/*.test.{ts,tsx}'], environment: 'node' },
 });

@@ -1,0 +1,149 @@
+{
+  "initialJS": 494553,
+  "initialGzip": 130207,
+  "totalAssets": 1591142,
+  "totalGzip": 468277,
+  "owners": {
+    "ProgressPage.tsx": {
+      "file": "assets/ProgressPage-ehdXAHzE.js",
+      "bytes": 4440,
+      "gzipBytes": 1840,
+      "entry": false,
+      "imports": [
+        "assets/index-DqKWO8Fm.js",
+        "assets/progress-C2EI4JJJ.js",
+        "assets/catalog-C-JnypTZ.js",
+        "assets/service-CbFTbB0d.js",
+        "assets/evidence-SgkQpiXr.js",
+        "assets/feedback-B-w5TuiX.js",
+        "assets/engine-DzjEqXEn.js",
+        "assets/evaluation-nahHuu4W.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/progress/ProgressPage.tsx"
+      ]
+    },
+    "ProgressSummary.tsx": {
+      "file": "assets/ProgressSummary-DjFlOmkN.js",
+      "bytes": 1912,
+      "gzipBytes": 863,
+      "entry": false,
+      "imports": [
+        "assets/index-DqKWO8Fm.js",
+        "assets/progress-C2EI4JJJ.js",
+        "assets/catalog-C-JnypTZ.js",
+        "assets/service-CbFTbB0d.js",
+        "assets/evidence-SgkQpiXr.js",
+        "assets/feedback-B-w5TuiX.js",
+        "assets/engine-DzjEqXEn.js",
+        "assets/evaluation-nahHuu4W.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/progress/ProgressSummary.tsx"
+      ]
+    },
+    "mastery.ts": {
+      "file": "assets/progress-C2EI4JJJ.js",
+      "bytes": 13447,
+      "gzipBytes": 5538,
+      "entry": false,
+      "imports": [
+        "assets/index-DqKWO8Fm.js",
+        "assets/catalog-C-JnypTZ.js",
+        "assets/service-CbFTbB0d.js",
+        "assets/evidence-SgkQpiXr.js",
+        "assets/feedback-B-w5TuiX.js",
+        "assets/engine-DzjEqXEn.js",
+        "assets/evaluation-nahHuu4W.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/progress/evidence.ts",
+        "src/progress/mastery.ts",
+        "src/progress/readiness.ts",
+        "src/progress/derive.ts",
+        "src/progress/useProgress.ts",
+        "src/progress/IndexCard.tsx",
+        "src/progress/progress.css"
+      ]
+    },
+    "readiness.ts": {
+      "file": "assets/progress-C2EI4JJJ.js",
+      "bytes": 13447,
+      "gzipBytes": 5538,
+      "entry": false,
+      "imports": [
+        "assets/index-DqKWO8Fm.js",
+        "assets/catalog-C-JnypTZ.js",
+        "assets/service-CbFTbB0d.js",
+        "assets/evidence-SgkQpiXr.js",
+        "assets/feedback-B-w5TuiX.js",
+        "assets/engine-DzjEqXEn.js",
+        "assets/evaluation-nahHuu4W.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/progress/evidence.ts",
+        "src/progress/mastery.ts",
+        "src/progress/readiness.ts",
+        "src/progress/derive.ts",
+        "src/progress/useProgress.ts",
+        "src/progress/IndexCard.tsx",
+        "src/progress/progress.css"
+      ]
+    },
+    "evidence.ts": {
+      "file": "assets/progress-C2EI4JJJ.js",
+      "bytes": 13447,
+      "gzipBytes": 5538,
+      "entry": false,
+      "imports": [
+        "assets/index-DqKWO8Fm.js",
+        "assets/catalog-C-JnypTZ.js",
+        "assets/service-CbFTbB0d.js",
+        "assets/evidence-SgkQpiXr.js",
+        "assets/feedback-B-w5TuiX.js",
+        "assets/engine-DzjEqXEn.js",
+        "assets/evaluation-nahHuu4W.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/progress/evidence.ts",
+        "src/progress/mastery.ts",
+        "src/progress/readiness.ts",
+        "src/progress/derive.ts",
+        "src/progress/useProgress.ts",
+        "src/progress/IndexCard.tsx",
+        "src/progress/progress.css"
+      ]
+    },
+    "derive.ts": {
+      "file": "assets/progress-C2EI4JJJ.js",
+      "bytes": 13447,
+      "gzipBytes": 5538,
+      "entry": false,
+      "imports": [
+        "assets/index-DqKWO8Fm.js",
+        "assets/catalog-C-JnypTZ.js",
+        "assets/service-CbFTbB0d.js",
+        "assets/evidence-SgkQpiXr.js",
+        "assets/feedback-B-w5TuiX.js",
+        "assets/engine-DzjEqXEn.js",
+        "assets/evaluation-nahHuu4W.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        "src/progress/evidence.ts",
+        "src/progress/mastery.ts",
+        "src/progress/readiness.ts",
+        "src/progress/derive.ts",
+        "src/progress/useProgress.ts",
+        "src/progress/IndexCard.tsx",
+        "src/progress/progress.css"
+      ]
+    }
+  },
+  "chartLibrary": "none"
+}

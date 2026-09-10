@@ -1,0 +1,201 @@
+{
+  "timestamp": "2026-09-10T08:19:40.162616+00:00",
+  "results": [
+    {
+      "command": "pnpm run validate:content",
+      "exitCode": 0,
+      "seconds": 1.94,
+      "log": "/tmp/ds-step11-first-green/01.log",
+      "outputTail": "PASS Course boundaries\nPASS Uncertainty and eligibility safety\nPASS Unique-document historical frequency\nPASS Source/PDF embedding distinction\nPASS Eight manifest SHA-256 checksums and independently pinned manifest\nNo original PDF binaries or PDF full text were opened or validated."
+    },
+    {
+      "command": "pnpm run check:academic",
+      "exitCode": 0,
+      "seconds": 1.84,
+      "log": "/tmp/ds-step11-first-green/02.log",
+      "outputTail": "$ node --import tsx scripts/generate-academic-index.ts --check\nAcademic navigation: PASS \u2014 3 subjects, 43 topics, 7462 bytes."
+    },
+    {
+      "command": "pnpm run check:references",
+      "exitCode": 0,
+      "seconds": 1.92,
+      "log": "/tmp/ds-step11-first-green/03.log",
+      "outputTail": "$ node --import tsx scripts/generate-student-references.ts --check\nStudent references: PASS \u2014 3 subjects, 43 topics, 105 subtopics, 147 skills, 489 source locators; 69985 bytes."
+    },
+    {
+      "command": "pnpm run validate:practice",
+      "exitCode": 0,
+      "seconds": 1.88,
+      "log": "/tmp/ds-step11-first-green/04.log",
+      "outputTail": "$ node --import tsx scripts/validate-practice.ts\nPractice catalog: PASS \u2014 6 immutable authored exercises; 2 per subject; canonical skills, lecture provenance and version locks verified."
+    },
+    {
+      "command": "pnpm run check:topics",
+      "exitCode": 0,
+      "seconds": 2.02,
+      "log": "/tmp/ds-step11-first-green/05.log",
+      "outputTail": "$ node --import tsx scripts/generate-topic-study.ts --check\nTopic study: PASS \u2014 3 subjects / 43 topics / 105 subtopics / 147 skills; 84049 bytes."
+    },
+    {
+      "command": "pnpm run validate:topics",
+      "exitCode": 0,
+      "seconds": 1.93,
+      "log": "/tmp/ds-step11-first-green/06.log",
+      "outputTail": "$ node --import tsx scripts/validate-topic-content.ts\nTopic learning: PASS \u2014 canonical projection, three versioned lessons, 24 flashcards, ownership/source/immutable locks."
+    },
+    {
+      "command": "pnpm run validate:co",
+      "exitCode": 0,
+      "seconds": 1.91,
+      "log": "/tmp/ds-step11-first-green/07.log",
+      "outputTail": "$ node --import tsx scripts/validate-co.ts\nCO PASS: 14 topics / 32 subtopics / 46 skills; 13 new lessons; 79 CO cards; 28 new exact exercises; 17 unscored activities; 10 tools including Assembly. Locks, sources, coverage and capabilities match."
+    },
+    {
+      "command": "pnpm run check:co-bundle",
+      "exitCode": 0,
+      "seconds": 9.36,
+      "log": "/tmp/ds-step11-first-green/08.log",
+      "outputTail": "$ node --import tsx scripts/inspect-co-build.ts\nCO bundle PASS: initial JS 494553 bytes; 104952 bytes topic content; total 1590568 bytes. See docs/co-bundle-report.json."
+    },
+    {
+      "command": "pnpm run validate:rl",
+      "exitCode": 0,
+      "seconds": 3.04,
+      "log": "/tmp/ds-step11-first-green/09.log",
+      "outputTail": "$ node --import tsx scripts/validate-rl.ts\nRL PASS: 9 topics / 29 subtopics / 45 skills; 9 lessons (8 new, published T01 preserved); 67 cards; 27 new exact items; 23 unscored guided activities; 7 workspaces. Zero uncovered learning/card skills. Locks, sources, capabilities and puzzle uniqueness match. 99 uncertain mappings blocked; 135 broad mappings remain topic-only."
+    },
+    {
+      "command": "pnpm run check:rl-bundle",
+      "exitCode": 0,
+      "seconds": 8.7,
+      "log": "/tmp/ds-step11-first-green/10.log",
+      "outputTail": "$ node --import tsx scripts/inspect-rl-build.ts\nRL bundle PASS: initial JS 494553 bytes; 106036 bytes R&L topic content; total 1590568 bytes. See docs/rl-bundle-report.json."
+    },
+    {
+      "command": "pnpm run validate:enrichment",
+      "exitCode": 0,
+      "seconds": 2.13,
+      "log": "/tmp/ds-step11-first-green/11.log",
+      "outputTail": "$ node --import tsx scripts/validate-enrichment.ts\nEnrichment PASS: 6 new exact items; 16 exact-bound explanatory profiles; 14 authored misconception classes; 12 extra cards; 6 cues; 2 unscored guides. Protected historical content, sources and engine unchanged; approved storage migration fingerprints verified."
+    },
+    {
+      "command": "pnpm run check:enrichment-bundle",
+      "exitCode": 0,
+      "seconds": 8.6,
+      "log": "/tmp/ds-step11-first-green/12.log",
+      "outputTail": "$ node --import tsx scripts/inspect-enrichment-build.ts\nRL bundle PASS: initial JS 494553 bytes; 106036 bytes R&L topic content; total 1590568 bytes. See docs/rl-bundle-report.json.\nEnrichment bundle PASS: {\"initialJSBytes\":494553,\"initialJSGzipBytes\":130213,\"totalAssetBytes\":1590568,\"totalAssetGzipBytes\":468077,\"totalProductionBytes\":1591564,\"totalProductionGzipBytes\":468728,\"baseline\":{\"initialJSBytes\":474089,\"initialJSGzipBytes\":124886,\"totalAssetBytes\":932078,\"totalAssetGzipBytes\":267272,\"totalProductionBytes\":933074,\"totalProductionGzipBytes\":267922},\"checks\":[\"raw PDF/ZIP/text and full Handoff absent\",\"source inventory/validators/teaching content locks absent; minimal attempt fingerprints retained\",\"supplemental teaching lazy; only capability counts initial\",\"existing CO/RL lazy module checks pass\"],\"files\":[\"favicon.svg\",\"index.html\",\"assets/AssemblyWorkbench-LeGTwEGJ.js\",\"assets/Assignments-DCcmmjTK.js\",\"assets/AttemptPage-O51CDQB9.js\",\"assets/CO_T01_HISTORY-D8bfk0pi.js\",\"assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js\",\"assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js\",\"assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js\",\"assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js\",\"assets/CO_T07_ISA-CGiPsZmf.js\",\"assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js\",\"assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js\",\"assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js\",\"assets/CO_T11_CACHE-iPa6VChI.js\",\"assets/CO_T12_PIPELINE-BFgDPOAQ.js\",\"assets/CO_T13_PARALLELISM-kuJ2Wedj.js\",\"assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js\",\"assets/CodingWorkbench-BK2xxyVL.js\",\"assets/EvidenceSummary-BAY05Z9G.js\",\"assets/EvidenceView-BFgtEPR1.js\",\"assets/ExamOpenAnswer-BA4q34st.js\",\"assets/ExamReviewPage-Crl1EEME.js\",\"assets/ExamSessionPage-BuFxBRgL.js\",\"assets/ExamsPage-CQpTOUPZ.css\",\"assets/ExamsPage-qP8VyD-r.js\",\"assets/ExercisePage-B_qtzfiy.js\",\"assets/ExerciseParts-zhqX2Xom.js\",\"assets/FolWorkspace-pUXza5dx.js\",\"assets/GuidedPractice-DVJJb_8A.js\",\"assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js\",\"assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js\",\"assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js\",\"assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js\",\"assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js\",\"assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js\",\"assets/IP_T08_TESTING-BAXYRvyj.js\",\"assets/IP_T09_INHERITANCE-Binoh_DU.js\",\"assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js\",\"assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js\",\"assets/IP_T12_EXCEPTIONS-B7H-5rEl.js\",\"assets/IP_T13_DEBUGGING-CqMISr3b.js\",\"assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js\",\"assets/IP_T15_IO_PARSING-CxDROOYT.js\",\"assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js\",\"assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js\",\"assets/IP_T18_MODERN_JAVA-B9jrpJOu.js\",\"assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js\",\"assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js\",\"assets/IntroTopicContent-BrdKfBlG.js\",\"assets/IntroTopicContent-D6nPND42.js\",\"assets/MapCues-ByCK_OIb.js\",\"assets/MistakesPage-CG1RrQxA.js\",\"assets/PracticePage-g8DC5jSH.js\",\"assets/ProgressPage-9yifMziN.js\",\"assets/ProgressSummary-DLvx3g1M.js\",\"assets/PropositionWorkspace-DEFuTg5U.js\",\"assets/RL_T02_FOL-CPbVtDo6.js\",\"assets/RL_T03_PROOF_METHODS-Dyog5d7L.js\",\"assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js\",\"assets/RL_T05_TREES_GRAPHS-CIHz8klu.js\",\"assets/RL_T06_SET_THEORY-Cvt6P7Nr.js\",\"assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js\",\"assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js\",\"assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js\",\"assets/RecurrenceWorkspace-C0QPv7-0.js\",\"assets/RelationsWorkspace-CUakbldK.js\",\"assets/SetsWorkspace-g-Hcelse.js\",\"assets/StudyCues-DI-JGSs5.js\",\"assets/StudyPathPage-sN99Vn7y.js\",\"assets/TopicContent-DGvn2Rwn.js\",\"assets/TopicContent-DgUp8pP0.css\",\"assets/TopicContent-Dl9ugjVI.js\",\"assets/TopicContent-YNdbCT9G.js\",\"assets/TopicEnrichment-CnYH4iKi.js\",\"assets/TopicPractice-omYqVlZ7.js\",\"assets/TreeGraphWorkspace-D_H-ZTHh.js\",\"assets/Workspace-BaiPO-XT.js\",\"assets/Workspace-ulz-yk-f.js\",\"assets/adaptive-Dty-ca5a.css\",\"assets/air-audit-BIinS1_M.js\",\"assets/air-audit-CoOfR9nj.js\",\"assets/alert-policies-BW_0oYWi.js\",\"assets/alert-policies-DrsrCxXC.js\",\"assets/array-window-Bto1gkFC.js\",\"assets/array-window-DrNedUNk.js\",\"assets/batch-token-CBpM-gf2.js\",\"assets/batch-token-g3chmWvR.js\",\"assets/boundary-tests-CBldJTKl.js\",\"assets/boundary-tests-r4CPnxAO.js\",\"assets/capacity-shelf-B8EMZ286.js\",\"assets/capacity-shelf-Dl_X9eRW.js\",\"assets/catalog-qBHukvLj.js\",\"assets/co-8kIY2FBo.js\",\"assets/co-BL8WV3S_.js\",\"assets/engine-DJhKFH2g.js\",\"assets/enrichment-B1peaizb.css\",\"assets/evaluation-DL6xAEJm.js\",\"assets/evidence-BabcvWP3.js\",\"assets/feedback-D_1pCJeT.js\",\"assets/grid-key-ByuEdlSN.js\",\"assets/grid-key-DHvNZxu4.js\",\"assets/index-BK9n4wqk.css\",\"assets/index-CyYv5dJG.js\",\"assets/ip-CZ92APWS.js\",\"assets/ip-GJiTBzVC.js\",\"assets/label-stream-BTlUuTVJ.js\",\"assets/label-stream-BxbDcTkq.js\",\"assets/logic-DTFjvJ0t.js\",\"assets/material-ledger-Dlb9LY3I.js\",\"assets/material-ledger-aES6d9xp.js\",\"assets/models-8GyK5YA1.js\",\"assets/note-index-9EzBN5C-.js\",\"assets/note-index-BJOza8nf.js\",\"assets/progress-CBDj2sZW.css\",\"assets/progress-Dbjk7nRI.js\",\"assets/reading-export-03SKeJdJ.js\",\"assets/reading-export-CUwAZtHJ.js\",\"assets/rl-CRFBwHsJ.js\",\"assets/rl-HWHw8i-v.js\",\"assets/service-DfIweSO4.js\",\"assets/useEvidence-C8m6TOGH.js\"]}"
+    },
+    {
+      "command": "pnpm run validate:ip",
+      "exitCode": 0,
+      "seconds": 2.92,
+      "log": "/tmp/ds-step11-first-green/13.log",
+      "outputTail": "$ node --import tsx scripts/validate-ip.ts\nIntroduction to Programming validation passed: {\"topics\":20,\"subtopics\":44,\"skills\":56,\"lessons\":20,\"cards\":112,\"newExercises\":33,\"guides\":21,\"assignments\":11}"
+    },
+    {
+      "command": "pnpm run check:ip-bundle",
+      "exitCode": 0,
+      "seconds": 8.76,
+      "log": "/tmp/ds-step11-first-green/14.log",
+      "outputTail": "$ node --import tsx scripts/inspect-ip-build.ts\nRL bundle PASS: initial JS 494553 bytes; 106036 bytes R&L topic content; total 1590568 bytes. See docs/rl-bundle-report.json.\nEnrichment bundle PASS: {\"initialJSBytes\":494553,\"initialJSGzipBytes\":130213,\"totalAssetBytes\":1590568,\"totalAssetGzipBytes\":468077,\"totalProductionBytes\":1591564,\"totalProductionGzipBytes\":468728,\"baseline\":{\"initialJSBytes\":474089,\"initialJSGzipBytes\":124886,\"totalAssetBytes\":932078,\"totalAssetGzipBytes\":267272,\"totalProductionBytes\":933074,\"totalProductionGzipBytes\":267922},\"checks\":[\"raw PDF/ZIP/text and full Handoff absent\",\"source inventory/validators/teaching content locks absent; minimal attempt fingerprints retained\",\"supplemental teaching lazy; only capability counts initial\",\"existing CO/RL lazy module checks pass\"],\"files\":[\"favicon.svg\",\"index.html\",\"assets/AssemblyWorkbench-LeGTwEGJ.js\",\"assets/Assignments-DCcmmjTK.js\",\"assets/AttemptPage-O51CDQB9.js\",\"assets/CO_T01_HISTORY-D8bfk0pi.js\",\"assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js\",\"assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js\",\"assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js\",\"assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js\",\"assets/CO_T07_ISA-CGiPsZmf.js\",\"assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js\",\"assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js\",\"assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js\",\"assets/CO_T11_CACHE-iPa6VChI.js\",\"assets/CO_T12_PIPELINE-BFgDPOAQ.js\",\"assets/CO_T13_PARALLELISM-kuJ2Wedj.js\",\"assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js\",\"assets/CodingWorkbench-BK2xxyVL.js\",\"assets/EvidenceSummary-BAY05Z9G.js\",\"assets/EvidenceView-BFgtEPR1.js\",\"assets/ExamOpenAnswer-BA4q34st.js\",\"assets/ExamReviewPage-Crl1EEME.js\",\"assets/ExamSessionPage-BuFxBRgL.js\",\"assets/ExamsPage-CQpTOUPZ.css\",\"assets/ExamsPage-qP8VyD-r.js\",\"assets/ExercisePage-B_qtzfiy.js\",\"assets/ExerciseParts-zhqX2Xom.js\",\"assets/FolWorkspace-pUXza5dx.js\",\"assets/GuidedPractice-DVJJb_8A.js\",\"assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js\",\"assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js\",\"assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js\",\"assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js\",\"assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js\",\"assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js\",\"assets/IP_T08_TESTING-BAXYRvyj.js\",\"assets/IP_T09_INHERITANCE-Binoh_DU.js\",\"assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js\",\"assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js\",\"assets/IP_T12_EXCEPTIONS-B7H-5rEl.js\",\"assets/IP_T13_DEBUGGING-CqMISr3b.js\",\"assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js\",\"assets/IP_T15_IO_PARSING-CxDROOYT.js\",\"assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js\",\"assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js\",\"assets/IP_T18_MODERN_JAVA-B9jrpJOu.js\",\"assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js\",\"assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js\",\"assets/IntroTopicContent-BrdKfBlG.js\",\"assets/IntroTopicContent-D6nPND42.js\",\"assets/MapCues-ByCK_OIb.js\",\"assets/MistakesPage-CG1RrQxA.js\",\"assets/PracticePage-g8DC5jSH.js\",\"assets/ProgressPage-9yifMziN.js\",\"assets/ProgressSummary-DLvx3g1M.js\",\"assets/PropositionWorkspace-DEFuTg5U.js\",\"assets/RL_T02_FOL-CPbVtDo6.js\",\"assets/RL_T03_PROOF_METHODS-Dyog5d7L.js\",\"assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js\",\"assets/RL_T05_TREES_GRAPHS-CIHz8klu.js\",\"assets/RL_T06_SET_THEORY-Cvt6P7Nr.js\",\"assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js\",\"assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js\",\"assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js\",\"assets/RecurrenceWorkspace-C0QPv7-0.js\",\"assets/RelationsWorkspace-CUakbldK.js\",\"assets/SetsWorkspace-g-Hcelse.js\",\"assets/StudyCues-DI-JGSs5.js\",\"assets/StudyPathPage-sN99Vn7y.js\",\"assets/TopicContent-DGvn2Rwn.js\",\"assets/TopicContent-DgUp8pP0.css\",\"assets/TopicContent-Dl9ugjVI.js\",\"assets/TopicContent-YNdbCT9G.js\",\"assets/TopicEnrichment-CnYH4iKi.js\",\"assets/TopicPractice-omYqVlZ7.js\",\"assets/TreeGraphWorkspace-D_H-ZTHh.js\",\"assets/Workspace-BaiPO-XT.js\",\"assets/Workspace-ulz-yk-f.js\",\"assets/adaptive-Dty-ca5a.css\",\"assets/air-audit-BIinS1_M.js\",\"assets/air-audit-CoOfR9nj.js\",\"assets/alert-policies-BW_0oYWi.js\",\"assets/alert-policies-DrsrCxXC.js\",\"assets/array-window-Bto1gkFC.js\",\"assets/array-window-DrNedUNk.js\",\"assets/batch-token-CBpM-gf2.js\",\"assets/batch-token-g3chmWvR.js\",\"assets/boundary-tests-CBldJTKl.js\",\"assets/boundary-tests-r4CPnxAO.js\",\"assets/capacity-shelf-B8EMZ286.js\",\"assets/capacity-shelf-Dl_X9eRW.js\",\"assets/catalog-qBHukvLj.js\",\"assets/co-8kIY2FBo.js\",\"assets/co-BL8WV3S_.js\",\"assets/engine-DJhKFH2g.js\",\"assets/enrichment-B1peaizb.css\",\"assets/evaluation-DL6xAEJm.js\",\"assets/evidence-BabcvWP3.js\",\"assets/feedback-D_1pCJeT.js\",\"assets/grid-key-ByuEdlSN.js\",\"assets/grid-key-DHvNZxu4.js\",\"assets/index-BK9n4wqk.css\",\"assets/index-CyYv5dJG.js\",\"assets/ip-CZ92APWS.js\",\"assets/ip-GJiTBzVC.js\",\"assets/label-stream-BTlUuTVJ.js\",\"assets/label-stream-BxbDcTkq.js\",\"assets/logic-DTFjvJ0t.js\",\"assets/material-ledger-Dlb9LY3I.js\",\"assets/material-ledger-aES6d9xp.js\",\"assets/models-8GyK5YA1.js\",\"assets/note-index-9EzBN5C-.js\",\"assets/note-index-BJOza8nf.js\",\"assets/progress-CBDj2sZW.css\",\"assets/progress-Dbjk7nRI.js\",\"assets/reading-export-03SKeJdJ.js\",\"assets/reading-export-CUwAZtHJ.js\",\"assets/rl-CRFBwHsJ.js\",\"assets/rl-HWHw8i-v.js\",\"assets/service-DfIweSO4.js\",\"assets/useEvidence-C8m6TOGH.js\"]}\nIP bundle PASS: 19 topics, 11 assignments, 11 references; initial JS 494553 bytes (130213 gzip). See docs/ip-bundle-report.json."
+    },
+    {
+      "command": "pnpm run validate:mistakes",
+      "exitCode": 0,
+      "seconds": 1.9,
+      "log": "/tmp/ds-step11-first-green/15.log",
+      "outputTail": "$ node --import tsx scripts/validate-mistakes.ts\nMistakes PASS { schema: 3, db: 3, atomicItems: 100 }"
+    },
+    {
+      "command": "pnpm run validate:adaptive",
+      "exitCode": 0,
+      "seconds": 1.31,
+      "log": "/tmp/ds-step11-first-green/16.log",
+      "outputTail": "$ node --import tsx scripts/validate-adaptive.ts\nAdaptive PASS { skills: 147, authoredActions: 82, budgets: [ 10, 20, 30, 45, 60 ] }"
+    },
+    {
+      "command": "pnpm run check:adaptive-bundle",
+      "exitCode": 0,
+      "seconds": 8.55,
+      "log": "/tmp/ds-step11-first-green/17.log",
+      "outputTail": "$ node --import tsx scripts/inspect-adaptive-build.ts\nRL bundle PASS: initial JS 494553 bytes; 106036 bytes R&L topic content; total 1590568 bytes. See docs/rl-bundle-report.json.\nEnrichment bundle PASS: {\"initialJSBytes\":494553,\"initialJSGzipBytes\":130213,\"totalAssetBytes\":1590568,\"totalAssetGzipBytes\":468077,\"totalProductionBytes\":1591564,\"totalProductionGzipBytes\":468728,\"baseline\":{\"initialJSBytes\":474089,\"initialJSGzipBytes\":124886,\"totalAssetBytes\":932078,\"totalAssetGzipBytes\":267272,\"totalProductionBytes\":933074,\"totalProductionGzipBytes\":267922},\"checks\":[\"raw PDF/ZIP/text and full Handoff absent\",\"source inventory/validators/teaching content locks absent; minimal attempt fingerprints retained\",\"supplemental teaching lazy; only capability counts initial\",\"existing CO/RL lazy module checks pass\"],\"files\":[\"favicon.svg\",\"index.html\",\"assets/AssemblyWorkbench-LeGTwEGJ.js\",\"assets/Assignments-DCcmmjTK.js\",\"assets/AttemptPage-O51CDQB9.js\",\"assets/CO_T01_HISTORY-D8bfk0pi.js\",\"assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js\",\"assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js\",\"assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js\",\"assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js\",\"assets/CO_T07_ISA-CGiPsZmf.js\",\"assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js\",\"assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js\",\"assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js\",\"assets/CO_T11_CACHE-iPa6VChI.js\",\"assets/CO_T12_PIPELINE-BFgDPOAQ.js\",\"assets/CO_T13_PARALLELISM-kuJ2Wedj.js\",\"assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js\",\"assets/CodingWorkbench-BK2xxyVL.js\",\"assets/EvidenceSummary-BAY05Z9G.js\",\"assets/EvidenceView-BFgtEPR1.js\",\"assets/ExamOpenAnswer-BA4q34st.js\",\"assets/ExamReviewPage-Crl1EEME.js\",\"assets/ExamSessionPage-BuFxBRgL.js\",\"assets/ExamsPage-CQpTOUPZ.css\",\"assets/ExamsPage-qP8VyD-r.js\",\"assets/ExercisePage-B_qtzfiy.js\",\"assets/ExerciseParts-zhqX2Xom.js\",\"assets/FolWorkspace-pUXza5dx.js\",\"assets/GuidedPractice-DVJJb_8A.js\",\"assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js\",\"assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js\",\"assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js\",\"assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js\",\"assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js\",\"assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js\",\"assets/IP_T08_TESTING-BAXYRvyj.js\",\"assets/IP_T09_INHERITANCE-Binoh_DU.js\",\"assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js\",\"assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js\",\"assets/IP_T12_EXCEPTIONS-B7H-5rEl.js\",\"assets/IP_T13_DEBUGGING-CqMISr3b.js\",\"assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js\",\"assets/IP_T15_IO_PARSING-CxDROOYT.js\",\"assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js\",\"assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js\",\"assets/IP_T18_MODERN_JAVA-B9jrpJOu.js\",\"assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js\",\"assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js\",\"assets/IntroTopicContent-BrdKfBlG.js\",\"assets/IntroTopicContent-D6nPND42.js\",\"assets/MapCues-ByCK_OIb.js\",\"assets/MistakesPage-CG1RrQxA.js\",\"assets/PracticePage-g8DC5jSH.js\",\"assets/ProgressPage-9yifMziN.js\",\"assets/ProgressSummary-DLvx3g1M.js\",\"assets/PropositionWorkspace-DEFuTg5U.js\",\"assets/RL_T02_FOL-CPbVtDo6.js\",\"assets/RL_T03_PROOF_METHODS-Dyog5d7L.js\",\"assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js\",\"assets/RL_T05_TREES_GRAPHS-CIHz8klu.js\",\"assets/RL_T06_SET_THEORY-Cvt6P7Nr.js\",\"assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js\",\"assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js\",\"assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js\",\"assets/RecurrenceWorkspace-C0QPv7-0.js\",\"assets/RelationsWorkspace-CUakbldK.js\",\"assets/SetsWorkspace-g-Hcelse.js\",\"assets/StudyCues-DI-JGSs5.js\",\"assets/StudyPathPage-sN99Vn7y.js\",\"assets/TopicContent-DGvn2Rwn.js\",\"assets/TopicContent-DgUp8pP0.css\",\"assets/TopicContent-Dl9ugjVI.js\",\"assets/TopicContent-YNdbCT9G.js\",\"assets/TopicEnrichment-CnYH4iKi.js\",\"assets/TopicPractice-omYqVlZ7.js\",\"assets/TreeGraphWorkspace-D_H-ZTHh.js\",\"assets/Workspace-BaiPO-XT.js\",\"assets/Workspace-ulz-yk-f.js\",\"assets/adaptive-Dty-ca5a.css\",\"assets/air-audit-BIinS1_M.js\",\"assets/air-audit-CoOfR9nj.js\",\"assets/alert-policies-BW_0oYWi.js\",\"assets/alert-policies-DrsrCxXC.js\",\"assets/array-window-Bto1gkFC.js\",\"assets/array-window-DrNedUNk.js\",\"assets/batch-token-CBpM-gf2.js\",\"assets/batch-token-g3chmWvR.js\",\"assets/boundary-tests-CBldJTKl.js\",\"assets/boundary-tests-r4CPnxAO.js\",\"assets/capacity-shelf-B8EMZ286.js\",\"assets/capacity-shelf-Dl_X9eRW.js\",\"assets/catalog-qBHukvLj.js\",\"assets/co-8kIY2FBo.js\",\"assets/co-BL8WV3S_.js\",\"assets/engine-DJhKFH2g.js\",\"assets/enrichment-B1peaizb.css\",\"assets/evaluation-DL6xAEJm.js\",\"assets/evidence-BabcvWP3.js\",\"assets/feedback-D_1pCJeT.js\",\"assets/grid-key-ByuEdlSN.js\",\"assets/grid-key-DHvNZxu4.js\",\"assets/index-BK9n4wqk.css\",\"assets/index-CyYv5dJG.js\",\"assets/ip-CZ92APWS.js\",\"assets/ip-GJiTBzVC.js\",\"assets/label-stream-BTlUuTVJ.js\",\"assets/label-stream-BxbDcTkq.js\",\"assets/logic-DTFjvJ0t.js\",\"assets/material-ledger-Dlb9LY3I.js\",\"assets/material-ledger-aES6d9xp.js\",\"assets/models-8GyK5YA1.js\",\"assets/note-index-9EzBN5C-.js\",\"assets/note-index-BJOza8nf.js\",\"assets/progress-CBDj2sZW.css\",\"assets/progress-Dbjk7nRI.js\",\"assets/reading-export-03SKeJdJ.js\",\"assets/reading-export-CUwAZtHJ.js\",\"assets/rl-CRFBwHsJ.js\",\"assets/rl-HWHw8i-v.js\",\"assets/service-DfIweSO4.js\",\"assets/useEvidence-C8m6TOGH.js\"]}\nIP bundle PASS: 19 topics, 11 assignments, 11 references; initial JS 494553 bytes (130213 gzip). See docs/ip-bundle-report.json.\nAdaptive bundle PASS: lazy Mistake Book, Study Path and shared evidence/ranking; no raw source/report/test payload."
+    },
+    {
+      "command": "pnpm run validate:exam",
+      "exitCode": 0,
+      "seconds": 2.07,
+      "log": "/tmp/ds-step11-first-green/18.log",
+      "outputTail": "$ node --import tsx scripts/validate-exam.ts\nExam integrity PASS { schema: 3, db: 3, blueprints: 6 }"
+    },
+    {
+      "command": "pnpm run validate:exam-content",
+      "exitCode": 0,
+      "seconds": 1.69,
+      "log": "/tmp/ds-step11-first-green/19.log",
+      "outputTail": "$ node --import tsx scripts/validate-exam-content.ts\nExam content PASS { courses: 3, blueprints: 6, items: 46, openReferences: 34 }"
+    },
+    {
+      "command": "pnpm run check:exam-bundle",
+      "exitCode": 0,
+      "seconds": 9.28,
+      "log": "/tmp/ds-step11-first-green/20.log",
+      "outputTail": "$ node --import tsx scripts/inspect-exam-build.ts\nRL bundle PASS: initial JS 494553 bytes; 106036 bytes R&L topic content; total 1590568 bytes. See docs/rl-bundle-report.json.\nEnrichment bundle PASS: {\"initialJSBytes\":494553,\"initialJSGzipBytes\":130213,\"totalAssetBytes\":1590568,\"totalAssetGzipBytes\":468077,\"totalProductionBytes\":1591564,\"totalProductionGzipBytes\":468728,\"baseline\":{\"initialJSBytes\":474089,\"initialJSGzipBytes\":124886,\"totalAssetBytes\":932078,\"totalAssetGzipBytes\":267272,\"totalProductionBytes\":933074,\"totalProductionGzipBytes\":267922},\"checks\":[\"raw PDF/ZIP/text and full Handoff absent\",\"source inventory/validators/teaching content locks absent; minimal attempt fingerprints retained\",\"supplemental teaching lazy; only capability counts initial\",\"existing CO/RL lazy module checks pass\"],\"files\":[\"favicon.svg\",\"index.html\",\"assets/AssemblyWorkbench-LeGTwEGJ.js\",\"assets/Assignments-DCcmmjTK.js\",\"assets/AttemptPage-O51CDQB9.js\",\"assets/CO_T01_HISTORY-D8bfk0pi.js\",\"assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js\",\"assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js\",\"assets/CO_T05_DATA_REP_FIXED_FLOAT-dT4EEjp_.js\",\"assets/CO_T06_ASSEMBLY_X86_64-DkDjWx_x.js\",\"assets/CO_T07_ISA-CGiPsZmf.js\",\"assets/CO_T08_BPU_MICROCODE-D0_ntbyY.js\",\"assets/CO_T09_IO_INTERRUPTS-Djg7YmFS.js\",\"assets/CO_T10_DMA_MEMORY-Fhx2oQdG.js\",\"assets/CO_T11_CACHE-iPa6VChI.js\",\"assets/CO_T12_PIPELINE-BFgDPOAQ.js\",\"assets/CO_T13_PARALLELISM-kuJ2Wedj.js\",\"assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js\",\"assets/CodingWorkbench-BK2xxyVL.js\",\"assets/EvidenceSummary-BAY05Z9G.js\",\"assets/EvidenceView-BFgtEPR1.js\",\"assets/ExamOpenAnswer-BA4q34st.js\",\"assets/ExamReviewPage-Crl1EEME.js\",\"assets/ExamSessionPage-BuFxBRgL.js\",\"assets/ExamsPage-CQpTOUPZ.css\",\"assets/ExamsPage-qP8VyD-r.js\",\"assets/ExercisePage-B_qtzfiy.js\",\"assets/ExerciseParts-zhqX2Xom.js\",\"assets/FolWorkspace-pUXza5dx.js\",\"assets/GuidedPractice-DVJJb_8A.js\",\"assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js\",\"assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js\",\"assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js\",\"assets/IP_T05_ARRAYS_RECURSION-DdP0JZBm.js\",\"assets/IP_T06_CONTAINER_CLASSES-BwimzWN6.js\",\"assets/IP_T07_COMPOSITION_LIBRARIES-C6JY_f9c.js\",\"assets/IP_T08_TESTING-BAXYRvyj.js\",\"assets/IP_T09_INHERITANCE-Binoh_DU.js\",\"assets/IP_T10_POLYMORPHISM_BINDING-BchoEtnq.js\",\"assets/IP_T11_EQUALITY_HASHING-RcvsLDTv.js\",\"assets/IP_T12_EXCEPTIONS-B7H-5rEl.js\",\"assets/IP_T13_DEBUGGING-CqMISr3b.js\",\"assets/IP_T14_CODE_QUALITY_STRINGS_GENERICS-BQbpoDV1.js\",\"assets/IP_T15_IO_PARSING-CxDROOYT.js\",\"assets/IP_T16_FUNCTIONAL_JAVA-Cvgh3BB7.js\",\"assets/IP_T17_PROGRAM_DESIGN-BGBtyq2P.js\",\"assets/IP_T18_MODERN_JAVA-B9jrpJOu.js\",\"assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js\",\"assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js\",\"assets/IntroTopicContent-BrdKfBlG.js\",\"assets/IntroTopicContent-D6nPND42.js\",\"assets/MapCues-ByCK_OIb.js\",\"assets/MistakesPage-CG1RrQxA.js\",\"assets/PracticePage-g8DC5jSH.js\",\"assets/ProgressPage-9yifMziN.js\",\"assets/ProgressSummary-DLvx3g1M.js\",\"assets/PropositionWorkspace-DEFuTg5U.js\",\"assets/RL_T02_FOL-CPbVtDo6.js\",\"assets/RL_T03_PROOF_METHODS-Dyog5d7L.js\",\"assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js\",\"assets/RL_T05_TREES_GRAPHS-CIHz8klu.js\",\"assets/RL_T06_SET_THEORY-Cvt6P7Nr.js\",\"assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js\",\"assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js\",\"assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js\",\"assets/RecurrenceWorkspace-C0QPv7-0.js\",\"assets/RelationsWorkspace-CUakbldK.js\",\"assets/SetsWorkspace-g-Hcelse.js\",\"assets/StudyCues-DI-JGSs5.js\",\"assets/StudyPathPage-sN99Vn7y.js\",\"assets/TopicContent-DGvn2Rwn.js\",\"assets/TopicContent-DgUp8pP0.css\",\"assets/TopicContent-Dl9ugjVI.js\",\"assets/TopicContent-YNdbCT9G.js\",\"assets/TopicEnrichment-CnYH4iKi.js\",\"assets/TopicPractice-omYqVlZ7.js\",\"assets/TreeGraphWorkspace-D_H-ZTHh.js\",\"assets/Workspace-BaiPO-XT.js\",\"assets/Workspace-ulz-yk-f.js\",\"assets/adaptive-Dty-ca5a.css\",\"assets/air-audit-BIinS1_M.js\",\"assets/air-audit-CoOfR9nj.js\",\"assets/alert-policies-BW_0oYWi.js\",\"assets/alert-policies-DrsrCxXC.js\",\"assets/array-window-Bto1gkFC.js\",\"assets/array-window-DrNedUNk.js\",\"assets/batch-token-CBpM-gf2.js\",\"assets/batch-token-g3chmWvR.js\",\"assets/boundary-tests-CBldJTKl.js\",\"assets/boundary-tests-r4CPnxAO.js\",\"assets/capacity-shelf-B8EMZ286.js\",\"assets/capacity-shelf-Dl_X9eRW.js\",\"assets/catalog-qBHukvLj.js\",\"assets/co-8kIY2FBo.js\",\"assets/co-BL8WV3S_.js\",\"assets/engine-DJhKFH2g.js\",\"assets/enrichment-B1peaizb.css\",\"assets/evaluation-DL6xAEJm.js\",\"assets/evidence-BabcvWP3.js\",\"assets/feedback-D_1pCJeT.js\",\"assets/grid-key-ByuEdlSN.js\",\"assets/grid-key-DHvNZxu4.js\",\"assets/index-BK9n4wqk.css\",\"assets/index-CyYv5dJG.js\",\"assets/ip-CZ92APWS.js\",\"assets/ip-GJiTBzVC.js\",\"assets/label-stream-BTlUuTVJ.js\",\"assets/label-stream-BxbDcTkq.js\",\"assets/logic-DTFjvJ0t.js\",\"assets/material-ledger-Dlb9LY3I.js\",\"assets/material-ledger-aES6d9xp.js\",\"assets/models-8GyK5YA1.js\",\"assets/note-index-9EzBN5C-.js\",\"assets/note-index-BJOza8nf.js\",\"assets/progress-CBDj2sZW.css\",\"assets/progress-Dbjk7nRI.js\",\"assets/reading-export-03SKeJdJ.js\",\"assets/reading-export-CUwAZtHJ.js\",\"assets/rl-CRFBwHsJ.js\",\"assets/rl-HWHw8i-v.js\",\"assets/service-DfIweSO4.js\",\"assets/useEvidence-C8m6TOGH.js\"]}\nIP bundle PASS: 19 topics, 11 assignments, 11 references; initial JS 494553 bytes (130213 gzip). See docs/ip-bundle-report.json.\nAdaptive bundle PASS: lazy Mistake Book, Study Path and shared evidence/ranking; no raw source/report/test payload.\nExam bundle PASS: separate lazy course banks, open editor and review/reference payloads; no raw sources."
+    },
+    {
+      "command": "pnpm run validate:mastery",
+      "exitCode": 0,
+      "seconds": 2.37,
+      "log": "/tmp/ds-step11-first-green/21.log",
+      "outputTail": "  topics: 43,\n  courses: 3,\n  schema: 3,\n  db: 3,\n  protectedFiles: 229\n}"
+    },
+    {
+      "command": "pnpm run validate:readiness",
+      "exitCode": 0,
+      "seconds": 1.55,
+      "log": "/tmp/ds-step11-first-green/22.log",
+      "outputTail": "$ node --import tsx scripts/validate-readiness.ts\nReadiness evidence PASS {\n  courses: 3,\n  requiredOpenMechanisms: { CSE1400_CO: 8, CSE1300_RL: 8, CSE1100_IP: 7 },\n  unknown: true\n}"
+    },
+    {
+      "command": "pnpm run check:progress-bundle",
+      "exitCode": 1,
+      "seconds": 9.27,
+      "log": "/tmp/ds-step11-first-green/23.log",
+      "outputTail": "Error: Missing progress module ProgressPage.tsx\n    at validateProgressBundle (/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/scripts/progress-bundle.ts:8:64)\n    at <anonymous> (/Users/mattiamelli/Documents/Codex/2026-09-08/i-want-you-to-build-a/outputs/delftstudy/scripts/inspect-progress-build.ts:7:13)\n\nNode.js v24.19.0\n[ELIFECYCLE] Command failed with exit code 1."
+    },
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "seconds": 66.2,
+      "log": "/tmp/ds-step11-first-green/24.log",
+      "outputTail": "\n Test Files  66 passed (66)\n      Tests  1718 passed (1718)\n   Start at  10:16:32\n   Duration  63.21s (transform 5.18s, setup 0ms, import 12.53s, tests 81.92s, environment 11.63s)\n"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "exitCode": 0,
+      "seconds": 12.47,
+      "log": "/tmp/ds-step11-first-green/25.log",
+      "outputTail": "$ tsc --noEmit"
+    },
+    {
+      "command": "pnpm run build",
+      "exitCode": 0,
+      "seconds": 36.11,
+      "log": "/tmp/ds-step11-first-green/26.log",
+      "outputTail": "dist/assets/co-BL8WV3S_.js                                     31.79 kB \u2502 gzip:   5.83 kB\ndist/assets/StudyPathPage-sN99Vn7y.js                          35.89 kB \u2502 gzip:   8.39 kB\ndist/assets/feedback-D_1pCJeT.js                               66.84 kB \u2502 gzip:  15.33 kB\ndist/assets/service-DfIweSO4.js                               141.52 kB \u2502 gzip:  32.21 kB\ndist/assets/index-CyYv5dJG.js                                 494.55 kB \u2502 gzip: 130.21 kB\n\u2713 built in 6.37s"
+    },
+    {
+      "command": "pnpm run verify:ip-java",
+      "exitCode": 0,
+      "seconds": 75.07,
+      "log": "/tmp/ds-step11-first-green/27.log",
+      "outputTail": "alert-policies: 6 trusted JDK checks passed\nreading-export: 18 trusted JDK checks passed\nmaterial-ledger: 22 trusted JDK checks passed\nair-audit: 25 trusted JDK checks passed\nnote-index: 13 trusted JDK checks passed\nVerified 11 trusted assignment references; 144 assertions."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "seconds": 0.12,
+      "log": "/tmp/ds-step11-first-green/28.log",
+      "outputTail": ""
+    }
+  ]
+}

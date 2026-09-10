@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && vite --host 127.0.0.1",
-    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && node --import tsx scripts/validate-mistakes.ts && node --import tsx scripts/validate-adaptive.ts && node --import tsx scripts/validate-exam.ts && node --import tsx scripts/validate-exam-content.ts && tsc --noEmit && vite build",
+    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && node --import tsx scripts/validate-mistakes.ts && node --import tsx scripts/validate-adaptive.ts && node --import tsx scripts/validate-exam.ts && node --import tsx scripts/validate-exam-content.ts && node --import tsx scripts/validate-mastery.ts && node --import tsx scripts/validate-readiness.ts && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -36,7 +36,10 @@
     "check:adaptive-bundle": "node --import tsx scripts/inspect-adaptive-build.ts",
     "validate:exam": "node --import tsx scripts/validate-exam.ts",
     "validate:exam-content": "node --import tsx scripts/validate-exam-content.ts",
-    "check:exam-bundle": "node --import tsx scripts/inspect-exam-build.ts"
+    "check:exam-bundle": "node --import tsx scripts/inspect-exam-build.ts",
+    "validate:mastery": "node --import tsx scripts/validate-mastery.ts",
+    "validate:readiness": "node --import tsx scripts/validate-readiness.ts",
+    "check:progress-bundle": "node --import tsx scripts/inspect-progress-build.ts"
   },
   "dependencies": {
     "react": "19.2.6",

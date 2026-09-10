@@ -17,6 +17,7 @@ const AttemptPage = lazy(() => import('./practice/AttemptPage').then(m => ({defa
 
 const MistakesPage=lazy(()=>import('./adaptive/MistakesPage').then(m=>({default:m.MistakesPage})));
 const StudyPathPage=lazy(()=>import('./adaptive/StudyPathPage').then(m=>({default:m.StudyPathPage})));
+const ProgressPage=lazy(()=>import('./progress/ProgressPage').then(m=>({default:m.ProgressPage})));
 const ExamsPage=lazy(()=>import('./exams/ExamsPage').then(m=>({default:m.ExamsPage})));
 const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbench'));
 
@@ -36,7 +37,8 @@ export function AppRoutes() {
     <Route path="mistakes" caseSensitive element={<Suspense fallback={<p role="status">Loading Mistake Book…</p>}><MistakesPage/></Suspense>}/>
     <Route path="study-plan" caseSensitive element={<Suspense fallback={<p role="status">Loading Study Path…</p>}><StudyPathPage/></Suspense>}/>
     <Route path="exams/*" caseSensitive element={<Suspense fallback={<p role="status">Loading Mock Exams…</p>}><ExamsPage/></Suspense>}/>
-    {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
+    <Route path="progress" caseSensitive element={<Suspense fallback={<p role="status">Loading Progress…</p>}><ProgressPage/></Suspense>}/>
+    {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams','/progress'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
   </Route></Routes>;
 }

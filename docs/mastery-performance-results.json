@@ -1,0 +1,47 @@
+{
+  "runtime": "v24.19.0",
+  "clock": "2026-09-09T12:00:00.000Z",
+  "kind": "Node pure-derivation benchmark, valid generated test histories; not a real-browser benchmark",
+  "results": [
+    {
+      "history": "100 attempts",
+      "milliseconds": [
+        18.12,
+        11.59,
+        8.47
+      ],
+      "maxMilliseconds": 18.12,
+      "limitMilliseconds": 6000
+    },
+    {
+      "history": "1000 attempts",
+      "milliseconds": [
+        59.05,
+        53.28,
+        53.3
+      ],
+      "maxMilliseconds": 59.05,
+      "limitMilliseconds": 6000
+    },
+    {
+      "history": "5000 attempts",
+      "milliseconds": [
+        409.68,
+        226.44,
+        217.69
+      ],
+      "maxMilliseconds": 409.68,
+      "limitMilliseconds": 6000
+    },
+    {
+      "history": "250 full CO sessions / 2000 objective components",
+      "milliseconds": [
+        231.47,
+        179.91,
+        167.25
+      ],
+      "maxMilliseconds": 231.47,
+      "limitMilliseconds": 6000
+    }
+  ]
+}
