@@ -130,3 +130,11 @@ After the exact robots exceptions were complete, the full suite was rerun: **1,8
 On the current public baseline, manual Sync now returned to Synced for disposable A. Account at 390×844 had document scrollWidth 390, with no horizontal page overflow; this is one measured surface, not the full mobile acceptance matrix. Viewport override was reset. The forthcoming source commit is a resumable release-preparation checkpoint, not the final accepted Step 15 release commit.
 
 No Step 16 has been created.
+
+## Live release verification and safe routing recovery — 2026-09-10 22:05 UTC
+
+Version 2, source `17e83a245de152074febb76b6b7f2823a81d4775`, deployment `appgdep_6aa328d2ad608191b843f539800627f9` succeeded at `2026-09-10T22:02:48.062573+00:00` on the unchanged public origin. Fresh TLS-verified curl requests at 22:05:34–35 UTC confirmed the new metadata script on `/` (200), real robots.txt (200 text/plain), real sitemap.xml (200 text/xml), and a missing asset (404). However `/co` and `/account` returned empty 404 responses. The provider did not apply the generated `_redirects`; none of the configured `_headers` security policies were present. Therefore this deployment is NOT accepted. Python's separate certificate store failed issuer validation; curl using the system trust store succeeded without bypassing TLS.
+
+The minimal recovery restores the provider's `single-page-application` fallback in hosting.json, preserving all release files and application code. This prioritizes functional deep links; missing-asset strict 404, server-side public metadata routing and security headers remain unresolved hosting gates. Do not describe fallback restoration as fixing those gates. No application runtime, Auth, RLS or database setting changed. The unchanged compiled assets can be reused because only the provider routing configuration changed. The 1,882-test result above remains the last full local run, not a new run.
+
+The operator again confirmed Confirm Email is enabled in the intended project and no setting was changed. The public API/session discrepancy remains unresolved; email confirmation is BLOCKED, not PASS. A supported provider mechanism for per-route rewrites and response headers, and resolution of the Auth setting discrepancy, are required before final release acceptance. Step 15 remains PARTIAL.
