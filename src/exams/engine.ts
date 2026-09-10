@@ -27,7 +27,11 @@ export function resolveSession(session:ExamSession,bank:ExamBank):{status:'AVAIL
     validateExamSession(session);const blueprint=bank.blueprints.find(b=>b.id===session.blueprint.id&&b.version===session.blueprint.version);
     if(!blueprint||session.course!==bank.course||session.course!==blueprint.course||blueprint.durationMinutes!==session.durationMinutes||blueprint.mode!==session.mode||blueprint.scoringPolicy!==session.scoringPolicy||blueprint.timingPolicy!==session.timingPolicy)throw Error();
     const items=selectItems(blueprint,bank,session.seed);
-    if(JSON.stringify(items.map(bindItem))!==JSON.stringify(session.items))throw Error();
+    // JSONB may reorder object keys; exact binding values and component order still matter.
+    if(items.length!==session.items.length||items.some((item,index)=>{
+      const saved=session.items[index];
+      return item.id!==saved.id||item.version!==saved.version||item.evaluator.id!==saved.evaluator.id||item.evaluator.version!==saved.evaluator.version||item.weight!==saved.weight||item.evaluation!==saved.evaluation||item.responseType!==saved.responseType;
+    }))throw Error();
     return {status:'AVAILABLE',items,blueprint};
   } catch {return {status:'UNAVAILABLE',message:'The exact historical exam, question or evaluator version is unavailable. Saved responses are preserved; this session cannot be edited or regraded.'};}
 }

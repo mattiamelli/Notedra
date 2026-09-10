@@ -1,26 +1,26 @@
 {
   "initialJS": 503057,
   "initialGzip": 133244,
-  "totalAssets": 1877721,
-  "totalGzip": 545274,
+  "totalAssets": 1877934,
+  "totalGzip": 545349,
   "owners": {
     "/src/accounts/AccountPage.tsx": [
       {
-        "file": "assets/AccountPage-BcKacNNG.js",
+        "file": "assets/AccountPage-_VHfWD4x.js",
         "bytes": 5379,
-        "gzipBytes": 2041
+        "gzipBytes": 2040
       }
     ],
     "/src/accounts/ConfiguredAccountRoot.tsx": [
       {
-        "file": "assets/ConfiguredAccountRoot-0ys5w8YT.js",
+        "file": "assets/ConfiguredAccountRoot-Cb_5a-17.js",
         "bytes": 16251,
         "gzipBytes": 5882
       }
     ],
     "/src/cloud/coordinator.ts": [
       {
-        "file": "assets/ConfiguredAccountRoot-0ys5w8YT.js",
+        "file": "assets/ConfiguredAccountRoot-Cb_5a-17.js",
         "bytes": 16251,
         "gzipBytes": 5882
       }
