@@ -1,6 +1,6 @@
 # Step 12 — Accounts + Supabase + Cloud Sync
 
-**STEP 12 IMPLEMENTATION AND LOCAL ACCEPTANCE COMPLETE — 32/32 final commands PASS; 1,856 tests / 74 files. REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED. Step 13 has not started.**
+**STEP 12 IMPLEMENTATION AND REMOTE ACCEPTANCE COMPLETE — 32/32 local commands PASS; 1,856 tests / 74 files; isolated live Supabase acceptance PASS. Step 13 has not started.**
 
 Starting clean accepted commit: `d6586e83045241727b6b62951da09231c7ee95db`. Original Step 12 specification: user attachment `6aa8e799-75f4-475f-ba9f-e628455993cc/pasted-text.txt`. Existing work must be continued, not reset.
 
@@ -37,22 +37,19 @@ Official documentation inspected on 10 September 2026:
 
 For an isolated test project, apply `supabase/migrations/202609100001_learner_sync.sql` with the Supabase SQL editor or a linked Supabase CLI migration workflow. Enable email/password authentication, configure the local site URL for the intended preview origin, and use disposable test accounts. Copy `.env.example` to `.env.local`, supplying only the project URL and browser-safe publishable (or legacy anon) key. Rebuild/restart Vite after configuration changes. Never use a service-role, signing, management or database secret in `VITE_*` variables. No public deployment was performed.
 
-**REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED.** Supabase is reachable with anonymous key, but email confirmation is currently enforced and blocks sign-in/token acquisition for fresh users. The local project also still needs the required SQL migration applied manually before we can run remote acceptance tests. Static policy checks are not proof of live RLS enforcement or multi-device synchronization.
+**REMOTE SUPABASE ACCEPTANCE — PASS (isolated API acceptance).** On 10 September 2026, Node 24.19.0 and pnpm 11.19.0 ran the disposable two-user probe in `scripts/remote-supabase-acceptance.ts` against the configured HTTPS project. DNS resolved and the REST endpoint returned an authenticated `401`, as expected before a session. The probe then established real sessions and exercised Auth, the deployed RPC, snapshots, receipts and RLS. It uses only the configured browser-safe key; no service-role or database credential was used.
 
 ## Real Supabase remote acceptance
 
-**REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED.** Blocked until these dashboard actions are completed exactly in the target project:
+**REMOTE SUPABASE ACCEPTANCE — PASS (isolated API acceptance).** Email/password signup produced authenticated sessions for generated disposable User A and User B. The probe verified:
 
-- Open the Supabase project and run the full SQL from `supabase/migrations/202609100001_learner_sync.sql` in **SQL Editor → New query → Run**.
-- In **Authentication → URL Configuration**, set:
-  - Site URL: `http://127.0.0.1:5173/`
-  - Redirect URLs:
-    - `http://127.0.0.1:5173/`
-    - `http://127.0.0.1:5173/**`
-- In **Authentication → Providers → Email**, keep **Enable email** on, then either:
-  - temporarily disable **Enable email confirmations** for acceptance, or
-  - confirm the two disposable test users before testing signed-in flows.
-- In **Authentication → Sign In / Sign Up**, leave options compatible with app-level email/password only (no OAuth or third-party providers required for this step).
+- User A and User B can each create and read their own `learner_snapshots` and `learner_sync_operations` receipt through `sync_learner_snapshot`.
+- Repeating A's exact operation returns revision 1 (idempotency); a stale operation and a reused operation ID with altered request binding are rejected.
+- A cannot select B's snapshot or receipt. A's direct UPDATE, DELETE and spoofed INSERT targeting B are denied or yield no visible row; B's revision remains unchanged.
+- A fresh signed-in client reads A's stored snapshot after reconnect, then local-scope sign-out and sign-in as B reads B's independent snapshot.
+- The reconnect check uses a fresh authenticated client after local sign-out. A real network-disconnect/offline interval was not run and remains explicitly excluded below.
+
+This proves the deployed local-to-cloud RPC/write and cloud read paths for the versioned learner payload. Existing `SyncCoordinator` transaction, merge and local restore behavior remains covered by the 1,856-test local suite; this remote probe intentionally does not rewrite application architecture or invoke a browser UI flow. The disposable accounts and their minimal empty learner histories are retained because the product intentionally has no client-side cloud deletion endpoint.
 
 ### Migration syntax correction applied
 
@@ -140,7 +137,7 @@ The final suite has **1,856 passing tests / 74 files**, with no skipped tests. A
 | Restore recovery after an in-flight sync | explicit reconciliation; second restore/immutable-change rejection; consent UI | full suite; native harness | PASS |
 | Backup independence and derived evidence | backup/recovery without network; restored exact evidence recomputes Progress | full suite; native exam regression | PASS |
 | Corrupt cloud, owner/schema/revision mismatch | payload extra-field/schema/ID tests; wrong account envelope; same-revision mutation regression | full suite | PASS |
-| RLS ownership / secret checks | `cloud-security.test.ts`; eight policies, revoked direct writes, owner-derived CAS/receipt RPC; privileged-key/JWT rejection | `validate:supabase-security`; full suite | Static PASS; SQL execution / live RLS NOT RUN |
+| RLS ownership / secret checks | `cloud-security.test.ts`; eight policies, revoked direct writes, owner-derived CAS/receipt RPC; privileged-key/JWT rejection; isolated live User A/B SELECT/UPDATE/DELETE/spoofed-INSERT negatives | `validate:supabase-security`; full suite; `remote-supabase-acceptance.ts` | PASS; live API/RLS acceptance executed, SQL-editor migration execution itself not independently observed |
 | Published content / Assembly / storage preservation | 229 exact accepted-baseline SHA-256 comparisons | existing gates; `accounts-preservation.json` | PASS, byte-identical |
 | Lazy account, sync and Supabase payload | actual emitted module graph and credential scan | `check:cloud-bundle` | PASS |
 | Type safety / production compilation | strict TypeScript and Vite build with every build guard | `typecheck`; `build` | PASS |
@@ -157,17 +154,18 @@ Tested **Chromium 152.0.7977.64 on macOS**, production origin `http://127.0.0.1:
 - **Nine final native sync checks PASS** using real IndexedDB and deterministic fake transport: lost acknowledgement, reopened-coordinator retry, download commit, two simulated-device histories, review, request-success-then-abort, independent restore recovery, explicit restore reconciliation, and stale-auth cancellation. Simulated devices use distinct test database prefixes, not real remote devices.
 - Native Step 10 regression: **nine checks + one actual page reload PASS**, covering migrations, immutable submissions, transaction abort, backup/recovery, stale writes and deadlines.
 - Inspected production and native-test consoles: **zero warnings/errors**. One automation locator needed its observed accessible spacing corrected; immediate post-navigation snapshots sometimes showed the preceding render, so destination state was checked after loading. These were tool timing/locator issues, not application console failures.
+- Final isolated production smoke: **Chromium 152.0.7977.64 on macOS**, `http://127.0.0.1:4220`. Account & sync exposes real anonymous/local-only state plus sign-in controls; CO, R&L, IP, Practice, Mistakes, Study Path, Mock Exams and Progress loaded. Progress continued to describe mastery/readiness as derived evidence rather than a grade. No horizontal overflow at **390 px**, **768 px** or **1280 px**; keyboard Enter opened the mobile navigation and Escape closed it with focus returned to the trigger. Arithmetic finished RAX=8, stack frame RAX=15, and function call RAX=RBX=7; every example finished with RSP/RBP 0x1000. No production-console warnings/errors were observed.
 
 ## Bundle and performance
 
 | Final production asset group | Raw bytes | Gzip bytes |
 | --- | ---: | ---: |
-| Initial JavaScript | 496,858 | 130,955 |
-| Initial change from accepted Step 11 | +2,305 | +748 |
-| Account page | 5,379 | 2,041 |
-| Configured profile + auth/sync engine | 15,694 | 5,763 |
+| Initial JavaScript | 497,652 | 131,367 |
+| Initial change from accepted Step 11 | +3,099 | +1,160 |
+| Account page | 5,379 | 2,042 |
+| Configured profile + auth/sync engine | 15,694 | 5,764 |
 | Separate Supabase client closure | 223,730 | 58,507 |
-| Total emitted assets (existing inventory convention) | 1,839,066 | 535,792 |
+| Total emitted assets (existing inventory convention) | 1,839,860 | 536,202 |
 
 Account, sync and SDK are lazy; the SDK chunk is not included in initial JS. Engine and configured-profile bytes share one chunk and are not double-counted. See [cloud-bundle-report.json](cloud-bundle-report.json). The previous guards also reject raw source PDFs/ZIPs/full Handoff/report/test payloads. No canonical academic content is uploaded by the explicit payload projection; content fingerprint/version is metadata only.
 
@@ -177,7 +175,7 @@ Client merge tests cover 100, 1,000 and 5,000 records, deterministic reversed-de
 
 See [accounts-security-review.md](accounts-security-review.md) for the distinct adversarial self-review, reproduced findings/fixes, extra independent-style verification (not an external audit), second security-assumption review and claim-evidence check. No known unresolved local acceptance defect remains.
 
-**REMOTE ACCEPTANCE BLOCKED — USER ACTION REQUIRED.** Signup/login against a real service cannot yet continue because fresh users are blocked by `email_not_confirmed`, and the required migration has not been applied yet in the remote project. Live SELECT/INSERT/UPDATE/DELETE RLS negatives, real multi-device persistence, idempotency/conflict semantics, offline restore behavior, and production smoke examples therefore remain blocked pending manual dashboard actions.
+**REMOTE SUPABASE ACCEPTANCE — PASS (isolated API acceptance).** Generated User A and User B accounts completed real signup/sign-in, snapshot and receipt writes, exact-operation retry, stale/reused-operation conflict rejection, cross-user SELECT/UPDATE/DELETE/INSERT negatives, reconnect and account-switch reads. This is live Supabase enforcement, distinct from the fake-adapter and Chromium-local-storage tests.
 
 Other explicit NOT RUN items: Safari, Firefox, physical mobile hardware, full OS network disconnection, fresh offline boot, real disk-quota exhaustion, power loss and screen-reader audit. No service-worker caching/PWA or production deployment/hardening was added. Existing 5,000-attempt/250-exam/16 MB backup bounds remain; the sync base/pending journal and recovery require additional local storage. Account namespaces are not encryption. A previously sent request may commit remotely after sign-out, but its stale response cannot acknowledge into another profile. Sign-out uses the provider’s local-session scope; other devices stay signed in.
 
@@ -214,6 +212,7 @@ The following inventory is relative to accepted Step 11. Existing bundle reports
 - `scripts/cloud-dependency-lock.json`
 - `scripts/cloud-validation.ts`
 - `scripts/inspect-cloud-build.ts`
+- `scripts/remote-supabase-acceptance.ts`
 - `scripts/storage-migration-preservation.ts`
 - `scripts/validate-auth.ts`
 - `scripts/validate-supabase-security.ts`
