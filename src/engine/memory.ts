@@ -12,7 +12,8 @@ export function memoryAddress(address: bigint): number {
 }
 
 export function effectiveAddress(operand: Extract<Operand, {kind: 'memory'}>, registers: Readonly<Registers>): bigint {
-  return BigInt.asIntN(64, registers[operand.base] + operand.displacement);
+  const indexed = operand.index ? registers[operand.index] * BigInt(operand.scale ?? 1) : 0n;
+  return BigInt.asIntN(64, registers[operand.base] + indexed + operand.displacement);
 }
 
 export function readMemory(memory: CPUState['memory'], address: bigint): bigint {

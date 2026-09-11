@@ -14,13 +14,13 @@ export default function AssemblyWorkbench() {
   const [format, setFormat] = useState<ValueFormat>(() => readPreferences().format);
   const {program, session, cpu, dirty, running, error} = simulator;
   const step = session.cursor > 0 ? session.steps[session.cursor - 1] : undefined;
-  const nextInstruction = cpu.halted ? undefined : program.instructions[cpu.rip];
+  const nextInstruction = cpu.halted || dirty ? undefined : program.instructions[cpu.rip];
   const status = error ? 'Needs attention' : dirty ? 'Unloaded changes' : running ? 'Running' : cpu.halted ? 'Complete' : session.cursor === 0 ? 'Ready to explore' : 'Paused';
   return <div className="app-shell">
     <main>
       <div className="workspace-title"><div><div className="eyebrow">LEARN BY STEPPING THROUGH</div><h1>Assembly workbench<span className="architecture-tag">x86-64</span></h1></div><div className="workspace-options"><span className={`workspace-status ${error ? 'error-text' : ''}`}><span className="status-dot"/>{status}</span><div className="format-toggle" role="group" aria-label="Number display format">{(['decimal','hex'] as const).map(value => <button key={value} aria-pressed={format === value} className={format === value ? 'selected' : ''} onClick={() => {setFormat(value); writeLocal('format', value);}}>{value === 'decimal' ? 'DEC' : 'HEX'}</button>)}</div></div></div>
       <ControlPanel dirty={dirty} running={running} halted={cpu.halted} hasError={!!error} cursor={session.cursor} rip={cpu.rip} count={program.instructions.length} onLoad={() => simulator.load(simulator.source)} onPrevious={() => simulator.seek(session.cursor - 1)} onNext={simulator.step} onRun={simulator.run} onPause={simulator.pause} onReset={simulator.reset}/>
-      {error && <div className="error-banner" role="alert"><Icon name="alert"/><div><strong>{error}</strong><span>Edit the program and load it again, or reset to inspect the last successful execution.</span></div></div>}
+      {error && <div className="error-banner" role="alert"><Icon name="alert"/><div><strong>{error}</strong><span>Edit and load the program again, or reset execution.</span></div></div>}
       {dirty && !error && <div className="dirty-banner"><Icon name="code" size={16}/>Your code has changed. Load Program to start a new execution.</div>}
       <div className="workspace-grid">
         <CodeEditor source={simulator.source} currentLine={nextInstruction?.line} errorLine={simulator.errorLine} dirty={dirty} saved={simulator.saved} onChange={simulator.edit} onExample={simulator.load}/>

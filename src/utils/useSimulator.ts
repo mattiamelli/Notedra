@@ -22,6 +22,7 @@ export function useSimulator() {
   const [machine, setMachine] = useState(initial.machine);
   const machineRef = useRef(machine);
   const [source, setSource] = useState(initial.source);
+  const sourceRef = useRef(initial.source);
   const [running, setRunning] = useState(false);
   const runningRef = useRef(false);
   const [error, setError] = useState<string | null>(initial.error);
@@ -39,15 +40,21 @@ export function useSimulator() {
   };
   const load = useCallback((newSource: string) => {
     pause();
+    sourceRef.current = newSource;
     setSource(newSource);
     try {
       const program = parseProgram(newSource);
       replaceMachine({program, session: createSession(program)});
       clearError();
-    } catch (failure) { reportError(failure); }
+    } catch (failure) {
+      const current = machineRef.current;
+      replaceMachine({...current, session: createSession(current.program)});
+      reportError(failure);
+    }
   }, [pause, replaceMachine]);
   const step = useCallback(() => {
     const current = machineRef.current;
+    if (sourceRef.current !== current.program.source) { pause(); return; }
     if (currentCPU(current.session).halted) { pause(); return; }
     try {
       const session = nextSession(current.program, current.session);
@@ -57,8 +64,10 @@ export function useSimulator() {
     } catch (failure) { pause(); reportError(failure); }
   }, [pause, replaceMachine]);
   const seek = useCallback((cursor: number) => {
-    pause(); clearError();
+    pause();
     const current = machineRef.current;
+    if (sourceRef.current !== current.program.source) return;
+    clearError();
     replaceMachine({...current, session: seekSession(current.session, cursor)});
   }, [pause, replaceMachine]);
   const reset = useCallback(() => {
@@ -71,7 +80,16 @@ export function useSimulator() {
     runningRef.current = true;
     setRunning(true);
   }, [dirty, cpu.halted, error]);
-  const edit = useCallback((value: string) => { pause(); setSource(value); clearError(); }, [pause]);
+  const edit = useCallback((value: string) => {
+    pause();
+    if (sourceRef.current !== value) {
+      const current = machineRef.current;
+      replaceMachine({...current, session: createSession(current.program)});
+    }
+    sourceRef.current = value;
+    setSource(value);
+    clearError();
+  }, [pause, replaceMachine]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setSaved(writeLocal('program', source)), 250);

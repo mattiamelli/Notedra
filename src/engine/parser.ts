@@ -23,15 +23,25 @@ export function parseOperand(text: string, line = 1): Operand {
     return { kind: 'immediate', value: integer(text.slice(1), line) };
   }
   if (/^%\w+$/.test(text)) return { kind: 'register', name: register(text, line) };
-  const memory = /^([+-]?(?:0x[\da-f]+|\d+))?\s*\(\s*(%\w+)\s*\)$/i.exec(text);
-  if (memory) return { kind: 'memory', base: register(memory[2], line), displacement: memory[1] ? integer(memory[1], line) : 0n };
+  const memory = /^([+-]?(?:0x[\da-f]+|\d+))?\s*\(\s*(%\w+)\s*(?:,\s*(%\w+)\s*(?:,\s*([^,()\s]+)\s*)?)?\)$/i.exec(text);
+  if (memory) {
+    const base = register(memory[2], line);
+    const displacement = memory[1] ? integer(memory[1], line) : 0n;
+    if (!memory[3]) return {kind: 'memory', base, displacement};
+    const index = register(memory[3], line);
+    if (index === 'rsp') throw new AssemblyError(`Invalid memory operand "${text}": RSP cannot be an index.`, line);
+    const scale = memory[4] ?? '1';
+    if (!/^[1248]$/.test(scale)) throw new AssemblyError(`Invalid scale "${scale}": expected 1, 2, 4 or 8.`, line);
+    return {kind: 'memory', base, displacement, index, scale: Number(scale) as 1 | 2 | 4 | 8};
+  }
+  if (/[()]/.test(text)) throw new AssemblyError(`Invalid operand "${text}": Invalid memory operand.`, line);
   if (labelPattern.test(text)) return { kind: 'label', name: text };
   throw new AssemblyError(`Invalid operand "${text}"`, line);
 }
 
 function validate(instruction: Instruction): void {
   const {opcode, operands, line} = instruction;
-  const expected = opcode === 'ret' ? 0 : ['pushq','popq','incq','decq','call'].includes(opcode) ? 1 : 2;
+  const expected = opcode === 'ret' ? 0 : ['pushq','popq','incq','decq','call','mulq'].includes(opcode) ? 1 : 2;
   if (operands.length !== expected) throw new AssemblyError(`${opcode} expects ${expected} operand${expected === 1 ? '' : 's'}.`, line);
   const fail = (message: string): never => { throw new AssemblyError(message, line); };
   if (opcode === 'ret') return;
@@ -46,10 +56,39 @@ function validate(instruction: Instruction): void {
     return;
   }
   if (opcode === 'pushq') return;
+  if (opcode === 'mulq') {
+    if (source.kind !== 'register' && source.kind !== 'memory') fail('Invalid operand for mulq: expected one register or memory source.');
+    return;
+  }
+  if (opcode === 'shlq' && (source.kind !== 'immediate' || source.value < 0n || source.value > 255n)) {
+    fail('Invalid operand for shlq: expected an immediate count from $0 to $255.');
+  }
   const target = destination ?? source;
   if (target.kind !== 'register' && target.kind !== 'memory') fail(`${opcode} requires a register or memory destination.`);
   if (opcode === 'imulq' && target.kind !== 'register') fail('Two-operand imulq requires a register destination.');
   if (destination && source.kind === 'memory' && destination.kind === 'memory') fail(`${opcode} does not support two memory operands. Use a register in between.`);
+}
+
+// Commas inside a memory expression belong to that operand, not the instruction.
+function splitOperands(text: string, line: number): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === '(') {
+      if (depth !== 0) throw new AssemblyError(`Invalid memory operand "${text}".`, line);
+      depth++;
+    } else if (text[i] === ')') {
+      if (depth !== 1) throw new AssemblyError(`Invalid memory operand "${text}".`, line);
+      depth--;
+    } else if (text[i] === ',' && depth === 0) {
+      parts.push(text.slice(start, i));
+      start = i + 1;
+    }
+  }
+  if (depth !== 0) throw new AssemblyError(`Invalid memory operand "${text}".`, line);
+  parts.push(text.slice(start));
+  return parts;
 }
 
 export function parseProgram(source: string): Program {
@@ -69,7 +108,7 @@ export function parseProgram(source: string): Program {
     const [mnemonic] = text.split(/\s+/);
     if (!OPCODES.includes(mnemonic as Opcode)) throw new AssemblyError(`Unsupported instruction "${mnemonic}"`, line);
     const argumentText = text.slice(mnemonic.length).trim();
-    const operands = argumentText ? argumentText.split(',').map(part => parseOperand(part, line)) : [];
+    const operands = argumentText ? splitOperands(argumentText, line).map(part => parseOperand(part, line)) : [];
     const instruction = Object.freeze({ opcode: mnemonic as Opcode, operands: Object.freeze(operands.map(operand => Object.freeze(operand))), line, text });
     validate(instruction);
     instructions.push(instruction);

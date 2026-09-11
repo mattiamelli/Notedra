@@ -1,12 +1,12 @@
 export const REGISTER_NAMES = ['rax', 'rbx', 'rcx', 'rdx', 'rdi', 'rsi', 'rsp', 'rbp'] as const;
 export type RegisterName = typeof REGISTER_NAMES[number];
 export type Registers = Record<RegisterName, bigint>;
-export const OPCODES = ['movq', 'pushq', 'popq', 'addq', 'subq', 'imulq', 'incq', 'decq', 'leaq', 'call', 'ret'] as const;
+export const OPCODES = ['movq', 'pushq', 'popq', 'addq', 'subq', 'imulq', 'shlq', 'mulq', 'incq', 'decq', 'leaq', 'call', 'ret'] as const;
 export type Opcode = typeof OPCODES[number];
 export type Operand =
   | { kind: 'immediate'; value: bigint }
   | { kind: 'register'; name: RegisterName }
-  | { kind: 'memory'; base: RegisterName; displacement: bigint }
+  | { kind: 'memory'; base: RegisterName; displacement: bigint; index?: RegisterName; scale?: 1 | 2 | 4 | 8 }
   | { kind: 'label'; name: string };
 export interface Instruction {
   readonly opcode: Opcode;

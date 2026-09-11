@@ -76,11 +76,32 @@ export function applyInstruction(before: CPUState, instruction: Instruction, pro
       }
       break;
     }
+    case 'shlq': {
+      const original = read(destination);
+      const count = read(source) & 63n;
+      const target = describe(destination);
+      const result = word(original << count);
+      // A zero effective count preserves memory and return-address annotations.
+      if (count !== 0n) write(destination, result);
+      explanation.push(`${target}: ${original} shifted left by ${count} = ${result}. Only the low 6 count bits and low 64 result bits are used.`);
+      break;
+    }
+    case 'mulq': {
+      // Read both inputs before changing either implicit destination (including aliases).
+      const left = BigInt.asUintN(64, registers.rax);
+      const right = BigInt.asUintN(64, read(source));
+      const product = left * right;
+      registers.rax = word(product);
+      registers.rdx = word(product >> 64n);
+      explanation.push(`Unsigned ${left} × ${right} = ${product}.`, `RDX:RAX holds the full 128-bit product: high ${BigInt.asUintN(64, registers.rdx)}, low ${BigInt.asUintN(64, registers.rax)}.`);
+      break;
+    }
     case 'leaq': {
       if (source.kind !== 'memory') throw new AssemblyError('leaq requires an effective address.');
       const address = effectiveAddress(source, registers);
       write(destination, address);
-      explanation.push(`${source.base.toUpperCase()} (${addressHex(before.registers[source.base])}) + (${source.displacement}) = ${addressHex(address)}.`, `The address was placed in ${describe(destination)}. No value was read from memory.`);
+      const indexTerm = source.index ? ` + ${source.index.toUpperCase()} (${before.registers[source.index]}) × ${source.scale ?? 1}` : '';
+      explanation.push(`${source.base.toUpperCase()} (${addressHex(before.registers[source.base])})${indexTerm} + (${source.displacement}) = ${addressHex(address)}.`, `The address was placed in ${describe(destination)}. No value was read from memory.`);
       break;
     }
     case 'call': {

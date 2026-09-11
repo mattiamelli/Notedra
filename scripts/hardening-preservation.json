@@ -34,5 +34,37 @@
   "src/exams/engine.ts": {
     "before": "2e9210881be9f59c96ff45ffacebeffe2a2e311186120d0d409310cc1683d484",
     "after": "00f9bcf7d897dd10238938eacec1118e5f962853319f0be79693008d6a8067ce"
+  },
+  "src/components/CodeEditor.tsx": {
+    "before": "ccb8c44411e69ff7490c59dcd2cc60eef36f8e90ddba32374a39cf80ef5d2d86",
+    "after": "c9a7c3a3ffd154aa88ae2a6122a0a2dd88d8e746738d5eeba5df986c4b2e6f35"
+  },
+  "src/engine/instructions.ts": {
+    "before": "e9f3019f074755d58e551458f20e366c04bc2890140380138e125f19d50a5ebb",
+    "after": "2ed062a86207d0e1a3a2ddee9cc80b7da01786dc2ab6a7d71ee7a304324c6bf7"
+  },
+  "src/engine/memory.ts": {
+    "before": "dd3511a45c53208509d45c6f001c1aff98a1a8d89f71ffadd1f0da642af853ea",
+    "after": "19b4239cb30661742783b26e5c243e5cac90a1acb653f307b3b5e6affb71d5f5"
+  },
+  "src/engine/parser.ts": {
+    "before": "68964719108f09f165cb58867b98ca1a2856e6ada13f527ac0facdbb81d800c3",
+    "after": "ba684c04d0ab65858a27e2e735fafb67e6ffa93f37af0b9ff6c7c9d6afd302a8"
+  },
+  "src/engine/types.ts": {
+    "before": "eef0357429ec5053122e40e562ae1a70aadcd7b99c9a022f29fa1860882898dd",
+    "after": "78f1ec371d538c2df7bf0c8a7927814404688374821ea9a6eceeb2202d586b12"
+  },
+  "src/utils/useSimulator.ts": {
+    "before": "3503ba5e3effeb881a93cb2bece1f4523637e58babc8f98ca18250dedb43006a",
+    "after": "ece92c76dbba55453d79a9b022fc7041748db53af8fa5b5b3681bca79dd84584"
+  },
+  "tests/parser.test.ts": {
+    "before": "2193caf7d8ed87b4e380b3e6d7a2967f5d734b2586fd485c1e6e1642e504805b",
+    "after": "351a71787cc8790a9ace5c99d6c11b2bcffcefd29909624725998171d31ae9b5"
+  },
+  "src/AssemblyWorkbench.tsx": {
+    "before": "e054a84c05c2ef77eafc9f69e50863f6600bbaada15c00db7c0b267ad4a3c0c5",
+    "after": "77d63974e0d083035d3b422146a78c68d7064d0e611d512d3acfcecf2d336b50"
   }
 }

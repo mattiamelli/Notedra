@@ -3,8 +3,8 @@ import { examplePrograms } from '../examples/examplePrograms';
 import { Icon } from './Icon';
 
 function highlight(line: string) {
-  const parts = line.split(/(#.*$|%[a-z]+|\$[+-]?(?:0x[\da-f]+|\d+)|\b(?:movq|pushq|popq|addq|subq|imulq|incq|decq|leaq|call|ret)\b|[A-Za-z_.][\w.]*:)/gi);
-  return parts.map((part, index) => <span key={index} className={part.startsWith('#') ? 'syntax-comment' : part.startsWith('%') ? 'syntax-register' : part.startsWith('$') ? 'syntax-number' : part.endsWith(':') ? 'syntax-label' : /^(movq|pushq|popq|addq|subq|imulq|incq|decq|leaq|call|ret)$/.test(part) ? 'syntax-instruction' : undefined}>{part}</span>);
+  const parts = line.split(/(#.*$|%[a-z]+|\$[+-]?(?:0x[\da-f]+|\d+)|\b(?:movq|pushq|popq|addq|subq|imulq|shlq|mulq|incq|decq|leaq|call|ret)\b|[A-Za-z_.][\w.]*:)/gi);
+  return parts.map((part, index) => <span key={index} className={part.startsWith('#') ? 'syntax-comment' : part.startsWith('%') ? 'syntax-register' : part.startsWith('$') ? 'syntax-number' : part.endsWith(':') ? 'syntax-label' : /^(movq|pushq|popq|addq|subq|imulq|shlq|mulq|incq|decq|leaq|call|ret)$/.test(part) ? 'syntax-instruction' : undefined}>{part}</span>);
 }
 interface Props {source: string; currentLine?: number; errorLine?: number; dirty: boolean; saved: boolean; onChange: (value: string) => void; onExample: (source: string) => void;}
 export function CodeEditor({source, currentLine, errorLine, dirty, saved, onChange, onExample}: Props) {

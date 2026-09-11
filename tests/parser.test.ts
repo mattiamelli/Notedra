@@ -12,7 +12,9 @@ describe('AT&T operands', () => {
     expect(parseOperand(source)).toEqual({kind: 'memory', base, displacement});
   });
   it('reports unknown registers with original line numbers', () => expect(() => parseOperand('%rxx', 7)).toThrow('Line 7: Unknown register "%rxx"'));
-  it.each(['$abc', '8(%rbp', '(%rbp,%rax,8)', '%%rax', '$', ''])('rejects invalid operand %s', value => expect(() => parseOperand(value)).toThrow('Invalid operand'));
+  it('accepts the formerly unsupported indexed operand', () => expect(parseOperand('(%rbp,%rax,8)')).toEqual({kind: 'memory', base: 'rbp', index: 'rax', scale: 8, displacement: 0n}));
+  it.each(['$abc', '8(%rbp', '%%rax', '$', ''])('rejects invalid operand %s', value => expect(() => parseOperand(value)).toThrow('Invalid operand'));
+  it('still rejects an indexed operand with an illegal scale', () => expect(() => parseOperand('(%rbp,%rax,3)')).toThrow('Invalid scale'));
 });
 
 describe('program parsing', () => {
