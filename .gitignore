@@ -6,11 +6,17 @@ coverage/
 .env
 .env.*
 !.env.example
+.envrc
+.npmrc
 .DS_Store
 .idea/
 .vscode/
 *.log
 *.swp
+*.pem
+*.key
+*.p12
+*.pfx
 
 .verification-dist/
 .sites-release/
