@@ -20,12 +20,13 @@ export function createSupabase(config:Extract<CloudConfig,{status:'configured'}>
   const identity=config.url+'\0'+config.key;
   const existing=clients.get(identity);if(existing)return existing;
   const client=createClient(config.url,config.key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'pkce'}});
-  const user=(session:Session|null):AccountUser|null=>session?{id:session.user.id,email:session.user.email??'Account'}:null;
+  const user=(session:Session|null):AccountUser|null=>session?{id:session.user.id,email:session.user.email??'Account',displayName:typeof session.user.user_metadata?.display_name==='string'?session.user.user_metadata.display_name:undefined}:null;
   const auth:AuthAdapter={
     async session(){const {data,error}=await client.auth.getSession();if(error)throw error;return user(data.session);},
     subscribe(callback){const {data}=client.auth.onAuthStateChange((_event,session)=>callback(user(session)));return()=>data.subscription.unsubscribe();},
     async signIn(email,password){const {error}=await client.auth.signInWithPassword({email,password});if(error)throw error;},
-    async signUp(email,password){const {data,error}=await client.auth.signUp({email,password});if(error)throw error;return {verificationRequired:!data.session};},
+    async signUp(email,password,displayName=''){const {data,error}=await client.auth.signUp({email,password,options:displayName.trim()?{data:{display_name:displayName.trim()}}:undefined});if(error)throw error;return {verificationRequired:!data.session};},
+    async updateDisplayName(displayName){const {error}=await client.auth.updateUser({data:{display_name:displayName.trim()}});if(error)throw error;},
     async signOut(){const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;},
   };
   const cloud:CloudRepository={

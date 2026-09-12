@@ -1,11 +1,12 @@
 {
+  "src/accounts/AccountPage.tsx": {"before": "021e7b08f1712acfce9772cbfcf3c3729db8a904a3b67fcf9a90c932be520573", "after": "ffe638cc6401eafe2244f4930afa28acfac5cab737a9bb558786bab1f1143316"},
   "src/cloud/auth.ts": {
     "before": "6e2dd04a2bd8db56086435eedac48c9665931e9b74ca729273660a3da76e9270",
-    "after": "052c19b497d9261e6864dda8296e84623f15eec13dcd19174176edccc845d733"
+    "after": "7b5a368d88128ea259b57a013baef85e95108722449f80fe64a8f9ad2203a678"
   },
   "src/cloud/supabase.ts": {
     "before": "5590664736f7f8fc83a342b92d7f5c343bf1483adefb3f25ecd169abb9fd6b2c",
-    "after": "7e76ce18bc523c203f505871556eac1afdc0e0c02fc4b4c24760faddb8129311"
+    "after": "23657c266079a6f701bf3c7cc65712e31c76854658ba1514415d1e18a0e1db7f"
   },
   "src/learning/StudentDataPanel.tsx": {
     "before": "bbb3b7ce2a30cba60f3495f6750daa1cc328cb2cbcdf06525919d4ccd6045764",

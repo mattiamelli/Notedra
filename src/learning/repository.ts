@@ -2,10 +2,10 @@ import type {ExamBank, ExamResponse, ExamSession} from '../exams/types';
 import {validateExamSession} from '../exams/records';
 import {
   CONTENT, LearningError, emptyBackup, migrateBackup, migrateDataset, toBackup, validateAttempt, validateBackup, validateDataset, validateResume,
-  type Answer, type Attempt, type AttemptIdentity, type Backup, type Dataset, type LoadedState, type ResumePosition, type WriteToken,
+  type Answer, type Attempt, type AttemptIdentity, type Backup, type Dataset, type LoadedState, type ResumePosition, type WriteToken, type UpcomingExam,
 } from './contracts';
 
-export const STUDENT_DB_VERSION = 3;
+export const STUDENT_DB_VERSION = 4;
 export const STUDENT_DATABASE = 'delftstudy-student-v1';
 export interface DraftInput extends AttemptIdentity { attemptId?: string; answer: Answer; hintsUsed?: number | null; solutionViewed?: boolean | null; }
 export interface StudentRepository {
@@ -21,6 +21,9 @@ export interface StudentRepository {
   submitExam(snapshot: ExamSession, operationId: string, bank: ExamBank, expected: WriteToken): Promise<LoadedState>;
   abandonExam(id: string, revision: number, expected: WriteToken): Promise<LoadedState>;
   reviewExam(id: string, itemId: string, revision: number, reviewed: boolean, expected: WriteToken): Promise<LoadedState>;
+  addUpcomingExam(exam: UpcomingExam, expected: WriteToken): Promise<LoadedState>;
+  updateUpcomingExam(exam: UpcomingExam, expected: WriteToken): Promise<LoadedState>;
+  deleteUpcomingExam(id: string, expected: WriteToken): Promise<LoadedState>;
   exportBackup(): Promise<Backup>;
   exportRecovery(): Promise<Backup>;
   restore(backup: unknown, expected: Dataset): Promise<LoadedState>;
@@ -47,6 +50,10 @@ export class IndexedStudentRepository implements StudentRepository {
     this.now = options.now ?? (() => new Date().toISOString());
     this.id = options.id ?? (() => crypto.randomUUID());
   }
+  private validateUpcoming(exam: UpcomingExam) { const value=structuredClone(exam); if(!value.id||!value.name.trim()||value.name.trim().length>120||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(value.examDate)) throw new LearningError('INVALID','Enter an exam name and a valid date.'); return {...value,name:value.name.trim()}; }
+  addUpcomingExam(exam: UpcomingExam, expected: WriteToken) { const value=this.validateUpcoming(exam); return this.mutate(expected,state=>{const list=state.data.upcomingExams??(state.data.upcomingExams=[]);if(list.some(e=>e.id===value.id)) conflict('Exam ID already exists.'); list.push(value); state.data.revision++;}); }
+  updateUpcomingExam(exam: UpcomingExam, expected: WriteToken) { const value=this.validateUpcoming(exam); return this.mutate(expected,state=>{const list=state.data.upcomingExams??[];const i=list.findIndex(e=>e.id===value.id); if(i<0) conflict('Exam no longer exists.'); list[i]=value; state.data.upcomingExams=list; state.data.revision++;}); }
+  deleteUpcomingExam(id: string, expected: WriteToken) { return this.mutate(expected,state=>{const list=state.data.upcomingExams??[];const i=list.findIndex(e=>e.id===id); if(i>=0){list.splice(i,1);state.data.upcomingExams=list;state.data.revision++;}}); }
   private open(): Promise<IDBDatabase> {
     if (this.closed) return Promise.reject(new LearningError('UNAVAILABLE', 'Storage connection closed. Reload this page to reconnect.'));
     if (this.connection) return this.connection;

@@ -1,11 +1,12 @@
 import {checkOwner} from './model';
 
-export interface AccountUser {id:string;email:string;}
+export interface AccountUser {id:string;email:string;displayName?:string;}
 export interface AuthAdapter {
   session():Promise<AccountUser|null>;
   subscribe(callback:(user:AccountUser|null)=>void):()=>void;
   signIn(email:string,password:string):Promise<void>;
-  signUp(email:string,password:string):Promise<{verificationRequired:boolean}>;
+  signUp(email:string,password:string,displayName?:string):Promise<{verificationRequired:boolean}>;
+  updateDisplayName?(displayName:string):Promise<void>;
   signOut():Promise<void>;
 }
 export interface AuthState {phase:'loading'|'anonymous'|'signed-in'|'error';user:AccountUser|null;message:string;epoch:number;}
@@ -49,10 +50,11 @@ export class AccountSession {
     this.beginOperation();this.signingOut=false;
     try{await this.adapter.signIn(email,password);}catch{throw Error('Sign-in failed. Check your email, password, email verification and connection.');}finally{this.operationPending=false;}
   }
-  async signUp(email:string,password:string):Promise<{verificationRequired:boolean}> {
+  async signUp(email:string,password:string,displayName=''):Promise<{verificationRequired:boolean}> {
     this.beginOperation();this.signingOut=false;
-    try{return await this.adapter.signUp(email,password);}catch{throw Error('Account creation failed. Check the details and connection, then retry.');}finally{this.operationPending=false;}
+    try{return await this.adapter.signUp(email,password,displayName);}catch{throw Error('Account creation failed. Check the details and connection, then retry.');}finally{this.operationPending=false;}
   }
+  async updateDisplayName(displayName:string){if(!this.adapter.updateDisplayName)throw Error('Profile editing is unavailable.');this.beginOperation();try{await this.adapter.updateDisplayName(displayName);const user=this.state.user;if(user)this.publish({...user,displayName:displayName.trim()});}finally{this.operationPending=false;}}
   async signOut():Promise<void> {
     this.beginOperation();this.signingOut=true;this.publish(null,'Signing out… Account data remains saved separately in this browser.');
     try{await this.adapter.signOut();this.publish(null,'Signed out. Your account data is preserved in its separate local profile.');}

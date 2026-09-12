@@ -40,6 +40,7 @@ export function mergeLearner(base: LearnerPayload | null, local: LearnerPayload,
     reviews: mergeRecords(ancestor.reviews, local.reviews, remote.reviews, r => r.attemptId, 'mistake review'),
     exams: mergeRecords(ancestor.exams, local.exams, remote.exams, e => e.sessionId, 'exam session'),
     examReviews: mergeRecords(ancestor.examReviews, local.examReviews, remote.examReviews, r => JSON.stringify([r.sessionId, r.itemId]), 'exam review'),
+    upcomingExams: [...new Map([...(ancestor.upcomingExams??[]),...(local.upcomingExams??[]),...(remote.upcomingExams??[])].map(e=>[e.id,e])).values()],
   };
   validatePayload(result);
   return structuredClone(result);

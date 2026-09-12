@@ -3,12 +3,12 @@ import {Link} from 'react-router';
 import {useAccount} from './context';
 import './accounts.css';
 export function AccountPage() {
-  const account=useAccount(),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[creating,setCreating]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[consent,setConsent]=useState(false),[restoreConsent,setRestoreConsent]=useState(false);
+  const account=useAccount(),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[displayName,setDisplayName]=useState(''),[creating,setCreating]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[consent,setConsent]=useState(false),[restoreConsent,setRestoreConsent]=useState(false);
   const feedback=useRef<HTMLParagraphElement>(null);
   useEffect(()=>{if(error)feedback.current?.focus();},[error]);
-  async function action(work:()=>Promise<unknown>) {if(busy)return;setBusy(true);setError('');setNotice('');try{await work();}catch(e){setError(e instanceof Error?e.message:'Account action failed. Your local work is preserved.');}finally{setBusy(false);setPassword('');}}
-  function submit(event:FormEvent){event.preventDefault();if(!account.auth)return;void action(async()=>{
-    if(creating){const result=await account.auth!.signUp(email,password);setNotice(result.verificationRequired?'Check your email to verify the account, then return here and sign in. An account may already exist for this address.':'Account session opened. Your anonymous history stays separate until you choose to copy it.');}
+  async function action(work:()=>Promise<unknown>) {if(busy)return;setBusy(true);setError('');setNotice('');try{await work();}catch(e){setError(e instanceof Error?e.message:'Account action failed. Your local work is preserved.');}finally{setBusy(false);setPassword('');setDisplayName('');}}
+  function submit(event:FormEvent){event.preventDefault();if(!account.auth)return;void displayName;void action(async()=>{
+    if(creating){if(!displayName.trim())throw Error('Enter a display name.');const result=await account.auth!.signUp(email,password,displayName);setNotice(result.verificationRequired?'Check your email to verify the account, then return here and sign in. An account may already exist for this address.':'Account session opened. Your anonymous history stays separate until you choose to copy it.');}
     else await account.auth!.signIn(email,password);
   });}
   return <div className="ds-account"><header className="ds-page-heading"><p className="ds-eyebrow">Your study space</p><h1>Account & cloud sync</h1><p>Accounts are optional. Learning, saved answers and backups work locally.</p></header>

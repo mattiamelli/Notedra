@@ -29,7 +29,7 @@ export function projectLearner(backup: Backup): LearnerPayload {
   validateBackup(backup);
   // An explicit allowlist: navigation/resume and derived evidence never leave the device.
   return structuredClone({schemaVersion: backup.schemaVersion, content: backup.content, attempts: backup.attempts,
-    reviews: backup.reviews, exams: backup.exams, examReviews: backup.examReviews});
+    reviews: backup.reviews, exams: backup.exams, examReviews: backup.examReviews, upcomingExams: backup.upcomingExams});
 }
 export const emptyPayload = (): LearnerPayload => projectLearner(emptyBackup());
 export function validatePayload(value: unknown): asserts value is LearnerPayload {
