@@ -9,9 +9,9 @@ import DashboardExams from './DashboardExams';
 import {useAccount} from '../accounts/context';
 const DashboardInsights = lazy(()=>import('./DashboardInsights'));
 export function DashboardPage() {
-  const {state}=useAccount(); void state;
+  const {state}=useAccount(); const profileName=state.user?.displayName?.trim();
   return <div className="ds-dashboard">
-    <header className="ds-dashboard-greeting"><div><h1 className="ds-dashboard-label">Dashboard</h1><p className="ds-greeting-title">Welcome to <span>DelftStudy</span></p><p>Build understanding today. Take your next step with confidence.</p></div><p className="ds-greeting-note">Learn · Practice · Reflect</p></header>
+    <header className="ds-dashboard-greeting"><div><h1 className="ds-dashboard-label">Dashboard</h1><p className="ds-greeting-title">{profileName?`Hello ${profileName}`:<>Welcome to <span>DelftStudy</span></>}</p><p>Build understanding today. Take your next step with confidence.</p></div><p className="ds-greeting-note">Learn · Practice · Reflect</p></header>
     <div className="ds-dashboard-grid">
       <Suspense fallback={<section className="ds-dash-panel ds-dash-plan"><h2>Your Study Path</h2><p role="status">Loading your local study evidence…</p><Link to="/study-plan">Open Study Path →</Link></section>}><DashboardInsights>
       <DashboardExams/>
