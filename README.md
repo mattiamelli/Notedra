@@ -151,7 +151,15 @@ The build runs the content, projection, exercise, course and release validation 
 
 ## Project preview
 
-No application screenshots are committed yet. A useful future preview set would show the dashboard, one course learning view, one practice or exam interaction, and the Assembly Visualizer. Capture them from a clean local session with personal data, account identifiers, tokens and administrative panels excluded; store approved images under `docs/assets/` and keep the README to two or three focused views.
+The dashboard brings the three course areas, study path, readiness evidence and practice entry points together in one view:
+
+![DelftStudy dashboard showing course areas, study path and practice tools](docs/assets/dashboard.jpg)
+
+The Assembly workbench provides a bounded, visual x86-64 learning environment with the program, stack memory and register state visible together:
+
+![DelftStudy Assembly workbench showing a function-call program, stack memory and registers](docs/assets/assembly-visualizer.jpg)
+
+These are real application views captured from a local session. They intentionally show no account data, tokens or administrative panels. Future screenshots should follow the same privacy check and remain limited to two or three focused views.
 
 Useful additional commands:
 
