@@ -3,7 +3,11 @@
   "tests/learning-repository.test.ts": {"before":"444f3087c856786c1a662e59fcdf07a532dfe3d229bdb79cd4f3a9d89e5015bd","after":"9989c0efc16609708ae64f6fdc20322f39e3310f13ce78ea85818b99bca8803e"},
   "src/cloud/local-store.ts": {"before":"fa4fc1739a68109475af382cc50f258216a8a85f81811f42d233c8ffa1d5618a","after":"805ec512e15f81c7b63f2999a5bbf38b2c31220ca21263085424a26c77014cae"},
   "tests/ip-review.test.tsx": {"before":"1d7db0ee563db69be4af83016b6b2dfce6827c7c1a22bfa2ff5e520fb84cb5d7","after":"407c17580b757d8c4fd7ae6f078f3cd73414a40d7d7d5ecc9d91e2b5c732393f"},
-  "src/accounts/AccountPage.tsx": {"before": "021e7b08f1712acfce9772cbfcf3c3729db8a904a3b67fcf9a90c932be520573", "after": "0b589df59045ef952d50afc6d23c648b9b43427d71909dffad9f0830b5473995"},
+  "src/App.tsx": {"before": "f2eb328a11f281ebb38127c9a88e3d770c4a2e835feb1f8f4fa5c8b93f6be1ef", "after": "94e2093b0b14f606779f1cfb5f9004232f036ca0256ba68581a826982d71c8fe"},
+  "src/main.tsx": {"before": "07af17edf43a1c6bb20094beaddabc173b423c759286a98d2dd7ba3a7e7222cc", "after": "a1b97e879ef47415d9c724bab64fa296b51f0f1069551982496395700ec1d0a9"},
+  "src/index.css": {"before": "8a500bb355c93150f187caa9aa6b71f577da4b264067e64ff1876d95598fb258", "after": "272fabf1ad65c7e0a3f3d85dd4848c4fa23168237deb69023f9c40ab969253e5"},
+  "src/accounts/AccountPage.tsx": {"before": "021e7b08f1712acfce9772cbfcf3c3729db8a904a3b67fcf9a90c932be520573", "after": "b2eb18628ed4131bb9218d8f509647e52dec1474d9aadb769bf48a11d2212d65"},
+  "src/accounts/accounts.css": {"before": "13ec3ce533b24e48bcf9d37b65353d144a0253296b573ff1018cf00cfcdbb8b8", "after": "eac9d0e6ec824b6eed47f56ac1fbff92972e97b4c1f8a9e490512afad14685c4"},
   "src/adaptive/MistakesPage.tsx": {"before": "ad5ef4a526709acda7968f9a3cedb824cab93cb8f8d001b9e2a013c42c49b9fd", "after": "00eb7e8bff18f16189e0a5c75a2dc6fd0c57356f43b65c3775714ffc803bd514"},
   "src/adaptive/StudyPathPage.tsx": {"before": "c033b6ce13c68fd239cfa0f52d26ceaf28feef721c223cf8d1aa8910790b9a3b", "after": "9f0876a2dbfd37892f429d94e9ca52729ad8f5837360b041b0923cc4d63b663b"},
   "src/enrichment/TopicEnrichment.tsx": {"before": "84c81660a193cf016d58130820d863d3c96aa9d13d6ccb3b252924c1150650a1", "after": "6cc1bcf1ccf5bdd156942dabf7e02ea5e04fd13becf8f36a67828148b4586fe6"},
@@ -25,14 +29,16 @@
   "tests/topic-ui.test.tsx": {"before": "983d5b842297087d1745375866abb230e7b3cb9dd4db9a0534ebdaf3fb266a6d", "after": "f6ac493bd5c025cd6c7ac5b7fc212fbdcc85f2546224c3a7a1314f5edd6fb05f"},
   "src/cloud/merge.ts": {"before": "499e57db821bc41c34ad59cb492890d56611d540246b1b8537478a0119be658a", "after": "8f3b4faadf797aedef5cc2a61527f4a2adc928ecc92158126e89999d820c6b28"},
   "src/cloud/model.ts": {"before": "2018f089fd66d8a6dbeebdfb9734a0064a6be8990915b687ab1423526b7b61f7", "after": "45445f3f340436f3d417c238abf959fd26eec5e7a69e77cdd0e0177088b8fb64"},
-  "src/design/product.css": {"before": "34f29d6b8c302d908643961f605fb382fef4501d072fa62d3da47b33e6daafd1", "after": "e1a868e595b8bb94e034bb5eb98644d98abe785f0fa3f23c0b8868fa31d4f158"},
+  "src/design/product.css": {"before": "34f29d6b8c302d908643961f605fb382fef4501d072fa62d3da47b33e6daafd1", "after": "44cc855f6f37ec78ee7cfbf56cd67e8d2a021f4b4db831d31883ff546128f4ac"},
+  "src/design/tokens.css": {"before": "b85aeab763f1da3968cd0b21769fd14c8858d72e8f4684afa3d8e36d36f48b9d", "after": "82480026a54d887808cba1691de0bee9625921b7fa853b5f5fc00308995f3a6b"},
   "src/learning/contracts.ts": {"before": "a720a41e6db82c852515d9a1836e71c6a1226e9bb86e035b0d1d4e37cf6e7d3a", "after": "5d3a445acc4e73468f981f468da9531baeb77d8aab91cdaf7727846890ef16fa"},
   "src/learning/repository.ts": {"before": "10d4371b76fc05e62fd54fa1fb5213e6ec9090bb3712c5b5d706909e2c090029", "after": "b85295d38fa8934297b1f0d5035e05ac0fb368932a0f2e896aa455534cf6f266"},
   "src/pages/DashboardPage.tsx": {"before": "05806c0742ed853abea68744fbc94beccff8635b7d1e980f123f21431f46bceb", "after": "559d60061f460b211976bda71c7bced2e39293a9adc8946322127581f0df5d69"},
   "src/cloud/auth.ts": {
     "before": "6e2dd04a2bd8db56086435eedac48c9665931e9b74ca729273660a3da76e9270",
-    "after": "7b5a368d88128ea259b57a013baef85e95108722449f80fe64a8f9ad2203a678"
+    "after": "a23861b93164110d5f4278fde9b2853a4af0a0193ccae0a0ed62cc3c84d10a04"
   },
+  "tests/cloud-auth.test.ts": {"before": "0407db7dd2d24b84ddab714cd578d002e0939bf18c727966c1a9a42f1f440e0d", "after": "d28810cf01df800c897d3af0cad73898d62db2e8d2912f4550da987c516458c8"},
   "src/cloud/supabase.ts": {
     "before": "5590664736f7f8fc83a342b92d7f5c343bf1483adefb3f25ecd169abb9fd6b2c",
     "after": "23657c266079a6f701bf3c7cc65712e31c76854658ba1514415d1e18a0e1db7f"
@@ -43,7 +49,7 @@
   },
   "src/shell/AppShell.tsx": {
     "before": "d7d7b71abdd598d3b908388533cae379d231574cb8b12911efef4a8972a026e0",
-    "after": "6f995fc6b769e39527e70a66e7a041be97f517ec9ea249834cdda2e5a7c3d914"
+    "after": "d88c115a22019576b92a1c17c82cc8a261e63b4dbd0289a492f425c929105679"
   },
   "tests/cloud-client.test.ts": {
     "before": "e99b410d0c69513486732f83cf6490403530ac6a4377a85591c3ed5d29e484d9",

@@ -57,3 +57,42 @@
   --ds-motion: 140ms;
   --ds-ease: ease-out;
 }
+
+:root[data-theme='dark'] {
+  --ds-page: #0d1829;
+  --ds-paper: #15243a;
+  --ds-soft: #1b2e49;
+  --ds-elevated: #1c2a42;
+  --ds-ink: #f3f7fd;
+  --ds-text: #d5e0ef;
+  --ds-support: #a7b8cf;
+  --ds-line: #2d4563;
+  --ds-line-strong: #607a9b;
+  --ds-primary: #79b2ff;
+  --ds-primary-hover: #a2caff;
+  --ds-on-primary: #071a36;
+  --ds-primary-soft: #1b3a61;
+  --ds-focus: #9bc8ff;
+  --ds-success: #65d9c4;
+  --ds-success-soft: #173e3a;
+  --ds-warning: #f2c279;
+  --ds-warning-soft: #49391e;
+  --ds-error: #ff9daf;
+  --ds-error-soft: #4a2430;
+  --ds-info: #8ac2ff;
+  --ds-info-soft: #193b5e;
+  --ds-co: #82c2ff;
+  --ds-co-soft: #183a59;
+  --ds-rl: #6ed9c9;
+  --ds-rl-soft: #173d3b;
+  --ds-ip: #c0a7ff;
+  --ds-ip-soft: #342b57;
+  --ds-nav: #111e31;
+  --ds-nav-text: #dce8f7;
+  --ds-nav-muted: #9eb0c8;
+  --ds-nav-active: #203c60;
+  --ds-code-bg: #0a1424;
+  --ds-code-text: #e6eef9;
+  --ds-shadow: 0 4px 18px #02081735;
+  --ds-shadow-raised: 0 14px 36px #0208175c;
+}

@@ -5,9 +5,10 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router';
 import { ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext, productAreas } from '../academic/navigation';
 import { ShellIcon } from './ShellIcon';
 import {useAccount} from '../accounts/context';
+import {profileInitials} from '../accounts/profile';
 
 export function AppShell() {
-  const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const initial=profileName?.[0]?.toLocaleUpperCase()??'DS';
+  const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
   const {pathname, hash} = useLocation();
   const context = pathname.replace(/\/+$/, '') === '/account' ? {title:'Account & sync',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & sync'}]} : pageContext(pathname);
   const tool = pathname.replace(/\/+$/, '') === ASSEMBLY_TOOL_PATH;

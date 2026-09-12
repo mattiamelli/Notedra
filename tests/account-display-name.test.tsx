@@ -25,7 +25,7 @@ it('renders canonical identity inside Account itself and clears it on account sw
 });
 it('preserves greeting and avatar sourced from the same account state',()=>{
   const host=document.createElement('div');host.innerHTML=renderToStaticMarkup(<MemoryRouter><AccountContext.Provider value={value(a)}><AppShell/><DashboardPage/></AccountContext.Provider></MemoryRouter>);
-  expect(host.querySelector('.ds-greeting-title')?.textContent).toBe('Hello Élodie Alpha');expect(host.querySelector('.ds-header-account .ds-avatar')?.textContent).toBe('É');
+  expect(host.querySelector('.ds-greeting-title')?.textContent).toBe('Hello Élodie Alpha');expect(host.querySelector('.ds-header-account .ds-avatar')?.textContent).toBe('ÉA');
 });
 it('preserves anonymous greeting and avatar fallback',()=>{
   const host=document.createElement('div');host.innerHTML=renderToStaticMarkup(<MemoryRouter><AccountContext.Provider value={value(null)}><AppShell/><DashboardPage/></AccountContext.Provider></MemoryRouter>);

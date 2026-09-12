@@ -10,6 +10,7 @@ import { ProductAreaPage } from './pages/ProductAreaPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import './shell/shell.css';
 import { AccountRoot } from './accounts/AccountRoot';
+import { ThemeProvider } from './appearance/theme';
 const AccountPage=lazy(()=>import('./accounts/AccountPage').then(m=>({default:m.AccountPage})));
 
 const PracticePage = lazy(() => import('./practice/PracticePage').then(m => ({default:m.PracticePage})));
@@ -46,5 +47,5 @@ export function AppRoutes() {
 }
 
 export default function App() {
-  return <BrowserRouter><AccountRoot><AppRoutes/></AccountRoot></BrowserRouter>;
+  return <ThemeProvider><BrowserRouter><AccountRoot><AppRoutes/></AccountRoot></BrowserRouter></ThemeProvider>;
 }

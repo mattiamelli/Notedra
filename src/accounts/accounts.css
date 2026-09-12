@@ -1,12 +1,9 @@
-.ds-account { max-width: 900px; }
-.ds-account h1,.ds-account h2,.ds-account p { white-space: normal; overflow-wrap: anywhere; }
-.ds-account form { max-width: 520px; display: grid; gap: 16px; }
-.ds-account label { display: grid; gap: 8px; margin: 12px 0; }
-.ds-account input:not([type=checkbox]) { width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid #485367; border-radius: 6px; background: #111820; color: #f1f5f9; }
+.ds-account h1,.ds-account h2,.ds-account h3,.ds-account p { white-space: normal; overflow-wrap: anywhere; }
+.ds-account form { display: grid; gap: 16px; }
+.ds-account form>label { display: grid; gap: 8px; }
+.ds-account input:not([type=checkbox]):not([type=radio]) { width: 100%; min-width: 0; }
 .ds-account-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
-.ds-account button { padding: 9px 14px; border: 1px solid #617483; border-radius: 6px; color: #eef5f8; background: #20303b; white-space: normal; }
-.ds-account button:disabled { opacity: .5; cursor: not-allowed; }
-.ds-account :focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
-.ds-account details { margin-top: 24px; }
-.ds-account summary { cursor: pointer; }
-.ds-account [role=alert] { color: #ffb4ab; }
+.ds-account button { white-space: normal; }
+.ds-account details { margin-top: 22px; }
+.ds-account summary { cursor: pointer; font-weight: 650; }
+.ds-account details>label { display: flex; align-items: flex-start; gap: 9px; margin: 14px 0; }
