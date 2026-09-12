@@ -148,7 +148,8 @@ export function validateBackup(value: unknown): asserts value is Backup {
   if (new TextEncoder().encode(JSON.stringify(value)).length > MAX_BACKUP_BYTES) fail('Student backup exceeds 16 MB.');
 }
 export function validateDataset(value: unknown): asserts value is Dataset {
-  const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'reviews', 'exams', 'examReviews', 'generation', 'revision']);
+  const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', 'reviews', 'exams', 'examReviews', 'generation', 'revision'], ['upcomingExams']);
+  if (row.upcomingExams===undefined) row.upcomingExams=[];
   string(row.generation); integer(row.revision);
   const {generation: _generation, revision: _revision, ...backup} = row;
   validateBackup(backup);
