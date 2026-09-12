@@ -8,6 +8,10 @@ It brings course explanations, practice and revision evidence into one workspace
 
 The project is designed as a personal educational tool and is not affiliated with TU Delft.
 
+## Why I built it
+
+DelftStudy started as a focused way to turn first-year Computer Science material into an active study workflow. It evolved from course navigation into a tested learning workspace with deterministic practice, local evidence, adaptive review and a bounded Assembly teaching tool. Building it has been an exercise in content integrity, stateful browser storage, safe optional synchronisation and designing educational feedback that stays transparent about its limits.
+
 ## Current features
 
 - Course navigation and topic-based learning views.
@@ -51,6 +55,19 @@ Assembly workbench → bounded simulation engine
 ```
 
 See the [architecture guide](docs/architecture.md) for code entry points and boundaries.
+
+```mermaid
+flowchart TD
+    CP[Versioned content pack] --> V[Validation and generation scripts]
+    V --> UI[React and Vite application]
+    UI --> L[Learning features and practice]
+    L --> DB[(IndexedDB learner repository)]
+    UI --> A[Optional account and cloud adapters]
+    A --> S[(Supabase)]
+    UI --> E[Bounded Assembly engine]
+```
+
+The cloud branch is optional; local learning remains available without Supabase.
 
 ## Project structure
 
@@ -124,6 +141,17 @@ pnpm build
 ```
 
 The build runs the content, projection, exercise, course and release validation gates before producing the Vite output in `dist/`. Additional focused checks are available in `package.json`, including authentication, synchronisation, content, adaptive-learning, exam and security validation commands.
+
+## Verification snapshot
+
+- 1,927 automated tests pass in GitHub Actions.
+- TypeScript typechecking runs as an explicit CI gate and again during the production build.
+- CI installs from the frozen pnpm lockfile and builds the production bundle on every push and pull request to `main`.
+- The repository intentionally does not claim a coverage percentage or live Supabase acceptance without a measured run.
+
+## Project preview
+
+No application screenshots are committed yet. A useful future preview set would show the dashboard, one course learning view, one practice or exam interaction, and the Assembly Visualizer. Capture them from a clean local session with personal data, account identifiers, tokens and administrative panels excluded; store approved images under `docs/assets/` and keep the README to two or three focused views.
 
 Useful additional commands:
 
