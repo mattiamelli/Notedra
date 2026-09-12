@@ -11,8 +11,8 @@ import {buildAdaptiveActions} from './adaptive-actions';
 import actions from '../src/adaptive/actions.json';
 import lock from './step9-storage-lock.json';
 export function validateMistakes(){
- assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,3);
- const {reviews:_reviews,exams:_exams,examReviews:_examReviews,...base}=emptyBackup();const legacy={...base,schemaVersion:1};assert.deepEqual(migrateBackup(legacy),emptyBackup());
+ assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,4);
+ const {reviews:_reviews,exams:_exams,examReviews:_examReviews,upcomingExams:_upcomingExams,...base}=emptyBackup();const legacy={...base,schemaVersion:1};assert.deepEqual(migrateBackup(legacy),emptyBackup());
  for(const [file,value] of Object.entries(lock))assert.equal(createHash('sha256').update(readFileSync(file)).digest('hex'),examStorageHash(file,value.after),'Storage migration source drift: '+file);
  const now=Date.parse('2026-09-09T12:00:00.000Z');
  for(const e of allExercises){assert.equal(eligibleSkill(e)?.id,e.skillId);const attempt={...base,attemptId:e.id,contentVersion:base.content.version,status:'SUBMITTED' as const,answer:e.reference,hintsUsed:null,solutionViewed:null,createdAt:new Date(now).toISOString(),updatedAt:new Date(now).toISOString(),revision:2,submission:{operationId:e.id,submittedAt:new Date(now).toISOString()},subjectId:e.subjectId,topicId:e.topicId,subtopicId:e.subtopicId,targetedSkillIds:[e.skillId],templateRef:e.id,exercise:{id:'ds.instance.'+e.id,version:versionBinding(e)}};

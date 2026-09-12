@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFileSync,readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import type {Plugin} from 'vite';
@@ -9,6 +10,19 @@ import {emptyBackup,STUDENT_SCHEMA_VERSION} from '../src/learning/contracts';
 import {STUDENT_DB_VERSION} from '../src/learning/repository';
 export const sqlPath='supabase/migrations/202609100001_learner_sync.sql';
 export const staleConflictCorrectionPath='supabase/migrations/202609100002_stale_conflict_pt409.sql';
+export const upcomingExamsCorrectionPath='supabase/migrations/20260912122342_upcoming_exams_cloud_contract.sql';
+export function validateUpcomingExamsCorrection(sql:string,previous:string):void {
+  const start=sql.indexOf('  -- Patch 2:'),end=sql.indexOf('  fingerprint :=');
+  assert(start>=0&&end>start,'Missing bounded upcoming exam validation');
+  const validation=sql.slice(start,end);
+  // Exact reviewed addition, exercised against PostgreSQL by tests/sql/upcoming-exams.mjs.
+  assert.equal(createHash('sha256').update(validation).digest('hex'),'9375af81dacfca2d34da07e5c45bcb194ebac792427b15e12c62fc2c86ebbf03');
+  const original=sql.replace(validation,'')
+    .replace("-- Maintenance Patch 2: extend the learner snapshot with optional upcoming exams.","-- Step 14 corrective migration: a stale CAS is a permanent application conflict,\n-- not PostgreSQL's retryable serialization_failure (40001).")
+    .replace("  if learner_payload is null or jsonb_typeof(learner_payload) <> 'object' then\n    raise exception 'Invalid cloud schema' using errcode = '22023';\n  end if;\n",'')
+    .replace("jsonb_object_keys(learner_payload - 'upcomingExams')","jsonb_object_keys(learner_payload)");
+  assert.equal(original,previous,'Patch 2 must not change locks, receipts, CAS, history, grants or any other SQL');
+}
 export function validateSQL(sql:string):void {
   assert(!/using\s*\(\s*true\s*\)|with check\s*\(\s*true\s*\)|disable row level security/i.test(sql),'Permissive RLS');
   for(const [table,prefix] of [['learner_snapshots','snapshot'],['learner_sync_operations','operation']]){
@@ -42,7 +56,7 @@ export function validateStaleConflictCorrection(sql:string,original:string):void
   assert(!sql.includes("errcode = '40001'"),'Corrective migration must not retain retryable stale 40001');
 }
 function files(path:string):string[]{return readdirSync(path,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(join(path,e.name)):[join(path,e.name)]);}
-export function validateSecurity(){const original=readFileSync(sqlPath,'utf8');validateSQL(original);validateStaleConflictCorrection(readFileSync(staleConflictCorrectionPath,'utf8'),original);for(const f of files('src'))checkSecrets(readFileSync(f,'utf8'));assert(readFileSync('.gitignore','utf8').includes('.env.*'));return {tables:2,ownerPolicies:8,remoteEnforcement:'NOT RUN'};}
+export function validateSecurity(){const original=readFileSync(sqlPath,'utf8');validateSQL(original);const previous=readFileSync(staleConflictCorrectionPath,'utf8');validateStaleConflictCorrection(previous,original);validateUpcomingExamsCorrection(readFileSync(upcomingExamsCorrectionPath,'utf8'),previous);for(const f of files('src'))checkSecrets(readFileSync(f,'utf8'));assert(readFileSync('.gitignore','utf8').includes('.env.*'));return {tables:2,ownerPolicies:8,remoteEnforcement:'NOT RUN'};}
 export function validateAuth(){
   assert.equal(cloudConfig(undefined,undefined).status,'unavailable');
   assert.equal(cloudConfig('https://project.supabase.co','sb_'+'secret_'+'x'.repeat(32)).status,'invalid');
@@ -51,10 +65,10 @@ export function validateAuth(){
   return {localFallback:true,lazyAuth:true,clientVersion:'2.116.0'};
 }
 export function validateSync(){
-  assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,3);
+  assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,4);
   assert.deepEqual(mergeLearner(null,emptyPayload(),emptyPayload()),emptyPayload());
-  assert.deepEqual(Object.keys(projectLearner(emptyBackup())).sort(),['attempts','content','examReviews','exams','reviews','schemaVersion']);
+  assert.deepEqual(Object.keys(projectLearner(emptyBackup())).sort(),['attempts','content','examReviews','exams','reviews','schemaVersion','upcomingExams']);
   for(const f of ['src/cloud/merge.ts','src/cloud/coordinator.ts','src/cloud/local-store.ts'])assert(!/gradeResponse|deriveProgress|evaluateSubmission/.test(readFileSync(f,'utf8')),'Sync must not regrade or store derived indices');
-  return {studentSchema:3,indexedDB:3,cloudSchema:1,resumeExcluded:true,derivedIndicesExcluded:true};
+  return {studentSchema:3,indexedDB:4,cloudSchema:1,resumeExcluded:true,derivedIndicesExcluded:true};
 }
 export function cloudBuildGuard():Plugin{return {name:'accounts-sync-security',configResolved(config){for(const [name,value] of Object.entries(config.env)){if(name.startsWith('VITE_')){assert(['VITE_SUPABASE_URL','VITE_SUPABASE_PUBLISHABLE_KEY'].includes(name),'Unexpected exposed environment variable');if(typeof value==='string')checkSecrets(value);}}const parsed=cloudConfig(config.env.VITE_SUPABASE_URL,config.env.VITE_SUPABASE_PUBLISHABLE_KEY);assert(parsed.status!=='invalid',parsed.status==='invalid'?parsed.message:'');},buildStart(){validateAuth();validateSync();validateSecurity();}};}

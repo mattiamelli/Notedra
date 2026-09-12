@@ -1,5 +1,15 @@
 {
-  "src/accounts/AccountPage.tsx": {"before": "021e7b08f1712acfce9772cbfcf3c3729db8a904a3b67fcf9a90c932be520573", "after": "ffe638cc6401eafe2244f4930afa28acfac5cab737a9bb558786bab1f1143316"},
+  "tests/mistake-migration.test.ts": {"before":"703069d98fe8c9034dad7a43a63e43c1d8354026a4414a959321f36a8fcd75bc","after":"1c5bc2c158c78b2cc2eeb65ebdf1a07607f76b4bbb9d6a3714ee45377f4a6629"},
+  "tests/learning-repository.test.ts": {"before":"444f3087c856786c1a662e59fcdf07a532dfe3d229bdb79cd4f3a9d89e5015bd","after":"9989c0efc16609708ae64f6fdc20322f39e3310f13ce78ea85818b99bca8803e"},
+  "src/cloud/local-store.ts": {"before":"fa4fc1739a68109475af382cc50f258216a8a85f81811f42d233c8ffa1d5618a","after":"805ec512e15f81c7b63f2999a5bbf38b2c31220ca21263085424a26c77014cae"},
+  "tests/ip-review.test.tsx": {"before":"1d7db0ee563db69be4af83016b6b2dfce6827c7c1a22bfa2ff5e520fb84cb5d7","after":"407c17580b757d8c4fd7ae6f078f3cd73414a40d7d7d5ecc9d91e2b5c732393f"},
+  "src/accounts/AccountPage.tsx": {"before": "021e7b08f1712acfce9772cbfcf3c3729db8a904a3b67fcf9a90c932be520573", "after": "3f7fc0dacb9229863dc37df2c06b977743b25d1ea8a3434527e0c35bc5a4529d"},
+  "src/cloud/merge.ts": {"before": "499e57db821bc41c34ad59cb492890d56611d540246b1b8537478a0119be658a", "after": "8f3b4faadf797aedef5cc2a61527f4a2adc928ecc92158126e89999d820c6b28"},
+  "src/cloud/model.ts": {"before": "2018f089fd66d8a6dbeebdfb9734a0064a6be8990915b687ab1423526b7b61f7", "after": "45445f3f340436f3d417c238abf959fd26eec5e7a69e77cdd0e0177088b8fb64"},
+  "src/design/product.css": {"before": "34f29d6b8c302d908643961f605fb382fef4501d072fa62d3da47b33e6daafd1", "after": "e1a868e595b8bb94e034bb5eb98644d98abe785f0fa3f23c0b8868fa31d4f158"},
+  "src/learning/contracts.ts": {"before": "a720a41e6db82c852515d9a1836e71c6a1226e9bb86e035b0d1d4e37cf6e7d3a", "after": "5d3a445acc4e73468f981f468da9531baeb77d8aab91cdaf7727846890ef16fa"},
+  "src/learning/repository.ts": {"before": "10d4371b76fc05e62fd54fa1fb5213e6ec9090bb3712c5b5d706909e2c090029", "after": "b85295d38fa8934297b1f0d5035e05ac0fb368932a0f2e896aa455534cf6f266"},
+  "src/pages/DashboardPage.tsx": {"before": "05806c0742ed853abea68744fbc94beccff8635b7d1e980f123f21431f46bceb", "after": "559d60061f460b211976bda71c7bced2e39293a9adc8946322127581f0df5d69"},
   "src/cloud/auth.ts": {
     "before": "6e2dd04a2bd8db56086435eedac48c9665931e9b74ca729273660a3da76e9270",
     "after": "7b5a368d88128ea259b57a013baef85e95108722449f80fe64a8f9ad2203a678"
@@ -14,7 +24,7 @@
   },
   "src/shell/AppShell.tsx": {
     "before": "d7d7b71abdd598d3b908388533cae379d231574cb8b12911efef4a8972a026e0",
-    "after": "05b89c684712c30c8731679bffa081265e4e3c5ebafbc0160624997ff8cecba6"
+    "after": "6f995fc6b769e39527e70a66e7a041be97f517ec9ea249834cdda2e5a7c3d914"
   },
   "tests/cloud-client.test.ts": {
     "before": "e99b410d0c69513486732f83cf6490403530ac6a4377a85591c3ed5d29e484d9",
@@ -28,6 +38,7 @@
     "before": "7e11525f7c5b27252ea1ecf2ea3ee467664a8b1da947c8f1308e3b6341c2137b",
     "after": "8bc1049de9a4b4d1264601e6dec3811e6051b93979fb379074b71f42a16bbf1a"
   },
+  "tests/cloud-merge.test.ts": {"before": "ccce29cefad1b88f7c37ea94156e2e4f7012103add11a9d0767bf604f1f248d4", "after": "ed882b0d39ae9e29d0b9fbb10634763b75a54a03915ef836b44d2d08e9b6df9a"},
   "tests/browser/verification.ts": {
     "before": "f28f951299e00dd831e8fa2bd07ca2504c09b5a5f8f8fdfb6abcb05dbc9ed48c",
     "after": "e262125344c4a6693c829abfb2f6b50d17409d90efdc082c01585f0f881ac272"

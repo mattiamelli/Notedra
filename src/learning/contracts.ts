@@ -144,7 +144,16 @@ export function validateBackup(value: unknown): asserts value is Backup {
   if (row.upcomingExams === undefined) row.upcomingExams=[];
   if (!Array.isArray(row.upcomingExams) || row.upcomingExams.length > MAX_UPCOMING_EXAMS) fail('Invalid or oversized upcoming exam list.');
   const ids = new Set<string>();
-  for (const item of row.upcomingExams) { const exam = object(item, ['id','name','examDate']); string(exam.id, 100); string(exam.name, 120); if (ids.has(exam.id)) fail('Duplicate upcoming exam IDs.'); ids.add(exam.id); if (!/^\d{4}-\d{2}-\d{2}$/.test(exam.examDate as string)) fail('Exam date must be YYYY-MM-DD.'); const d = new Date(`${exam.examDate}T00:00:00`); if (Number.isNaN(d.getTime()) || d.toISOString().slice(0,10)!==exam.examDate) fail('Invalid exam date.'); }
+  for (const item of row.upcomingExams) {
+    const exam = object(item, ['id','name','examDate']);
+    string(exam.id, 100); string(exam.name, 120);
+    if (!exam.name.trim()) fail('Upcoming exam name is required.');
+    if (ids.has(exam.id)) fail('Duplicate upcoming exam IDs.');
+    ids.add(exam.id);
+    if (typeof exam.examDate !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(exam.examDate) || exam.examDate.startsWith('0000')) fail('Exam date must be YYYY-MM-DD.');
+    const d = new Date(`${exam.examDate}T00:00:00Z`);
+    if (Number.isNaN(d.getTime()) || d.toISOString().slice(0,10) !== exam.examDate) fail('Invalid exam date.');
+  }
   if (new TextEncoder().encode(JSON.stringify(value)).length > MAX_BACKUP_BYTES) fail('Student backup exceeds 16 MB.');
 }
 export function validateDataset(value: unknown): asserts value is Dataset {
@@ -174,15 +183,15 @@ export function errorMessage(error: unknown) {
 /** Strict preflight conversion; never mutates a supplied legacy backup or its attempts. */
 export function migrateBackup(value: unknown): Backup {
   if (typeof value === 'object' && value !== null && 'schemaVersion' in value && value.schemaVersion === 1) {
-    const legacy = object(value, ['schemaVersion', 'content', 'resume', 'attempts']);
+    const legacy = object(value, ['schemaVersion', 'content', 'resume', 'attempts'], ['upcomingExams']);
     if (!Array.isArray(legacy.attempts) || legacy.attempts.length > 1000 || new TextEncoder().encode(JSON.stringify(value)).length > 4_000_000) fail('Legacy backup exceeds Schema 1 limits.');
     const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, reviews: [], exams: [], examReviews: [], upcomingExams: []};
     validateBackup(upgraded);
     return upgraded;
   }
   if (typeof value === 'object' && value !== null && 'schemaVersion' in value && (value.schemaVersion === 2 || value.schemaVersion === 3)) {
-    if (value.schemaVersion === 3) { const legacy = object(value, ['schemaVersion','content','resume','attempts','reviews','exams','examReviews']); const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, upcomingExams: []}; validateBackup(upgraded); return upgraded; }
-    const legacy = object(value, ['schemaVersion','content','resume','attempts','reviews']);
+    if (value.schemaVersion === 3) { const legacy = object(value, ['schemaVersion','content','resume','attempts','reviews','exams','examReviews'], ['upcomingExams']); const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, upcomingExams: legacy.upcomingExams === undefined ? [] : legacy.upcomingExams}; validateBackup(upgraded); return upgraded; }
+    const legacy = object(value, ['schemaVersion','content','resume','attempts','reviews'], ['upcomingExams']);
     const upgraded = {...structuredClone(legacy), schemaVersion: STUDENT_SCHEMA_VERSION, exams: [], examReviews: [], upcomingExams: []};
     validateBackup(upgraded); return upgraded;
   }
@@ -191,8 +200,8 @@ export function migrateBackup(value: unknown): Backup {
 }
 export function migrateDataset(value: unknown, newGeneration: string): Dataset {
   if (typeof value === 'object' && value !== null && 'schemaVersion' in value && (value.schemaVersion === 1 || value.schemaVersion === 2 || value.schemaVersion === 3)) {
-    if (value.schemaVersion === 3) { const row = object(value, ['schemaVersion','content','resume','attempts','reviews','exams','examReviews','generation','revision']); string(row.generation); integer(row.revision); const {generation: _g, revision, ...backup} = row; const upgraded = {...migrateBackup(backup), generation:newGeneration, revision}; validateDataset(upgraded); return upgraded; }
-    const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', ...(value.schemaVersion === 2 ? ['reviews'] : []), 'generation', 'revision']);
+    if (value.schemaVersion === 3) { const row = object(value, ['schemaVersion','content','resume','attempts','reviews','exams','examReviews','generation','revision'], ['upcomingExams']); string(row.generation); integer(row.revision); const {generation: _g, revision, ...backup} = row; const upgraded = {...migrateBackup(backup), generation:newGeneration, revision}; validateDataset(upgraded); return upgraded; }
+    const row = object(value, ['schemaVersion', 'content', 'resume', 'attempts', ...(value.schemaVersion === 2 ? ['reviews'] : []), 'generation', 'revision'], ['upcomingExams']);
     string(row.generation); integer(row.revision); string(newGeneration);
     if (row.generation === newGeneration) throw new LearningError('CONFLICT', 'Migration needs a new dataset generation.');
     const {generation: _generation, revision, ...backup} = row;

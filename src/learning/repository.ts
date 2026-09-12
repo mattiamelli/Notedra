@@ -68,6 +68,9 @@ export class IndexedStudentRepository implements StudentRepository {
       } catch (error) { reject(error); return; }
       opening.onupgradeneeded = event => {
         if ((event as IDBVersionChangeEvent).oldVersion === 0) { opening.result.createObjectStore('student'); return; }
+        // Patch 2 already opened DB 4. Keep it readable; DB 3 has the same store/schema.
+        // A version-only upgrade must retain the generation bound by pending sync receipts.
+        if ((event as IDBVersionChangeEvent).oldVersion === 3) return;
         const tx = opening.transaction!;
         try {
           const store = tx.objectStore('student');

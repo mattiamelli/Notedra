@@ -1,0 +1,15 @@
+import {expect,it} from 'vitest';
+import {emptyPayload,validatePayload} from '../src/cloud/model';
+import {mergeLearner} from '../src/cloud/merge';
+import {emptyBackup,migrateBackup} from '../src/learning/contracts';
+const exam={id:'exam-a',name:'Exam A',examDate:'2027-02-28'};
+const payload=(entries=[exam])=>({...emptyPayload(),upcomingExams:entries});
+it('does not normalize an explicitly malformed backup field to an empty list',()=>expect(()=>migrateBackup({...emptyBackup(),upcomingExams:null})).toThrow());
+it('accepts old cloud payloads without changing their receipt bytes',()=>{const p=emptyPayload();delete p.upcomingExams;const before=JSON.stringify(p);validatePayload(p);expect(JSON.stringify(p)).toBe(before);expect(mergeLearner(null,p,p).upcomingExams).toEqual([]);});
+it.each(['local','remote'])('preserves a one-sided %s edit',side=>{const base=payload(),edited=payload([{...exam,name:'Changed'}]);expect(mergeLearner(base,side==='local'?edited:base,side==='remote'?edited:base).upcomingExams).toEqual(edited.upcomingExams);});
+it('merges independent additions in deterministic ID order',()=>{const a=payload(),b=payload([{...exam,id:'exam-b'}]);expect(mergeLearner(null,a,b)).toEqual(mergeLearner(null,b,a));expect(mergeLearner(null,a,b).upcomingExams).toHaveLength(2);});
+it('rejects concurrent edits without mutating inputs',()=>{const base=payload(),a=payload([{...exam,name:'Left'}]),b=payload([{...exam,name:'Right'}]);const before=JSON.stringify([base,a,b]);expect(()=>mergeLearner(base,a,b)).toThrow(/upcoming exam/);expect(JSON.stringify([base,a,b])).toBe(before);});
+it('propagates deletion against an unchanged common ancestor',()=>{expect(mergeLearner(payload(),payload([]),payload()).upcomingExams).toEqual([]);expect(mergeLearner(payload(),payload(),payload([])).upcomingExams).toEqual([]);});
+it('rejects concurrent edit versus deletion',()=>{expect(()=>mergeLearner(payload(),payload([]),payload([{...exam,name:'Changed'}]))).toThrow();});
+it.each([null,{},'wrong',Array(51).fill(exam),[{...exam,name:'   '}],[{...exam,name:'x'.repeat(121)}],[{...exam,examDate:'2027-02-29'}],[{...exam,examDate:'0000-01-01'}],[{...exam,daysRemaining:1}],[exam,exam]])('rejects malformed exam data %#',entries=>expect(()=>validatePayload({...emptyPayload(),upcomingExams:entries})).toThrow());
+it('validates calendar dates independently of host timezone',()=>{const previous=process.env.TZ;try{process.env.TZ='Europe/Amsterdam';expect(()=>validatePayload(payload([{...exam,examDate:'2028-02-29'}]))).not.toThrow();}finally{if(previous===undefined)delete process.env.TZ;else process.env.TZ=previous;}});

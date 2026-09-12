@@ -40,7 +40,7 @@ export function validateExamContent(banks:ExamBank[]=examBanks,solutions:OpenRef
  return {courses:3,blueprints:6,items:banks.reduce((n,b)=>n+b.items.length,0),openReferences:solutions.length};
 }
 export function validateExam(){
- validateExamContent();assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,3);
+ validateExamContent();assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,4);
  for(const [file,digest] of Object.entries(lock))assert.equal(createHash('sha256').update(beforeHardening(file,readFileSync(file))).digest('hex'),digest,'Published exam version/source drift: '+file);
  const now=Date.parse('2026-09-10T10:00:00.000Z');
  for(const bank of examBanks)for(const blueprint of bank.blueprints){const s=startSession(blueprint,bank,'gate','gate-session',now);validateExamSession(s);assert.equal(resolveSession(s,bank).status,'AVAILABLE');for(const r of s.responses){const item=bank.items.find(i=>i.id===r.itemId)!;r.answer=practiceFor(item)?.reference??{kind:item.responseType as 'text'|'code',value:'unverified learner work'};}const result=evaluateSubmission(s,bank,s.startedAt);assert(result.evaluations.every(e=>e.status==='AUTO_SCORED'||e.status==='RUBRIC_REVIEW_REQUIRED'));assert.equal(result.attempts.length,s.items.filter(i=>i.evaluation==='DETERMINISTIC').length);}

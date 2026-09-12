@@ -13,15 +13,18 @@ import gridTask from '../src/ip/assignments/grid-key.json';
 const imports = vi.hoisted(() => {
   let resolveArray!: () => void;
   let rejectToken!: (failure: Error) => void;
+  let tokenStarted!: () => void;
+  const tokenReady = new Promise<void>(resolve => { tokenStarted = resolve; });
   const array = new Promise<void>(resolve => { resolveArray = resolve; });
   const token = new Promise<void>((_resolve, reject) => { rejectToken = reject; });
-  return {array, token, resolveArray, rejectToken};
+  return {array, token, resolveArray, rejectToken, tokenReady, tokenStarted};
 });
 vi.mock('../src/ip/references/array-window.json', async () => {
   await imports.array;
   return vi.importActual('../src/ip/references/array-window.json');
 });
 vi.mock('../src/ip/references/batch-token.json', async () => {
+  imports.tokenStarted();
   await imports.token;
   return vi.importActual('../src/ip/references/batch-token.json');
 });
@@ -68,6 +71,9 @@ describe('Step 8 adversarial self-review regressions', () => {
   it('a rejected pre-reset reference import cannot overwrite reset status', async () => {
     await mount(tokenTask as IPAssignment);
     await click('Reveal test specifications');
+    // Wait until the delayed module factory has subscribed to the rejection.
+    // Under suite load the import can start after the click's act completes.
+    await act(async () => { await imports.tokenReady; });
     await click('Reset starter files');
     await act(async () => imports.rejectToken(new Error('Controlled network failure')));
     for (let count = 0; count < 10; count++) await flush();

@@ -11,7 +11,7 @@ import {requiredOpen} from '../src/progress/readiness';
 import {examBanks} from './exam-validation';
 import type {Observation} from '../src/progress/types';
 export function validateMastery(){
- assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,3);
+ assert.equal(STUDENT_SCHEMA_VERSION,3);assert.equal(STUDENT_DB_VERSION,4);
  for(const [file,digest] of Object.entries(lock))assert.equal(createHash('sha256').update(preservedBytes(file)).digest('hex'),digest,'Steps 1–10 protected file changed: '+file);
  const now=Date.UTC(2026,8,10),empty=deriveProgress(emptyBackup(),now);assert.equal(empty.skills.length,147);assert.equal(empty.topics.length,43);assert.equal(empty.courses.length,3);assert(empty.skills.every(s=>s.index===null&&s.confidence==='Insufficient'));
  const identity={id:'gate',name:'gate',courseId:'gate',topicId:'gate'},sample:Observation={id:'one',item:'exact',skillId:'gate',topicId:'gate',courseId:'gate',timestamp:now,correct:true,source:'Normal practice',session:'one',difficulty:'Unknown',solutionViewed:false,pattern:null};

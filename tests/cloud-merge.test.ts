@@ -11,7 +11,7 @@ describe('cloud payload boundary', () => {
   it('uploads only allowlisted learner state; navigation and derived values are absent', () => {
     const backup = {...emptyBackup(), resume:position, attempts:[submitted()]};
     const payload = projectLearner(backup);
-    expect(Object.keys(payload).sort()).toEqual(['attempts','content','examReviews','exams','reviews','schemaVersion']);
+    expect(Object.keys(payload).sort()).toEqual(['attempts','content','examReviews','exams','reviews','schemaVersion','upcomingExams']);
     expect(payload.attempts).toEqual(backup.attempts); expect(payload.attempts).not.toBe(backup.attempts);
   });
   it.each(['resume','mastery','readiness','coverage','confidence','lessons','questionBank','telemetry'])('rejects extra cloud field %s', field => {

@@ -28,7 +28,7 @@ const request = <T>(r: IDBRequest<T>) => new Promise<T>((resolve, reject) => {
   r.onsuccess = () => resolve(r.result); r.onerror = () => reject(r.error);
 });
 
-/** Additional metadata in the existing store; Student Schema 3 / DB 3 and repository APIs stay unchanged. */
+/** Additional metadata in the existing store; Student Schema 3 / DB 4 and repository APIs stay unchanged. */
 export class IndexedSyncStore implements SyncLocalStore {
   readonly name: string;
   constructor(readonly owner: string, private readonly factory: IDBFactory = globalThis.indexedDB) {this.name = accountDatabase(owner);}

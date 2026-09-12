@@ -1,4 +1,19 @@
 import {conflict, emptyPayload, same, validatePayload, type LearnerPayload} from './model';
+import type {UpcomingExam} from '../learning/contracts';
+
+function mergeUpcoming(base: UpcomingExam[], local: UpcomingExam[], remote: UpcomingExam[]): UpcomingExam[] {
+  const b = new Map(base.map(v => [v.id, v])), l = new Map(local.map(v => [v.id, v])), r = new Map(remote.map(v => [v.id, v]));
+  return [...new Set([...b.keys(), ...l.keys(), ...r.keys()])].sort().flatMap(key => {
+    const original = b.get(key), left = l.get(key), right = r.get(key);
+    // Planning entries are mutable and deletable; submitted learning history is not.
+    let chosen: UpcomingExam | undefined;
+    if (same(left, right)) chosen = left;
+    else if (same(original, left)) chosen = right;
+    else if (same(original, right)) chosen = left;
+    else conflict('Concurrent upcoming exam changes. Neither version was discarded.');
+    return chosen ? [chosen] : [];
+  });
+}
 
 type RecordValue = {revision: number; status?: string};
 function locked(row: RecordValue): boolean {return row.status === 'SUBMITTED' || row.status === 'ABANDONED';}
@@ -40,7 +55,7 @@ export function mergeLearner(base: LearnerPayload | null, local: LearnerPayload,
     reviews: mergeRecords(ancestor.reviews, local.reviews, remote.reviews, r => r.attemptId, 'mistake review'),
     exams: mergeRecords(ancestor.exams, local.exams, remote.exams, e => e.sessionId, 'exam session'),
     examReviews: mergeRecords(ancestor.examReviews, local.examReviews, remote.examReviews, r => JSON.stringify([r.sessionId, r.itemId]), 'exam review'),
-    upcomingExams: [...new Map([...(ancestor.upcomingExams??[]),...(local.upcomingExams??[]),...(remote.upcomingExams??[])].map(e=>[e.id,e])).values()],
+    upcomingExams: mergeUpcoming(ancestor.upcomingExams ?? [], local.upcomingExams ?? [], remote.upcomingExams ?? []),
   };
   validatePayload(result);
   return structuredClone(result);

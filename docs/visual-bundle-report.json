@@ -6,10 +6,10 @@
     "totalAssets": 1858188
   },
   "current": {
-    "initialJS": 503057,
-    "initialGzip": 133244,
-    "cssBytes": 88955,
-    "totalAssets": 1877934
+    "initialJS": 507838,
+    "initialGzip": 134733,
+    "cssBytes": 89599,
+    "totalAssets": 1886621
   },
   "lazyCloudAndCourseGuards": "PASS via inspect-cloud-build and its prerequisite guards",
   "visualDependenciesAdded": 0

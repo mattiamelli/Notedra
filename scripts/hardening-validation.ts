@@ -38,7 +38,7 @@ export function validateHardening(){
   const tree=execFileSync('git',['ls-tree','-r','6d1b9dfd3fb148ba7097e7ed238e600da2a81deb','--','src','tests','content-pack','supabase','public'],{encoding:'utf8'}).trim().split('\n');
   for(const row of tree){const [meta,path]=row.split('\t'),data=beforeHardening(path,readFileSync(path));assert.equal(createHash('sha1').update(`blob ${data.length}\0`).update(data).digest('hex'),meta.split(' ')[2],'Step 13 baseline changed: '+path);}
   validateSecurity();validateSync();
-  return {repositoryFiles:paths.length,runtimeFiles:runtime.length,studentSchema:3,indexedDB:3,scope:'static checks, not live enforcement'};
+  return {repositoryFiles:paths.length,runtimeFiles:runtime.length,studentSchema:3,indexedDB:4,scope:'static checks, not live enforcement'};
 }
 export function scanArtifact(path:string,text:string):void {
   assert(!/\.(?:pdf|zip|java|tsx?|map)$|(?:^|\/)(?:tests|scripts|docs|supabase)\/|Handoff|remote-supabase-acceptance/i.test(path),'Forbidden production artifact');
