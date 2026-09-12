@@ -3,7 +3,7 @@
     {
       "file": "404.html",
       "bytes": 1567,
-      "gzipBytes": 574
+      "gzipBytes": 575
     },
     {
       "file": "_headers",
@@ -23,7 +23,7 @@
     {
       "file": "index.html",
       "bytes": 1567,
-      "gzipBytes": 574
+      "gzipBytes": 575
     },
     {
       "file": "manifest.webmanifest",
@@ -46,9 +46,9 @@
       "gzipBytes": 765
     },
     {
-      "file": "assets/AccountPage-CaWAI2nT.js",
-      "bytes": 5721,
-      "gzipBytes": 2143
+      "file": "assets/AccountPage-CMomjFqL.js",
+      "bytes": 5087,
+      "gzipBytes": 1935
     },
     {
       "file": "assets/AccountPage-fJgzSSrz.css",
@@ -56,18 +56,18 @@
       "gzipBytes": 423
     },
     {
-      "file": "assets/AssemblyWorkbench-t6duS4dy.js",
+      "file": "assets/AssemblyWorkbench-CttYfd9m.js",
       "bytes": 31394,
       "gzipBytes": 10852
     },
     {
-      "file": "assets/Assignments-CZw4BvP8.js",
+      "file": "assets/Assignments-ksZdaTyj.js",
       "bytes": 6473,
-      "gzipBytes": 2196
+      "gzipBytes": 2200
     },
     {
-      "file": "assets/AttemptPage-CYq_ArPK.js",
-      "bytes": 4868,
+      "file": "assets/AttemptPage-DnVrCqxu.js",
+      "bytes": 4886,
       "gzipBytes": 2020
     },
     {
@@ -136,49 +136,44 @@
       "gzipBytes": 2102
     },
     {
-      "file": "assets/CodingWorkbench-DMmCqkuB.js",
+      "file": "assets/CodingWorkbench-CFqd4BXR.js",
       "bytes": 6686,
-      "gzipBytes": 2479
+      "gzipBytes": 2481
     },
     {
-      "file": "assets/ConfiguredAccountRoot-agbFloam.js",
+      "file": "assets/ConfiguredAccountRoot-BmXvOsjT.js",
       "bytes": 17279,
       "gzipBytes": 6189
     },
     {
-      "file": "assets/DashboardInsights-C_nVgs16.js",
-      "bytes": 3904,
-      "gzipBytes": 1324
+      "file": "assets/DashboardInsights-D-oBMiHx.js",
+      "bytes": 3902,
+      "gzipBytes": 1332
     },
     {
-      "file": "assets/EvidenceSummary-DLOG1f20.js",
+      "file": "assets/EvidenceSummary-Bxkzwy6a.js",
       "bytes": 978,
-      "gzipBytes": 569
+      "gzipBytes": 568
     },
     {
-      "file": "assets/EvidenceView-DxxMcitk.js",
+      "file": "assets/EvidenceView-C7zJ2pVJ.js",
       "bytes": 12049,
-      "gzipBytes": 4388
+      "gzipBytes": 4389
     },
     {
-      "file": "assets/ExamOpenAnswer-D3fxyUfu.js",
+      "file": "assets/ExamOpenAnswer-C3G-w9aD.js",
       "bytes": 958,
       "gzipBytes": 546
     },
     {
-      "file": "assets/ExamReviewPage-DwC3OG5C.js",
+      "file": "assets/ExamReviewPage-CgNDGq66.js",
       "bytes": 6249,
-      "gzipBytes": 2624
+      "gzipBytes": 2627
     },
     {
-      "file": "assets/ExamSessionPage-CgJJOJFq.js",
+      "file": "assets/ExamSessionPage-CXIVAVAE.js",
       "bytes": 8568,
-      "gzipBytes": 3344
-    },
-    {
-      "file": "assets/ExamsPage-BXcoTHLF.js",
-      "bytes": 6916,
-      "gzipBytes": 2782
+      "gzipBytes": 3347
     },
     {
       "file": "assets/ExamsPage-CQpTOUPZ.css",
@@ -186,24 +181,29 @@
       "gzipBytes": 1141
     },
     {
-      "file": "assets/ExercisePage-uuj10syw.js",
+      "file": "assets/ExamsPage-qT_tJP36.js",
+      "bytes": 6916,
+      "gzipBytes": 2786
+    },
+    {
+      "file": "assets/ExercisePage-HoaaPLWS.js",
       "bytes": 1666,
-      "gzipBytes": 894
+      "gzipBytes": 897
     },
     {
-      "file": "assets/ExerciseParts-nE0yB2GW.js",
+      "file": "assets/ExerciseParts-CLl3SR51.js",
       "bytes": 5107,
-      "gzipBytes": 1948
+      "gzipBytes": 1952
     },
     {
-      "file": "assets/FolWorkspace-Di-7YoqW.js",
+      "file": "assets/FolWorkspace-BrCxsPJD.js",
       "bytes": 4077,
       "gzipBytes": 1662
     },
     {
-      "file": "assets/GuidedPractice-CJzZHFyA.js",
+      "file": "assets/GuidedPractice-wVUveKuC.js",
       "bytes": 2049,
-      "gzipBytes": 955
+      "gzipBytes": 954
     },
     {
       "file": "assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js",
@@ -301,44 +301,44 @@
       "gzipBytes": 3828
     },
     {
-      "file": "assets/IntroTopicContent-6cSCSVIT.js",
+      "file": "assets/IntroTopicContent-BuPRKEa1.js",
       "bytes": 2964,
       "gzipBytes": 1359
     },
     {
-      "file": "assets/IntroTopicContent-BCBES0X8.js",
+      "file": "assets/IntroTopicContent-CYrnxJiW.js",
       "bytes": 1727,
-      "gzipBytes": 995
+      "gzipBytes": 993
     },
     {
-      "file": "assets/MapCues-CFXEC8rL.js",
+      "file": "assets/MapCues-xPqc_O_N.js",
       "bytes": 3044,
-      "gzipBytes": 1405
+      "gzipBytes": 1408
     },
     {
-      "file": "assets/MistakesPage-BZzf0RDb.js",
-      "bytes": 9434,
-      "gzipBytes": 3365
+      "file": "assets/MistakesPage-Bi1UX37V.js",
+      "bytes": 9329,
+      "gzipBytes": 3310
     },
     {
-      "file": "assets/PracticePage-C5tfiHV5.js",
+      "file": "assets/PracticePage-DeBNxBtw.js",
       "bytes": 3165,
-      "gzipBytes": 1400
+      "gzipBytes": 1403
     },
     {
-      "file": "assets/ProgressPage-hvTP2OV7.js",
-      "bytes": 4479,
-      "gzipBytes": 1859
+      "file": "assets/ProgressPage-C6R_xn95.js",
+      "bytes": 4551,
+      "gzipBytes": 1830
     },
     {
-      "file": "assets/ProgressSummary-C_v_wOzJ.js",
-      "bytes": 1951,
-      "gzipBytes": 880
+      "file": "assets/ProgressSummary-BDyBTg7Q.js",
+      "bytes": 1867,
+      "gzipBytes": 824
     },
     {
-      "file": "assets/PropositionWorkspace-BzU0E9Sn.js",
+      "file": "assets/PropositionWorkspace-DXy-7umT.js",
       "bytes": 5150,
-      "gzipBytes": 1804
+      "gzipBytes": 1805
     },
     {
       "file": "assets/RL_T02_FOL-CPbVtDo6.js",
@@ -381,44 +381,39 @@
       "gzipBytes": 2725
     },
     {
-      "file": "assets/RecurrenceWorkspace-BK9yDnj9.js",
+      "file": "assets/RecurrenceWorkspace-CSo7Jc7W.js",
       "bytes": 2531,
       "gzipBytes": 1146
     },
     {
-      "file": "assets/RelationsWorkspace-CcCe4t0A.js",
+      "file": "assets/RelationsWorkspace-6hbQ4zD8.js",
       "bytes": 3125,
       "gzipBytes": 1263
     },
     {
-      "file": "assets/SetsWorkspace-BfRqxKPV.js",
+      "file": "assets/SetsWorkspace-BteamHwq.js",
       "bytes": 2348,
-      "gzipBytes": 1020
+      "gzipBytes": 1021
     },
     {
-      "file": "assets/StudyCues-D2QUlrFb.js",
+      "file": "assets/StudyCues-hlSgJQWa.js",
       "bytes": 545,
-      "gzipBytes": 358
+      "gzipBytes": 361
     },
     {
-      "file": "assets/StudyPathPage-BD6MHSU0.js",
-      "bytes": 4293,
-      "gzipBytes": 1874
+      "file": "assets/StudyPathPage-BWjgU7H-.js",
+      "bytes": 4263,
+      "gzipBytes": 1835
     },
     {
-      "file": "assets/TopicContent-B1E16XlQ.js",
-      "bytes": 1314,
-      "gzipBytes": 644
-    },
-    {
-      "file": "assets/TopicContent-BmQPZqEC.js",
+      "file": "assets/TopicContent--G0ls-If.js",
       "bytes": 5951,
-      "gzipBytes": 2675
+      "gzipBytes": 2678
     },
     {
-      "file": "assets/TopicContent-CYMD_eYh.js",
+      "file": "assets/TopicContent-CWX_y-9u.js",
       "bytes": 5606,
-      "gzipBytes": 2512
+      "gzipBytes": 2516
     },
     {
       "file": "assets/TopicContent-DgUp8pP0.css",
@@ -426,29 +421,34 @@
       "gzipBytes": 828
     },
     {
-      "file": "assets/TopicEnrichment-BS_lf0uW.js",
-      "bytes": 14666,
-      "gzipBytes": 4868
+      "file": "assets/TopicContent-XwxnwTDE.js",
+      "bytes": 1314,
+      "gzipBytes": 645
     },
     {
-      "file": "assets/TopicPractice-CuD4kB0n.js",
+      "file": "assets/TopicEnrichment-BAx48nLE.js",
+      "bytes": 14614,
+      "gzipBytes": 4844
+    },
+    {
+      "file": "assets/TopicPractice-CEyxpBi4.js",
       "bytes": 1676,
-      "gzipBytes": 822
+      "gzipBytes": 823
     },
     {
-      "file": "assets/TreeGraphWorkspace-BhlZltoC.js",
+      "file": "assets/TreeGraphWorkspace-BGMKR8-i.js",
       "bytes": 3912,
       "gzipBytes": 1642
     },
     {
-      "file": "assets/Workspace-CW5ZrDIm.js",
-      "bytes": 13507,
-      "gzipBytes": 5482
+      "file": "assets/Workspace-BLM7ybrw.js",
+      "bytes": 2025,
+      "gzipBytes": 837
     },
     {
-      "file": "assets/Workspace-D_flgAOs.js",
-      "bytes": 2025,
-      "gzipBytes": 834
+      "file": "assets/Workspace-eqAz0DxZ.js",
+      "bytes": 13507,
+      "gzipBytes": 5483
     },
     {
       "file": "assets/adaptive-Dty-ca5a.css",
@@ -516,7 +516,7 @@
       "gzipBytes": 1330
     },
     {
-      "file": "assets/catalog-tAviFo-R.js",
+      "file": "assets/catalog-MuM0bXxe.js",
       "bytes": 313,
       "gzipBytes": 247
     },
@@ -531,14 +531,14 @@
       "gzipBytes": 5833
     },
     {
-      "file": "assets/engine-D72iFZ6h.js",
-      "bytes": 3453,
-      "gzipBytes": 1528
+      "file": "assets/engine-B3G0NNLt.js",
+      "bytes": 31762,
+      "gzipBytes": 6800
     },
     {
-      "file": "assets/engine-Ddf8YfE9.js",
-      "bytes": 31762,
-      "gzipBytes": 6798
+      "file": "assets/engine-DMJqWgWR.js",
+      "bytes": 3453,
+      "gzipBytes": 1529
     },
     {
       "file": "assets/enrichment-B1peaizb.css",
@@ -546,17 +546,17 @@
       "gzipBytes": 405
     },
     {
-      "file": "assets/evaluation-BHM4gLw-.js",
+      "file": "assets/evaluation-f-9kDRxu.js",
       "bytes": 1903,
-      "gzipBytes": 1021
+      "gzipBytes": 1020
     },
     {
-      "file": "assets/evidence-qdGUnUOc.js",
+      "file": "assets/evidence-BMBjJXun.js",
       "bytes": 2965,
       "gzipBytes": 1451
     },
     {
-      "file": "assets/feedback-CwFhHWFC.js",
+      "file": "assets/feedback-DtMHr4gT.js",
       "bytes": 66835,
       "gzipBytes": 15337
     },
@@ -571,9 +571,9 @@
       "gzipBytes": 999
     },
     {
-      "file": "assets/index-DOPA7_Vr.js",
-      "bytes": 507838,
-      "gzipBytes": 134733
+      "file": "assets/index-CXJ4RROU.js",
+      "bytes": 507229,
+      "gzipBytes": 134596
     },
     {
       "file": "assets/index-Dd2Rdplt.css",
@@ -631,14 +631,14 @@
       "gzipBytes": 2606
     },
     {
+      "file": "assets/progress-Cc4ilOQI.js",
+      "bytes": 2561,
+      "gzipBytes": 944
+    },
+    {
       "file": "assets/progress-DU6xBhms.css",
       "bytes": 1269,
       "gzipBytes": 566
-    },
-    {
-      "file": "assets/progress-DxdUIURi.js",
-      "bytes": 1973,
-      "gzipBytes": 737
     },
     {
       "file": "assets/reading-export-03SKeJdJ.js",
@@ -661,9 +661,9 @@
       "gzipBytes": 4277
     },
     {
-      "file": "assets/service-L2S8BdUV.js",
+      "file": "assets/service-HnX2qmCS.js",
       "bytes": 141524,
-      "gzipBytes": 32211
+      "gzipBytes": 32213
     },
     {
       "file": "assets/supabase-C6pgQ0vL.js",
@@ -671,264 +671,264 @@
       "gzipBytes": 58507
     },
     {
-      "file": "assets/useEvidence-DjdYFrdU.js",
+      "file": "assets/useEvidence-DiG2Y_fD.js",
       "bytes": 323,
-      "gzipBytes": 247
+      "gzipBytes": 248
     },
     {
-      "file": "assets/useProgress-PYHMqM2O.js",
+      "file": "assets/useProgress-CMnyRKkA.js",
       "bytes": 11512,
-      "gzipBytes": 5054
+      "gzipBytes": 5053
     },
     {
       "file": "release/page-0.html",
       "bytes": 1815,
-      "gzipBytes": 623
+      "gzipBytes": 625
     },
     {
       "file": "release/page-1.html",
       "bytes": 1773,
-      "gzipBytes": 616
+      "gzipBytes": 618
     },
     {
       "file": "release/page-10.html",
       "bytes": 1892,
-      "gzipBytes": 640
+      "gzipBytes": 642
     },
     {
       "file": "release/page-11.html",
       "bytes": 1807,
-      "gzipBytes": 630
+      "gzipBytes": 632
     },
     {
       "file": "release/page-12.html",
       "bytes": 1822,
-      "gzipBytes": 632
+      "gzipBytes": 634
     },
     {
       "file": "release/page-13.html",
       "bytes": 1718,
-      "gzipBytes": 640
+      "gzipBytes": 643
     },
     {
       "file": "release/page-14.html",
       "bytes": 1741,
-      "gzipBytes": 609
+      "gzipBytes": 613
     },
     {
       "file": "release/page-15.html",
       "bytes": 1756,
-      "gzipBytes": 614
+      "gzipBytes": 617
     },
     {
       "file": "release/page-16.html",
       "bytes": 1803,
-      "gzipBytes": 625
+      "gzipBytes": 628
     },
     {
       "file": "release/page-17.html",
       "bytes": 1818,
-      "gzipBytes": 629
+      "gzipBytes": 632
     },
     {
       "file": "release/page-18.html",
       "bytes": 1881,
-      "gzipBytes": 634
+      "gzipBytes": 636
     },
     {
       "file": "release/page-19.html",
       "bytes": 1896,
-      "gzipBytes": 638
+      "gzipBytes": 640
     },
     {
       "file": "release/page-2.html",
       "bytes": 1788,
-      "gzipBytes": 619
+      "gzipBytes": 621
     },
     {
       "file": "release/page-20.html",
       "bytes": 1749,
-      "gzipBytes": 617
+      "gzipBytes": 620
     },
     {
       "file": "release/page-21.html",
       "bytes": 1764,
-      "gzipBytes": 620
+      "gzipBytes": 623
     },
     {
       "file": "release/page-22.html",
       "bytes": 1763,
-      "gzipBytes": 612
+      "gzipBytes": 616
     },
     {
       "file": "release/page-23.html",
       "bytes": 1778,
-      "gzipBytes": 616
+      "gzipBytes": 619
     },
     {
       "file": "release/page-24.html",
       "bytes": 1793,
-      "gzipBytes": 619
+      "gzipBytes": 622
     },
     {
       "file": "release/page-25.html",
       "bytes": 1808,
-      "gzipBytes": 625
+      "gzipBytes": 627
     },
     {
       "file": "release/page-26.html",
       "bytes": 1799,
-      "gzipBytes": 621
+      "gzipBytes": 624
     },
     {
       "file": "release/page-27.html",
       "bytes": 1814,
-      "gzipBytes": 626
+      "gzipBytes": 629
     },
     {
       "file": "release/page-28.html",
       "bytes": 1823,
-      "gzipBytes": 631
+      "gzipBytes": 632
     },
     {
       "file": "release/page-29.html",
       "bytes": 1838,
-      "gzipBytes": 632
+      "gzipBytes": 634
     },
     {
       "file": "release/page-3.html",
       "bytes": 1789,
-      "gzipBytes": 624
+      "gzipBytes": 627
     },
     {
       "file": "release/page-30.html",
       "bytes": 1851,
-      "gzipBytes": 632
+      "gzipBytes": 635
     },
     {
       "file": "release/page-31.html",
       "bytes": 1709,
-      "gzipBytes": 611
+      "gzipBytes": 614
     },
     {
       "file": "release/page-32.html",
       "bytes": 1724,
-      "gzipBytes": 615
+      "gzipBytes": 618
     },
     {
       "file": "release/page-33.html",
       "bytes": 1825,
-      "gzipBytes": 626
+      "gzipBytes": 628
     },
     {
       "file": "release/page-34.html",
       "bytes": 1840,
-      "gzipBytes": 632
+      "gzipBytes": 634
     },
     {
       "file": "release/page-35.html",
       "bytes": 1815,
-      "gzipBytes": 627
+      "gzipBytes": 630
     },
     {
       "file": "release/page-36.html",
       "bytes": 1830,
-      "gzipBytes": 631
+      "gzipBytes": 633
     },
     {
       "file": "release/page-37.html",
       "bytes": 1891,
-      "gzipBytes": 636
+      "gzipBytes": 639
     },
     {
       "file": "release/page-38.html",
       "bytes": 1906,
-      "gzipBytes": 639
+      "gzipBytes": 641
     },
     {
       "file": "release/page-39.html",
       "bytes": 1851,
-      "gzipBytes": 634
+      "gzipBytes": 636
     },
     {
       "file": "release/page-4.html",
       "bytes": 1804,
-      "gzipBytes": 627
+      "gzipBytes": 630
     },
     {
       "file": "release/page-40.html",
       "bytes": 1866,
-      "gzipBytes": 639
+      "gzipBytes": 641
     },
     {
       "file": "release/page-41.html",
       "bytes": 1883,
-      "gzipBytes": 635
+      "gzipBytes": 637
     },
     {
       "file": "release/page-42.html",
       "bytes": 1898,
-      "gzipBytes": 638
+      "gzipBytes": 641
     },
     {
       "file": "release/page-43.html",
       "bytes": 1927,
-      "gzipBytes": 644
+      "gzipBytes": 646
     },
     {
       "file": "release/page-44.html",
       "bytes": 1942,
-      "gzipBytes": 647
+      "gzipBytes": 650
     },
     {
       "file": "release/page-45.html",
       "bytes": 1749,
-      "gzipBytes": 611
+      "gzipBytes": 613
     },
     {
       "file": "release/page-46.html",
       "bytes": 1764,
-      "gzipBytes": 616
+      "gzipBytes": 618
     },
     {
       "file": "release/page-47.html",
       "bytes": 1769,
-      "gzipBytes": 619
+      "gzipBytes": 622
     },
     {
       "file": "release/page-48.html",
       "bytes": 1784,
-      "gzipBytes": 623
+      "gzipBytes": 625
     },
     {
       "file": "release/page-49.html",
       "bytes": 1829,
-      "gzipBytes": 637
+      "gzipBytes": 639
     },
     {
       "file": "release/page-5.html",
       "bytes": 1961,
-      "gzipBytes": 652
+      "gzipBytes": 655
     },
     {
       "file": "release/page-50.html",
       "bytes": 1844,
-      "gzipBytes": 639
+      "gzipBytes": 641
     },
     {
       "file": "release/page-51.html",
       "bytes": 1875,
-      "gzipBytes": 635
+      "gzipBytes": 637
     },
     {
       "file": "release/page-52.html",
       "bytes": 1890,
-      "gzipBytes": 639
+      "gzipBytes": 642
     },
     {
       "file": "release/page-53.html",
       "bytes": 1713,
-      "gzipBytes": 612
+      "gzipBytes": 614
     },
     {
       "file": "release/page-54.html",
@@ -938,201 +938,201 @@
     {
       "file": "release/page-55.html",
       "bytes": 1771,
-      "gzipBytes": 619
+      "gzipBytes": 622
     },
     {
       "file": "release/page-56.html",
       "bytes": 1786,
-      "gzipBytes": 623
+      "gzipBytes": 625
     },
     {
       "file": "release/page-57.html",
       "bytes": 1937,
-      "gzipBytes": 655
+      "gzipBytes": 656
     },
     {
       "file": "release/page-58.html",
       "bytes": 1952,
-      "gzipBytes": 660
+      "gzipBytes": 662
     },
     {
       "file": "release/page-59.html",
       "bytes": 1761,
-      "gzipBytes": 618
+      "gzipBytes": 623
     },
     {
       "file": "release/page-6.html",
       "bytes": 1976,
-      "gzipBytes": 653
+      "gzipBytes": 656
     },
     {
       "file": "release/page-60.html",
       "bytes": 1776,
-      "gzipBytes": 622
+      "gzipBytes": 625
     },
     {
       "file": "release/page-61.html",
       "bytes": 1879,
-      "gzipBytes": 634
+      "gzipBytes": 637
     },
     {
       "file": "release/page-62.html",
       "bytes": 1894,
-      "gzipBytes": 638
+      "gzipBytes": 641
     },
     {
       "file": "release/page-63.html",
       "bytes": 1823,
-      "gzipBytes": 629
+      "gzipBytes": 633
     },
     {
       "file": "release/page-64.html",
       "bytes": 1838,
-      "gzipBytes": 632
+      "gzipBytes": 635
     },
     {
       "file": "release/page-65.html",
       "bytes": 1835,
-      "gzipBytes": 628
+      "gzipBytes": 631
     },
     {
       "file": "release/page-66.html",
       "bytes": 1850,
-      "gzipBytes": 631
+      "gzipBytes": 634
     },
     {
       "file": "release/page-67.html",
       "bytes": 1821,
-      "gzipBytes": 633
+      "gzipBytes": 635
     },
     {
       "file": "release/page-68.html",
       "bytes": 1836,
-      "gzipBytes": 636
+      "gzipBytes": 638
     },
     {
       "file": "release/page-69.html",
       "bytes": 1833,
-      "gzipBytes": 640
+      "gzipBytes": 642
     },
     {
       "file": "release/page-7.html",
       "bytes": 1833,
-      "gzipBytes": 636
+      "gzipBytes": 638
     },
     {
       "file": "release/page-70.html",
       "bytes": 1848,
-      "gzipBytes": 643
+      "gzipBytes": 645
     },
     {
       "file": "release/page-71.html",
       "bytes": 1803,
-      "gzipBytes": 627
+      "gzipBytes": 629
     },
     {
       "file": "release/page-72.html",
       "bytes": 1701,
-      "gzipBytes": 611
+      "gzipBytes": 613
     },
     {
       "file": "release/page-73.html",
       "bytes": 1716,
-      "gzipBytes": 614
+      "gzipBytes": 617
     },
     {
       "file": "release/page-74.html",
       "bytes": 1807,
-      "gzipBytes": 616
+      "gzipBytes": 619
     },
     {
       "file": "release/page-75.html",
       "bytes": 1822,
-      "gzipBytes": 620
+      "gzipBytes": 623
     },
     {
       "file": "release/page-76.html",
       "bytes": 1689,
-      "gzipBytes": 614
+      "gzipBytes": 616
     },
     {
       "file": "release/page-77.html",
       "bytes": 1704,
-      "gzipBytes": 617
+      "gzipBytes": 619
     },
     {
       "file": "release/page-78.html",
       "bytes": 2025,
-      "gzipBytes": 648
+      "gzipBytes": 649
     },
     {
       "file": "release/page-79.html",
       "bytes": 2040,
-      "gzipBytes": 651
+      "gzipBytes": 652
     },
     {
       "file": "release/page-8.html",
       "bytes": 1848,
-      "gzipBytes": 638
+      "gzipBytes": 640
     },
     {
       "file": "release/page-80.html",
       "bytes": 1975,
-      "gzipBytes": 643
+      "gzipBytes": 646
     },
     {
       "file": "release/page-81.html",
       "bytes": 1990,
-      "gzipBytes": 646
+      "gzipBytes": 649
     },
     {
       "file": "release/page-82.html",
       "bytes": 1647,
-      "gzipBytes": 606
+      "gzipBytes": 607
     },
     {
       "file": "release/page-83.html",
       "bytes": 1662,
-      "gzipBytes": 610
+      "gzipBytes": 612
     },
     {
       "file": "release/page-84.html",
       "bytes": 1743,
-      "gzipBytes": 617
+      "gzipBytes": 619
     },
     {
       "file": "release/page-85.html",
       "bytes": 1758,
-      "gzipBytes": 618
+      "gzipBytes": 620
     },
     {
       "file": "release/page-86.html",
       "bytes": 1947,
-      "gzipBytes": 644
+      "gzipBytes": 646
     },
     {
       "file": "release/page-87.html",
       "bytes": 1962,
-      "gzipBytes": 648
+      "gzipBytes": 650
     },
     {
       "file": "release/page-88.html",
       "bytes": 1939,
-      "gzipBytes": 649
+      "gzipBytes": 652
     },
     {
       "file": "release/page-89.html",
       "bytes": 1954,
-      "gzipBytes": 652
+      "gzipBytes": 655
     },
     {
       "file": "release/page-9.html",
       "bytes": 1877,
-      "gzipBytes": 636
+      "gzipBytes": 639
     }
   ],
-  "totalProductionBytes": 2090717,
-  "totalProductionGzipBytes": 611912,
+  "totalProductionBytes": 2089879,
+  "totalProductionGzipBytes": 611849,
   "authoredRLLazyBytes": 106036,
   "rlTopicChunks": [
     {
@@ -1178,14 +1178,14 @@
   ],
   "rlToolChunks": [
     {
-      "file": "assets/Workspace-D_flgAOs.js",
+      "file": "assets/Workspace-BLM7ybrw.js",
       "bytes": 2025,
-      "gzipBytes": 834
+      "gzipBytes": 837
     },
     {
-      "file": "assets/PropositionWorkspace-BzU0E9Sn.js",
+      "file": "assets/PropositionWorkspace-DXy-7umT.js",
       "bytes": 5150,
-      "gzipBytes": 1804
+      "gzipBytes": 1805
     },
     {
       "file": "assets/logic-DTFjvJ0t.js",
@@ -1193,12 +1193,12 @@
       "gzipBytes": 3053
     },
     {
-      "file": "assets/FolWorkspace-Di-7YoqW.js",
+      "file": "assets/FolWorkspace-BrCxsPJD.js",
       "bytes": 4077,
       "gzipBytes": 1662
     },
     {
-      "file": "assets/RecurrenceWorkspace-BK9yDnj9.js",
+      "file": "assets/RecurrenceWorkspace-CSo7Jc7W.js",
       "bytes": 2531,
       "gzipBytes": 1146
     },
@@ -1208,29 +1208,29 @@
       "gzipBytes": 3021
     },
     {
-      "file": "assets/TreeGraphWorkspace-BhlZltoC.js",
+      "file": "assets/TreeGraphWorkspace-BGMKR8-i.js",
       "bytes": 3912,
       "gzipBytes": 1642
     },
     {
-      "file": "assets/SetsWorkspace-BfRqxKPV.js",
+      "file": "assets/SetsWorkspace-BteamHwq.js",
       "bytes": 2348,
-      "gzipBytes": 1020
+      "gzipBytes": 1021
     },
     {
-      "file": "assets/RelationsWorkspace-CcCe4t0A.js",
+      "file": "assets/RelationsWorkspace-6hbQ4zD8.js",
       "bytes": 3125,
       "gzipBytes": 1263
     }
   ],
   "initialChunks": [
-    "assets/index-DOPA7_Vr.js"
+    "assets/index-CXJ4RROU.js"
   ],
-  "initialJSBytes": 507838,
-  "initialJSGzipBytes": 134733,
+  "initialJSBytes": 507229,
+  "initialJSGzipBytes": 134596,
   "authoredCOLazyBytes": 104952,
-  "totalAssetBytes": 1886621,
-  "totalAssetGzipBytes": 548029,
+  "totalAssetBytes": 1885783,
+  "totalAssetGzipBytes": 547744,
   "chunks": [
     {
       "file": "assets/supabase-C6pgQ0vL.js",
@@ -1286,17 +1286,17 @@
       ]
     },
     {
-      "file": "assets/index-DOPA7_Vr.js",
-      "bytes": 507838,
-      "gzipBytes": 134733,
+      "file": "assets/index-CXJ4RROU.js",
+      "bytes": 507229,
+      "gzipBytes": 134596,
       "entry": true,
       "imports": [],
       "dynamicImports": [
-        "assets/engine-D72iFZ6h.js",
-        "assets/evaluation-BHM4gLw-.js",
-        "assets/EvidenceSummary-DLOG1f20.js",
-        "assets/DashboardInsights-C_nVgs16.js",
-        "assets/ProgressSummary-C_v_wOzJ.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/evaluation-f-9kDRxu.js",
+        "assets/EvidenceSummary-Bxkzwy6a.js",
+        "assets/DashboardInsights-D-oBMiHx.js",
+        "assets/ProgressSummary-BDyBTg7Q.js",
         "assets/IP_T01_JAVA_BASICS-B-dHW_SQ.js",
         "assets/IP_T03_METHODS_SCOPE-NpIiHW_A.js",
         "assets/IP_T04_CLASSES_OBJECTS-CbGEZY1-.js",
@@ -1316,8 +1316,8 @@
         "assets/IP_T18_MODERN_JAVA-B9jrpJOu.js",
         "assets/IP_T19_THREADS_CONCURRENCY-DJlmhWV8.js",
         "assets/IP_T20_EXAM_PROGRAM_SYNTHESIS-DFp_PGBB.js",
-        "assets/TopicContent-B1E16XlQ.js",
-        "assets/IntroTopicContent-BCBES0X8.js",
+        "assets/TopicContent-XwxnwTDE.js",
+        "assets/IntroTopicContent-CYrnxJiW.js",
         "assets/RL_T02_FOL-CPbVtDo6.js",
         "assets/RL_T03_PROOF_METHODS-Dyog5d7L.js",
         "assets/RL_T04_INDUCTION_RECURSION-_WIOYeu9.js",
@@ -1326,8 +1326,8 @@
         "assets/RL_T07_FUNCTIONS_RELATIONS-BW77OxQa.js",
         "assets/RL_T08_LIMITS_COUNTABILITY-B2E1EBNK.js",
         "assets/RL_T09_TRANSFER_CONSTRAINT_PUZZLES-Bk7ZJOkn.js",
-        "assets/TopicContent-CYMD_eYh.js",
-        "assets/IntroTopicContent-6cSCSVIT.js",
+        "assets/TopicContent-CWX_y-9u.js",
+        "assets/IntroTopicContent-BuPRKEa1.js",
         "assets/CO_T01_HISTORY-D8bfk0pi.js",
         "assets/CO_T02_BOOLEAN_KMAP-CkGvwNMn.js",
         "assets/CO_T03_DIGITAL_CMOS_SEQUENTIAL-J4cbyzTo.js",
@@ -1341,21 +1341,21 @@
         "assets/CO_T12_PIPELINE-BFgDPOAQ.js",
         "assets/CO_T13_PARALLELISM-kuJ2Wedj.js",
         "assets/CO_T14_VIRTUAL_MEMORY-CKyMY8-7.js",
-        "assets/TopicContent-BmQPZqEC.js",
-        "assets/MistakesPage-BZzf0RDb.js",
-        "assets/MapCues-CFXEC8rL.js",
-        "assets/TopicEnrichment-BS_lf0uW.js",
-        "assets/TopicPractice-CuD4kB0n.js",
-        "assets/ConfiguredAccountRoot-agbFloam.js",
-        "assets/AccountPage-CaWAI2nT.js",
-        "assets/PracticePage-C5tfiHV5.js",
-        "assets/ExercisePage-uuj10syw.js",
-        "assets/AttemptPage-CYq_ArPK.js",
-        "assets/MistakesPage-BZzf0RDb.js",
-        "assets/StudyPathPage-BD6MHSU0.js",
-        "assets/ProgressPage-hvTP2OV7.js",
-        "assets/ExamsPage-BXcoTHLF.js",
-        "assets/AssemblyWorkbench-t6duS4dy.js"
+        "assets/TopicContent--G0ls-If.js",
+        "assets/MistakesPage-Bi1UX37V.js",
+        "assets/MapCues-xPqc_O_N.js",
+        "assets/TopicEnrichment-BAx48nLE.js",
+        "assets/TopicPractice-CEyxpBi4.js",
+        "assets/ConfiguredAccountRoot-BmXvOsjT.js",
+        "assets/AccountPage-CMomjFqL.js",
+        "assets/PracticePage-DeBNxBtw.js",
+        "assets/ExercisePage-HoaaPLWS.js",
+        "assets/AttemptPage-DnVrCqxu.js",
+        "assets/MistakesPage-Bi1UX37V.js",
+        "assets/StudyPathPage-BWjgU7H-.js",
+        "assets/ProgressPage-C6R_xn95.js",
+        "assets/ExamsPage-qT_tJP36.js",
+        "assets/AssemblyWorkbench-CttYfd9m.js"
       ],
       "modules": [
         "\u0000vite/modulepreload-polyfill.js",
@@ -1435,12 +1435,12 @@
       ]
     },
     {
-      "file": "assets/AccountPage-CaWAI2nT.js",
-      "bytes": 5721,
-      "gzipBytes": 2143,
+      "file": "assets/AccountPage-CMomjFqL.js",
+      "bytes": 5087,
+      "gzipBytes": 1935,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1449,13 +1449,13 @@
       ]
     },
     {
-      "file": "assets/PracticePage-C5tfiHV5.js",
+      "file": "assets/PracticePage-DeBNxBtw.js",
       "bytes": 3165,
-      "gzipBytes": 1400,
+      "gzipBytes": 1403,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/service-L2S8BdUV.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/service-HnX2qmCS.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1463,16 +1463,16 @@
       ]
     },
     {
-      "file": "assets/ExercisePage-uuj10syw.js",
+      "file": "assets/ExercisePage-HoaaPLWS.js",
       "bytes": 1666,
-      "gzipBytes": 894,
+      "gzipBytes": 897,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/ExerciseParts-nE0yB2GW.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/ExerciseParts-CLl3SR51.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1480,16 +1480,16 @@
       ]
     },
     {
-      "file": "assets/AttemptPage-CYq_ArPK.js",
-      "bytes": 4868,
+      "file": "assets/AttemptPage-DnVrCqxu.js",
+      "bytes": 4886,
       "gzipBytes": 2020,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/ExerciseParts-nE0yB2GW.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/ExerciseParts-CLl3SR51.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1497,16 +1497,16 @@
       ]
     },
     {
-      "file": "assets/MistakesPage-BZzf0RDb.js",
-      "bytes": 9434,
-      "gzipBytes": 3365,
+      "file": "assets/MistakesPage-Bi1UX37V.js",
+      "bytes": 9329,
+      "gzipBytes": 3310,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/useEvidence-DjdYFrdU.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/feedback-CwFhHWFC.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/useEvidence-DiG2Y_fD.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/feedback-DtMHr4gT.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1515,17 +1515,17 @@
       ]
     },
     {
-      "file": "assets/StudyPathPage-BD6MHSU0.js",
-      "bytes": 4293,
-      "gzipBytes": 1874,
+      "file": "assets/StudyPathPage-BWjgU7H-.js",
+      "bytes": 4263,
+      "gzipBytes": 1835,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/useEvidence-DjdYFrdU.js",
-        "assets/engine-Ddf8YfE9.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/feedback-CwFhHWFC.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/useEvidence-DiG2Y_fD.js",
+        "assets/engine-B3G0NNLt.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/feedback-DtMHr4gT.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1533,20 +1533,20 @@
       ]
     },
     {
-      "file": "assets/ProgressPage-hvTP2OV7.js",
-      "bytes": 4479,
-      "gzipBytes": 1859,
+      "file": "assets/ProgressPage-C6R_xn95.js",
+      "bytes": 4551,
+      "gzipBytes": 1830,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/useProgress-PYHMqM2O.js",
-        "assets/progress-DxdUIURi.js",
-        "assets/catalog-tAviFo-R.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/evaluation-BHM4gLw-.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/useProgress-CMnyRKkA.js",
+        "assets/progress-Cc4ilOQI.js",
+        "assets/catalog-MuM0bXxe.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/evaluation-f-9kDRxu.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1554,18 +1554,18 @@
       ]
     },
     {
-      "file": "assets/ExamsPage-BXcoTHLF.js",
+      "file": "assets/ExamsPage-qT_tJP36.js",
       "bytes": 6916,
-      "gzipBytes": 2782,
+      "gzipBytes": 2786,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/catalog-tAviFo-R.js",
-        "assets/engine-D72iFZ6h.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/catalog-MuM0bXxe.js",
+        "assets/engine-DMJqWgWR.js"
       ],
       "dynamicImports": [
-        "assets/ExamSessionPage-CgJJOJFq.js",
-        "assets/ExamReviewPage-DwC3OG5C.js"
+        "assets/ExamSessionPage-CXIVAVAE.js",
+        "assets/ExamReviewPage-CgNDGq66.js"
       ],
       "modules": [
         "src/exams/exams.css",
@@ -1573,12 +1573,12 @@
       ]
     },
     {
-      "file": "assets/AssemblyWorkbench-t6duS4dy.js",
+      "file": "assets/AssemblyWorkbench-CttYfd9m.js",
       "bytes": 31394,
       "gzipBytes": 10852,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1604,21 +1604,21 @@
       ]
     },
     {
-      "file": "assets/DashboardInsights-C_nVgs16.js",
-      "bytes": 3904,
-      "gzipBytes": 1324,
+      "file": "assets/DashboardInsights-D-oBMiHx.js",
+      "bytes": 3902,
+      "gzipBytes": 1332,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/useEvidence-DjdYFrdU.js",
-        "assets/engine-Ddf8YfE9.js",
-        "assets/useProgress-PYHMqM2O.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/catalog-tAviFo-R.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/evaluation-BHM4gLw-.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/useEvidence-DiG2Y_fD.js",
+        "assets/engine-B3G0NNLt.js",
+        "assets/useProgress-CMnyRKkA.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/catalog-MuM0bXxe.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/evaluation-f-9kDRxu.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1626,14 +1626,14 @@
       ]
     },
     {
-      "file": "assets/engine-Ddf8YfE9.js",
+      "file": "assets/engine-B3G0NNLt.js",
       "bytes": 31762,
-      "gzipBytes": 6798,
+      "gzipBytes": 6800,
       "entry": false,
       "imports": [
-        "assets/service-L2S8BdUV.js",
-        "assets/index-DOPA7_Vr.js",
-        "assets/evidence-qdGUnUOc.js"
+        "assets/service-HnX2qmCS.js",
+        "assets/index-CXJ4RROU.js",
+        "assets/evidence-BMBjJXun.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1642,14 +1642,14 @@
       ]
     },
     {
-      "file": "assets/MapCues-CFXEC8rL.js",
+      "file": "assets/MapCues-xPqc_O_N.js",
       "bytes": 3044,
-      "gzipBytes": 1405,
+      "gzipBytes": 1408,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/StudyCues-D2QUlrFb.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/StudyCues-hlSgJQWa.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1658,14 +1658,14 @@
       ]
     },
     {
-      "file": "assets/TopicEnrichment-BS_lf0uW.js",
-      "bytes": 14666,
-      "gzipBytes": 4868,
+      "file": "assets/TopicEnrichment-BAx48nLE.js",
+      "bytes": 14614,
+      "gzipBytes": 4844,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/StudyCues-D2QUlrFb.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/StudyCues-hlSgJQWa.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1676,13 +1676,13 @@
       ]
     },
     {
-      "file": "assets/StudyCues-D2QUlrFb.js",
+      "file": "assets/StudyCues-hlSgJQWa.js",
       "bytes": 545,
-      "gzipBytes": 358,
+      "gzipBytes": 361,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1690,13 +1690,13 @@
       ]
     },
     {
-      "file": "assets/TopicPractice-CuD4kB0n.js",
+      "file": "assets/TopicPractice-CEyxpBi4.js",
       "bytes": 1676,
-      "gzipBytes": 822,
+      "gzipBytes": 823,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/service-L2S8BdUV.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/service-HnX2qmCS.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1704,12 +1704,12 @@
       ]
     },
     {
-      "file": "assets/ConfiguredAccountRoot-agbFloam.js",
+      "file": "assets/ConfiguredAccountRoot-BmXvOsjT.js",
       "bytes": 17279,
       "gzipBytes": 6189,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/supabase-C6pgQ0vL.js"
       ],
       "dynamicImports": [],
@@ -1724,16 +1724,16 @@
       ]
     },
     {
-      "file": "assets/EvidenceSummary-DLOG1f20.js",
+      "file": "assets/EvidenceSummary-Bxkzwy6a.js",
       "bytes": 978,
-      "gzipBytes": 569,
+      "gzipBytes": 568,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/useEvidence-DjdYFrdU.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/feedback-CwFhHWFC.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/useEvidence-DiG2Y_fD.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/feedback-DtMHr4gT.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1741,13 +1741,13 @@
       ]
     },
     {
-      "file": "assets/useEvidence-DjdYFrdU.js",
+      "file": "assets/useEvidence-DiG2Y_fD.js",
       "bytes": 323,
-      "gzipBytes": 247,
+      "gzipBytes": 248,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/evidence-qdGUnUOc.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/evidence-BMBjJXun.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1755,20 +1755,20 @@
       ]
     },
     {
-      "file": "assets/ProgressSummary-C_v_wOzJ.js",
-      "bytes": 1951,
-      "gzipBytes": 880,
+      "file": "assets/ProgressSummary-BDyBTg7Q.js",
+      "bytes": 1867,
+      "gzipBytes": 824,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/useProgress-PYHMqM2O.js",
-        "assets/progress-DxdUIURi.js",
-        "assets/catalog-tAviFo-R.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/evaluation-BHM4gLw-.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/useProgress-CMnyRKkA.js",
+        "assets/progress-Cc4ilOQI.js",
+        "assets/catalog-MuM0bXxe.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/evaluation-f-9kDRxu.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1776,12 +1776,12 @@
       ]
     },
     {
-      "file": "assets/progress-DxdUIURi.js",
-      "bytes": 1973,
-      "gzipBytes": 737,
+      "file": "assets/progress-Cc4ilOQI.js",
+      "bytes": 2561,
+      "gzipBytes": 944,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1790,18 +1790,18 @@
       ]
     },
     {
-      "file": "assets/useProgress-PYHMqM2O.js",
+      "file": "assets/useProgress-CMnyRKkA.js",
       "bytes": 11512,
-      "gzipBytes": 5054,
+      "gzipBytes": 5053,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/catalog-tAviFo-R.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/evaluation-BHM4gLw-.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/catalog-MuM0bXxe.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/evaluation-f-9kDRxu.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -1813,12 +1813,12 @@
       ]
     },
     {
-      "file": "assets/catalog-tAviFo-R.js",
+      "file": "assets/catalog-MuM0bXxe.js",
       "bytes": 313,
       "gzipBytes": 247,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [
         "assets/co-BL8WV3S_.js",
@@ -1984,12 +1984,12 @@
       ]
     },
     {
-      "file": "assets/service-L2S8BdUV.js",
+      "file": "assets/service-HnX2qmCS.js",
       "bytes": 141524,
-      "gzipBytes": 32211,
+      "gzipBytes": 32213,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2020,14 +2020,14 @@
       ]
     },
     {
-      "file": "assets/ExerciseParts-nE0yB2GW.js",
+      "file": "assets/ExerciseParts-CLl3SR51.js",
       "bytes": 5107,
-      "gzipBytes": 1948,
+      "gzipBytes": 1952,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2035,12 +2035,12 @@
       ]
     },
     {
-      "file": "assets/feedback-CwFhHWFC.js",
+      "file": "assets/feedback-DtMHr4gT.js",
       "bytes": 66835,
       "gzipBytes": 15337,
       "entry": false,
       "imports": [
-        "assets/service-L2S8BdUV.js"
+        "assets/service-HnX2qmCS.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2052,12 +2052,12 @@
       ]
     },
     {
-      "file": "assets/EvidenceView-DxxMcitk.js",
+      "file": "assets/EvidenceView-C7zJ2pVJ.js",
       "bytes": 12049,
-      "gzipBytes": 4388,
+      "gzipBytes": 4389,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2067,14 +2067,14 @@
       ]
     },
     {
-      "file": "assets/evidence-qdGUnUOc.js",
+      "file": "assets/evidence-BMBjJXun.js",
       "bytes": 2965,
       "gzipBytes": 1451,
       "entry": false,
       "imports": [
-        "assets/service-L2S8BdUV.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/index-DOPA7_Vr.js"
+        "assets/service-HnX2qmCS.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2082,12 +2082,12 @@
       ]
     },
     {
-      "file": "assets/engine-D72iFZ6h.js",
+      "file": "assets/engine-DMJqWgWR.js",
       "bytes": 3453,
-      "gzipBytes": 1528,
+      "gzipBytes": 1529,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2095,16 +2095,16 @@
       ]
     },
     {
-      "file": "assets/evaluation-BHM4gLw-.js",
+      "file": "assets/evaluation-f-9kDRxu.js",
       "bytes": 1903,
-      "gzipBytes": 1021,
+      "gzipBytes": 1020,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/evidence-qdGUnUOc.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/feedback-CwFhHWFC.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/evidence-BMBjJXun.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/feedback-DtMHr4gT.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2167,17 +2167,17 @@
       ]
     },
     {
-      "file": "assets/TopicContent-B1E16XlQ.js",
+      "file": "assets/TopicContent-XwxnwTDE.js",
       "bytes": 1314,
-      "gzipBytes": 644,
+      "gzipBytes": 645,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/GuidedPractice-CJzZHFyA.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/GuidedPractice-wVUveKuC.js"
       ],
       "dynamicImports": [
-        "assets/TopicPractice-CuD4kB0n.js",
-        "assets/Assignments-CZw4BvP8.js"
+        "assets/TopicPractice-CEyxpBi4.js",
+        "assets/Assignments-ksZdaTyj.js"
       ],
       "modules": [
         "src/ip/ip.css",
@@ -2185,12 +2185,12 @@
       ]
     },
     {
-      "file": "assets/GuidedPractice-CJzZHFyA.js",
+      "file": "assets/GuidedPractice-wVUveKuC.js",
       "bytes": 2049,
-      "gzipBytes": 955,
+      "gzipBytes": 954,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2198,14 +2198,14 @@
       ]
     },
     {
-      "file": "assets/IntroTopicContent-BCBES0X8.js",
+      "file": "assets/IntroTopicContent-CYrnxJiW.js",
       "bytes": 1727,
-      "gzipBytes": 995,
+      "gzipBytes": 993,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/TopicContent-B1E16XlQ.js",
-        "assets/GuidedPractice-CJzZHFyA.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/TopicContent-XwxnwTDE.js",
+        "assets/GuidedPractice-wVUveKuC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2302,17 +2302,17 @@
       ]
     },
     {
-      "file": "assets/TopicContent-CYMD_eYh.js",
+      "file": "assets/TopicContent-CWX_y-9u.js",
       "bytes": 5606,
-      "gzipBytes": 2512,
+      "gzipBytes": 2516,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/GuidedPractice-CJzZHFyA.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/GuidedPractice-wVUveKuC.js"
       ],
       "dynamicImports": [
-        "assets/TopicPractice-CuD4kB0n.js",
-        "assets/Workspace-D_flgAOs.js"
+        "assets/TopicPractice-CEyxpBi4.js",
+        "assets/Workspace-BLM7ybrw.js"
       ],
       "modules": [
         "src/rl/tools.json",
@@ -2320,14 +2320,14 @@
       ]
     },
     {
-      "file": "assets/IntroTopicContent-6cSCSVIT.js",
+      "file": "assets/IntroTopicContent-BuPRKEa1.js",
       "bytes": 2964,
       "gzipBytes": 1359,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/TopicContent-CYMD_eYh.js",
-        "assets/GuidedPractice-CJzZHFyA.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/TopicContent-CWX_y-9u.js",
+        "assets/GuidedPractice-wVUveKuC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2479,16 +2479,16 @@
       ]
     },
     {
-      "file": "assets/TopicContent-BmQPZqEC.js",
+      "file": "assets/TopicContent--G0ls-If.js",
       "bytes": 5951,
-      "gzipBytes": 2675,
+      "gzipBytes": 2678,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [
-        "assets/TopicPractice-CuD4kB0n.js",
-        "assets/Workspace-CW5ZrDIm.js"
+        "assets/TopicPractice-CEyxpBi4.js",
+        "assets/Workspace-eqAz0DxZ.js"
       ],
       "modules": [
         "src/co/tools.json",
@@ -2529,22 +2529,22 @@
       ]
     },
     {
-      "file": "assets/ExamSessionPage-CgJJOJFq.js",
+      "file": "assets/ExamSessionPage-CXIVAVAE.js",
       "bytes": 8568,
-      "gzipBytes": 3344,
+      "gzipBytes": 3347,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/ExerciseParts-nE0yB2GW.js",
-        "assets/evaluation-BHM4gLw-.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/EvidenceView-DxxMcitk.js",
-        "assets/evidence-qdGUnUOc.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/ExerciseParts-CLl3SR51.js",
+        "assets/evaluation-f-9kDRxu.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/EvidenceView-C7zJ2pVJ.js",
+        "assets/evidence-BMBjJXun.js"
       ],
       "dynamicImports": [
-        "assets/ExamOpenAnswer-D3fxyUfu.js"
+        "assets/ExamOpenAnswer-C3G-w9aD.js"
       ],
       "modules": [
         "src/exams/useExamDraft.ts",
@@ -2553,19 +2553,19 @@
       ]
     },
     {
-      "file": "assets/ExamReviewPage-DwC3OG5C.js",
+      "file": "assets/ExamReviewPage-CgNDGq66.js",
       "bytes": 6249,
-      "gzipBytes": 2624,
+      "gzipBytes": 2627,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/ExerciseParts-nE0yB2GW.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/evaluation-BHM4gLw-.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/EvidenceView-DxxMcitk.js",
-        "assets/evidence-qdGUnUOc.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/ExerciseParts-CLl3SR51.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/evaluation-f-9kDRxu.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/EvidenceView-C7zJ2pVJ.js",
+        "assets/evidence-BMBjJXun.js"
       ],
       "dynamicImports": [
         "assets/co-8kIY2FBo.js",
@@ -2577,12 +2577,12 @@
       ]
     },
     {
-      "file": "assets/Assignments-CZw4BvP8.js",
+      "file": "assets/Assignments-ksZdaTyj.js",
       "bytes": 6473,
-      "gzipBytes": 2196,
+      "gzipBytes": 2200,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [
         "assets/air-audit-BIinS1_M.js",
@@ -2596,7 +2596,7 @@
         "assets/material-ledger-Dlb9LY3I.js",
         "assets/note-index-9EzBN5C-.js",
         "assets/reading-export-03SKeJdJ.js",
-        "assets/CodingWorkbench-DMmCqkuB.js"
+        "assets/CodingWorkbench-CFqd4BXR.js"
       ],
       "modules": [
         "src/ip/assignment-index.json",
@@ -2604,32 +2604,32 @@
       ]
     },
     {
-      "file": "assets/Workspace-D_flgAOs.js",
+      "file": "assets/Workspace-BLM7ybrw.js",
       "bytes": 2025,
-      "gzipBytes": 834,
+      "gzipBytes": 837,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [
-        "assets/PropositionWorkspace-BzU0E9Sn.js",
-        "assets/FolWorkspace-Di-7YoqW.js",
-        "assets/RecurrenceWorkspace-BK9yDnj9.js",
-        "assets/TreeGraphWorkspace-BhlZltoC.js",
-        "assets/SetsWorkspace-BfRqxKPV.js",
-        "assets/RelationsWorkspace-CcCe4t0A.js"
+        "assets/PropositionWorkspace-DXy-7umT.js",
+        "assets/FolWorkspace-BrCxsPJD.js",
+        "assets/RecurrenceWorkspace-CSo7Jc7W.js",
+        "assets/TreeGraphWorkspace-BGMKR8-i.js",
+        "assets/SetsWorkspace-BteamHwq.js",
+        "assets/RelationsWorkspace-6hbQ4zD8.js"
       ],
       "modules": [
         "src/rl/Workspace.tsx"
       ]
     },
     {
-      "file": "assets/Workspace-CW5ZrDIm.js",
+      "file": "assets/Workspace-eqAz0DxZ.js",
       "bytes": 13507,
-      "gzipBytes": 5482,
+      "gzipBytes": 5483,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2638,12 +2638,12 @@
       ]
     },
     {
-      "file": "assets/ExamOpenAnswer-D3fxyUfu.js",
+      "file": "assets/ExamOpenAnswer-C3G-w9aD.js",
       "bytes": 958,
       "gzipBytes": 546,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -2805,13 +2805,13 @@
       ]
     },
     {
-      "file": "assets/CodingWorkbench-DMmCqkuB.js",
+      "file": "assets/CodingWorkbench-CFqd4BXR.js",
       "bytes": 6686,
-      "gzipBytes": 2479,
+      "gzipBytes": 2481,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/EvidenceView-DxxMcitk.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/EvidenceView-C7zJ2pVJ.js"
       ],
       "dynamicImports": [
         "assets/air-audit-CoOfR9nj.js",
@@ -2831,12 +2831,12 @@
       ]
     },
     {
-      "file": "assets/PropositionWorkspace-BzU0E9Sn.js",
+      "file": "assets/PropositionWorkspace-DXy-7umT.js",
       "bytes": 5150,
-      "gzipBytes": 1804,
+      "gzipBytes": 1805,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/logic-DTFjvJ0t.js"
       ],
       "dynamicImports": [],
@@ -2856,12 +2856,12 @@
       ]
     },
     {
-      "file": "assets/FolWorkspace-Di-7YoqW.js",
+      "file": "assets/FolWorkspace-BrCxsPJD.js",
       "bytes": 4077,
       "gzipBytes": 1662,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/logic-DTFjvJ0t.js"
       ],
       "dynamicImports": [],
@@ -2870,12 +2870,12 @@
       ]
     },
     {
-      "file": "assets/RecurrenceWorkspace-BK9yDnj9.js",
+      "file": "assets/RecurrenceWorkspace-CSo7Jc7W.js",
       "bytes": 2531,
       "gzipBytes": 1146,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -2895,12 +2895,12 @@
       ]
     },
     {
-      "file": "assets/TreeGraphWorkspace-BhlZltoC.js",
+      "file": "assets/TreeGraphWorkspace-BGMKR8-i.js",
       "bytes": 3912,
       "gzipBytes": 1642,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -2909,12 +2909,12 @@
       ]
     },
     {
-      "file": "assets/SetsWorkspace-BfRqxKPV.js",
+      "file": "assets/SetsWorkspace-BteamHwq.js",
       "bytes": 2348,
-      "gzipBytes": 1020,
+      "gzipBytes": 1021,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -2923,12 +2923,12 @@
       ]
     },
     {
-      "file": "assets/RelationsWorkspace-CcCe4t0A.js",
+      "file": "assets/RelationsWorkspace-6hbQ4zD8.js",
       "bytes": 3125,
       "gzipBytes": 1263,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
+        "assets/index-CXJ4RROU.js",
         "assets/models-8GyK5YA1.js"
       ],
       "dynamicImports": [],
@@ -3097,7 +3097,7 @@
     {
       "file": "index.html",
       "bytes": 1567,
-      "gzipBytes": 574
+      "gzipBytes": 575
     }
   ],
   "checks": [

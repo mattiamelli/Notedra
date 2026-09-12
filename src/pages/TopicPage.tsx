@@ -32,7 +32,7 @@ function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:S
   if(event.key==='ArrowRight')next=(index+1)%studyModes.length;else if(event.key==='ArrowLeft')next=(index+studyModes.length-1)%studyModes.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=studyModes.length-1;else return;
   event.preventDefault();choose(next);document.getElementById(`study-mode-${next}`)?.focus();
  }
- return <div className="ds-topic-study"><PageHeading eyebrow={`${course.code} · TOPIC ${topic.id.match(/_T(\d+)/)?.[1]??''}`} title={topic.name}><p><Link className="ds-text-link" to={course.path}>{course.name}</Link></p><code className="ds-topic-id">{topic.id}</code></PageHeading>
+ return <div className="ds-topic-study"><PageHeading eyebrow={`${course.code} · TOPIC ${topic.id.match(/_T(\d+)/)?.[1]??''}`} title={topic.name}><p><Link className="ds-text-link" to={course.path}>{course.name}</Link></p></PageHeading>
  {mode==='overview'&&<ProgressLoader courseId={course.subject_id} topicId={topic.id}/>}
  {mode!=='mistakes'&&<SummaryLoader topicId={topic.id}/>}
  <div className="ds-study-mode-tabs" role="tablist" aria-label="Topic study modes">{studyModes.map((m,i)=><button key={m.id} id={`study-mode-${i}`} role="tab" aria-selected={mode===m.id} aria-controls="study-mode-panel" tabIndex={mode===m.id?0:-1} onClick={()=>choose(i)} onKeyDown={e=>move(e,i)}>{m.label}</button>)}</div>

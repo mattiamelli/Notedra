@@ -1,22 +1,22 @@
 {
-  "initialJS": 507838,
-  "initialGzip": 134733,
-  "totalAssets": 1886621,
-  "totalGzip": 548029,
+  "initialJS": 507229,
+  "initialGzip": 134596,
+  "totalAssets": 1885783,
+  "totalGzip": 547744,
   "owners": {
     "ExamsPage.tsx": {
-      "file": "assets/ExamsPage-BXcoTHLF.js",
+      "file": "assets/ExamsPage-qT_tJP36.js",
       "bytes": 6916,
-      "gzipBytes": 2782,
+      "gzipBytes": 2786,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/catalog-tAviFo-R.js",
-        "assets/engine-D72iFZ6h.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/catalog-MuM0bXxe.js",
+        "assets/engine-DMJqWgWR.js"
       ],
       "dynamicImports": [
-        "assets/ExamSessionPage-CgJJOJFq.js",
-        "assets/ExamReviewPage-DwC3OG5C.js"
+        "assets/ExamSessionPage-CXIVAVAE.js",
+        "assets/ExamReviewPage-CgNDGq66.js"
       ],
       "modules": [
         "src/exams/exams.css",
@@ -24,22 +24,22 @@
       ]
     },
     "ExamSessionPage.tsx": {
-      "file": "assets/ExamSessionPage-CgJJOJFq.js",
+      "file": "assets/ExamSessionPage-CXIVAVAE.js",
       "bytes": 8568,
-      "gzipBytes": 3344,
+      "gzipBytes": 3347,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/ExerciseParts-nE0yB2GW.js",
-        "assets/evaluation-BHM4gLw-.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/EvidenceView-DxxMcitk.js",
-        "assets/evidence-qdGUnUOc.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/ExerciseParts-CLl3SR51.js",
+        "assets/evaluation-f-9kDRxu.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/EvidenceView-C7zJ2pVJ.js",
+        "assets/evidence-BMBjJXun.js"
       ],
       "dynamicImports": [
-        "assets/ExamOpenAnswer-D3fxyUfu.js"
+        "assets/ExamOpenAnswer-C3G-w9aD.js"
       ],
       "modules": [
         "src/exams/useExamDraft.ts",
@@ -48,19 +48,19 @@
       ]
     },
     "ExamReviewPage.tsx": {
-      "file": "assets/ExamReviewPage-DwC3OG5C.js",
+      "file": "assets/ExamReviewPage-CgNDGq66.js",
       "bytes": 6249,
-      "gzipBytes": 2624,
+      "gzipBytes": 2627,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js",
-        "assets/ExerciseParts-nE0yB2GW.js",
-        "assets/service-L2S8BdUV.js",
-        "assets/evaluation-BHM4gLw-.js",
-        "assets/engine-D72iFZ6h.js",
-        "assets/feedback-CwFhHWFC.js",
-        "assets/EvidenceView-DxxMcitk.js",
-        "assets/evidence-qdGUnUOc.js"
+        "assets/index-CXJ4RROU.js",
+        "assets/ExerciseParts-CLl3SR51.js",
+        "assets/service-HnX2qmCS.js",
+        "assets/evaluation-f-9kDRxu.js",
+        "assets/engine-DMJqWgWR.js",
+        "assets/feedback-DtMHr4gT.js",
+        "assets/EvidenceView-C7zJ2pVJ.js",
+        "assets/evidence-BMBjJXun.js"
       ],
       "dynamicImports": [
         "assets/co-8kIY2FBo.js",
@@ -72,12 +72,12 @@
       ]
     },
     "ExamOpenAnswer.tsx": {
-      "file": "assets/ExamOpenAnswer-D3fxyUfu.js",
+      "file": "assets/ExamOpenAnswer-C3G-w9aD.js",
       "bytes": 958,
       "gzipBytes": 546,
       "entry": false,
       "imports": [
-        "assets/index-DOPA7_Vr.js"
+        "assets/index-CXJ4RROU.js"
       ],
       "dynamicImports": [],
       "modules": [

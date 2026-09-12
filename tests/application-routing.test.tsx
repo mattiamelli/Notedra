@@ -61,7 +61,7 @@ describe('application routes and canonical navigation', () => {
   it.each(academicIndex.topics)('renders the canonical topic $topic_id under its own course', async topic => {
     await renderRoute(topicPath(topic));
     expect(heading()).toBe(topic.name);
-    expect(container.querySelector('.ds-topic-id')?.textContent).toBe(topic.topic_id);
+    expect(container.querySelector('.ds-topic-id')).toBeNull();
     expect(container.querySelector('.ds-page-heading')?.textContent).toContain(courses.find(course => course.subject_id === topic.subject_id)!.name);
     expect(container.querySelectorAll('[role="tab"]')).toHaveLength(7); // Step 5 adds deep-linkable Learn to the six existing modes.
   });
@@ -122,7 +122,7 @@ describe('shell interaction and browser history', () => {
   });
   it('navigates course → topic with working breadcrumbs and active course state', async () => {
     await renderRoute('/co'); await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
-    expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+    expect(heading()).toBe('x86-64 Assembly and stack execution');
     expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/co');
     await click('.ds-breadcrumbs a[href="/co"]'); expect(heading()).toBe(courses[0].name);
   });
@@ -135,7 +135,7 @@ describe('shell interaction and browser history', () => {
     expect(window.location.pathname).toBe('/co'); expect(heading()).toBe(courses[0].name);
     await act(async () => { const popped = new Promise(resolve => window.addEventListener('popstate', resolve, {once: true})); window.history.forward(); await popped; });
     expect(window.location.pathname).toBe(ASSEMBLY_TOPIC_PATH);
-    expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+    expect(heading()).toBe('x86-64 Assembly and stack execution');
   });
   it('supports topic mode clicks and keyboard navigation with the CO cards and shared Practice available', async () => {
     await renderRoute(ASSEMBLY_TOPIC_PATH);
@@ -184,7 +184,7 @@ describe('integrated Assembly workbench regression', () => {
       expect(clearInterval).toHaveBeenCalledWith(runningTimer);
       await act(async () => vi.advanceTimersByTime(1300));
       expect(container.querySelector('.workspace-grid')).toBeNull();
-      expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+      expect(heading()).toBe('x86-64 Assembly and stack execution');
     } finally { vi.useRealTimers(); }
   });
   it.each(examplePrograms)('executes $name through the routed workbench', async example => {
@@ -204,7 +204,7 @@ describe('integrated Assembly workbench regression', () => {
     await clickButton('Previous'); expect(button('Next Instruction').disabled).toBe(false);
     await clickButton('Next Instruction'); expect(container.querySelector('.instruction-counter')?.textContent).toContain('Program complete');
     await clickButton('Reset'); expect(register('rax')).toBe('0');
-    await click('.ds-tool-back'); expect(container.querySelector('.ds-topic-id')?.textContent).toBe('CO_T06_ASSEMBLY_X86_64');
+    await click('.ds-tool-back'); expect(heading()).toBe('x86-64 Assembly and stack execution');
   });
   it('preserves load errors and can return to the course without running hidden instructions', async () => {
     localStorage.setItem('delftstudy:v1:program', 'xorq %rax, %rax');

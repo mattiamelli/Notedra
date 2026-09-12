@@ -68,12 +68,12 @@ describe('student data UI', () => {
   });
   it('shows accessible storage errors and disables backup writes', async () => {
     const repo = repository(); vi.spyOn(repo, 'load').mockRejectedValue(new Error('No storage'));
-    await mount(repo, '/progress'); expect(container.querySelector('[role=alert]')?.textContent).toContain('Local storage failed');
+    await mount(repo, '/account'); expect(container.querySelector('[role=alert]')?.textContent).toContain('Local storage failed');
     expect(container.querySelector<HTMLInputElement>('input[type=file]')?.disabled).toBe(true);
     expect(container.textContent).toContain('Reload saved data');
   });
   it('requires explicit restore confirmation, supports cancellation, and exposes recovery export', async () => {
-    const repo = repository(); await mount(repo, '/progress'); const original = await repo.exportBackup();
+    const repo = repository(); await mount(repo, '/account'); const original = await repo.exportBackup();
     await choose(JSON.stringify({...emptyBackup(), resume: position}));
     const replace = [...container.querySelectorAll('button')].find(item => item.textContent === 'Replace student data')!;
     expect(replace.disabled).toBe(true); expect(await repo.exportBackup()).toEqual(original);
@@ -85,13 +85,13 @@ describe('student data UI', () => {
     expect(await repo.exportRecovery()).toEqual(original); expect(container.textContent).toContain('Export pre-restore recovery');
   });
   it('rejects malformed and fake-score imports visibly without modifying storage', async () => {
-    const repo = repository(); await mount(repo, '/progress'); const before = await repo.exportBackup();
+    const repo = repository(); await mount(repo, '/account'); const before = await repo.exportBackup();
     await choose('{'); expect(container.querySelector('[role=alert]')?.textContent).toContain('valid JSON');
     await choose(JSON.stringify({...emptyBackup(), mastery: 100})); expect(container.querySelector('[role=alert]')?.textContent).toContain('unsupported');
     expect(await repo.exportBackup()).toEqual(before);
   });
   it('shows a failed restore without claiming it was saved', async () => {
-    const repo = repository(); await mount(repo, '/progress'); vi.spyOn(repo, 'restore').mockRejectedValue(new DOMException('Full', 'QuotaExceededError'));
+    const repo = repository(); await mount(repo, '/account'); vi.spyOn(repo, 'restore').mockRejectedValue(new DOMException('Full', 'QuotaExceededError'));
     await choose(JSON.stringify(emptyBackup())); await act(async () => container.querySelector<HTMLInputElement>('input[type=checkbox]')!.click());
     await click('Replace student data'); expect(container.querySelector('[role=alert]')?.textContent).toContain('Local storage failed');
     expect(container.textContent).not.toContain('Backup restored in this browser');

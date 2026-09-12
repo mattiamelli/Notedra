@@ -36,7 +36,7 @@ describe('topic learning routes and modes',()=>{
  it('renders canonical description, prerequisites, grouped skills and honest broad/unknown sources',async()=>{
   const ip=pilots[2];await render(studyPath(ip));expect(container.textContent).toContain(ip.description);expect(container.querySelector('a[href="/ip/IP_T01_JAVA_BASICS"]')?.textContent).toBe('Java basics and data');
   for(const sub of ip.subtopics){expect(container.querySelector(`[id="${sub.id}"] h3`)?.textContent).toBe(sub.name);for(const skill of sub.skills)expect(container.querySelector(`[id="${skill.id}"]`)?.textContent).toContain(skill.description);}
-  expect(container.textContent).toContain('Broad document-level provenance, not an exact');expect(container.textContent).toContain('Source precision is UNKNOWN');expect(container.querySelectorAll('a[href$=".pdf"]')).toHaveLength(0);expect(container.textContent).not.toMatch(/\d+%|predicted grade|exam probability/);
+  expect(container.textContent).toContain('This reference covers a broad part of the document');expect(container.textContent).toContain('An exact supporting page is not recorded');expect(container.querySelectorAll('a[href$=".pdf"]')).toHaveLength(0);expect(container.textContent).not.toMatch(/\d+%|predicted grade|exam probability/);
  });
  it('provides a canonical map and text alternative with keyboard-accessible links',async()=>{
   const t=pilots[0];await render(studyPath(t,'mental-map'));expect(container.querySelectorAll('.ds-map-node')).toHaveLength(t.subtopics.length+t.subtopics.flatMap(s=>s.skills).length);
@@ -70,7 +70,7 @@ describe('topic learning routes and modes',()=>{
   const repo=repository();await render(studyPath(pilots[0],'flashcards'),false,repo);const before=await repo.exportBackup();const cards=flashcards.filter(c=>c.topicId===pilots[0].id);
   expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);await button('Reveal answer');expect(container.querySelector('#card-answer')?.textContent).toContain(cards[0].answer);await button('Hide answer');expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(true);
   await button('Previous card');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[7].prompt);await button('Next card');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);
-  vi.spyOn(Math,'random').mockReturnValue(0);await button('Shuffle cards');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[1].prompt);expect(container.querySelector('.ds-study-card .ds-study-id')?.textContent).toContain(cards[1].id);
+  vi.spyOn(Math,'random').mockReturnValue(0);await button('Shuffle cards');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[1].prompt);expect(container.querySelector('.ds-study-card .ds-study-id')).toBeNull();
   await button('Reset order');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);expect(await repo.exportBackup()).toEqual(before);
   expect([...shuffledIds(cards.map(c=>c.id),()=>0)].sort()).toEqual(cards.map(c=>c.id).sort());
  });

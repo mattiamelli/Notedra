@@ -10,7 +10,7 @@ import './enrichment.css';
 export default function TopicEnrichment({topicId,mode}:{topicId:string;mode:StudyMode}){
  if(mode==='flashcards'){
   const selected=cards.filter(c=>c.topicId===topicId);if(!selected.length)return null;
-  return <section className="ds-study-reading ds-enrichment" aria-label="Supplemental flashcards"><h2>Distinctions worth remembering</h2><p>{selected.length} additional study cards. The published deck above stays unchanged. Answers and self-checks are not saved or scored.</p>{selected.map(c=><article className="ds-lesson-block" key={c.id}><h3>{c.prompt}</h3><details><summary>Reveal supplemental answer</summary><p>{c.answer}</p></details><EvidenceView ids={c.evidenceIds}/><small>{c.id} · v{c.version}</small></article>)}</section>;
+  return <section className="ds-study-reading ds-enrichment" aria-label="Supplemental flashcards"><h2>Distinctions worth remembering</h2><p>{selected.length} additional study cards. The published deck above stays unchanged. Answers and self-checks are not saved or scored.</p>{selected.map(c=><article className="ds-lesson-block" key={c.id}><h3>{c.prompt}</h3><details><summary>Reveal supplemental answer</summary><p>{c.answer}</p></details><EvidenceView ids={c.evidenceIds}/></article>)}</section>;
  }
  if(mode==='mental-map'){
   const selected=cues.filter(c=>c.topicId===topicId);if(!selected.length)return null;

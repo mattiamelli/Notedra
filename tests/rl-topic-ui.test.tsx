@@ -68,10 +68,9 @@ describe('complete R&L topic learning routes', () => {
     expect(host.querySelectorAll('.ds-study-reading > .ds-lesson-block')).toHaveLength(content.lesson.blocks.length);
     for (const block of content.lesson.blocks) expect(document.getElementById(block.id)?.textContent).toContain(block.title);
     expect(host.textContent).toContain('Authored DelftStudy learning content');
-    expect(host.textContent).toContain('Broad document-level provenance, not an exact supporting slide or page.');
+    expect(host.textContent).toContain('This reference covers a broad part of the document.');
     const firstSource = topicStudy.sources.find(source => source.id === content.lesson.blocks[0].sourceIds[0])!;
     expect(host.textContent).toContain(firstSource.filename);
-    expect(host.textContent).toContain(firstSource.locator);
     expect(await repo.exportBackup()).toEqual(before);
 
     await render('flashcards');
@@ -88,7 +87,7 @@ describe('complete R&L topic learning routes', () => {
     await click('Shuffle cards'); await click('Reset order');
     expect(host.querySelector('#card-prompt')?.textContent).toBe(content.cards[0].prompt);
     expect(host.querySelector<HTMLElement>('#card-answer')!.hidden).toBe(true);
-    expect(host.textContent).toContain('Broad document-level provenance');
+    expect(host.textContent).toContain('This reference covers a broad part of the document');
     expect(await repo.exportBackup()).toEqual(before);
 
     await render('practice');

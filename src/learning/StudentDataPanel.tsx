@@ -38,9 +38,9 @@ export function StudentDataPanel() {
     catch (failure) { setError(errorMessage(failure)); }
   }
   return <section className="ds-storage ds-section" aria-labelledby="storage-heading">
-    <div className="ds-section-heading"><h2 id="storage-heading">Your student data</h2><span>Stored on this device</span></div>
-    <p>This backup contains the current local profile. Anonymous study stays on this device; signed-in profiles can also sync through Account. Another browser, device, host or port has separate local data.</p>
-    <p>Browser-data deletion or device failure can remove local data. A successful save confirms a completed local transaction, not protection against every OS crash. Keep an exported backup.</p>
+    <div className="ds-section-heading"><h2 id="storage-heading">Data &amp; Privacy</h2><span>Sync &amp; backup</span></div>
+    <p>Your study history is saved in this browser. Signed-in profiles can also sync. Anonymous and account profiles stay separate.</p>
+    <p>Clearing browser data or losing this device can remove local history. Keep an exported backup if the history matters to you.</p>
     <p role="status">{reading ? 'Reading and validating backup…' : learning?.message ?? 'Student storage is not connected.'}</p>
     {error && <p role="alert" className="ds-storage-error">{error}</p>}
     <div className="ds-storage-actions">
@@ -55,6 +55,6 @@ export function StudentDataPanel() {
       <label><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)}/> I understand this replaces my current student data.</label>
       <div className="ds-storage-actions"><button className="ds-button" disabled={!confirmed || unavailable} onClick={() => void restore()}>Replace student data</button><button className="ds-button" disabled={learning?.phase === 'busy'} onClick={() => { setPending(null); setConfirmed(false); }}>Cancel restore</button></div>
     </div>}
-    <p className="ds-storage-note">Backups include only student records. The Assembly editor and display preferences use separate storage; execution history remains session-only. Visits and ungraded answers do not count as assessed progress.</p>
+    <details><summary>About this backup</summary><p className="ds-storage-note">Backups include your saved study records. Assembly editor preferences are stored separately, and temporary execution history is not included. Visits and ungraded answers do not count as assessed progress.</p><p>Restoring replaces only the current local profile and keeps a recovery copy. It does not delete cloud history.</p></details>
   </section>;
 }

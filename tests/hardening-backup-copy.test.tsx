@@ -6,5 +6,5 @@ it('backup guidance does not falsely deny optional cloud sync or claim to replac
  const html=renderToStaticMarkup(<StudentDataPanel/>);
  expect(html).not.toContain('It is not cloud-synced');
  expect(html).toContain('current local profile');
- expect(html).toContain('Account');
+ expect(html).toContain('account profiles stay separate');
 });
