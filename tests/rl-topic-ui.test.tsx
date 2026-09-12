@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import expansionGuides from '../src/expansion/completion-guided.json';
 import enrichment from '../src/enrichment/capabilities.json';
 import {act} from 'react';
 import {createRoot, type Root} from 'react-dom/client';
@@ -92,7 +93,7 @@ describe('complete R&L topic learning routes', () => {
 
     await render('practice');
     expect(host.querySelectorAll('.ds-practice-card')).toHaveLength(expectedExercises.length);
-    expect(expectedExercises.filter(e=>!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact').length).toBe(capability.exerciseCount);expect(expectedExercises.length).toBe(capability.exerciseCount+(enrichment.find(e=>e.topicId===topic.id)?.exercises??0)+expectedExercises.filter(e=>e.id.startsWith('ds.practice.interactive-')).length);
+    expect(expectedExercises.filter(e=>!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact').length).toBe(capability.exerciseCount);expect(expectedExercises.length).toBe(capability.exerciseCount+(enrichment.find(e=>e.topicId===topic.id)?.exercises??0)+expectedExercises.filter(e=>e.id.startsWith('ds.practice.interactive-')).length+expectedExercises.filter(e=>e.id.startsWith('ds.practice.p7-')).length);
     expect(host.querySelectorAll('.ds-rl-guided')).toHaveLength(content.guided.length);
     expect(content.guided.length).toBe(capability.guidedCount);
     for (const exercise of expectedExercises) {
@@ -160,7 +161,7 @@ describe('complete R&L topic learning routes', () => {
       const exerciseCount = allExercises.filter(exercise => exercise.topicId === topic.id).length;
       expect(row.querySelector(':scope > a')?.getAttribute('href')).toBe(studyPath(topic));
       expect(row.querySelector('.ds-topic-order')?.textContent).toBe(String(canonical[index].order).padStart(2, '0'));
-      expect(row.querySelector('.ds-rl-capability')?.textContent).toContain(`Guided lesson available · ${content.cards.length+(enrichment.find(e=>e.topicId===topic.id)?.cards??0)} flashcards · ${exerciseCount} graded exercises · ${content.guided.length+(enrichment.find(e=>e.topicId===topic.id)?.guides??0)} unscored activities`);
+      expect(row.querySelector('.ds-rl-capability')?.textContent).toContain(`Guided lesson available · ${content.cards.length+(enrichment.find(e=>e.topicId===topic.id)?.cards??0)} flashcards · ${exerciseCount} graded exercises · ${content.guided.length+(enrichment.find(e=>e.topicId===topic.id)?.guides??0)+expansionGuides.filter(g=>g.topicId===topic.id).length} unscored activities`);
       if (tool) expect(row.textContent).toContain(`${tool.name} available`);
       for (const prerequisite of topic.prerequisites) {
         const target = topics.find(item => item.id === prerequisite)!;
@@ -173,15 +174,17 @@ describe('complete R&L topic learning routes', () => {
     expect(await repo.exportBackup()).toEqual(before);
   });
 
-  it('keeps every R&L Exam-style deep link as an honest placeholder, separate from authored practice', async () => {
+  it('exposes separately authored R&L exam challenges and unscored guides without calling them official exams', async () => {
     for (const topic of topics) {
       const path = studyPath(topic, 'exam-style');
       await act(async () => root.render(<MemoryRouter key={path} initialEntries={[path]}><AppRoutes/></MemoryRouter>));
       await settle();
       expect(host.querySelector('h1')?.textContent).toBe(topic.name);
-      expect(host.querySelector('[role="tabpanel"]')?.textContent).toContain('Exam-style practice is not available yet');
-      expect(host.querySelector('[role="tabpanel"]')?.textContent).toContain('shared Practice items are introductory authored study exercises');
-      expect(host.querySelector('.ds-practice-card,.ds-rl-guided,#rl-workspace')).toBeNull();
+      const exam=allExercises.filter(e=>e.topicId===topic.id&&'mode' in e&&e.mode==='exam');
+      expect([...host.querySelectorAll('.ds-practice-card > a')].map(a=>a.getAttribute('href'))).toEqual(exam.map(exercisePath));
+      expect(host.querySelectorAll('.ds-rl-guided')).toHaveLength(expansionGuides.filter(g=>g.topicId===topic.id&&g.mode==='exam').length);
+      expect(host.querySelector('#rl-workspace')).toBeNull();
+      expect(host.textContent).toContain('No automatic correctness, numeric score or academic evidence is assigned.');
       expect(host.querySelector('[role="tab"][aria-selected="true"]')?.textContent).toBe('Exam-style');
       expect(host.textContent).not.toMatch(/\d+%|predicted grade|official exam score/);
     }

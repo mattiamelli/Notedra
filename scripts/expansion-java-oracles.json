@@ -1,0 +1,458 @@
+[
+  {
+    "exerciseId": "ds.practice.p7-ip-signed-remainder",
+    "expected": "-3:-5:-23\n",
+    "reasoning": "Integer division truncates toward zero, giving -3. The remainder is -5 so q*b+r restores -23. Mathematical floor division would use a different quotient/remainder pair.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-concat-boundary",
+    "expected": "11:47\nsum=11\n",
+    "reasoning": "The first addition has two integer operands. After the colon has made the left operand a String, each subsequent plus concatenates. Parentheses force arithmetic in the second line.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-narrow-lowbits",
+    "expected": "2:3:258\n",
+    "reasoning": "Narrowing keeps the low eight bits, giving byte value 2. Arithmetic promotes small to int; the independent original int remains 258.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-cast-versus-scale",
+    "expected": "-8:-11\n",
+    "reasoning": "Casting truncates toward zero. The first path truncates -2.75 to -2 before multiplication; the second multiplies exactly to -11 before converting.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-short-circuit-state",
+    "expected": "1:false:true:true\n",
+    "reasoning": "The right side of false && and true || is skipped. Only the final condition evaluates its increment, leaving x=1.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-branch-recheck",
+    "expected": "8\n",
+    "reasoning": "The first if changes n to 4. The second if tests the updated value; its else runs and doubles 4. These are two separate decisions.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-triangle-state",
+    "expected": "10\n",
+    "reasoning": "Rows contribute 1, then 2+1, then 3+2+1. The inner loop restarts col at zero for each row; its bound depends on row.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-loop-exit-state",
+    "expected": "2:3\n",
+    "reasoning": "The body produces 9, 4, then 2. The next condition is false, so there is no extra division or increment.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-ignored-return",
+    "expected": "5:9\n",
+    "reasoning": "Calling advance does not assign its return to x. The second call receives 6 and returns 9; x remains 5.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-nested-argument-order",
+    "expected": "1:4:4\n",
+    "reasoning": "The first call leaves state=1. The inner call then adds 1, producing argument value 2 for the outer call; the outer call adds that 2 to state=2, yielding 4. Arguments are evaluated before their enclosing call starts.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-two-value-call",
+    "expected": "86:6\n",
+    "reasoning": "Both parameters initially contain independent copies of 6. Changing a to 8 does not change b or the caller variable; 10*a+b is 86.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-void-return-path",
+    "expected": "skip use 2 done\n",
+    "reasoning": "The negative call prints skip and returns before either later output statement. The next method invocation still executes normally and the caller continues to print done. A void return exits one invocation, not the program.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-constructor-chain",
+    "expected": "10\n",
+    "reasoning": "The no-argument constructor delegates to Box(int), which stores 4 in the same object. Its own body then adds 6, giving 10.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-alias-versus-instance",
+    "expected": "4:3:false\n",
+    "reasoning": "a and b refer to one object, so raising through b changes the value seen by a. c is a distinct object initialized with the same original value.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-validated-setter",
+    "expected": "6\n",
+    "reasoning": "The setter accepts 6 and ignores the invalid negative update. Private state is only changed through this controlled method, so the established value remains 6.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-shared-limit-snapshot",
+    "expected": "4:7:true\n",
+    "reasoning": "Each snapshot captures the shared limit when that object is constructed. The method instead reads the current shared limit at call time. The first object therefore keeps snapshot 4 while accepting 6 under the new limit 7.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-prefix-in-place",
+    "expected": "7:8:12\n",
+    "reasoning": "Each iteration reads the already updated previous element. This produces running totals rather than independent sums of original neighbours.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-loop-value-copy",
+    "expected": "4:9\n",
+    "reasoning": "The enhanced-for variable receives each primitive value by copy. Assigning x does not update the array. Indexed writes in the second loop do.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-branching-recursion",
+    "expected": "5\n",
+    "reasoning": "The base cases give count(0)=1 and count(1)=1. Subsequent results are 2, 3 and 5. Both subcalls contribute; this is not a single descending accumulation.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-search-no-match",
+    "expected": "3:true\n",
+    "reasoning": "All three elements pass the comparison. At i=3 the left side of && is false, so a[3] is never read. The index equals length as the explicit failure position.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-capacity-versus-size",
+    "expected": "2:2:9\n",
+    "reasoning": "The capacity check rejects the third insertion without increasing size or overwriting the occupied slots. Capacity describes allocated storage; size describes accepted elements.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-remove-gap",
+    "expected": "2:12:0\n",
+    "reasoning": "Shifting the suffix closes the internal gap. Decrementing size identifies the vacated final occupied slot, which is then cleared.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-duplicate-before-capacity",
+    "expected": "3:8\n",
+    "reasoning": "The duplicate is rejected by comparing against occupied entries before insertion. It consumes no capacity; the later distinct value occupies index 2.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-intersection-count",
+    "expected": "2\n",
+    "reasoning": "Only values 5 and 8 belong to both distinct-value inputs. The nested iteration compares 12 pairs but increments once for each common element, not once per comparison.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-shared-component",
+    "expected": "12:false\n",
+    "reasoning": "The owners are different objects, but their component references point to the same Part. Mutating that component is visible through both owners.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-list-insert-index",
+    "expected": "[r, p, r]:0\n",
+    "reasoning": "Insertion shifts the original r to index 2. set changes the first element to r without changing size; indexOf returns the first matching position.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-copy-list-share-elements",
+    "expected": "1:7:0\n",
+    "reasoning": "The list objects have independent sizes, but the copy constructor copies element references. The shared Cell mutation remains visible in a after b is cleared.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-replace-component",
+    "expected": "6:9\n",
+    "reasoning": "Reassigning h.part changes which Part it refers to. The old reference still identifies the original independent object; a later mutation of that object cannot change the replacement.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-boundary-test-exposes",
+    "expected": "false\ntrue\ntrue\n",
+    "reasoning": "The required domain includes zero, but the implementation excludes it. The zero test exposes the boundary defect while the positive and negative examples pass.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-fresh-fixture",
+    "expected": "true:false:true\n",
+    "reasoning": "The second operation starts from the state left by the first, so its value is 2. A fresh fixture starts at zero. Test expectations must account for setup and isolation.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-observation-contract",
+    "expected": "true:false\n",
+    "reasoning": "A positive result is compatible with many wrong answers, including the returned 2. The exact contract check requires the sum 5 and exposes the defect.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-collaboration-test",
+    "expected": "true:false\n",
+    "reasoning": "The Source itself updates correctly. View stores a snapshot rather than reading the current source, so the collaboration violates the live-view requirement. A component-only assertion misses this.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-super-and-override",
+    "expected": "7\n",
+    "reasoning": "Child.value explicitly invokes the parent implementation returning 3, then adds 4. The explicit super call does not recursively dispatch back to Child.value.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-field-hiding",
+    "expected": "2:9\n",
+    "reasoning": "Field access uses the reference static type Base. The instance method dispatches to Derived.read, which reads the derived field. Identical field names do not imply one shared field.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-inherited-mutator",
+    "expected": "5:15\n",
+    "reasoning": "The subclass reuses the inherited add/total contract. Both updates affect the same inherited state, and the specialized method multiplies that result without maintaining a separate counter.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-cast-keeps-object",
+    "expected": "true:8\n",
+    "reasoning": "The cast checks and narrows the reference type; it does not copy the object. Both references continue to identify the one Child and its inherited field.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-interface-array",
+    "expected": "11\n",
+    "reasoning": "The interface dispatches each operation to its actual implementation. Values progress from 1 to 4, then 8, then 11; a common reference type does not impose one algorithm.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-template-dispatch",
+    "expected": "14\n",
+    "reasoning": "The inherited result method calls step on the same dynamic object. Concrete.step returns 7, which the inherited method doubles. Inheriting result does not force the abstract hook to use parent behavior.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-static-versus-dynamic",
+    "expected": "B:C\n",
+    "reasoning": "The static method is selected from the reference static type Base. The instance method is dynamically dispatched to Child. Calling a static method through an instance is legal but obscures this distinction.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-covariant-result",
+    "expected": "child\n",
+    "reasoning": "The overridden make returns a Child, which is safely usable as Base. Dynamic dispatch of label still observes the actual Child object; the declared receiving type does not erase it.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-equality-symmetry",
+    "expected": "true:false\n",
+    "reasoning": "Base accepts any Base subtype with the same value, while Sub accepts only Sub. Thus a.equals(b) and b.equals(a) disagree, violating symmetry. Equal-looking field values do not repair an inconsistent type policy.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-equal-key-replacement",
+    "expected": "1:new\n",
+    "reasoning": "Both keys satisfy the same equality/hash contract, so the second put replaces the value associated with that logical key. The fresh lookup key can find it through the same contract.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-contract-projection",
+    "expected": "true:false\n",
+    "reasoning": "Equality ignores revision, but hashCode includes it. Equal objects therefore get different hashes in this example, directly violating the equal-implies-equal-hash requirement.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-null-value-equality",
+    "expected": "true:false\n",
+    "reasoning": "Two non-null Value objects may have equal null fields. The null object itself fails the instanceof test, while Objects.equals safely compares the nullable fields.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-finally-return-value",
+    "expected": "3:9\n",
+    "reasoning": "The return expression captures primitive value 3 before finally runs. Cleanup changes the field to 9 but does not change that captured return value.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-catch-specific-path",
+    "expected": "NF\n",
+    "reasoning": "The parse throws before the T append. The first compatible catch handles it, so later catches are not also executed. finally adds F.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-rethrow-cleanup",
+    "expected": "CFO\n",
+    "reasoning": "The inner catch records C and rethrows. Its finally runs before control reaches the outer handler, so F precedes O. Rethrowing does not skip cleanup.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-numeric-failure-kinds",
+    "expected": "true:true\n",
+    "reasoning": "Floating-point zero divided by zero produces NaN; integer division by a zero variable throws ArithmeticException. The two numeric domains have different failure behavior.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-trace-first-divergence",
+    "expected": "1:1\n2:2\n3:3\n",
+    "reasoning": "The assignment overwrites rather than accumulates. The first iteration agrees with a running sum, but the second is the earliest divergent state. A trace must be compared with the intended invariant, not only its last line.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-watch-state-change",
+    "expected": "0:1:2\n",
+    "reasoning": "The local copy increment does not write the watched field. The later compound assignment changes c.n directly to 2. Track storage identity, not just similar variable values.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-conditional-observation",
+    "expected": "3:6\n4:10\n",
+    "reasoning": "The observation runs after the update. Totals 1 and 3 do not trigger it; totals 6 and 10 do. This models a conditional breakpoint without confusing before-statement and after-statement values.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-parameter-evidence",
+    "expected": "9:2\n2:9\n",
+    "reasoning": "The callee trace demonstrates that its local values swap, while the caller trace demonstrates that the caller variables do not. Primitive pass-by-value explains the discrepancy; changing arithmetic would not repair the caller contract.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-token-line-boundary",
+    "expected": "8:< tag>:<next>\n",
+    "reasoning": "nextInt consumes the number token but not the remaining characters on its line. nextLine first returns the leading space plus tag, then the next call returns next.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-immutable-text",
+    "expected": "< a:b >:<a-b>\n",
+    "reasoning": "String transformations return new values. The ignored trim result leaves s untouched; the chained operations produce t without mutating s.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-generic-storage",
+    "expected": "5:7\n",
+    "reasoning": "The type arguments allow first to be used as String and second as Integer. length returns 5 and unboxing permits numeric addition, rather than String concatenation.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-refactor-side-effect",
+    "expected": "3:6:3\n",
+    "reasoning": "The original expression performs two calls, returning 1 and 2. Reusing one later returned value evaluates next only once and doubles 3. Deduplicating syntax is not semantics-preserving when calls change state.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-records-and-empty-lines",
+    "expected": "3:1\n",
+    "reasoning": "readLine returns an empty String for the middle blank line and null only at EOF. A terminal newline does not manufacture an additional empty record after the final line.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-validated-records",
+    "expected": "11:1\n",
+    "reasoning": "The stated policy skips malformed records individually. The middle line has one field and is rejected before numeric parsing; valid surrounding values both contribute.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-flush-buffer",
+    "expected": "0:ab\n",
+    "reasoning": "The two characters initially remain in the BufferedWriter buffer. flush forwards them to the target. This fixed in-memory fixture separates buffering from external filesystem behavior.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-resource-cleanup-order",
+    "expected": "BXC\n",
+    "reasoning": "The resource closes as the try scope exits, including exceptional exit. close appends X before the outer catch appends C. This models resource ownership without touching a real file.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-character-eof",
+    "expected": "A:-1\n",
+    "reasoning": "Reader.read returns an int so all character values can coexist with the sentinel -1. Only the first successfully read value is converted to a character.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-typed-roundtrip",
+    "expected": "12:true:0\n",
+    "reasoning": "The reader consumes the four-byte int followed by the one-byte Boolean, matching the writer order. All five bytes are consumed. The result is determined entirely by the in-memory buffer.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-bounded-read",
+    "expected": "2:!xy!\n",
+    "reasoning": "The requested offset is 1 and the count is 2. Only those two positions are overwritten. Unused buffer positions keep their previous content and must not be treated as newly read input.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-closed-reader",
+    "expected": "true:closed\n",
+    "reasoning": "An open empty reader returns null at EOF. After close, readLine fails with IOException instead of returning another EOF result. Closing and exhausting are different states.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-pipeline-order",
+    "expected": "2:3\n",
+    "reasoning": "Limiting first retains 2,2,5 and then distinct leaves two values. Removing duplicates first leaves 2,5,7, all three of which fit the limit.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-lambda-capture-object",
+    "expected": "9\n",
+    "reasoning": "The lambda captures the unchanged array reference, not a frozen copy of its element. It reads the current element when invoked. The reference remains effectively final while its object changes.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-optional-chain",
+    "expected": "-1:4\n",
+    "reasoning": "Mapping an empty Optional does not invoke the transformation and keeps it empty, so the fallback applies. The present String maps to length 4 and bypasses the fallback.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-lazy-terminal",
+    "expected": "0:3:16\n",
+    "reasoning": "The intermediate map is lazy, so constructing the pipeline leaves the counter zero. sum must consume all three transformed values, 2, 6 and 8, invoking the mapping three times. This is a fixed sequential pipeline; it makes no parallel-order claim.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-exhaustive-enum-switch",
+    "expected": "5\n",
+    "reasoning": "The enum has two values. Each switch expression produces exactly one value and arrow cases do not fall through, so the total is 1+4.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-record-shallow-state",
+    "expected": "8:true\n",
+    "reasoning": "The record stores a final reference to the array; it does not automatically copy or freeze that array. The same array is returned by the component accessor and reflects the mutation.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-custom-order",
+    "expected": "qaz\n",
+    "reasoning": "compareTo orders first by numeric rank. Entries tied at rank 2 are then ordered by name, so a precedes z. Sorting uses the comparison contract rather than insertion order.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-inferred-reference",
+    "expected": "[x]:[y]\n",
+    "reasoning": "var infers a static reference type; it does not tie the variables together. Reassigning first leaves alias pointing to the old list, whose content remains x.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-joined-dependency",
+    "expected": "12\n",
+    "reasoning": "The first join completes before the second worker is started, so the second sees 4. The final join completes before reading 12. This ordered dependency does not rely on scheduler timing.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-separate-workers",
+    "expected": "16\n",
+    "reasoning": "Each worker owns a different element, and both joins finish before the sum is read. Their relative completion order is irrelevant to this result.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-locked-transfer",
+    "expected": "3:7:10\n",
+    "reasoning": "Seven completed synchronized calls each decrement left and increment right while holding the same object monitor. The total remains 10; after both joins the fields are 3 and 7. This argument is independent of worker interleaving.",
+    "category": "RUN"
+  },
+  {
+    "exerciseId": "ds.practice.p7-ip-reentrant-monitor",
+    "expected": "2\n",
+    "reasoning": "A thread already holding an object monitor may enter another synchronized method on that same object. The two nested calls therefore finish and increment twice; this is not the two-lock cycle that causes deadlock.",
+    "category": "RUN"
+  }
+]

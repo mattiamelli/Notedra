@@ -1,0 +1,755 @@
+[
+  {
+    "unitId": "CO_LEC_01",
+    "filename": "CO Lecture 1 - History.pdf",
+    "canonicalSha256": "0b13c9143f123b68923a66e1ba55947a887e39b9fbad80cf17eab1d86751b581",
+    "pdfPages": 25,
+    "reviewedPages": [
+      3,
+      4,
+      6,
+      7,
+      10,
+      15,
+      16,
+      17,
+      19,
+      21,
+      25
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-history-program",
+      "ds.guided.p7-complete-history-performance",
+      "ds.guided.p7-complete-history-reliability",
+      "ds.guided.p7-complete-history-ecosystem"
+    ],
+    "demands": [
+      "Identify the architectural change behind reprogrammability",
+      "Separate elapsed-time improvement from energy use",
+      "Choose a technology under unattended-operation constraints",
+      "Distinguish architectural innovation from ecosystem adoption"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_04",
+    "filename": "CO Lecture 4 - Logic Circuits Part 2.pdf",
+    "canonicalSha256": "3c9f10594770de3bf92e305d1aaf630cb86d3389c849a509f461ac6095075647",
+    "pdfPages": 41,
+    "reviewedPages": [
+      6,
+      8,
+      27,
+      28,
+      29,
+      31
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-cmos-dual",
+      "ds.practice.p7-complete-latch-hold",
+      "ds.practice.p7-complete-shift-simultaneous",
+      "ds.guided.p7-complete-cmos-fault"
+    ],
+    "demands": [
+      "Determine a CMOS network through conduction paths",
+      "Separate transparent and held latch intervals",
+      "Apply simultaneous updates in a shift register",
+      "Diagnose output contention after a pull-up wiring error"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_08",
+    "filename": "CO Lecture 8 - ISA Part 2.pdf",
+    "canonicalSha256": "a950add7679539b7b88918875b17b7082f94c6104c1fec8f9622f98d924e5c77",
+    "pdfPages": 31,
+    "reviewedPages": [
+      3,
+      7,
+      13,
+      14,
+      15,
+      23,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-loadstore-reuse",
+      "ds.practice.p7-complete-immediate-range",
+      "ds.guided.p7-complete-isa-spill",
+      "ds.guided.p7-complete-isa-frequency"
+    ],
+    "demands": [
+      "Count data-memory traffic after register reuse",
+      "Recover signed immediate capacity after opcode expansion",
+      "Design a load/store sequence under a register constraint",
+      "Evaluate a proposal to add a complex instruction"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_09",
+    "filename": "CO Lecture 9 - BPU Part 1.pdf",
+    "canonicalSha256": "c2fb7e418c4803a92a6e8809f1ad22e21960f3e74bd14f80c7aeaea0e6d2f101",
+    "pdfPages": 29,
+    "reviewedPages": [
+      19,
+      20,
+      21,
+      22,
+      26
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-bus-old-z",
+      "ds.practice.p7-complete-bus-fanout",
+      "ds.guided.p7-complete-read-handshake",
+      "ds.guided.p7-complete-bus-conflict"
+    ],
+    "demands": [
+      "Trace staging registers without write-through",
+      "Use one source with multiple destination gates",
+      "Repair a read that captures stale memory data",
+      "Reject an illegal single-bus optimization"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_10",
+    "filename": "CO Lecture 10 - BPU Part 2.pdf",
+    "canonicalSha256": "9992ad49bd29ff56dc5c5e7ea85c16a2e442485ccdecbaa9bb0dcd2fe4868d80",
+    "pdfPages": 28,
+    "reviewedPages": [
+      4,
+      5,
+      9,
+      15,
+      18,
+      20,
+      21,
+      23,
+      24,
+      25,
+      26
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-encoded-idle",
+      "ds.practice.p7-complete-microbranch",
+      "ds.guided.p7-complete-control-compatibility",
+      "ds.guided.p7-complete-wait-idempotence"
+    ],
+    "demands": [
+      "Reserve idle states in encoded control fields",
+      "Follow a conditional microprogram path",
+      "Separate a microcode repair from an ISA change",
+      "Prevent repeated side effects while waiting for memory"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_11",
+    "filename": "CO Lecture 11 - IO.pdf",
+    "canonicalSha256": "fec6ffcc2a70a736f42007715ea1abec8d4716409cea8807c67a8270c5850a74",
+    "pdfPages": 35,
+    "reviewedPages": [
+      17,
+      18,
+      23,
+      25,
+      26,
+      28,
+      29,
+      31,
+      32,
+      33
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-poll-latency",
+      "ds.practice.p7-complete-irq-order",
+      "ds.practice.p7-complete-bus-ready-edge",
+      "ds.guided.p7-complete-irq-preservation"
+    ],
+    "demands": [
+      "Bound detection delay in periodic polling",
+      "Follow fixed-priority interrupt arbitration",
+      "Account for a ready signal arriving between clock edges",
+      "Explain a corrupted computation after returning from an ISR"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_12",
+    "filename": "CO Lecture 12 - Memory.pdf",
+    "canonicalSha256": "b29615f566ce169efee58faa4d213c4c1bd0c83e43300afc622cb73a497914f6",
+    "pdfPages": 32,
+    "reviewedPages": [
+      7,
+      8,
+      9,
+      12,
+      14,
+      27,
+      30,
+      31
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-word-boundary",
+      "ds.practice.p7-complete-bank-stride",
+      "ds.practice.p7-complete-dma-overlap",
+      "ds.guided.p7-complete-dma-ownership"
+    ],
+    "demands": [
+      "Find word lines touched by an unaligned byte request",
+      "Diagnose an access stride that loses interleaving",
+      "Calculate block completion with CPU/DMA overlap",
+      "Find the ownership bug in an asynchronous transfer"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "CO_LEC_15",
+    "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+    "canonicalSha256": "9a32a821b3fa7d9084b718799654c095342dbde57a1e8e99e8283551aaa349d1",
+    "pdfPages": 46,
+    "reviewedPages": [
+      11,
+      13,
+      15,
+      19,
+      20,
+      26,
+      27,
+      29,
+      30,
+      32,
+      33,
+      34,
+      37
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-amdahl-inverse",
+      "ds.practice.p7-complete-process-translation",
+      "ds.guided.p7-complete-tlb-not-fault",
+      "ds.guided.p7-complete-parallel-shared"
+    ],
+    "demands": [
+      "Recover a serial fraction from a measured ideal speedup",
+      "Translate the same virtual address in two processes",
+      "Distinguish a translation-cache miss from a page fault",
+      "Classify instruction streams without confusing shared memory"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_00",
+    "filename": "R&L Lecture 0 - Introduction.pdf",
+    "canonicalSha256": "fa8ece42f92d0d362c8f4ad815d966f9716ae8183ba6ded0889b907cfe21fc47",
+    "pdfPages": 90,
+    "reviewedPages": [
+      5,
+      12,
+      16,
+      20,
+      21
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-argument-repair",
+      "ds.guided.p7-complete-argument-chain",
+      "ds.guided.p7-complete-argument-evidence",
+      "ds.guided.p7-complete-argument-conflict"
+    ],
+    "demands": [
+      "Supply the missing bridge in a practical argument",
+      "Track which conclusions follow from chained rules",
+      "Distinguish a true conclusion from a valid justification",
+      "Locate inconsistency before applying the policy"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_01",
+    "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+    "canonicalSha256": "a22b9b230ea330c92b8ff52928dc07ad735be359b5eb22984ec7b81d656b8afa",
+    "pdfPages": 26,
+    "reviewedPages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      14,
+      16,
+      17
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-necessary-chain",
+      "ds.practice.p7-complete-connective-completion",
+      "ds.practice.p7-complete-equivalence-disagreement",
+      "ds.guided.p7-complete-inclusive-exclusive"
+    ],
+    "demands": [
+      "Find assignments violating a two-part requirement",
+      "Count Boolean operators under a semantic restriction",
+      "Find where an implication differs from its converse",
+      "Resolve the meaning of an ambiguous “or”"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_02",
+    "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+    "canonicalSha256": "8415854093bbaf8a85be58c80eb50737b159ee4f4f5cd9b0933763fee862bdbe",
+    "pdfPages": 82,
+    "reviewedPages": [
+      20,
+      21,
+      44,
+      47,
+      48,
+      49,
+      50,
+      54
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-dnf-contradictory-term",
+      "ds.practice.p7-complete-cnf-unit-propagation",
+      "ds.practice.p7-complete-argument-counterrows",
+      "ds.guided.p7-complete-normal-form-debug"
+    ],
+    "demands": [
+      "Discard an impossible product without discarding the formula",
+      "Propagate a forced literal through CNF",
+      "Separate premise satisfiability from argument validity",
+      "Repair a mistaken dualization of a normal form"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_03",
+    "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+    "canonicalSha256": "053ff0ce0122ba9c57f22791bfb6ab7b8b05d7eec8eb8c91e64f72d7e22bfb88",
+    "pdfPages": 85,
+    "reviewedPages": [
+      29,
+      46,
+      64,
+      69,
+      70
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-quantifier-order",
+      "ds.practice.p7-complete-restricted-witness",
+      "ds.guided.p7-complete-quantifier-negation",
+      "ds.guided.p7-complete-countermodel-cycle"
+    ],
+    "demands": [
+      "Compare one shared witness with separate witnesses",
+      "Count witnesses subject to two restrictions",
+      "Negate a restricted universal without losing its scope",
+      "Disprove a global witness claim using a small model"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_04",
+    "filename": "R&L Lecture 4 - Methods of Proof Part 1.pdf",
+    "canonicalSha256": "f57b520e9f9159be3b7e824397a3636c55559105a3bf37e377e7fe8102514662",
+    "pdfPages": 37,
+    "reviewedPages": [
+      16,
+      18,
+      23,
+      26,
+      30,
+      31
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-divisibility-linear",
+      "ds.guided.p7-complete-rational-midpoint",
+      "ds.guided.p7-complete-cancellation-zero",
+      "ds.guided.p7-complete-existence-uniqueness"
+    ],
+    "demands": [
+      "Prove closure under an integer linear combination",
+      "Prove a rational construction lies strictly between two inputs",
+      "Locate a hidden zero-divisor in an algebraic proof",
+      "Separate finding a solution from proving uniqueness"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_05",
+    "filename": "R&L Lecture 5 - Methods of Proof Part 2.pdf",
+    "canonicalSha256": "f0233d7dc90b9dcb1b45f85e7acd9e93a51065a098a3d094217101eb1d8bc551",
+    "pdfPages": 37,
+    "reviewedPages": [
+      7,
+      8,
+      10,
+      16,
+      23,
+      26,
+      28
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-odd-product",
+      "ds.guided.p7-complete-absolute-triangle",
+      "ds.guided.p7-complete-rational-shift",
+      "ds.guided.p7-complete-cases-gap"
+    ],
+    "demands": [
+      "Choose a contrapositive for an odd product",
+      "Use sign cases to justify a basic absolute-value bound",
+      "Keep a rational shift from hiding irrationality",
+      "Repair a sign-case argument with a missing boundary"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_06",
+    "filename": "R&L Lecture 6 - Induction and Recursion Part 1.pdf",
+    "canonicalSha256": "40e5e409b61b6b0a2f6f49d91fabfa387534ee4d9aa9a96e6b9d587d9a8d324f",
+    "pdfPages": 40,
+    "reviewedPages": [
+      12,
+      13,
+      24,
+      27,
+      28,
+      29,
+      30,
+      32
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-telescoping-induction",
+      "ds.guided.p7-complete-two-step-induction",
+      "ds.guided.p7-complete-geometric-inequality",
+      "ds.guided.p7-complete-circular-induction"
+    ],
+    "demands": [
+      "Prove a reciprocal sum with an explicit successor term",
+      "Find the base cases needed for a two-step argument",
+      "Choose the starting index that makes an induction step valid",
+      "Diagnose using the successor claim inside its own proof"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_07",
+    "filename": "R&L Lecture 7 - Induction and Recursion Part 2.pdf",
+    "canonicalSha256": "c07f460b35aba1611a02d659dacee778a89a800997a849389a851c56b0b8db60",
+    "pdfPages": 44,
+    "reviewedPages": [
+      14,
+      16,
+      17,
+      19,
+      23,
+      25,
+      27,
+      29,
+      34,
+      35,
+      42,
+      43,
+      44
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-difference-recurrence",
+      "ds.guided.p7-complete-division-invariant",
+      "ds.guided.p7-complete-conservation-impossible",
+      "ds.guided.p7-complete-termination-not-invariant"
+    ],
+    "demands": [
+      "Evaluate a recurrence with a changing increment",
+      "Prove a repeated-subtraction division loop",
+      "Use a conserved quantity to reject a target state",
+      "Explain why a preserved equation does not prove termination"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_08",
+    "filename": "R&L Lecture 8 - Induction and Recursion Part 3.pdf",
+    "canonicalSha256": "ae72f72ff3a4ae61a7b9d5d6c30ab5185fb425d30a763171e43e409bdc2715d4",
+    "pdfPages": 81,
+    "reviewedPages": [
+      7,
+      20,
+      23,
+      24,
+      29,
+      40,
+      51
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-traversal-position",
+      "ds.practice.p7-complete-tree-height-capacity",
+      "ds.guided.p7-complete-reconstruct-orders",
+      "ds.guided.p7-complete-full-vs-height"
+    ],
+    "demands": [
+      "Locate a node using two traversal orders",
+      "Bound leaves under a height limit",
+      "Reconstruct a tree and explain why the split is forced",
+      "Disprove a mistaken full-tree criterion"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_09",
+    "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+    "canonicalSha256": "da6e89b05f6a4d194c74e6438f1296ded531534e9e3e1229b69693d7bd3d72b9",
+    "pdfPages": 37,
+    "reviewedPages": [
+      7,
+      9,
+      10,
+      11,
+      16,
+      24,
+      34
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-nested-set-membership",
+      "ds.practice.p7-complete-symmetric-membership",
+      "ds.guided.p7-complete-difference-distribution",
+      "ds.guided.p7-complete-intersection-witness"
+    ],
+    "demands": [
+      "Keep an empty set distinct from its singleton",
+      "Find elements lying in exactly two of three sets",
+      "Prove a difference identity by tracking an arbitrary element",
+      "Explain why pairwise overlap is not a common witness"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_10",
+    "filename": "R&L Lecture 10 - Set Theory Part 2.pdf",
+    "canonicalSha256": "f2532f55bbf1828528eeea908fb58fcce305c2ae07875d8097d00517014648e8",
+    "pdfPages": 37,
+    "reviewedPages": [
+      6,
+      14,
+      17,
+      19,
+      25,
+      28
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-product-diagonal",
+      "ds.practice.p7-complete-product-intersection",
+      "ds.guided.p7-complete-product-distribution",
+      "ds.guided.p7-complete-grammar-balance"
+    ],
+    "demands": [
+      "Remove the diagonal from an overlapping product",
+      "Count a shared set of ordered pairs",
+      "Prove distribution without flattening ordered pairs",
+      "Prove a prefix condition for a recursively defined language"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_11",
+    "filename": "R&L Lecture 11 - Set Theory Part 3.pdf",
+    "canonicalSha256": "43410db70e1ff097b0972cd1e80f430e011562b324a909c3ac5291bdcb7e8f23",
+    "pdfPages": 31,
+    "reviewedPages": [
+      6,
+      8,
+      12,
+      16,
+      18,
+      27,
+      29
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-directed-degrees",
+      "ds.practice.p7-complete-topological-freedom",
+      "ds.guided.p7-complete-two-disjoint-cycles",
+      "ds.guided.p7-complete-general-tree-degree"
+    ],
+    "demands": [
+      "Separate incoming and outgoing edges",
+      "Count valid orders after a fork and join",
+      "Prove a minimum edge removal rather than guessing",
+      "Derive a count for a nonbinary full tree"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_12",
+    "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+    "canonicalSha256": "f0a41ddcdc3ca289ab9b9ced7ce350171dedebb154699270cc427648ab4af4d7",
+    "pdfPages": 50,
+    "reviewedPages": [
+      9,
+      22,
+      34,
+      36,
+      39,
+      40,
+      44
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-relation-closure",
+      "ds.practice.p7-complete-fiber-profile",
+      "ds.guided.p7-complete-left-inverse",
+      "ds.guided.p7-complete-recursive-ambiguity"
+    ],
+    "demands": [
+      "Repair a missing transitive pair",
+      "Compute a finite function’s image and largest fiber",
+      "Infer the property forced by a left inverse",
+      "Distinguish inconsistent equations from underdetermined ones"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_13",
+    "filename": "R&L Lecture 13 - The limitations of Set Theory.pdf",
+    "canonicalSha256": "73c688fa5ae0dc892776265faa314ea7f69e7d7f01cabbbde85a5e3d9ce671c8",
+    "pdfPages": 45,
+    "reviewedPages": [
+      12,
+      17,
+      18,
+      21,
+      22,
+      25,
+      39,
+      40,
+      41,
+      43
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-countable-union",
+      "ds.guided.p7-complete-binary-diagonal",
+      "ds.guided.p7-complete-restricted-russell",
+      "ds.guided.p7-complete-halting-timeout"
+    ],
+    "demands": [
+      "Build a fair enumeration of two overlapping lists",
+      "Construct the missing sequence without decimal ambiguity",
+      "Locate the assumption behind a self-membership contradiction",
+      "Reject a timeout as a universal halting decider"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_14",
+    "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+    "canonicalSha256": "48db36c461b8bdc66d7b1ed7b44c3a64d8b64300f5f20d39d41b5aaa0cbdab61",
+    "pdfPages": 34,
+    "reviewedPages": [
+      5,
+      6,
+      7,
+      9,
+      17,
+      22
+    ],
+    "exercises": [
+      "ds.practice.p7-complete-tree-leaf-weight",
+      "ds.practice.p7-complete-weight-not-degree",
+      "ds.guided.p7-complete-tree-depth-sum",
+      "ds.guided.p7-complete-mirror-involution"
+    ],
+    "demands": [
+      "Evaluate a function that treats leaves separately",
+      "Separate edge count from incident weight",
+      "Define total node depth with enough recursive information",
+      "Prove that mirroring twice restores an ordered tree"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_15",
+    "filename": "R&L Lecture 15 - Exam Prep.pdf",
+    "canonicalSha256": "cb151d94a8966cad402b48a3863f0c65a731e4bad0a82b26e74d2222cbf5ecaa",
+    "pdfPages": 31,
+    "reviewedPages": [
+      6,
+      8,
+      10,
+      11,
+      17,
+      19,
+      20,
+      22,
+      23,
+      25,
+      27,
+      29
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-grammar-shortest",
+      "ds.guided.p7-complete-packing-certificate",
+      "ds.guided.p7-complete-recursive-grid",
+      "ds.guided.p7-complete-factorial-loop"
+    ],
+    "demands": [
+      "Prove a shortest derivation claim with a length invariant",
+      "Certify an optimum when total volume gives a weak bound",
+      "Give both soundness and completeness of a recursive definition",
+      "Prove a product loop with its boundary input"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  },
+  {
+    "unitId": "RL_LEC_16",
+    "filename": "R&L Lecture 16 - The Last One.pdf",
+    "canonicalSha256": "4ad61fe453c721fc8e830fba169911588c474b6e779b6570138cfed19595d13a",
+    "pdfPages": 38,
+    "reviewedPages": [
+      6,
+      11,
+      18,
+      22,
+      24,
+      26
+    ],
+    "exercises": [
+      "ds.guided.p7-complete-finite-language-enumeration",
+      "ds.guided.p7-complete-assignment-quantifiers",
+      "ds.guided.p7-complete-powerset-types",
+      "ds.guided.p7-complete-overlap-not-equivalence"
+    ],
+    "demands": [
+      "Enumerate a constrained infinite language fairly",
+      "Separate complete assignment from one shared destination",
+      "Repair a type-confused implication about subsets",
+      "Show why sharing a tag does not partition records"
+    ],
+    "sourceStatus": "VERIFIED",
+    "review": "PASS: source scope, exact assumptions, distinct demands, independent objective derivations or explicit open rubric/reference."
+  }
+]

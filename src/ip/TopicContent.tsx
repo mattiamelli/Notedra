@@ -1,3 +1,4 @@
+import expansionGuides from '../expansion/guided.json';
 import {lazy,Suspense} from 'react';
 import {Link} from 'react-router';
 import {FlashcardMode,LearnMode} from '../topic-study/AuthoredViews';
@@ -11,6 +12,6 @@ const Assignments=lazy(()=>import('./Assignments'));
 export function TopicContent({topic,mode,content}:{content:IPTopicContent}&IPStudyProps){
  if(mode==='flashcards')return <FlashcardMode topic={topic} content={content.cards}/>;
  if(mode==='learn')return <><p><Link className="ds-button" to={studyPath(topic,'practice')}>Apply this in Java practice</Link></p><LearnMode topic={topic} content={content.lesson}/></>;
- if(mode==='exam-style')return <Suspense fallback={<p role="status">Loading authored assignments…</p>}><Assignments topicId={topic.id} examOnly/></Suspense>;
- return <div className="ds-ip-practice"><Suspense fallback={<p role="status">Loading programming tasks…</p>}><Assignments topicId={topic.id}/><TopicPractice topicId={topic.id} hasStudyActivities/></Suspense><GuidedPractice activities={content.guided}/></div>;
+ if(mode==='exam-style')return <Suspense fallback={<p role="status">Loading authored assignments…</p>}><Assignments topicId={topic.id} examOnly/>{expansionGuides.some(g=>g.topicId===topic.id&&g.mode==='exam')&&<GuidedPractice activities={expansionGuides.filter(g=>g.topicId===topic.id&&g.mode==='exam')}/>}</Suspense>;
+ return <div className="ds-ip-practice"><Suspense fallback={<p role="status">Loading programming tasks…</p>}><Assignments topicId={topic.id}/><TopicPractice topicId={topic.id} hasStudyActivities/></Suspense><GuidedPractice activities={[...content.guided,...expansionGuides.filter(g=>g.topicId===topic.id&&g.mode==='practice')]}/></div>;
 }

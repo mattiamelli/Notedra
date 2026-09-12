@@ -15,7 +15,7 @@ it('review: incomplete legacy storage rolls back version and preserves recovery 
  const reopened=await new Promise<IDBDatabase>(resolve=>{const r=factory.open(name);r.onsuccess=()=>resolve(r.result);});const read=await new Promise<unknown>(resolve=>{const r=reopened.transaction('student').objectStore('student').get('recovery');r.onsuccess=()=>resolve(r.result);});const version=reopened.version;reopened.close();expect(version).toBe(1);expect(read).toEqual(recovery);
 });
 it('review: prerequisite-first explanation remains true when downstream errors greatly outnumber prerequisite errors',()=>{
- const before=allExercises.find(e=>e.skillId==='CO_SK10_02_MEMORY_BITS')!,after=allExercises.find(e=>e.skillId==='CO_SK11_01_CACHE_BITS')!;
+ const before=allExercises.find(e=>e.id==='ds.practice.co-memory-chips')!,after=allExercises.find(e=>e.id==='ds.practice.co-cache-tag-width')!;
  const records=[record('pre',before.id,text('0'),20),...Array.from({length:8},(_,i)=>record('down-'+i,after.id,text('0'),i+1))];
  const queue=recommend(deriveEvidence(records,[],CLOCK),{minutes:20,topicId:after.topicId});expect(queue[0].basisSkillId).toBe(before.skillId);expect(queue[0].reason).toContain('canonical prerequisite');
 });

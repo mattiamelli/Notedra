@@ -1,0 +1,78 @@
+[
+  {
+    "topicId": "CO_T01_HISTORY",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "count": 1
+  },
+  {
+    "topicId": "CO_T07_ISA",
+    "count": 2
+  },
+  {
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "count": 1
+  },
+  {
+    "topicId": "CO_T10_DMA_MEMORY",
+    "count": 1
+  },
+  {
+    "topicId": "CO_T13_PARALLELISM",
+    "count": 1
+  },
+  {
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "count": 1
+  },
+  {
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "count": 4
+  },
+  {
+    "topicId": "RL_T01_PROP_LOGIC",
+    "count": 2
+  },
+  {
+    "topicId": "RL_T02_FOL",
+    "count": 2
+  },
+  {
+    "topicId": "RL_T03_PROOF_METHODS",
+    "count": 8
+  },
+  {
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "count": 7
+  },
+  {
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "count": 6
+  },
+  {
+    "topicId": "RL_T06_SET_THEORY",
+    "count": 4
+  },
+  {
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "count": 2
+  },
+  {
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "count": 4
+  },
+  {
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "count": 12
+  }
+]

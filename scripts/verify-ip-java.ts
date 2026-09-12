@@ -4,6 +4,8 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import exercises from '../src/ip/practice.json';
+import expansionItems from '../src/expansion/ip.json';
+import expansionOracles from './expansion-java-oracles.json';
 import oracles from './ip-practice-oracles.json';
 const javaHome=process.env.DELFTSTUDY_JAVA_HOME??'/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home';
 const run=(exe:string,args:string[],cwd?:string)=>spawnSync(join(javaHome,'bin',exe),args,{cwd,encoding:'utf8',timeout:20000,maxBuffer:1024*1024});
@@ -11,6 +13,7 @@ const version=run('java',['-version']);if(version.status!==0)throw new Error('JD
 interface Fixture {id:string;sourceBlockId?:string;description?:string;javaSource:string;expectedStdout:string;reasoning:string;category?:string;}
 const fixtures:Fixture[]=oracles.filter(o=>o.category!=='REASONED_CONCURRENCY').map(o=>({id:o.exerciseId,javaSource:exercises.find(e=>e.id===o.exerciseId)!.task.code,expectedStdout:o.expected,reasoning:o.reasoning,category:o.category}));
 for(const name of ['ip-early-examples.json','ip-late-examples.json'])if(existsSync('scripts/'+name))fixtures.push(...JSON.parse(readFileSync('scripts/'+name,'utf8')) as Fixture[]);
+for(const o of expansionOracles){const exercise=expansionItems.find(e=>e.id===o.exerciseId);if(!exercise)throw Error('Missing trusted expansion fixture');fixtures.push({id:o.exerciseId,javaSource:exercise.task.code,expectedStdout:o.expected,reasoning:o.reasoning,category:o.category});}
 const results=[];
 for(const f of fixtures){
  const dir=mkdtempSync(join(tmpdir(),'delftstudy-trusted-java-'));

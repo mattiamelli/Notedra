@@ -1,0 +1,150 @@
+{
+  "startingHead": "9d26e960299fffb57815400be1d0dc3da3dd629a",
+  "branch": "maintenance/exercise-bank-expansion",
+  "gate": "FIX NEEDED",
+  "fullVitest": {
+    "result": "PASS",
+    "files": 101,
+    "tests": 2255
+  },
+  "postSpacingFocused": {
+    "result": "PASS",
+    "files": 4,
+    "tests": 25
+  },
+  "typescript": "PASS",
+  "productionBuild": "PASS",
+  "content": {
+    "objective": 104,
+    "guided": 8,
+    "newPromptDuplicates": 0,
+    "result": "PASS"
+  },
+  "coverage": {
+    "canonicalUnits": 53,
+    "unitsWithFourNew": 28,
+    "pendingUnits": 25,
+    "result": "FIX NEEDED"
+  },
+  "java": {
+    "jdk": "21.0.12.1",
+    "trustedFixtures": 125,
+    "trustedAssignmentReferences": 11,
+    "assignmentAssertions": 144,
+    "result": "PASS"
+  },
+  "co": {
+    "independentOracles": 24,
+    "realAssemblyEngineCases": 4,
+    "result": "PASS"
+  },
+  "hardening": "PASS static",
+  "security": "PASS static source and emitted asset scans",
+  "bundle": {
+    "result": "FIX NEEDED",
+    "totalAssets": 2120695,
+    "limit": 2000000,
+    "initialJS": 508745,
+    "initialGzip": 134823,
+    "css": 91846,
+    "thresholdChanged": false
+  },
+  "browserExpansion": {
+    "base": "http://127.0.0.1:4178",
+    "results": [
+      {
+        "width": 1280,
+        "objective": 32,
+        "guides": 8,
+        "result": "PASS",
+        "checks": [
+          "empty validation",
+          "correct answer",
+          "reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "overbar border and accessible label",
+          "wrong literal polarity",
+          "no horizontal overflow",
+          "no page errors",
+          "unscored guided boundaries"
+        ]
+      },
+      {
+        "width": 375,
+        "objective": 32,
+        "guides": 8,
+        "result": "PASS",
+        "checks": [
+          "empty validation",
+          "correct answer",
+          "reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "overbar border and accessible label",
+          "wrong literal polarity",
+          "no horizontal overflow",
+          "no page errors",
+          "unscored guided boundaries"
+        ]
+      }
+    ]
+  },
+  "browserNotationFinal": {
+    "base": "http://127.0.0.1:4178",
+    "results": [
+      {
+        "width": 1280,
+        "objective": 4,
+        "guides": 0,
+        "result": "PASS",
+        "checks": [
+          "empty validation",
+          "correct answer",
+          "reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "overbar border and accessible label",
+          "wrong literal polarity",
+          "no horizontal overflow",
+          "no page errors",
+          "unscored guided boundaries"
+        ]
+      },
+      {
+        "width": 375,
+        "objective": 4,
+        "guides": 0,
+        "result": "PASS",
+        "checks": [
+          "empty validation",
+          "correct answer",
+          "reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "overbar border and accessible label",
+          "wrong literal polarity",
+          "no horizontal overflow",
+          "no page errors",
+          "unscored guided boundaries"
+        ]
+      }
+    ]
+  },
+  "browserHistoricalPatch6": {
+    "result": "PASS",
+    "widths": [
+      1280,
+      375
+    ],
+    "exercisesPerWidth": 7
+  },
+  "gitDiffCheck": "PASS",
+  "commit": null,
+  "remoteMutations": false,
+  "merge": false,
+  "push": false,
+  "checkpoint": "Previous pre-finalization checkpoint; see supersededBy for current bundle status",
+  "supersededBy": "maintenance-patch-7-finalization-validation.json",
+  "reportStatus": "HISTORICAL 112-item checkpoint; superseded by maintenance-patch-7-finalization-validation.json"
+}

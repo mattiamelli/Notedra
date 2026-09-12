@@ -1,0 +1,370 @@
+[
+  {
+    "id": "ds.guided.p7-reservation-conflicts",
+    "version": "1",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "skillIds": [
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK17_02_DECOMPOSE"
+    ],
+    "subtopicIds": [
+      "IP_ST17_01_DOMAIN_MODEL",
+      "IP_ST17_02_APP_DECOMPOSE"
+    ],
+    "sourceIds": [
+      "ref-15f80f1f4bb2f1f3"
+    ],
+    "title": "Model reservations with explicit overlap rules",
+    "prompt": "Design a small application for reserving workshop benches. A booking names one bench and a half-open interval [start,end), with integer minutes and start < end. Two bookings for the same bench conflict exactly when their intervals overlap. Adjacent bookings are allowed. Describe domain types, conflict detection, import failure behavior and a user-facing query. Do not implement networking.",
+    "fields": [
+      {
+        "id": "model",
+        "label": "Model and state invariants"
+      },
+      {
+        "id": "implementation",
+        "label": "Implementation plan or Java"
+      },
+      {
+        "id": "checks",
+        "label": "Boundary cases and tests"
+      }
+    ],
+    "rubric": [
+      "Separate Bench/Booking identity from parsed text and UI.",
+      "Use start < other.end AND other.start < end for overlap on one bench.",
+      "Reject unknown benches and invalid intervals before adding a booking.",
+      "Test identical, nested, disjoint and adjacent intervals."
+    ],
+    "reference": [
+      "One design has Bench, Booking and BookingService, with a parser constructing validated objects and a CLI calling the service. Equality of bench IDs is separate from time overlap.",
+      "Intervals [10,20) and [20,30) do not conflict; [10,20) and [19,25) do. Validate every proposed import before committing it if an all-or-nothing import is selected, and state that policy explicitly. Multiple designs are valid; the rubric does not automatically prove correctness."
+    ],
+    "unitId": "IP_LEC_18",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      7,
+      13,
+      16,
+      17
+    ],
+    "demand": "Model reservations with explicit overlap rules"
+  },
+  {
+    "id": "ds.guided.p7-pricing-strategies",
+    "version": "1",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "skillIds": [
+      "IP_SK17_01_DOMAIN_MODEL"
+    ],
+    "subtopicIds": [
+      "IP_ST17_01_DOMAIN_MODEL"
+    ],
+    "sourceIds": [
+      "ref-15f80f1f4bb2f1f3"
+    ],
+    "title": "Compose pricing rules without a type-switching UI",
+    "prompt": "A hire application offers fixed-price items and time-priced items. A fixed item costs its stated amount once; a time-priced item costs its hourly rate times a non-negative integer hour count. Design a shared pricing contract, two implementations and an order containing several items. Keep printing and parsing out of the pricing types. Explain how a third pricing rule can be added.",
+    "fields": [
+      {
+        "id": "model",
+        "label": "Model and state invariants"
+      },
+      {
+        "id": "implementation",
+        "label": "Implementation plan or Java"
+      },
+      {
+        "id": "checks",
+        "label": "Boundary cases and tests"
+      }
+    ],
+    "rubric": [
+      "Define a price(hours) contract with units and invalid-input policy.",
+      "Keep item-specific price behavior behind the shared contract.",
+      "Use composition for an order collection rather than an order subclass per item kind.",
+      "Test fixed and time-priced items together and zero hours."
+    ],
+    "reference": [
+      "An interface PriceRule with price(int hours), implemented by FixedPrice and HourlyPrice, separates algorithms from the order. An order sums rule results; its caller validates or handles negative hours consistently.",
+      "For a fixed charge of 5 units and a rate of 3 units/hour, a two-hour mixed order costs 11 units; at zero hours it costs 5. These are original test fixtures, not official assessment values."
+    ],
+    "unitId": "IP_LEC_18",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      7,
+      9,
+      17
+    ],
+    "demand": "Compose pricing rules without a type-switching UI"
+  },
+  {
+    "id": "ds.guided.p7-transactional-import",
+    "version": "1",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "skillIds": [
+      "IP_SK17_02_DECOMPOSE"
+    ],
+    "subtopicIds": [
+      "IP_ST17_02_APP_DECOMPOSE"
+    ],
+    "sourceIds": [
+      "ref-15f80f1f4bb2f1f3"
+    ],
+    "title": "Exam-style: Design an atomic import with a testable failure boundary",
+    "prompt": "A catalogue import consists of lines id;quantity. IDs must be unique across the entire new import; quantity must be a non-negative integer. Replace the existing catalogue only if every line is valid. Empty input means a valid empty catalogue. Design parser, service and storage contracts and explain tests for a bad last line. The UI must not parse records itself.",
+    "fields": [
+      {
+        "id": "solution",
+        "label": "Your solution, reasoning and checks"
+      }
+    ],
+    "rubric": [
+      "Parse into temporary state rather than mutating the live catalogue line by line.",
+      "Detect duplicates and invalid quantities before replacement.",
+      "Specify ownership and closing of input resources.",
+      "Prove through test observations that failure preserves the complete old state."
+    ],
+    "reference": [
+      "Parse to a fresh map and return either a validated replacement or a failure; the service swaps its catalogue only after success. A borrowed Reader is closed by its owner, not secretly by a parsing helper.",
+      "Starting with {old:2}, importing a valid first line followed by an invalid last line must leave {old:2}. Also check empty input replaces it with empty state, duplicate IDs reject the whole import and an I/O failure cannot partially replace it."
+    ],
+    "unitId": "IP_LEC_18",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      4,
+      13,
+      16,
+      17
+    ],
+    "demand": "Design an atomic import with a testable failure boundary"
+  },
+  {
+    "id": "ds.guided.p7-snapshot-versus-live",
+    "version": "1",
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "skillIds": [
+      "IP_SK17_01_DOMAIN_MODEL",
+      "IP_SK17_02_DECOMPOSE"
+    ],
+    "subtopicIds": [
+      "IP_ST17_01_DOMAIN_MODEL",
+      "IP_ST17_02_APP_DECOMPOSE"
+    ],
+    "sourceIds": [
+      "ref-15f80f1f4bb2f1f3"
+    ],
+    "title": "Exam-style: Choose ownership for a report that must not change later",
+    "prompt": "A sensor service keeps mutable Reading objects (sensor ID and integer value). When a report is requested, its readings must remain exactly as they were at that moment, even after the service updates or removes readings. Design the service/report boundary and demonstrate why copying only the list is insufficient. Give one test that distinguishes a snapshot from a live view.",
+    "fields": [
+      {
+        "id": "solution",
+        "label": "Your solution, reasoning and checks"
+      }
+    ],
+    "rubric": [
+      "State which objects are mutable and which report data is independent.",
+      "Copy values or create immutable report entries, not only a list of original references.",
+      "Separate report formatting from state capture.",
+      "Test both updating an element and removing it after capture."
+    ],
+    "reference": [
+      "A report can store independent immutable entries made from each current sensor ID/value. Copying a list alone preserves aliases to mutable readings and therefore fails the snapshot contract.",
+      "Capture one reading at value 6, then change the original to 9 and clear the service. The snapshot must still contain the original value 6. A read-only list wrapper alone does not establish this property."
+    ],
+    "unitId": "IP_LEC_18",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      7,
+      13,
+      17
+    ],
+    "demand": "Choose ownership for a report that must not change later"
+  },
+  {
+    "id": "ds.guided.p7-delimiter-implementation",
+    "version": "1",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "skillIds": [
+      "IP_SK20_01_EXAM_SYNTHESIS"
+    ],
+    "subtopicIds": [
+      "IP_ST20_01_SPEC_TO_PROGRAM"
+    ],
+    "sourceIds": [
+      "ref-556a1c1cc39b369a"
+    ],
+    "title": "Implement a formatter with an empty-input contract",
+    "prompt": "Implement String format(int[] values): return decimal elements separated by a single vertical bar, with no leading or trailing separator; return the empty string for an empty array. Assume non-null input and preserve order. Include tests for empty, singleton and negative values. Review the implementation yourself; it will not be executed or scored.",
+    "fields": [
+      {
+        "id": "model",
+        "label": "Model and state invariants"
+      },
+      {
+        "id": "implementation",
+        "label": "Implementation plan or Java"
+      },
+      {
+        "id": "checks",
+        "label": "Boundary cases and tests"
+      }
+    ],
+    "rubric": [
+      "Make the zero-element case safe without accessing an element.",
+      "Emit exactly n-1 separators for n>0.",
+      "Preserve order, duplicates and the sign of each value.",
+      "Explain the loop invariant and boundary tests."
+    ],
+    "reference": [
+      "One solution appends a separator only when the current index is greater than zero, then appends that element. Before each iteration, the output contains exactly the already visited prefix with separators only between its elements.",
+      "Expected checks: [] gives an empty string; [7] gives 7; [-2,0,-2] gives -2|0|-2. A different implementation meeting the contract is equally valid."
+    ],
+    "unitId": "IP_LEC_21",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      6,
+      7
+    ],
+    "demand": "Implement a formatter with an empty-input contract"
+  },
+  {
+    "id": "ds.guided.p7-stream-reconstruction",
+    "version": "1",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "skillIds": [
+      "IP_SK20_01_EXAM_SYNTHESIS"
+    ],
+    "subtopicIds": [
+      "IP_ST20_01_SPEC_TO_PROGRAM"
+    ],
+    "sourceIds": [
+      "ref-556a1c1cc39b369a"
+    ],
+    "title": "Replace an imperative transformation without changing order",
+    "prompt": "Write a stream-based method taking a non-null List<String> containing no null elements. Keep strings of length at least 3, return their uppercase forms in encounter order, and preserve duplicates. Specify Locale.ROOT for case conversion. Explain why adding distinct() or sorting would change this contract. Provide two input/output tests; no automatic grading is available.",
+    "fields": [
+      {
+        "id": "model",
+        "label": "Model and state invariants"
+      },
+      {
+        "id": "implementation",
+        "label": "Implementation plan or Java"
+      },
+      {
+        "id": "checks",
+        "label": "Boundary cases and tests"
+      }
+    ],
+    "rubric": [
+      "Filter the original strings by the stated length rule.",
+      "Map retained strings using toUpperCase(Locale.ROOT).",
+      "Keep encounter order and duplicates.",
+      "Test an empty result and repeated retained strings."
+    ],
+    "reference": [
+      "A suitable pipeline is input.stream().filter(s -> s.length() >= 3).map(s -> s.toUpperCase(Locale.ROOT)).toList(). The contract does not require the result list to be mutable.",
+      "For [go, echo, echo, map], the result is [ECHO, ECHO, MAP]. For [a, to], it is empty. distinct or sorted would introduce behavior absent from the requirement. This is an authored mechanism exercise, not a copied source prompt."
+    ],
+    "unitId": "IP_LEC_21",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      29,
+      30
+    ],
+    "demand": "Replace an imperative transformation without changing order"
+  },
+  {
+    "id": "ds.guided.p7-polymorphic-extension",
+    "version": "1",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "skillIds": [
+      "IP_SK20_01_EXAM_SYNTHESIS"
+    ],
+    "subtopicIds": [
+      "IP_ST20_01_SPEC_TO_PROGRAM"
+    ],
+    "sourceIds": [
+      "ref-556a1c1cc39b369a"
+    ],
+    "title": "Exam-style: Implement and explain a polymorphic report calculation",
+    "prompt": "Design an interface Metric with int value(), a constant implementation, a sum implementation composing two Metric objects, and a report method receiving only Metric. The report must work for nested sums without inspecting implementation types. Supply a small original Java implementation and tests. Explain both static parameter type and dynamic method dispatch.",
+    "fields": [
+      {
+        "id": "solution",
+        "label": "Your solution, reasoning and checks"
+      }
+    ],
+    "rubric": [
+      "Keep reporting dependent on Metric rather than instanceof branches.",
+      "Use composition for Sum and dispatch value() on both children.",
+      "Test nested composition and repeated references.",
+      "Distinguish method selection from the static type of the report parameter."
+    ],
+    "reference": [
+      "Constant returns its stored integer. Sum.value returns left.value()+right.value(); each child call dispatches to that actual implementation. The report method simply uses metric.value().",
+      "A nested sum of 2 and a sum of 3 and 4 produces 9. Reusing one constant object twice is allowed and contributes twice. Do not claim that passing tests proves all possible implementations correct."
+    ],
+    "unitId": "IP_LEC_21",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      25,
+      26,
+      31,
+      32
+    ],
+    "demand": "Implement and explain a polymorphic report calculation"
+  },
+  {
+    "id": "ds.guided.p7-failure-path-integration",
+    "version": "1",
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "skillIds": [
+      "IP_SK20_01_EXAM_SYNTHESIS",
+      "IP_SK20_02_EXAM_PRIORITIZE"
+    ],
+    "subtopicIds": [
+      "IP_ST20_01_SPEC_TO_PROGRAM"
+    ],
+    "sourceIds": [
+      "ref-556a1c1cc39b369a"
+    ],
+    "title": "Exam-style: Build a recoverable command-processing slice",
+    "prompt": "Implement a console-independent processor for commands ADD n and TOTAL, supplied one line at a time. ADD requires exactly one integer token; TOTAL requires no arguments. Valid ADD changes a running sum and returns OK; TOTAL returns its decimal value. Invalid lines return ERROR and leave the sum unchanged. Assume arithmetic stays within int range. Give a sequence test including a malformed command, and a sensible incremental implementation order.",
+    "fields": [
+      {
+        "id": "solution",
+        "label": "Your solution, reasoning and checks"
+      }
+    ],
+    "rubric": [
+      "Separate parsing/validation from the state mutation.",
+      "Check complete command arity before committing an ADD.",
+      "Handle parse failures without losing previous state.",
+      "Prioritize a compiling tested vertical slice before extra presentation."
+    ],
+    "reference": [
+      "Validate the entire line and parse n before applying the update. Start with state plus TOTAL, add one valid ADD case, then add rejection and sequence tests; keep console I/O outside the processor.",
+      "Sequence ADD 4, ADD bad, TOTAL should return OK, ERROR, 4. Also test ADD 2 extra and TOTAL extra: both must reject with unchanged state. Alternative designs are acceptable if they honor the same atomic update boundary."
+    ],
+    "unitId": "IP_LEC_21",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      16,
+      21,
+      25,
+      30,
+      32
+    ],
+    "demand": "Build a recoverable command-processing slice"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "base": "http://127.0.0.1:4178",
+  "results": [
+    {
+      "width": 1280,
+      "objective": 32,
+      "guides": 8,
+      "result": "PASS",
+      "checks": [
+        "empty validation",
+        "correct answer",
+        "reload",
+        "same-topic next",
+        "practice/exam distinction",
+        "overbar border and accessible label",
+        "wrong literal polarity",
+        "no horizontal overflow",
+        "no page errors",
+        "unscored guided boundaries"
+      ]
+    },
+    {
+      "width": 375,
+      "objective": 32,
+      "guides": 8,
+      "result": "PASS",
+      "checks": [
+        "empty validation",
+        "correct answer",
+        "reload",
+        "same-topic next",
+        "practice/exam distinction",
+        "overbar border and accessible label",
+        "wrong literal polarity",
+        "no horizontal overflow",
+        "no page errors",
+        "unscored guided boundaries"
+      ]
+    }
+  ]
+}

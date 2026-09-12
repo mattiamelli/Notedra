@@ -1,0 +1,143 @@
+[
+  {
+    "id": "ds.practice.p7-co-address-alias-write",
+    "answer": "544,29",
+    "reasoning": "Both address expressions resolve to 512+32=544. The second store overwrites the same location written through base/index addressing. leaq computes an address and does not read the stored 17.",
+    "program": "movq $512, %rbx\nmovq $3, %rcx\nmovq $17, 8(%rbx,%rcx,8)\nleaq 32(%rbx), %rdx\nmovq $29, (%rdx)\nmovq 8(%rbx,%rcx,8), %rax",
+    "registers": [
+      "rdx",
+      "rax"
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-nested-restoration",
+    "answer": "34,4,4096",
+    "reasoning": "outer saves the caller RBX=4 and uses 3 for inner, which multiplies RAX to 30. After restoring RBX and both return addresses, the caller adds 4. All stack pushes have matching pops/returns, restoring RSP.",
+    "program": "movq $10, %rax\nmovq $4, %rbx\ncall outer\naddq %rbx, %rax\nret\nouter:\npushq %rbx\nmovq $3, %rbx\ncall inner\npopq %rbx\nret\ninner:\nimulq %rbx, %rax\nret",
+    "registers": [
+      "rax",
+      "rbx",
+      "rsp"
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-wide-product",
+    "answer": "2",
+    "reasoning": "The product (2^64−1)×2 has high half 1 and low half 2^64−2. Shifting the high half left by one gives RDX=2. This is unsigned mulq, not the signed low-half imulq operation.",
+    "program": "movq $-1, %rax\nmovq $2, %rbx\nmulq %rbx\nshlq $1, %rdx",
+    "registers": [
+      "rdx"
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-stable-frame-base",
+    "answer": "40,7,4096",
+    "reasoning": "RBP remains at the saved value slot while RSP moves 16 bytes lower for local storage. Therefore the two loads read different locations. Releasing locals and popping the saved slot restores the initial stack pointer.",
+    "program": "movq $40, %rax\npushq %rax\nmovq %rsp, %rbp\nsubq $16, %rsp\nmovq $7, (%rsp)\nmovq (%rbp), %rcx\nmovq (%rsp), %rdx\naddq $16, %rsp\npopq %rax",
+    "registers": [
+      "rcx",
+      "rdx",
+      "rsp"
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-interpretation-triple",
+    "answer": "-13,-2,-3",
+    "reasoning": "Sign-and-magnitude uses sign 1 and magnitude 1101=13. One’s complement inverts to magnitude 00010=2. Two’s complement subtracts 32 from unsigned 29, giving −3."
+  },
+  {
+    "id": "ds.practice.p7-co-decimal-carry-bcd",
+    "answer": "000100110010",
+    "reasoning": "The decimal sum is 132. Each decimal digit is encoded independently: 1→0001, 3→0011, 2→0010. Binary addition of uncorrected packed digit codes would not implement this decimal carry."
+  },
+  {
+    "id": "ds.practice.p7-co-inverse-wrap-add",
+    "answer": "232,1",
+    "reasoning": "The equation is X+41 ≡ 17 mod 256. Within 0..255 the unique solution is X=232. The full sum 273=256+17 explains carry-out 1."
+  },
+  {
+    "id": "ds.practice.p7-co-biased-range",
+    "answer": "12",
+    "reasoning": "Codes run from 0 through 31. Non-negative values require U≥20, so codes 20..31 inclusive provide 12 values. The bias changes the represented range, not the number of bit patterns."
+  },
+  {
+    "id": "ds.practice.p7-co-narrowing-boundary",
+    "answer": "6,-24",
+    "reasoning": "The value is 232−256=−24. Five bits cover only −16..15; six cover −32..31. Removing repeated leading sign bits yields 101000 at six bits, still −24."
+  },
+  {
+    "id": "ds.practice.p7-co-fixed-rescale",
+    "answer": "11110110",
+    "reasoning": "The raw signed integer is −20, so the value is −20/8=−2.5. With two fractional bits its raw integer must be −10, represented by 256−10=246 or 11110110. This case is exactly representable."
+  },
+  {
+    "id": "ds.practice.p7-co-normal-float-decode",
+    "answer": "-5.5",
+    "reasoning": "E=5 gives exponent 2; F=3 gives significand 1.375. Applying the negative sign gives −1.375×4=−5.5. Fraction bits do not encode a standalone decimal fraction."
+  },
+  {
+    "id": "ds.practice.p7-co-precision-boundary",
+    "answer": "16,8",
+    "reasoning": "Below 2 the exponent is zero and the spacing is 2^−4=1/16. At 2 the exponent becomes one, doubling the spacing to 1/8. Uniform fraction width does not imply uniform absolute spacing."
+  },
+  {
+    "id": "ds.practice.p7-co-format-footprint",
+    "answer": "36,52",
+    "reasoning": "The three-address instruction needs 6+3×10=36 bits. Each two-address instruction needs 6+2×10=26 bits, and preserving B requires both instructions, totalling 52. Shorter individual instructions can still make a longer sequence."
+  },
+  {
+    "id": "ds.practice.p7-co-destructive-destination",
+    "answer": "17,10",
+    "reasoning": "MOV first copies 7 into C. ADD A,C changes only C to 10. The last ADD uses that updated C to change B from 7 to 17; it does not replace B by 10."
+  },
+  {
+    "id": "ds.practice.p7-co-stack-operand-order",
+    "answer": "15",
+    "reasoning": "The subtraction consumes 9 and 4 in that order to produce 5, then multiplication consumes 5 and 3 to produce 15. Reversing the two popped operands would change the sign."
+  },
+  {
+    "id": "ds.practice.p7-co-instruction-boundaries",
+    "answer": "208,210",
+    "reasoning": "The second instruction starts at 203 and occupies five bytes through 207. The third starts at 208 and occupies bytes 208..209, so the next address is 210. Byte addresses are not instruction indices."
+  },
+  {
+    "id": "ds.practice.p7-co-policy-divergence",
+    "answer": "1,2",
+    "reasoning": "Both policies hit the third access A. Loading C evicts B under LRU, but A under FIFO because A arrived first. The final B therefore misses under LRU and hits under FIFO."
+  },
+  {
+    "id": "ds.practice.p7-co-associativity-overhead",
+    "answer": "64",
+    "reasoning": "Offset width is 4 in both. Direct mapping has 5 index bits and 11 tag bits; four-way mapping has 8 sets, 3 index bits and 13 tag bits. The 2-bit increase across 32 lines costs 64 tag bits."
+  },
+  {
+    "id": "ds.practice.p7-co-stride-conflicts",
+    "answer": "3,0",
+    "reasoning": "In the first trace, each adjacent pair accesses one loaded block and produces one hit. In the second, blocks 0 and 2 continually evict each other from line 0, including accesses to the other word in each block."
+  },
+  {
+    "id": "ds.practice.p7-co-miss-budget",
+    "answer": "10",
+    "reasoning": "All lookups consume 100×2=200 ns. At most 300 ns remain for extra miss penalties, permitting floor(300/30)=10 misses. The lookup cost is paid for misses too."
+  },
+  {
+    "id": "ds.practice.p7-co-unbalanced-stages",
+    "answer": "40,36",
+    "reasoning": "Non-pipelined latency is 2+5+3=10 ns per operation, totalling 40. Pipeline period is max(2,5,3)+1=6 ns; fill and drain take 3+4−1=6 cycles, totalling 36. Three stages do not guarantee threefold speedup on four items."
+  },
+  {
+    "id": "ds.practice.p7-co-ready-cycle",
+    "answer": "4",
+    "reasoning": "I uses cycle 2. C cannot issue in cycle 3 because the result is not yet usable, so cycle 3 stalls and C issues at 4. An independent instruction hides part, but not all, of the stated latency."
+  },
+  {
+    "id": "ds.practice.p7-co-branch-slot-state",
+    "answer": "5",
+    "reasoning": "The taken branch still executes its one delay-slot instruction, raising X from 2 to 5. It then reaches END and skips the multiplication. This is the explicitly stated toy delay-slot model, not x86 behavior."
+  },
+  {
+    "id": "ds.practice.p7-co-clock-versus-cpi",
+    "answer": "200,240",
+    "reasoning": "The slow design takes 100×1×2=200 ns. The faster clock takes (100+140)×1=240 ns. Clock rate alone cannot rank execution time when stall costs differ."
+  }
+]

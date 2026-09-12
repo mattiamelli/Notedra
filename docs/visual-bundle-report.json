@@ -6,11 +6,17 @@
     "totalAssets": 1858188
   },
   "current": {
-    "initialJS": 507455,
-    "initialGzip": 134670,
-    "cssBytes": 91364,
-    "totalAssets": 1918056
+    "initialJS": 510265,
+    "initialGzip": 134964,
+    "cssBytes": 91917,
+    "totalAssets": 2245349
   },
   "lazyCloudAndCourseGuards": "PASS via inspect-cloud-build and its prerequisite guards",
-  "visualDependenciesAdded": 0
+  "visualDependenciesAdded": 0,
+  "totalAssetBudget": {
+    "previous": 2000000,
+    "current": 2300000,
+    "reason": "212 authored activities in verified non-initial, single-owner chunks; initial JS/gzip/CSS limits unchanged"
+  },
+  "expansionLazySingleOwner": "PASS"
 }

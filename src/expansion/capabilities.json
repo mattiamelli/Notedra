@@ -1,0 +1,150 @@
+[
+  {
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "count": 3
+  },
+  {
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "count": 5
+  },
+  {
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "count": 3
+  },
+  {
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T07_ISA",
+    "count": 6
+  },
+  {
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "count": 3
+  },
+  {
+    "topicId": "CO_T10_DMA_MEMORY",
+    "count": 3
+  },
+  {
+    "topicId": "CO_T11_CACHE",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T12_PIPELINE",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T13_PARALLELISM",
+    "count": 1
+  },
+  {
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "count": 1
+  },
+  {
+    "topicId": "IP_T01_JAVA_BASICS",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T08_TESTING",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T09_INHERITANCE",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T12_EXCEPTIONS",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T13_DEBUGGING",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T15_IO_PARSING",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T18_MODERN_JAVA",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "count": 4
+  },
+  {
+    "topicId": "RL_T01_PROP_LOGIC",
+    "count": 6
+  },
+  {
+    "topicId": "RL_T02_FOL",
+    "count": 2
+  },
+  {
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "count": 1
+  },
+  {
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "count": 6
+  },
+  {
+    "topicId": "RL_T06_SET_THEORY",
+    "count": 4
+  },
+  {
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "count": 2
+  }
+]

@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {AuthoredSources} from '../topic-study/AuthoredViews';
 import type {GuidedActivity} from './types';
-export function GuidedPractice({activities}:{activities:GuidedActivity[]}){
- return <section className="ds-section ds-study-reading" aria-labelledby="rl-guided-heading"><h2 id="rl-guided-heading">Guided reasoning · unscored self-check</h2><p>Write an attempt before revealing the criteria. These prompts may have many valid responses. No automatic correctness, numeric score or academic evidence is assigned.</p>{activities.map(activity=><GuidedAttempt key={activity.id} activity={activity}/>)}</section>;
+export function GuidedPractice({activities,headingId="rl-guided-heading"}:{activities:GuidedActivity[];headingId?:string}){
+ return <section className="ds-section ds-study-reading" aria-labelledby={headingId}><h2 id={headingId}>Guided reasoning · unscored self-check</h2><p>Write an attempt before revealing the criteria. These prompts may have many valid responses. No automatic correctness, numeric score or academic evidence is assigned.</p>{activities.map(activity=><GuidedAttempt key={activity.id} activity={activity}/>)}</section>;
 }
 function GuidedAttempt({activity}:{activity:GuidedActivity}){
  const [answers,setAnswers]=useState<Record<string,string>>({});const [revealed,setRevealed]=useState(false);

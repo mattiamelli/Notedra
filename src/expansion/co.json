@@ -1,0 +1,1051 @@
+[
+  {
+    "id": "ds.practice.p7-co-address-alias-write",
+    "version": "1",
+    "title": "Detect two address expressions naming one location",
+    "prompt": "Execute this AT&T fragment in the accepted workbench model. All numbers are decimal. Return (1) RDX, (2) RAX.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subtopicId": "CO_ST06_01_SYNTAX_REGS",
+    "skillId": "CO_SK06_01_ASM_READ",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "544,29"
+    },
+    "explanation": "Both address expressions resolve to 512+32=544. The second store overwrites the same location written through base/index addressing. leaq computes an address and does not read the stored 17.",
+    "mode": "practice",
+    "unitId": "CO_LEC_02",
+    "difficulty": "Medium",
+    "demand": "Detect two address expressions naming one location",
+    "sourcePages": [
+      35,
+      36,
+      37,
+      39
+    ],
+    "stimulus": {
+      "language": "assembly",
+      "code": "movq $512, %rbx\nmovq $3, %rcx\nmovq $17, 8(%rbx,%rcx,8)\nleaq 32(%rbx), %rdx\nmovq $29, (%rdx)\nmovq 8(%rbx,%rcx,8), %rax"
+    }
+  },
+  {
+    "id": "ds.practice.p7-co-nested-restoration",
+    "version": "1",
+    "title": "Preserve a caller value across nested calls",
+    "prompt": "RSP starts at 4096. Run the following fragment until immediately BEFORE the top-level ret on line 5 (do not execute it). Return (1) RAX, (2) RBX, (3) RSP.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "34,4,4096"
+    },
+    "explanation": "outer saves the caller RBX=4 and uses 3 for inner, which multiplies RAX to 30. After restoring RBX and both return addresses, the caller adds 4. All stack pushes have matching pops/returns, restoring RSP.",
+    "mode": "exam",
+    "unitId": "CO_LEC_02",
+    "difficulty": "Hard",
+    "demand": "Preserve a caller value across nested calls",
+    "sourcePages": [
+      42,
+      44,
+      45,
+      47,
+      51,
+      52,
+      56,
+      58
+    ],
+    "stimulus": {
+      "language": "assembly",
+      "code": "movq $10, %rax\nmovq $4, %rbx\ncall outer\naddq %rbx, %rax\nret\nouter:\npushq %rbx\nmovq $3, %rbx\ncall inner\npopq %rbx\nret\ninner:\nimulq %rbx, %rax\nret"
+    }
+  },
+  {
+    "id": "ds.practice.p7-co-wide-product",
+    "version": "1",
+    "title": "Keep the high half of an unsigned product",
+    "prompt": "Execute this fragment. mulq treats its inputs as unsigned 64-bit values and writes the 128-bit product to RDX:RAX. Return the final RDX as an unsigned decimal integer.",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subtopicId": "CO_ST06_01_SYNTAX_REGS",
+    "skillId": "CO_SK06_01_ASM_READ",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2"
+    },
+    "explanation": "The product (2^64−1)×2 has high half 1 and low half 2^64−2. Shifting the high half left by one gives RDX=2. This is unsigned mulq, not the signed low-half imulq operation.",
+    "mode": "exam",
+    "unitId": "CO_LEC_02",
+    "difficulty": "Hard",
+    "demand": "Keep the high half of an unsigned product",
+    "sourcePages": [
+      24,
+      25,
+      27,
+      38,
+      40
+    ],
+    "stimulus": {
+      "language": "assembly",
+      "code": "movq $-1, %rax\nmovq $2, %rbx\nmulq %rbx\nshlq $1, %rdx"
+    }
+  },
+  {
+    "id": "ds.practice.p7-co-stable-frame-base",
+    "version": "1",
+    "title": "Separate the frame base from temporary stack storage",
+    "prompt": "RSP starts at 4096. Execute the fragment and return (1) RCX, (2) RDX, (3) final RSP.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "40,7,4096"
+    },
+    "explanation": "RBP remains at the saved value slot while RSP moves 16 bytes lower for local storage. Therefore the two loads read different locations. Releasing locals and popping the saved slot restores the initial stack pointer.",
+    "mode": "practice",
+    "unitId": "CO_LEC_02",
+    "difficulty": "Medium",
+    "demand": "Separate the frame base from temporary stack storage",
+    "sourcePages": [
+      42,
+      44,
+      45,
+      55,
+      56,
+      57,
+      58
+    ],
+    "stimulus": {
+      "language": "assembly",
+      "code": "movq $40, %rax\npushq %rax\nmovq %rsp, %rbp\nsubq $16, %rsp\nmovq $7, (%rsp)\nmovq (%rbp), %rcx\nmovq (%rsp), %rdx\naddq $16, %rsp\npopq %rax"
+    }
+  },
+  {
+    "id": "ds.practice.p7-co-interpretation-triple",
+    "version": "1",
+    "title": "Separate representation rules for one stored word",
+    "prompt": "Interpret the same five-bit word 11101 as (1) sign-and-magnitude, (2) one’s complement, (3) two’s complement. Return the three signed decimal values.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_02_SIGNED_INTEGER",
+    "skillId": "CO_SK04_03_SIGNED_ENCODE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_05",
+      "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "-13,-2,-3"
+    },
+    "explanation": "Sign-and-magnitude uses sign 1 and magnitude 1101=13. One’s complement inverts to magnitude 00010=2. Two’s complement subtracts 32 from unsigned 29, giving −3.",
+    "mode": "practice",
+    "unitId": "CO_LEC_05",
+    "difficulty": "Medium",
+    "demand": "Separate representation rules for one stored word",
+    "sourcePages": [
+      25,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-decimal-carry-bcd",
+    "version": "1",
+    "title": "Carry between decimal digits before encoding BCD",
+    "prompt": "Two unsigned decimal amounts 59 and 73 are added. Encode the decimal sum as exactly three packed BCD digits (12 bits). Do not interpret the BCD input digits as one binary integer.",
+    "rules": "Enter exactly 12 digits, without a prefix. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_03_OTHER_ENCODINGS",
+    "skillId": "CO_SK04_05_BCD_EXCESS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_05",
+      "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 12
+    },
+    "reference": {
+      "kind": "text",
+      "value": "000100110010"
+    },
+    "explanation": "The decimal sum is 132. Each decimal digit is encoded independently: 1→0001, 3→0011, 2→0010. Binary addition of uncorrected packed digit codes would not implement this decimal carry.",
+    "mode": "practice",
+    "unitId": "CO_LEC_05",
+    "difficulty": "Medium",
+    "demand": "Carry between decimal digits before encoding BCD",
+    "sourcePages": [
+      18,
+      19,
+      20,
+      26
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-inverse-wrap-add",
+    "version": "1",
+    "title": "Recover a missing operand from a wrapped unsigned result",
+    "prompt": "An eight-bit unsigned adder computes X + 41 and stores the low eight result bits, which are 17. X is an eight-bit unsigned input. Return (1) X in decimal, (2) the carry-out bit.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_01_RADIX",
+    "skillId": "CO_SK04_02_RADIX_ARITH",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_05",
+      "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "232,1"
+    },
+    "explanation": "The equation is X+41 ≡ 17 mod 256. Within 0..255 the unique solution is X=232. The full sum 273=256+17 explains carry-out 1.",
+    "mode": "exam",
+    "unitId": "CO_LEC_05",
+    "difficulty": "Hard",
+    "demand": "Recover a missing operand from a wrapped unsigned result",
+    "sourcePages": [
+      17,
+      18,
+      19,
+      20,
+      23
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-biased-range",
+    "version": "1",
+    "title": "Count a subrange in a biased encoding",
+    "prompt": "A five-bit excess-20 encoding represents value U−20 for unsigned code U. How many distinct codes represent a non-negative value?",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_02_SIGNED_INTEGER",
+    "skillId": "CO_SK04_03_SIGNED_ENCODE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_05",
+      "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "12"
+    },
+    "explanation": "Codes run from 0 through 31. Non-negative values require U≥20, so codes 20..31 inclusive provide 12 values. The bias changes the represented range, not the number of bit patterns.",
+    "mode": "exam",
+    "unitId": "CO_LEC_05",
+    "difficulty": "Hard",
+    "demand": "Count a subrange in a biased encoding",
+    "sourcePages": [
+      25,
+      31
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-narrowing-boundary",
+    "version": "1",
+    "title": "Find the smallest lossless signed width",
+    "prompt": "The eight-bit two’s-complement pattern 11101000 is narrowed without changing its signed value. Give (1) the minimum signed width in bits, (2) the signed decimal value.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "subtopicId": "CO_ST04_02_SIGNED_INTEGER",
+    "skillId": "CO_SK04_03_SIGNED_ENCODE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "6,-24"
+    },
+    "explanation": "The value is 232−256=−24. Five bits cover only −16..15; six cover −32..31. Removing repeated leading sign bits yields 101000 at six bits, still −24.",
+    "mode": "practice",
+    "unitId": "CO_LEC_06",
+    "difficulty": "Medium",
+    "demand": "Find the smallest lossless signed width",
+    "sourcePages": [
+      3,
+      7
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-fixed-rescale",
+    "version": "1",
+    "title": "Rescale a signed fixed-point value exactly",
+    "prompt": "An eight-bit two’s-complement fixed-point value has three fractional bits and raw pattern 11101100. Re-encode the same value in eight-bit two’s complement with two fractional bits. Give the new raw pattern.",
+    "rules": "Enter exactly 8 digits, without a prefix. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subtopicId": "CO_ST05_01_FIXED",
+    "skillId": "CO_SK05_01_FIXED",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 8
+    },
+    "reference": {
+      "kind": "text",
+      "value": "11110110"
+    },
+    "explanation": "The raw signed integer is −20, so the value is −20/8=−2.5. With two fractional bits its raw integer must be −10, represented by 256−10=246 or 11110110. This case is exactly representable.",
+    "mode": "practice",
+    "unitId": "CO_LEC_06",
+    "difficulty": "Medium",
+    "demand": "Rescale a signed fixed-point value exactly",
+    "sourcePages": [
+      3,
+      11,
+      12,
+      13,
+      14
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-normal-float-decode",
+    "version": "1",
+    "title": "Combine sign exponent and fraction fields",
+    "prompt": "A normalized binary format stores sign s, a 3-bit exponent E with bias 3, and a 3-bit fraction F, with value (−1)^s × (1+F/8) × 2^(E−3). No special encodings apply here. Decode s=1, E=101, F=011 to a decimal value.",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subtopicId": "CO_ST05_02_FLOAT",
+    "skillId": "CO_SK05_02_FLOAT_ENCODE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "decimal",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "-5.5"
+    },
+    "explanation": "E=5 gives exponent 2; F=3 gives significand 1.375. Applying the negative sign gives −1.375×4=−5.5. Fraction bits do not encode a standalone decimal fraction.",
+    "mode": "exam",
+    "unitId": "CO_LEC_06",
+    "difficulty": "Hard",
+    "demand": "Combine sign exponent and fraction fields",
+    "sourcePages": [
+      15,
+      18,
+      19,
+      20,
+      21,
+      24
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-precision-boundary",
+    "version": "1",
+    "title": "Compare representable gaps across an exponent boundary",
+    "prompt": "A normalized positive binary format has four stored fraction bits and sufficient exponent range. Give (1) the gap from the largest representable value below 2 to 2, (2) the gap from 2 to its next representable value. Write each gap as 1/d and return the two integer denominators d.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "subtopicId": "CO_ST05_02_FLOAT",
+    "skillId": "CO_SK05_03_FLOAT_RANGE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_06",
+      "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+      "locator": "PDF_PAGES_1-27",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "16,8"
+    },
+    "explanation": "Below 2 the exponent is zero and the spacing is 2^−4=1/16. At 2 the exponent becomes one, doubling the spacing to 1/8. Uniform fraction width does not imply uniform absolute spacing.",
+    "mode": "exam",
+    "unitId": "CO_LEC_06",
+    "difficulty": "Hard",
+    "demand": "Compare representable gaps across an exponent boundary",
+    "sourcePages": [
+      15,
+      20,
+      21,
+      25,
+      26
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-format-footprint",
+    "version": "1",
+    "title": "Compare code size after preserving a destructive source",
+    "prompt": "A toy ISA has 6-bit opcodes and 10-bit explicit addresses. A three-address ADD computes C=A+B in one instruction. A two-address ISA computes the same result while preserving A and B using MOV B,C; ADD A,C. There is no padding. Return total encoded bits for (1) the three-address sequence, (2) the two-address sequence.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_01_FORMAT",
+    "skillId": "CO_SK07_02_ISA_DESIGN",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_07",
+      "filename": "CO Lecture 7 - ISA Part 1.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "36,52"
+    },
+    "explanation": "The three-address instruction needs 6+3×10=36 bits. Each two-address instruction needs 6+2×10=26 bits, and preserving B requires both instructions, totalling 52. Shorter individual instructions can still make a longer sequence.",
+    "mode": "exam",
+    "unitId": "CO_LEC_07",
+    "difficulty": "Hard",
+    "demand": "Compare code size after preserving a destructive source",
+    "sourcePages": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-destructive-destination",
+    "version": "1",
+    "title": "Trace the overwritten operand of a two-address ISA",
+    "prompt": "A toy two-address ISA defines ADD src,dst as dst=dst+src and MOV src,dst as dst=src. Initially A=3, B=7, C=0. Execute MOV B,C; ADD A,C; ADD C,B. Return (1) B, (2) C.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_02_STYLES",
+    "skillId": "CO_SK07_03_ISA_COMPARE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_07",
+      "filename": "CO Lecture 7 - ISA Part 1.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "17,10"
+    },
+    "explanation": "MOV first copies 7 into C. ADD A,C changes only C to 10. The last ADD uses that updated C to change B from 7 to 17; it does not replace B by 10.",
+    "mode": "practice",
+    "unitId": "CO_LEC_07",
+    "difficulty": "Medium",
+    "demand": "Trace the overwritten operand of a two-address ISA",
+    "sourcePages": [
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-stack-operand-order",
+    "version": "1",
+    "title": "Recover subtraction order on a zero-address machine",
+    "prompt": "A toy stack ISA defines SUB as popping right, then left, and pushing left−right; MUL similarly pushes left×right. Starting empty, execute PUSH 9; PUSH 4; SUB; PUSH 3; MUL. What single value remains?",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_02_STYLES",
+    "skillId": "CO_SK07_03_ISA_COMPARE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_07",
+      "filename": "CO Lecture 7 - ISA Part 1.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "15"
+    },
+    "explanation": "The subtraction consumes 9 and 4 in that order to produce 5, then multiplication consumes 5 and 3 to produce 15. Reversing the two popped operands would change the sign.",
+    "mode": "practice",
+    "unitId": "CO_LEC_07",
+    "difficulty": "Medium",
+    "demand": "Recover subtraction order on a zero-address machine",
+    "sourcePages": [
+      20,
+      21
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-instruction-boundaries",
+    "version": "1",
+    "title": "Track variable-length instruction locations",
+    "prompt": "Instructions begin at byte address 200 and have lengths 3, 5 and 2 bytes, respectively. No padding occurs. Return (1) the address of the third instruction, (2) the address immediately following it.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_01_FORMAT",
+    "skillId": "CO_SK07_01_ISA_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_07",
+      "filename": "CO Lecture 7 - ISA Part 1.pdf",
+      "locator": "PDF_PAGES_1-23",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "208,210"
+    },
+    "explanation": "The second instruction starts at 203 and occupies five bytes through 207. The third starts at 208 and occupies bytes 208..209, so the next address is 210. Byte addresses are not instruction indices.",
+    "mode": "exam",
+    "unitId": "CO_LEC_07",
+    "difficulty": "Hard",
+    "demand": "Track variable-length instruction locations",
+    "sourcePages": [
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-policy-divergence",
+    "version": "1",
+    "title": "Distinguish recency from arrival order",
+    "prompt": "A fully associative cache holds two blocks and starts empty. Access blocks A,B,A,C,B. Return hit count for (1) LRU replacement, (2) FIFO replacement. On a hit, LRU updates recency; FIFO does not change arrival order.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_02_TRACE",
+    "skillId": "CO_SK11_02_CACHE_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,2"
+    },
+    "explanation": "Both policies hit the third access A. Loading C evicts B under LRU, but A under FIFO because A arrived first. The final B therefore misses under LRU and hits under FIFO.",
+    "mode": "practice",
+    "unitId": "CO_LEC_13",
+    "difficulty": "Medium",
+    "demand": "Distinguish recency from arrival order",
+    "sourcePages": [
+      14,
+      23,
+      28,
+      29,
+      30,
+      31,
+      33
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-associativity-overhead",
+    "version": "1",
+    "title": "Measure the tag-storage cost of extra associativity",
+    "prompt": "A byte-addressed machine has 20-bit addresses. Two caches each hold 32 lines of 16 bytes. One is direct-mapped, the other 4-way set-associative. Ignoring replacement and valid/dirty metadata, how many MORE tag bits in total does the 4-way cache store?",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_01_ADDRESS",
+    "skillId": "CO_SK11_01_CACHE_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "64"
+    },
+    "explanation": "Offset width is 4 in both. Direct mapping has 5 index bits and 11 tag bits; four-way mapping has 8 sets, 3 index bits and 13 tag bits. The 2-bit increase across 32 lines costs 64 tag bits.",
+    "mode": "exam",
+    "unitId": "CO_LEC_13",
+    "difficulty": "Hard",
+    "demand": "Measure the tag-storage cost of extra associativity",
+    "sourcePages": [
+      20,
+      24,
+      25,
+      26,
+      27
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-stride-conflicts",
+    "version": "1",
+    "title": "Contrast spatial locality with a conflicting access order",
+    "prompt": "An empty direct-mapped cache has two lines of two words each. Block number is floor(wordAddress/2), line is block mod 2. Compare traces (1) 0,1,4,5,0,1 and (2) 0,4,1,5,0,4. Return the hit counts.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_03_LOCALITY",
+    "skillId": "CO_SK11_03_CACHE_OPT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "3,0"
+    },
+    "explanation": "In the first trace, each adjacent pair accesses one loaded block and produces one hit. In the second, blocks 0 and 2 continually evict each other from line 0, including accesses to the other word in each block.",
+    "mode": "exam",
+    "unitId": "CO_LEC_13",
+    "difficulty": "Hard",
+    "demand": "Contrast spatial locality with a conflicting access order",
+    "sourcePages": [
+      8,
+      9,
+      14,
+      20,
+      21
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-miss-budget",
+    "version": "1",
+    "title": "Derive a maximum miss count from a latency budget",
+    "prompt": "For exactly 100 accesses, each costs 2 ns for the cache lookup, and each miss adds 30 ns beyond that lookup. Total time must not exceed 500 ns. What is the maximum integer number of misses allowed?",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T11_CACHE",
+    "subtopicId": "CO_ST11_03_LOCALITY",
+    "skillId": "CO_SK11_03_CACHE_OPT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_13",
+      "filename": "CO Lecture 13 - Caching.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "10"
+    },
+    "explanation": "All lookups consume 100×2=200 ns. At most 300 ns remain for extra miss penalties, permitting floor(300/30)=10 misses. The lookup cost is paid for misses too.",
+    "mode": "practice",
+    "unitId": "CO_LEC_13",
+    "difficulty": "Medium",
+    "demand": "Derive a maximum miss count from a latency budget",
+    "sourcePages": [
+      9,
+      10,
+      11
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-unbalanced-stages",
+    "version": "1",
+    "title": "Account for the slowest stage and pipeline-register overhead",
+    "prompt": "A non-pipelined operation has three sequential stage delays 2,5,3 ns. A pipeline puts a register after each stage, adding 1 ns to the stage clock limit. For four independent operations, no stalls, return (1) non-pipelined total ns, (2) pipelined total ns.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T12_PIPELINE",
+    "subtopicId": "CO_ST12_01_THROUGHPUT",
+    "skillId": "CO_SK12_01_PIPE_PERF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_14",
+      "filename": "CO Lecture 14 - Pipelining.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "40,36"
+    },
+    "explanation": "Non-pipelined latency is 2+5+3=10 ns per operation, totalling 40. Pipeline period is max(2,5,3)+1=6 ns; fill and drain take 3+4−1=6 cycles, totalling 36. Three stages do not guarantee threefold speedup on four items.",
+    "mode": "exam",
+    "unitId": "CO_LEC_14",
+    "difficulty": "Hard",
+    "demand": "Account for the slowest stage and pipeline-register overhead",
+    "sourcePages": [
+      5,
+      7,
+      8,
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-ready-cycle",
+    "version": "1",
+    "title": "Schedule a consumer after an explicitly timed producer",
+    "prompt": "A pipeline issues at most one instruction per cycle, starting cycle 1. A producer P issues at cycle 1 and its result is usable by a consumer only from cycle 4. Independent I may issue between them. Program order is P,I,C and C consumes P. With no reordering or other hazards, in which cycle does C issue?",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T12_PIPELINE",
+    "subtopicId": "CO_ST12_03_SCHEDULE",
+    "skillId": "CO_SK12_03_PIPE_SCHEDULE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_14",
+      "filename": "CO Lecture 14 - Pipelining.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4"
+    },
+    "explanation": "I uses cycle 2. C cannot issue in cycle 3 because the result is not yet usable, so cycle 3 stalls and C issues at 4. An independent instruction hides part, but not all, of the stated latency.",
+    "mode": "practice",
+    "unitId": "CO_LEC_14",
+    "difficulty": "Medium",
+    "demand": "Schedule a consumer after an explicitly timed producer",
+    "sourcePages": [
+      18,
+      19,
+      20,
+      21,
+      22
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-branch-slot-state",
+    "version": "1",
+    "title": "Respect an always-executed branch delay slot",
+    "prompt": "A toy delayed-branch machine executes the instruction immediately after a branch exactly once, whether the branch is taken or not. Initially X=2. The sequence is: branch to END (taken); delay slot X=X+3; skipped fall-through X=X*4; END. What is final X?",
+    "rules": "Enter the requested numeric value; no units. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T12_PIPELINE",
+    "subtopicId": "CO_ST12_02_HAZARDS",
+    "skillId": "CO_SK12_02_PIPE_HAZARD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_14",
+      "filename": "CO Lecture 14 - Pipelining.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "5"
+    },
+    "explanation": "The taken branch still executes its one delay-slot instruction, raising X from 2 to 5. It then reaches END and skips the multiplication. This is the explicitly stated toy delay-slot model, not x86 behavior.",
+    "mode": "practice",
+    "unitId": "CO_LEC_14",
+    "difficulty": "Medium",
+    "demand": "Respect an always-executed branch delay slot",
+    "sourcePages": [
+      23,
+      24,
+      25
+    ]
+  },
+  {
+    "id": "ds.practice.p7-co-clock-versus-cpi",
+    "version": "1",
+    "title": "Compare a faster clock with more lost cycles",
+    "prompt": "Two processors run the same 100 instructions. Slow-clock design: 2 ns/cycle and 1 CPI. Fast-clock design: 1 ns/cycle and base 1 CPI plus exactly 140 stall cycles for the whole run. Ignore fill/drain. Return (1) slow total ns, (2) fast total ns.",
+    "rules": "Enter the requested values in the stated order. Each labelled field is one numeric component. All stated machine/model assumptions are part of this fixed task.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T12_PIPELINE",
+    "subtopicId": "CO_ST12_01_THROUGHPUT",
+    "skillId": "CO_SK12_01_PIPE_PERF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_14",
+      "filename": "CO Lecture 14 - Pipelining.pdf",
+      "locator": "PDF_PAGES_1-33",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "200,240"
+    },
+    "explanation": "The slow design takes 100×1×2=200 ns. The faster clock takes (100+140)×1=240 ns. Clock rate alone cannot rank execution time when stall costs differ.",
+    "mode": "exam",
+    "unitId": "CO_LEC_14",
+    "difficulty": "Hard",
+    "demand": "Compare a faster clock with more lost cycles",
+    "sourcePages": [
+      5,
+      18,
+      27,
+      28,
+      29,
+      32
+    ]
+  }
+]

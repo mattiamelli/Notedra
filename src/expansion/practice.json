@@ -1,0 +1,493 @@
+[
+  {
+    "id": "ds.practice.p7-boolean-minterm",
+    "version": "1",
+    "title": "Recover an exact minterm",
+    "prompt": "The map has exactly one required 1. Reconstruct its product by choosing the polarity of every input.",
+    "rules": "A bar means Boolean complement. Input 0 uses a complemented product literal; input 1 uses the variable itself. Cell output is a separate value. All variables are in the displayed order. Equivalence is checked; minimality is not claimed.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_01_BOOLEAN",
+    "skillId": "CO_SK02_02_SOP",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "complements": true,
+      "variables": [
+        "A",
+        "B",
+        "C"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": "and",
+        "left": {
+          "kind": "atom",
+          "slot": "a"
+        },
+        "right": {
+          "kind": "binary",
+          "operator": "and",
+          "left": {
+            "kind": "atom",
+            "slot": "b"
+          },
+          "right": {
+            "kind": "atom",
+            "slot": "c"
+          }
+        }
+      },
+      "slots": [
+        {
+          "id": "a",
+          "label": "A literal",
+          "options": [
+            "A",
+            "!A"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "B literal",
+          "options": [
+            "B",
+            "!B"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "C literal",
+          "options": [
+            "C",
+            "!C"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "and",
+        "left": {
+          "kind": "not",
+          "operand": {
+            "kind": "variable",
+            "name": "A"
+          }
+        },
+        "right": {
+          "kind": "and",
+          "left": {
+            "kind": "variable",
+            "name": "B"
+          },
+          "right": {
+            "kind": "variable",
+            "name": "C"
+          }
+        }
+      },
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cells": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "a=!A",
+        "b=B",
+        "c=C"
+      ]
+    },
+    "explanation": "The required cell is ABC=011. Only A is zero, so only A is complemented. At all other assignments at least one product literal is false.",
+    "mode": "practice",
+    "unitId": "CO_LEC_03",
+    "difficulty": "Medium",
+    "demand": "Single-cell reverse reconstruction, distinguish input polarity from output value"
+  },
+  {
+    "id": "ds.practice.p7-boolean-products-map",
+    "version": "1",
+    "title": "Trace two overlapping products",
+    "prompt": "Complete the map for the displayed function. Account for both product terms; a cell satisfying either product has output 1.",
+    "rules": "A bar means Boolean complement. Input 0 uses a complemented product literal; input 1 uses the variable itself. Cell output is a separate value. All variables are in the displayed order. Equivalence is checked; minimality is not claimed.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_02_KMAP",
+    "skillId": "CO_SK02_03_KMAP_BUILD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "kmap-fill",
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cells": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "given": [
+        0
+      ],
+      "specification": {
+        "kind": "formula",
+        "formula": {
+          "kind": "or",
+          "left": {
+            "kind": "and",
+            "left": {
+              "kind": "not",
+              "operand": {
+                "kind": "variable",
+                "name": "A"
+              }
+            },
+            "right": {
+              "kind": "variable",
+              "name": "B"
+            }
+          },
+          "right": {
+            "kind": "and",
+            "left": {
+              "kind": "variable",
+              "name": "A"
+            },
+            "right": {
+              "kind": "not",
+              "operand": {
+                "kind": "variable",
+                "name": "C"
+              }
+            }
+          }
+        }
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "m1=0",
+        "m2=1",
+        "m3=1",
+        "m4=1",
+        "m5=0",
+        "m6=1",
+        "m7=0"
+      ]
+    },
+    "explanation": "For A=0 the function follows B, independently of C. For A=1 it follows the complement of C, independently of B. Do not complement a variable merely because the function output is zero.",
+    "mode": "practice",
+    "unitId": "CO_LEC_03",
+    "difficulty": "Hard",
+    "demand": "Forward map of conditional product coverage and overlap"
+  },
+  {
+    "id": "ds.practice.p7-boolean-wrap-product",
+    "version": "1",
+    "title": "Recover a wraparound product",
+    "prompt": "Reconstruct a two-literal product matching all required cells. Identify which input bits remain fixed across the four corners.",
+    "rules": "A bar means Boolean complement. Input 0 uses a complemented product literal; input 1 uses the variable itself. Cell output is a separate value. All variables are in the displayed order. Equivalence is checked; minimality is not claimed.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_01_BOOLEAN",
+    "skillId": "CO_SK02_02_SOP",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "complements": true,
+      "variables": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": "and",
+        "left": {
+          "kind": "atom",
+          "slot": "first"
+        },
+        "right": {
+          "kind": "atom",
+          "slot": "second"
+        }
+      },
+      "slots": [
+        {
+          "id": "first",
+          "label": "First literal",
+          "options": [
+            "A",
+            "!A",
+            "B",
+            "!B",
+            "C",
+            "!C",
+            "D",
+            "!D"
+          ]
+        },
+        {
+          "id": "second",
+          "label": "Second literal",
+          "options": [
+            "A",
+            "!A",
+            "B",
+            "!B",
+            "C",
+            "!C",
+            "D",
+            "!D"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "and",
+        "left": {
+          "kind": "not",
+          "operand": {
+            "kind": "variable",
+            "name": "B"
+          }
+        },
+        "right": {
+          "kind": "not",
+          "operand": {
+            "kind": "variable",
+            "name": "D"
+          }
+        }
+      },
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "cells": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "first=!B",
+        "second=!D"
+      ]
+    },
+    "explanation": "At the four corners A and C vary while B=0 and D=0 remain fixed. Those fixed zeros give complemented B and D. Swapping the two literals preserves the product.",
+    "mode": "exam",
+    "unitId": "CO_LEC_03",
+    "difficulty": "Hard",
+    "demand": "Four-variable wraparound reverse map, eliminate changing variables"
+  },
+  {
+    "id": "ds.practice.p7-boolean-selector",
+    "version": "1",
+    "title": "Reconstruct a selector from its map",
+    "prompt": "Choose the selector polarity for each branch. The fixed branch inputs are B and C; derive when each branch is active from the map.",
+    "rules": "A bar means Boolean complement. Input 0 uses a complemented product literal; input 1 uses the variable itself. Cell output is a separate value. All variables are in the displayed order. Equivalence is checked; minimality is not claimed.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_01_BOOLEAN",
+    "skillId": "CO_SK02_01_BOOLEAN_EVAL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "complements": true,
+      "variables": [
+        "A",
+        "B",
+        "C"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": "or",
+        "left": {
+          "kind": "binary",
+          "operator": "and",
+          "left": {
+            "kind": "atom",
+            "slot": "s1"
+          },
+          "right": {
+            "kind": "fixed",
+            "name": "B"
+          }
+        },
+        "right": {
+          "kind": "binary",
+          "operator": "and",
+          "left": {
+            "kind": "atom",
+            "slot": "s2"
+          },
+          "right": {
+            "kind": "fixed",
+            "name": "C"
+          }
+        }
+      },
+      "slots": [
+        {
+          "id": "s1",
+          "label": "Selector for B",
+          "options": [
+            "A",
+            "!A"
+          ]
+        },
+        {
+          "id": "s2",
+          "label": "Selector for C",
+          "options": [
+            "A",
+            "!A"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "or",
+        "left": {
+          "kind": "and",
+          "left": {
+            "kind": "variable",
+            "name": "A"
+          },
+          "right": {
+            "kind": "variable",
+            "name": "B"
+          }
+        },
+        "right": {
+          "kind": "and",
+          "left": {
+            "kind": "not",
+            "operand": {
+              "kind": "variable",
+              "name": "A"
+            }
+          },
+          "right": {
+            "kind": "variable",
+            "name": "C"
+          }
+        }
+      },
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cells": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "s1=A",
+        "s2=!A"
+      ]
+    },
+    "explanation": "The A=1 half follows B; the A=0 half follows C. Complementary selector literals activate exactly the appropriate branch. Using A in both branches loses the A=0 behavior.",
+    "mode": "exam",
+    "unitId": "CO_LEC_03",
+    "difficulty": "Exam-level",
+    "demand": "Boolean reconstruction of conditional routing, not renaming a minterm"
+  }
+]

@@ -1,0 +1,2550 @@
+[
+  {
+    "id": "ds.guided.p7-complete-history-program",
+    "version": "1",
+    "topicId": "CO_T01_HISTORY",
+    "skillIds": [
+      "CO_SK01_01_HISTORY"
+    ],
+    "subtopicIds": [
+      "CO_ST01_01_HISTORY"
+    ],
+    "sourceIds": [
+      "ref-68ea39d8f7f71613"
+    ],
+    "title": "Identify the architectural change behind reprogrammability",
+    "prompt": "A museum label calls any machine that performs arithmetic a stored-program computer. Compare a fixed mechanical calculator, a punched-card-controlled process and a machine whose instruction sequence is represented in memory. Explain what the label omits, without declaring a disputed universal “first”.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Arithmetic capability alone does not supply a represented instruction sequence. External cards can control a sequence without implying that program and data reside in the same memory. A stored-program account must explain where instructions live and how the control unit chooses the next instruction."
+    ],
+    "rubric": [
+      "Distinguish arithmetic, sequencing and storage.",
+      "Do not infer stored-program design merely from automatic operation.",
+      "Use the lecture’s progression as conceptual evidence, not a universal priority claim."
+    ],
+    "unitId": "CO_LEC_01",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      6,
+      7,
+      10,
+      17
+    ],
+    "demand": "Identify the architectural change behind reprogrammability"
+  },
+  {
+    "id": "ds.guided.p7-complete-history-performance",
+    "version": "1",
+    "topicId": "CO_T01_HISTORY",
+    "skillIds": [
+      "CO_SK01_01_HISTORY"
+    ],
+    "subtopicIds": [
+      "CO_ST01_01_HISTORY"
+    ],
+    "sourceIds": [
+      "ref-68ea39d8f7f71613"
+    ],
+    "title": "Separate elapsed-time improvement from energy use",
+    "prompt": "A historical demonstration finishes in 24 seconds instead of 12 hours. Its power draw is 90 kW. Compute the elapsed-time speedup and its energy for that run, then explain why the old method’s energy efficiency cannot be inferred from the speedup alone. Treat these as fictional comparison values.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Twelve hours is 43,200 seconds, giving speedup 1,800. Energy is 90 kJ/s × 24 s = 2,160 kJ = 0.6 kWh. The baseline power or energy is missing; a time ratio does not determine an energy ratio."
+    ],
+    "rubric": [
+      "Convert both times to the same unit.",
+      "Distinguish kW from kWh.",
+      "Identify the missing baseline energy rather than asserting efficiency."
+    ],
+    "unitId": "CO_LEC_01",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      3,
+      4,
+      15
+    ],
+    "demand": "Separate elapsed-time improvement from energy use"
+  },
+  {
+    "id": "ds.guided.p7-complete-history-reliability",
+    "version": "1",
+    "topicId": "CO_T01_HISTORY",
+    "skillIds": [
+      "CO_SK01_01_HISTORY"
+    ],
+    "subtopicIds": [
+      "CO_ST01_01_HISTORY"
+    ],
+    "sourceIds": [
+      "ref-68ea39d8f7f71613"
+    ],
+    "title": "Choose a technology under unattended-operation constraints",
+    "prompt": "An exhibit must run unattended, fit in a small enclosure and dissipate little heat. One proposal merely raises the clock of a tube-based design; another replaces its switching technology with transistors and integrates components. Explain how the second proposal addresses constraints beyond raw arithmetic speed, and identify one performance claim that still needs measurement.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Transistors improve reliability and reduce power relative to the tube-era examples; integration permits smaller, lower-cost systems. Raising clock rate alone does not repair component failure, heat or enclosure constraints. Throughput of the actual exhibit workload still needs measurement and cannot be guaranteed from component count."
+    ],
+    "rubric": [
+      "Tie reliability, heat and physical scale to distinct constraints.",
+      "Separate technology-level motivations from a measured workload result.",
+      "Avoid claiming integration makes every algorithm faster."
+    ],
+    "unitId": "CO_LEC_01",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      15,
+      16,
+      19
+    ],
+    "demand": "Choose a technology under unattended-operation constraints"
+  },
+  {
+    "id": "ds.guided.p7-complete-history-ecosystem",
+    "version": "1",
+    "topicId": "CO_T01_HISTORY",
+    "skillIds": [
+      "CO_SK01_01_HISTORY"
+    ],
+    "subtopicIds": [
+      "CO_ST01_01_HISTORY"
+    ],
+    "sourceIds": [
+      "ref-68ea39d8f7f71613"
+    ],
+    "title": "Distinguish architectural innovation from ecosystem adoption",
+    "prompt": "Two compatible personal computers execute the same instruction set. One allows documented third-party hardware and software extensions; the other is closed. Use the lecture’s PC example to explain how market adoption can differ without a new arithmetic principle. State what this comparison cannot establish about execution speed.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Documented interfaces allow independent developers to expand available hardware/software and can make a platform more useful. This ecosystem argument is separate from a new ALU design or stored-program principle. Compatibility and openness alone give no measured speed ranking."
+    ],
+    "rubric": [
+      "Identify the role of third-party compatibility.",
+      "Distinguish technical architecture from adoption incentives.",
+      "Do not equate popularity with speed or correctness."
+    ],
+    "unitId": "CO_LEC_01",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      21,
+      25
+    ],
+    "demand": "Distinguish architectural innovation from ecosystem adoption"
+  },
+  {
+    "id": "ds.guided.p7-complete-cmos-fault",
+    "version": "1",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "skillIds": [
+      "CO_SK03_02_CMOS_DESIGN"
+    ],
+    "subtopicIds": [
+      "CO_ST03_01_CMOS"
+    ],
+    "sourceIds": [
+      "ref-d020d444b7fa8a75"
+    ],
+    "title": "Diagnose output contention after a pull-up wiring error",
+    "prompt": "For a two-input NOR, a student puts the two pMOS pull-up devices in parallel, while leaving the nMOS pull-down in parallel. Compare inputs 00,01,10,11 and explain which inputs create competing supply-to-ground paths. Repair the topology. Use ideal conducting/open transistors; do not invent analogue voltages.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "For 00 only the erroneous pull-up conducts; for 11 only pull-down conducts. For 01 and 10 both networks conduct, producing contention, not a valid stable Boolean output. The NOR pull-up must have pMOS in series while its pull-down remains nMOS in parallel."
+    ],
+    "rubric": [
+      "Explain conduction for all four rows.",
+      "Identify contention on mixed inputs; do not call it a definite 0 or 1.",
+      "Repair the pull-up using the dual network."
+    ],
+    "unitId": "CO_LEC_04",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      6,
+      8
+    ],
+    "demand": "Diagnose output contention after a pull-up wiring error"
+  },
+  {
+    "id": "ds.guided.p7-complete-isa-spill",
+    "version": "1",
+    "topicId": "CO_T07_ISA",
+    "skillIds": [
+      "CO_SK07_02_ISA_DESIGN"
+    ],
+    "subtopicIds": [
+      "CO_ST07_01_FORMAT"
+    ],
+    "sourceIds": [
+      "ref-53218a623d9b2a9a"
+    ],
+    "title": "Design a load/store sequence under a register constraint",
+    "prompt": "A load/store machine has only two writable registers and memory values A,B,C,D. Construct a sequence computing (A+B)*(C-D), preserving inputs and storing the result in OUT. Arithmetic updates its first operand and cannot read memory. You may use one named temporary memory word. Explain why a temporary is needed under these rules.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Load A and B, add them, and spill the sum to TMP. Reuse the registers for C and D, subtract to obtain C-D, then reload TMP into the free register and multiply. Store OUT. Both live intermediate results need registers at multiplication; without a spill the first result prevents holding both operands needed to create the second with the specified two-address rules."
+    ],
+    "rubric": [
+      "Use explicit loads/stores and preserve A..D.",
+      "Keep subtraction order C-D.",
+      "Justify the spill using live values, not a generic CISC/RISC slogan."
+    ],
+    "unitId": "CO_LEC_08",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      3,
+      13,
+      14,
+      26
+    ],
+    "demand": "Design a load/store sequence under a register constraint"
+  },
+  {
+    "id": "ds.guided.p7-complete-isa-frequency",
+    "version": "1",
+    "topicId": "CO_T07_ISA",
+    "skillIds": [
+      "CO_SK07_03_ISA_COMPARE"
+    ],
+    "subtopicIds": [
+      "CO_ST07_02_STYLES"
+    ],
+    "sourceIds": [
+      "ref-53218a623d9b2a9a"
+    ],
+    "title": "Evaluate a proposal to add a complex instruction",
+    "prompt": "A proposed complex instruction replaces six simple instructions but applies to only 1% of dynamic instruction groups. Its decoder would slow every instruction. Explain what workload and timing measurements are needed before adopting it, and why shorter code is not sufficient evidence of faster execution.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Measure dynamic use, the removed instructions’ costs, new instruction latency and the global clock/decode penalty. A rare local saving may be overwhelmed by a cost paid by all instructions. Code footprint and execution time are separate objectives; the lecture’s frequency discussion motivates measuring actual use."
+    ],
+    "rubric": [
+      "Distinguish static code size from dynamic frequency.",
+      "Include the global decoder cost.",
+      "State a conditional decision rather than universal CISC/RISC superiority."
+    ],
+    "unitId": "CO_LEC_08",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "demand": "Evaluate a proposal to add a complex instruction"
+  },
+  {
+    "id": "ds.guided.p7-complete-read-handshake",
+    "version": "1",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "skillIds": [
+      "CO_SK08_02_WRITE_MICRO"
+    ],
+    "subtopicIds": [
+      "CO_ST08_01_DATAPATH"
+    ],
+    "sourceIds": [
+      "ref-7d81fa87adf87c16"
+    ],
+    "title": "Repair a read that captures stale memory data",
+    "prompt": "A proposed fetch copies PC to MAR, requests READ and immediately copies MDR into IR in the same microstep. Memory response time varies; MDR receives the requested word only when MFC arrives. Give a safe sequencing and explain what state must remain stable while waiting.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Put PC into MAR and launch the read under the stated interface timing, then wait for completion. Only after MDR contains the completed response may MDR be driven to IR. Preserve the requested address/control until the protocol permits release; immediate IR loading could latch old MDR data."
+    ],
+    "rubric": [
+      "Order request, completion and consumption.",
+      "Distinguish address register MAR from data register MDR.",
+      "Do not assume a fixed memory latency."
+    ],
+    "unitId": "CO_LEC_09",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      19,
+      26
+    ],
+    "demand": "Repair a read that captures stale memory data"
+  },
+  {
+    "id": "ds.guided.p7-complete-bus-conflict",
+    "version": "1",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "skillIds": [
+      "CO_SK08_05_MICRO_OPT"
+    ],
+    "subtopicIds": [
+      "CO_ST08_03_MICRO_OPT"
+    ],
+    "sourceIds": [
+      "ref-7d81fa87adf87c16"
+    ],
+    "title": "Reject an illegal single-bus optimization",
+    "prompt": "An optimization enables R1_out and R2_out together to feed both ALU operands in one cycle on a single shared bus. Explain why this is unsafe even when the two registers happen to contain equal values. Propose a legal two-operand path using X and a bus-fed ALU input.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Two enabled drivers violate the single-source bus discipline; equal values in one example do not make the control sequence generally valid. First latch one operand into X, then put the other on the bus and select X for the other ALU input, capturing the result in Z."
+    ],
+    "rubric": [
+      "Identify multiple active drivers.",
+      "Explain the distinct role of input latch X.",
+      "Provide a valid staged sequence rather than assuming a second bus."
+    ],
+    "unitId": "CO_LEC_09",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      20,
+      21,
+      22,
+      26
+    ],
+    "demand": "Reject an illegal single-bus optimization"
+  },
+  {
+    "id": "ds.guided.p7-complete-control-compatibility",
+    "version": "1",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "skillIds": [
+      "CO_SK08_04_CONTROL_COMPARE"
+    ],
+    "subtopicIds": [
+      "CO_ST08_02_CONTROL_ENCODING"
+    ],
+    "sourceIds": [
+      "ref-0b54bc0d278f8d07"
+    ],
+    "title": "Separate a microcode repair from an ISA change",
+    "prompt": "A deployed processor has the correct documented ADD behavior but a microcoded slow path for one addressing mode. A patch changes internal sequencing while preserving all visible results and exceptions. Explain why this can be an implementation change rather than a new ISA, and contrast the repair process with fixed hardwired control.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "ISA specifies software-visible behavior; different microsteps can implement the same contract. Writable/updateable control storage can make such a repair practical, whereas fixed logic typically requires a hardware change. A patch must still preserve observable effects and exception ordering; microprogramming alone does not guarantee writable ROM."
+    ],
+    "rubric": [
+      "Separate ISA contract from internal implementation.",
+      "Do not assume every control store is field-updatable.",
+      "Include correctness/exception constraints, not only speed."
+    ],
+    "unitId": "CO_LEC_10",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      4,
+      15,
+      18,
+      23,
+      26
+    ],
+    "demand": "Separate a microcode repair from an ISA change"
+  },
+  {
+    "id": "ds.guided.p7-complete-wait-idempotence",
+    "version": "1",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "skillIds": [
+      "CO_SK08_02_WRITE_MICRO"
+    ],
+    "subtopicIds": [
+      "CO_ST08_01_DATAPATH"
+    ],
+    "sourceIds": [
+      "ref-0b54bc0d278f8d07"
+    ],
+    "title": "Prevent repeated side effects while waiting for memory",
+    "prompt": "A control-store step waits for MFC but also decrements a transfer counter every cycle spent in that step. Memory may respond after any positive number of cycles. Design a repair that decrements exactly once per completed transfer and explain why merely predicting the response latency is unsafe.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Keep the wait state free of repeated architectural side effects. On completion branch to a separate one-shot decrement state, then proceed. Alternatively latch a one-time action explicitly, but document it. A guessed fixed latency can cause too many decrements or consume a response too early."
+    ],
+    "rubric": [
+      "Counter changes once per transfer, independent of wait length.",
+      "Separate waiting from committing a side effect.",
+      "Preserve the memory request/acknowledgement contract."
+    ],
+    "unitId": "CO_LEC_10",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      5,
+      9,
+      18,
+      20,
+      21
+    ],
+    "demand": "Prevent repeated side effects while waiting for memory"
+  },
+  {
+    "id": "ds.guided.p7-complete-irq-preservation",
+    "version": "1",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "skillIds": [
+      "CO_SK09_03_INTERRUPT_TRACE"
+    ],
+    "subtopicIds": [
+      "CO_ST09_03_INTERRUPTS"
+    ],
+    "sourceIds": [
+      "ref-786bac7f3cb5c7c8"
+    ],
+    "title": "Explain a corrupted computation after returning from an ISR",
+    "prompt": "A computation keeps a partial sum in a register. An interrupt handler uses that register as scratch and returns without restoring it. Explain the failure, which state must be preserved according to the calling/interrupt convention, and why clearing the device IRQ alone cannot repair it.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "An interrupt can occur between arbitrary ordinary instructions, so the interrupted code did not consent to losing its live partial sum. Save/restore the required live register state and control return state under the architecture’s convention. Acknowledging the device prevents retriggering but does not restore CPU data."
+    ],
+    "rubric": [
+      "Distinguish device acknowledgement from CPU context restoration.",
+      "Explain arbitrary interruption rather than ordinary call assumptions.",
+      "Do not invent a universal register-save set; state the convention dependency."
+    ],
+    "unitId": "CO_LEC_11",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      28,
+      29,
+      31
+    ],
+    "demand": "Explain a corrupted computation after returning from an ISR"
+  },
+  {
+    "id": "ds.guided.p7-complete-dma-ownership",
+    "version": "1",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "skillIds": [
+      "CO_SK10_01_DMA"
+    ],
+    "subtopicIds": [
+      "CO_ST10_01_DMA"
+    ],
+    "sourceIds": [
+      "ref-11b9ffb5c9a0f6d2"
+    ],
+    "title": "Find the ownership bug in an asynchronous transfer",
+    "prompt": "A CPU tells DMA to transmit a buffer, then immediately overwrites that buffer to prepare the next message. Explain the possible corruption and design a bounded two-buffer ownership protocol using completion notification. Include what changes if the CPU and DMA share a busy memory bus.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "DMA may read a mix of old and new bytes. Keep the active buffer immutable to the producer until completion; fill a separate free buffer and swap ownership only after the old transfer completes. A shared bus may reduce overlap through arbitration or cycle stealing, so parallel entities do not imply contention-free speedup."
+    ],
+    "rubric": [
+      "State ownership before, during and after transfer.",
+      "Use completion as the release condition.",
+      "Separate correctness from bus-performance assumptions."
+    ],
+    "unitId": "CO_LEC_12",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      7,
+      8,
+      9,
+      12
+    ],
+    "demand": "Find the ownership bug in an asynchronous transfer"
+  },
+  {
+    "id": "ds.guided.p7-complete-tlb-not-fault",
+    "version": "1",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "skillIds": [
+      "CO_SK14_02_VM_REASON"
+    ],
+    "subtopicIds": [
+      "CO_ST14_01_VM"
+    ],
+    "sourceIds": [
+      "ref-2a7323af85c4fc92"
+    ],
+    "title": "Distinguish a translation-cache miss from a page fault",
+    "prompt": "A TLB lookup misses, but the process page table contains a present, readable mapping to RAM. A second address has a valid process mapping marked nonresident. Explain the different recovery paths, and why neither case alone proves an unauthorized access.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The first needs a page-table lookup and TLB fill; it need not read disk. The second needs a page-fault handler to make the mapped page resident and restart appropriately. Authorization is a separate mapping/permission question; nonresidency is not equivalent to an invalid address."
+    ],
+    "rubric": [
+      "Separate cached translation from resident page contents.",
+      "Describe recovery without claiming every TLB miss traps or reads disk.",
+      "Keep permission failure distinct from demand paging."
+    ],
+    "unitId": "CO_LEC_15",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      26,
+      27,
+      32,
+      33,
+      34
+    ],
+    "demand": "Distinguish a translation-cache miss from a page fault"
+  },
+  {
+    "id": "ds.guided.p7-complete-parallel-shared",
+    "version": "1",
+    "topicId": "CO_T13_PARALLELISM",
+    "skillIds": [
+      "CO_SK13_01_PAR_CLASS"
+    ],
+    "subtopicIds": [
+      "CO_ST13_01_ARCH_PAR"
+    ],
+    "sourceIds": [
+      "ref-2a7323af85c4fc92"
+    ],
+    "title": "Classify instruction streams without confusing shared memory",
+    "prompt": "Four cores execute different program counters on data in one shared address space. Local memory takes less time to reach than another core’s memory. Classify the instruction/data streams and memory-access organization, then explain why sharing addresses does not force lockstep execution.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Independent instruction streams and data streams form MIMD. Unequal local/remote access costs with a shared address space describe NUMA. Shared addressing says which locations are reachable, not that all cores execute one instruction simultaneously as in SIMD."
+    ],
+    "rubric": [
+      "Classify streams independently of memory topology.",
+      "Identify nonuniform latency rather than separate address spaces.",
+      "Do not infer automatic synchronization from shared memory."
+    ],
+    "unitId": "CO_LEC_15",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      15,
+      19,
+      20
+    ],
+    "demand": "Classify instruction streams without confusing shared memory"
+  },
+  {
+    "id": "ds.guided.p7-complete-argument-repair",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b67b69b8c72d7a46"
+    ],
+    "title": "Supply the missing bridge in a practical argument",
+    "prompt": "A report states: “Every tested sensor is calibrated. Sensor K is installed. Therefore K is calibrated.” Identify the missing connection and give one extra premise that would make this argument valid. Explain why installation alone does not supply it.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "The premise describes tested sensors, not every installed sensor. Adding “K was tested” connects K to the universal premise. A situation with K installed but untested and uncalibrated satisfies the original premises and refutes the conclusion."
+    ],
+    "rubric": [
+      "Separate tested from installed.",
+      "State a sufficient bridge without assuming the conclusion.",
+      "Give a concrete counterexample to the unamended argument."
+    ],
+    "unitId": "RL_LEC_00",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      12,
+      20
+    ],
+    "demand": "Supply the missing bridge in a practical argument"
+  },
+  {
+    "id": "ds.guided.p7-complete-argument-chain",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b67b69b8c72d7a46"
+    ],
+    "title": "Track which conclusions follow from chained rules",
+    "prompt": "A workshop uses these rules: if a badge is active, the gate opens; if the gate opens, entry is recorded. A badge is active. Derive what follows, then decide whether observing a record alone would prove that the badge was active.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "The active badge implies an open gate and hence a record. The reverse inference is unsupported: another entry mechanism could produce a record with the badge inactive while both rules stay true."
+    ],
+    "rubric": [
+      "Apply the two premises in order.",
+      "Do not reverse an implication.",
+      "Describe a situation supporting the distinction."
+    ],
+    "unitId": "RL_LEC_00",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      12,
+      20
+    ],
+    "demand": "Track which conclusions follow from chained rules"
+  },
+  {
+    "id": "ds.guided.p7-complete-argument-evidence",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b67b69b8c72d7a46"
+    ],
+    "title": "Distinguish a true conclusion from a valid justification",
+    "prompt": "A student tests a rule on three examples, all successful, and writes “therefore the rule holds for every integer.” Explain why this is not a complete universal argument. Describe the difference between a counterexample and a proof that no counterexample exists, using a new rule of your choice.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Three successful cases leave other integers unexamined. One failing case refutes a universal rule, but more successful samples do not alone establish it. For example, a general algebraic argument can prove n+n=2n for arbitrary n, whereas testing n=0,1,2 cannot justify an unrelated polynomial identity for every n."
+    ],
+    "rubric": [
+      "Separate observed instances from universal scope.",
+      "Explain the asymmetric role of a counterexample.",
+      "Give a general reason or clearly leave the claim unproved."
+    ],
+    "unitId": "RL_LEC_00",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      5,
+      12,
+      21
+    ],
+    "demand": "Distinguish a true conclusion from a valid justification"
+  },
+  {
+    "id": "ds.guided.p7-complete-argument-conflict",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b67b69b8c72d7a46"
+    ],
+    "title": "Locate inconsistency before applying the policy",
+    "prompt": "A fictional policy says every archived item is read-only. A log asserts that document D is archived and that D is not read-only. Identify the incompatible statements, explain why dropping an unrelated statement about document E does not repair them, and propose one explicit assumption change that restores consistency.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The universal policy applied to D contradicts the log’s not-read-only assertion. A fact about E has no role in this conflict. Reclassifying D as not archived, correcting its read-only status, or weakening the universal policy with a stated exception are possible repairs; each changes a relevant premise."
+    ],
+    "rubric": [
+      "Exhibit the minimal conflicting premises.",
+      "Do not hide the inconsistency by adding unrelated facts.",
+      "Make the chosen repair explicit rather than silently changing a definition."
+    ],
+    "unitId": "RL_LEC_00",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      12,
+      16,
+      20
+    ],
+    "demand": "Locate inconsistency before applying the policy"
+  },
+  {
+    "id": "ds.guided.p7-complete-inclusive-exclusive",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_01_CONNECTIVE"
+    ],
+    "subtopicIds": [
+      "RL_ST01_01_CONNECTIVES"
+    ],
+    "sourceIds": [
+      "ref-f94740dccc877761"
+    ],
+    "title": "Resolve the meaning of an ambiguous “or”",
+    "prompt": "A device notice says “the backup runs when mains power or the battery is available.” Propose inclusive-or and exclusive-or interpretations, identify the input on which they differ and explain why a truth table does not decide the intended engineering requirement.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Inclusive OR permits both power sources; exclusive OR rejects the both-available case. Both tables agree when exactly one source is available and both reject neither. The specification owner must clarify intent; Boolean calculation cannot invent it."
+    ],
+    "rubric": [
+      "Give both interpretations correctly.",
+      "Identify the both-true distinguishing row.",
+      "Separate formal consequences from ambiguity in natural language."
+    ],
+    "unitId": "RL_LEC_01",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      3,
+      5,
+      7
+    ],
+    "demand": "Resolve the meaning of an ambiguous “or”"
+  },
+  {
+    "id": "ds.guided.p7-complete-normal-form-debug",
+    "version": "1",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "skillIds": [
+      "RL_SK01_06_NORMAL_FORM"
+    ],
+    "subtopicIds": [
+      "RL_ST01_03_NORMAL_FORMS"
+    ],
+    "sourceIds": [
+      "ref-f034366671022236"
+    ],
+    "title": "Repair a mistaken dualization of a normal form",
+    "prompt": "A learner rewrites ¬((P∨Q)∧R) as (¬P∨¬Q)∧¬R. Identify both operator mistakes, derive a valid CNF and give one assignment showing that the proposed rewrite is wrong.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "De Morgan first gives ¬(P∨Q)∨¬R=(¬P∧¬Q)∨¬R. Distributing gives (¬P∨¬R)∧(¬Q∨¬R). For P=1,Q=0,R=0 the original is true but the proposed conjunction is false."
+    ],
+    "rubric": [
+      "Negate both levels with the correct dual operators.",
+      "Provide a valid CNF, allowing equivalent literal order.",
+      "Check both expressions on a counterexample."
+    ],
+    "unitId": "RL_LEC_02",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      44,
+      49,
+      50
+    ],
+    "demand": "Repair a mistaken dualization of a normal form"
+  },
+  {
+    "id": "ds.guided.p7-complete-quantifier-negation",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_03_NEGATE_FOL"
+    ],
+    "subtopicIds": [
+      "RL_ST02_02_NEGATE_QUANT"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "title": "Negate a restricted universal without losing its scope",
+    "prompt": "Using Student(x), Book(y), Reads(x,y), translate “every student reads some book”, then negate it without leaving a negation outside a quantifier. Explain whether the original statement entails that students exist.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The statement is ∀x(Student(x)→∃y(Book(y)∧Reads(x,y))). Its negation is ∃x(Student(x)∧∀y(Book(y)→¬Reads(x,y))). With no students, the original is vacuously true; it does not imply a student exists."
+    ],
+    "rubric": [
+      "Preserve both student and book restrictions.",
+      "Swap quantifiers and negate the inner condition correctly.",
+      "Address the empty student extension explicitly."
+    ],
+    "unitId": "RL_LEC_03",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      29,
+      46,
+      64
+    ],
+    "demand": "Negate a restricted universal without losing its scope"
+  },
+  {
+    "id": "ds.guided.p7-complete-countermodel-cycle",
+    "version": "1",
+    "topicId": "RL_T02_FOL",
+    "skillIds": [
+      "RL_SK02_06_COUNTERMODEL"
+    ],
+    "subtopicIds": [
+      "RL_ST02_04_COUNTERMODEL"
+    ],
+    "sourceIds": [
+      "ref-4dc370d8f0ee45c2"
+    ],
+    "title": "Disprove a global witness claim using a small model",
+    "prompt": "The premise says every object relates to some different object: ∀x∃y(x≠y∧R(x,y)). The conclusion says some object relates to every object: ∃x∀y R(x,y). Construct a nonempty finite countermodel and justify every quantifier.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Take D={0,1} and R={(0,1),(1,0)}. Each object relates to the other, satisfying the premise. Neither relates to itself, so no object relates to all of D. The conclusion is false."
+    ],
+    "rubric": [
+      "Give domain and relation, not only a drawing without labels.",
+      "Verify the premise for every domain element.",
+      "Refute every possible witness to the conclusion."
+    ],
+    "unitId": "RL_LEC_03",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      64,
+      69,
+      70
+    ],
+    "demand": "Disprove a global witness claim using a small model"
+  },
+  {
+    "id": "ds.guided.p7-complete-divisibility-linear",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_02_DIRECT"
+    ],
+    "subtopicIds": [
+      "RL_ST03_01_DIRECT_GEN"
+    ],
+    "sourceIds": [
+      "ref-c4cc8a5d507dcb00"
+    ],
+    "title": "Prove closure under an integer linear combination",
+    "prompt": "Prove: if d divides a and d divides b, then d divides 3a−2b, for integers a,b,d with d≠0. State where integrality matters.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Write a=dr and b=ds for integers r,s. Then 3a−2b=d(3r−2s), whose second factor is an integer. This proves divisibility without choosing particular a,b."
+    ],
+    "rubric": [
+      "Introduce integer witnesses for both divisibilities.",
+      "Factor the target using the same divisor.",
+      "Do not replace an arbitrary argument with numerical examples."
+    ],
+    "unitId": "RL_LEC_04",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      16,
+      23,
+      30,
+      31
+    ],
+    "demand": "Prove closure under an integer linear combination"
+  },
+  {
+    "id": "ds.guided.p7-complete-rational-midpoint",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_01_GENERALIZE"
+    ],
+    "subtopicIds": [
+      "RL_ST03_01_DIRECT_GEN"
+    ],
+    "sourceIds": [
+      "ref-c4cc8a5d507dcb00"
+    ],
+    "title": "Prove a rational construction lies strictly between two inputs",
+    "prompt": "Let x,y be rational and x<y. Show directly that m=(x+y)/2 is rational and x<m<y. Keep the two obligations separate.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "If x=a/b,y=c/d with nonzero integer denominators, m=(ad+bc)/(2bd) is rational. From x<y, adding x and dividing by positive 2 gives x<m; adding y instead gives m<y."
+    ],
+    "rubric": [
+      "Supply a rational representation with nonzero denominator.",
+      "Justify both strict inequalities.",
+      "Keep arbitrary rational inputs rather than one example pair."
+    ],
+    "unitId": "RL_LEC_04",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      16,
+      18,
+      23
+    ],
+    "demand": "Prove a rational construction lies strictly between two inputs"
+  },
+  {
+    "id": "ds.guided.p7-complete-cancellation-zero",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_07_DEBUG_PROOF"
+    ],
+    "subtopicIds": [
+      "RL_ST03_04_IDENTIFY_DEBUG"
+    ],
+    "sourceIds": [
+      "ref-c4cc8a5d507dcb00"
+    ],
+    "title": "Locate a hidden zero-divisor in an algebraic proof",
+    "prompt": "A student assumes a=b≠0, writes a²=ab, then a²−b²=ab−b², and cancels a−b to conclude a+b=b. Identify the first invalid step, explain why earlier equations are still true and state a sufficient condition for that cancellation.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Factoring gives (a−b)(a+b)=b(a−b), but a−b=0. Cancelling requires a−b≠0, contrary to the assumption. The preceding equalities are valid zero-equalities and cannot justify division by zero."
+    ],
+    "rubric": [
+      "Locate cancellation rather than blaming valid subtraction.",
+      "State the missing nonzero condition.",
+      "Explain why a=b≠0 does not make a−b nonzero."
+    ],
+    "unitId": "RL_LEC_04",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      16,
+      18,
+      23,
+      26
+    ],
+    "demand": "Locate a hidden zero-divisor in an algebraic proof"
+  },
+  {
+    "id": "ds.guided.p7-complete-existence-uniqueness",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_06_IDENTIFY_PROOF"
+    ],
+    "subtopicIds": [
+      "RL_ST03_04_IDENTIFY_DEBUG"
+    ],
+    "sourceIds": [
+      "ref-c4cc8a5d507dcb00"
+    ],
+    "title": "Separate finding a solution from proving uniqueness",
+    "prompt": "For a fixed integer n, a learner says “x=n−3 solves x+3=n, therefore it is the unique integer solution.” Supply the missing uniqueness argument and explain the roles of an explicit witness and an arbitrary candidate.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Substitution proves existence. For uniqueness, let y be any integer solution, so y+3=n; subtracting 3 gives y=n−3. Every possible solution equals the witness."
+    ],
+    "rubric": [
+      "Check existence by substitution.",
+      "Begin uniqueness with an arbitrary solution.",
+      "Do not claim finding one witness excludes other witnesses."
+    ],
+    "unitId": "RL_LEC_04",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      16,
+      23,
+      30
+    ],
+    "demand": "Separate finding a solution from proving uniqueness"
+  },
+  {
+    "id": "ds.guided.p7-complete-odd-product",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_05_CONTRAPOSITIVE"
+    ],
+    "subtopicIds": [
+      "RL_ST03_03_CONTRA"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3"
+    ],
+    "title": "Choose a contrapositive for an odd product",
+    "prompt": "Prove: if ab is odd for integers a,b, then both a and b are odd. Use contraposition and identify how the negation of “both odd” is handled.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Assuming every integer is even or odd, not both odd means at least one factor is even. If a=2k, then ab=2(kb); if b=2k, then ab=2(ak). Either makes the product even, contradicting oddness via the contrapositive."
+    ],
+    "rubric": [
+      "Negate the conjunction using OR.",
+      "Cover either possible even factor.",
+      "State the integer parity dichotomy used."
+    ],
+    "unitId": "RL_LEC_05",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      7,
+      8,
+      10,
+      23
+    ],
+    "demand": "Choose a contrapositive for an odd product"
+  },
+  {
+    "id": "ds.guided.p7-complete-absolute-triangle",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_03_CASES"
+    ],
+    "subtopicIds": [
+      "RL_ST03_02_CASES"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3"
+    ],
+    "title": "Use sign cases to justify a basic absolute-value bound",
+    "prompt": "Prove |x|≥x for every real x by cases, then use that result on x and −x to explain why |x|≥−x also holds. Do not assume x is an integer.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "If x≥0, |x|=x. If x<0, |x|=−x>x. Applying the same statement to −x gives |−x|≥−x, and |−x|=|x|."
+    ],
+    "rubric": [
+      "Cases are exhaustive and include zero.",
+      "Use the real absolute-value definition.",
+      "Explain the substitution −x rather than treating it as a third case."
+    ],
+    "unitId": "RL_LEC_05",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      23,
+      26
+    ],
+    "demand": "Use sign cases to justify a basic absolute-value bound"
+  },
+  {
+    "id": "ds.guided.p7-complete-rational-shift",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_04_CONTRADICTION"
+    ],
+    "subtopicIds": [
+      "RL_ST03_03_CONTRA"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3"
+    ],
+    "title": "Keep a rational shift from hiding irrationality",
+    "prompt": "Let r be rational and x irrational. Prove by contradiction that x+r is irrational. Explain why the same statement fails if r is allowed to be irrational, and give a counterexample.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "If x+r=s is rational, then x=s−r is rational because the difference of two rational numbers is rational, contradicting the premise. If r is unrestricted, choose x=√2 and r=−√2: both are irrational but their sum is 0."
+    ],
+    "rubric": [
+      "State the rationality assumption used for contradiction.",
+      "Justify closure of rational subtraction from integer fractions.",
+      "Explain why the hypothesis on r is necessary."
+    ],
+    "unitId": "RL_LEC_05",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      10,
+      16
+    ],
+    "demand": "Keep a rational shift from hiding irrationality"
+  },
+  {
+    "id": "ds.guided.p7-complete-cases-gap",
+    "version": "1",
+    "topicId": "RL_T03_PROOF_METHODS",
+    "skillIds": [
+      "RL_SK03_07_DEBUG_PROOF"
+    ],
+    "subtopicIds": [
+      "RL_ST03_04_IDENTIFY_DEBUG"
+    ],
+    "sourceIds": [
+      "ref-7c663f9f3ab7afd3"
+    ],
+    "title": "Repair a sign-case argument with a missing boundary",
+    "prompt": "A proof of |xy|=|x||y| for real x,y checks only x>0,y>0 and x<0,y<0. Identify the uncovered cases and complete the proof using the definition of absolute value. Do not assume x and y have the same sign.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "If either factor is zero, both sides are zero. Equal nonzero signs give xy>0 and |x||y|=xy. Opposite signs give xy<0; exactly one absolute value changes sign, so |x||y|=−xy=|xy|. These cases exhaust all pairs of reals."
+    ],
+    "rubric": [
+      "Include zero factors.",
+      "Handle both opposite-sign cases, or combine them with justification.",
+      "Show the cases exhaust the domain."
+    ],
+    "unitId": "RL_LEC_05",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      23,
+      26,
+      28
+    ],
+    "demand": "Repair a sign-case argument with a missing boundary"
+  },
+  {
+    "id": "ds.guided.p7-complete-telescoping-induction",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_03_INDUCTION"
+    ],
+    "subtopicIds": [
+      "RL_ST04_02_MATH_INDUCTION"
+    ],
+    "sourceIds": [
+      "ref-7aeb3af51fc4f1a6"
+    ],
+    "title": "Prove a reciprocal sum with an explicit successor term",
+    "prompt": "For n≥1 prove Σ(k=1..n) 1/[k(k+1)] = n/(n+1) by induction. Show exactly how the (n+1)st summand enters.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "For n=1 both sides equal 1/2. Assuming the formula at n, add 1/[(n+1)(n+2)]. The result is [n(n+2)+1]/[(n+1)(n+2)]=(n+1)/(n+2)."
+    ],
+    "rubric": [
+      "Check the actual base index.",
+      "Use the induction hypothesis only on the first n summands.",
+      "Reduce the successor expression to its required form."
+    ],
+    "unitId": "RL_LEC_06",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      12,
+      13,
+      24,
+      27,
+      29,
+      30
+    ],
+    "demand": "Prove a reciprocal sum with an explicit successor term"
+  },
+  {
+    "id": "ds.guided.p7-complete-two-step-induction",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_04_INDUCTION_SETUP"
+    ],
+    "subtopicIds": [
+      "RL_ST04_02_MATH_INDUCTION"
+    ],
+    "sourceIds": [
+      "ref-7aeb3af51fc4f1a6"
+    ],
+    "title": "Find the base cases needed for a two-step argument",
+    "prompt": "A proof establishes P(n)→P(n+2) for every n≥0. Explain why proving only P(0) is insufficient for all nonnegative n, and state a sufficient set of base cases. Give a counterexample property to the insufficient scheme.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "P(0) reaches only even indices; P(1) is also needed for the odd chain. The property “n is even” satisfies the proposed step and P(0), but fails at 1. P(0) and P(1), together with the step, cover both parities."
+    ],
+    "rubric": [
+      "Identify the disconnected odd chain.",
+      "Give a property satisfying the insufficient premises.",
+      "Explain why the repaired bases cover all indices."
+    ],
+    "unitId": "RL_LEC_06",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      12,
+      13,
+      24,
+      28,
+      29
+    ],
+    "demand": "Find the base cases needed for a two-step argument"
+  },
+  {
+    "id": "ds.guided.p7-complete-geometric-inequality",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_03_INDUCTION"
+    ],
+    "subtopicIds": [
+      "RL_ST04_02_MATH_INDUCTION"
+    ],
+    "sourceIds": [
+      "ref-7aeb3af51fc4f1a6"
+    ],
+    "title": "Choose the starting index that makes an induction step valid",
+    "prompt": "Prove 2^n≥n² for integers n≥4 by induction. Explicitly show the inequality needed when passing from n to n+1; do not assume the desired conclusion.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "At n=4 both sides equal 16. From 2^n≥n², we have 2^(n+1)≥2n². For n≥4, 2n²−(n+1)²=n²−2n−1=(n−1)²−2>0, hence 2n²≥(n+1)²."
+    ],
+    "rubric": [
+      "Use base n=4 rather than silently starting at zero.",
+      "Separate the induction hypothesis from the numerical comparison.",
+      "Justify the comparison for every n in the step domain."
+    ],
+    "unitId": "RL_LEC_06",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      12,
+      24,
+      29,
+      30,
+      32
+    ],
+    "demand": "Choose the starting index that makes an induction step valid"
+  },
+  {
+    "id": "ds.guided.p7-complete-circular-induction",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_04_INDUCTION_SETUP"
+    ],
+    "subtopicIds": [
+      "RL_ST04_02_MATH_INDUCTION"
+    ],
+    "sourceIds": [
+      "ref-7aeb3af51fc4f1a6"
+    ],
+    "title": "Diagnose using the successor claim inside its own proof",
+    "prompt": "To prove Σ(k=1..n)k=n(n+1)/2, a draft says: “Assume the formula for n+1. Subtract n+1 to obtain the formula for n, so induction is complete.” Explain the missing direction and repair only the step logic.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The draft derives P(n) from P(n+1), opposite to the required forward implication. Start with P(n), add n+1, and obtain n(n+1)/2+n+1=(n+1)(n+2)/2. A valid base case is still required separately."
+    ],
+    "rubric": [
+      "State the direction P(n)→P(n+1).",
+      "Avoid assuming the successor goal.",
+      "Keep the base obligation separate."
+    ],
+    "unitId": "RL_LEC_06",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      12,
+      13,
+      24,
+      27,
+      29
+    ],
+    "demand": "Diagnose using the successor claim inside its own proof"
+  },
+  {
+    "id": "ds.guided.p7-complete-division-invariant",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_07_INVARIANT"
+    ],
+    "subtopicIds": [
+      "RL_ST04_04_INVARIANT"
+    ],
+    "sourceIds": [
+      "ref-1c8fd7cf4e8c6f1b"
+    ],
+    "title": "Prove a repeated-subtraction division loop",
+    "prompt": "Integers N≥0,d>0. Initialize q=0,r=N. While r≥d, set r=r−d and q=q+1. Prove that termination yields N=qd+r and 0≤r<d. Identify an invariant and a decreasing quantity.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Invariant N=qd+r and r≥0 holds initially and survives the paired updates. Each iteration decreases nonnegative integer r by positive d, so termination follows. At exit r<d, combining with the invariant gives the quotient/remainder specification."
+    ],
+    "rubric": [
+      "Prove initialization and preservation.",
+      "Give a well-founded termination argument.",
+      "Use the false guard for the upper bound."
+    ],
+    "unitId": "RL_LEC_07",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      23,
+      25,
+      27,
+      29,
+      42,
+      43,
+      44
+    ],
+    "demand": "Prove a repeated-subtraction division loop"
+  },
+  {
+    "id": "ds.guided.p7-complete-conservation-impossible",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_07_INVARIANT"
+    ],
+    "subtopicIds": [
+      "RL_ST04_04_INVARIANT"
+    ],
+    "sourceIds": [
+      "ref-1c8fd7cf4e8c6f1b"
+    ],
+    "title": "Use a conserved quantity to reject a target state",
+    "prompt": "A process changes integer counters (x,y,z) only by either (x+1,y−2,z) or (x,y+1,z−3), with moves allowed only when all counters remain nonnegative. Starting from (0,3,3), can it reach (2,2,0)? Prove your answer using a weighted invariant rather than enumerating paths.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "6x+3y+z is unchanged by either move: 6−6=0 and 3−3=0. Initially it is 12, while the target has value 18. Therefore the target is impossible; nonnegativity restrictions cannot create a path that violates conservation."
+    ],
+    "rubric": [
+      "Find weights conserved by both distinct transitions.",
+      "Compare initial and target values correctly.",
+      "Use invariance for impossibility, not as a sufficient reachability claim."
+    ],
+    "unitId": "RL_LEC_07",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      27,
+      29,
+      34,
+      35
+    ],
+    "demand": "Use a conserved quantity to reject a target state"
+  },
+  {
+    "id": "ds.guided.p7-complete-termination-not-invariant",
+    "version": "1",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "skillIds": [
+      "RL_SK04_07_INVARIANT"
+    ],
+    "subtopicIds": [
+      "RL_ST04_04_INVARIANT"
+    ],
+    "sourceIds": [
+      "ref-1c8fd7cf4e8c6f1b"
+    ],
+    "title": "Explain why a preserved equation does not prove termination",
+    "prompt": "A loop on integers keeps x+y=N by repeatedly applying x=x+1,y=y−1 while x≠N. Explain why the invariant alone does not prove termination for all initial integers. Give a failing initial state and a precondition with a valid decreasing variant.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "If x>N initially, incrementing x moves away from N forever while the invariant remains true. With x≤N and x+y=N, the nonnegative integer N−x decreases by one until zero, so the loop terminates."
+    ],
+    "rubric": [
+      "Exhibit a nonterminating state satisfying the invariant.",
+      "State a sufficient precondition.",
+      "Distinguish partial correctness from termination."
+    ],
+    "unitId": "RL_LEC_07",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      27,
+      29,
+      42,
+      43,
+      44
+    ],
+    "demand": "Explain why a preserved equation does not prove termination"
+  },
+  {
+    "id": "ds.guided.p7-complete-reconstruct-orders",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_02_TREE_TRAVERSE"
+    ],
+    "subtopicIds": [
+      "RL_ST05_01_TREES"
+    ],
+    "sourceIds": [
+      "ref-12f5e8e3b2e55563"
+    ],
+    "title": "Reconstruct a tree and explain why the split is forced",
+    "prompt": "Distinct labels have preorder M,F,J,T,R and inorder F,J,M,R,T. Reconstruct the binary tree and justify the left/right splits. Explain why a single preorder list would not generally suffice.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "M is root; inorder puts F,J on its left and R,T on its right. F is the left root with right child J; T is the right root with left child R. Preorder alone omits where child subtrees end, so different shapes can share it."
+    ],
+    "rubric": [
+      "Use the root from preorder and split from inorder.",
+      "Respect distinct-label and ordered-child assumptions.",
+      "Show ambiguity of one order rather than claiming arbitrary reconstruction."
+    ],
+    "unitId": "RL_LEC_08",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      29,
+      40,
+      51
+    ],
+    "demand": "Reconstruct a tree and explain why the split is forced"
+  },
+  {
+    "id": "ds.guided.p7-complete-full-vs-height",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_01_TREE_CONSTRUCT"
+    ],
+    "subtopicIds": [
+      "RL_ST05_01_TREES"
+    ],
+    "sourceIds": [
+      "ref-12f5e8e3b2e55563"
+    ],
+    "title": "Disprove a mistaken full-tree criterion",
+    "prompt": "A student claims any binary tree whose leaves have the same depth is full. Construct a counterexample and explain the difference between the leaf-depth condition and the local full-tree definition. Then construct a full tree whose leaves have different depths.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "A root with only one child, which is a leaf, has all leaves at depth 1 but is not full. For the reverse distinction, give the root a leaf child and an internal child with two leaf children: every internal node has two children, but leaves occur at depths 1 and 2."
+    ],
+    "rubric": [
+      "Provide both constructions.",
+      "Check every internal node locally.",
+      "Do not confuse full with complete or perfect."
+    ],
+    "unitId": "RL_LEC_08",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      20,
+      23,
+      24
+    ],
+    "demand": "Disprove a mistaken full-tree criterion"
+  },
+  {
+    "id": "ds.guided.p7-complete-difference-distribution",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_04_SET_PROOF"
+    ],
+    "subtopicIds": [
+      "RL_ST06_04_SET_PROOFS"
+    ],
+    "sourceIds": [
+      "ref-95dd5ee6dad3ee92"
+    ],
+    "title": "Prove a difference identity by tracking an arbitrary element",
+    "prompt": "Prove A−(B∩C)=(A−B)∪(A−C) for arbitrary sets. Write the membership conditions and justify the Boolean step; do not rely only on a particular Venn drawing.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "For arbitrary x, membership on the left means x∈A and not(x∈B and x∈C). De Morgan gives x∈A and (x∉B or x∉C), equivalent to (x∈A and x∉B) or (x∈A and x∉C). This is precisely right-side membership."
+    ],
+    "rubric": [
+      "Keep membership in A in both branches.",
+      "Use an equivalence, covering both inclusions.",
+      "State that x was arbitrary."
+    ],
+    "unitId": "RL_LEC_09",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      10,
+      11,
+      16
+    ],
+    "demand": "Prove a difference identity by tracking an arbitrary element"
+  },
+  {
+    "id": "ds.guided.p7-complete-intersection-witness",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_05_SET_COUNTER"
+    ],
+    "subtopicIds": [
+      "RL_ST06_04_SET_PROOFS"
+    ],
+    "sourceIds": [
+      "ref-95dd5ee6dad3ee92"
+    ],
+    "title": "Explain why pairwise overlap is not a common witness",
+    "prompt": "Three nonempty sets intersect pairwise. Must their triple intersection be nonempty? Give a finite counterexample and explain the quantifier mistake in choosing one witness for all pairs.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Take A={1,2},B={2,3},C={1,3}. Pairwise intersections are {2},{1},{3}, but the triple intersection is empty. Each pair has a witness; those witnesses need not coincide."
+    ],
+    "rubric": [
+      "Check all three pairwise intersections.",
+      "Check the triple intersection separately.",
+      "Explain the witness-dependence issue."
+    ],
+    "unitId": "RL_LEC_09",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      10,
+      11,
+      24
+    ],
+    "demand": "Explain why pairwise overlap is not a common witness"
+  },
+  {
+    "id": "ds.guided.p7-complete-product-distribution",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_04_SET_PROOF"
+    ],
+    "subtopicIds": [
+      "RL_ST06_04_SET_PROOFS"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "title": "Prove distribution without flattening ordered pairs",
+    "prompt": "Prove A×(B∪C)=(A×B)∪(A×C). Use an arbitrary ordered pair and explain why the proof remains valid when any set is empty.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "For (x,y), x∈A and y∈B∪C means x∈A and (y∈B or y∈C). Distribution yields membership in A×B or A×C. No witness existence is assumed, so empty sets are covered as well."
+    ],
+    "rubric": [
+      "Keep coordinate roles fixed.",
+      "Prove equivalent membership in both directions.",
+      "Do not assume the products are nonempty."
+    ],
+    "unitId": "RL_LEC_10",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      6,
+      14,
+      19
+    ],
+    "demand": "Prove distribution without flattening ordered pairs"
+  },
+  {
+    "id": "ds.guided.p7-complete-grammar-balance",
+    "version": "1",
+    "topicId": "RL_T06_SET_THEORY",
+    "skillIds": [
+      "RL_SK06_04_SET_PROOF"
+    ],
+    "subtopicIds": [
+      "RL_ST06_04_SET_PROOFS"
+    ],
+    "sourceIds": [
+      "ref-7cf75e9c84b8117a"
+    ],
+    "title": "Prove a prefix condition for a recursively defined language",
+    "prompt": "Define L by ε∈L; if u∈L then (u)∈L; if u,v∈L then uv∈L; nothing else. Prove that every word has equal opening/closing counts and no prefix has more closing than opening parentheses. Why is equality of total counts alone insufficient?",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The empty word meets both conditions. Wrapping adds one open before u and one close after it, keeping interior prefixes nonnegative. Concatenation preserves prefix balance: prefixes lie in u, or include all of balanced u followed by a prefix of v. The word )( has equal totals but violates the prefix condition."
+    ],
+    "rubric": [
+      "Handle both wrapping and concatenation.",
+      "Use the strengthened prefix property in the induction hypothesis.",
+      "Give a total-count-only counterexample."
+    ],
+    "unitId": "RL_LEC_10",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      25,
+      28
+    ],
+    "demand": "Prove a prefix condition for a recursively defined language"
+  },
+  {
+    "id": "ds.guided.p7-complete-two-disjoint-cycles",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_05_TOPO"
+    ],
+    "subtopicIds": [
+      "RL_ST05_03_GRAPHS"
+    ],
+    "sourceIds": [
+      "ref-90f44cf2d63b945d"
+    ],
+    "title": "Prove a minimum edge removal rather than guessing",
+    "prompt": "A digraph contains exactly edges a→b,b→c,c→a,c→d,d→e,e→d. Find a smallest edge set whose removal makes it acyclic, and prove minimality.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The cycles a→b→c→a and d→e→d are edge-disjoint, so at least one edge from each must be removed. Removing c→a and e→d leaves the chain a→b→c→d→e, proving two removals suffice."
+    ],
+    "rubric": [
+      "Give a lower bound using edge-disjoint cycles.",
+      "Exhibit a matching repair.",
+      "Verify all remaining edges respect a topological order."
+    ],
+    "unitId": "RL_LEC_11",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      12,
+      16,
+      18
+    ],
+    "demand": "Prove a minimum edge removal rather than guessing"
+  },
+  {
+    "id": "ds.guided.p7-complete-general-tree-degree",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_01_TREE_CONSTRUCT"
+    ],
+    "subtopicIds": [
+      "RL_ST05_01_TREES"
+    ],
+    "sourceIds": [
+      "ref-90f44cf2d63b945d"
+    ],
+    "title": "Derive a count for a nonbinary full tree",
+    "prompt": "A nonempty finite rooted tree has exactly three children at every internal node. Derive the relation between its leaf count L and internal count I by counting edges, then construct the smallest example with two internal nodes.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The total node count is I+L, so the tree has I+L−1 edges. Counting edges by parents gives 3I, hence L=2I+1. For I=2, the root has two leaf children and one internal child with three leaves, giving five leaves."
+    ],
+    "rubric": [
+      "Count each edge exactly once by its parent.",
+      "Use the nonempty tree edge identity.",
+      "Verify the construction, including every child count."
+    ],
+    "unitId": "RL_LEC_11",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      27,
+      29
+    ],
+    "demand": "Derive a count for a nonbinary full tree"
+  },
+  {
+    "id": "ds.guided.p7-complete-left-inverse",
+    "version": "1",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "skillIds": [
+      "RL_SK07_03_INJ_SURJ"
+    ],
+    "subtopicIds": [
+      "RL_ST07_02_INJ_SURJ"
+    ],
+    "sourceIds": [
+      "ref-04d924fcee21049a"
+    ],
+    "title": "Infer the property forced by a left inverse",
+    "prompt": "Functions f:A→B and g:B→A satisfy g(f(a))=a for every a∈A. Prove f is injective. Give finite functions satisfying the premise for which f is not surjective.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "If f(a)=f(a′), applying g yields a=a′. For A={0},B={0,1}, take f(0)=0 and g(0)=g(1)=0: g∘f is identity, but 1 is outside the image of f."
+    ],
+    "rubric": [
+      "Apply the same function to equal outputs.",
+      "Specify both total functions in the counterexample.",
+      "Separate injectivity from surjectivity."
+    ],
+    "unitId": "RL_LEC_12",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      34,
+      39,
+      40,
+      44
+    ],
+    "demand": "Infer the property forced by a left inverse"
+  },
+  {
+    "id": "ds.guided.p7-complete-recursive-ambiguity",
+    "version": "1",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "skillIds": [
+      "RL_SK07_01_WELL_DEFINED"
+    ],
+    "subtopicIds": [
+      "RL_ST07_01_FUNCTION"
+    ],
+    "sourceIds": [
+      "ref-04d924fcee21049a"
+    ],
+    "title": "Distinguish inconsistent equations from underdetermined ones",
+    "prompt": "On domain {a,b}, compare proposed integer-valued definitions: (I) f(a)=f(b)+1, f(b)=f(a); (II) g(a)=g(b), g(b)=g(a). Explain why neither uniquely defines a function, and how their failures differ.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "I forces f(a)=f(a)+1, impossible over integers. II permits any common integer value, so many functions satisfy it; a base value such as g(a)=0 would select one. A recursive-looking equation does not by itself establish existence and uniqueness."
+    ],
+    "rubric": [
+      "Derive inconsistency in I.",
+      "Exhibit at least two solutions to II.",
+      "Distinguish no solution from multiple solutions."
+    ],
+    "unitId": "RL_LEC_12",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      34,
+      36
+    ],
+    "demand": "Distinguish inconsistent equations from underdetermined ones"
+  },
+  {
+    "id": "ds.guided.p7-complete-countable-union",
+    "version": "1",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "skillIds": [
+      "RL_SK08_02_COUNTABLE"
+    ],
+    "subtopicIds": [
+      "RL_ST08_01_NUMBER_SETS"
+    ],
+    "sourceIds": [
+      "ref-1c15c8629b146da0"
+    ],
+    "title": "Build a fair enumeration of two overlapping lists",
+    "prompt": "Sets A and B each have an enumeration by nonnegative integers. Describe a list covering A∪B even when the lists overlap. Explain why duplicates do not prevent countability and when the union is countably infinite rather than finite.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Interleave a0,b0,a1,b1,... . Every listed element appears at a finite position. Repetitions can be skipped for a distinct enumeration; if A∪B is infinite this yields countably infinitely many distinct entries. If both lists repeat only finitely many distinct elements, the union can be finite."
+    ],
+    "rubric": [
+      "Show every element is reached.",
+      "Handle overlap explicitly.",
+      "Separate at-most-countable from countably infinite."
+    ],
+    "unitId": "RL_LEC_13",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      12,
+      17,
+      18
+    ],
+    "demand": "Build a fair enumeration of two overlapping lists"
+  },
+  {
+    "id": "ds.guided.p7-complete-binary-diagonal",
+    "version": "1",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "skillIds": [
+      "RL_SK08_02_COUNTABLE"
+    ],
+    "subtopicIds": [
+      "RL_ST08_01_NUMBER_SETS"
+    ],
+    "sourceIds": [
+      "ref-1c15c8629b146da0"
+    ],
+    "title": "Construct the missing sequence without decimal ambiguity",
+    "prompt": "Suppose s0,s1,... purports to list all infinite binary sequences. Define t(n)=1−s_n(n). Prove t is missing and explain why the same construction does not prove that the set of finite binary strings is uncountable.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "For each index n, t differs from s_n at coordinate n, so no listed sequence equals t. The construction produces an infinite sequence, which is outside the domain of finite strings. Applying the conclusion to finite strings would change the set under discussion."
+    ],
+    "rubric": [
+      "Give a difference for every proposed list entry.",
+      "Keep the constructed object inside the infinite-sequence domain.",
+      "Identify the domain change in the false finite-string inference."
+    ],
+    "unitId": "RL_LEC_13",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      18,
+      21
+    ],
+    "demand": "Construct the missing sequence without decimal ambiguity"
+  },
+  {
+    "id": "ds.guided.p7-complete-restricted-russell",
+    "version": "1",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "skillIds": [
+      "RL_SK08_03_LIMITS"
+    ],
+    "subtopicIds": [
+      "RL_ST08_02_LIMITS"
+    ],
+    "sourceIds": [
+      "ref-1c15c8629b146da0"
+    ],
+    "title": "Locate the assumption behind a self-membership contradiction",
+    "prompt": "For a fixed set U define R_U={X∈U : X∉X}. Show that assuming R_U∈U yields a contradiction, and explain why concluding R_U∉U differs from allowing unrestricted formation of a set of all non-self-member sets.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "If R_U∈U, the definition gives R_U∈R_U iff R_U∉R_U, a contradiction. Therefore R_U is not an element of U. Restricting comprehension to members of a given set need not provide a universal set containing the new subset as an element."
+    ],
+    "rubric": [
+      "Keep subset and element relations distinct.",
+      "State the extra membership assumption used in the contradiction.",
+      "Do not infer that every restricted set definition is inconsistent."
+    ],
+    "unitId": "RL_LEC_13",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      22,
+      25
+    ],
+    "demand": "Locate the assumption behind a self-membership contradiction"
+  },
+  {
+    "id": "ds.guided.p7-complete-halting-timeout",
+    "version": "1",
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "skillIds": [
+      "RL_SK08_03_LIMITS"
+    ],
+    "subtopicIds": [
+      "RL_ST08_02_LIMITS"
+    ],
+    "sourceIds": [
+      "ref-1c15c8629b146da0"
+    ],
+    "title": "Reject a timeout as a universal halting decider",
+    "prompt": "A tool simulates any input program for one million steps, returning “halts” if it finishes and “never halts” otherwise. Explain its unsound answer and distinguish a useful bounded test from a decider for all programs and inputs.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "A program that executes one million plus one steps and then halts is misclassified. A timeout may soundly report that no halt was observed within the bound, but not that no future halt exists. The lecture’s undecidability result concerns a total correct decision procedure for arbitrary programs/inputs, not the impossibility of deciding individual simple cases."
+    ],
+    "rubric": [
+      "Exhibit a finite terminating counterexample beyond the bound.",
+      "Give an honest bounded-result label.",
+      "Preserve the scope of the universal impossibility result."
+    ],
+    "unitId": "RL_LEC_13",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      39,
+      40,
+      41,
+      43
+    ],
+    "demand": "Reject a timeout as a universal halting decider"
+  },
+  {
+    "id": "ds.guided.p7-complete-tree-depth-sum",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_03_TREE_FUNC"
+    ],
+    "subtopicIds": [
+      "RL_ST05_02_TREE_FUNCTION"
+    ],
+    "sourceIds": [
+      "ref-817ca63f2a5346ab"
+    ],
+    "title": "Define total node depth with enough recursive information",
+    "prompt": "For a finite rooted tree, define a recursive pair (N,D) returning node count and sum of node depths relative to its root. Use depth zero for the root and support any finite number of children. Explain why adding only the children’s D values is wrong.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The empty tree returns (0,0). A node with child pairs (Ni,Di) returns (1+ΣNi, Σ(Di+Ni)). Every node in each child subtree becomes one level deeper, so each contributes one additional unit; the root contributes depth zero. A leaf therefore returns (1,0)."
+    ],
+    "rubric": [
+      "Specify empty and leaf behavior.",
+      "Count all shifted descendant depths using Ni.",
+      "Use structural recursion only on smaller subtrees."
+    ],
+    "unitId": "RL_LEC_14",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      7,
+      9,
+      17,
+      22
+    ],
+    "demand": "Define total node depth with enough recursive information"
+  },
+  {
+    "id": "ds.guided.p7-complete-mirror-involution",
+    "version": "1",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "skillIds": [
+      "RL_SK05_03_TREE_FUNC"
+    ],
+    "subtopicIds": [
+      "RL_ST05_02_TREE_FUNCTION"
+    ],
+    "sourceIds": [
+      "ref-817ca63f2a5346ab"
+    ],
+    "title": "Prove that mirroring twice restores an ordered tree",
+    "prompt": "For ordered binary trees, define mirror(∅)=∅ and mirror(node(x,L,R))=node(x,mirror(R),mirror(L)). Prove mirror(mirror(t))=t by structural induction, including trees with a missing child.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "The empty case is immediate. For node(x,L,R), applying mirror twice gives node(x,mirror(mirror(L)),mirror(mirror(R))). The hypotheses for both child trees reduce this to node(x,L,R). Empty children are already handled by the base case."
+    ],
+    "rubric": [
+      "State both subtree hypotheses.",
+      "Track child order through both applications.",
+      "Do not assume trees are full."
+    ],
+    "unitId": "RL_LEC_14",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      7,
+      9,
+      17,
+      22
+    ],
+    "demand": "Prove that mirroring twice restores an ordered tree"
+  },
+  {
+    "id": "ds.guided.p7-complete-grammar-shortest",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b7ffa94c6d835806"
+    ],
+    "title": "Prove a shortest derivation claim with a length invariant",
+    "prompt": "A language starts with the word z. Rules allow u→uu and (u,v)→u#v for existing words. Give a derivation of z#zz, and prove that no word containing # has length two. Count all symbols including #.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "Derive zz by doubling z, then combine z and zz to get z#zz. Every generated word is nonempty; a first # insertion joins two nonempty words and a separator, giving length at least three. Later operations never reduce length, so length two with # is impossible."
+    ],
+    "rubric": [
+      "Distinguish a construction from a universal lower bound.",
+      "Handle both constructors.",
+      "Count the separator as a symbol."
+    ],
+    "unitId": "RL_LEC_15",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      6,
+      8,
+      10,
+      11
+    ],
+    "demand": "Prove a shortest derivation claim with a length invariant"
+  },
+  {
+    "id": "ds.guided.p7-complete-packing-certificate",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b7ffa94c6d835806"
+    ],
+    "title": "Certify an optimum when total volume gives a weak bound",
+    "prompt": "Bins have capacity 10 and items have sizes 6,6,6,2. Find the minimum number of bins and prove it. Explain why ceiling(total size/capacity) is not always a sufficient optimality certificate.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Three bins suffice: (6,2),(6),(6). Each size-6 item needs a different bin because 6+6>10, proving at least three. The volume bound is only ceil(20/10)=2, weaker than the incompatibility bound."
+    ],
+    "rubric": [
+      "Give a feasible packing.",
+      "Prove a matching lower bound.",
+      "Do not mistake a lower bound for an attainable solution."
+    ],
+    "unitId": "RL_LEC_15",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      17,
+      19
+    ],
+    "demand": "Certify an optimum when total volume gives a weak bound"
+  },
+  {
+    "id": "ds.guided.p7-complete-recursive-grid",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b7ffa94c6d835806"
+    ],
+    "title": "Give both soundness and completeness of a recursive definition",
+    "prompt": "Define S⊆N² starting with (0,0) and permitting (x,y)→(x+1,y+1) and (x,y)→(x,y+1), with no other elements. Prove S={(x,y)∈N²:x≤y}, where N includes zero.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Soundness: the base satisfies x≤y; both constructors preserve it. Completeness: for any x≤y, apply the first rule x times and the second y−x times. Both counts are nonnegative integers, producing exactly (x,y)."
+    ],
+    "rubric": [
+      "Prove generated elements satisfy the condition.",
+      "Construct every element satisfying the condition.",
+      "Use the exclusivity clause; closure alone does not characterize a unique set."
+    ],
+    "unitId": "RL_LEC_15",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      20,
+      22
+    ],
+    "demand": "Give both soundness and completeness of a recursive definition"
+  },
+  {
+    "id": "ds.guided.p7-complete-factorial-loop",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-b7ffa94c6d835806"
+    ],
+    "title": "Prove a product loop with its boundary input",
+    "prompt": "For integer n≥0 set k=0,p=1. While k<n, set k=k+1 then p=p*k. Prove the returned p is n!, using 0!=1. Include the update order, termination and n=0.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Maintain 0≤k≤n and p=k!. Initially p=0!=1. A step changes k to old k+1 and multiplies by that new k, yielding k!. The nonnegative integer n−k decreases. At exit k=n, hence p=n!; for n=0 no iterations run."
+    ],
+    "rubric": [
+      "Use the new k in the multiplication.",
+      "Prove invariant initialization and preservation.",
+      "Combine termination, false guard and the boundary input."
+    ],
+    "unitId": "RL_LEC_15",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      23,
+      25,
+      27,
+      29
+    ],
+    "demand": "Prove a product loop with its boundary input"
+  },
+  {
+    "id": "ds.guided.p7-complete-finite-language-enumeration",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-cf1403358195de45"
+    ],
+    "title": "Enumerate a constrained infinite language fairly",
+    "prompt": "Let L be all finite binary strings with equal numbers of 0 and 1, including ε. Prove L is countably infinite. Explain why listing all strings beginning with 0 before those beginning with 1 is not a fair enumeration.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Reasoning and assumptions"
+      },
+      {
+        "id": "part2",
+        "label": "Construction or proof"
+      },
+      {
+        "id": "part3",
+        "label": "Boundary case or counterexample"
+      }
+    ],
+    "reference": [
+      "List by length, and lexicographically within each finite length, retaining balanced strings. Every member appears after finitely many candidates. The strings (01)^n are all distinct, proving infinitude. An infinite first block beginning with 0 would never finish and reach the second block."
+    ],
+    "rubric": [
+      "Give a listing reaching every member.",
+      "Prove infinitude separately.",
+      "Explain starvation in the proposed order."
+    ],
+    "unitId": "RL_LEC_16",
+    "mode": "practice",
+    "difficulty": "Hard",
+    "sourcePages": [
+      6
+    ],
+    "demand": "Enumerate a constrained infinite language fairly"
+  },
+  {
+    "id": "ds.guided.p7-complete-assignment-quantifiers",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-cf1403358195de45"
+    ],
+    "title": "Separate complete assignment from one shared destination",
+    "prompt": "Every job has exactly one assigned machine, and every machine receives at least one job. Translate both conditions using J,M and A(job,machine) over a mixed domain. Explain whether they force a bijection and supply a smallest counterexample if not.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Use ∀j(J(j)→∃m(M(m)∧A(j,m)∧∀m′((M(m′)∧A(j,m′))→m′=m))) and ∀m(M(m)→∃j(J(j)∧A(j,m))). With A restricted to job-machine pairs these specify a total surjection. Two jobs both assigned to one machine meet them but are not injective."
+    ],
+    "rubric": [
+      "Restrict quantifiers to the correct sorts.",
+      "State existence and uniqueness separately.",
+      "Check a two-jobs/one-machine counterexample."
+    ],
+    "unitId": "RL_LEC_16",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      11,
+      22,
+      26
+    ],
+    "demand": "Separate complete assignment from one shared destination"
+  },
+  {
+    "id": "ds.guided.p7-complete-powerset-types",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-cf1403358195de45"
+    ],
+    "title": "Repair a type-confused implication about subsets",
+    "prompt": "A draft claims “if A∈P(B), then every element of A is an element of P(B).” Give a concrete counterexample using B={1,2}, and replace the conclusion with one that follows directly from the premise. Treat 1 and 2 as atomic labels, not sets.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Let A={1}. It is a subset of B, so A∈P(B), but the label 1 is not a subset of B and hence is not an element of P(B). The correct conclusion is ∀x(x∈A→x∈B), equivalently A⊆B."
+    ],
+    "rubric": [
+      "Distinguish subset objects from their atomic members.",
+      "Verify the premise is true in the counterexample.",
+      "Give a correctly typed replacement."
+    ],
+    "unitId": "RL_LEC_16",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      18
+    ],
+    "demand": "Repair a type-confused implication about subsets"
+  },
+  {
+    "id": "ds.guided.p7-complete-overlap-not-equivalence",
+    "version": "1",
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "skillIds": [
+      "RL_SK09_01_TRANSFER"
+    ],
+    "subtopicIds": [
+      "RL_ST09_01_CONSTRAINT"
+    ],
+    "sourceIds": [
+      "ref-cf1403358195de45"
+    ],
+    "title": "Show why sharing a tag does not partition records",
+    "prompt": "Each of three records has tags: a:{red}, b:{red,blue}, c:{blue}. Relate records when they share at least one tag. Determine whether this gives an equivalence relation on these records, and explain what goes wrong if its related pairs are treated as disjoint equivalence classes.",
+    "fields": [
+      {
+        "id": "part1",
+        "label": "Complete argument, construction and checks"
+      }
+    ],
+    "reference": [
+      "Every record has a tag, so the relation is reflexive; sharing is symmetric. But a relates to b and b to c while a does not relate to c, so transitivity fails. Neighborhoods overlap without being equal, unlike equivalence classes; connected components would define a different, transitive relation."
+    ],
+    "rubric": [
+      "Check all three equivalence properties.",
+      "Exhibit the failed chain.",
+      "Do not silently replace sharing by reachability."
+    ],
+    "unitId": "RL_LEC_16",
+    "mode": "exam",
+    "difficulty": "Exam-level",
+    "sourcePages": [
+      22,
+      24
+    ],
+    "demand": "Show why sharing a tag does not partition records"
+  }
+]

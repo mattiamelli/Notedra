@@ -4,7 +4,7 @@ import {IPStudyMode} from '../ip/IPStudyMode';
 import { lazy, Suspense, type KeyboardEvent } from 'react';
 import { Link,useNavigate,useParams } from 'react-router';
 import { ASSEMBLY_TOPIC_ID,type Course } from '../academic/navigation';
-import { AssemblyToolCard,EmptyState,PageHeading } from '../shell/PageParts';
+import { AssemblyToolCard,PageHeading } from '../shell/PageParts';
 import { NotFoundPage } from './NotFoundPage';
 import { topicStudy } from '../topic-study/content';
 import { isStudyMode,studyModes,type StudyMode,type StudyTopic } from '../topic-study/types';
@@ -12,6 +12,7 @@ import { MentalMap,TopicOverview,studyPath } from '../topic-study/AcademicViews'
 import { FlashcardMode,LearnMode } from '../topic-study/AuthoredViews';
 import { RLStudyMode } from '../rl/RLStudyMode';
 import { COStudyMode } from '../co/COStudyMode';
+const CompletionGuides=lazy(()=>import('../expansion/CompletionGuides'));
 const TopicMistakes=lazy(()=>import('../adaptive/MistakesPage').then(m=>({default:m.MistakesPage})));
 const IPCues=lazy(()=>import('../ip/MapCues'));
 const TopicEnrichment=lazy(()=>import('../enrichment/TopicEnrichment'));
@@ -39,7 +40,8 @@ function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:S
  <section id="study-mode-panel" className="ds-mode-panel" role="tabpanel" aria-labelledby={`study-mode-${selected}`} tabIndex={0}>
  {mode==='overview'&&<>{topic.id===ASSEMBLY_TOPIC_ID&&<AssemblyToolCard/>}<TopicOverview topic={topic}/><div className="ds-study-next"><Link className="ds-button" to={studyPath(topic,'learn')}>Open Learn</Link><Link className="ds-text-link" to={studyPath(topic,'mental-map')}>Explore Mental Map</Link></div></>}
  {mode==='learn'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<LearnMode topic={topic}/>)}{mode==='mental-map'&&<><MentalMap topic={topic}/>{ip&&<Suspense fallback={<p role="status">Loading study cues…</p>}><IPCues topicId={topic.id}/></Suspense>}</>}{mode==='flashcards'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<FlashcardMode key={topic.id} topic={topic}/>)}{mode==='practice'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<Suspense fallback={<p role="status">Loading Practice…</p>}><TopicPractice topicId={topic.id}/></Suspense>)}
- {mode==='exam-style'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:<EmptyState title="Exam-style practice is not available yet"><p>Exam-style exercises have not been authored for this topic. The shared Practice items are introductory authored study exercises.</p></EmptyState>)}
+ {mode==='exam-style'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:<Suspense fallback={<p role="status">Loading exam-style exercises…</p>}><TopicPractice topicId={topic.id} mode="exam" hasStudyActivities/></Suspense>)}
+ { !ip&&(mode==='practice'||mode==='exam-style')&&<Suspense fallback={<p role="status">Loading guided reasoning…</p>}><CompletionGuides topicId={topic.id} mode={mode==='practice'?'practice':'exam'}/></Suspense>}
  {mode==='mistakes'&&<Suspense fallback={<p role="status">Loading mistakes…</p>}><TopicMistakes topicId={topic.id}/></Suspense>}
  {['flashcards','mental-map','practice'].includes(mode)&&!topic.id.startsWith('IP_')&&<Suspense fallback={<p role="status">Loading supplemental study…</p>}><TopicEnrichment key={topic.id+mode} topicId={topic.id} mode={mode}/></Suspense>}
  </section></div>;

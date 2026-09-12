@@ -1,0 +1,56 @@
+[
+  {
+    "assetGroup": "assets/CompletionGuides.js",
+    "before": 0,
+    "after": 73558,
+    "delta": 73558
+  },
+  {
+    "assetGroup": "assets/ExerciseParts.css",
+    "before": 1746,
+    "after": 2069,
+    "delta": 323
+  },
+  {
+    "assetGroup": "assets/ExerciseParts.js",
+    "before": 11548,
+    "after": 13326,
+    "delta": 1778
+  },
+  {
+    "assetGroup": "assets/GuidedPractice.js",
+    "before": 2049,
+    "after": 2045,
+    "delta": -4
+  },
+  {
+    "assetGroup": "assets/TopicContent.js",
+    "before": 12958,
+    "after": 26433,
+    "delta": 13475
+  },
+  {
+    "assetGroup": "assets/TopicPractice.js",
+    "before": 1704,
+    "after": 1811,
+    "delta": 107
+  },
+  {
+    "assetGroup": "assets/index.css",
+    "before": 79335,
+    "after": 79565,
+    "delta": 230
+  },
+  {
+    "assetGroup": "assets/index.js",
+    "before": 507455,
+    "after": 510265,
+    "delta": 2810
+  },
+  {
+    "assetGroup": "assets/service.js",
+    "before": 159517,
+    "after": 394533,
+    "delta": 235016
+  }
+]

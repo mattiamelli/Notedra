@@ -1,0 +1,1571 @@
+[
+  {
+    "id": "ds.practice.p7-complete-cmos-dual",
+    "version": "1",
+    "title": "Determine a CMOS network through conduction paths",
+    "prompt": "A static CMOS pull-down has nMOS A in series with parallel nMOS B and C. Its complementary pull-up is dual. In input order ABC=000,001,010,011,100,101,110,111, give the stable output bits. nMOS conducts for input 1; pMOS for 0.",
+    "rules": "Enter a fixed-width 0/1 string in the stated row order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subtopicId": "CO_ST03_01_CMOS",
+    "skillId": "CO_SK03_01_CMOS_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_04",
+      "filename": "CO Lecture 4 - Logic Circuits Part 2.pdf",
+      "locator": "PDF_PAGES_1-41",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 8
+    },
+    "reference": {
+      "kind": "text",
+      "value": "11111000"
+    },
+    "explanation": "The pull-down conducts exactly when A AND (B OR C); the output is its complement. Inputs with A=0 remain high; 100 is high because B=C=0.",
+    "unitId": "CO_LEC_04",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Determine a CMOS network through conduction paths",
+    "sourcePages": [
+      6,
+      8
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-latch-hold",
+    "version": "1",
+    "title": "Separate transparent and held latch intervals",
+    "prompt": "A high-transparent D latch starts Q=0. After each settled (clock,D) pair (0,1),(1,1),(1,0),(0,1),(1,1), record Q as five bits. All transitions are separated by enough settling time.",
+    "rules": "Enter a fixed-width 0/1 string in the stated row order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subtopicId": "CO_ST03_03_SEQUENTIAL",
+    "skillId": "CO_SK03_04_SEQ_LOGIC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_04",
+      "filename": "CO Lecture 4 - Logic Circuits Part 2.pdf",
+      "locator": "PDF_PAGES_1-41",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 5
+    },
+    "reference": {
+      "kind": "text",
+      "value": "01001"
+    },
+    "explanation": "A low clock holds the prior value and a high clock copies D, giving 0,1,0,0,1. This is a level-sensitive latch, not an edge-triggered register.",
+    "unitId": "CO_LEC_04",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Separate transparent and held latch intervals",
+    "sourcePages": [
+      27,
+      28
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-shift-simultaneous",
+    "version": "1",
+    "title": "Apply simultaneous updates in a shift register",
+    "prompt": "A four-stage rising-edge shift register starts (Q0,Q1,Q2,Q3)=(0,1,0,1). At each edge Q0 gets input and Q1,Q2,Q3 get the OLD Q0,Q1,Q2. Inputs on three successive edges are 1,0,1. Return the final four bits in Q0..Q3 order.",
+    "rules": "Enter a fixed-width 0/1 string in the stated row order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "subtopicId": "CO_ST03_03_SEQUENTIAL",
+    "skillId": "CO_SK03_04_SEQ_LOGIC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_04",
+      "filename": "CO Lecture 4 - Logic Circuits Part 2.pdf",
+      "locator": "PDF_PAGES_1-41",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1010"
+    },
+    "explanation": "Successive states are 1010,0101,1010. Each edge copies the previous stage state; updating left-to-right in place would incorrectly propagate one input through all stages.",
+    "unitId": "CO_LEC_04",
+    "mode": "exam",
+    "difficulty": "Hard",
+    "demand": "Apply simultaneous updates in a shift register",
+    "sourcePages": [
+      29,
+      31
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-loadstore-reuse",
+    "version": "1",
+    "title": "Count data-memory traffic after register reuse",
+    "prompt": "Compute both S=A+B and D=A-B on a load/store machine. Load A and B once into separate registers, compute S and D in two spare registers and store both results. Instruction fetches are excluded. Return the number of data reads followed by data writes.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_02_STYLES",
+    "skillId": "CO_SK07_03_ISA_COMPARE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_08",
+      "filename": "CO Lecture 8 - ISA Part 2.pdf",
+      "locator": "PDF_PAGES_1-31",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2,2"
+    },
+    "explanation": "The two loads can serve both register-register arithmetic operations; only the two final results are stored. Counting every arithmetic operand as a memory read would confuse load/store with memory-operand execution.",
+    "unitId": "CO_LEC_08",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Count data-memory traffic after register reuse",
+    "sourcePages": [
+      3,
+      13,
+      14,
+      26
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-immediate-range",
+    "version": "1",
+    "title": "Recover signed immediate capacity after opcode expansion",
+    "prompt": "A fixed 24-bit instruction has an opcode and two register fields for 32 registers. The original opcode is 5 bits; a revision uses 7 bits. All remaining bits are a signed two’s-complement immediate. Return the original maximum positive immediate followed by the revised maximum.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T07_ISA",
+    "subtopicId": "CO_ST07_01_FORMAT",
+    "skillId": "CO_SK07_01_ISA_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_08",
+      "filename": "CO Lecture 8 - ISA Part 2.pdf",
+      "locator": "PDF_PAGES_1-31",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "255,63"
+    },
+    "explanation": "Register fields consume 10 bits. The remaining immediate widths are 9 and 7, so positive maxima are 2^8−1 and 2^6−1.",
+    "unitId": "CO_LEC_08",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Recover signed immediate capacity after opcode expansion",
+    "sourcePages": [
+      7,
+      13,
+      15,
+      23
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-bus-old-z",
+    "version": "1",
+    "title": "Trace staging registers without write-through",
+    "prompt": "Initially R1=8,R2=5,X=0,Z=2. Microsteps: R1→X; (X+R2)→Z; Z→R2; (X-R2)→Z. Each step commits at its end. Return final R2,Z.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subtopicId": "CO_ST08_01_DATAPATH",
+    "skillId": "CO_SK08_01_MICRO_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_09",
+      "filename": "CO Lecture 9 - BPU Part 1.pdf",
+      "locator": "PDF_PAGES_1-29",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "13,-5"
+    },
+    "explanation": "X becomes 8, then Z becomes 13 and is copied into R2. The final subtraction uses updated R2=13, yielding −5; staging-register values are not automatically copied elsewhere.",
+    "unitId": "CO_LEC_09",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Trace staging registers without write-through",
+    "sourcePages": [
+      22,
+      26
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-bus-fanout",
+    "version": "1",
+    "title": "Use one source with multiple destination gates",
+    "prompt": "A single CPU bus transfers one word per microstep. Copy R1 into both R2 and R3, then copy the OLD R2 into R4, preserving R1. An extra register X is available. Inputs latch at the end of a step; one source may drive multiple destinations. What is the minimum number of steps?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subtopicId": "CO_ST08_03_MICRO_OPT",
+    "skillId": "CO_SK08_05_MICRO_OPT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_09",
+      "filename": "CO Lecture 9 - BPU Part 1.pdf",
+      "locator": "PDF_PAGES_1-29",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2"
+    },
+    "explanation": "First drive old R2 to R4. Next drive R1 to both R2 and R3. At least two different source values must be put on the bus, so one step is impossible; no extra temporary is needed.",
+    "unitId": "CO_LEC_09",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Use one source with multiple destination gates",
+    "sourcePages": [
+      20,
+      21,
+      22
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-encoded-idle",
+    "version": "1",
+    "title": "Reserve idle states in encoded control fields",
+    "prompt": "A microinstruction selects one of 7 bus sources or no source, one of 4 ALU functions or no operation, and has 3 independent destination-write bits. Fields are independent and minimally encoded. How many bits are needed?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subtopicId": "CO_ST08_02_CONTROL_ENCODING",
+    "skillId": "CO_SK08_03_CONTROL_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_10",
+      "filename": "CO Lecture 10 - BPU Part 2.pdf",
+      "locator": "PDF_PAGES_1-28",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "9"
+    },
+    "explanation": "The source field needs ceil(log2 8)=3 bits; the ALU field needs ceil(log2 5)=3; independent destinations need 3 more. Forgetting the ALU idle state gives an invalid 8-bit result.",
+    "unitId": "CO_LEC_10",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Reserve idle states in encoded control fields",
+    "sourcePages": [
+      23,
+      24,
+      25
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-microbranch",
+    "version": "1",
+    "title": "Follow a conditional microprogram path",
+    "prompt": "Control-store addresses: 10 tests Z and jumps to 20 if Z=1, else 11; 11 clears R and jumps to 30; 20 increments R and jumps to 21; 21 increments R and jumps to 30; 30 ends. Initially R=6,Z=1 and Z never changes. Return final R and number of visited microinstructions including END.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "subtopicId": "CO_ST08_01_DATAPATH",
+    "skillId": "CO_SK08_01_MICRO_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_10",
+      "filename": "CO Lecture 10 - BPU Part 2.pdf",
+      "locator": "PDF_PAGES_1-28",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "8,4"
+    },
+    "explanation": "The path is 10,20,21,30: two increments yield 8. Address 11 is not executed; store addresses are labels, not counts of elapsed steps.",
+    "unitId": "CO_LEC_10",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Follow a conditional microprogram path",
+    "sourcePages": [
+      18,
+      20,
+      21
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-poll-latency",
+    "version": "1",
+    "title": "Bound detection delay in periodic polling",
+    "prompt": "A CPU checks a persistent ready flag at times 0,8,16,... microseconds. The device becomes ready at time 19 microseconds and stays ready until read. Return the detection time and the delay from readiness.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subtopicId": "CO_ST09_01_BUS_IO",
+    "skillId": "CO_SK09_01_BUS_REASON",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_11",
+      "filename": "CO Lecture 11 - IO.pdf",
+      "locator": "PDF_PAGES_1-35",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "24,5"
+    },
+    "explanation": "The next scheduled poll after 19 is 24, giving 5 microseconds of detection delay. The CPU does not continuously observe the flag between polls.",
+    "unitId": "CO_LEC_11",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Bound detection delay in periodic polling",
+    "sourcePages": [
+      23,
+      25,
+      26
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-irq-order",
+    "version": "1",
+    "title": "Follow fixed-priority interrupt arbitration",
+    "prompt": "Devices A,B,C occur in that daisy-chain priority order. B and C request simultaneously while A is inactive. Servicing one request clears only that device; no new request arrives. Encode service order using A=1,B=2,C=3 as a two-digit integer.",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subtopicId": "CO_ST09_03_INTERRUPTS",
+    "skillId": "CO_SK09_03_INTERRUPT_TRACE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_11",
+      "filename": "CO Lecture 11 - IO.pdf",
+      "locator": "PDF_PAGES_1-35",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "23"
+    },
+    "explanation": "Inactive A passes the grant; requesting B accepts it before C. After B clears, C receives the next grant. A never requests, so it is not serviced.",
+    "unitId": "CO_LEC_11",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Follow fixed-priority interrupt arbitration",
+    "sourcePages": [
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-bus-ready-edge",
+    "version": "1",
+    "title": "Account for a ready signal arriving between clock edges",
+    "prompt": "A synchronous bus samples ready at 10,20,30,... ns after launch at time 0. Device data becomes stable and ready asserts at 23 ns; setup margin is 2 ns. What is the earliest legal sampling time?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "subtopicId": "CO_ST09_01_BUS_IO",
+    "skillId": "CO_SK09_01_BUS_REASON",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_11",
+      "filename": "CO Lecture 11 - IO.pdf",
+      "locator": "PDF_PAGES_1-35",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "30"
+    },
+    "explanation": "Sampling at 20 is too early; at 30 data has been stable for 7 ns, meeting the 2 ns setup margin. Asynchronous readiness is not itself a synchronous sampling edge.",
+    "unitId": "CO_LEC_11",
+    "mode": "exam",
+    "difficulty": "Hard",
+    "demand": "Account for a ready signal arriving between clock edges",
+    "sourcePages": [
+      17,
+      18
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-word-boundary",
+    "version": "1",
+    "title": "Find word lines touched by an unaligned byte request",
+    "prompt": "Memory has 8-byte word lines and byte addresses. A request covers 10 consecutive bytes starting at byte address 14. Return first word-line index, last word-line index and number of word lines touched.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subtopicId": "CO_ST10_02_MEMORY_CHIPS",
+    "skillId": "CO_SK10_02_MEMORY_BITS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_12",
+      "filename": "CO Lecture 12 - Memory.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,2,2"
+    },
+    "explanation": "Bytes 14 through 23 lie in lines floor(14/8)=1 through floor(23/8)=2. The inclusive end is 14+10−1; byte 24 is not requested.",
+    "unitId": "CO_LEC_12",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Find word lines touched by an unaligned byte request",
+    "sourcePages": [
+      14,
+      27
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-bank-stride",
+    "version": "1",
+    "title": "Diagnose an access stride that loses interleaving",
+    "prompt": "Four word-interleaved banks use bank=wordAddress mod 4 and row=floor(wordAddress/4). Requests use word addresses 2,6,10,14. Return number of distinct banks and row index of the last request.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subtopicId": "CO_ST10_02_MEMORY_CHIPS",
+    "skillId": "CO_SK10_03_INTERLEAVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_12",
+      "filename": "CO Lecture 12 - Memory.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1,3"
+    },
+    "explanation": "All addresses have remainder 2, so they contend for bank 2. The last row is floor(14/4)=3. Interleaving benefits consecutive addresses, not every stride.",
+    "unitId": "CO_LEC_12",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Diagnose an access stride that loses interleaving",
+    "sourcePages": [
+      30,
+      31
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-dma-overlap",
+    "version": "1",
+    "title": "Calculate block completion with CPU/DMA overlap",
+    "prompt": "After negligible setup, DMA transfers a block in 12 ms while the CPU computes on the previous independent block for 9 ms. Completion handling takes 1 ms and starts only after both activities finish. Return serial total time and overlapped total time.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T10_DMA_MEMORY",
+    "subtopicId": "CO_ST10_01_DMA",
+    "skillId": "CO_SK10_01_DMA",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_12",
+      "filename": "CO Lecture 12 - Memory.pdf",
+      "locator": "PDF_PAGES_1-32",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "22,13"
+    },
+    "explanation": "Serial execution takes 12+9+1=22 ms. With independence and the stated overlap, the work ends at max(12,9)=12 ms, followed by 1 ms handling. This model excludes bus contention by assumption.",
+    "unitId": "CO_LEC_12",
+    "mode": "exam",
+    "difficulty": "Hard",
+    "demand": "Calculate block completion with CPU/DMA overlap",
+    "sourcePages": [
+      7,
+      8,
+      12
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-amdahl-inverse",
+    "version": "1",
+    "title": "Recover a serial fraction from a measured ideal speedup",
+    "prompt": "Under ideal Amdahl assumptions, four processors give speedup 2.5. Find the serial fraction as an integer percentage.",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T13_PARALLELISM",
+    "subtopicId": "CO_ST13_02_AMDAHL",
+    "skillId": "CO_SK13_02_AMDAHL",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_15",
+      "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "locator": "PDF_PAGES_1-46",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "co-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "co-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "20"
+    },
+    "explanation": "1/2.5 = f + (1−f)/4, so 0.4=0.25+0.75f and f=0.2. The speedup alone is interpreted only under the explicitly ideal model.",
+    "unitId": "CO_LEC_15",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Recover a serial fraction from a measured ideal speedup",
+    "sourcePages": [
+      11,
+      13
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-process-translation",
+    "version": "1",
+    "title": "Translate the same virtual address in two processes",
+    "prompt": "Pages are 256 bytes. Virtual address 777 is used in two processes: P maps virtual page 3 to physical frame 9, Q maps it to frame 4. Both mappings are resident/readable. Return P’s and Q’s physical byte addresses.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "subtopicId": "CO_ST14_01_VM",
+    "skillId": "CO_SK14_01_VM_TRANSLATE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_15",
+      "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+      "locator": "PDF_PAGES_1-46",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2313,1033"
+    },
+    "explanation": "777=3×256+9. The offset stays 9, so P uses 9×256+9 and Q uses 4×256+9. A virtual address is interpreted through its process’s page table.",
+    "unitId": "CO_LEC_15",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Translate the same virtual address in two processes",
+    "sourcePages": [
+      29,
+      30,
+      37
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-necessary-chain",
+    "version": "1",
+    "title": "Find assignments violating a two-part requirement",
+    "prompt": "Let P mean a job is published, R reviewed and S signed. Policy requires review for publication and requires a signature whenever review occurs. List the indices of assignments violating the policy, with index=4P+2R+S and 0=false,1=true.",
+    "rules": "Enter a flat integer set in braces. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_01_CONNECTIVES",
+    "skillId": "RL_SK01_02_NEC_SUFF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{2,4,5,6}"
+    },
+    "explanation": "The policy is (P→R) AND (R→S). R=1,S=0 gives indices 2 and 6; P=1,R=0 gives 4 and 5. Other rows meet both conditions.",
+    "unitId": "RL_LEC_01",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Find assignments violating a two-part requirement",
+    "sourcePages": [
+      4,
+      6,
+      7
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-connective-completion",
+    "version": "1",
+    "title": "Count Boolean operators under a semantic restriction",
+    "prompt": "A binary Boolean operator ★ must satisfy P★P=P and must be commutative. How many distinct truth tables satisfy both requirements?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_03_TRUTH_TABLE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2"
+    },
+    "explanation": "The diagonal fixes 00→0 and 11→1. Commutativity forces the two off-diagonal outputs equal, leaving one free Boolean choice: AND or OR.",
+    "unitId": "RL_LEC_01",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Count Boolean operators under a semantic restriction",
+    "sourcePages": [
+      16,
+      17
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-equivalence-disagreement",
+    "version": "1",
+    "title": "Find where an implication differs from its converse",
+    "prompt": "For F=(P→Q) and G=(Q→P), output 1 exactly on rows where F and G disagree. Use PQ rows 00,01,10,11.",
+    "rules": "Enter a fixed-width 0/1 string in the stated row order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_05_EQUIV",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_01",
+      "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+      "locator": "PDF_PAGES_1-26",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 4
+    },
+    "reference": {
+      "kind": "text",
+      "value": "0110"
+    },
+    "explanation": "Both implications are true when P=Q. With unequal inputs exactly one implication has true antecedent and false consequent, so the outputs differ.",
+    "unitId": "RL_LEC_01",
+    "mode": "exam",
+    "difficulty": "Hard",
+    "demand": "Find where an implication differs from its converse",
+    "sourcePages": [
+      6,
+      7,
+      14
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-dnf-contradictory-term",
+    "version": "1",
+    "title": "Discard an impossible product without discarding the formula",
+    "prompt": "F=(P∧¬P∧Q)∨(P∧¬Q)∨(¬P∧Q). List satisfying row indices 2P+Q.",
+    "rules": "Enter a flat integer set in braces. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_03_NORMAL_FORMS",
+    "skillId": "RL_SK01_06_NORMAL_FORM",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{1,2}"
+    },
+    "explanation": "The first conjunction can never hold; the other two describe exactly the unequal rows. An impossible DNF term does not make the entire disjunction false.",
+    "unitId": "RL_LEC_02",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Discard an impossible product without discarding the formula",
+    "sourcePages": [
+      44,
+      47,
+      48
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-cnf-unit-propagation",
+    "version": "1",
+    "title": "Propagate a forced literal through CNF",
+    "prompt": "For F=(P∨Q)∧(¬P∨Q)∧(¬Q∨R), how many assignments of P,Q,R satisfy F?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_04_SAT_EXPLOSION",
+    "skillId": "RL_SK01_07_SAT_PROP",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2"
+    },
+    "explanation": "The first two clauses force Q=true. Then the last forces R=true, while P is unconstrained, giving two assignments.",
+    "unitId": "RL_LEC_02",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Propagate a forced literal through CNF",
+    "sourcePages": [
+      49,
+      50,
+      54
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-argument-counterrows",
+    "version": "1",
+    "title": "Separate premise satisfiability from argument validity",
+    "prompt": "Premises are P→Q and Q∨R; conclusion is P∨R. List all counterexample row indices 4P+2Q+R where every premise is true but the conclusion false.",
+    "rules": "Enter a flat integer set in braces. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_04_PROP_VALIDITY",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{2}"
+    },
+    "explanation": "A false conclusion forces P=R=0. The second premise then requires Q=1, and P→Q is true. Thus only 010 is a counterexample.",
+    "unitId": "RL_LEC_02",
+    "mode": "exam",
+    "difficulty": "Hard",
+    "demand": "Separate premise satisfiability from argument validity",
+    "sourcePages": [
+      20,
+      21
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-quantifier-order",
+    "version": "1",
+    "title": "Compare one shared witness with separate witnesses",
+    "prompt": "Domain D={0,1,2}; R={(0,1),(1,2),(2,0)}. Give two truth bits: first ∀x∃y R(x,y), then ∃y∀x R(x,y).",
+    "rules": "Enter a fixed-width 0/1 string in the stated row order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_03_MODELS",
+    "skillId": "RL_SK02_05_FORMAL_STRUCTURE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "10"
+    },
+    "explanation": "Every row has a successor, so separate witnesses exist. No single column has an edge from all three elements, so no common witness exists.",
+    "unitId": "RL_LEC_03",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Compare one shared witness with separate witnesses",
+    "sourcePages": [
+      46,
+      64,
+      69
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-restricted-witness",
+    "version": "1",
+    "title": "Count witnesses subject to two restrictions",
+    "prompt": "Domain {0,1,2,3}, A={0,2}, B={1,2}, R={(0,1),(0,2),(2,2),(2,3),(3,1)}. How many x satisfy A(x) ∧ ∃y(B(y) ∧ R(x,y) ∧ y≠x)?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T02_FOL",
+    "subtopicId": "RL_ST02_03_MODELS",
+    "skillId": "RL_SK02_04_TARSKI",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_03",
+      "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+      "locator": "PDF_PAGES_1-85",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "1"
+    },
+    "explanation": "x=0 qualifies via y=1 or 2. x=2 has only B-successor 2, forbidden by y≠x. The other elements fail A. Multiple witnesses do not mean multiple x values.",
+    "unitId": "RL_LEC_03",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Count witnesses subject to two restrictions",
+    "sourcePages": [
+      46,
+      64,
+      69
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-difference-recurrence",
+    "version": "1",
+    "title": "Evaluate a recurrence with a changing increment",
+    "prompt": "Let a0=2 and a(n+1)=a(n)+2n+3 for n≥0. Return a4 and the increment a4−a3.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "subtopicId": "RL_ST04_01_RECURRENCE",
+    "skillId": "RL_SK04_02_EVAL_RECURSIVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_07",
+      "filename": "R&L Lecture 7 - Induction and Recursion Part 2.pdf",
+      "locator": "PDF_PAGES_1-44",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "26,9"
+    },
+    "explanation": "The increments are 3,5,7,9 and terms 2,5,10,17,26. The recurrence uses the predecessor index n, not the new term’s index.",
+    "unitId": "RL_LEC_07",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Evaluate a recurrence with a changing increment",
+    "sourcePages": [
+      14,
+      16,
+      17,
+      19
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-traversal-position",
+    "version": "1",
+    "title": "Locate a node using two traversal orders",
+    "prompt": "A binary tree has root 8, left child 3 with right child 5, and right child 12 with children 10 and 14. Return the one-based position of node 5 in preorder, then in postorder.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_01_TREES",
+    "skillId": "RL_SK05_02_TREE_TRAVERSE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_08",
+      "filename": "R&L Lecture 8 - Induction and Recursion Part 3.pdf",
+      "locator": "PDF_PAGES_1-81",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "3,1"
+    },
+    "explanation": "Preorder is 8,3,5,12,10,14; postorder is 5,3,10,14,12,8. The missing left child of 3 contributes no entry.",
+    "unitId": "RL_LEC_08",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Locate a node using two traversal orders",
+    "sourcePages": [
+      29,
+      40,
+      51
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-tree-height-capacity",
+    "version": "1",
+    "title": "Bound leaves under a height limit",
+    "prompt": "Height counts edges on the longest root-to-leaf path. Among binary trees of height at most 3, what is the maximum number of leaves?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_01_TREES",
+    "skillId": "RL_SK05_01_TREE_CONSTRUCT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_08",
+      "filename": "R&L Lecture 8 - Induction and Recursion Part 3.pdf",
+      "locator": "PDF_PAGES_1-81",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "8"
+    },
+    "explanation": "Each level can at most double the number of nodes. A complete binary tree with all leaves at depth 3 attains 2³=8; internal nodes cannot also be counted as leaves.",
+    "unitId": "RL_LEC_08",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Bound leaves under a height limit",
+    "sourcePages": [
+      7,
+      20,
+      24
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-nested-set-membership",
+    "version": "1",
+    "title": "Keep an empty set distinct from its singleton",
+    "prompt": "Let A={∅,{∅}}. Return three truth bits, in order: ∅∈A; {∅}⊆A; {{∅}}∈A.",
+    "rules": "Enter a fixed-width 0/1 string in the stated row order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_03_POWER_CART",
+    "skillId": "RL_SK06_03_POWER_CART",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "binary",
+      "width": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "110"
+    },
+    "explanation": "The two elements are the empty set and its singleton. The singleton is a subset because its sole element ∅ is in A; the singleton of that singleton is not itself one of A’s two elements.",
+    "unitId": "RL_LEC_09",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Keep an empty set distinct from its singleton",
+    "sourcePages": [
+      7,
+      9,
+      34
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-symmetric-membership",
+    "version": "1",
+    "title": "Find elements lying in exactly two of three sets",
+    "prompt": "Let A={0,1,2,3}, B={1,2,4}, C={2,3,4}. Return the set of elements belonging to exactly two of A,B,C.",
+    "rules": "Enter a flat integer set in braces. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_01_SET_OPS",
+    "skillId": "RL_SK06_01_SET_CALC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_09",
+      "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{1,3,4}"
+    },
+    "explanation": "Count membership across the three sets: 1 is in A,B; 3 in A,C; 4 in B,C. Element 2 lies in all three and must be excluded.",
+    "unitId": "RL_LEC_09",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Find elements lying in exactly two of three sets",
+    "sourcePages": [
+      11,
+      16
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-product-diagonal",
+    "version": "1",
+    "title": "Remove the diagonal from an overlapping product",
+    "prompt": "A={0,1,2}, B={1,2,3,4}. How many ordered pairs in A×B have distinct coordinates?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_03_POWER_CART",
+    "skillId": "RL_SK06_03_POWER_CART",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_10",
+      "filename": "R&L Lecture 10 - Set Theory Part 2.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "10"
+    },
+    "explanation": "There are 3×4=12 pairs. Exactly (1,1) and (2,2) are diagonal pairs; 0 and 3,4 are not in the intersection.",
+    "unitId": "RL_LEC_10",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Remove the diagonal from an overlapping product",
+    "sourcePages": [
+      14,
+      17,
+      19
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-product-intersection",
+    "version": "1",
+    "title": "Count a shared set of ordered pairs",
+    "prompt": "A={0,1,2}, B={1,2,3}, C={2,3,4}. Return |(A×B)∩(B×C)|.",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T06_SET_THEORY",
+    "subtopicId": "RL_ST06_03_POWER_CART",
+    "skillId": "RL_SK06_03_POWER_CART",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_10",
+      "filename": "R&L Lecture 10 - Set Theory Part 2.pdf",
+      "locator": "PDF_PAGES_1-37",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4"
+    },
+    "explanation": "A shared pair has its first coordinate in A∩B={1,2} and second in B∩C={2,3}. Hence four pairs, not the cardinality of a three-way intersection.",
+    "unitId": "RL_LEC_10",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Count a shared set of ordered pairs",
+    "sourcePages": [
+      14,
+      19
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-directed-degrees",
+    "version": "1",
+    "title": "Separate incoming and outgoing edges",
+    "prompt": "A simple digraph on {1,2,3,4} has edges (1,2),(1,3),(3,2),(2,4),(4,3). Return indegree(2), outdegree(3), and the sum of all indegrees.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_03_GRAPHS",
+    "skillId": "RL_SK05_04_GRAPH_CONSTRUCT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_11",
+      "filename": "R&L Lecture 11 - Set Theory Part 3.pdf",
+      "locator": "PDF_PAGES_1-31",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 3
+    },
+    "reference": {
+      "kind": "text",
+      "value": "2,1,5"
+    },
+    "explanation": "Two edges enter 2, one leaves 3, and every directed edge contributes once to the total indegree.",
+    "unitId": "RL_LEC_11",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Separate incoming and outgoing edges",
+    "sourcePages": [
+      6,
+      8,
+      12
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-topological-freedom",
+    "version": "1",
+    "title": "Count valid orders after a fork and join",
+    "prompt": "A DAG has vertices {1,2,3,4,5} and edges 1→3,2→3,3→4,3→5. How many topological orders exist?",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_03_GRAPHS",
+    "skillId": "RL_SK05_05_TOPO",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_11",
+      "filename": "R&L Lecture 11 - Set Theory Part 3.pdf",
+      "locator": "PDF_PAGES_1-31",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4"
+    },
+    "explanation": "Vertices 1 and 2 must precede 3 and can swap; 4 and 5 must follow 3 and can swap. The choices are independent, giving 2×2=4.",
+    "unitId": "RL_LEC_11",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Count valid orders after a fork and join",
+    "sourcePages": [
+      16,
+      18
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-relation-closure",
+    "version": "1",
+    "title": "Repair a missing transitive pair",
+    "prompt": "On {0,1,2}, R={(0,0),(1,1),(2,2),(0,1),(1,2)}. Add the fewest pairs so that R is transitive. Return the encoded added pairs as a set, encoding (x,y) by 3x+y.",
+    "rules": "Enter a flat integer set in braces. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subtopicId": "RL_ST07_03_REL_PROPS",
+    "skillId": "RL_SK07_04_REL_PROPS",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_12",
+      "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+      "locator": "PDF_PAGES_1-50",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer-set",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "{2}"
+    },
+    "explanation": "The chain 0R1 and 1R2 forces 0R2, encoded 2. Adding that pair completes the order 0≤1≤2 without creating further missing chains.",
+    "unitId": "RL_LEC_12",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Repair a missing transitive pair",
+    "sourcePages": [
+      9,
+      22
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-fiber-profile",
+    "version": "1",
+    "title": "Compute a finite function’s image and largest fiber",
+    "prompt": "f:{0,1,2,3,4,5}→{0,1,2,3} maps x to x mod 3. Return image size and largest fiber size.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "subtopicId": "RL_ST07_02_INJ_SURJ",
+    "skillId": "RL_SK07_03_INJ_SURJ",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_12",
+      "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+      "locator": "PDF_PAGES_1-50",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "3,2"
+    },
+    "explanation": "The image is {0,1,2}; fibers are {0,3},{1,4},{2,5}, each size two. Codomain value 3 has empty fiber, so f is not onto its declared codomain.",
+    "unitId": "RL_LEC_12",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Compute a finite function’s image and largest fiber",
+    "sourcePages": [
+      34,
+      39,
+      40
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-tree-leaf-weight",
+    "version": "1",
+    "title": "Evaluate a function that treats leaves separately",
+    "prompt": "Define f(∅)=0; a leaf labelled x has f=x²; an internal node labelled x with children Ti has f=x+Σf(Ti). Root 2 has leaf −3 and internal child 4 whose leaves are 1 and −2. Return f of the whole tree.",
+    "rules": "Enter a single integer, without units. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_02_TREE_FUNCTION",
+    "skillId": "RL_SK05_03_TREE_FUNC",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_14",
+      "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "rl-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "rl-exact",
+      "format": "integer",
+      "width": null
+    },
+    "reference": {
+      "kind": "text",
+      "value": "20"
+    },
+    "explanation": "The inner node contributes 4+1+4=9. The root contributes 2+9+9=20. Internal labels are not squared; leaves are not added unchanged.",
+    "unitId": "RL_LEC_14",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Evaluate a function that treats leaves separately",
+    "sourcePages": [
+      7,
+      9
+    ]
+  },
+  {
+    "id": "ds.practice.p7-complete-weight-not-degree",
+    "version": "1",
+    "title": "Separate edge count from incident weight",
+    "prompt": "A simple undirected graph has edges {a,b} weight 9, {a,c} weight 2, {b,c} weight 4, {c,d} weight 7. Return degree(c), then the sum of weights incident to c.",
+    "rules": "Enter the numeric components in the stated order. This checks the declared bounded result, not an unrestricted proof.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "subtopicId": "RL_ST05_03_GRAPHS",
+    "skillId": "RL_SK05_04_GRAPH_CONSTRUCT",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_14",
+      "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+      "locator": "PDF_PAGES_1-34",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "enrichment-exact",
+      "version": "1"
+    },
+    "task": {
+      "kind": "enrichment-exact",
+      "parts": 2
+    },
+    "reference": {
+      "kind": "text",
+      "value": "3,13"
+    },
+    "explanation": "Three edges meet c, regardless of their weights. Their weights sum to 2+4+7=13; degree is not a weighted sum.",
+    "unitId": "RL_LEC_14",
+    "mode": "practice",
+    "difficulty": "Medium",
+    "demand": "Separate edge count from incident weight",
+    "sourcePages": [
+      5,
+      6
+    ]
+  }
+]

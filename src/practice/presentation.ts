@@ -1,3 +1,4 @@
+import {selectedFormula,booleanText} from '../interactive/boolean-notation';
 import {isInteractive} from '../interactive/types';
 import {displayInteractive} from '../interactive/grading';
 import type {PracticeExercise} from './registered-types';
@@ -26,6 +27,7 @@ export function tupleFields(value:string,parts:number):string[]|null {
 /** Human-readable answer values; persisted canonical option identifiers stay internal. */
 export function displayAnswer(exercise:PracticeExercise,answer:import('../learning/contracts').Answer):string {
  const task=exercise.task;
+ if(task.kind==='logic-build'&&answer.kind==='choice'){try{return booleanText(selectedFormula(task,answer.value));}catch{return 'Incomplete or unavailable structured answer';}}
  if(isInteractive(task))return displayInteractive(task,answer);
  if(typeof answer.value==='string'){
   if(task.kind==='enrichment-exact'&&answer.value.split(',').length===task.parts)return answer.value.split(',').map((part,index)=>`Part ${index+1}: ${part.trim()}`).join('\n');

@@ -1,0 +1,15 @@
+{
+  "files": [
+    "src/interactive/boolean-notation.ts",
+    "src/interactive/complement-grading.ts",
+    "src/interactive/types.ts",
+    "src/interactive/domain.ts",
+    "src/interactive/grading.ts",
+    "src/rl/logic.ts",
+    "src/ip/types.ts",
+    "src/ip/grading.ts",
+    "src/co/grading.ts",
+    "src/enrichment/grading.ts"
+  ],
+  "sha256": "e5ace55f9e306cff0953f64a9dae584569e3055799615bb5028168ea65d8e746"
+}

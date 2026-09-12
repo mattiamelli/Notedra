@@ -1,0 +1,223 @@
+{
+  "startingBranch": "maintenance/interactive-logic-structured-exercises",
+  "branch": "maintenance/exercise-bank-expansion",
+  "startingHead": "9d26e960299fffb57815400be1d0dc3da3dd629a",
+  "initialGit": "clean",
+  "gate": "PASS",
+  "scope": "Maintenance Patch 7 only; one local final commit; no merge/push/Patch 8/Step 16",
+  "coverage": {
+    "authoritativeUnits": 53,
+    "covered": 53,
+    "uncovered": 0,
+    "belowFour": [],
+    "sourceExceptions": [],
+    "newActivities": 212,
+    "newCO": 60,
+    "newRL": 68,
+    "newIP": 84,
+    "min": 4,
+    "average": 4,
+    "max": 4,
+    "fiveOrMore": 0,
+    "objective": 142,
+    "unscoredGuided": 70
+  },
+  "suppliedSources": {
+    "canonicalPdfShaMatches": 32,
+    "newlyCoveredUnits": 25,
+    "newObjective": 38,
+    "newGuided": 62,
+    "accepted112Preserved": "PASS exact checkpoint hashes"
+  },
+  "practiceExam": {
+    "practice": 103,
+    "exam": 109
+  },
+  "difficulty": {
+    "Medium": 84,
+    "Hard": 75,
+    "Exam-level": 53
+  },
+  "types": {
+    "logic-build": 3,
+    "kmap-fill": 1,
+    "ip-fixed": 76,
+    "enrichment-exact": 28,
+    "co-exact": 18,
+    "rl-exact": 16,
+    "guided-rubric": 70
+  },
+  "fullVitest": {
+    "result": "PASS",
+    "files": 103,
+    "tests": 2366
+  },
+  "productionBuild": {
+    "result": "PASS",
+    "command": "package.json scripts.build; final content also rebuilt by scripts/inspect-visual-build.ts"
+  },
+  "academicContent": "PASS via actual production build gates",
+  "remainingCommands": [
+    {
+      "gate": "coverage",
+      "result": "PASS",
+      "output": "Expansion content PASS {\n  exercises: 142,\n  guided: 70,\n  duplicates: 0,\n  originalGraderFiles: 'unchanged'\n}\n"
+    },
+    {
+      "gate": "exercise architecture",
+      "result": "PASS",
+      "output": "Exercise coverage PASS { topics: 43, skills: 147, areas: 456, objective: 249 }\n"
+    },
+    {
+      "gate": "new independent answers",
+      "result": "PASS",
+      "output": "{ exercises: 38, independentDerivations: 'PASS' }\n"
+    },
+    {
+      "gate": "assembly",
+      "result": "PASS",
+      "output": "CO expansion references PASS {\n  exercises: 24,\n  assembly: 4,\n  engine: 'accepted, unchanged',\n  cache: 'accepted model',\n  reasoning: 'Independent arithmetic, representation and explicitly stated toy-model rules'\n}\n"
+    },
+    {
+      "gate": "java",
+      "result": "PASS",
+      "output": "Trusted Java PASS: 125 compiled fixtures; 2 concurrency claims require independent model tests. openjdk version \"21.0.12.1\" 2026-08-18 LTS\n"
+    },
+    {
+      "gate": "java assignments",
+      "result": "PASS",
+      "output": "array-window: 9 trusted JDK checks passed\ngrid-key: 10 trusted JDK checks passed\nbatch-token: 14 trusted JDK checks passed\nboundary-tests: 9 trusted JDK checks passed\nlabel-stream: 5 trusted JDK checks passed\ncapacity-shelf: 13 trusted JDK checks passed\nalert-policies: 6 trusted JDK checks passed\nreading-export: 18 trusted JDK checks passed\nmaterial-ledger: 22 trusted JDK checks passed\nair-audit: 25 trusted JDK checks passed\nnote-index: 13 trusted JDK checks passed\nVerified 11 trusted assignment references; 144 assertions.\n"
+    },
+    {
+      "gate": "typescript",
+      "result": "PASS",
+      "output": ""
+    },
+    {
+      "gate": "hardening",
+      "result": "PASS",
+      "output": "Hardening static validation PASS {\n  repositoryFiles: 633,\n  runtimeFiles: 145,\n  studentSchema: 3,\n  indexedDB: 4,\n  scope: 'static checks, not live enforcement'\n}\n"
+    },
+    {
+      "gate": "security",
+      "result": "PASS",
+      "output": "Final static source and emitted-asset security checks PASS {\n  repositoryFiles: 633,\n  runtimeFiles: 145,\n  studentSchema: 3,\n  indexedDB: 4,\n  scope: 'static checks, not live enforcement'\n} { files: 228, secretAndArtifactScan: 'PASS' }\n"
+    }
+  ],
+  "bundle": {
+    "baseline": {
+      "initialJS": 498837,
+      "initialGzip": 131690,
+      "cssBytes": 78389,
+      "totalAssets": 1858188
+    },
+    "current": {
+      "initialJS": 510265,
+      "initialGzip": 134964,
+      "cssBytes": 91917,
+      "totalAssets": 2245349
+    },
+    "lazyCloudAndCourseGuards": "PASS via inspect-cloud-build and its prerequisite guards",
+    "visualDependenciesAdded": 0,
+    "totalAssetBudget": {
+      "previous": 2000000,
+      "current": 2300000,
+      "reason": "212 authored activities in verified non-initial, single-owner chunks; initial JS/gzip/CSS limits unchanged"
+    },
+    "expansionLazySingleOwner": "PASS"
+  },
+  "desktopMobileNew": {
+    "base": "http://127.0.0.1:4178",
+    "results": [
+      {
+        "width": 1280,
+        "objective": 38,
+        "guides": 62,
+        "result": "PASS",
+        "checks": [
+          "all correct answers",
+          "empty response validation",
+          "saved submission reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "all guided routes and reset",
+          "no false proof score",
+          "unique accessible IDs",
+          "no horizontal overflow",
+          "no page errors"
+        ]
+      },
+      {
+        "width": 375,
+        "objective": 38,
+        "guides": 62,
+        "result": "PASS",
+        "checks": [
+          "all correct answers",
+          "empty response validation",
+          "saved submission reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "all guided routes and reset",
+          "no false proof score",
+          "unique accessible IDs",
+          "no horizontal overflow",
+          "no page errors"
+        ]
+      }
+    ]
+  },
+  "desktopMobilePrevious": {
+    "base": "http://127.0.0.1:4178",
+    "results": [
+      {
+        "width": 1280,
+        "objective": 32,
+        "guides": 8,
+        "result": "PASS",
+        "checks": [
+          "empty validation",
+          "correct answer",
+          "reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "overbar border and accessible label",
+          "wrong literal polarity",
+          "no horizontal overflow",
+          "no page errors",
+          "unscored guided boundaries"
+        ]
+      },
+      {
+        "width": 375,
+        "objective": 32,
+        "guides": 8,
+        "result": "PASS",
+        "checks": [
+          "empty validation",
+          "correct answer",
+          "reload",
+          "same-topic next",
+          "practice/exam distinction",
+          "overbar border and accessible label",
+          "wrong literal polarity",
+          "no horizontal overflow",
+          "no page errors",
+          "unscored guided boundaries"
+        ]
+      }
+    ]
+  },
+  "patch6Browser": {
+    "file": "tests/browser/interactive-preview.mjs",
+    "result": "PASS"
+  },
+  "diffCheck": "PASS",
+  "commitIdentification": "The single commit containing this report; exact hash is returned in the operator response (not self-embedded in its own hash).",
+  "gitPolicy": "Deliver only after final commit and clean status verification; .env.local ignored/uncommitted.",
+  "finalProductionBuild": "PASS: actual package build rerun after all content changes; every emitted file matches validated bundle inventory byte size",
+  "finalStaticAfterDocumentation": {
+    "result": "PASS",
+    "output": "Final static source and emitted-asset security checks PASS {\n  repositoryFiles: 634,\n  runtimeFiles: 145,\n  studentSchema: 3,\n  indexedDB: 4,\n  scope: 'static checks, not live enforcement'\n} { files: 228, secretAndArtifactScan: 'PASS' }\n"
+  }
+}

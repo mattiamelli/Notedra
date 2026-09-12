@@ -1,0 +1,426 @@
+[
+  {
+    "unit": "IP_LEC_01",
+    "filename": "IP Lecture 1 - First Steps.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "6382355d495ccba2835baf5e2a6b48e842e15c05ecf89112055c525fac9f892c",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 1 - First Steps.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_02",
+    "filename": "IP Lecture 2 - Programming Structures.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "919b8ea50f227965c01a61c61aa9e6d181455801183f6952479f9399941e807b",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 2 - Programming Structures.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_03",
+    "filename": "IP Lecture 3 - Methods.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "2f6376e5fa56c4bbcafd5acc76b48e87fa235e2c45af5a000f3be91e910a2eb2",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 3 - Methods.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_04",
+    "filename": "IP Lecture 4 - Classes.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "09273694c6fd2a8ef2018b0cdb9788cbb9af3b4062816ade1da4cb779301f45b",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 4 - Classes.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_05",
+    "filename": "IP Lecture 5 - Arrays.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "36122c0245a265b58fd1a6261ca74248862927f1560fb891a3e94c12e3eadd3e",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 5 - Arrays.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_06",
+    "filename": "IP Lecture 6 - Container Classes.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "670f0acfd35ff4239c2169e9af705dc2abcaba8e6267afa722b90a7c8fec4bc1",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 6 - Container Classes.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_07",
+    "filename": "IP Lecture 7 - Class Composition & Libraries.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "b75f2ae8961e53d2bbe3735083872711ebc0a9f46b4c8eba6fda33f3164cc4f4",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 7 - Class Composition & Libraries.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_08",
+    "filename": "IP Lecture 8 - Unit Tests.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "9375cd20aa2d0b3515e75d421165de63758e167affe38a8d742e0f0e7d849dd1",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 8 - Unit Tests.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_09",
+    "filename": "IP Lecture 9 - Inheritance.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "81ebbf8037449abc77e0df33430dfee3f4bd0c9fc3e193fa41ee831d9bbf7b85",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 9 - Inheritance.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_10",
+    "filename": "IP Lecture 10 - Polymorphism.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "82387ffde8b7e09458e0d7a52f8bdd7b1144079b46f085da40a2b179da595a42",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 10 - Polymorphism.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_11",
+    "filename": "IP Lecture 11 - Equality & Hashcodes.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "ef12290236dad0e27ff8d588afdcfed10d0c98ba33357be8c1842a74dd165e83",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 11 - Equality & Hashcodes.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_12",
+    "filename": "IP Lecture 12 - Exceptions.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "4c2d7f7bd04756577d1de4153ac446a1adb3b410e66e8ade99da426a4f9c8258",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 12 - Exceptions.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_13",
+    "filename": "IP Lecture 13 - Debugging.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "0082526ef9ec4b3da520a80e217da98b00ae9a29a0d38c72512c276f1c281b1c",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 13 - Debugging.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_14",
+    "filename": "IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "42f6f713b9c3a1bd5384f5e51350e1885d343e453ce26616022497845e0d97ce",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 14 - Code Quality, Strings & Generics.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_15",
+    "filename": "IP Lecture 15 - Input Output Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "b57559fa322736c18803908d934cef26c65d6e30d0574f178d0a2bc2ccc8cffd",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 15 - Input Output Part 1.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_16",
+    "filename": "IP Lecture 16 - Input Output Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "ed25e3ba2fd5d643b6b8fac8ea5b1bfe4e83db4adb54cedd3747d96cdd55bfe6",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 16 - Input Output Part 2.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_17",
+    "filename": "IP Lecture 17 - Functional Java.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "206da7129ad6699ad610c2346eea9635dc489e6e06e50a66154eed3f41e7ec6b",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 17 - Functional Java.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_18",
+    "filename": "IP Lecture 18 - Program Design.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "2ef49475562c70668294b39486c1c4a03a1cf09d13622728c0fc5278c6a4a1ff",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 18 - Program Design.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_19",
+    "filename": "IP Lecture 19 - Modern Java.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "ac4508c19ae8d4c8c26a7a576dbfdc68267dcc070cf1e71d1a6b080fd1924faf",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 19 - Modern Java.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_20",
+    "filename": "IP Lecture 20 - Threads.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "c35d85d4a6ceb07ac54aaa8553831eb496473b5a91449e1cb3373268fc81340d",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 20 - Threads.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "IP_LEC_21",
+    "filename": "IP Lecture 21 - Exam Practice.pdf",
+    "canonicalType": "EXAM_PREPARATION",
+    "canonicalSha256": "0770914dc752a8381274510695fdd7733985c2dba5c9c1bf4ba3b37499068c71",
+    "verifiedLocalPdf": "/tmp/ds-ip-sources/IP Lectures/IP Lecture 21 - Exam Practice.pdf",
+    "sourceReview": "Available canonical PDF checksum verified; relevant physical pages inspected for the four new authored activities"
+  },
+  {
+    "unit": "CO_LEC_01",
+    "filename": "CO Lecture 1 - History.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "0b13c9143f123b68923a66e1ba55947a887e39b9fbad80cf17eab1d86751b581",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 1 - History.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 3,4,6,7,10,15,16,17,19,21,25 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_02",
+    "filename": "CO Lecture 2 - Assembly.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "a4412b3ce78ab402d2e2d616538044e3282ee4425f3309f402abf0f1a52dacd2",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 2 - Assembly.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_03",
+    "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "a43e8e11995b7b8ae2c0c0a4e17d9ed1343224e0af5e6309ab61ae9d5fcf2c08",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 3 - Logic Circuits Part 1.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_04",
+    "filename": "CO Lecture 4 - Logic Circuits Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "3c9f10594770de3bf92e305d1aaf630cb86d3389c849a509f461ac6095075647",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 4 - Logic Circuits Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 6,8,27,28,29,31 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_05",
+    "filename": "CO Lecture 5 - Data Representation Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "f2925011ac37e0e62ed26a7fd489de7ddcda7b662b704a40b60e29e7a2c02fad",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 5 - Data Representation Part 1.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_06",
+    "filename": "CO Lecture 6 - Data Representation Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "4511ee2a4ce753c6826db1290f17155d05b4312940a9238cb8080d0734ebf88a",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 6 - Data Representation Part 2.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_07",
+    "filename": "CO Lecture 7 - ISA Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "145765ac18f2094d7f6c9ccd6de467f4eb6001513ae6b1487f4d992ab00b142d",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 7 - ISA Part 1.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_08",
+    "filename": "CO Lecture 8 - ISA Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "a950add7679539b7b88918875b17b7082f94c6104c1fec8f9622f98d924e5c77",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 8 - ISA Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 3,7,13,14,15,23,25,26,27,28,29 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_09",
+    "filename": "CO Lecture 9 - BPU Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "c2fb7e418c4803a92a6e8809f1ad22e21960f3e74bd14f80c7aeaea0e6d2f101",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 9 - BPU Part 1.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 19,20,21,22,26 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_10",
+    "filename": "CO Lecture 10 - BPU Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "9992ad49bd29ff56dc5c5e7ea85c16a2e442485ccdecbaa9bb0dcd2fe4868d80",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 10 - BPU Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 4,5,9,15,18,20,21,23,24,25,26 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_11",
+    "filename": "CO Lecture 11 - IO.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "fec6ffcc2a70a736f42007715ea1abec8d4716409cea8807c67a8270c5850a74",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 11 - IO.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 17,18,23,25,26,28,29,31,32,33 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_12",
+    "filename": "CO Lecture 12 - Memory.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "b29615f566ce169efee58faa4d213c4c1bd0c83e43300afc622cb73a497914f6",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 12 - Memory.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 7,8,9,12,14,27,30,31 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "CO_LEC_13",
+    "filename": "CO Lecture 13 - Caching.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "716aa3b2e850c2d3f52fe90bf6bd03e5a65cb02fd1450e4e6516ee255c37ce68",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 13 - Caching.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_14",
+    "filename": "CO Lecture 14 - Pipelining.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "2eeeb6fdb1df87bb8b9698651ff67ec0663f6110fbbb3e590b406fb626e36782",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 14 - Pipelining.pdf",
+    "sourceReview": "Canonical hash verified from explicitly supplied archive. Existing accepted Patch 7 exercise source review retained; this additional raw copy was not used to reauthor accepted exercises."
+  },
+  {
+    "unit": "CO_LEC_15",
+    "filename": "CO Lecture 15 - Parallel & Virtual Memory.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "9a32a821b3fa7d9084b718799654c095342dbde57a1e8e99e8283551aaa349d1",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/CO Lecture 15 - Parallel & Virtual Memory.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 11,13,15,19,20,26,27,29,30,32,33,34,37 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_00",
+    "filename": "R&L Lecture 0 - Introduction.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "fa8ece42f92d0d362c8f4ad815d966f9716ae8183ba6ded0889b907cfe21fc47",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 0 - Introduction.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 5,12,16,20,21 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_01",
+    "filename": "R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "a22b9b230ea330c92b8ff52928dc07ad735be359b5eb22984ec7b81d656b8afa",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 1 - Propositional Calculus Part 1.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 3,4,5,6,7,14,16,17 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_02",
+    "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "8415854093bbaf8a85be58c80eb50737b159ee4f4f5cd9b0933763fee862bdbe",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 20,21,44,47,48,49,50,54 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_03",
+    "filename": "R&L Lecture 3 - First-Order Logic.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "053ff0ce0122ba9c57f22791bfb6ab7b8b05d7eec8eb8c91e64f72d7e22bfb88",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 3 - First-Order Logic.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 29,46,64,69,70 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_04",
+    "filename": "R&L Lecture 4 - Methods of Proof Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "f57b520e9f9159be3b7e824397a3636c55559105a3bf37e377e7fe8102514662",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 4 - Methods of Proof Part 1.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 16,18,23,26,30,31 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_05",
+    "filename": "R&L Lecture 5 - Methods of Proof Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "f0233d7dc90b9dcb1b45f85e7acd9e93a51065a098a3d094217101eb1d8bc551",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 5 - Methods of Proof Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 7,8,10,16,23,26,28 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_06",
+    "filename": "R&L Lecture 6 - Induction and Recursion Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "40e5e409b61b6b0a2f6f49d91fabfa387534ee4d9aa9a96e6b9d587d9a8d324f",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 6 - Induction and Recursion Part 1.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 12,13,24,27,28,29,30,32 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_07",
+    "filename": "R&L Lecture 7 - Induction and Recursion Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "c07f460b35aba1611a02d659dacee778a89a800997a849389a851c56b0b8db60",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 7 - Induction and Recursion Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 14,16,17,19,23,25,27,29,34,35,42,43,44 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_08",
+    "filename": "R&L Lecture 8 - Induction and Recursion Part 3.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "ae72f72ff3a4ae61a7b9d5d6c30ab5185fb425d30a763171e43e409bdc2715d4",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 8 - Induction and Recursion Part 3.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 7,20,23,24,29,40,51 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_09",
+    "filename": "R&L Lecture 9 - Set Theory Part 1.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "da6e89b05f6a4d194c74e6438f1296ded531534e9e3e1229b69693d7bd3d72b9",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 9 - Set Theory Part 1.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 7,9,10,11,16,24,34 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_10",
+    "filename": "R&L Lecture 10 - Set Theory Part 2.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "f2532f55bbf1828528eeea908fb58fcce305c2ae07875d8097d00517014648e8",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 10 - Set Theory Part 2.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 6,14,17,19,25,28 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_11",
+    "filename": "R&L Lecture 11 - Set Theory Part 3.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "43410db70e1ff097b0972cd1e80f430e011562b324a909c3ac5291bdcb7e8f23",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 11 - Set Theory Part 3.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 6,8,12,16,18,27,29 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_12",
+    "filename": "R&L Lecture 12 - Functions & Relations.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "f0a41ddcdc3ca289ab9b9ced7ce350171dedebb154699270cc427648ab4af4d7",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 12 - Functions & Relations.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 9,22,34,36,39,40,44 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_13",
+    "filename": "R&L Lecture 13 - The limitations of Set Theory.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "73c688fa5ae0dc892776265faa314ea7f69e7d7f01cabbbde85a5e3d9ce671c8",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 13 - The limitations of Set Theory.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 12,17,18,21,22,25,39,40,41,43 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_14",
+    "filename": "R&L Lecture 14 - Functions on trees and graphs.pdf",
+    "canonicalType": "LECTURE",
+    "canonicalSha256": "48db36c461b8bdc66d7b1ed7b44c3a64d8b64300f5f20d39d41b5aaa0cbdab61",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 14 - Functions on trees and graphs.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 5,6,7,9,17,22 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_15",
+    "filename": "R&L Lecture 15 - Exam Prep.pdf",
+    "canonicalType": "EXAM_PREPARATION",
+    "canonicalSha256": "cb151d94a8966cad402b48a3863f0c65a731e4bad0a82b26e74d2222cbf5ecaa",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 15 - Exam Prep.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 6,8,10,11,17,19,20,22,23,25,27,29 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  },
+  {
+    "unit": "RL_LEC_16",
+    "filename": "R&L Lecture 16 - The Last One.pdf",
+    "canonicalType": "EXAM_PREPARATION",
+    "canonicalSha256": "4ad61fe453c721fc8e830fba169911588c474b6e779b6570138cfed19595d13a",
+    "verifiedLocalPdf": "/tmp/delftstudy-p7-supplied/R&L Lecture 16 - The Last One.pdf",
+    "sourceReview": "Canonical SHA-256 verified against supplied archive; physical pages 6,11,18,22,24,26 inspected. Four original authored activities reviewed; no copied official question surfaces."
+  }
+]

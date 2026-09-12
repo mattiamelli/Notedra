@@ -1,0 +1,349 @@
+[
+  {
+    "exerciseId": "ds.practice.p7-complete-cmos-dual",
+    "expected": "11111000",
+    "reasoning": "The pull-down conducts exactly when A AND (B OR C); the output is its complement. Inputs with A=0 remain high; 100 is high because B=C=0.",
+    "oracle": {
+      "kind": "cmos"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-latch-hold",
+    "expected": "01001",
+    "reasoning": "A low clock holds the prior value and a high clock copies D, giving 0,1,0,0,1. This is a level-sensitive latch, not an edge-triggered register.",
+    "oracle": {
+      "kind": "latch",
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-shift-simultaneous",
+    "expected": "1010",
+    "reasoning": "Successive states are 1010,0101,1010. Each edge copies the previous stage state; updating left-to-right in place would incorrectly propagate one input through all stages.",
+    "oracle": {
+      "kind": "shift",
+      "state": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "input": [
+        1,
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-loadstore-reuse",
+    "expected": "2,2",
+    "reasoning": "The two loads can serve both register-register arithmetic operations; only the two final results are stored. Counting every arithmetic operand as a memory read would confuse load/store with memory-operand execution.",
+    "oracle": {
+      "kind": "constant",
+      "value": [
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-immediate-range",
+    "expected": "255,63",
+    "reasoning": "Register fields consume 10 bits. The remaining immediate widths are 9 and 7, so positive maxima are 2^8−1 and 2^6−1.",
+    "oracle": {
+      "kind": "immediate"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-bus-old-z",
+    "expected": "13,-5",
+    "reasoning": "X becomes 8, then Z becomes 13 and is copied into R2. The final subtraction uses updated R2=13, yielding −5; staging-register values are not automatically copied elsewhere.",
+    "oracle": {
+      "kind": "micro"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-bus-fanout",
+    "expected": "2",
+    "reasoning": "First drive old R2 to R4. Next drive R1 to both R2 and R3. At least two different source values must be put on the bus, so one step is impossible; no extra temporary is needed.",
+    "oracle": {
+      "kind": "constant",
+      "value": 2
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-encoded-idle",
+    "expected": "9",
+    "reasoning": "The source field needs ceil(log2 8)=3 bits; the ALU field needs ceil(log2 5)=3; independent destinations need 3 more. Forgetting the ALU idle state gives an invalid 8-bit result.",
+    "oracle": {
+      "kind": "controlbits"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-microbranch",
+    "expected": "8,4",
+    "reasoning": "The path is 10,20,21,30: two increments yield 8. Address 11 is not executed; store addresses are labels, not counts of elapsed steps.",
+    "oracle": {
+      "kind": "constant",
+      "value": [
+        8,
+        4
+      ]
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-poll-latency",
+    "expected": "24,5",
+    "reasoning": "The next scheduled poll after 19 is 24, giving 5 microseconds of detection delay. The CPU does not continuously observe the flag between polls.",
+    "oracle": {
+      "kind": "poll"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-irq-order",
+    "expected": "23",
+    "reasoning": "Inactive A passes the grant; requesting B accepts it before C. After B clears, C receives the next grant. A never requests, so it is not serviced.",
+    "oracle": {
+      "kind": "constant",
+      "value": 23
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-bus-ready-edge",
+    "expected": "30",
+    "reasoning": "Sampling at 20 is too early; at 30 data has been stable for 7 ns, meeting the 2 ns setup margin. Asynchronous readiness is not itself a synchronous sampling edge.",
+    "oracle": {
+      "kind": "ready"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-word-boundary",
+    "expected": "1,2,2",
+    "reasoning": "Bytes 14 through 23 lie in lines floor(14/8)=1 through floor(23/8)=2. The inclusive end is 14+10−1; byte 24 is not requested.",
+    "oracle": {
+      "kind": "wordrange"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-bank-stride",
+    "expected": "1,3",
+    "reasoning": "All addresses have remainder 2, so they contend for bank 2. The last row is floor(14/4)=3. Interleaving benefits consecutive addresses, not every stride.",
+    "oracle": {
+      "kind": "banks"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-dma-overlap",
+    "expected": "22,13",
+    "reasoning": "Serial execution takes 12+9+1=22 ms. With independence and the stated overlap, the work ends at max(12,9)=12 ms, followed by 1 ms handling. This model excludes bus contention by assumption.",
+    "oracle": {
+      "kind": "overlap"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-amdahl-inverse",
+    "expected": "20",
+    "reasoning": "1/2.5 = f + (1−f)/4, so 0.4=0.25+0.75f and f=0.2. The speedup alone is interpreted only under the explicitly ideal model.",
+    "oracle": {
+      "kind": "amdahl"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-process-translation",
+    "expected": "2313,1033",
+    "reasoning": "777=3×256+9. The offset stays 9, so P uses 9×256+9 and Q uses 4×256+9. A virtual address is interpreted through its process’s page table.",
+    "oracle": {
+      "kind": "vm"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-necessary-chain",
+    "expected": "{2,4,5,6}",
+    "reasoning": "The policy is (P→R) AND (R→S). R=1,S=0 gives indices 2 and 6; P=1,R=0 gives 4 and 5. Other rows meet both conditions.",
+    "oracle": {
+      "kind": "policy"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-connective-completion",
+    "expected": "2",
+    "reasoning": "The diagonal fixes 00→0 and 11→1. Commutativity forces the two off-diagonal outputs equal, leaving one free Boolean choice: AND or OR.",
+    "oracle": {
+      "kind": "operators"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-equivalence-disagreement",
+    "expected": "0110",
+    "reasoning": "Both implications are true when P=Q. With unequal inputs exactly one implication has true antecedent and false consequent, so the outputs differ.",
+    "oracle": {
+      "kind": "converse"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-dnf-contradictory-term",
+    "expected": "{1,2}",
+    "reasoning": "The first conjunction can never hold; the other two describe exactly the unequal rows. An impossible DNF term does not make the entire disjunction false.",
+    "oracle": {
+      "kind": "dnf"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-cnf-unit-propagation",
+    "expected": "2",
+    "reasoning": "The first two clauses force Q=true. Then the last forces R=true, while P is unconstrained, giving two assignments.",
+    "oracle": {
+      "kind": "cnf"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-argument-counterrows",
+    "expected": "{2}",
+    "reasoning": "A false conclusion forces P=R=0. The second premise then requires Q=1, and P→Q is true. Thus only 010 is a counterexample.",
+    "oracle": {
+      "kind": "argument"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-quantifier-order",
+    "expected": "10",
+    "reasoning": "Every row has a successor, so separate witnesses exist. No single column has an edge from all three elements, so no common witness exists.",
+    "oracle": {
+      "kind": "quantifiers"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-restricted-witness",
+    "expected": "1",
+    "reasoning": "x=0 qualifies via y=1 or 2. x=2 has only B-successor 2, forbidden by y≠x. The other elements fail A. Multiple witnesses do not mean multiple x values.",
+    "oracle": {
+      "kind": "witness"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-difference-recurrence",
+    "expected": "26,9",
+    "reasoning": "The increments are 3,5,7,9 and terms 2,5,10,17,26. The recurrence uses the predecessor index n, not the new term’s index.",
+    "oracle": {
+      "kind": "recurrence"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-traversal-position",
+    "expected": "3,1",
+    "reasoning": "Preorder is 8,3,5,12,10,14; postorder is 5,3,10,14,12,8. The missing left child of 3 contributes no entry.",
+    "oracle": {
+      "kind": "traversal"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-tree-height-capacity",
+    "expected": "8",
+    "reasoning": "Each level can at most double the number of nodes. A complete binary tree with all leaves at depth 3 attains 2³=8; internal nodes cannot also be counted as leaves.",
+    "oracle": {
+      "kind": "height"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-nested-set-membership",
+    "expected": "110",
+    "reasoning": "The two elements are the empty set and its singleton. The singleton is a subset because its sole element ∅ is in A; the singleton of that singleton is not itself one of A’s two elements.",
+    "oracle": {
+      "kind": "nested"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-symmetric-membership",
+    "expected": "{1,3,4}",
+    "reasoning": "Count membership across the three sets: 1 is in A,B; 3 in A,C; 4 in B,C. Element 2 lies in all three and must be excluded.",
+    "oracle": {
+      "kind": "exactlytwo"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-product-diagonal",
+    "expected": "10",
+    "reasoning": "There are 3×4=12 pairs. Exactly (1,1) and (2,2) are diagonal pairs; 0 and 3,4 are not in the intersection.",
+    "oracle": {
+      "kind": "productdiag"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-product-intersection",
+    "expected": "4",
+    "reasoning": "A shared pair has its first coordinate in A∩B={1,2} and second in B∩C={2,3}. Hence four pairs, not the cardinality of a three-way intersection.",
+    "oracle": {
+      "kind": "productinter"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-directed-degrees",
+    "expected": "2,1,5",
+    "reasoning": "Two edges enter 2, one leaves 3, and every directed edge contributes once to the total indegree.",
+    "oracle": {
+      "kind": "degrees"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-topological-freedom",
+    "expected": "4",
+    "reasoning": "Vertices 1 and 2 must precede 3 and can swap; 4 and 5 must follow 3 and can swap. The choices are independent, giving 2×2=4.",
+    "oracle": {
+      "kind": "topo"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-relation-closure",
+    "expected": "{2}",
+    "reasoning": "The chain 0R1 and 1R2 forces 0R2, encoded 2. Adding that pair completes the order 0≤1≤2 without creating further missing chains.",
+    "oracle": {
+      "kind": "closure"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-fiber-profile",
+    "expected": "3,2",
+    "reasoning": "The image is {0,1,2}; fibers are {0,3},{1,4},{2,5}, each size two. Codomain value 3 has empty fiber, so f is not onto its declared codomain.",
+    "oracle": {
+      "kind": "fibers"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-tree-leaf-weight",
+    "expected": "20",
+    "reasoning": "The inner node contributes 4+1+4=9. The root contributes 2+9+9=20. Internal labels are not squared; leaves are not added unchanged.",
+    "oracle": {
+      "kind": "treefunc"
+    }
+  },
+  {
+    "exerciseId": "ds.practice.p7-complete-weight-not-degree",
+    "expected": "3,13",
+    "reasoning": "Three edges meet c, regardless of their weights. Their weights sum to 2+4+7=13; degree is not a weighted sum.",
+    "oracle": {
+      "kind": "weights"
+    }
+  }
+]

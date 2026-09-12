@@ -5,7 +5,7 @@ import {priorityFor,recommend,TIME_BUDGETS} from '../src/adaptive/engine';
 import {CLOCK,record,text,choice} from './helpers/adaptive';
 const wrong=(id='a',age=1)=>record(id,'enrich-carry-overflow',text('1,1'),age);
 const evidence=(records= [wrong()])=>deriveEvidence(records,[],CLOCK);
-function wrongFor(skill:string,id:string,age=1){const e=allExercises.find(e=>e.skillId===skill);if(!e)throw new Error(skill);const answer=e.task.kind==='ip-fixed'?choice(e.task.options.find(o=>e.reference.kind==='choice'&&!e.reference.value.includes(o.id))!.id):text(e.task.kind==='enrichment-exact'?'99,99':e.task.kind==='truth'?'0,0,0,0':'0');return record(id,e.id,answer,age);}
+function wrongFor(skill:string,id:string,age=1){const e=allExercises.find(e=>e.skillId===skill&&!e.id.startsWith('ds.practice.p7-'));if(!e)throw new Error(skill);const answer=e.task.kind==='ip-fixed'?choice(e.task.options.find(o=>e.reference.kind==='choice'&&!e.reference.value.includes(o.id))!.id):text(e.task.kind==='enrichment-exact'?'99,99':e.task.kind==='truth'?'0,0,0,0':'0');return record(id,e.id,answer,age);}
 describe('Deterministic adaptive study product heuristics',()=>{
  it('no evidence means no inferred adaptive queue',()=>expect(recommend(evidence([]),{minutes:20})).toEqual([]));
  it('same records and injected time give exact output independent of input order',()=>{const a=[wrong('z'),wrong('a'),record('rl','enrich-implication-directions',text('1,1,1'),2)];expect(recommend(evidence(a),{minutes:20})).toEqual(recommend(evidence(a.reverse()),{minutes:20}));});

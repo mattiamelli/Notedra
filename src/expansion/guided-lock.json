@@ -1,0 +1,10 @@
+{
+  "ds.guided.p7-reservation-conflicts@1": "f1a0ba0762de6d1aa0253c440b6ac01bbc2db9d7706b7201cae6ebac039769c5",
+  "ds.guided.p7-pricing-strategies@1": "ec87bf4946a8fa0db35f55bb7ea8ada7fa7f86a2cbc34b0432a574d75f802c75",
+  "ds.guided.p7-transactional-import@1": "e4dc4c2ab904e1c948788e686b0cf660f07977d41ab0c49af2ae2956d395cae8",
+  "ds.guided.p7-snapshot-versus-live@1": "b1cd9cd4e77d57111e0a770d0497068a9156b834cc24a446b95768085c3e0e21",
+  "ds.guided.p7-delimiter-implementation@1": "0146e72c3eb190e8133c58f540ed9eb74fbdc17bd451910aedb11aa3a9826aa6",
+  "ds.guided.p7-stream-reconstruction@1": "72593df9144f0019617a2a09dc0cb3bc9827669e511170686799d94df6283973",
+  "ds.guided.p7-polymorphic-extension@1": "174447eefd1cc2bca49c9f60d235998c51002928240ddd65e1f8ed3dd0225f5a",
+  "ds.guided.p7-failure-path-integration@1": "bb1f8440f9bcb34b29ae82bd6353ffb9a866a2c73481244b43f12ec9d079ecca"
+}

@@ -1,0 +1,41 @@
+{
+  "base": "http://127.0.0.1:4178",
+  "results": [
+    {
+      "width": 1280,
+      "objective": 38,
+      "guides": 62,
+      "result": "PASS",
+      "checks": [
+        "all correct answers",
+        "empty response validation",
+        "saved submission reload",
+        "same-topic next",
+        "practice/exam distinction",
+        "all guided routes and reset",
+        "no false proof score",
+        "unique accessible IDs",
+        "no horizontal overflow",
+        "no page errors"
+      ]
+    },
+    {
+      "width": 375,
+      "objective": 38,
+      "guides": 62,
+      "result": "PASS",
+      "checks": [
+        "all correct answers",
+        "empty response validation",
+        "saved submission reload",
+        "same-topic next",
+        "practice/exam distinction",
+        "all guided routes and reset",
+        "no false proof score",
+        "unique accessible IDs",
+        "no horizontal overflow",
+        "no page errors"
+      ]
+    }
+  ]
+}
