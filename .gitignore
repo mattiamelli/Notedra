@@ -20,3 +20,26 @@ coverage/
 
 .verification-dist/
 .sites-release/
+
+# Local build, cache and test output
+build/
+.cache/
+.pnpm-store/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Temporary and local credential files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swo
+*~
+.env.*.local
+secrets/
+.secrets/
+credentials.json
+service-account*.json
+id_rsa
+id_ed25519

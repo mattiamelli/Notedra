@@ -17,6 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Preservation checks read a pinned historical baseline; keep full history.
           fetch-depth: 0
 
       - name: Set up pnpm
