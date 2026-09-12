@@ -5,7 +5,7 @@ import {CLOCK,record,text,choice} from './helpers/adaptive';
 import {attempt,time} from './helpers/learning';
 const wrong=(id='a',days=1)=>record(id,'enrich-carry-overflow',text('1,1'),days);
 describe('Mistake eligibility and exact historical evidence',()=>{
- it('keeps all 100 authored atomic items eligible only through canonical HIGH lecture sources',()=>{expect(allExercises).toHaveLength(100);for(const e of allExercises)expect(eligibleSkill(e)?.id,e.id).toBe(e.skillId);});
+ it('keeps all 107 authored atomic items eligible only through canonical HIGH lecture sources',()=>{expect(allExercises).toHaveLength(107);for(const e of allExercises)expect(eligibleSkill(e)?.id,e.id).toBe(e.skillId);});
  it('wrong deterministic submission becomes one factual mistake with exact trusted pattern',()=>{const a=wrong(),e=deriveEvidence([a],[],CLOCK);expect(e.mistakes).toHaveLength(1);expect(e.mistakes[0].attempt).toEqual(a);expect(e.mistakes[0].explanation?.misconception?.label).toMatch(/carry/i);expect(e.groups[0].state).toBe('active');});
  it('unmatched valid wrong tuple has explanation and no invented pattern',()=>{const e=deriveEvidence([record('u','enrich-implication-directions',text('0,0,0'),1)],[],CLOCK);expect(e.mistakes).toHaveLength(1);expect(e.mistakes[0].explanation?.misconception).toBeNull();});
  it.each(['DRAFT','ABANDONED'] as const)('%s is not a mistake',status=>{const a=wrong();delete a.submission;a.status=status;expect(deriveEvidence([a],[],CLOCK).mistakes).toEqual([]);});

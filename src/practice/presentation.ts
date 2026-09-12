@@ -1,7 +1,11 @@
+import {isInteractive} from '../interactive/types';
+import {displayInteractive} from '../interactive/grading';
 import type {PracticeExercise} from './registered-types';
 
 /** Presentation contract only. Persisted IDs, versions and grader bindings are unchanged. */
 export const exerciseFormats={
+ 'logic-build':{label:'Logical construction',renderer:'formula-slots',validator:'structured-logic',feedback:'truth counterexample'},
+ 'kmap-fill':{label:'Karnaugh map',renderer:'gray-cells',validator:'structured-logic',feedback:'cell assignments'},
  radix:{label:'Base conversion',renderer:'digits',validator:'radix-exact',feedback:'normalized reference'},
  truth:{label:'Truth table',renderer:'truth-rows',validator:'truth-rows',feedback:'row values'},
  'java-output':{label:'Code prediction',renderer:'single-choice',validator:'fixed-output-choice',feedback:'option text'},
@@ -22,6 +26,7 @@ export function tupleFields(value:string,parts:number):string[]|null {
 /** Human-readable answer values; persisted canonical option identifiers stay internal. */
 export function displayAnswer(exercise:PracticeExercise,answer:import('../learning/contracts').Answer):string {
  const task=exercise.task;
+ if(isInteractive(task))return displayInteractive(task,answer);
  if(typeof answer.value==='string'){
   if(task.kind==='enrichment-exact'&&answer.value.split(',').length===task.parts)return answer.value.split(',').map((part,index)=>`Part ${index+1}: ${part.trim()}`).join('\n');
   return answer.value;

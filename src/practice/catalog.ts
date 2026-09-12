@@ -1,3 +1,8 @@
+import interactiveDefinitions from '../interactive/practice.json';
+import interactiveFingerprints from '../interactive/practice-lock.json';
+import interactiveGraderLock from '../interactive/grader-lock.json';
+import type {InteractiveExercise} from '../interactive/types';
+import {isInteractive} from '../interactive/types';
 import ipDefinitions from '../ip/practice.json';
 import ipFingerprints from '../ip/practice-lock.json';
 import ipGraderLock from '../ip/grader-lock.json';
@@ -26,9 +31,10 @@ function freeze<T>(value: T): T {
 }
 validateCatalog(definitions);
 export const catalog: readonly Exercise[] = freeze(definitions);
-export const allExercises: readonly PracticeExercise[] = freeze([...catalog, ...coDefinitions as COExercise[],...rlDefinitions as RLExercise[],...extraDefinitions as EnrichmentExercise[],...ipDefinitions as IPExercise[]]);
+export const allExercises: readonly PracticeExercise[] = freeze([...catalog,...interactiveDefinitions as InteractiveExercise[], ...coDefinitions as COExercise[],...rlDefinitions as RLExercise[],...extraDefinitions as EnrichmentExercise[],...ipDefinitions as IPExercise[]]);
 export function getExercise(id: string) { return allExercises.find(item => item.id === id); }
 export function versionBinding(exercise: PracticeExercise): string {
+  if(isInteractive(exercise.task)){const fingerprint=(interactiveFingerprints as Record<string,string>)[`${exercise.id}@${exercise.version}`];if(!fingerprint)throw new Error('Original exercise version unavailable.');return `${exercise.version}:sha256:${fingerprint}:grader:${interactiveGraderLock.sha256}`;}
   const isIP = exercise.task.kind === 'ip-fixed';
   const isExtra = exercise.task.kind === 'enrichment-exact';
   const isRL = exercise.task.kind === 'rl-exact';

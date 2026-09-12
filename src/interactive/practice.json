@@ -1,0 +1,708 @@
+[
+  {
+    "id": "ds.practice.interactive-rl-conditional",
+    "version": "1",
+    "title": "Reconstruct an implication",
+    "prompt": "Complete ¬P □ Q so it expresses: Q is necessary for P. Choose the missing connective.",
+    "rules": "Complete every labelled control. Equivalent formulas are accepted on all required assignments; minimality is not assessed.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_01_CONNECTIVES",
+    "skillId": "RL_SK01_02_NEC_SUFF",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "variables": [
+        "P",
+        "Q"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": {
+          "slot": "connective"
+        },
+        "left": {
+          "kind": "not",
+          "operand": {
+            "kind": "fixed",
+            "name": "P"
+          }
+        },
+        "right": {
+          "kind": "fixed",
+          "name": "Q"
+        }
+      },
+      "slots": [
+        {
+          "id": "connective",
+          "label": "Missing connective",
+          "options": [
+            "and",
+            "or",
+            "implies",
+            "iff"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "implies",
+        "left": {
+          "kind": "variable",
+          "name": "P"
+        },
+        "right": {
+          "kind": "variable",
+          "name": "Q"
+        }
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "connective=or"
+      ]
+    },
+    "explanation": "Necessity rules out P true with Q false. ¬P ∨ Q has exactly that false row. It does not assert Q is sufficient for P.",
+    "mode": "practice"
+  },
+  {
+    "id": "ds.practice.interactive-rl-demorgan",
+    "version": "1",
+    "title": "Construct the negation of a conjunction",
+    "prompt": "Build a formula equivalent to ¬(P ∧ Q), using the displayed two negated blocks. Select both variables and their connective.",
+    "rules": "Complete every labelled control. Equivalent formulas are accepted on all required assignments; minimality is not assessed.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_02_TRUTH_VALID",
+    "skillId": "RL_SK01_05_EQUIV",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "variables": [
+        "P",
+        "Q"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": {
+          "slot": "join"
+        },
+        "left": {
+          "kind": "not",
+          "operand": {
+            "kind": "atom",
+            "slot": "left"
+          }
+        },
+        "right": {
+          "kind": "not",
+          "operand": {
+            "kind": "atom",
+            "slot": "right"
+          }
+        }
+      },
+      "slots": [
+        {
+          "id": "left",
+          "label": "First negated variable",
+          "options": [
+            "P",
+            "Q"
+          ]
+        },
+        {
+          "id": "join",
+          "label": "Connective between blocks",
+          "options": [
+            "and",
+            "or",
+            "implies",
+            "iff"
+          ]
+        },
+        {
+          "id": "right",
+          "label": "Second negated variable",
+          "options": [
+            "P",
+            "Q"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "not",
+        "operand": {
+          "kind": "and",
+          "left": {
+            "kind": "variable",
+            "name": "P"
+          },
+          "right": {
+            "kind": "variable",
+            "name": "Q"
+          }
+        }
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "left=P",
+        "join=or",
+        "right=Q"
+      ]
+    },
+    "explanation": "A conjunction fails when at least one conjunct is false. Either order of ¬P and ¬Q is equivalent; using AND would require both to be false.",
+    "mode": "practice"
+  },
+  {
+    "id": "ds.practice.interactive-rl-condition-chain",
+    "version": "1",
+    "title": "Combine a sufficient condition",
+    "prompt": "P and Q together are sufficient for R. Construct this claim with the displayed nested structure. Do not assert the converse.",
+    "rules": "Complete every labelled control. Equivalent formulas are accepted on all required assignments; minimality is not assessed.",
+    "subjectId": "CSE1300_RL",
+    "topicId": "RL_T01_PROP_LOGIC",
+    "subtopicId": "RL_ST01_01_CONNECTIVES",
+    "skillId": "RL_SK01_01_CONNECTIVE",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "RL_LEC_02",
+      "filename": "R&L Lecture 2 - Propositional Calculus Part 2.pdf",
+      "locator": "PDF_PAGES_1-82",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "variables": [
+        "P",
+        "Q",
+        "R"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": {
+          "slot": "outer"
+        },
+        "left": {
+          "kind": "binary",
+          "operator": {
+            "slot": "inner"
+          },
+          "left": {
+            "kind": "atom",
+            "slot": "first"
+          },
+          "right": {
+            "kind": "atom",
+            "slot": "second"
+          }
+        },
+        "right": {
+          "kind": "atom",
+          "slot": "third"
+        }
+      },
+      "slots": [
+        {
+          "id": "first",
+          "label": "First variable",
+          "options": [
+            "P",
+            "Q",
+            "R"
+          ]
+        },
+        {
+          "id": "inner",
+          "label": "Inner connective",
+          "options": [
+            "and",
+            "or",
+            "implies",
+            "iff"
+          ]
+        },
+        {
+          "id": "second",
+          "label": "Second variable",
+          "options": [
+            "P",
+            "Q",
+            "R"
+          ]
+        },
+        {
+          "id": "outer",
+          "label": "Outer connective",
+          "options": [
+            "and",
+            "or",
+            "implies",
+            "iff"
+          ]
+        },
+        {
+          "id": "third",
+          "label": "Final variable",
+          "options": [
+            "P",
+            "Q",
+            "R"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "implies",
+        "left": {
+          "kind": "and",
+          "left": {
+            "kind": "variable",
+            "name": "P"
+          },
+          "right": {
+            "kind": "variable",
+            "name": "Q"
+          }
+        },
+        "right": {
+          "kind": "variable",
+          "name": "R"
+        }
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "first=P",
+        "inner=and",
+        "second=Q",
+        "outer=implies",
+        "third=R"
+      ]
+    },
+    "explanation": "Only an assignment where both conditions hold and R fails refutes the claim. Cases where a condition is false impose no requirement on R.",
+    "mode": "exam"
+  },
+  {
+    "id": "ds.practice.interactive-co-map-two",
+    "version": "1",
+    "title": "Place a combinational function on a map",
+    "prompt": "Complete the Karnaugh map for the displayed combinational function. The variable order defines binary minterm numbering; row and column headers use Gray order.",
+    "rules": "Fill every editable cell using the shown binary variable labels. X denotes only a declared don’t-care.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_02_KMAP",
+    "skillId": "CO_SK02_03_KMAP_BUILD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "kmap-fill",
+      "map": {
+        "variables": [
+          "A",
+          "B"
+        ],
+        "cells": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "given": [
+        0
+      ],
+      "specification": {
+        "kind": "formula",
+        "formula": {
+          "kind": "and",
+          "left": {
+            "kind": "or",
+            "left": {
+              "kind": "variable",
+              "name": "A"
+            },
+            "right": {
+              "kind": "variable",
+              "name": "B"
+            }
+          },
+          "right": {
+            "kind": "not",
+            "operand": {
+              "kind": "and",
+              "left": {
+                "kind": "variable",
+                "name": "A"
+              },
+              "right": {
+                "kind": "variable",
+                "name": "B"
+              }
+            }
+          }
+        }
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "m1=1",
+        "m2=1",
+        "m3=0"
+      ]
+    },
+    "explanation": "Evaluate the function at the binary assignment shown by the headers, not at the cell’s visual position. Gray order changes placement, not the assignment’s output.",
+    "mode": "practice"
+  },
+  {
+    "id": "ds.practice.interactive-co-map-three",
+    "version": "1",
+    "title": "Place a combinational function on a map",
+    "prompt": "Complete the Karnaugh map for the displayed combinational function. The variable order defines binary minterm numbering; row and column headers use Gray order.",
+    "rules": "Fill every editable cell using the shown binary variable labels. X denotes only a declared don’t-care.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_02_KMAP",
+    "skillId": "CO_SK02_03_KMAP_BUILD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "kmap-fill",
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cells": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      "given": [
+        0,
+        7
+      ],
+      "specification": {
+        "kind": "formula",
+        "formula": {
+          "kind": "or",
+          "left": {
+            "kind": "and",
+            "left": {
+              "kind": "variable",
+              "name": "A"
+            },
+            "right": {
+              "kind": "not",
+              "operand": {
+                "kind": "variable",
+                "name": "B"
+              }
+            }
+          },
+          "right": {
+            "kind": "variable",
+            "name": "C"
+          }
+        }
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "m1=1",
+        "m2=0",
+        "m3=1",
+        "m4=1",
+        "m5=1",
+        "m6=0"
+      ]
+    },
+    "explanation": "Evaluate the function at the binary assignment shown by the headers, not at the cell’s visual position. Gray order changes placement, not the assignment’s output.",
+    "mode": "practice"
+  },
+  {
+    "id": "ds.practice.interactive-co-map-four",
+    "version": "1",
+    "title": "Place minterms and don’t-cares",
+    "prompt": "Complete a four-variable map from the given active minterms and don’t-cares. All other minterms are zero.",
+    "rules": "Fill every editable cell using the shown binary variable labels. X denotes only a declared don’t-care.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_02_KMAP",
+    "skillId": "CO_SK02_03_KMAP_BUILD",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "kmap-fill",
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "cells": [
+          1,
+          "X",
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "X",
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "given": [],
+      "specification": {
+        "kind": "minterms"
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "m0=1",
+        "m1=X",
+        "m2=1",
+        "m3=0",
+        "m4=0",
+        "m5=0",
+        "m6=0",
+        "m7=0",
+        "m8=1",
+        "m9=X",
+        "m10=1",
+        "m11=0",
+        "m12=0",
+        "m13=0",
+        "m14=0",
+        "m15=0"
+      ]
+    },
+    "explanation": "Minterms 0, 2, 8 and 10 occupy the four corners: opposite edges are adjacent. X marks a specified input combination whose output is unconstrained, not a guessed missing answer.",
+    "mode": "exam"
+  },
+  {
+    "id": "ds.practice.interactive-co-map-reverse",
+    "version": "1",
+    "title": "Reconstruct a map’s function",
+    "prompt": "Construct an expression for the supplied three-input combinational map. Use the nested structure to reproduce all outputs. Any equivalent supported expression is accepted; this task does not grade minimality.",
+    "rules": "Complete every labelled control. Equivalent formulas are accepted on all required assignments; minimality is not assessed.",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "subtopicId": "CO_ST02_01_BOOLEAN",
+    "skillId": "CO_SK02_02_SOP",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "documentId": "CO_LEC_03",
+      "filename": "CO Lecture 3 - Logic Circuits Part 1.pdf",
+      "locator": "PDF_PAGES_1-30",
+      "precision": "DOCUMENT_RANGE",
+      "kind": "LECTURE"
+    },
+    "grader": {
+      "id": "structured-logic",
+      "version": "1"
+    },
+    "task": {
+      "kind": "logic-build",
+      "variables": [
+        "A",
+        "B",
+        "C"
+      ],
+      "shape": {
+        "kind": "binary",
+        "operator": {
+          "slot": "outer"
+        },
+        "left": {
+          "kind": "binary",
+          "operator": {
+            "slot": "inner"
+          },
+          "left": {
+            "kind": "atom",
+            "slot": "first"
+          },
+          "right": {
+            "kind": "atom",
+            "slot": "second"
+          }
+        },
+        "right": {
+          "kind": "atom",
+          "slot": "third"
+        }
+      },
+      "slots": [
+        {
+          "id": "first",
+          "label": "First input",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "inner",
+          "label": "Inner gate",
+          "options": [
+            "and",
+            "or"
+          ]
+        },
+        {
+          "id": "second",
+          "label": "Second input",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "outer",
+          "label": "Outer gate",
+          "options": [
+            "and",
+            "or"
+          ]
+        },
+        {
+          "id": "third",
+          "label": "Final input",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      ],
+      "target": {
+        "kind": "or",
+        "left": {
+          "kind": "and",
+          "left": {
+            "kind": "variable",
+            "name": "A"
+          },
+          "right": {
+            "kind": "variable",
+            "name": "B"
+          }
+        },
+        "right": {
+          "kind": "variable",
+          "name": "C"
+        }
+      },
+      "map": {
+        "variables": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cells": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    "reference": {
+      "kind": "choice",
+      "value": [
+        "first=A",
+        "inner=and",
+        "second=B",
+        "outer=or",
+        "third=C"
+      ]
+    },
+    "explanation": "Whenever C is one, the output is one. With C zero, only A=B=1 produces one. Thus (A ∧ B) ∨ C is a reference expression, independent of the order of A and B.",
+    "mode": "exam"
+  }
+]

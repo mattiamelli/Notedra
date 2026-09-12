@@ -1,28 +1,28 @@
 {
-  "initialJS": 507271,
-  "initialGzip": 134607,
-  "totalAssets": 1893977,
-  "totalGzip": 550716,
+  "initialJS": 507455,
+  "initialGzip": 134670,
+  "totalAssets": 1918056,
+  "totalGzip": 557263,
   "owners": {
     "/src/accounts/AccountPage.tsx": [
       {
-        "file": "assets/AccountPage-H8uUBEPn.js",
+        "file": "assets/AccountPage-Bfqt6UHc.js",
         "bytes": 5087,
-        "gzipBytes": 1933
+        "gzipBytes": 1935
       }
     ],
     "/src/accounts/ConfiguredAccountRoot.tsx": [
       {
-        "file": "assets/ConfiguredAccountRoot-DAAMmL1K.js",
+        "file": "assets/ConfiguredAccountRoot-CB1sEJ8q.js",
         "bytes": 17279,
-        "gzipBytes": 6188
+        "gzipBytes": 6189
       }
     ],
     "/src/cloud/coordinator.ts": [
       {
-        "file": "assets/ConfiguredAccountRoot-DAAMmL1K.js",
+        "file": "assets/ConfiguredAccountRoot-CB1sEJ8q.js",
         "bytes": 17279,
-        "gzipBytes": 6188
+        "gzipBytes": 6189
       }
     ],
     "/node_modules/@supabase/supabase-js/": [

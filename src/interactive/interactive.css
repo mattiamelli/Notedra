@@ -1,0 +1,17 @@
+.logic-workspace { margin: 24px 0; padding: 20px; min-width: 0; border: 2px solid var(--ds-line-strong); border-radius: var(--ds-radius); background: var(--ds-paper); color: var(--ds-ink); }
+.logic-workspace legend { padding: 0 8px; font-weight: 700; }
+.logic-preview,.logic-specification { padding: 16px; background: var(--ds-soft); border-radius: var(--ds-radius-sm); color: var(--ds-ink); font-size: 1.2rem; overflow-wrap: anywhere; }
+.logic-slots { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,180px),1fr)); gap: 20px; margin: 20px 0; }
+.logic-slots label { display: grid; gap: 8px; }
+.logic-workspace select { min-height: 48px; width: 100%; border: 1px solid var(--ds-line-strong); border-radius: var(--ds-radius-sm); padding: 8px; font: inherit; color: var(--ds-ink); background: var(--ds-paper); }
+.logic-workspace select:hover { border-color: var(--ds-primary); }
+.logic-workspace select:focus-visible,.logic-workspace button:focus-visible { outline: 3px solid var(--ds-focus); outline-offset: 3px; }
+.logic-workspace:disabled { opacity: .8; }
+.logic-map-scroll { max-width: 100%; overflow-x: auto; margin: 20px 0; }
+.logic-map { border-collapse: separate; border-spacing: 5px; color: var(--ds-ink); width: 100%; max-width: 640px; }
+.logic-map caption { text-align: left; margin-bottom: 12px; }
+.logic-map th { padding: 6px; background: var(--ds-soft); }
+.logic-map td { text-align: center; min-width: 58px; height: 50px; border: 1px solid var(--ds-line-strong); border-radius: var(--ds-radius-sm); background: var(--ds-paper); }
+.logic-map select { min-width: 58px; }
+.logic-map small { display: block; color: var(--ds-support); }
+@media(max-width:480px) { .logic-workspace { padding: 12px; } .logic-map { border-spacing: 3px; } }

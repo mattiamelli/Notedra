@@ -1,3 +1,5 @@
+import InteractiveControls,{InteractiveSpecification} from '../interactive/Controls';
+import {isInteractive} from '../interactive/types';
 import {explainAnswer} from '../enrichment/feedback';
 import {EvidenceView} from '../enrichment/EvidenceView';
 import '../enrichment/enrichment.css';
@@ -10,17 +12,19 @@ import {exerciseFormat,displayAnswer} from './presentation';
 import {TupleControls} from './TupleControls';
 export function ExerciseSource({exercise}: {exercise: Exercise}) {
   const topic = academicIndex.topics.find(topic => topic.topic_id === exercise.topicId)!;
-  return <><p className="ds-practice-label">Authored practice · Version {exercise.version} · Not an official TU Delft question</p>
+  return <><p className="ds-practice-label">{'mode' in exercise&&exercise.mode==='exam'?'Authored exam-style practice':'Authored practice'} · Version {exercise.version} · Not an official TU Delft question</p>
     <p><Link className="ds-text-link" to={topicPath(topic)}>{topic.name}</Link></p>
     <details className="ds-practice-source"><summary>Source and scope</summary><p>{exercise.source.filename}</p><p>Whole-document reference, not an exact supporting slide. Original PDF is not included.</p><p>{exerciseFormat(exercise.task.kind)?.label}. No official difficulty or examination weighting is claimed.</p></details></>;
 }
 export function ExercisePrompt({exercise,mode='practice'}: {exercise: Exercise;mode?:'practice'|'exam'}) {
   const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId);
-  return <div className="ds-practice-prompt"><h2>{exercise.prompt}</h2>{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}<p id="answer-rules">{exercise.rules}</p>{mode==='practice'&&topic&&<details><summary>Prepare for this exercise</summary><p>Review the topic explanation, then return and work through the question before checking your answer.</p><Link to={topicPath(topic)+'/learn'}>Review {topic.name}</Link></details>}</div>;
+  if('mode' in exercise&&exercise.mode==='exam')mode='exam';
+  return <div className="ds-practice-prompt"><h2>{exercise.prompt}</h2>{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{exercise.rules}</p>{mode==='practice'&&topic&&<details><summary>Prepare for this exercise</summary><p>Review the topic explanation, then return and work through the question before checking your answer.</p><Link to={topicPath(topic)+'/learn'}>Review {topic.name}</Link></details>}</div>;
 }
 export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: Exercise; answer: Answer; onChange: (answer: Answer)=>void; disabled: boolean}) {
   const task=exercise.task;
   if(!exerciseFormat(task.kind))return <p role="status">This answer format is not available. Your saved answer is preserved; return to Practice to choose another exercise.</p>;
+  if(isInteractive(task))return <InteractiveControls task={task} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(task.kind==='enrichment-exact')return <TupleControls parts={task.parts} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(task.kind==='radix'||task.kind==='co-exact'||task.kind==='rl-exact') return <label className="ds-practice-answer">Your answer<input aria-describedby="answer-rules" autoComplete="off" spellCheck={false} maxLength={16000} disabled={disabled} value={answer.kind==='text'?answer.value:''} onChange={event=>onChange({kind:'text',value:event.target.value})}/></label>;
   const selected = answer.kind==='choice'?answer.value:[];

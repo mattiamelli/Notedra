@@ -1,0 +1,9 @@
+{
+  "files": [
+    "src/interactive/types.ts",
+    "src/interactive/domain.ts",
+    "src/interactive/grading.ts",
+    "src/rl/logic.ts"
+  ],
+  "sha256": "ad234f0e34716c6916ead6bf1154517eefa50abfd2c62c5779acf78737bd529b"
+}

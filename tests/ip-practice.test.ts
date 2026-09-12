@@ -12,7 +12,7 @@ import {PracticeService,feedbackFor,resolveAttempt} from '../src/practice/servic
 import {STUDENT_SCHEMA_VERSION,evidencePolicy} from '../src/learning/contracts';
 const items=allExercises.filter((e):e is IPExercise=>e.task.kind==='ip-fixed');
 describe('Fixed authored Java predictions',()=>{
- it('adds exactly 33 independently reasoned items while retaining all 67 historical definitions',()=>{expect(items).toHaveLength(33);expect(allExercises.filter(e=>e.task.kind!=='ip-fixed')).toHaveLength(67);expect(oracles.map(o=>o.exerciseId)).toEqual(items.map(e=>e.id));});
+ it('adds exactly 33 independently reasoned items while retaining all 67 historical definitions',()=>{expect(items).toHaveLength(33);expect(allExercises.filter(e=>!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='ip-fixed')).toHaveLength(67);expect(oracles.map(o=>o.exerciseId)).toEqual(items.map(e=>e.id));});
  it.each(items)('$id: exact choice, unsupported code, explanatory pattern and fallback',e=>{
   expect(initialAnswer(e)).toEqual({kind:'choice',value:[]});expect(gradeResponse(e,e.reference)).toMatchObject({status:'GRADED',correct:true,earned:1});
   expect(validateResponse(e.task,{kind:'text',value:'System.exit(0);'}).status).toBe('INVALID');expect(validateResponse(e.task,{kind:'choice',value:[]}).status).toBe('INCOMPLETE');expect(validateResponse(e.task,{kind:'choice',value:['reference','pattern']}).status).toBe('INVALID');expect(validateResponse(e.task,{kind:'choice',value:['arbitrary']}).status).toBe('INVALID');
