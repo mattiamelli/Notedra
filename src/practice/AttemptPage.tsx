@@ -3,7 +3,9 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { LearningError, errorMessage, type Answer, type Attempt } from '../learning/contracts';
 import { useLearning } from '../learning/LearningProvider';
 import { PageHeading } from '../shell/PageParts';
-import { attemptPath } from './catalog';
+import { attemptPath, exercisePath } from './catalog';
+import {nextExercise} from './next';
+import {academicIndex,topicPath} from '../academic/navigation';
 import { validateResponse } from './runtime';
 import { feedbackFor, PracticeService, resolveAttempt } from './service';
 import { AnswerControls, ExercisePrompt, ExerciseSource, Feedback } from './ExerciseParts';
@@ -22,6 +24,8 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
   const generation=useRef(learning.snapshot!.data.generation); const saved=useRef(attempt); const pending=useRef(false);const retryId=useRef<string|null>(null);
   const [answer,setAnswer]=useState<Answer>(()=>structuredClone(attempt.answer));const [busy,setBusy]=useState(false);const [message,setMessage]=useState(attempt.status==='DRAFT'?'Draft loaded from this browser.':'Submitted answer loaded.');const [error,setError]=useState('');const [conflict,setConflict]=useState(false);
   const invalidated=conflict||generation.current!==learning.snapshot!.data.generation||(!busy&&attempt.revision!==saved.current.revision);
+  const next=nextExercise(exercise,learning.snapshot!.data.attempts);
+  const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId)!;
   const submitted=attempt.status==='SUBMITTED';const editable=attempt.status==='DRAFT'&&!invalidated;
   const dirty=JSON.stringify(answer)!==JSON.stringify(saved.current.answer);
   function edit(value:Answer){setAnswer(value);setError('');setMessage('Unsaved changes — save your draft before leaving.');}
@@ -46,7 +50,7 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
       <p role="status" className="ds-practice-save">{message}</p>{error&&<p role="alert" className="ds-storage-error">{error}</p>}
       {attempt.status==='DRAFT'&&<div className="ds-storage-actions"><button type="button" className="ds-button" disabled={busy||!editable||!dirty} onClick={()=>void write(false)}>Save draft</button><button type="submit" className="ds-button ds-practice-primary" disabled={busy||!editable}>Submit answer</button></div>}
     </form>
-    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>Retry as new attempt</button></>}
+    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>Retry as new attempt</button><p>{next?<Link className="ds-button" to={exercisePath(next)}>Next exercise: {next.title}</Link>:<Link className="ds-button" to={topicPath(topic)+'/practice'}>Explore more ways to practise this topic</Link>}</p></>}
     {attempt.status==='ABANDONED'&&<p>This attempt was abandoned. Its saved answer is preserved.</p>}
     <details className="ds-storage-note"><summary>About this saved answer</summary><p>Hints used: {attempt.hintsUsed===null?'not recorded':attempt.hintsUsed}. Solution viewed: {attempt.solutionViewed===null?'not recorded':attempt.solutionViewed?'yes':'no'}. Learning progress is summarized separately in Progress.</p></details></>;
 }

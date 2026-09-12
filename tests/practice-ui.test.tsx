@@ -81,3 +81,14 @@ describe('shared practice UI',()=>{
     const repo=repository();await mount(repo,exercisePath(catalog[0]));await click('Start exercise');await fill('00101101');vi.spyOn(repo,'submit').mockRejectedValueOnce(new LearningError('CONFLICT','Conflicting operation ID'));await click('Submit answer');expect(container.textContent).toContain('Conflicting operation ID');expect(container.textContent).not.toContain('Reference answer');
   });
 });
+
+it('next exercise opens authored same-topic work without mutating the submitted attempt or starting a draft',async()=>{
+ const repo=repository();const service=new PracticeService(repo);const state=await load(repo);
+ const started=await service.start(catalog[0].id,'next-origin',state.data);
+ const submitted=await service.submit(started.data.attempts[0],catalog[0].reference,'next-submit',state.data);
+ await mount(repo,attemptPath(catalog[0],'next-origin'));
+ const next=[...container.querySelectorAll<HTMLAnchorElement>('a')].find(a=>a.textContent?.startsWith('Next exercise:'))!;
+ expect(next).toBeDefined();expect(next.getAttribute('href')).not.toBe(exercisePath(catalog[0]));
+ await act(async()=>next.click());await settle();expect(container.textContent).toContain('Start exercise');
+ expect((await load(repo)).data.attempts).toEqual(submitted.data.attempts);
+});

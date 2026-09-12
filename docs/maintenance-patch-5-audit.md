@@ -1,0 +1,37 @@
+# Patch 5 — pre-implementation audit
+
+Starting branch `maintenance/study-path-completion`, clean HEAD `eb9d4b2ccb76573436eaecdfa952f2ad451fd069`; work isolated on `maintenance/exercise-system-source-alignment`.
+
+Baseline: 204 tests passed in eight files (Practice grading/UI/service, exam UI, enrichment, IP, R&L and CO practice).
+
+The accepted discriminated union already has seven objective kinds: radix, truth, java-output, co-exact, rl-exact, enrichment-exact and ip-fixed. Numeric formats, finite sets and ordered tuples already have bounded normalization; Java choice keys are authored. Guided reasoning, workspaces, programming assignments and rubric exam components are separate, honestly unscored mechanisms. No new persisted answer schema or grader is required.
+
+Confirmed gaps:
+
+- Renderer default assumes every unrecognized type is a truth table and dereferences rows. It must fail closed.
+- Ordered two/three-part answers use one comma-delimited input even though the schema knows the arity. A structured editor can improve interaction while preserving the exact stored text contract and original grader binding.
+- Source details show document/skill machine IDs. Source provenance should remain available internally while student copy uses the source filename and natural scope.
+- Submitted Practice provides retry but no deterministic next unseen exercise in the same topic.
+- Practice and fixed exam components share prompts and controls. Reuse is legitimate for fixed atomic checks but must be visible in the audit; exam demand comes from the timed mixed blueprint and open components, not relabelled fixed questions. Practice-only preparation support must not leak into exams.
+- Separate CO/R&L/IP coverage files, guided content, tools and exam banks have no combined, freshness-checked family/source/renderer/validator/feedback matrix. Their maps do not imply full atomic assessment coverage.
+- Difficulty labels on fixed exam components can overstate the reused single-skill task. Preserve historical definitions and bindings; document their limited meaning, do not regrade old attempts or invent difficulty tiers.
+
+Source basis: integrated lecture provenance and canonical topic/subtopic/skill relations, enriched official lecture/assessment evidence, and exam bank CURRENT/RECENT mechanism-only references. CO Assembly lessons distinguish executable 64-bit subset from non-executable partial-register reading; R&L separates fixed valuations/sets from open proofs/constructions; IP separates fixed snippet prediction from integrated authored assignments. Historical surface questions are not copied. Existing Assembly reference tests and the accepted engine remain the oracle, with no second instruction implementation.
+
+Implementation scope: explicit presentation classification, fail-closed rendering, structured tuple controls preserving serialization, natural source details, Practice-only preparation and safe next activity, and deterministic comprehensive coverage tooling/tests. Existing curriculum, exercise IDs/versions, graders, learning evidence and cloud contracts remain unchanged.
+
+## Final coverage review (all 43 topics)
+
+The generated matrix contains 237 areas: 100 fixed objective items, the existing guided activities and workspaces, 11 programming assignments and 46 exam-bank components. Its second table maps every one of the 147 canonical skills. An activity mapping is not complete assessment coverage or atomic correctness evidence.
+
+Manual review grouped the complete topic inventory as follows:
+
+- CO history retains one unscored explanation and has no dedicated exam item. Boolean/K-map and CMOS tasks combine bounded bit/numeric results with construction rubrics; these do not grade arbitrary diagrams or maps. Representation/floating-point tasks preserve exact width and declared custom-float assumptions. Assembly keeps the accepted qword workspace, address/load result tuple and unscored stack reasoning; partial-register questions remain reading-only. ISA, microcode, I/O, memory, cache, pipeline, parallelism and virtual memory retain their separate bit-budget, transfer, scheduling, decomposition, timing and translation mechanisms. Their common numeric control is appropriate for a uniquely specified final value; it is not evidence that arbitrary solutions or explanations can be graded.
+- R&L propositional/FOL work combines truth-row assignments, finite result strings/sets, ordered counterexample results and open translation/scope reasoning. Proof, induction, graph/tree, sets, functions/relations and constraint-transfer topics retain rubric construction plus bounded objective subparts and existing workspaces. Countability has guided reasoning and fixed bounded interpretation, but no dedicated exam-bank item. Open proofs are not string-compared. There is no general multi-select task: finite integer-set comparison is order-independent, while truth-table responses are keyed per row. Patch 6 logical-expression and K-map interaction remains deferred.
+- IP basics, control flow, methods, objects, arrays, containers, composition, inheritance, dispatch, equality, exceptions, strings/generics, functional Java, modern Java and concurrency use fixed code reading/state/prediction where a deterministic result is authored. Programming assignments add genuine implementation work rather than extra MCQ wrappers. Testing, debugging, I/O and program design retain open criteria; debugging has no dedicated fixed item or standalone exam-bank item. Integrated synthesis has authored coding assignments rather than a single atomic skill score. Some early IP topics have no standalone exam item but participate in integrated assignments; the matrix does not invent one-to-one exam counterparts.
+
+For every topic, retained formats fit the declared task, source and canonical scope remain attached, deterministic validation remains bounded, and open feedback remains authored rubric/reference. No generic runtime question generator or new question definition was introduced. Existing fixed exam reuse is explicitly marked; Practice adds optional topic preparation and immediate feedback, whereas mixed timed exams remove that preparation and delay answers until submission. Fixed-item difficulty labels remain authored workload labels, not calibrated difficulty or evidence of a novel harder question. No difficulty tier is manufactured by increasing numbers.
+
+The trusted pack's source-priority rules were checked: current scope overrides historical frequency; recent assessment mechanisms outweigh old formats; mocks are not counted as official occurrences; older material needs current corroboration; source dates and confidence caveats remain intact. The audit uses integrated source metadata, lesson explanations and authored mechanism references, not a claim to have re-inspected absent original PDF pages. No surface question was copied or paraphrased into new content.
+
+Additional review findings corrected within exercise scope: exam course/topic/skill IDs and raw option IDs in saved review; unanswered truth rows previously displayed as false by presentation. Canonical answers and graders are unchanged. Browser visual review caught radio-control widths inherited by tuple fields; the tuple fieldset now has isolated lightweight styling, and the browser gate checks readable field width. Malformed legacy tuple drafts retain their exact text.
