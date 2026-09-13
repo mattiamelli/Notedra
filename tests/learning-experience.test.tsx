@@ -4,7 +4,7 @@ import {createRoot,type Root} from 'react-dom/client';
 import {MemoryRouter} from 'react-router';
 import {afterEach,beforeEach,describe,expect,it} from 'vitest';
 import {MasteryCard} from '../src/progress/IndexCard';
-import {LearnMode} from '../src/topic-study/AuthoredViews';
+import {FlashcardMode,LearnMode} from '../src/topic-study/AuthoredViews';
 import {MentalMap} from '../src/topic-study/AcademicViews';
 import {mapStructure,topicStudy} from '../src/topic-study/content';
 import coBoolean from '../src/co/topics/CO_T02_BOOLEAN_KMAP.json';
@@ -41,7 +41,10 @@ describe.each(['CO_T02_BOOLEAN_KMAP','CO_T06_ASSEMBLY_X86_64','RL_T02_FOL','IP_T
  it('renders a connected interactive hierarchy with routed nodes',async()=>{
   await render(<MentalMap topic={topic}/>);const structure=mapStructure(topic);
   expect(host.querySelectorAll('.ds-map-node')).toHaveLength(topic.subtopics.length+topic.subtopics.flatMap(item=>item.skills).length);
-  expect(host.querySelector('.ds-map-trunk')).not.toBeNull();
+  expect(host.querySelector('.ds-map-connectors')).not.toBeNull();
+  expect(host.querySelectorAll('.ds-map-main-branch')).toHaveLength(topic.subtopics.length);
+  expect(host.querySelectorAll('.ds-map-skill-branch')).toHaveLength(topic.subtopics.flatMap(item=>item.skills).length);
+  expect([...host.querySelectorAll('.ds-map-connectors path')].every(path=>path.getAttribute('d')?.includes(' C '))).toBe(true);
   expect(host.querySelectorAll('.ds-map-subtopic')).toHaveLength(topic.subtopics.length);
   expect(host.querySelectorAll<HTMLAnchorElement>('.ds-map-node a')[0]?.getAttribute('href')).toContain('/learn');
   expect(host.querySelectorAll<HTMLAnchorElement>('.ds-map-node a')[0]?.hash).toBe(`#${topic.subtopics[0].id}`);
@@ -56,4 +59,12 @@ it('reorganizes and focuses the map without changing canonical topology',async()
  await act(async()=>reorganize.click());expect(host.querySelector('.ds-map-subtopic')?.textContent).not.toBe(first);
  const focus=[...host.querySelectorAll('button')].find(button=>button.textContent==='Focus mode')!;
  await act(async()=>focus.click());expect(focus.getAttribute('aria-pressed')).toBe('true');expect(mapStructure(topic)).toEqual(before);
+});
+
+it('renders a single flippable card with visible deterministic progress',async()=>{
+ const topic=topicStudy.topics.find(item=>item.id==='CO_T02_BOOLEAN_KMAP')!;
+ await render(<FlashcardMode topic={topic} content={(coBoolean as {cards:import('../src/topic-study/types').Flashcard[]}).cards}/>);
+ const progress=host.querySelector<HTMLElement>('.ds-flashcard-progress')!,flip=host.querySelector<HTMLButtonElement>('.ds-flashcard-flip')!;
+ expect(progress.getAttribute('role')).toBe('progressbar');expect(progress.getAttribute('aria-valuenow')).toBe('1');expect(host.querySelectorAll('.ds-study-card')).toHaveLength(1);
+ expect(flip.getAttribute('aria-pressed')).toBe('false');await act(async()=>flip.click());expect(flip.getAttribute('aria-pressed')).toBe('true');
 });

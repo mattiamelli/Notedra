@@ -44,7 +44,7 @@ describe('topic learning routes and modes',()=>{
  });
  it.each(pilots)('runs the complete $subjectId topic modes and retains its two original Practice items alongside new course items',async topic=>{
   await render(studyPath(topic));await click('#study-mode-1');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(lessonBlocks(topic.id));
-  await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await button('Reveal answer');expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(false);
+  await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.getAttribute('aria-hidden')).toBe('false');
   await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(topic.subjectId==='CSE1400_CO'?13:topic.subjectId==='CSE1300_RL'?19:6);expect([...container.querySelectorAll('.ds-practice-card>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
  });
  it('completed IP modes retain overview/map and show real study content with honest unavailable global features',async()=>{
@@ -57,7 +57,7 @@ describe('topic learning routes and modes',()=>{
   const t=pilots[0];await render(studyPath(t,'learn'),true);await click('#study-mode-3');expect(window.location.pathname).toBe(studyPath(t,'flashcards'));
   await act(async()=>{const p=new Promise(r=>window.addEventListener('popstate',r,{once:true}));window.history.back();await p;});expect(container.querySelector('[aria-selected="true"]')?.textContent).toBe('Learn');
   await act(async()=>{const p=new Promise(r=>window.addEventListener('popstate',r,{once:true}));window.history.forward();await p;});expect(container.querySelector('#card-prompt')).not.toBeNull();
-  await act(async()=>root.unmount());root=createRoot(container);await render(studyPath(t,'flashcards'));expect(container.querySelector('#card-prompt')).not.toBeNull();expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(true);
+  await act(async()=>root.unmount());root=createRoot(container);await render(studyPath(t,'flashcards'));expect(container.querySelector('#card-prompt')).not.toBeNull();expect(container.querySelector('#card-answer')?.getAttribute('aria-hidden')).toBe('true');
  });
  it('review regression: canonical map links focus the requested Learn section',async()=>{
   const t=pilots[0];await render(studyPath(t,'mental-map'),true);const sub=t.subtopics[1];await click(`.ds-study-map a[href="${studyPath(t,'learn')}#${sub.id}"]`);expect(window.location.hash).toBe('#'+sub.id);expect(document.activeElement?.id).toBe(sub.id);
@@ -68,9 +68,9 @@ describe('topic learning routes and modes',()=>{
  });
  it('flashcards reveal/hide, navigate, shuffle/reset without storage or identity changes',async()=>{
   const repo=repository();await render(studyPath(pilots[0],'flashcards'),false,repo);const before=await repo.exportBackup();const cards=flashcards.filter(c=>c.topicId===pilots[0].id);
-  expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);await button('Reveal answer');expect(container.querySelector('#card-answer')?.textContent).toContain(cards[0].answer);await button('Hide answer');expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(true);
-  await button('Previous card');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[7].prompt);await button('Next card');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);
-  vi.spyOn(Math,'random').mockReturnValue(0);await button('Shuffle cards');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[1].prompt);expect(container.querySelector('.ds-study-card .ds-study-id')).toBeNull();
+  expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.textContent).toContain(cards[0].answer);await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.getAttribute('aria-hidden')).toBe('true');
+  await button('← Previous');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[7].prompt);await button('Next →');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);
+  vi.spyOn(Math,'random').mockReturnValue(0);await button('Shuffle');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[1].prompt);expect(container.querySelector('.ds-study-card .ds-study-id')).toBeNull();
   await button('Reset order');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);expect(await repo.exportBackup()).toEqual(before);
   expect([...shuffledIds(cards.map(c=>c.id),()=>0)].sort()).toEqual(cards.map(c=>c.id).sort());
  });

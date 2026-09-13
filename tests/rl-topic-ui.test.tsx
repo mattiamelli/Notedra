@@ -49,6 +49,10 @@ async function click(name: string) {
   const button = [...host.querySelectorAll('button')].find(item => item.textContent === name);
   expect(button, name).toBeDefined(); await act(async () => button!.click()); await settle();
 }
+async function clickLabel(name: string) {
+  const button = host.querySelector<HTMLButtonElement>(`button[aria-label="${name}"]`);
+  expect(button, name).not.toBeNull(); await act(async () => button!.click()); await settle();
+}
 
 describe('complete R&L topic learning routes', () => {
   it.each(topics)('$id exposes its lesson, cards, shared exercises and unscored activities without changing student data', async topic => {
@@ -78,16 +82,16 @@ describe('complete R&L topic learning routes', () => {
     expect(host.querySelector('#card-prompt')?.textContent).toBe(content.cards[0].prompt);
     expect(host.querySelector('[role="status"]')?.textContent).toBe(`Card 1 of ${content.cards.length}`);
     expect(content.cards.length).toBe(capability.cardCount);
-    expect(host.querySelector<HTMLElement>('#card-answer')!.hidden).toBe(true);
-    await click('Reveal answer');
-    expect(host.querySelector<HTMLElement>('#card-answer')!.hidden).toBe(false);
+    expect(host.querySelector<HTMLElement>('#card-answer')!.getAttribute('aria-hidden')).toBe('true');
+    await clickLabel('Show the back of this flashcard');
+    expect(host.querySelector<HTMLElement>('#card-answer')!.getAttribute('aria-hidden')).toBe('false');
     expect(host.querySelector('#card-answer')?.textContent).toContain(content.cards[0].answer);
-    await click('Next card');
+    await click('Next →');
     expect(host.querySelector('#card-prompt')?.textContent).toBe(content.cards[1].prompt);
-    expect(host.querySelector<HTMLElement>('#card-answer')!.hidden).toBe(true);
-    await click('Shuffle cards'); await click('Reset order');
+    expect(host.querySelector<HTMLElement>('#card-answer')!.getAttribute('aria-hidden')).toBe('true');
+    await click('Shuffle'); await click('Reset order');
     expect(host.querySelector('#card-prompt')?.textContent).toBe(content.cards[0].prompt);
-    expect(host.querySelector<HTMLElement>('#card-answer')!.hidden).toBe(true);
+    expect(host.querySelector<HTMLElement>('#card-answer')!.getAttribute('aria-hidden')).toBe('true');
     expect(host.textContent).toContain('This reference covers a broad part of the document');
     expect(await repo.exportBackup()).toEqual(before);
 

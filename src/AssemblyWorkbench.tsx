@@ -30,7 +30,7 @@ export default function AssemblyWorkbench() {
         <RegisterPanel cpu={cpu} step={step} format={format} cursor={session.cursor}/>
       </div>
       <div className="bottom-grid"><InstructionExplanation step={step} halted={cpu.halted} cursor={session.cursor} nextText={nextInstruction?.text}/><ExecutionHistory session={session} disabled={dirty} onSeek={simulator.seek}/></div>
-      <footer className="app-footer"><span><span className="footer-brand">Notedra</span>Made for the moments when assembly clicks.</span><span><kbd>Alt</kbd> + <kbd>←</kbd> / <kbd>→</kbd> to step<span className="footer-dot">·</span>Simplified x86-64 · no data leaves your browser</span></footer>
+      <footer className="app-footer"><span><span className="footer-brand">Notedra</span>{t('assembly.footerLearning')}</span><span><kbd>Alt</kbd> + <kbd>←</kbd> / <kbd>→</kbd> {t('assembly.footerStep')}<span className="footer-dot">·</span>{t('assembly.footerPrivacy')}</span></footer>
     </main>
   </div>;
 }

@@ -9,7 +9,7 @@ function highlight(line: string) {
 }
 interface Props {source: string; currentLine?: number; errorLine?: number; dirty: boolean; saved: boolean; onChange: (value: string) => void; onExample: (source: string) => void; onCreate: () => void;}
 export function CodeEditor({source, currentLine, errorLine, dirty, saved, onChange, onExample, onCreate}: Props) {
-  const {t}=useI18n();
+  const {t,lt}=useI18n();
   const scroller = useRef<HTMLDivElement>(null);
   const editor = useRef<HTMLTextAreaElement>(null);
   const lines = source.split('\n');
@@ -32,7 +32,7 @@ export function CodeEditor({source, currentLine, errorLine, dirty, saved, onChan
   return <section className="panel editor-panel" aria-labelledby="editor-heading">
     <div className="panel-heading"><h2 id="editor-heading"><Icon name="code"/>{t('assembly.program')}</h2><span className="small-label">AT&amp;T syntax</span></div>
     <div className="editor-toolbar"><span className="file-tab"><span className="file-icon">S</span>{example ? `${example.id.replaceAll('-', '_')}.s` : 'program.s'}{dirty && <i title="Changes need to be loaded"/>}</span>
-      <div className="editor-toolbar-actions"><button className="editor-create" type="button" onClick={createBlankProgram}>{t('assembly.create')}</button><label className="example-select"><span className="sr-only">{t('assembly.exampleProgram')}</span><select value={example?.id ?? ''} onChange={event => {const selected = examplePrograms.find(item => item.id === event.target.value); if (selected) onExample(selected.source);}}><option value="" disabled>{t('assembly.examples')}</option>{examplePrograms.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label></div>
+      <div className="editor-toolbar-actions"><button className="editor-create" type="button" onClick={createBlankProgram}>{t('assembly.create')}</button><label className="example-select"><span className="sr-only">{t('assembly.exampleProgram')}</span><select value={example?.id ?? ''} onChange={event => {const selected = examplePrograms.find(item => item.id === event.target.value); if (selected) onExample(selected.source);}}><option value="" disabled>{t('assembly.examples')}</option>{examplePrograms.map(item => <option key={item.id} value={item.id}>{lt(item.name)}</option>)}</select></label></div>
     </div>
     <div className="code-scroller" ref={scroller}>
       <div className="code-canvas" style={{minHeight: `${Math.max(12, lines.length) * 28 + 32}px`, minWidth: `max(100%, ${Math.max(42, ...lines.map(line => line.length)) * 8.43 + 86}px)`}}>
@@ -42,6 +42,6 @@ export function CodeEditor({source, currentLine, errorLine, dirty, saved, onChan
       </div>
     </div>
     <div className="editor-footer"><span>{t('assembly.lineCount',{count:lines.length})}<span className="footer-dot">·</span>UTF-8</span><span className={saved ? '' : 'warning-text'}>{dirty ? t('assembly.edited') : saved ? t('assembly.saved') : t('assembly.savingUnavailable')}</span></div>
-    <div id="editor-hint" className="editor-help"><Icon name="bulb" size={16}/><span>{example?.description ?? t('assembly.editorHint')}</span></div>
+    <div id="editor-hint" className="editor-help"><Icon name="bulb" size={16}/><span>{example?lt(example.description):t('assembly.editorHint')}</span></div>
   </section>;
 }

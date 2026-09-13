@@ -7,6 +7,11 @@ import {AccountPage} from '../src/accounts/AccountPage';
 import {AppShell} from '../src/shell/AppShell';
 import {LANGUAGE_STORAGE_KEY,LanguageProvider,readLanguage,translate} from '../src/i18n/i18n';
 import {en,languages,translations} from '../src/i18n/messages';
+import {allExercises} from '../src/practice/catalog';
+import itContent from '../public/i18n-content/it.json';
+import esContent from '../public/i18n-content/es.json';
+import frContent from '../public/i18n-content/fr.json';
+import deContent from '../public/i18n-content/de.json';
 
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let host:HTMLDivElement,root:Root;
@@ -49,5 +54,19 @@ describe('centralized interface languages',()=>{
     expect(name.textContent).toBe('Notedra');
     expect(name.children).toHaveLength(0);
     expect(host.querySelector('.ds-brand strong,.ds-brand b')).toBeNull();
+  });
+  it('localizes every visible exercise text without changing technical notation',()=>{
+    const content={it:itContent,es:esContent,fr:frContent,de:deContent} as const;
+    const source=new Set<string>();
+    for(const exercise of allExercises){
+      for(const field of ['title','prompt','rules','explanation'] as const){const text=exercise[field];if(typeof text==='string'&&text.trim())source.add(text);}
+      if(exercise.task.kind==='logic-build')for(const slot of exercise.task.slots)source.add(slot.label);
+    }
+    const technical=/(?:%[a-z][a-z0-9]*|0x[0-9A-Fa-f]+|[¬∧∨→↔⊕])/gi;
+    for(const [language,catalog] of Object.entries(content))for(const text of source){
+      const localized=(catalog as Record<string,string>)[text];
+      expect(localized,`${language}: ${text}`).toBeTruthy();
+      expect(localized.match(technical)?.sort()??[],`${language}: ${text}`).toEqual(text.match(technical)?.sort()??[]);
+    }
   });
 });
