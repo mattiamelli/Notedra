@@ -69,6 +69,7 @@ describe('student data UI', () => {
   it('shows accessible storage errors and disables backup writes', async () => {
     const repo = repository(); vi.spyOn(repo, 'load').mockRejectedValue(new Error('No storage'));
     await mount(repo, '/account'); expect(container.querySelector('[role=alert]')?.textContent).toContain('Local storage failed');
+    await vi.waitFor(() => expect(container.querySelector<HTMLInputElement>('input[type=file]')).not.toBeNull());
     expect(container.querySelector<HTMLInputElement>('input[type=file]')?.disabled).toBe(true);
     expect(container.textContent).toContain('Reload saved data');
   });

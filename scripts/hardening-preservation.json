@@ -24,7 +24,7 @@
   "tests/progress-ui.test.tsx": {"before":"457e3604e386d5b364f20ae1a01d381820340cc610b791ea960a7a9d2d029179","after":"8bcb1cbd21302f0905ef1f6e4321d5a87a8cd2b557f2be87e28ac0fa8131bfe6"},
   "tests/dashboard-projection.test.tsx": {"before":"0d81e0b2f84f1a4de9aadeff8c655ec87d9037d57c7088549c56684d04282590","after":"2f006cd14f20058b5b9126c7aa31e7705c9ddfac113aa9d329c58310ebb88ceb"},
   "tests/cloud-ui.test.tsx": {"before":"1892c470a0fdb7bee29dfe6583f5a034ca04dcb730a2ceafd3b3740f1d9f1ac3","after":"44fd84a165933fc416c4e1972589d7d0b5329dae28a3d06ad0abe0fea5800c4a"},
-  "tests/learning-ui.test.tsx": {"before":"8d506a2d2262717414c5bb149e1ff93e16df38d970837126ca531502f2cbcf5d","after":"0ae816b7c9cb680f536b46e601ece2c956f0e84bef895b5b1ddb856b6ebbd18d"},
+  "tests/learning-ui.test.tsx": {"before":"8d506a2d2262717414c5bb149e1ff93e16df38d970837126ca531502f2cbcf5d","after":"a3bc0764c9aff1c907c436917ad02ef41245e174594b326dc9d5e6fc5256129d"},
   "tests/application-routing.test.tsx": {"before":"d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902","after":"7eb1809a145607e6dd682359a0ed6f0bba7fae65e3852176f2d516da4da70839"},
   "tests/adaptive-ui.test.tsx": {"before":"61a2518a89a140b16887e9b4c076e53a172c9bfd7cbab7abd13637ffcdf19ef8","after":"27e0de4cf6eef0a8c6606808b7ac835ec4a7db375bf447a59d4045091fd6f01d"},
   "tests/rl-topic-ui.test.tsx": {"before":"ee876fcd94ef7b53da3d4eecb4a67f15da1170e42050d129febb699e935dfc88","after":"e4c5d3829e8724008d1c36d4c479669a79016d4929358a2ddec9dc23a2dad22d"},
