@@ -1,0 +1,51 @@
+{
+  "patch": 9,
+  "gate": "FIX NEEDED",
+  "productionEvidence": {
+    "project": "obaljgxtosxnsljdtjjf",
+    "sourceMigration": "20260912205044_restrict_rls_auto_enable.sql",
+    "sourceSha256": "917d2bc07343ff77d8c65270c63f76ca7d7ef05c5a9075a19550b04d4220beab",
+    "appliedAtUtc": "2026-09-12T19:25:00Z",
+    "remoteMigrationVersion": "20260912192500",
+    "remoteMigrationName": "restrict_rls_auto_enable",
+    "rlsAutoEnableExecute": {"PUBLIC":false,"anon":false,"authenticated":false,"owner":true},
+    "learnerTablesRlsEnabledAndForced": true,
+    "learnerPolicyCount": 8,
+    "applicationSyncRpc": {"anonExecute":false,"authenticatedExecute":true},
+    "remoteABAcceptance": "PASS",
+    "postDeploySecurityAdvisor": "rls_auto_enable finding resolved; leaked-password protection remains disabled because the current project plan does not provide the Pro-only control; authenticated application sync RPC warning remains intentional",
+    "performanceAdvisor": "PASS"
+  },
+  "matrix": [
+    {"category":"LEGAL","item":"Privacy Policy","status":"PASS","evidence":"Implemented and tested with the approved public contact notedra.support@gmail.com."},
+    {"category":"LEGAL","item":"Terms of Use","status":"PASS","evidence":"Implemented and tested with the approved public contact notedra.support@gmail.com."},
+    {"category":"SECURITY","item":"Secrets","status":"PASS","evidence":"Static source and emitted-asset scans found no private credential material."},
+    {"category":"SECURITY","item":"HTTPS","status":"PASS","evidence":"Live HTTP redirects to HTTPS; no mixed-content source was found."},
+    {"category":"SECURITY","item":"CSP and headers","status":"PASS","evidence":"Enforced production CSP is origin-scoped; HSTS target raised to one year without subdomain scope."},
+    {"category":"SECURITY","item":"RLS and account isolation","status":"PASS","evidence":"The authorized production revoke was applied at 2026-09-12 19:25 UTC. PUBLIC, anon and authenticated cannot execute rls_auto_enable; live A/B, receipts, PT409, idempotency and account switching pass."},
+    {"category":"SECURITY","item":"Auth and session","status":"PASS","evidence":"Live disposable signup, sign-in, reconnect, sign-out and account switching passed."},
+    {"category":"SECURITY","item":"Confirm Email","status":"FAIL","evidence":"Read-only production settings still report mailer_autoconfirm true."},
+    {"category":"SECURITY","item":"Spam and rate limiting","status":"PARTIAL","evidence":"Supabase Auth rate limits and edge bot management exist; project CAPTCHA and exact rate settings are not verified."},
+    {"category":"SECURITY","item":"XSS and injection","status":"PASS","evidence":"No raw HTML execution APIs; bounded imported data and React text rendering retained."},
+    {"category":"SECURITY","item":"Dependencies","status":"PARTIAL","evidence":"Runtime has no advisory; critical/moderate dev advisories fixed; one low Windows-only dev-server advisory remains."},
+    {"category":"SEO","item":"Metadata and canonical","status":"PARTIAL","evidence":"Root/legal/public route metadata fixed in production artifact; deployment remains pending."},
+    {"category":"SEO","item":"Social preview and favicon","status":"PASS","evidence":"1200x630 optimized PNG, Open Graph/Twitter metadata and favicon validated."},
+    {"category":"SEO","item":"Robots and sitemap","status":"PARTIAL","evidence":"Valid 50-URL public sitemap and intentional robots artifact built; deployment remains pending."},
+    {"category":"SEO","item":"Alt text","status":"PASS","evidence":"Meaningful and decorative artwork semantics inspected in Chromium and component tests."},
+    {"category":"PERFORMANCE","item":"Assets and images","status":"PASS","evidence":"Initial JS remains under 520 kB and social PNG is 22.4 kB; course and exercise payloads remain lazy."},
+    {"category":"PERFORMANCE","item":"Load speed","status":"PASS","evidence":"Final local production preview LCP 944 ms and navigation 155 ms at 1280px."},
+    {"category":"PERFORMANCE","item":"Core Web Vitals","status":"PARTIAL","evidence":"Final local LCP 944 ms and CLS 0.0213 measured; INP NOT RUN and field data unavailable."},
+    {"category":"UX","item":"CTA and forms","status":"PASS","evidence":"Primary flows have clear actions; account, exam, backup and structured inputs are labelled and bounded."},
+    {"category":"UX","item":"404 and broken links","status":"PASS","evidence":"273 internal links crawled; unknown routes and missing static assets have tested true 404 behavior."},
+    {"category":"UX","item":"Errors and logging","status":"PASS","evidence":"Student-safe error boundaries retained; no secrets, tokens, answers or debug spam in production code."},
+    {"category":"UX","item":"Mobile, themes and contrast","status":"PASS","evidence":"Ten routes pass at 1280/375 in Light/Dark; exact light semantic palette matches the supplied reference."},
+    {"category":"PRIVACY","item":"Analytics","status":"NOT APPLICABLE","evidence":"No analytics added; launch does not justify collecting behavioral events."},
+    {"category":"PRIVACY","item":"Cookies","status":"PASS","evidence":"No app analytics or marketing cookies; provider security/session cookies are disclosed."},
+    {"category":"PRIVACY","item":"Backups and account data","status":"PASS","evidence":"Export/import/recovery bounds and anonymous/account separation remain covered."}
+  ],
+  "blockers": [
+    "Resolve production Confirm Email mismatch: mailer_autoconfirm is still true.",
+    "Upgrade the Supabase project to Pro or higher, then enable and remotely verify leaked-password protection.",
+    "Deploy and verify the Patch 9 hosting artifact before requesting indexing."
+  ]
+}

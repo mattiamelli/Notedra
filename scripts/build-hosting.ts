@@ -18,13 +18,12 @@ const headersFile=readFileSync('dist/_headers','utf8');
 const headers=Object.fromEntries(headersFile.split('/assets/*')[0].split('\n').filter(line=>/^  [\w-]+: /.test(line)).map(line=>{const at=line.indexOf(':');return [line.slice(2,at),line.slice(at+2)];}));
 if(!headers['Content-Security-Policy-Report-Only'])throw Error('Missing built CSP');
 if(policy.cspMode==='enforce'){headers['Content-Security-Policy']=headers['Content-Security-Policy-Report-Only'];delete headers['Content-Security-Policy-Report-Only'];}
-const mime:Record<string,string>={js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',svg:'image/svg+xml',xml:'application/xml; charset=utf-8',txt:'text/plain; charset=utf-8',webmanifest:'application/manifest+json',html:'text/html; charset=utf-8'};
+const mime:Record<string,string>={js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',svg:'image/svg+xml',png:'image/png',xml:'application/xml; charset=utf-8',txt:'text/plain; charset=utf-8',webmanifest:'application/manifest+json',html:'text/html; charset=utf-8'};
 function asset(file:string):HostedAsset {
- const bytes=readFileSync('dist/'+file),body=bytes.toString('utf8');
- if(!Buffer.from(body).equals(bytes))throw Error('Binary asset needs an explicit delivery encoding: '+file);
- scanArtifact('dist/'+file,body);
+ const bytes=readFileSync('dist/'+file),textBody=bytes.toString('utf8'),binary=!Buffer.from(textBody).equals(bytes),body=binary?bytes.toString('base64'):textBody;
+ if(!binary)scanArtifact('dist/'+file,body);
  const type=mime[file.split('.').at(-1)!];if(!type)throw Error('Unsupported public asset: '+file);
- return {body,type,etag:'"'+createHash('sha256').update(bytes).digest('hex')+'"'};
+ return {body,type,etag:'"'+createHash('sha256').update(bytes).digest('hex')+'"',encoding:binary?'base64':undefined};
 }
 const assets:Record<string,HostedAsset>={};
 for(const entry of readdirSync('dist',{recursive:true,withFileTypes:true}).filter(e=>e.isFile())){
@@ -33,7 +32,7 @@ for(const entry of readdirSync('dist',{recursive:true,withFileTypes:true}).filte
  assets['/'+file]=asset(file);
 }
 const documents=Object.fromEntries(publicDocumentPages().map((page,index)=>[page.path,asset(`release/page-${index}.html`)]));
-const applicationPaths=['/','/dashboard','/account','/progress','/mistakes','/study-plan','/practice','/exams','/exams/history',...courses.map(c=>`/exams/${c.subject_id}/setup`),...academicIndex.topics.flatMap(t=>studyModes.map(mode=>`${topicPath(t)}/${mode.id}`))];
+const applicationPaths=['/','/dashboard','/account','/privacy','/terms','/progress','/mistakes','/study-plan','/practice','/exams','/exams/history',...courses.map(c=>`/exams/${c.subject_id}/setup`),...academicIndex.topics.flatMap(t=>studyModes.map(mode=>`${topicPath(t)}/${mode.id}`))];
 const manifest:HostingManifest={assets,documents,applicationPaths,shell:asset('index.html'),notFound:asset('404.html'),headers};
 const source=ts.transpileModule(readFileSync('hosting/handler.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
 const worker=source+'\nexport default createHandler('+JSON.stringify(manifest)+');\n';

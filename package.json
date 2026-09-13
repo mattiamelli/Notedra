@@ -49,6 +49,7 @@
     "check:visual-bundle": "node --import tsx scripts/inspect-visual-build.ts",
     "validate:hardening": "node --import tsx scripts/validate-hardening.ts",
     "validate:security-final": "node --import tsx scripts/validate-security-final.ts",
+    "validate:launch": "node --import tsx scripts/validate-launch.ts",
     "check:production-bundle": "node --import tsx scripts/inspect-production-build.ts"
   },
   "dependencies": {
@@ -63,13 +64,13 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.4",
-    "ajv": "8.17.1",
+    "ajv": "8.20.0",
     "fake-indexeddb": "6.2.5",
     "jsdom": "26.1.0",
     "tailwindcss": "4.2.1",
     "tsx": "4.20.6",
     "typescript": "5.9.3",
     "vite": "7.3.6",
-    "vitest": "4.0.18"
+    "vitest": "4.1.11"
   }
 }

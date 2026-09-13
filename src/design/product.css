@@ -1,5 +1,9 @@
 @import './tokens.css';
 
+.ds-bootstrap { position: fixed; inset: 0; display: grid; place-content: center; gap: var(--ds-space-3); padding: var(--ds-space-5); background: var(--ds-page); color: var(--ds-text); text-align: center; }
+.ds-bootstrap h1,.ds-bootstrap p { margin: 0; }
+.ds-bootstrap button { justify-self: center; min-height: 44px; padding: .7rem 1rem; border: 1px solid var(--ds-line-strong); border-radius: var(--ds-radius-sm); background: var(--ds-primary); color: var(--ds-on-primary); font: inherit; }
+
 /* Presentation adapters preserve the accepted feature styles and their integrity locks. */
 .ds-app {
   --ds-accent: var(--ds-primary); --ds-border: var(--ds-line); --ds-muted: var(--ds-support);
@@ -110,6 +114,14 @@
 .ds-app .ds-course-intro { padding: var(--ds-space-5); border-left: 4px solid var(--ds-course-color); background: var(--ds-course-bg); border-radius: var(--ds-radius); margin-bottom: var(--ds-space-6); }
 .ds-app .ds-course-intro .ds-page-heading { margin: 0; }
 .ds-app .ds-course-intro .ds-study-next { margin-bottom: 0; }
+.ds-legal { max-width: 780px; margin-inline: auto; }
+.ds-legal section { padding-block: var(--ds-space-5); border-top: 1px solid var(--ds-line); }
+.ds-legal section h2 { margin: 0 0 var(--ds-space-3); }
+.ds-legal section p { margin: 0; }
+.ds-legal-back { margin-top: var(--ds-space-5); }
+.ds-legal-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-4); margin-top: var(--ds-space-7); padding-top: var(--ds-space-5); border-top: 1px solid var(--ds-line); color: var(--ds-support); font-size: var(--ds-meta); }
+.ds-legal-footer nav { display: flex; flex-wrap: wrap; gap: var(--ds-space-4); }
+.ds-legal-footer a { color: var(--ds-primary); }
 @media(max-width:650px) {
   .ds-app .ds-main { padding: 1.5rem 1rem 2rem; }
   .ds-app .ds-welcome { grid-template-columns: 1fr; padding: var(--ds-space-5); }
@@ -118,6 +130,7 @@
   .ds-app .ds-course-intro { padding: var(--ds-space-4); }
   .ds-app .ds-topic-list :is(.ds-co-capability,.ds-rl-capability) { padding-left: 1rem; }
   .ds-app .ds-study-mode-tabs button { flex: 1 1 auto; }
+  .ds-legal-footer { align-items: flex-start; flex-direction: column; }
 }
 @media(prefers-reduced-motion:reduce) {
   .ds-app *, .ds-app *::before, .ds-app *::after { animation: none!important; transition: none!important; scroll-behavior: auto!important; }
@@ -232,6 +245,9 @@ body { background: var(--ds-page); color: var(--ds-text); color-scheme: inherit;
 @media(max-width:1000px){.ds-app:not(.ds-tool){display:block}.ds-app .ds-sidebar{height:auto;position:static;margin:0 12px 12px}.ds-app .ds-sidebar-footer{display:none}.ds-dashboard-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ds-dash-plan{grid-column:1/3;grid-row:1}.ds-dash-exams{grid-column:1;grid-row:2}.ds-dash-readiness{grid-column:2;grid-row:2}.ds-dash-courses{grid-column:1/3;grid-row:3}.ds-dash-practice{grid-column:1;grid-row:4}.ds-dash-mastery{grid-column:2;grid-row:4}.ds-dash-continue{grid-column:1;grid-row:5}.ds-dash-tools{grid-column:2;grid-row:5}.ds-app .ds-greeting-note{display:none}}
 @media(max-width:650px){.ds-app .ds-main{padding:24px 14px}.ds-app .ds-topbar{padding:12px 14px;gap:10px}.ds-header-account>span:last-child{display:none}.ds-app .ds-breadcrumbs{padding:8px 10px}.ds-dashboard-grid{display:flex;flex-direction:column;gap:14px}.ds-dash-panel{width:100%}.ds-dash-plan{order:1}.ds-dash-exams{order:2}.ds-dash-courses{order:3}.ds-dash-readiness{order:4}.ds-dash-practice{order:5}.ds-dash-mastery{order:6}.ds-dash-continue{order:7}.ds-dash-tools{order:8}.ds-app .ds-dash-panel{padding:16px}.ds-dashboard .ds-course-grid{grid-template-columns:1fr}.ds-course-art{height:132px}.ds-dashboard-plan li{grid-template-columns:26px minmax(0,1fr)}.ds-dashboard-plan li>.ds-button{grid-column:2;justify-self:start}.ds-plan-empty{padding:10px 0;align-items:flex-start}.ds-app.ds-tool .ds-sidebar-footer{display:none}}
 .ds-dashboard-grid { align-items: stretch; }
+.ds-dashboard-skeleton { min-height: 220px; background: linear-gradient(100deg,var(--ds-paper) 20%,var(--ds-soft) 45%,var(--ds-paper) 70%)!important; background-size: 240% 100%!important; animation: ds-dashboard-loading 1.2s ease-in-out infinite; }
+.ds-dashboard-skeleton.ds-dash-exams,.ds-dashboard-skeleton.ds-dash-courses { min-height: 280px; }
+@keyframes ds-dashboard-loading { from { background-position: 100% 0; } to { background-position: -100% 0; } }
 .ds-readiness-list>a { padding: 8px 0; }
 .ds-readiness-list small { line-height: 1.35; }
 .ds-app .ds-dash-readiness .ds-dash-caption { margin-bottom: 4px; }

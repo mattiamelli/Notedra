@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {publicReleasePages,releaseHeaders,releaseHtml,homeReleasePage,productionOrigin,sitemap} from './release';
+const report=JSON.parse(readFileSync('docs/maintenance-patch-9-launch-readiness.json','utf8')) as {patch:number;gate:string;matrix:{category:string;item:string;status:string;evidence:string}[];blockers:string[]};
+const source=(path:string)=>readFileSync(path,'utf8');
+assert.equal(report.patch,9);assert(['PASS','FIX NEEDED'].includes(report.gate));assert(report.matrix.length>=25);
+assert.equal(new Set(report.matrix.map(row=>row.category+':'+row.item)).size,report.matrix.length);
+for(const row of report.matrix){assert(['LEGAL','SECURITY','SEO','PERFORMANCE','UX','PRIVACY'].includes(row.category));assert(['PASS','PARTIAL','FAIL','NOT RUN','NOT APPLICABLE'].includes(row.status));assert(row.evidence.length>10);}
+const pages=publicReleasePages();assert.equal(pages.length,50);assert(pages.some(page=>page.path==='/privacy')&&pages.some(page=>page.path==='/terms'));
+const head=releaseHtml('<html><head><title>x</title><meta name="description" content="x" /></head></html>',homeReleasePage);
+for(const value of ['index,follow',productionOrigin+'/',productionOrigin+'/social-preview.png','summary_large_image'])assert(head.includes(value));
+assert(sitemap(pages).includes(productionOrigin+'/privacy'));assert(!sitemap(pages).match(/\/(?:account|practice|progress|exams|mistakes|study-plan)</));
+const headers=releaseHeaders('https://project.supabase.co');for(const value of ["script-src 'self'","connect-src 'self' https://project.supabase.co","object-src 'none'","base-uri 'none'","frame-ancestors 'none'","max-age=31536000"])assert(headers.includes(value));
+for(const path of ['src/pages/LegalPage.tsx','src/shell/AppShell.tsx'])assert(!/https?:\/\/(?!127\.0\.0\.1)/.test(source(path)),'Unexpected external content in '+path);
+assert(!/dangerouslySetInnerHTML|document\.cookie|gtag\(|plausible\(|posthog\.|mixpanel\.|segment\./.test(source('src/pages/LegalPage.tsx')));
+assert(source('src/legal/contact.ts').includes("PUBLIC_LEGAL_CONTACT='notedra.support@gmail.com'"));
+assert(source('src/shell/AppShell.tsx').includes('mailto:${PUBLIC_LEGAL_CONTACT}'));
+assert(!/data-contact-pending|INSERISCI QUI|MAIL PUBBLICA/.test(source('src/pages/LegalPage.tsx')));
+const migration=source('supabase/migrations/20260912205044_restrict_rls_auto_enable.sql');assert(migration.includes('revoke all on function public.rls_auto_enable() from public, anon, authenticated'));assert(!/\b(?:alter|drop|create)\s+(?:policy|table)/i.test(migration));
+console.log(`Launch readiness matrix validated: ${report.matrix.length} items; gate ${report.gate}.`);

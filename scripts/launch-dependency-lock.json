@@ -1,0 +1,9 @@
+{
+  "before": "29d519e4760cd5e3a6c2701dc79b435d5c250d1892e49158f3dbdab865c5b14c",
+  "after": "71c85730349941af3971353e853c87a95d4ce7231237e452dc39b0c247e23df2",
+  "updated": [
+    "ajv@8.20.0",
+    "vitest@4.1.11"
+  ],
+  "reason": "Patch 9 development-only vulnerability remediation"
+}

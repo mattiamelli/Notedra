@@ -8,12 +8,20 @@ import {ShellIcon} from '../shell/ShellIcon';
 import DashboardExams from './DashboardExams';
 import {useAccount} from '../accounts/context';
 const DashboardInsights = lazy(()=>import('./DashboardInsights'));
+function DashboardSkeleton(){return <>
+  <section className="ds-dash-panel ds-dash-plan ds-dashboard-skeleton" aria-busy="true"><h2>Your Study Path</h2><p role="status">Loading your local study evidence…</p></section>
+  <section className="ds-dash-panel ds-dash-readiness ds-dashboard-skeleton" aria-hidden="true"/>
+  <section className="ds-dash-panel ds-dash-exams ds-dashboard-skeleton" aria-hidden="true"/>
+  <section className="ds-dash-panel ds-dash-courses ds-dashboard-skeleton" aria-hidden="true"/>
+  <section className="ds-dash-panel ds-dash-practice ds-dashboard-skeleton" aria-hidden="true"/>
+  <section className="ds-dash-panel ds-dash-mastery ds-dashboard-skeleton" aria-hidden="true"/>
+  </>}
 export function DashboardPage() {
   const {state}=useAccount(); const profileName=state.user?.displayName?.trim();
   return <div className="ds-dashboard">
     <header className="ds-dashboard-greeting"><div><h1 className="ds-dashboard-label">Dashboard</h1><p className="ds-greeting-title">{profileName?`Hello ${profileName}`:<>Welcome to <span>DelftStudy</span></>}</p><p>Build understanding today. Take your next step with confidence.</p></div><p className="ds-greeting-note">Learn · Practice · Reflect</p></header>
     <div className="ds-dashboard-grid">
-      <Suspense fallback={<section className="ds-dash-panel ds-dash-plan"><h2>Your Study Path</h2><p role="status">Loading your local study evidence…</p><Link to="/study-plan">Open Study Path →</Link></section>}><DashboardInsights>
+      <Suspense fallback={<DashboardSkeleton/>}><DashboardInsights>
       <DashboardExams/>
       <section className="ds-dash-panel ds-dash-courses" aria-labelledby="courses-title"><div className="ds-section-heading"><h2 id="courses-title"><ShellIcon name="book"/>Your courses</h2><span>{courses.length} courses · {academicIndex.topics.length} topics</span></div><div className="ds-course-grid">{courses.map(course=><CourseCard key={course.subject_id} course={course}/>)}</div></section>
       <section className="ds-dash-panel ds-dash-practice"><h2><ShellIcon name="practice"/>Practice, one idea at a time</h2><p>Choose a course and work through authored exercises with explanatory feedback.</p><Link className="ds-button ds-button-primary" to="/practice">Open Practice <ShellIcon name="arrow" size={17}/></Link><div className="ds-dash-links"><Link to="/mistakes">Review Mistake Book</Link><Link to="/exams">Try a mock exam</Link></div></section>

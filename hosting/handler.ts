@@ -1,4 +1,4 @@
-export interface HostedAsset {body:string; type:string; etag:string;}
+export interface HostedAsset {body:string; type:string; etag:string; encoding?:'base64';}
 export interface HostingManifest {
   assets:Record<string,HostedAsset>;
   documents:Record<string,HostedAsset>;
@@ -34,6 +34,7 @@ export function createHandler(manifest:HostingManifest) {
     headers.set('Cache-Control',asset&&/^\/assets\/.+-[\w-]{8,}\./.test(path)?'public, max-age=31536000, immutable':'public, max-age=0, must-revalidate');
     if(!asset)headers.set('X-Robots-Tag',document?'index, follow':'noindex, follow');
     if(status===200&&request.headers.get('If-None-Match')===selected.etag)return new Response(null,{status:304,headers});
-    return new Response(request.method==='HEAD'?null:selected.body,{status,headers});
+    const body=selected.encoding==='base64'?Uint8Array.from(atob(selected.body),character=>character.charCodeAt(0)):selected.body;
+    return new Response(request.method==='HEAD'?null:body,{status,headers});
   }};
 }

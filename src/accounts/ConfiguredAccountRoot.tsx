@@ -29,7 +29,7 @@ function ProfileBoundary({config,auth,cloud,children}:{config:CloudConfig;auth:A
   const owner=state.user?.id??null;
   const createRepository=useMemo(()=>()=>new IndexedStudentRepository(owner?{name:accountDatabase(owner)}:{}),[owner]);
   if(continueLocal)return <AccountContext.Provider value={{config:{status:'unavailable',message:'Account restore is paused. Continue anonymously; reload to retry accounts.'},auth:null,state:anonymousState,syncStatus:'Local only',syncMessage:'Account restore is paused. Continue anonymously; reload to retry accounts.',sync:null,adopt:null}}><LearningProvider>{children}</LearningProvider></AccountContext.Provider>;
-  if(state.phase==='loading')return <main className="ds-main"><h1>Restoring your session</h1><p role="status">Account data stays hidden until its identity is known.</p><button onClick={()=>{auth.close();setContinueLocal(true);}}>Continue with anonymous local study</button></main>;
+  if(state.phase==='loading')return <main className="ds-bootstrap"><h1>Restoring your session</h1><p role="status">Account data stays hidden until its identity is known.</p><button onClick={()=>{auth.close();setContinueLocal(true);}}>Continue with anonymous local study</button></main>;
   return <LearningProvider key={owner??'anonymous'} createRepository={createRepository}><SyncBridge config={config} auth={auth} cloud={cloud}>{children}</SyncBridge></LearningProvider>;
 }
 function SyncBridge({config,auth,cloud,children}:{config:CloudConfig;auth:AccountSession;cloud:CloudRepository;children:ReactNode}) {

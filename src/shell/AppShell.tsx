@@ -6,11 +6,18 @@ import { ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext, productA
 import { ShellIcon } from './ShellIcon';
 import {useAccount} from '../accounts/context';
 import {profileInitials} from '../accounts/profile';
+import {PUBLIC_LEGAL_CONTACT} from '../legal/contact';
 
 export function AppShell() {
   const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
   const {pathname, hash} = useLocation();
-  const context = pathname.replace(/\/+$/, '') === '/account' ? {title:'Account & sync',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & sync'}]} : pageContext(pathname);
+  const normalizedPath=pathname.replace(/\/+$/, '')||'/';
+  const specialContext:Record<string,{title:string;breadcrumbs:{label:string;to?:string}[]}>= {
+    '/account':{title:'Account & sync',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & sync'}]},
+    '/privacy':{title:'Privacy Policy',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Privacy Policy'}]},
+    '/terms':{title:'Terms of Use',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Terms of Use'}]},
+  };
+  const context = specialContext[normalizedPath]??pageContext(pathname);
   const tool = pathname.replace(/\/+$/, '') === ASSEMBLY_TOOL_PATH;
   const [navigationOpen, setNavigationOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -60,6 +67,7 @@ export function AppShell() {
     <Content ref={element => {content.current = element;}} id="ds-content" tabIndex={-1} className={tool ? 'ds-tool-content' : 'ds-main'}>
       {tool && <Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> Back to Assembly topic</Link>}
       <LearningNotice/><RouteBoundary resetKey={pathname}><Outlet/></RouteBoundary>
+      {!tool&&<footer className="ds-legal-footer"><span>Independent study support.</span><nav aria-label="Legal"><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><a href={`mailto:${PUBLIC_LEGAL_CONTACT}`}>Support</a></nav></footer>}
     </Content>
   </div>;
 }

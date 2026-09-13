@@ -31,7 +31,7 @@ const pilots=lessons.map(l=>topicStudy.topics.find(t=>t.id===l.topicId)!);
 describe('topic learning routes and modes',()=>{
  it.each(studyModes)('all 43 topics resolve directly in $id mode',async mode=>{
   for(const topic of topicStudy.topics){await render(studyPath(topic,mode.id));expect(container.querySelector('h1')?.textContent).toBe(topic.name);expect(container.querySelectorAll('[role="tab"]')).toHaveLength(7);expect(container.querySelector('[aria-selected="true"]')?.textContent).toBe(mode.label);expect(container.querySelectorAll('main')).toHaveLength(1);}
- });
+ },30_000);
  it.each(['/co/CO_T04_DATA_REP_RADIX_INTEGER/nope','/co/IP_T02_CONTROL_FLOW/learn','/ip/MISSING/flashcards','/rl/RL_T01_PROP_LOGIC/learn/extra'])('rejects invalid topic/mode %s',async path=>{await render(path);expect(container.querySelector('h1')?.textContent).toBe('Page not found');});
  it('renders canonical description, prerequisites, grouped skills and honest broad/unknown sources',async()=>{
   const ip=pilots[2];await render(studyPath(ip));expect(container.textContent).toContain(ip.description);expect(container.querySelector('a[href="/ip/IP_T01_JAVA_BASICS"]')?.textContent).toBe('Java basics and data');

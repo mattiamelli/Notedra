@@ -12,6 +12,7 @@ import './shell/shell.css';
 import { AccountRoot } from './accounts/AccountRoot';
 import { ThemeProvider } from './appearance/theme';
 const AccountPage=lazy(()=>import('./accounts/AccountPage').then(m=>({default:m.AccountPage})));
+const LegalPage=lazy(()=>import('./pages/LegalPage').then(m=>({default:m.LegalPage})));
 
 const PracticePage = lazy(() => import('./practice/PracticePage').then(m => ({default:m.PracticePage})));
 const ExercisePage = lazy(() => import('./practice/ExercisePage').then(m => ({default:m.ExercisePage})));
@@ -41,6 +42,8 @@ export function AppRoutes() {
     <Route path="exams/*" caseSensitive element={<Suspense fallback={<p role="status">Loading Mock Exams…</p>}><ExamsPage/></Suspense>}/>
     <Route path="progress" caseSensitive element={<Suspense fallback={<p role="status">Loading Progress…</p>}><ProgressPage/></Suspense>}/>
     <Route path="account" caseSensitive element={<Suspense fallback={<p role="status">Loading Account…</p>}><AccountPage/></Suspense>}/>
+    <Route path="privacy" caseSensitive element={<Suspense fallback={<p role="status">Loading Privacy Policy…</p>}><LegalPage kind="privacy"/></Suspense>}/>
+    <Route path="terms" caseSensitive element={<Suspense fallback={<p role="status">Loading Terms…</p>}><LegalPage kind="terms"/></Suspense>}/>
     {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams','/progress'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
   </Route></Routes>;

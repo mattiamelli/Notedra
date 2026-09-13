@@ -7,7 +7,7 @@ const config=configuredCloud();
 export function AccountRoot({children}:{children:ReactNode}) {
   const [local,setLocal]=useState(false);
   const fallback=<LocalProfile message="Optional account support is unavailable or paused. Local study remains available; reload to retry accounts.">{children}</LocalProfile>;
-  if(config.status==='configured'&&!local)return <OptionalBoundary fallback={fallback}><Suspense fallback={<main className="ds-main"><p role="status">Opening optional account support…</p><button onClick={()=>setLocal(true)}>Continue with anonymous local study</button></main>}><ConfiguredAccountRoot config={config}>{children}</ConfiguredAccountRoot></Suspense></OptionalBoundary>;
+  if(config.status==='configured'&&!local)return <OptionalBoundary fallback={fallback}><Suspense fallback={<main className="ds-bootstrap"><p role="status">Opening optional account support…</p><button onClick={()=>setLocal(true)}>Continue with anonymous local study</button></main>}><ConfiguredAccountRoot config={config}>{children}</ConfiguredAccountRoot></Suspense></OptionalBoundary>;
   if(local)return fallback;
   return <LocalProfile message={config.status==='configured'?'Local only':config.message}>{children}</LocalProfile>;
 }

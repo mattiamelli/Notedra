@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">DelftStudy</title>
+  <desc id="description">Independent computer science study support</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#dfeeff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#1556a8" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#page)"/>
+  <circle cx="1070" cy="85" r="210" fill="#e4f0ff"/>
+  <circle cx="105" cy="590" r="180" fill="#e4f0ff"/>
+  <g filter="url(#shadow)">
+    <rect x="104" y="90" width="992" height="450" rx="34" fill="#fff" stroke="#dfebfa" stroke-width="2"/>
+  </g>
+  <g transform="translate(176 166)">
+    <rect width="100" height="100" rx="24" fill="#0061ed"/>
+    <path d="M27 29c13-5 24-3 32 3v43c-8-6-19-8-32-3zm46 0c-13-5-24-3-32 3v43c8-6 19-8 32-3z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+  <text x="176" y="343" fill="#081747" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="750" letter-spacing="-4">Delft<tspan fill="#0061ed">Study</tspan></text>
+  <text x="179" y="410" fill="#263c68" font-family="Inter,Arial,sans-serif" font-size="30">Build understanding. Study with confidence.</text>
+  <g transform="translate(178 458)" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700">
+    <rect width="92" height="42" rx="21" fill="#e1f0ff"/><text x="28" y="28" fill="#005caf">CO</text>
+    <rect x="108" width="92" height="42" rx="21" fill="#dff6f2"/><text x="133" y="28" fill="#007568">R&amp;L</text>
+    <rect x="216" width="92" height="42" rx="21" fill="#eee7ff"/><text x="247" y="28" fill="#6235b7">IP</text>
+  </g>
+</svg>
