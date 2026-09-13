@@ -8,7 +8,7 @@ import type {Recommendation} from './engine';
 import './adaptive.css';
 import {useI18n} from '../i18n/i18n';
 export function StudyPathPage({build=buildStudySession}:{build?:typeof buildStudySession}){
- const {t}=useI18n();
+ const {t,lt}=useI18n();
  const {learning,evidence,refresh}=useEvidence();const [params,setParams]=useSearchParams();
  const input=Number(params.get('minutes')??30),minutes=(STUDY_TIME_PRESETS.some(n=>n===input)?input:30) as StudyTimePreset;
  const subjectId=params.get('course')??'',topicId=params.get('topic')??'';
@@ -17,7 +17,7 @@ export function StudyPathPage({build=buildStudySession}:{build?:typeof buildStud
  function generate(){try{setPath(build(evidence,{minutes,subjectId,topicId:topicId||undefined}));setError('');}catch(cause){setPath(null);setError(cause instanceof Error?cause.message:'The study session could not be built.');}}
  if(!learning?.snapshot)return <><PageHeading title={t('studyPath.title')} eyebrow={t('studyPath.eyebrow').toUpperCase()}/><p role="status">{learning?.message??'Student storage is not connected.'}</p></>;
  return <div className="ds-adaptive"><PageHeading title={t('studyPath.title')} eyebrow={t('studyPath.eyebrow').toUpperCase()}><p>{t('studyPath.description')}</p></PageHeading>
-  <div className="ds-mistake-filters"><label>{t('studyPath.time')}<select value={minutes} onChange={e=>change('minutes',e.target.value)}>{STUDY_TIME_PRESETS.map(n=><option key={n} value={n}>{studyTimeLabel(n)}</option>)}</select></label><label>{t('progress.course')}<select value={subjectId} onChange={e=>change('course',e.target.value)}><option value="">{t('studyPath.chooseCourse')}</option>{courses.map(c=><option key={c.subject_id} value={c.subject_id}>{c.short}</option>)}</select></label><label>{t('progress.topic')}<select disabled={!subjectId} value={topicId} onChange={e=>change('topic',e.target.value)}><option value="">{t('studyPath.courseFocus')}</option>{academicIndex.topics.filter(topic=>topic.subject_id===subjectId).map(topic=><option key={topic.topic_id} value={topic.topic_id}>{topic.name}</option>)}</select></label></div>
+  <div className="ds-mistake-filters"><label>{t('studyPath.time')}<select value={minutes} onChange={e=>change('minutes',e.target.value)}>{STUDY_TIME_PRESETS.map(n=><option key={n} value={n}>{studyTimeLabel(n)}</option>)}</select></label><label>{t('progress.course')}<select value={subjectId} onChange={e=>change('course',e.target.value)}><option value="">{t('studyPath.chooseCourse')}</option>{courses.map(c=><option key={c.subject_id} value={c.subject_id}>{c.short}</option>)}</select></label><label>{t('progress.topic')}<select disabled={!subjectId} value={topicId} onChange={e=>change('topic',e.target.value)}><option value="">{t('studyPath.courseFocus')}</option>{academicIndex.topics.filter(topic=>topic.subject_id===subjectId).map(topic=><option key={topic.topic_id} value={topic.topic_id}>{lt(topic.name)}</option>)}</select></label></div>
   <p>{t('studyPath.estimates')}</p>
   <div className="ds-storage-actions"><button className="ds-button" disabled={!subjectId||learning.phase==='busy'} onClick={generate}>{t('studyPath.build')}</button><button className="ds-button ds-button-secondary" disabled={learning.phase==='busy'} onClick={async()=>{await refresh();setPath(null);setError('');}}>{t('studyPath.reload')}</button><Link className="ds-text-link" to="/mistakes">{t('dashboard.reviewMistakes')} →</Link></div>
   {error&&<p role="alert">{error} Your selections are still available; try again.</p>}

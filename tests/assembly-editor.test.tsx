@@ -19,6 +19,16 @@ async function edit(source: string) {
   });
 }
 describe('custom assembly editor', () => {
+  it('creates and focuses a completely blank program while keeping examples available', async () => {
+    await act(async () => root.render(<AssemblyWorkbench/>));
+    expect(host.querySelector('textarea')?.getAttribute('value') ?? host.querySelector('textarea')?.textContent).not.toBe('');
+    await click('Create');
+    const editor=host.querySelector<HTMLTextAreaElement>('textarea')!;
+    expect(editor.value).toBe('');
+    expect(document.activeElement).toBe(editor);
+    expect(host.textContent).toContain('AT&T syntax');
+    expect(host.querySelectorAll('.example-select option').length).toBeGreaterThan(1);
+  });
   it('does not show an old next instruction or promise cleared history after invalid replacement', async () => {
     await act(async () => root.render(<AssemblyWorkbench/>));
     await edit('movq $11, %rax'); await click('Load Program');

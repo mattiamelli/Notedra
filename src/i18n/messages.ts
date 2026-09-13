@@ -347,6 +347,41 @@ export const en = {
   'course.availableTool': 'Available tool',
   'course.assemblyDescription': 'Step through a program and inspect registers, the stack, and execution history.',
   'course.openWorkbench': 'Open workbench',
+  'nav.studyPath': 'Study Path',
+  'assembly.program': 'Program',
+  'assembly.create': 'Create',
+  'assembly.exampleProgram': 'Example program',
+  'assembly.examples': 'Examples',
+  'assembly.programAria': 'Assembly program',
+  'assembly.lineCount': '{count} lines',
+  'assembly.edited': 'Edited · load to execute',
+  'assembly.saved': 'Saved on this device',
+  'assembly.savingUnavailable': 'Local saving unavailable',
+  'assembly.editorHint': 'Write an AT&T program, then load it to begin.',
+  'assembly.loadTitle': 'Load program (Ctrl/⌘ + Enter)',
+  'assembly.load': 'Load Program',
+  'assembly.previousTitle': 'Previous instruction (Alt + ←)',
+  'assembly.previous': 'Previous',
+  'assembly.nextTitle': 'Next instruction (Alt + →)',
+  'assembly.next': 'Next Instruction',
+  'assembly.run': 'Run',
+  'assembly.pauseTitle': 'Pause (Escape)',
+  'assembly.pause': 'Pause',
+  'assembly.reset': 'Reset',
+  'assembly.complete': 'Program complete',
+  'assembly.instruction': 'Instruction {current} / {count}',
+  'assembly.executed': '{count} executed',
+  'assembly.needsAttention': 'Needs attention',
+  'assembly.unloaded': 'Unloaded changes',
+  'assembly.running': 'Running',
+  'assembly.statusComplete': 'Complete',
+  'assembly.ready': 'Ready to explore',
+  'assembly.paused': 'Paused',
+  'assembly.eyebrow': 'Learn by stepping through',
+  'assembly.workbench': 'Assembly workbench',
+  'assembly.numberFormat': 'Number display format',
+  'assembly.errorHelp': 'Edit and load the program again, or reset execution.',
+  'assembly.dirtyHelp': 'Your code has changed. Load Program to start a new execution.',
 } as const;
 
 export type MessageKey = keyof typeof en;
@@ -450,4 +485,17 @@ Object.assign(translations.fr,{
 });
 Object.assign(translations.de,{
   'learning.mastery':'Lernfortschritt','learning.notEnoughPractice':'Noch nicht genug Übung','learning.confidence':'Verlässlichkeit: {confidence}','learning.recentSkills':'{covered} / {total} Fähigkeiten mit verlässlicher Übung · {recent} kürzlich','learning.calculated':'Wie wird das berechnet?','learning.method':'Der Lernfortschritt verwendet kürzlich abgeschlossene Übungen aus verschiedenen Fähigkeiten. Fehlende Übung bleibt unbekannt und zählt nicht als niedriger Wert.','learning.noneRecorded':'Keine erfasst','learning.separateReadiness':'Basiert auf regulärer Übung. Die Prüfungsvorbereitung wird getrennt angezeigt.','learning.introduction':'Einführung','learning.concept':'Konzept','learning.procedure':'Methode','learning.workedExample':'Durchgearbeitetes Beispiel','learning.importantRule':'Wichtige Regel','learning.commonPitfall':'Häufiger Fehler','learning.codeExample':'Codebeispiel','learning.recap':'Zusammenfassung','learning.keyTakeaway':'Merksatz','learning.learnTopic':'Lerne: {topic}','learning.keyConcepts':'Schlüsselkonzepte','learning.lessonSections':'Lektionsabschnitte','learning.inThisLesson':'In dieser Lektion','learning.provenance':'Von Notedra erstellter Lerninhalt · Version {version}. Die Erklärungen sind kein offizieller Wortlaut der TU Delft.','learning.putToWork':'Ideen anwenden','learning.reviewFlashcards':'Lernkarten wiederholen','learning.openPractice':'Übungen zum Thema öffnen','learning.visualGuide':'Visueller Lernleitfaden','learning.mapDescription':'Sieh, wie Thema, Unterthemen, Fähigkeiten und Voraussetzungen zusammenhängen. Wähle einen Knoten, um weiterzulernen.','learning.mapTools':'Werkzeuge der Mindmap','learning.reorganize':'Neu anordnen','learning.fitCenter':'Einpassen / Zentrieren','learning.focusMode':'Fokusmodus','learning.canonicalMap':'Interaktive kanonische Themenkarte','learning.topicNode':'Thema','learning.subtopicNode':'Unterthema','learning.skillNode':'Fähigkeit','learning.requires':'{count} Voraussetzungskanten','learning.prerequisiteLinks':'Voraussetzungsverbindungen','learning.noPrerequisites':'Für diese Fähigkeiten sind keine Voraussetzungen aufgeführt.','learning.relatedActions':'Zugehörige Lernaktionen','learning.textOutline':'Textgliederung dieser Karte'
+});
+
+Object.assign(translations.it,{
+  'nav.studyPath':'Percorso di studio','assembly.program':'Programma','assembly.create':'Crea','assembly.exampleProgram':'Programma di esempio','assembly.examples':'Esempi','assembly.programAria':'Programma Assembly','assembly.lineCount':'{count} righe','assembly.edited':'Modificato · carica per eseguire','assembly.saved':'Salvato su questo dispositivo','assembly.savingUnavailable':'Salvataggio locale non disponibile','assembly.editorHint':'Scrivi un programma AT&T, poi caricalo per iniziare.','assembly.loadTitle':'Carica programma (Ctrl/⌘ + Invio)','assembly.load':'Carica programma','assembly.previousTitle':'Istruzione precedente (Alt + ←)','assembly.previous':'Precedente','assembly.nextTitle':'Istruzione successiva (Alt + →)','assembly.next':'Istruzione successiva','assembly.run':'Esegui','assembly.pauseTitle':'Pausa (Esc)','assembly.pause':'Pausa','assembly.reset':'Reimposta','assembly.complete':'Programma completato','assembly.instruction':'Istruzione {current} / {count}','assembly.executed':'{count} eseguite','assembly.needsAttention':'Richiede attenzione','assembly.unloaded':'Modifiche non caricate','assembly.running':'In esecuzione','assembly.statusComplete':'Completato','assembly.ready':'Pronto da esplorare','assembly.paused':'In pausa','assembly.eyebrow':'Impara procedendo passo per passo','assembly.workbench':'Banco di lavoro Assembly','assembly.numberFormat':'Formato numerico','assembly.errorHelp':'Modifica e ricarica il programma oppure reimposta l’esecuzione.','assembly.dirtyHelp':'Il codice è cambiato. Carica il programma per iniziare una nuova esecuzione.'
+});
+Object.assign(translations.es,{
+  'nav.studyPath':'Ruta de estudio','assembly.program':'Programa','assembly.create':'Crear','assembly.exampleProgram':'Programa de ejemplo','assembly.examples':'Ejemplos','assembly.programAria':'Programa Assembly','assembly.lineCount':'{count} líneas','assembly.edited':'Editado · carga para ejecutar','assembly.saved':'Guardado en este dispositivo','assembly.savingUnavailable':'Guardado local no disponible','assembly.editorHint':'Escribe un programa AT&T y cárgalo para empezar.','assembly.loadTitle':'Cargar programa (Ctrl/⌘ + Intro)','assembly.load':'Cargar programa','assembly.previousTitle':'Instrucción anterior (Alt + ←)','assembly.previous':'Anterior','assembly.nextTitle':'Instrucción siguiente (Alt + →)','assembly.next':'Instrucción siguiente','assembly.run':'Ejecutar','assembly.pauseTitle':'Pausa (Esc)','assembly.pause':'Pausa','assembly.reset':'Restablecer','assembly.complete':'Programa completado','assembly.instruction':'Instrucción {current} / {count}','assembly.executed':'{count} ejecutadas','assembly.needsAttention':'Requiere atención','assembly.unloaded':'Cambios sin cargar','assembly.running':'En ejecución','assembly.statusComplete':'Completado','assembly.ready':'Listo para explorar','assembly.paused':'En pausa','assembly.eyebrow':'Aprende paso a paso','assembly.workbench':'Banco de trabajo Assembly','assembly.numberFormat':'Formato numérico','assembly.errorHelp':'Edita y carga de nuevo el programa o restablece la ejecución.','assembly.dirtyHelp':'El código ha cambiado. Carga el programa para iniciar una nueva ejecución.'
+});
+Object.assign(translations.fr,{
+  'nav.studyPath':'Parcours d’étude','assembly.program':'Programme','assembly.create':'Créer','assembly.exampleProgram':'Programme d’exemple','assembly.examples':'Exemples','assembly.programAria':'Programme Assembly','assembly.lineCount':'{count} lignes','assembly.edited':'Modifié · chargez pour exécuter','assembly.saved':'Enregistré sur cet appareil','assembly.savingUnavailable':'Enregistrement local indisponible','assembly.editorHint':'Écrivez un programme AT&T, puis chargez-le pour commencer.','assembly.loadTitle':'Charger le programme (Ctrl/⌘ + Entrée)','assembly.load':'Charger le programme','assembly.previousTitle':'Instruction précédente (Alt + ←)','assembly.previous':'Précédente','assembly.nextTitle':'Instruction suivante (Alt + →)','assembly.next':'Instruction suivante','assembly.run':'Exécuter','assembly.pauseTitle':'Pause (Échap)','assembly.pause':'Pause','assembly.reset':'Réinitialiser','assembly.complete':'Programme terminé','assembly.instruction':'Instruction {current} / {count}','assembly.executed':'{count} exécutées','assembly.needsAttention':'Attention requise','assembly.unloaded':'Modifications non chargées','assembly.running':'En cours','assembly.statusComplete':'Terminé','assembly.ready':'Prêt à explorer','assembly.paused':'En pause','assembly.eyebrow':'Apprenez pas à pas','assembly.workbench':'Atelier Assembly','assembly.numberFormat':'Format des nombres','assembly.errorHelp':'Modifiez et rechargez le programme, ou réinitialisez l’exécution.','assembly.dirtyHelp':'Le code a changé. Chargez le programme pour démarrer une nouvelle exécution.'
+});
+Object.assign(translations.de,{
+  'nav.studyPath':'Lernpfad','assembly.program':'Programm','assembly.create':'Erstellen','assembly.exampleProgram':'Beispielprogramm','assembly.examples':'Beispiele','assembly.programAria':'Assembly-Programm','assembly.lineCount':'{count} Zeilen','assembly.edited':'Bearbeitet · zum Ausführen laden','assembly.saved':'Auf diesem Gerät gespeichert','assembly.savingUnavailable':'Lokales Speichern nicht verfügbar','assembly.editorHint':'Schreibe ein AT&T-Programm und lade es, um zu beginnen.','assembly.loadTitle':'Programm laden (Ctrl/⌘ + Enter)','assembly.load':'Programm laden','assembly.previousTitle':'Vorherige Anweisung (Alt + ←)','assembly.previous':'Zurück','assembly.nextTitle':'Nächste Anweisung (Alt + →)','assembly.next':'Nächste Anweisung','assembly.run':'Ausführen','assembly.pauseTitle':'Pause (Esc)','assembly.pause':'Pause','assembly.reset':'Zurücksetzen','assembly.complete':'Programm abgeschlossen','assembly.instruction':'Anweisung {current} / {count}','assembly.executed':'{count} ausgeführt','assembly.needsAttention':'Aufmerksamkeit erforderlich','assembly.unloaded':'Nicht geladene Änderungen','assembly.running':'Wird ausgeführt','assembly.statusComplete':'Abgeschlossen','assembly.ready':'Bereit zum Erkunden','assembly.paused':'Pausiert','assembly.eyebrow':'Schritt für Schritt lernen','assembly.workbench':'Assembly-Arbeitsbereich','assembly.numberFormat':'Zahlenformat','assembly.errorHelp':'Bearbeite und lade das Programm erneut oder setze die Ausführung zurück.','assembly.dirtyHelp':'Der Code wurde geändert. Lade das Programm für eine neue Ausführung.'
 });

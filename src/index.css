@@ -50,6 +50,9 @@ h2 svg { color: #97a5b5; width: 17px; }
 .small-label { color: #85919f; font-size: 12px; letter-spacing: .4px; white-space: nowrap; }
 .editor-panel { display: flex; flex-direction: column; }
 .editor-toolbar { display: flex; justify-content: space-between; align-items: center; min-height: 44px; background: #14181e; padding: 0 12px; gap: 5px; border-bottom: 1px solid #272d36; }
+.editor-toolbar-actions { display:flex; align-items:center; gap:8px; }
+.editor-create { color:#dcecff; border:1px solid #3a70ac; border-radius:5px; background:#183e67; padding:5px 11px; font:inherit; font-size:12px; cursor:pointer; }
+.editor-create:hover,.editor-create:focus-visible { background:#22588e; outline:none; box-shadow:0 0 0 2px #69a9e766; }
 .file-tab { display: flex; align-items: center; gap: 7px; color: #b7c2cf; font-family: var(--font-mono); font-size: 12px; white-space: nowrap; }
 .file-icon { font-size: 12px; color: var(--cyan); font-weight: 650; }
 .file-tab i { background: #d6ba7e; width: 5px; height: 5px; border-radius: 50%; }

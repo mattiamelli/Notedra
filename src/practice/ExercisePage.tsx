@@ -8,7 +8,7 @@ import { PracticeService } from './service';
 import { ExercisePrompt, ExerciseSource } from './ExerciseParts';
 import {useI18n} from '../i18n/i18n';
 export function ExercisePage() {
-  const {t}=useI18n();
+  const {t,lt}=useI18n();
   const {exerciseId}=useParams();const exercise=getExercise(exerciseId??''); const learning=useLearning(); const navigate=useNavigate();
   const pending=useRef(false);const startId=useRef<string|null>(null);const [busy,setBusy]=useState(false);const [error,setError]=useState('');
   if(!exercise)return <><PageHeading title={t('practice.unavailable')} eyebrow={t('practice.title').toUpperCase()}><p>{t('practice.unavailableBody')}</p></PageHeading><Link to="/practice">{t('practice.return')}</Link></>;
@@ -19,7 +19,7 @@ export function ExercisePage() {
     catch(failure){setError(errorMessage(failure));}
     finally{pending.current=false;setBusy(false);}
   }
-  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalog')}</Link><PageHeading title={exercise.title} eyebrow={t('practice.title').toUpperCase()}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise}/>
+  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalog')}</Link><PageHeading title={lt(exercise.title)} eyebrow={t('practice.title').toUpperCase()}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise}/>
     <p>{t('practice.newAttempt')}</p>
     {error&&<p className="ds-storage-error" role="alert">{error}</p>}
     <button className="ds-button" disabled={busy||!learning?.snapshot||learning.phase==='error'||learning.phase==='busy'} onClick={()=>void start()}>{t(busy?'practice.creating':'practice.start')}</button>

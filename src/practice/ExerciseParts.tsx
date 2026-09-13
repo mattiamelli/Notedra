@@ -14,17 +14,18 @@ import {exerciseFormat,displayAnswer} from './presentation';
 import {TupleControls} from './TupleControls';
 import {useI18n} from '../i18n/i18n';
 export function ExerciseSource({exercise}: {exercise: Exercise}) {
+  const {lt}=useI18n();
   const topic = academicIndex.topics.find(topic => topic.topic_id === exercise.topicId)!;
   return <><p className="ds-practice-label">{'mode' in exercise&&exercise.mode==='exam'?'Authored exam-style practice':'Authored practice'} · Version {exercise.version} · Not an official TU Delft question</p>
-    <p><Link className="ds-text-link" to={topicPath(topic)}>{topic.name}</Link></p>
+    <p><Link className="ds-text-link" to={topicPath(topic)}>{lt(topic.name)}</Link></p>
     <details className="ds-practice-source"><summary>Source and scope</summary><p>{exercise.source.filename}</p><p>Whole-document reference, not an exact supporting slide. Original PDF is not included.</p><p>{exerciseFormat(exercise.task.kind)?.label}. No official difficulty or examination weighting is claimed.</p></details></>;
 }
 export function ExercisePrompt({exercise,mode='practice'}: {exercise: Exercise;mode?:'practice'|'exam'}) {
-  const {t}=useI18n();
+  const {t,lt}=useI18n();
   const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId);
   if('mode' in exercise&&exercise.mode==='exam')mode='exam';
   const stimulus='stimulus' in exercise?exercise.stimulus as {language:string;code:string}:null;
-  return <div className="ds-practice-prompt"><h2>{exercise.prompt}</h2>{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{exercise.rules}</p>{mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:topic.name})}</Link></details>}</div>;
+  return <div className="ds-practice-prompt"><h2>{lt(exercise.prompt)}</h2>{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{lt(exercise.rules)}</p>{mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:lt(topic.name)})}</Link></details>}</div>;
 }
 export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: Exercise; answer: Answer; onChange: (answer: Answer)=>void; disabled: boolean}) {
   const {t}=useI18n();
@@ -44,9 +45,9 @@ function PresentedAnswer({exercise,answer}:{exercise:Exercise;answer:Answer}) {
  return <pre>{displayAnswer(exercise,answer)}</pre>;
 }
 export function Feedback({result,exercise,answer}: {result: GradeResult; exercise: Exercise; answer:Answer}) {
-  const {t}=useI18n();
-  if(result.status!=='GRADED') return <section className="ds-practice-feedback" role="status"><h2>{t('practice.feedbackUnavailable')}</h2><p>{result.message}</p><p>{t('practice.noScore')}</p></section>;
+  const {t,lt}=useI18n();
+  if(result.status!=='GRADED') return <section className="ds-practice-feedback" role="status"><h2>{t('practice.feedbackUnavailable')}</h2><p>{lt(result.message)}</p><p>{t('practice.noScore')}</p></section>;
   const explanation=explainAnswer(exercise,answer,result)!;
 
-  return <section className={`ds-practice-feedback ${result.correct?'is-correct':'is-incorrect'}`} aria-labelledby="feedback-heading" role="status"><h2 id="feedback-heading">{t(result.correct?'practice.correct':'practice.incorrect')} · {result.earned} / {result.max} item point</h2><h3>{t('practice.submitted')}</h3><PresentedAnswer exercise={exercise} answer={answer}/><h3>{t('practice.reference')}</h3><PresentedAnswer exercise={exercise} answer={result.reference}/><h3>{t(result.correct?'practice.whyWorks':'practice.whyDiffers')}</h3><p>{explanation.why}</p>{explanation.misconception&&<p className="ds-feedback-pattern">Answer pattern to check: {explanation.misconception.label}. This describes the submitted pattern, not a diagnosis of your understanding.</p>}<h3>{t('practice.reasoning')}</h3><p>{explanation.reasoning}</p><h3>{t('practice.remember')}</h3><p>{explanation.remember}</p><EvidenceView ids={explanation.evidenceIds}/>{explanation.profileId&&<small>Supplemental explanation v{explanation.version}. Original exercise and saved answer are unchanged.</small>}<p>Retry below to work through the mechanism again. Eligible saved evidence is interpreted separately in Progress; this item point is not a mastery or readiness score.</p></section>;
+  return <section className={`ds-practice-feedback ${result.correct?'is-correct':'is-incorrect'}`} aria-labelledby="feedback-heading" role="status"><h2 id="feedback-heading">{t(result.correct?'practice.correct':'practice.incorrect')} · {result.earned} / {result.max} item point</h2><h3>{t('practice.submitted')}</h3><PresentedAnswer exercise={exercise} answer={answer}/><h3>{t('practice.reference')}</h3><PresentedAnswer exercise={exercise} answer={result.reference}/><h3>{t(result.correct?'practice.whyWorks':'practice.whyDiffers')}</h3><p>{lt(explanation.why)}</p>{explanation.misconception&&<p className="ds-feedback-pattern">Answer pattern to check: {lt(explanation.misconception.label)}. This describes the submitted pattern, not a diagnosis of your understanding.</p>}<h3>{t('practice.reasoning')}</h3><p>{lt(explanation.reasoning)}</p><h3>{t('practice.remember')}</h3><p>{lt(explanation.remember)}</p><EvidenceView ids={explanation.evidenceIds}/>{explanation.profileId&&<small>Supplemental explanation v{explanation.version}. Original exercise and saved answer are unchanged.</small>}<p>Retry below to work through the mechanism again. Eligible saved evidence is interpreted separately in Progress; this item point is not a mastery or readiness score.</p></section>;
 }

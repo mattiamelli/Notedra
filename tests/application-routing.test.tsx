@@ -86,10 +86,10 @@ describe('application routes and canonical navigation', () => {
 });
 
 describe('shell interaction and browser history', () => {
-  it('provides the desktop navigation, landmark, skip link and all ten primary destinations', async () => {
+  it('provides the desktop navigation, landmark, skip link and all six primary destinations', async () => {
     await renderRoute('/');
     const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')];
-    expect(links.map(link => link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/#upcoming-exams','/study-plan','/account','/account#settings']);
+    expect(links.map(link => link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/study-plan','/account#settings']);
     expect(container.querySelectorAll('main')).toHaveLength(1);
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
     expect(document.title).toBe('Dashboard · Notedra');

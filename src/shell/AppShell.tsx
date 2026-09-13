@@ -67,11 +67,9 @@ export function AppShell() {
           <SidebarLink to="/progress" icon="progress" label="nav.progress" onSelect={closeNavigation}/>
         </NavigationGroup>
         <NavigationGroup label="nav.secondary">
-          <SidebarLink to="/" hash="#upcoming-exams" icon="calendar" label="nav.calendar" onSelect={closeNavigation}/>
-          <SidebarLink to="/study-plan" icon="book" label="nav.resources" onSelect={closeNavigation}/>
+          <SidebarLink to="/study-plan" icon="book" label="nav.studyPath" onSelect={closeNavigation}/>
         </NavigationGroup>
         <NavigationGroup label="nav.accountGroup">
-          <SidebarLink to="/account" icon="account" label="nav.account" onSelect={closeNavigation}/>
           <SidebarLink to="/account" hash="#settings" icon="settings" label="nav.settings" onSelect={closeNavigation}/>
         </NavigationGroup>
       </nav>

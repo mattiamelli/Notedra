@@ -6,7 +6,7 @@ import {beforeHardening, hardeningHash} from '../scripts/hardening-preservation'
 import lock from '../scripts/hardening-preservation.json';
 
 const baseline = '6f59a44f484a95bf974bd2b6e25710030ff5dbc1';
-const files = ['src/AssemblyWorkbench.tsx', 'src/components/CodeEditor.tsx', 'src/engine/instructions.ts', 'src/engine/memory.ts', 'src/engine/parser.ts', 'src/engine/types.ts', 'src/utils/useSimulator.ts', 'tests/parser.test.ts'];
+const files = ['src/AssemblyWorkbench.tsx', 'src/components/CodeEditor.tsx', 'src/components/ControlPanel.tsx', 'src/components/RegisterPanel.tsx', 'src/components/StackVisualizer.tsx', 'src/components/ExecutionHistory.tsx', 'src/components/InstructionExplanation.tsx', 'src/engine/instructions.ts', 'src/engine/memory.ts', 'src/engine/parser.ts', 'src/engine/types.ts', 'src/utils/useSimulator.ts', 'tests/parser.test.ts'];
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const original = (file: string) => execFileSync('git', ['show', `${baseline}:${file}`]);
 

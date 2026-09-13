@@ -40,7 +40,8 @@ describe('centralized interface languages',()=>{
     localStorage.setItem(LANGUAGE_STORAGE_KEY,'fr');
     await act(async()=>root.render(<LanguageProvider><MemoryRouter><AppShell/></MemoryRouter></LanguageProvider>));
     expect([...host.querySelectorAll('.ds-nav-group')].map(node=>node.textContent)).toEqual(['Principal','Secondaire','Compte']);
-    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/#upcoming-exams','/study-plan','/account','/account#settings']);
+    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/study-plan','/account#settings']);
+    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.textContent)).toEqual(['Accueil','Cours','Exercices','Progression','Parcours d’étude','Paramètres']);
   });
   it('renders the Notedra wordmark as one consistently styled text element',async()=>{
     await act(async()=>root.render(<LanguageProvider><MemoryRouter><AppShell/></MemoryRouter></LanguageProvider>));
@@ -50,4 +51,3 @@ describe('centralized interface languages',()=>{
     expect(host.querySelector('.ds-brand strong,.ds-brand b')).toBeNull();
   });
 });
-
