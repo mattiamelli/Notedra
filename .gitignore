@@ -6,11 +6,40 @@ coverage/
 .env
 .env.*
 !.env.example
+.envrc
+.npmrc
 .DS_Store
 .idea/
 .vscode/
 *.log
 *.swp
+*.pem
+*.key
+*.p12
+*.pfx
 
 .verification-dist/
 .sites-release/
+
+# Local build, cache and test output
+build/
+.cache/
+.pnpm-store/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Temporary and local credential files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swo
+*~
+.env.*.local
+secrets/
+.secrets/
+credentials.json
+service-account*.json
+id_rsa
+id_ed25519
