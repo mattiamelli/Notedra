@@ -1,73 +1,86 @@
 import {RouteBoundary} from './RouteBoundary';
-import { LearningNotice } from '../learning/LearningProvider';
-import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router';
-import { ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext, productAreas } from '../academic/navigation';
-import { ShellIcon } from './ShellIcon';
+import {LearningNotice} from '../learning/LearningProvider';
+import {useEffect, useRef, useState, type ReactNode} from 'react';
+import {Link, Outlet, useLocation} from 'react-router';
+import {ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext} from '../academic/navigation';
+import {ShellIcon, type ShellIconName} from './ShellIcon';
 import {useAccount} from '../accounts/context';
 import {profileInitials} from '../accounts/profile';
 import {PUBLIC_LEGAL_CONTACT} from '../legal/contact';
+import {useI18n} from '../i18n/i18n';
+import type {MessageKey} from '../i18n/messages';
+
+const contextKeys:Partial<Record<string,MessageKey>>={
+  Dashboard:'dashboard.title', Practice:'practice.title', Progress:'progress.title', 'Study Path':'studyPath.title',
+  'Account & Settings':'account.title', 'Account & sync':'account.title', 'Privacy Policy':'nav.privacy',
+  'Terms of Use':'nav.terms', 'Page not found':'common.pageNotFound',
+};
+
+function SidebarLink({to,hash,icon,label,onSelect,activeWhen}:{to:string;hash?:string;icon:ShellIconName;label:MessageKey;onSelect:()=>void;activeWhen?:(pathname:string)=>boolean}) {
+  const {pathname,hash:currentHash}=useLocation(); const {t}=useI18n();
+  const active=activeWhen?.(pathname)??(pathname===to&&(hash ? currentHash===hash : !currentHash));
+  return <Link to={{pathname:to,hash}} className={`ds-nav-link${active?' active':''}`} aria-current={active?'page':undefined} onClick={onSelect}><ShellIcon name={icon}/><span>{t(label)}</span></Link>;
+}
+
+function NavigationGroup({label,children}:{label:MessageKey;children:ReactNode}) {
+  const {t}=useI18n(); return <section className="ds-nav-section"><h2 className="ds-nav-group">{t(label)}</h2><div className="ds-nav-items">{children}</div></section>;
+}
 
 export function AppShell() {
+  const {t}=useI18n();
   const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
-  const {pathname, hash} = useLocation();
-  const normalizedPath=pathname.replace(/\/+$/, '')||'/';
+  const {pathname,hash}=useLocation(); const normalizedPath=pathname.replace(/\/+$/, '')||'/';
   const specialContext:Record<string,{title:string;breadcrumbs:{label:string;to?:string}[]}>= {
-    '/account':{title:'Account & sync',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & sync'}]},
+    '/account':{title:'Account & Settings',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & Settings'}]},
     '/privacy':{title:'Privacy Policy',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Privacy Policy'}]},
     '/terms':{title:'Terms of Use',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Terms of Use'}]},
   };
-  const context = specialContext[normalizedPath]??pageContext(pathname);
-  const tool = pathname.replace(/\/+$/, '') === ASSEMBLY_TOOL_PATH;
-  const [navigationOpen, setNavigationOpen] = useState(false);
-  const menuButton = useRef<HTMLButtonElement>(null);
-  const content = useRef<HTMLElement>(null);
-  const previousPath = useRef(pathname);
-  function closeNavigation() {
-    if (navigationOpen) menuButton.current?.focus();
-    setNavigationOpen(false);
-  }
-  useEffect(() => {
-    document.title = `${context.title} · Notedra`;
-    if (previousPath.current !== pathname) {
-      setNavigationOpen(false);
-      if(document.activeElement?.getAttribute('role') !== 'tab') content.current?.focus();
-      window.scrollTo(0, 0);
-      previousPath.current = pathname;
-    }
+  const context=specialContext[normalizedPath]??pageContext(pathname);
+  const localized=(label:string)=>contextKeys[label]?t(contextKeys[label]!):label;
+  const tool=normalizedPath===ASSEMBLY_TOOL_PATH;
+  const course=courses.find(item=>pathname===item.path||pathname.startsWith(item.path+'/'))??{subject_id:undefined};
+  const [navigationOpen,setNavigationOpen]=useState(false);
+  const menuButton=useRef<HTMLButtonElement>(null),content=useRef<HTMLElement>(null),previousPath=useRef(pathname);
+  function closeNavigation(){if(navigationOpen)menuButton.current?.focus();setNavigationOpen(false);}
+  useEffect(()=>{
+    document.title=`${localized(context.title)} · Notedra`;
+    if(previousPath.current!==pathname){setNavigationOpen(false);if(document.activeElement?.getAttribute('role')!=='tab')content.current?.focus();window.scrollTo(0,0);previousPath.current=pathname;}
     if(hash){const target=document.getElementById(hash.slice(1));if(target&&content.current?.contains(target)){target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView?.({block:'start'});}}
-  }, [pathname, context.title, hash]);
-  useEffect(() => {
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && navigationOpen) { setNavigationOpen(false); menuButton.current?.focus(); }
-    };
-    window.addEventListener('keydown', closeOnEscape);
-    return () => window.removeEventListener('keydown', closeOnEscape);
-  }, [navigationOpen]);
-  const Content = tool ? 'div' : 'main';
-  return <div className={`ds-app${tool ? ' ds-tool' : ''}`} data-course={courses.find(course => pathname === course.path || pathname.startsWith(course.path+'/'))?.subject_id}>
-    <a className="ds-skip-link" href="#ds-content">Skip to content</a>
+  },[pathname,context.title,hash,t]);
+  useEffect(()=>{const close=(event:KeyboardEvent)=>{if(event.key==='Escape'&&navigationOpen){setNavigationOpen(false);menuButton.current?.focus();}};window.addEventListener('keydown',close);return()=>window.removeEventListener('keydown',close);},[navigationOpen]);
+  const Content=tool?'div':'main';
+  return <div className={`ds-app${tool?' ds-tool':''}`} data-course={course.subject_id}>
+    <a className="ds-skip-link" href="#ds-content">{t('a11y.skip')}</a>
     <header className="ds-topbar">
-      <button ref={menuButton} className="ds-menu-button" aria-label={navigationOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={navigationOpen} aria-controls="ds-navigation" onClick={() => setNavigationOpen(open => !open)}><ShellIcon name={navigationOpen ? 'close' : 'menu'}/></button>
-      <nav className="ds-breadcrumbs" aria-label="Breadcrumb"><ol>{context.breadcrumbs.map((crumb, i) => <li key={`${i}-${crumb.label}`}>{crumb.to ? <Link to={crumb.to}>{crumb.label}</Link> : <span aria-current="page">{crumb.label}</span>}</li>)}</ol></nav>
-      <Link className="ds-header-account" to="/account" aria-label="Account & sync"><span className="ds-avatar">{initial}</span><span>{profileName??'Your study space'}<small>Account & sync</small></span></Link>
+      <button ref={menuButton} className="ds-menu-button" aria-label={t(navigationOpen?'a11y.closeNavigation':'a11y.openNavigation')} aria-expanded={navigationOpen} aria-controls="ds-navigation" onClick={()=>setNavigationOpen(open=>!open)}><ShellIcon name={navigationOpen?'close':'menu'}/></button>
+      <nav className="ds-breadcrumbs" aria-label={t('a11y.breadcrumb')}><ol>{context.breadcrumbs.map((crumb,i)=><li key={`${i}-${crumb.label}`}>{crumb.to?<Link to={crumb.to}>{localized(crumb.label)}</Link>:<span aria-current="page">{localized(crumb.label)}</span>}</li>)}</ol></nav>
+      <Link className="ds-header-account" to="/account#settings" aria-label={t('a11y.accountSettings')}><span className="ds-avatar">{initial}</span><span>{profileName??t('account.studySpace')}<small>{t('account.title')}</small></span></Link>
     </header>
-    <aside className={`ds-sidebar${navigationOpen ? ' is-open' : ''}`} id="ds-navigation">
-      <Link className="ds-brand" to="/" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span>Note<strong>dra</strong></span></Link>
-      <p className="ds-brand-tagline">Learn deeper.<br/>Go further.</p><nav aria-label="Primary navigation">
-        <NavLink to="/" end className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="dashboard"/><span>Dashboard</span></NavLink>
-        <div className="ds-nav-group">Courses</div>
-        {courses.map(course => <NavLink key={course.subject_id} to={course.path} data-course={course.subject_id} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={course.icon}/><span>{course.name}</span></NavLink>)}
-        <div className="ds-nav-group">Study</div>
-        {productAreas.map(area => <NavLink key={area.path} to={area.path} className="ds-nav-link" onClick={closeNavigation}><ShellIcon name={area.icon}/><span>{area.title}</span></NavLink>)}
-        <NavLink to="/account" className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="progress"/><span>Account & sync</span></NavLink>
+    <aside className={`ds-sidebar${navigationOpen?' is-open':''}`} id="ds-navigation">
+      <Link className="ds-brand" to="/" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span className="ds-brand-name">Notedra</span></Link>
+      <p className="ds-brand-tagline">{t('brand.tagline')}</p>
+      <nav aria-label={t('a11y.primaryNavigation')}>
+        <NavigationGroup label="nav.main">
+          <SidebarLink to="/" icon="dashboard" label="nav.home" onSelect={closeNavigation}/>
+          <SidebarLink to="/" hash="#courses" icon="book" label="nav.courses" onSelect={closeNavigation} activeWhen={path=>courses.some(course=>path===course.path||path.startsWith(course.path+'/'))}/>
+          <SidebarLink to="/practice" icon="practice" label="nav.practice" onSelect={closeNavigation}/>
+          <SidebarLink to="/progress" icon="progress" label="nav.progress" onSelect={closeNavigation}/>
+        </NavigationGroup>
+        <NavigationGroup label="nav.secondary">
+          <SidebarLink to="/" hash="#upcoming-exams" icon="calendar" label="nav.calendar" onSelect={closeNavigation}/>
+          <SidebarLink to="/study-plan" icon="book" label="nav.resources" onSelect={closeNavigation}/>
+        </NavigationGroup>
+        <NavigationGroup label="nav.accountGroup">
+          <SidebarLink to="/account" icon="account" label="nav.account" onSelect={closeNavigation}/>
+          <SidebarLink to="/account" hash="#settings" icon="settings" label="nav.settings" onSelect={closeNavigation}/>
+        </NavigationGroup>
       </nav>
-      <div className="ds-sidebar-footer"><p className="ds-sidebar-note">Small steps.<br/>Deeper understanding.</p><Link to="/account" onClick={closeNavigation}><span className="ds-avatar">{initial}</span><span>{profileName??'Your study space'}<small>Account & sync</small></span></Link></div>
+      <div className="ds-sidebar-footer"><p className="ds-sidebar-note">{t('brand.sidebarNote')}</p><Link to="/account" onClick={closeNavigation}><span className="ds-avatar">{initial}</span><span>{profileName??t('account.studySpace')}<small>{t('account.title')}</small></span></Link></div>
     </aside>
-    <Content ref={element => {content.current = element;}} id="ds-content" tabIndex={-1} className={tool ? 'ds-tool-content' : 'ds-main'}>
-      {tool && <Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> Back to Assembly topic</Link>}
+    <Content ref={element=>{content.current=element;}} id="ds-content" tabIndex={-1} className={tool?'ds-tool-content':'ds-main'}>
+      {tool&&<Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> {t('nav.backAssembly')}</Link>}
       <LearningNotice/><RouteBoundary resetKey={pathname}><Outlet/></RouteBoundary>
-      {!tool&&<footer className="ds-legal-footer"><span>Notedra • Independent study support.</span><nav aria-label="Legal"><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><a href={`mailto:${PUBLIC_LEGAL_CONTACT}`}>Support</a></nav></footer>}
+      {!tool&&<footer className="ds-legal-footer"><span>{t('brand.independent')}</span><nav aria-label={t('a11y.legalNavigation')}><Link to="/privacy">{t('nav.privacy')}</Link><Link to="/terms">{t('nav.terms')}</Link><a href={`mailto:${PUBLIC_LEGAL_CONTACT}`}>{t('nav.support')}</a></nav></footer>}
     </Content>
   </div>;
 }

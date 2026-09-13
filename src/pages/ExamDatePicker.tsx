@@ -1,4 +1,5 @@
 import {useMemo, useState} from 'react';
+import {useI18n} from '../i18n/i18n';
 
 export interface ExamDateParts {day: string; month: string; year: string;}
 
@@ -27,9 +28,8 @@ export function localDateKey(date = new Date()): string {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 export function ExamDatePicker({name, defaultValue = ''}: {name: string; defaultValue?: string}) {
+  const {language,t}=useI18n();
   const initial = examDateParts(defaultValue);
   const [parts, setParts] = useState(initial);
   const currentYear = new Date().getFullYear();
@@ -39,6 +39,7 @@ export function ExamDatePicker({name, defaultValue = ''}: {name: string; default
     return values.sort();
   }, [currentYear, parts.year]);
   const maximum = parts.year && parts.month ? daysInMonth(Number(parts.year), Number(parts.month)) : 31;
+  const monthNames=useMemo(()=>Array.from({length:12},(_,month)=>new Intl.DateTimeFormat(language,{month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2024,month,1)))),[language]);
   const selectedDay = parts.day && Number(parts.day) > maximum ? String(maximum) : parts.day;
   const value = partsToExamDate({...parts, day: selectedDay});
 
@@ -51,19 +52,19 @@ export function ExamDatePicker({name, defaultValue = ''}: {name: string; default
   }
 
   return <fieldset className="ds-date-picker">
-    <legend>Exam date</legend>
+    <legend>{t('exam.date')}</legend>
     <div className="ds-date-fields">
-      <label><span>Day</span><select aria-label="Exam day" value={selectedDay} onChange={event => update({day: event.target.value})} required>
-        <option value="">Day</option>{Array.from({length: maximum}, (_, index) => <option key={index + 1} value={index + 1}>{index + 1}</option>)}
+      <label><span>{t('exam.day')}</span><select aria-label={t('exam.dayAria')} value={selectedDay} onChange={event => update({day: event.target.value})} required>
+        <option value="">{t('exam.day')}</option>{Array.from({length: maximum}, (_, index) => <option key={index + 1} value={index + 1}>{index + 1}</option>)}
       </select></label>
-      <label><span>Month</span><select aria-label="Exam month" value={parts.month} onChange={event => update({month: event.target.value})} required>
-        <option value="">Month</option>{monthNames.map((month, index) => <option key={month} value={index + 1}>{month}</option>)}
+      <label><span>{t('exam.month')}</span><select aria-label={t('exam.monthAria')} value={parts.month} onChange={event => update({month: event.target.value})} required>
+        <option value="">{t('exam.month')}</option>{monthNames.map((month, index) => <option key={month} value={index + 1}>{month}</option>)}
       </select></label>
-      <label><span>Year</span><select aria-label="Exam year" value={parts.year} onChange={event => update({year: event.target.value})} required>
-        <option value="">Year</option>{years.map(year => <option key={year} value={year}>{year}</option>)}
+      <label><span>{t('exam.year')}</span><select aria-label={t('exam.yearAria')} value={parts.year} onChange={event => update({year: event.target.value})} required>
+        <option value="">{t('exam.year')}</option>{years.map(year => <option key={year} value={year}>{year}</option>)}
       </select></label>
     </div>
     <input type="hidden" name={name} value={value}/>
-    <small>{value ? `Selected date: ${displayExamDate(value)}` : 'Choose day, month and year.'}</small>
+    <small>{value?t('exam.selectedDate',{date:displayExamDate(value)}):t('exam.chooseDate')}</small>
   </fieldset>;
 }

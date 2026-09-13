@@ -169,14 +169,19 @@ body { background: var(--ds-page); color: var(--ds-text); color-scheme: inherit;
 .ds-header-account small,.ds-sidebar-footer small { display: block; margin-top: 3px; color: var(--ds-support); font-size: .75rem; }
 .ds-app .ds-sidebar { margin:12px 10px; height:calc(100svh - 24px); top:12px; border:1px solid var(--ds-line); border-radius:18px; padding:26px 10px 14px; background:color-mix(in srgb,var(--ds-paper) 92%,transparent); box-shadow:var(--ds-shadow); }
 .ds-app .ds-brand { color: var(--ds-ink); margin: 0 10px 12px; font-size: 24px; letter-spacing: -1px; gap: 7px; }
-.ds-app .ds-brand strong { font-weight: 750; }
+.ds-app .ds-brand-name { font-weight: 680; line-height: 1; letter-spacing: -.035em; transform:none; vertical-align:baseline; }
 .ds-app .ds-brand-mark { color: var(--ds-primary); background: transparent; width: 33px; height: 40px; }
 .ds-brand-tagline { color: var(--ds-support); font-size: .875rem; line-height: 1.4; margin: 0 16px 25px; }
-.ds-app .ds-nav-link { padding: 12px; gap: 14px; min-height: 48px; font-size: .875rem; margin-bottom: 5px; color: var(--ds-nav-text); }
+.ds-app .ds-nav-link { padding: 12px; gap: 14px; min-height: 48px; min-width:0; font-size: .875rem; margin-bottom: 5px; color: var(--ds-nav-text); }
+.ds-app .ds-nav-link span { min-width:0; overflow-wrap:anywhere; }
 .ds-app .ds-nav-link svg { color:var(--ds-primary); width:22px; height:22px; }
 .ds-app .ds-nav-link:hover { background: var(--ds-soft); color: var(--ds-primary); }
 .ds-app .ds-nav-link.active,.ds-app .ds-nav-link[data-course].active { background:var(--ds-nav-active); color:var(--ds-primary); box-shadow:none; font-weight:650; }
 .ds-app .ds-nav-group { padding: 6px 12px; font-size: .75rem; letter-spacing: .08em; }
+.ds-app .ds-sidebar>nav { display:flex; flex-direction:column; gap:0; }
+.ds-app .ds-nav-section+.ds-nav-section { margin-top:12px; padding-top:12px; border-top:1px solid var(--ds-line); }
+.ds-app .ds-nav-items { display:grid; gap:3px; }
+.ds-app .ds-nav-link { border-radius:10px; }
 .ds-app .ds-sidebar-footer { display: block; padding: 22px 7px 0; }
 .ds-sidebar-footer>a { display: flex; gap: 9px; align-items: center; color: var(--ds-ink); font-size: .8125rem; }
 .ds-sidebar-note { background:var(--ds-soft); border-radius:14px; color:var(--ds-text); font:italic 1.05rem/1.4 Georgia,serif; padding:24px 17px; margin:0 0 18px; }

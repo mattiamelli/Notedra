@@ -57,7 +57,7 @@ describe('application routes and canonical navigation', () => {
     expect(links).toHaveLength(topics.length);
     expect(links.map(link => link.getAttribute('href'))).toEqual(topics.map(topicPath));
     topics.forEach((topic, index) => expect(links[index].textContent).toContain(topic.name));
-    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe(course.path);
+    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/#courses');
   });
   it.each(academicIndex.topics)('renders the canonical topic $topic_id under its own course', async topic => {
     await renderRoute(topicPath(topic));
@@ -89,7 +89,7 @@ describe('shell interaction and browser history', () => {
   it('provides the desktop navigation, landmark, skip link and all ten primary destinations', async () => {
     await renderRoute('/');
     const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')];
-    expect(links.map(link => link.getAttribute('href'))).toEqual(['/', ...courses.map(course => course.path), ...productAreas.map(area => area.path), '/account']);
+    expect(links.map(link => link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/#upcoming-exams','/study-plan','/account','/account#settings']);
     expect(container.querySelectorAll('main')).toHaveLength(1);
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
     expect(document.title).toBe('Dashboard · Notedra');
@@ -107,7 +107,7 @@ describe('shell interaction and browser history', () => {
   });
   it('closes navigation after choosing a course and moves focus to the new content', async () => {
     await renderRoute('/'); await click('.ds-menu-button');
-    await click('nav[aria-label="Primary navigation"] a[href="/co"]');
+    await click('.ds-course-card[href="/co"]');
     expect(heading()).toBe(courses[0].name);
     expect(container.querySelector('.ds-menu-button')?.getAttribute('aria-expanded')).toBe('false');
     expect(document.activeElement?.id).toBe('ds-content');
@@ -124,12 +124,12 @@ describe('shell interaction and browser history', () => {
   it('navigates course → topic with working breadcrumbs and active course state', async () => {
     await renderRoute('/co'); await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
     expect(heading()).toBe('x86-64 Assembly and stack execution');
-    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/co');
+    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/#courses');
     await click('.ds-breadcrumbs a[href="/co"]'); expect(heading()).toBe(courses[0].name);
   });
   it('supports native BrowserRouter Back and Forward without losing route context', async () => {
     await renderRoute('/', true);
-    await click('nav[aria-label="Primary navigation"] a[href="/co"]');
+    await click('.ds-course-card[href="/co"]');
     await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
     expect(window.location.pathname).toBe(ASSEMBLY_TOPIC_PATH);
     await act(async () => { const popped = new Promise(resolve => window.addEventListener('popstate', resolve, {once: true})); window.history.back(); await popped; });

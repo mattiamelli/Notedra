@@ -11,6 +11,8 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import './shell/shell.css';
 import { AccountRoot } from './accounts/AccountRoot';
 import { ThemeProvider } from './appearance/theme';
+import {LanguageProvider} from './i18n/i18n';
+import {useI18n} from './i18n/i18n';
 const AccountPage=lazy(()=>import('./accounts/AccountPage').then(m=>({default:m.AccountPage})));
 const LegalPage=lazy(()=>import('./pages/LegalPage').then(m=>({default:m.LegalPage})));
 
@@ -25,6 +27,8 @@ const ExamsPage=lazy(()=>import('./exams/ExamsPage').then(m=>({default:m.ExamsPa
 const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbench'));
 
 export function AppRoutes() {
+  const {t}=useI18n();
+  const loading=(area:string)=><p className="ds-loading" role="status">{t('common.loadingArea',{area})}</p>;
   return <Routes><Route element={<AppShell/>}>
     <Route index element={<DashboardPage/>}/>
     <Route path="dashboard" caseSensitive element={<Navigate to="/" replace/>}/>
@@ -33,22 +37,22 @@ export function AppRoutes() {
       <Route path=":topicId" caseSensitive element={<TopicPage course={course}/>}/>
       <Route path=":topicId/:mode" caseSensitive element={<TopicPage course={course}/>}/>
     </Route>)}
-    <Route path={ASSEMBLY_TOOL_PATH} caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Assembly workbench…</p>}><AssemblyWorkbench/></Suspense>}/>
-    <Route path="practice" caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Practice…</p>}><PracticePage/></Suspense>}/>
-    <Route path="practice/:exerciseId" caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Practice…</p>}><ExercisePage/></Suspense>}/>
-    <Route path="practice/:exerciseId/attempts/:attemptId" caseSensitive element={<Suspense fallback={<p className="ds-loading" role="status">Loading Practice…</p>}><AttemptPage/></Suspense>}/>
-    <Route path="mistakes" caseSensitive element={<Suspense fallback={<p role="status">Loading Mistake Book…</p>}><MistakesPage/></Suspense>}/>
-    <Route path="study-plan" caseSensitive element={<Suspense fallback={<p role="status">Loading Study Path…</p>}><StudyPathPage/></Suspense>}/>
-    <Route path="exams/*" caseSensitive element={<Suspense fallback={<p role="status">Loading Mock Exams…</p>}><ExamsPage/></Suspense>}/>
-    <Route path="progress" caseSensitive element={<Suspense fallback={<p role="status">Loading Progress…</p>}><ProgressPage/></Suspense>}/>
-    <Route path="account" caseSensitive element={<Suspense fallback={<p role="status">Loading Account…</p>}><AccountPage/></Suspense>}/>
-    <Route path="privacy" caseSensitive element={<Suspense fallback={<p role="status">Loading Privacy Policy…</p>}><LegalPage kind="privacy"/></Suspense>}/>
-    <Route path="terms" caseSensitive element={<Suspense fallback={<p role="status">Loading Terms…</p>}><LegalPage kind="terms"/></Suspense>}/>
+    <Route path={ASSEMBLY_TOOL_PATH} caseSensitive element={<Suspense fallback={loading('Assembly workbench')}><AssemblyWorkbench/></Suspense>}/>
+    <Route path="practice" caseSensitive element={<Suspense fallback={loading(t('nav.practice'))}><PracticePage/></Suspense>}/>
+    <Route path="practice/:exerciseId" caseSensitive element={<Suspense fallback={loading(t('nav.practice'))}><ExercisePage/></Suspense>}/>
+    <Route path="practice/:exerciseId/attempts/:attemptId" caseSensitive element={<Suspense fallback={loading(t('nav.practice'))}><AttemptPage/></Suspense>}/>
+    <Route path="mistakes" caseSensitive element={<Suspense fallback={loading(t('topic.mistakes'))}><MistakesPage/></Suspense>}/>
+    <Route path="study-plan" caseSensitive element={<Suspense fallback={loading(t('studyPath.title'))}><StudyPathPage/></Suspense>}/>
+    <Route path="exams/*" caseSensitive element={<Suspense fallback={loading('Mock Exams')}><ExamsPage/></Suspense>}/>
+    <Route path="progress" caseSensitive element={<Suspense fallback={loading(t('progress.title'))}><ProgressPage/></Suspense>}/>
+    <Route path="account" caseSensitive element={<Suspense fallback={loading(t('nav.account'))}><AccountPage/></Suspense>}/>
+    <Route path="privacy" caseSensitive element={<Suspense fallback={loading(t('nav.privacy'))}><LegalPage kind="privacy"/></Suspense>}/>
+    <Route path="terms" caseSensitive element={<Suspense fallback={loading(t('nav.terms'))}><LegalPage kind="terms"/></Suspense>}/>
     {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams','/progress'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
   </Route></Routes>;
 }
 
 export default function App() {
-  return <ThemeProvider><BrowserRouter><AccountRoot><AppRoutes/></AccountRoot></BrowserRouter></ThemeProvider>;
+  return <LanguageProvider><ThemeProvider><BrowserRouter><AccountRoot><AppRoutes/></AccountRoot></BrowserRouter></ThemeProvider></LanguageProvider>;
 }

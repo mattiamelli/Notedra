@@ -34,7 +34,7 @@ describe('launch legal and security surfaces',()=>{
     const contact=readFileSync('src/legal/contact.ts','utf8'),shell=readFileSync('src/shell/AppShell.tsx','utf8');
     expect(contact).toContain("PUBLIC_LEGAL_CONTACT='notedra.support@gmail.com'");
     expect(shell).toContain('mailto:${PUBLIC_LEGAL_CONTACT}');
-    expect(shell).toContain('>Support</a>');
+    expect(shell).toContain("t('nav.support')}</a>");
   });
   it('keeps the administrative RLS helper unavailable to browser roles without changing policies',()=>{
     const sql=readFileSync('supabase/migrations/20260912205044_restrict_rls_auto_enable.sql','utf8');

@@ -10,25 +10,26 @@ import { validateResponse } from './runtime';
 import { feedbackFor, PracticeService, resolveAttempt } from './service';
 import { AnswerControls, ExercisePrompt, ExerciseSource, Feedback } from './ExerciseParts';
 import type { PracticeExercise as Exercise } from './registered-types';
+import {useI18n} from '../i18n/i18n';
 export function AttemptPage() {
-  const {exerciseId,attemptId}=useParams();const learning=useLearning();
+  const {t}=useI18n(); const {exerciseId,attemptId}=useParams();const learning=useLearning();
   if(!learning?.snapshot)return <p role="status">{learning?.message??'Student storage is not connected.'}</p>;
   const attempt=learning.snapshot.data.attempts.find(item=>item.attemptId===attemptId);
-  if(!attempt||attempt.templateRef!==exerciseId)return <><PageHeading title="Attempt not found" eyebrow="PRACTICE"><p>This saved attempt does not belong to this exercise or browser dataset.</p></PageHeading><Link to="/practice">Return to Practice</Link></>;
+  if(!attempt||attempt.templateRef!==exerciseId)return <><PageHeading title="Attempt not found" eyebrow={t('practice.title').toUpperCase()}><p>This saved attempt does not belong to this exercise or browser dataset.</p></PageHeading><Link to="/practice">{t('practice.return')}</Link></>;
   const resolved=resolveAttempt(attempt);
   if(resolved.status!=='AVAILABLE')return <><PageHeading title="Original exercise version unavailable" eyebrow="PRACTICE"><p>{resolved.message}</p></PageHeading><h2>Preserved answer</h2><pre>{JSON.stringify(attempt.answer,null,2)}</pre><Link to="/practice">Return to Practice</Link></>;
   return <AttemptRunner key={attempt.attemptId} attempt={attempt} exercise={resolved.exercise}/>;
 }
 function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) {
-  const learning=useLearning()!; const navigate=useNavigate();
+  const {t}=useI18n(); const learning=useLearning()!; const navigate=useNavigate();
   const generation=useRef(learning.snapshot!.data.generation); const saved=useRef(attempt); const pending=useRef(false);const retryId=useRef<string|null>(null);
-  const [answer,setAnswer]=useState<Answer>(()=>structuredClone(attempt.answer));const [busy,setBusy]=useState(false);const [message,setMessage]=useState(attempt.status==='DRAFT'?'Draft loaded from this browser.':'Submitted answer loaded.');const [error,setError]=useState('');const [conflict,setConflict]=useState(false);
+  const [answer,setAnswer]=useState<Answer>(()=>structuredClone(attempt.answer));const [busy,setBusy]=useState(false);const [message,setMessage]=useState(attempt.status==='DRAFT'?t('practice.savedDraft'):'Submitted answer loaded.');const [error,setError]=useState('');const [conflict,setConflict]=useState(false);
   const invalidated=conflict||generation.current!==learning.snapshot!.data.generation||(!busy&&attempt.revision!==saved.current.revision);
   const next=nextExercise(exercise,learning.snapshot!.data.attempts);
   const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId)!;
   const submitted=attempt.status==='SUBMITTED';const editable=attempt.status==='DRAFT'&&!invalidated;
   const dirty=JSON.stringify(answer)!==JSON.stringify(saved.current.answer);
-  function edit(value:Answer){setAnswer(value);setError('');setMessage('Unsaved changes — save your draft before leaving.');}
+  function edit(value:Answer){setAnswer(value);setError('');setMessage(t('practice.unsaved'));}
   async function write(submit:boolean){
     if(pending.current||!editable)return;
     if(submit){const validation=validateResponse(exercise.task,answer);if(validation.status!=='VALID'){setError(validation.message);return;}}
@@ -48,9 +49,9 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
     {invalidated&&<div className="ds-storage-error" role="alert"><p>Saved data changed or was restored. This form cannot write to the replacement dataset. Copy any unsaved answer you need, then reload safely.</p><pre aria-label="Unsaved answer for recovery">{answer.kind==='choice'?answer.value.join('\n'):answer.value}</pre><button className="ds-button" onClick={()=>window.location.reload()}>Reload practice safely</button></div>}
     <form onSubmit={event=>{event.preventDefault();void write(true);}}><AnswerControls exercise={exercise} answer={submitted?attempt.answer:answer} onChange={edit} disabled={busy||!editable}/>
       <p role="status" className="ds-practice-save">{message}</p>{error&&<p role="alert" className="ds-storage-error">{error}</p>}
-      {attempt.status==='DRAFT'&&<div className="ds-storage-actions"><button type="button" className="ds-button" disabled={busy||!editable||!dirty} onClick={()=>void write(false)}>Save draft</button><button type="submit" className="ds-button ds-practice-primary" disabled={busy||!editable}>Submit answer</button></div>}
+      {attempt.status==='DRAFT'&&<div className="ds-storage-actions"><button type="button" className="ds-button" disabled={busy||!editable||!dirty} onClick={()=>void write(false)}>{t('practice.saveDraft')}</button><button type="submit" className="ds-button ds-practice-primary" disabled={busy||!editable}>{t('practice.submit')}</button></div>}
     </form>
-    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>Retry as new attempt</button><p>{next?<Link className="ds-button" to={exercisePath(next)}>Next exercise: {next.title}</Link>:<Link className="ds-button" to={topicPath(topic)+'/practice'}>Explore more ways to practise this topic</Link>}</p></>}
+    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>Retrying creates a new attempt on familiar content. This submitted answer stays unchanged.</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>{t('practice.retry')}</button><p>{next?<Link className="ds-button" to={exercisePath(next)}>{t('practice.next',{title:next.title})}</Link>:<Link className="ds-button" to={topicPath(topic)+'/practice'}>{t('practice.more')}</Link>}</p></>}
     {attempt.status==='ABANDONED'&&<p>This attempt was abandoned. Its saved answer is preserved.</p>}
     <details className="ds-storage-note"><summary>About this saved answer</summary><p>Hints used: {attempt.hintsUsed===null?'not recorded':attempt.hintsUsed}. Solution viewed: {attempt.solutionViewed===null?'not recorded':attempt.solutionViewed?'yes':'no'}. Learning progress is summarized separately in Progress.</p></details></>;
 }

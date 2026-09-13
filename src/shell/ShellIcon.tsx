@@ -13,6 +13,8 @@ const paths = {
   arrow: 'M4 12h16m-6-6 6 6-6 6',
   book: 'M12 5v16M2 3l10 2 10-2v16l-10 2-10-2V3Z',
   back: 'M20 12H4m6-6-6 6 6 6',
+  account: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 9a7 7 0 0 1 14 0',
+  settings: 'M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm0-13v2m0 15v2m9.5-9.5h-2m-15 0h-2m16.2-6.2-1.4 1.4M6.7 17.3l-1.4 1.4m13.4 0-1.4-1.4M6.7 6.7 5.3 5.3',
 } as const;
 export type ShellIconName = keyof typeof paths;
 export function ShellIcon({name, size = 20}: {name: ShellIconName; size?: number}) {

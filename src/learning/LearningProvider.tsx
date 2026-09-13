@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router';
 import { resolveStudyRoute, academicIndex, ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_ID, courses, topicPath } from '../academic/navigation';
 import { errorMessage, type Backup, type Dataset, type LoadedState, type TopicIdentity } from './contracts';
 import { IndexedStudentRepository, type StudentRepository } from './repository';
+import {useI18n} from '../i18n/i18n';
 
 type Phase = 'loading' | 'ready' | 'busy' | 'error';
 interface LearningContextValue {
@@ -17,14 +18,15 @@ const Context = createContext<LearningContextValue | null>(null);
 export const useLearning = () => useContext(Context);
 interface Session { repository: StudentRepository; data: LoadedState | null; queue: Promise<unknown>; alive: boolean; }
 export function LearningProvider({children, createRepository = defaultRepository}: {children: ReactNode; createRepository?: () => StudentRepository}) {
+  const {t}=useI18n();
   const [snapshot, setSnapshot] = useState<LoadedState | null>(null);
   const [phase, setPhase] = useState<Phase>('loading');
-  const [message, setMessage] = useState('Opening student storage…');
+  const [message, setMessage] = useState(()=>t('storage.opening'));
   const session = useRef<Session | null>(null);
   const publish = useCallback((current: Session, state: LoadedState) => {
     current.data = state;
-    if (current.alive) { setSnapshot(state); setPhase('ready'); setMessage('Local student storage is ready.'); }
-  }, []);
+    if (current.alive) { setSnapshot(state); setPhase('ready'); setMessage(t('storage.ready')); }
+  }, [t]);
   const failed = useCallback((current: Session, error: unknown) => {
     if (current.alive) { setPhase('error'); setMessage(errorMessage(error)); }
   }, []);
@@ -41,31 +43,31 @@ export function LearningProvider({children, createRepository = defaultRepository
   const run = useCallback(<T,>(operation: (current: Session) => Promise<T>): Promise<T> => {
     const current = session.current;
     if (!current) return Promise.reject(new Error('Student storage is still opening.'));
-    if (current.alive) { setPhase('busy'); setMessage('Working with local student data…'); }
+    if (current.alive) { setPhase('busy'); setMessage(t('storage.working')); }
     const next = current.queue.then(() => operation(current));
     current.queue = next.then(() => {}, error => failed(current, error));
     return next;
-  }, [failed]);
+  }, [failed,t]);
   const recordVisit = useCallback((topic: TopicIdentity) => {
     void run(async current => {
       if (!current.data) throw new Error('Storage has not loaded.');
       const next = await current.repository.saveResume({...topic, visitedAt: new Date().toISOString()}, current.data.data);
       publish(current, next);
-      if (current.alive) setMessage('Last topic saved in this browser.');
+      if (current.alive) setMessage(t('storage.savedTopic'));
     }).catch(() => {});
-  }, [publish, run]);
+  }, [publish, run,t]);
   const refresh = useCallback(() => {
     void run(async current => { publish(current, await current.repository.load()); }).catch(() => {});
   }, [publish, run]);
   const restore = useCallback((backup: Backup, expected: Dataset) => run(async current => {
     publish(current, await current.repository.restore(backup, expected));
-    if (current.alive) setMessage('Backup restored in this browser. The previous data is available as a recovery backup.');
-  }), [publish, run]);
+    if (current.alive) setMessage(t('storage.restored'));
+  }), [publish, run,t]);
   const backup = useCallback((recovery = false) => run(async current => {
     const value = await (recovery ? current.repository.exportRecovery() : current.repository.exportBackup());
-    if (current.alive) { setPhase('ready'); setMessage('Backup prepared. Keep the downloaded file somewhere safe.'); }
+    if (current.alive) { setPhase('ready'); setMessage(t('storage.prepared')); }
     return value;
-  }), [run]);
+  }), [run,t]);
   const changeStudentData = useCallback((operation: (repository: StudentRepository) => Promise<LoadedState>) => run(async current => {
     const state = await operation(current.repository);
     publish(current, state);
@@ -91,13 +93,13 @@ function ResumeRecorder() {
   return null;
 }
 export function ResumeLink() {
-  const learning = useLearning(); const resume = learning?.snapshot?.data.resume;
+  const {t}=useI18n(); const learning = useLearning(); const resume = learning?.snapshot?.data.resume;
   const topic = resume && academicIndex.topics.find(item => item.topic_id === resume.topicId && item.subject_id === resume.subjectId);
   const course = topic && courses.find(item => item.subject_id === topic.subject_id);
   if (!topic || !course) return null;
-  return <section className="ds-resume ds-section" aria-labelledby="resume-heading"><div><h2 id="resume-heading">Resume last topic</h2><p>{course.name}</p></div><Link className="ds-text-link" to={topicPath(topic)}>{topic.name} →</Link></section>;
+  return <section className="ds-resume ds-section" aria-labelledby="resume-heading"><div><h2 id="resume-heading">{t('storage.resume')}</h2><p>{course.name}</p></div><Link className="ds-text-link" to={topicPath(topic)}>{topic.name} →</Link></section>;
 }
 export function LearningNotice() {
-  const learning = useLearning();
-  return learning?.phase === 'error' ? <p className="ds-storage-error" role="alert">{learning.message} <Link to="/progress">Manage student data</Link></p> : null;
+  const {t}=useI18n(); const learning = useLearning();
+  return learning?.phase === 'error' ? <p className="ds-storage-error" role="alert">{learning.message} <Link to="/progress">{t('storage.manage')}</Link></p> : null;
 }

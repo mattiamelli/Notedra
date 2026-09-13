@@ -7,3 +7,5 @@
 .ds-account details { margin-top: 22px; }
 .ds-account summary { cursor: pointer; font-weight: 650; }
 .ds-account details>label { display: flex; align-items: flex-start; gap: 9px; margin: 14px 0; }
+.ds-language-select { display: grid; gap: 8px; margin-top: 18px; font-weight: 650; }
+.ds-language-select select { width: 100%; }

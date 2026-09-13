@@ -1,6 +1,7 @@
 import { useRef, useState, type ChangeEvent } from 'react';
 import { errorMessage, MAX_BACKUP_BYTES, parseBackup, type Backup, type Dataset } from './contracts';
 import { useLearning } from './LearningProvider';
+import {useI18n} from '../i18n/i18n';
 function download(backup: Backup, recovery: boolean) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(backup, null, 2)], {type: 'application/json'}));
   const anchor = document.createElement('a'); anchor.href = url;
@@ -9,6 +10,7 @@ function download(backup: Backup, recovery: boolean) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export function StudentDataPanel() {
+  const {t}=useI18n();
   const learning = useLearning();
   const [pending, setPending] = useState<{backup: Backup; expected: Dataset; name: string} | null>(null);
   const [error, setError] = useState(''); const [reading, setReading] = useState(false);
@@ -38,23 +40,23 @@ export function StudentDataPanel() {
     catch (failure) { setError(errorMessage(failure)); }
   }
   return <section className="ds-storage ds-section" aria-labelledby="storage-heading">
-    <div className="ds-section-heading"><h2 id="storage-heading">Data &amp; Privacy</h2><span>Sync &amp; backup</span></div>
-    <p>Your study history is saved in this browser. Signed-in profiles can also sync. Anonymous and account profiles stay separate.</p>
-    <p>Clearing browser data or losing this device can remove local history. Keep an exported backup if the history matters to you.</p>
-    <p role="status">{reading ? 'Reading and validating backup…' : learning?.message ?? 'Student storage is not connected.'}</p>
+    <div className="ds-section-heading"><h2 id="storage-heading">{t('data.title')}</h2><span>{t('data.subtitle')}</span></div>
+    <p>{t('data.description')}</p>
+    <p>{t('data.warning')}</p>
+    <p role="status">{reading?t('data.reading'):learning?.message??t('data.notConnected')}</p>
     {error && <p role="alert" className="ds-storage-error">{error}</p>}
     <div className="ds-storage-actions">
-      <button className="ds-button" disabled={unavailable} onClick={() => void exportFile()}>Export student backup</button>
-      <label className="ds-backup-input">Choose student backup<input ref={input} type="file" accept=".json,application/json" disabled={unavailable} onChange={event => void prepare(event)}/></label>
-      {learning?.snapshot?.hasRecovery && <button className="ds-button" disabled={unavailable} onClick={() => void exportFile(true)}>Export pre-restore recovery</button>}
-      <button className="ds-button" disabled={!learning || learning.phase === 'busy' || reading} onClick={() => { setPending(null); setError(''); learning?.refresh(); }}>Reload saved data</button>
+      <button className="ds-button" disabled={unavailable} onClick={() => void exportFile()}>{t('data.export')}</button>
+      <label className="ds-backup-input">{t('data.choose')}<input ref={input} type="file" accept=".json,application/json" disabled={unavailable} onChange={event => void prepare(event)}/></label>
+      {learning?.snapshot?.hasRecovery && <button className="ds-button" disabled={unavailable} onClick={() => void exportFile(true)}>{t('data.recovery')}</button>}
+      <button className="ds-button" disabled={!learning || learning.phase === 'busy' || reading} onClick={() => { setPending(null); setError(''); learning?.refresh(); }}>{t('data.reload')}</button>
     </div>
     {pending && <div className="ds-restore-confirm" role="group" aria-labelledby="restore-title">
-      <h3 id="restore-title">Review replacement</h3><p>{pending.name}: {pending.backup.attempts.length} stored attempts; {pending.backup.exams.length} exam sessions; {pending.backup.resume ? 'a saved topic' : 'no saved topic'}.</p>
-      <p>This replaces the student records in the current local profile, not other account profiles. The current records will be retained as a downloadable pre-restore recovery backup.</p>
-      <label><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)}/> I understand this replaces my current student data.</label>
-      <div className="ds-storage-actions"><button className="ds-button" disabled={!confirmed || unavailable} onClick={() => void restore()}>Replace student data</button><button className="ds-button" disabled={learning?.phase === 'busy'} onClick={() => { setPending(null); setConfirmed(false); }}>Cancel restore</button></div>
+      <h3 id="restore-title">{t('data.review')}</h3><p>{pending.name}: {pending.backup.attempts.length} stored attempts; {pending.backup.exams.length} exam sessions; {pending.backup.resume ? 'a saved topic' : 'no saved topic'}.</p>
+      <p>{t('data.reviewBody')}</p>
+      <label><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)}/> {t('data.confirm')}</label>
+      <div className="ds-storage-actions"><button className="ds-button" disabled={!confirmed || unavailable} onClick={() => void restore()}>{t('data.replace')}</button><button className="ds-button" disabled={learning?.phase === 'busy'} onClick={() => { setPending(null); setConfirmed(false); }}>{t('data.cancel')}</button></div>
     </div>}
-    <details><summary>About this backup</summary><p className="ds-storage-note">Backups include your saved study records. Assembly editor preferences are stored separately, and temporary execution history is not included. Visits and ungraded answers do not count as assessed progress.</p><p>Restoring replaces only the current local profile and keeps a recovery copy. It does not delete cloud history.</p></details>
+    <details><summary>{t('data.about')}</summary><p className="ds-storage-note">{t('data.aboutBody')}</p><p>{t('data.restoreBody')}</p></details>
   </section>;
 }
