@@ -1,6 +1,11 @@
 import type {Aggregate,Readiness} from './types';
+import {useI18n} from '../i18n/i18n';
 export function MasteryCard({value}:{value:Aggregate}){
- return <article className="progress-card"><h3>Learning Mastery</h3><p className="progress-number">{value.index===null?'Not enough practice yet':`${value.index} / 100`}</p><p><strong>Confidence: {value.confidence}</strong> <span>— how much reliable practice supports this estimate.</span></p><p>Skills with reliable practice: {value.covered} / {value.total} · {value.recent} practiced recently.</p><details><summary>How is this calculated?</summary><p>Learning Mastery uses recent completed practice across different skills. Missing practice remains unknown and does not count as a low score.</p><p>Strongest recorded skills: {value.strongest.join('; ')||'Not enough practice yet'}.</p><p>Recent mistakes to review: {value.review.join('; ')||'None recorded'}.</p>{value.why.map(p=><p key={p}>{p}</p>)}</details><p>Based on regular practice. Exam Readiness is shown separately.</p></article>;
+ const {t}=useI18n();
+ return <article className="progress-card progress-mastery"><div className="progress-mastery-heading"><h3>{t('learning.mastery')}</h3><p className="progress-number">{value.index===null?t('learning.notEnoughPractice'):`${value.index} / 100`}</p></div>
+  <div className="progress-mastery-bar" role="progressbar" aria-label={t('learning.mastery')} aria-valuemin={0} aria-valuemax={100} aria-valuenow={value.index??undefined} aria-valuetext={value.index===null?t('learning.notEnoughPractice'):`${value.index} / 100`}><span style={{width:`${value.index??0}%`}}/></div>
+  <div className="progress-mastery-meta"><p><strong>{t('learning.confidence',{confidence:value.confidence})}</strong></p><p>{t('learning.recentSkills',{covered:value.covered,total:value.total,recent:value.recent})}</p></div>
+  <details><summary>{t('learning.calculated')}</summary><div className="progress-method"><p>{t('learning.method')}</p><p>Strongest recorded skills: {value.strongest.join('; ')||t('learning.notEnoughPractice')}.</p><p>Recent mistakes to review: {value.review.join('; ')||t('learning.noneRecorded')}.</p>{value.why.map(p=><p key={p}>{p}</p>)}<p>{t('learning.separateReadiness')}</p></div></details></article>;
 }
 export function ReadinessCard({value}:{value:Readiness}){
  const openLabel=value.openState==='Limited'?'Not assessed yet':value.openState;

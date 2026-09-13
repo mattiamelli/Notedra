@@ -40,7 +40,7 @@ describe('topic learning routes and modes',()=>{
  });
  it('provides a canonical map and text alternative with keyboard-accessible links',async()=>{
   const t=pilots[0];await render(studyPath(t,'mental-map'));expect(container.querySelectorAll('.ds-map-node')).toHaveLength(t.subtopics.length+t.subtopics.flatMap(s=>s.skills).length);
-  const outline=[...container.querySelectorAll('summary')].find(s=>s.textContent==='Text outline of this map');expect(outline).toBeDefined();expect(container.textContent).toContain('is a prerequisite for');expect(container.querySelector('.ds-study-map a')?.getAttribute('href')).toContain('#CO_ST04');
+  const outline=[...container.querySelectorAll('summary')].find(s=>s.textContent==='Text outline of this map');expect(outline).toBeDefined();expect(container.textContent).toContain('is a prerequisite for');expect(container.querySelector('.ds-study-map .ds-map-node a')?.getAttribute('href')).toContain('#CO_ST04');
  });
  it.each(pilots)('runs the complete $subjectId topic modes and retains its two original Practice items alongside new course items',async topic=>{
   await render(studyPath(topic));await click('#study-mode-1');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(lessonBlocks(topic.id));
@@ -59,8 +59,8 @@ describe('topic learning routes and modes',()=>{
   await act(async()=>{const p=new Promise(r=>window.addEventListener('popstate',r,{once:true}));window.history.forward();await p;});expect(container.querySelector('#card-prompt')).not.toBeNull();
   await act(async()=>root.unmount());root=createRoot(container);await render(studyPath(t,'flashcards'));expect(container.querySelector('#card-prompt')).not.toBeNull();expect(container.querySelector<HTMLElement>('#card-answer')?.hidden).toBe(true);
  });
- it('review regression: canonical map links focus the requested Overview node',async()=>{
-  const t=pilots[0];await render(studyPath(t,'mental-map'),true);const sub=t.subtopics[1];await click(`.ds-study-map a[href="${studyPath(t)}#${sub.id}"]`);expect(window.location.hash).toBe('#'+sub.id);expect(document.activeElement?.id).toBe(sub.id);
+ it('review regression: canonical map links focus the requested Learn section',async()=>{
+  const t=pilots[0];await render(studyPath(t,'mental-map'),true);const sub=t.subtopics[1];await click(`.ds-study-map a[href="${studyPath(t,'learn')}#${sub.id}"]`);expect(window.location.hash).toBe('#'+sub.id);expect(document.activeElement?.id).toBe(sub.id);
  });
  it('keyboard mode navigation follows URL and retains focus on the active tab',async()=>{
   await render(studyPath(pilots[0]),true);const first=container.querySelector<HTMLElement>('#study-mode-0')!;first.focus();await act(async()=>first.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true})));
