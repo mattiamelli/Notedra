@@ -61,7 +61,7 @@
         "kind": "worked_example",
         "title": "Connect each requirement to its own evidence",
         "paragraphs": [
-          "Assume a new practice brief needs item-code/quantity records, totals by code and a command-line report. The table shows how evidence can be local without pretending that one working command proves every skill. Names and formats here are authored DelftStudy examples, not a copied assessment.",
+          "Assume a new practice brief needs item-code/quantity records, totals by code and a command-line report. The table shows how evidence can be local without pretending that one working command proves every skill. Names and formats here are authored Notedra examples, not a copied assessment.",
           "Write tests against externally visible requirements. Keep parsing separate from filesystem access and computation separate from console interaction. Include equality tests only where value identity is actually required, and resource tests at the boundary that owns the handles."
         ],
         "table": {

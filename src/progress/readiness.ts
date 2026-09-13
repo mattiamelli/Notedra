@@ -42,5 +42,5 @@ export function examReadiness(courseId:string,evidence:EvidenceSnapshot,now:numb
       'Latest result per exact item only. Full mock relevance 1.0; quick exam 0.6. Authored difficulty Easy 0.9, Medium 1.0, Hard 1.1; unknown 1.0.',
       'Objective weighted performance × square root of recent objective topic coverage × mean recency. Recency half-life 45 days; breadth window 90 days.',
       `Current breadth/session gates cap the index at ${cap}/100. Open practice adds no points. With ungraded required open work, confidence cannot exceed Moderate and index cannot exceed 60.`,
-      'This is a DelftStudy evidence heuristic, not an official grade, pass probability or validated psychometric measure. Ephemeral Coding Workbench/open-guide activity is not recorded; its absence here does not prove no practice occurred.']};
+      'This is a Notedra evidence heuristic, not an official grade, pass probability or validated psychometric measure. Ephemeral Coding Workbench/open-guide activity is not recorded; its absence here does not prove no practice occurred.']};
 }

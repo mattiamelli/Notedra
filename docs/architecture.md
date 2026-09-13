@@ -1,6 +1,6 @@
 # Architecture
 
-DelftStudy is a client-side React application. Routes and the application shell live in `src/App.tsx` and `src/shell/`; course modules are grouped by subject under `src/co`, `src/rl`, `src/ip` and related feature folders.
+Notedra is a client-side React application. Routes and the application shell live in `src/App.tsx` and `src/shell/`; course modules are grouped by subject under `src/co`, `src/rl`, `src/ip` and related feature folders.
 
 The versioned content pack under `content-pack/` is validated before projections are generated into `src/generated/`. Practice, exam, progress and adaptive-learning features build on the local learner repository in `src/learning/`, which uses versioned IndexedDB records and transactional backups.
 

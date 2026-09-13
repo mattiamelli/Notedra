@@ -1,7 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import {createHandler,type HostedAsset,type HostingManifest} from '../hosting/handler';
 import {publicDocumentPages,publicReleasePages,releaseHtml,escapeMarkup,productionOrigin} from '../scripts/release';
-const template='<!doctype html><html><head><title>DelftStudy</title><meta name="description" content="Study" /></head><body><div id="root"></div></body></html>';
+const template='<!doctype html><html><head><title>Notedra</title><meta name="description" content="Study" /></head><body><div id="root"></div></body></html>';
 const html=(body:string):HostedAsset=>({body,type:'text/html; charset=utf-8',etag:'"test"'});
 const manifest:HostingManifest={assets:{'/assets/app-abcdefgh.js':{body:'export {};',type:'text/javascript',etag:'"asset"'},'/favicon.svg':{body:'<svg/>',type:'image/svg+xml',etag:'"svg"'},'/social-preview.png':{body:'aGVsbG8=',type:'image/png',etag:'"png"',encoding:'base64'}},documents:Object.fromEntries(publicDocumentPages().map(p=>[p.path,html(releaseHtml(template,p))])),applicationPaths:['/','/account','/privacy','/terms','/progress','/mistakes','/study-plan','/practice','/exams','/co/CO_T01_HISTORY/mistakes'],shell:html(releaseHtml(template)),notFound:html(releaseHtml(template)),headers:{'Content-Security-Policy':"default-src 'self'; frame-ancestors 'none'",'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Permissions-Policy':'camera=(), microphone=(), geolocation=()','X-Frame-Options':'DENY','Strict-Transport-Security':'max-age=31536000'}};
 const handler=createHandler(manifest),get=(path:string,options?:RequestInit)=>handler.fetch(new Request(productionOrigin+path,options));

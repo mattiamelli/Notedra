@@ -1,4 +1,5 @@
 import {examStorageHash} from './exam-storage-preservation';
+import {hardeningHash} from './hardening-preservation';
 import lock from './step9-storage-lock.json';
 import cloudDependency from './cloud-dependency-lock.json';
 import launchDependency from './launch-dependency-lock.json';
@@ -11,7 +12,7 @@ export function storageMigrationHash(file: string, original: string): string {
     return launchDependency.after;
   }
   const record = (lock as Record<string, {before: string; after: string}>)[file];
-  if (!record) return original;
+  if (!record) return hardeningHash(file, original);
   if (!['src/learning/contracts.ts', 'src/learning/repository.ts', 'src/learning/StudentDataPanel.tsx'].includes(file) || record.before !== original) throw new Error('Invalid storage migration baseline: ' + file);
   return examStorageHash(file, record.after);
 }

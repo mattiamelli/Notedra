@@ -1,6 +1,6 @@
 # Contributing
 
-DelftStudy is a personal academic and portfolio project. Contributions and review suggestions are welcome when they preserve the documented product boundaries.
+Notedra is a personal academic and portfolio project. Contributions and review suggestions are welcome when they preserve the documented product boundaries.
 
 Before opening a pull request:
 

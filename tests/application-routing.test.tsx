@@ -92,7 +92,7 @@ describe('shell interaction and browser history', () => {
     expect(links.map(link => link.getAttribute('href'))).toEqual(['/', ...courses.map(course => course.path), ...productAreas.map(area => area.path), '/account']);
     expect(container.querySelectorAll('main')).toHaveLength(1);
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
-    expect(document.title).toBe('Dashboard · DelftStudy');
+    expect(document.title).toBe('Dashboard · Notedra');
   });
   it('opens and closes mobile navigation with an accessible expanded state', async () => {
     await renderRoute('/');
@@ -111,7 +111,7 @@ describe('shell interaction and browser history', () => {
     expect(heading()).toBe(courses[0].name);
     expect(container.querySelector('.ds-menu-button')?.getAttribute('aria-expanded')).toBe('false');
     expect(document.activeElement?.id).toBe('ds-content');
-    expect(document.title).toBe(`${courses[0].name} · DelftStudy`);
+    expect(document.title).toBe(`${courses[0].name} · Notedra`);
   });
   it('returns focus to the menu when its current-page link closes mobile navigation', async () => {
     await renderRoute('/'); await click('.ds-menu-button');

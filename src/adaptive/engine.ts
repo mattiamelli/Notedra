@@ -5,7 +5,7 @@ import {DAY,eligibleSkill,stableCompare} from './evidence';
 import authoredActions from './actions.json';
 export const TIME_BUDGETS=[10,20,30,45,60] as const;
 export type ActionKind='review'|'retry'|'practice'|'learn'|'flashcards'|'guided'|'workspace'|'coding';
-export interface Action {id:string;title:string;topicId:string;subjectId:string;skillIds:string[];kind:ActionKind;minutes:number;durationSource:'DelftStudy estimate'|'Authored practice duration';to:string;}
+export interface Action {id:string;title:string;topicId:string;subjectId:string;skillIds:string[];kind:ActionKind;minutes:number;durationSource:'Notedra estimate'|'Authored practice duration';to:string;}
 export interface Recommendation extends Action {reason:string;priority:number;basisSkillId:string;}
 export interface PathOptions {minutes:number;subjectId?:string;topicId?:string;}
 export const topicRoute=(subjectId:string,topicId:string)=>`${courses.find(c=>c.subject_id===subjectId)!.path}/${topicId}`;
@@ -47,7 +47,7 @@ export function recommend(evidence:Evidence,options:PathOptions):Recommendation[
    +(group.laterSuccesses?` ${group.laterSuccesses} later correct ${group.laterSuccesses===1?'submission reduces':'submissions reduce'} its priority; the mistakes stay visible.`:'')+extra;
   const priority=priorityFor(group,evidence.now)+bonus;
   const add=(action:Action,adjust=0,detail='')=>candidates.push({...action,basisSkillId:skill.id,priority:priority+adjust,reason:reason+detail});
-  const common={topicId:skill.topicId,subjectId:skill.subjectId,skillIds:[skill.id],durationSource:'DelftStudy estimate' as const};
+  const common={topicId:skill.topicId,subjectId:skill.subjectId,skillIds:[skill.id],durationSource:'Notedra estimate' as const};
   const retries=group.recent.filter(m=>m.exercise.id===latest.exercise.id).length;
   const reinforcement=retries>=3||group.laterSuccesses>0;
   add({...common,id:`learn:${skill.id}`,title:`Review ${skill.name}`,kind:'learn',minutes:5,to:base+'/learn'},reinforcement?8:-4,reinforcement?' Review the explanation before another familiar retry.':'');

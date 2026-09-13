@@ -81,7 +81,7 @@
     "Separate Sample, SampleFormatException, sample loading, statistics/report generation and CLI. Malformed data must report the 1-based physical line. parse(Reader) borrows its reader; generate(input, output, threshold) owns its file resources.",
     "The CLI requires input path, output path and threshold. Return 0 for success, 1 for I/O/data errors and 2 for invalid arguments/threshold. Do not create or truncate output until parsing and validation succeed.",
     "Design a component-level test plan including malformed input, duplicate sample IDs, exact-threshold behavior, resource ownership and pre-existing output preservation. There is no automatic grading of your design or code.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

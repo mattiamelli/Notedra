@@ -33,5 +33,5 @@ for(const f of fixtures){
   results.push({id:f.id,result:'PASS',kind:f.category??'RUN',stdout:executed.stdout,reasoning:f.reasoning});
  }finally{rmSync(dir,{recursive:true,force:true});}
 }
-const report={jdk:version.stderr.trim(),boundary:'Only checked-in original DelftStudy fixtures compiled/run during development. No learner Java execution. Race guarantees are reasoned independently, never inferred from a sample execution.',results,reasonedConcurrency:oracles.filter(o=>o.category==='REASONED_CONCURRENCY')};
+const report={jdk:version.stderr.trim(),boundary:'Only checked-in original Notedra fixtures compiled/run during development. No learner Java execution. Race guarantees are reasoned independently, never inferred from a sample execution.',results,reasonedConcurrency:oracles.filter(o=>o.category==='REASONED_CONCURRENCY')};
 writeFileSync('docs/ip-java-evidence.json',JSON.stringify(report,null,2)+'\n');console.log(`Trusted Java PASS: ${results.length} compiled fixtures; ${report.reasonedConcurrency.length} concurrency claims require independent model tests. ${version.stderr.split('\n')[0]}`);

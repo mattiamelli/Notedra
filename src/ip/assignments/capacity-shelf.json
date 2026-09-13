@@ -49,7 +49,7 @@
     "Implement a fixed-capacity shelf of unique non-empty labels. Preserve insertion order. add returns false for duplicates or a full shelf; remove returns whether a label was present.",
     "Use an array and a separate size. snapshot returns only the occupied labels in a new array. Reject null or empty labels with IllegalArgumentException and reject a negative capacity.",
     "Write down the representation invariant before implementing mutation. A caller changing a snapshot must not change the shelf.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

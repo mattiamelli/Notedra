@@ -2,7 +2,7 @@
 import {describe,it,expect} from 'vitest';
 import {publicReleasePages,productionOrigin,sitemap,releaseHtml,releaseHeaders,releaseRedirects,metadataScript} from '../scripts/release';
 import {validateEnrichmentBundle} from '../scripts/enrichment-bundle';
-const template='<!doctype html><html><head><title>DelftStudy</title><meta name="description" content="Study" /></head><body><div id="root"></div></body></html>';
+const template='<!doctype html><html><head><title>Notedra</title><meta name="description" content="Study" /></head><body><div id="root"></div></body></html>';
 describe('public release privacy and response preparation',()=>{
   it('allows only the exact release robots text while still rejecting source text',()=>{
     const chunks=[{file:'entry.js',entry:true,imports:[],modules:[]}];
@@ -45,10 +45,10 @@ describe('public release privacy and response preparation',()=>{
   it('updates metadata on navigation and removes public canonical for saved attempts',async()=>{
     document.head.innerHTML=new DOMParser().parseFromString(releaseHtml(template,publicReleasePages().find(p=>p.path==='/co')),'text/html').head.innerHTML;
     history.replaceState({},'', '/co');window.eval(metadataScript(publicReleasePages()));
-    history.pushState({},'', '/practice/exercise/attempts/private-id');document.title='Practice · DelftStudy';await new Promise(resolve=>setTimeout(resolve,0));
+    history.pushState({},'', '/practice/exercise/attempts/private-id');document.title='Practice · Notedra';await new Promise(resolve=>setTimeout(resolve,0));
     expect(document.querySelector('link[rel="canonical"]')).toBeNull();expect(document.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex,follow');
     expect(document.head.textContent).not.toContain('private-id');
-    history.pushState({},'', '/rl');document.title='Reasoning and Logic · DelftStudy';await new Promise(resolve=>setTimeout(resolve,0));
+    history.pushState({},'', '/rl');document.title='Reasoning and Logic · Notedra';await new Promise(resolve=>setTimeout(resolve,0));
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(productionOrigin+'/rl');
   });
 });

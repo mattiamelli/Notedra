@@ -49,7 +49,7 @@
     "Implement an authored channel|value format: channel is 1\u20138 lowercase ASCII letters; value is a canonical integer from -50 through 150 (0 is allowed, no + sign or leading zeros). Every physical line is a record; blank lines are invalid.",
     "parse(Reader) borrows its reader and must not close it. convert(input, output) owns its UTF-8 file resources and must close them. Parse the whole input successfully before opening the output so malformed input preserves any existing output.",
     "Output one uppercase CHANNEL:value record per line, in input order, using a literal newline. Report malformed records with a checked ReadingFormatException carrying the 1-based line number.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

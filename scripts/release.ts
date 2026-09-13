@@ -5,25 +5,25 @@ import {academicIndex, courses, topicPath, ASSEMBLY_TOOL_PATH} from '../src/acad
 
 export const productionOrigin = 'https://delftstudy-assembly.mattiamelli07.chatgpt.site';
 export interface ReleasePage {path:string; title:string; description:string;}
-export const homeReleasePage:ReleasePage={path:'/',title:'DelftStudy — Your study space',description:'Independent study support for TU Delft Computer Science & Engineering students. Study Computer Organisation, Reasoning and Logic, and Java programming.'};
+export const homeReleasePage:ReleasePage={path:'/',title:'Notedra — Your study space',description:'Independent study support for TU Delft Computer Science & Engineering students. Study Computer Organisation, Reasoning and Logic, and Java programming.'};
 export const legalReleasePages:ReleasePage[]=[
-  {path:'/privacy',title:'Privacy Policy · DelftStudy',description:'How DelftStudy handles account information, browser storage, synchronized learner records, backups, cookies, and privacy choices.'},
-  {path:'/terms',title:'Terms of Use · DelftStudy',description:'Terms for using DelftStudy, an independent educational platform for computer science study support.'},
+  {path:'/privacy',title:'Privacy Policy · Notedra',description:'How Notedra handles account information, browser storage, synchronized learner records, backups, cookies, and privacy choices.'},
+  {path:'/terms',title:'Terms of Use · Notedra',description:'Terms for using Notedra, an independent educational platform for computer science study support.'},
 ];
 export function publicReleasePages():ReleasePage[] {
   return [
     homeReleasePage,
-    ...courses.map(course=>({path:course.path,title:`${course.name} · DelftStudy`,description:`Study ${course.name} through topic explanations, flashcards and authored practice. Independent study support for TU Delft Computer Science & Engineering students.`})),
-    ...academicIndex.topics.map(topic=>({path:topicPath(topic),title:`${topic.name} · DelftStudy`,description:`Explore ${topic.name}: learning material, flashcards and practice in DelftStudy, an independent student study platform.`})),
-    {path:ASSEMBLY_TOOL_PATH,title:'x86-64 Assembly Visualizer · DelftStudy',description:'Step through AT&T x86-64 instructions and inspect registers, stack frames and function calls in your browser.'},
+    ...courses.map(course=>({path:course.path,title:`${course.name} · Notedra`,description:`Study ${course.name} through topic explanations, flashcards and authored practice. Independent study support for TU Delft Computer Science & Engineering students.`})),
+    ...academicIndex.topics.map(topic=>({path:topicPath(topic),title:`${topic.name} · Notedra`,description:`Explore ${topic.name}: learning material, flashcards and practice in Notedra, an independent student study platform.`})),
+    {path:ASSEMBLY_TOOL_PATH,title:'x86-64 Assembly Visualizer · Notedra',description:'Step through AT&T x86-64 instructions and inspect registers, stack frames and function calls in your browser.'},
     ...legalReleasePages,
   ].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0);
 }
 // Public landing, legal, course, topic and tool pages are indexable; lessons also receive their own initial head.
 export function publicDocumentPages():ReleasePage[] {
   return [...publicReleasePages(),...academicIndex.topics.map(topic=>({
-    path:topicPath(topic)+'/learn',title:`Learn · ${topic.name} · DelftStudy`,
-    description:`Study ${topic.name} with explanations and worked examples in DelftStudy, an independent student study platform.`,
+    path:topicPath(topic)+'/learn',title:`Learn · ${topic.name} · Notedra`,
+    description:`Study ${topic.name} with explanations and worked examples in Notedra, an independent student study platform.`,
   }))].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0);
 }
 export function escapeMarkup(value:string):string {return value.replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]!));}
@@ -31,10 +31,10 @@ export function sitemap(pages:ReleasePage[]):string {
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.map(page=>`  <url><loc>${escapeMarkup(productionOrigin+page.path)}</loc></url>`).join('\n')+'\n</urlset>\n';
 }
 export function releaseHtml(template:string,page?:ReleasePage):string {
-  const title=page?.title??'DelftStudy — Your study space';
+  const title=page?.title??'Notedra — Your study space';
   const description=page?.description??'Independent study support for TU Delft Computer Science & Engineering students. Study Computer Organisation, Reasoning and Logic, and Java programming.';
   const image=productionOrigin+'/social-preview.png';
-  const metadata=`<meta name="robots" content="${page?'index,follow':'noindex,follow'}" />\n<meta property="og:type" content="website" />\n<meta property="og:site_name" content="DelftStudy" />\n<meta property="og:title" content="${escapeMarkup(title)}" />\n<meta property="og:description" content="${escapeMarkup(description)}" />\n<meta property="og:image" content="${image}" />\n<meta property="og:image:width" content="1200" />\n<meta property="og:image:height" content="630" />\n<meta property="og:image:alt" content="DelftStudy — independent computer science study support" />\n<meta name="twitter:card" content="summary_large_image" />\n<meta name="twitter:title" content="${escapeMarkup(title)}" />\n<meta name="twitter:description" content="${escapeMarkup(description)}" />\n<meta name="twitter:image" content="${image}" />\n<meta name="twitter:image:alt" content="DelftStudy — independent computer science study support" />\n<link rel="manifest" href="/manifest.webmanifest" />\n${page?`<link rel="canonical" href="${productionOrigin+page.path}" />\n<meta property="og:url" content="${productionOrigin+page.path}" />`:''}\n<script src="/release-metadata.js" defer></script>`;
+  const metadata=`<meta name="robots" content="${page?'index,follow':'noindex,follow'}" />\n<meta property="og:type" content="website" />\n<meta property="og:site_name" content="Notedra" />\n<meta property="og:title" content="${escapeMarkup(title)}" />\n<meta property="og:description" content="${escapeMarkup(description)}" />\n<meta property="og:image" content="${image}" />\n<meta property="og:image:width" content="1200" />\n<meta property="og:image:height" content="630" />\n<meta property="og:image:alt" content="Notedra — independent computer science study support" />\n<meta name="twitter:card" content="summary_large_image" />\n<meta name="twitter:title" content="${escapeMarkup(title)}" />\n<meta name="twitter:description" content="${escapeMarkup(description)}" />\n<meta name="twitter:image" content="${image}" />\n<meta name="twitter:image:alt" content="Notedra — independent computer science study support" />\n<link rel="manifest" href="/manifest.webmanifest" />\n${page?`<link rel="canonical" href="${productionOrigin+page.path}" />\n<meta property="og:url" content="${productionOrigin+page.path}" />`:''}\n<script src="/release-metadata.js" defer></script>`;
   return template.replace(/<title>[^<]*<\/title>/,`<title>${escapeMarkup(title)}</title>`).replace(/<meta name="description" content="[^"]*"\s*\/>/,`<meta name="description" content="${escapeMarkup(description)}" />`).replace('</head>',metadata+'\n</head>');
 }
 
@@ -65,7 +65,7 @@ export function releaseBuildGuard():Plugin {
     writeFileSync(`${output}/robots.txt`,releaseRobotsText);
     writeFileSync(`${output}/sitemap.xml`,sitemap(pages));
     writeFileSync(`${output}/release-metadata.js`,metadataScript(documents));
-    writeFileSync(`${output}/manifest.webmanifest`,JSON.stringify({name:'DelftStudy',short_name:'DelftStudy',description:'Independent computer science study tools',start_url:'/',display:'standalone',theme_color:'#0066ff',background_color:'#f0f7ff',icons:[{src:'/favicon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]})+'\n');
+    writeFileSync(`${output}/manifest.webmanifest`,JSON.stringify({name:'Notedra',short_name:'Notedra',description:'Independent computer science study tools',start_url:'/',display:'standalone',theme_color:'#0066ff',background_color:'#f0f7ff',icons:[{src:'/favicon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]})+'\n');
     writeFileSync(`${output}/_headers`,releaseHeaders(supabaseOrigin.replace(/\/$/,'')));
     writeFileSync(`${output}/_redirects`,releaseRedirects(documents));
   }};

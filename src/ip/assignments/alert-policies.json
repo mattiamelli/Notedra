@@ -54,7 +54,7 @@
     "Create an AlertRule interface with matches(int). HighAlert matches readings strictly above its threshold; LowAlert matches readings strictly below its threshold.",
     "Use a small abstract ThresholdAlert to hold the shared immutable threshold, with constructor chaining through super. RuleSet composes a list of AlertRule objects and counts matching rules for a reading.",
     "The threshold base is justified only by shared state; RuleSet has rules and is not itself a subtype of the threshold class. Explain static interface type versus runtime implementation.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

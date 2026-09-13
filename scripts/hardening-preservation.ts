@@ -5,6 +5,7 @@ import lock from './hardening-preservation.json';
 const changes=lock as Record<string,{before:string;after:string}>;
 export function hardeningHash(file:string,previous:string):string {
  const entry=changes[file];if(!entry)return previous;
+ if(previous===entry.after)return previous;
  assert.equal(previous,entry.before,'Unrecognized hardening baseline: '+file);return entry.after;
 }
 /** Compare prior locks to their original bytes, only for an exactly pinned repair. */

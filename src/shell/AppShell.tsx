@@ -28,7 +28,7 @@ export function AppShell() {
     setNavigationOpen(false);
   }
   useEffect(() => {
-    document.title = `${context.title} · DelftStudy`;
+    document.title = `${context.title} · Notedra`;
     if (previousPath.current !== pathname) {
       setNavigationOpen(false);
       if(document.activeElement?.getAttribute('role') !== 'tab') content.current?.focus();
@@ -53,7 +53,7 @@ export function AppShell() {
       <Link className="ds-header-account" to="/account" aria-label="Account & sync"><span className="ds-avatar">{initial}</span><span>{profileName??'Your study space'}<small>Account & sync</small></span></Link>
     </header>
     <aside className={`ds-sidebar${navigationOpen ? ' is-open' : ''}`} id="ds-navigation">
-      <Link className="ds-brand" to="/" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span>Delft<strong>Study</strong></span></Link>
+      <Link className="ds-brand" to="/" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span>Note<strong>dra</strong></span></Link>
       <p className="ds-brand-tagline">Learn deeper.<br/>Go further.</p><nav aria-label="Primary navigation">
         <NavLink to="/" end className="ds-nav-link" onClick={closeNavigation}><ShellIcon name="dashboard"/><span>Dashboard</span></NavLink>
         <div className="ds-nav-group">Courses</div>
@@ -67,7 +67,7 @@ export function AppShell() {
     <Content ref={element => {content.current = element;}} id="ds-content" tabIndex={-1} className={tool ? 'ds-tool-content' : 'ds-main'}>
       {tool && <Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> Back to Assembly topic</Link>}
       <LearningNotice/><RouteBoundary resetKey={pathname}><Outlet/></RouteBoundary>
-      {!tool&&<footer className="ds-legal-footer"><span>Independent study support.</span><nav aria-label="Legal"><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><a href={`mailto:${PUBLIC_LEGAL_CONTACT}`}>Support</a></nav></footer>}
+      {!tool&&<footer className="ds-legal-footer"><span>Notedra • Independent study support.</span><nav aria-label="Legal"><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><a href={`mailto:${PUBLIC_LEGAL_CONTACT}`}>Support</a></nav></footer>}
     </Content>
   </div>;
 }

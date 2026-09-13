@@ -797,7 +797,7 @@
           "role": "MECHANISM_ONLY"
         }
       ],
-      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines two exact code probes with eight connected GlazeLab programming components; arbitrary code remains unexecuted and unscored."
+      "rationale": "Notedra authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines two exact code probes with eight connected GlazeLab programming components; arbitrary code remains unexecuted and unscored."
     },
     {
       "id": "ds.exam.ip.full",
@@ -962,7 +962,7 @@
           "role": "MECHANISM_ONLY"
         }
       ],
-      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines two exact code probes with eight connected GlazeLab programming components; arbitrary code remains unexecuted and unscored."
+      "rationale": "Notedra authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode combines two exact code probes with eight connected GlazeLab programming components; arbitrary code remains unexecuted and unscored."
     }
   ]
 }

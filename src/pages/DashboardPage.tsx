@@ -19,7 +19,7 @@ function DashboardSkeleton(){return <>
 export function DashboardPage() {
   const {state}=useAccount(); const profileName=state.user?.displayName?.trim();
   return <div className="ds-dashboard">
-    <header className="ds-dashboard-greeting"><div><h1 className="ds-dashboard-label">Dashboard</h1><p className="ds-greeting-title">{profileName?`Hello ${profileName}`:<>Welcome to <span>DelftStudy</span></>}</p><p>Build understanding today. Take your next step with confidence.</p></div><p className="ds-greeting-note">Learn · Practice · Reflect</p></header>
+    <header className="ds-dashboard-greeting"><div><h1 className="ds-dashboard-label">Dashboard</h1><p className="ds-greeting-title">{profileName?`Hello ${profileName}`:<>Welcome to <span>Notedra</span></>}</p><p>Build understanding today. Take your next step with confidence.</p></div><p className="ds-greeting-note">Learn · Practice · Reflect</p></header>
     <div className="ds-dashboard-grid">
       <Suspense fallback={<DashboardSkeleton/>}><DashboardInsights>
       <DashboardExams/>

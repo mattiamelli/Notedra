@@ -9,7 +9,7 @@
   "content-pack/v1.0.1/INSTRUCTIONS_FOR_CODEX.md": "13196ba214edd60b1abb42277a3c2a4bd5c374efa3b997416385303ea2b7b5a3",
   "content-pack/v1.0.1/manifest.json": "d26c0384029d261185cd118979c874d86771439e49cf68a8deb96ee450653bcc",
   "pnpm-lock.yaml": "dd62e22e779e58c122d811d1eb83b15617e34c72eb8fb23f2ef1086c0b3081d8",
-  "src/AssemblyWorkbench.tsx": "77d63974e0d083035d3b422146a78c68d7064d0e611d512d3acfcecf2d336b50",
+  "src/AssemblyWorkbench.tsx": "59a898eb35d0d82438f28e0868de933c99d1cee92db4b113fd0fae4ffa186892",
   "src/co/capabilities.json": "4ffa3a4a7d907d6a4fe932efaccb9339a2bd01970a84ea7cf3096d3642fec91b",
   "src/co/content-lock.json": "6ff52fec36176f88d25c2d3775fa4a35fe43b4d03b98454693a3999d621fd66f",
   "src/co/coverage.json": "dc4c41b77da5df3ea7fbbd0463aca6d9fd67a1755c76704d303db7a5031529eb",

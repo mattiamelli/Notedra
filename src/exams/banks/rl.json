@@ -840,7 +840,7 @@
           "role": "MECHANISM_ONLY"
         }
       ],
-      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode is predominantly open construction and proof. Equivalent valid answers are checked with rubrics rather than strings."
+      "rationale": "Notedra authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode is predominantly open construction and proof. Equivalent valid answers are checked with rubrics rather than strings."
     },
     {
       "id": "ds.exam.rl.full",
@@ -1072,7 +1072,7 @@
           "role": "MECHANISM_ONLY"
         }
       ],
-      "rationale": "DelftStudy authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode is predominantly open construction and proof. Equivalent valid answers are checked with rubrics rather than strings."
+      "rationale": "Notedra authored timing, difficulty and weights; qualitative mechanism calibration, not official examination weighting. Fixed ordered slots preserve dependency order. Seed is persisted for reconstruction; this first bank deliberately has one candidate per slot. Full mode is predominantly open construction and proof. Equivalent valid answers are checked with rubrics rather than strings."
     }
   ]
 }

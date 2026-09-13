@@ -31,7 +31,7 @@
   "instructions": [
     "Implement immutable GridKey(row, column), with integer coordinates and accessors. Two keys are equal exactly when both coordinates are equal.",
     "Use a final class and implement equals(Object) and hashCode(). Explain why different keys may share a hash code without being equal.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

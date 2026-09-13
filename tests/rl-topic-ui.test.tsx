@@ -68,7 +68,7 @@ describe('complete R&L topic learning routes', () => {
     expect(host.querySelector('.ds-lesson-recap')).not.toBeNull();
     expect(host.querySelectorAll('.ds-study-reading > .ds-lesson-block')).toHaveLength(content.lesson.blocks.length);
     for (const block of content.lesson.blocks) expect(document.getElementById(block.id)?.textContent).toContain(block.title);
-    expect(host.textContent).toContain('Authored DelftStudy learning content');
+    expect(host.textContent).toContain('Authored Notedra learning content');
     expect(host.textContent).toContain('This reference covers a broad part of the document.');
     const firstSource = topicStudy.sources.find(source => source.id === content.lesson.blocks[0].sourceIds[0])!;
     expect(host.textContent).toContain(firstSource.filename);

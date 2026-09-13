@@ -861,7 +861,7 @@
     "id": "ds.practice.rl-dock-setting",
     "version": "1",
     "title": "Resolve a new finite constraint puzzle",
-    "prompt": "Four calibration docks A,B,C,D receive distinct pulse settings from {1,2,3,4}, using each setting exactly once. Their settings satisfy A+B=5, B+C=6 and C>D. What is the setting of D? Only the final setting is automatically checked. The elimination argument belongs in the companion guided puzzle self-check. This is a new DelftStudy instance.",
+    "prompt": "Four calibration docks A,B,C,D receive distinct pulse settings from {1,2,3,4}, using each setting exactly once. Their settings satisfy A+B=5, B+C=6 and C>D. What is the setting of D? Only the final setting is automatically checked. The elimination argument belongs in the companion guided puzzle self-check. This is a new Notedra instance.",
     "rules": "Enter one integer, with at most 64 digits. Outer whitespace, leading zeroes and negative zero are normalized. Do not use units, a plus sign, exponent notation or internal spaces.",
     "subjectId": "CSE1300_RL",
     "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",

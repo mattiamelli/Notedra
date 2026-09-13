@@ -29,7 +29,7 @@
         "title": "A formula needs an interpretation",
         "paragraphs": [
           "First-order logic speaks about objects and their properties or relationships. A formula has a truth value only after its symbols and any free variables have been interpreted. Keep the domain, vocabulary and quantifier scope visible.",
-          "These are new DelftStudy examples. Source associations refer to the normalized lecture document range; no original Tarski diagram or exact slide convention is reproduced."
+          "These are new Notedra examples. Source associations refer to the normalized lecture document range; no original Tarski diagram or exact slide convention is reproduced."
         ]
       },
       {

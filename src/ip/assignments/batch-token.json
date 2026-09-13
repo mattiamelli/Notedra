@@ -32,7 +32,7 @@
   "instructions": [
     "Implement quantity(token) for the authored format TAG@quantity. TAG is 1\u20138 uppercase ASCII letters. Quantity is 1\u20133 ASCII digits with value 0\u2013999; leading zeros are allowed.",
     "Reject null, extra separators, whitespace, signs, empty fields and invalid characters with IllegalArgumentException. Do not silently trim or repair malformed input.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

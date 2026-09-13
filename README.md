@@ -1,8 +1,8 @@
-# DelftStudy
+# Notedra
 
 [![CI](https://github.com/mattiamelli/DelftStudy/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mattiamelli/DelftStudy/actions/workflows/ci.yml)
 
-DelftStudy is a browser-based study workspace for first-year Computer Science and Engineering topics. It combines structured learning content, deterministic practice, progress review and an interactive x86-64 Assembly Visualizer.
+Notedra is a browser-based study workspace for first-year Computer Science and Engineering topics. It combines structured learning content, deterministic practice, progress review and an interactive x86-64 Assembly Visualizer.
 
 It brings course explanations, practice and revision evidence into one workspace, helping students move from reading a topic to practising it and reviewing mistakes.
 
@@ -10,7 +10,7 @@ The project is designed as a personal educational tool and is not affiliated wit
 
 ## Why I built it
 
-DelftStudy started as a focused way to turn first-year Computer Science material into an active study workflow. It evolved from course navigation into a tested learning workspace with deterministic practice, local evidence, adaptive review and a bounded Assembly teaching tool. Building it has been an exercise in content integrity, stateful browser storage, safe optional synchronisation and designing educational feedback that stays transparent about its limits.
+Notedra started as a focused way to turn first-year Computer Science material into an active study workflow. It evolved from course navigation into a tested learning workspace with deterministic practice, local evidence, adaptive review and a bounded Assembly teaching tool. Building it has been an exercise in content integrity, stateful browser storage, safe optional synchronisation and designing educational feedback that stays transparent about its limits.
 
 ## Current features
 
@@ -153,11 +153,11 @@ The build runs the content, projection, exercise, course and release validation 
 
 The dashboard brings the three course areas, study path, readiness evidence and practice entry points together in one view:
 
-![DelftStudy dashboard showing course areas, study path and practice tools](docs/assets/dashboard.jpg)
+![Notedra dashboard showing course areas, study path and practice tools](docs/assets/dashboard.jpg)
 
 The Assembly workbench provides a bounded, visual x86-64 learning environment with the program, stack memory and register state visible together:
 
-![DelftStudy Assembly workbench showing a function-call program, stack memory and registers](docs/assets/assembly-visualizer.jpg)
+![Notedra Assembly workbench showing a function-call program, stack memory and registers](docs/assets/assembly-visualizer.jpg)
 
 These are real application views captured from a local session. They intentionally show no account data, tokens or administrative panels. Future screenshots should follow the same privacy check and remain limited to two or three focused views.
 
@@ -196,7 +196,7 @@ The repository deliberately does not ship the original lecture PDFs or full PDF 
 
 ## Project status
 
-DelftStudy is an active student project. The current codebase contains the implemented learning, practice, progress, exam, optional account/sync and Assembly features described above. Some validation reports in `docs/` record historical release checkpoints and should be read with their stated scope and limitations.
+Notedra is an active student project. The current codebase contains the implemented learning, practice, progress, exam, optional account/sync and Assembly features described above. Some validation reports in `docs/` record historical release checkpoints and should be read with their stated scope and limitations.
 
 Known limitations include:
 

@@ -35,7 +35,7 @@
   "instructions": [
     "Implement countAtLeast(values, from, to, threshold). The half-open window contains indices from through to - 1. Return how many values in that window are at least threshold.",
     "Use one loop and a local accumulator. Keep the input array unchanged; explain why to may equal values.length.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

@@ -9,7 +9,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T09_IO_INTERRUPTS/practice"
   },
   {
@@ -22,7 +22,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T13_PARALLELISM/practice"
   },
   {
@@ -36,7 +36,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T06_ASSEMBLY_X86_64/visualizer"
   },
   {
@@ -49,7 +49,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T02_BOOLEAN_KMAP/practice"
   },
   {
@@ -63,7 +63,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T11_CACHE/practice"
   },
   {
@@ -302,7 +302,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T03_PROOF_METHODS/practice"
   },
   {
@@ -315,7 +315,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T06_ASSEMBLY_X86_64/practice"
   },
   {
@@ -328,7 +328,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T01_HISTORY/practice"
   },
   {
@@ -341,7 +341,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T02_BOOLEAN_KMAP/practice"
   },
   {
@@ -354,7 +354,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T02_BOOLEAN_KMAP/practice"
   },
   {
@@ -367,7 +367,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T03_DIGITAL_CMOS_SEQUENTIAL/practice"
   },
   {
@@ -380,7 +380,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T03_DIGITAL_CMOS_SEQUENTIAL/practice"
   },
   {
@@ -393,7 +393,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T06_ASSEMBLY_X86_64/practice"
   },
   {
@@ -406,7 +406,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T07_ISA/practice"
   },
   {
@@ -419,7 +419,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T07_ISA/practice"
   },
   {
@@ -432,7 +432,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T08_BPU_MICROCODE/practice"
   },
   {
@@ -445,7 +445,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T08_BPU_MICROCODE/practice"
   },
   {
@@ -458,7 +458,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T08_BPU_MICROCODE/practice"
   },
   {
@@ -471,7 +471,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T09_IO_INTERRUPTS/practice"
   },
   {
@@ -484,7 +484,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T10_DMA_MEMORY/practice"
   },
   {
@@ -497,7 +497,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T11_CACHE/practice"
   },
   {
@@ -510,7 +510,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T12_PIPELINE/practice"
   },
   {
@@ -523,7 +523,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T13_PARALLELISM/practice"
   },
   {
@@ -536,7 +536,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T14_VIRTUAL_MEMORY/practice"
   },
   {
@@ -553,7 +553,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T01_JAVA_BASICS/practice"
   },
   {
@@ -569,7 +569,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T02_CONTROL_FLOW/practice"
   },
   {
@@ -585,7 +585,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T03_METHODS_SCOPE/practice"
   },
   {
@@ -601,7 +601,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T04_CLASSES_OBJECTS/practice"
   },
   {
@@ -617,7 +617,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T05_ARRAYS_RECURSION/practice"
   },
   {
@@ -632,7 +632,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T06_CONTAINER_CLASSES/practice"
   },
   {
@@ -646,7 +646,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T07_COMPOSITION_LIBRARIES/practice"
   },
   {
@@ -661,7 +661,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T08_TESTING/practice"
   },
   {
@@ -675,7 +675,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T09_INHERITANCE/practice"
   },
   {
@@ -689,7 +689,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T10_POLYMORPHISM_BINDING/practice"
   },
   {
@@ -704,7 +704,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T11_EQUALITY_HASHING/practice"
   },
   {
@@ -718,7 +718,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T12_EXCEPTIONS/practice"
   },
   {
@@ -731,7 +731,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T13_DEBUGGING/practice"
   },
   {
@@ -746,7 +746,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T14_CODE_QUALITY_STRINGS_GENERICS/practice"
   },
   {
@@ -761,7 +761,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T15_IO_PARSING/practice"
   },
   {
@@ -776,7 +776,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T16_FUNCTIONAL_JAVA/practice"
   },
   {
@@ -790,7 +790,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T17_PROGRAM_DESIGN/practice"
   },
   {
@@ -804,7 +804,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T18_MODERN_JAVA/practice"
   },
   {
@@ -818,7 +818,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T19_THREADS_CONCURRENCY/practice"
   },
   {
@@ -832,7 +832,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice"
   },
   {
@@ -845,7 +845,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/ip/IP_T20_EXAM_PROGRAM_SYNTHESIS/practice"
   },
   {
@@ -858,7 +858,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T09_TRANSFER_CONSTRAINT_PUZZLES/practice"
   },
   {
@@ -871,7 +871,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T02_FOL/practice"
   },
   {
@@ -886,7 +886,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T02_FOL/practice"
   },
   {
@@ -900,7 +900,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T02_FOL/practice"
   },
   {
@@ -914,7 +914,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T03_PROOF_METHODS/practice"
   },
   {
@@ -928,7 +928,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T03_PROOF_METHODS/practice"
   },
   {
@@ -942,7 +942,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T03_PROOF_METHODS/practice"
   },
   {
@@ -956,7 +956,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T03_PROOF_METHODS/practice"
   },
   {
@@ -970,7 +970,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
   },
   {
@@ -983,7 +983,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
   },
   {
@@ -997,7 +997,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
   },
   {
@@ -1011,7 +1011,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T04_INDUCTION_RECURSION/practice"
   },
   {
@@ -1024,7 +1024,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T05_TREES_GRAPHS/practice"
   },
   {
@@ -1038,7 +1038,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T05_TREES_GRAPHS/practice"
   },
   {
@@ -1052,7 +1052,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T05_TREES_GRAPHS/practice"
   },
   {
@@ -1065,7 +1065,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T06_SET_THEORY/practice"
   },
   {
@@ -1078,7 +1078,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T06_SET_THEORY/practice"
   },
   {
@@ -1092,7 +1092,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T07_FUNCTIONS_RELATIONS/practice"
   },
   {
@@ -1105,7 +1105,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T07_FUNCTIONS_RELATIONS/practice"
   },
   {
@@ -1119,7 +1119,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T08_LIMITS_COUNTABILITY/practice"
   },
   {
@@ -1132,7 +1132,7 @@
     ],
     "kind": "guided",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/rl/RL_T08_LIMITS_COUNTABILITY/practice"
   },
   {
@@ -1145,7 +1145,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T07_ISA/practice"
   },
   {
@@ -1159,7 +1159,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T10_DMA_MEMORY/practice"
   },
   {
@@ -1174,7 +1174,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T12_PIPELINE/practice"
   },
   {
@@ -1189,7 +1189,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T05_DATA_REP_FIXED_FLOAT/practice"
   },
   {
@@ -1203,7 +1203,7 @@
     ],
     "kind": "workspace",
     "minutes": 10,
-    "durationSource": "DelftStudy estimate",
+    "durationSource": "Notedra estimate",
     "to": "/co/CO_T14_VIRTUAL_MEMORY/practice"
   }
 ]

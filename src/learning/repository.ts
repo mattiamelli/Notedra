@@ -96,7 +96,7 @@ export class IndexedStudentRepository implements StudentRepository {
       };
       opening.onblocked = () => {
         rejected = true;
-        reject(new LearningError('BLOCKED', 'Storage upgrade is blocked by another tab. Close other DelftStudy tabs and reload.'));
+        reject(new LearningError('BLOCKED', 'Storage upgrade is blocked by another tab. Close other Notedra tabs and reload.'));
       };
       opening.onerror = () => reject(migrationFailure ?? new LearningError(opening.error?.name === 'VersionError' ? 'INCOMPATIBLE' : 'STORAGE',
         opening.error?.name === 'VersionError' ? 'A newer student database exists. It was preserved; use a compatible application version.' : 'Cannot open student storage. Check browser permissions and reload.'));

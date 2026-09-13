@@ -31,7 +31,7 @@ export function buildStudySession(evidence:Evidence,options:{minutes:StudyTimePr
 
  add('overview',`Orient yourself in ${focus.name}`,'learn',base,`Start with the authored overview for ${scope}; it defines the exact concepts and boundaries used by the course.`,5);
  add('learn',`Study the core ideas in ${focus.name}`,'learn',`${base}/learn`,`Use the authored lesson for ${scope} before switching to recall or application.`,15);
- add('practice',`Apply ${focus.name}`,'guided',`${base}/practice`,`Work in the topic's existing guided or graded practice area so the session stays tied to actual DelftStudy content.`,20);
+ add('practice',`Apply ${focus.name}`,'guided',`${base}/practice`,`Work in the topic's existing guided or graded practice area so the session stays tied to actual Notedra content.`,20);
  add('map',`Connect the ideas in ${focus.name}`,'review',`${base}/mental-map`,`Use the canonical topic map to connect subtopics, skills and documented prerequisite relationships.`,10);
  add('cards',`Recall the key points in ${focus.name}`,'flashcards',`${base}/flashcards`,`Use the authored recall activity for the selected scope, with a different study mode from concept review and practice.`,10);
  add('exam',`Bring ${course.short} ideas into exam-style work`,'practice',`/exams/${course.subject_id}/setup`,`Choose an existing authored mock for ${course.short} and keep your work centered on the selected course.`,20);
@@ -63,7 +63,7 @@ export function buildStudySession(evidence:Evidence,options:{minutes:StudyTimePr
   skillIds:item.skillIds??[],
   kind:item.kind,
   minutes:minutes[index],
-  durationSource:'DelftStudy estimate',
+  durationSource:'Notedra estimate',
   to:item.to,
   reason:item.reason,
   priority:item.priority??0,

@@ -26,7 +26,7 @@
   "instructions": [
     "Implement cleanLabels: trim each input label, keep labels of length at least four, and return them in case-sensitive natural sorted order. Preserve duplicates. Inputs and elements are non-null.",
     "Implement firstLabel using Optional: return the first cleaned label, or Optional.empty() if there is none. Do not call get() without establishing presence.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

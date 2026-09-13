@@ -31,7 +31,7 @@
     "Write a JUnit 5 test suite for Clamp.clamp(value, min, max). It returns min below the interval, max above it, otherwise value; min > max throws IllegalArgumentException.",
     "The implementation is provided. Test its public contract rather than reproducing its branch structure. Include a degenerate interval and an exception assertion. Explain which plausible bug each test would catch.",
     "JUnit source is an illustrative reference: JUnit is not installed or run in this browser. The development check uses a separate plain-Java requirement harness.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

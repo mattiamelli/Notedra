@@ -63,7 +63,7 @@
     "Do not print from workers or claim a worker order/speed improvement. A synchronized method protects one shared counter monitor; join waits for completion, it does not itself make increments atomic.",
     "Race self-check: imagine two threads each doing one unsynchronized read-modify-write increment on an integer initially 0. Show an interleaving that loses an update and one that preserves both. Their order is not predetermined. Observing a successful run does not prove race freedom.",
     "This uses the current integrated assessment mechanism of required thread-based processing with wholly new surface content. Component review is unscored; it does not assign broad skill correctness.",
-    "DelftStudy authored practice. The time class is a suggested practice budget, not an official assessment duration.",
+    "Notedra authored practice. The time class is a suggested practice budget, not an official assessment duration.",
     "Write and review your own attempt before revealing the reference. Code on this page is ephemeral and is not compiled, run or automatically graded. Multiple correct implementations are valid."
   ],
   "starterFiles": [

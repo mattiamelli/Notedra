@@ -15,7 +15,7 @@ function contrast(first: string, second: string) {
   return (pair[0] + .05) / (pair[1] + .05);
 }
 
-describe('DelftStudy proposed design-token contract', () => {
+describe('Notedra proposed design-token contract', () => {
   it('keeps all learning text roles readable on the three reading surfaces', () => {
     for (const text of ['ink', 'text', 'support']) for (const surface of ['page', 'paper', 'soft']) {
       expect(contrast(text, surface), `${text} on ${surface}`).toBeGreaterThanOrEqual(4.5);

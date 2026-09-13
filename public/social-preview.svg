@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
-  <title id="title">DelftStudy</title>
+  <title id="title">Notedra</title>
   <desc id="description">Independent computer science study support</desc>
   <defs>
     <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#dfeeff"/></linearGradient>
@@ -15,7 +15,7 @@
     <rect width="100" height="100" rx="24" fill="#0061ed"/>
     <path d="M27 29c13-5 24-3 32 3v43c-8-6-19-8-32-3zm46 0c-13-5-24-3-32 3v43c8-6 19-8 32-3z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
   </g>
-  <text x="176" y="343" fill="#081747" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="750" letter-spacing="-4">Delft<tspan fill="#0061ed">Study</tspan></text>
+  <text x="176" y="343" fill="#081747" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="750" letter-spacing="-4">Note<tspan fill="#0061ed">dra</tspan></text>
   <text x="179" y="410" fill="#263c68" font-family="Inter,Arial,sans-serif" font-size="30">Build understanding. Study with confidence.</text>
   <g transform="translate(178 458)" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700">
     <rect width="92" height="42" rx="21" fill="#e1f0ff"/><text x="28" y="28" fill="#005caf">CO</text>
