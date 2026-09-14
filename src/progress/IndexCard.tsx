@@ -2,9 +2,10 @@ import type {Aggregate,Readiness} from './types';
 import {useI18n} from '../i18n/i18n';
 export function MasteryCard({value}:{value:Aggregate}){
  const {t,lt}=useI18n();
+ const confidence=t(value.confidence==='Insufficient'?'confidence.insufficient':value.confidence==='Low'?'confidence.low':value.confidence==='Moderate'?'confidence.moderate':'confidence.high');
  return <article className="progress-card progress-mastery"><div className="progress-mastery-heading"><h3>{t('learning.mastery')}</h3><p className="progress-number">{value.index===null?t('learning.notEnoughPractice'):`${value.index} / 100`}</p></div>
   <div className="progress-mastery-bar" role="progressbar" aria-label={t('learning.mastery')} aria-valuemin={0} aria-valuemax={100} aria-valuenow={value.index??undefined} aria-valuetext={value.index===null?t('learning.notEnoughPractice'):`${value.index} / 100`}><span style={{width:`${value.index??0}%`}}/></div>
-  <div className="progress-mastery-meta"><p><strong>{t('learning.confidence',{confidence:value.confidence})}</strong></p><p>{t('learning.recentSkills',{covered:value.covered,total:value.total,recent:value.recent})}</p></div>
+  <div className="progress-mastery-meta"><p><strong>{t('learning.confidence',{confidence})}</strong></p><p>{t('learning.recentSkills',{covered:value.covered,total:value.total,recent:value.recent})}</p></div>
   <details><summary>{t('learning.calculated')}</summary><div className="progress-method"><p>{t('learning.method')}</p><p>{t('progress.strongest',{skills:value.strongest.map(lt).join('; ')||t('learning.noneRecorded')})}</p><p>{t('progress.recentReview',{skills:value.review.map(lt).join('; ')||t('learning.noneRecorded')})}</p><p>{t('progress.masteryEvidence',{covered:value.covered,total:value.total,recent:value.recent})}</p><p>{t('learning.separateReadiness')}</p></div></details></article>;
 }
 export function ReadinessCard({value}:{value:Readiness}){

@@ -29,7 +29,7 @@
   },
   "src/accounts/AccountPage.tsx": {
     "before": "021e7b08f1712acfce9772cbfcf3c3729db8a904a3b67fcf9a90c932be520573",
-    "after": "99d85482857758c75330427a3b81a05abbb5c583e6de95f7b2046f34c3966df1"
+    "after": "edb0000602dafe50f8a8e898d42f2b5aed0fdc35b244acdd8dda139cbb62da60"
   },
   "src/accounts/AccountRoot.tsx": {
     "before": "435dcffd1cf32487491eb187ea2c11efe6fa609c7a19237c9fc02e752e0b3e69",
@@ -73,7 +73,7 @@
   },
   "src/progress/IndexCard.tsx": {
     "before": "396fb4d1e1b7cdce9474252a00c04d4877393245c6d0b8bc0ff0a91f5637854d",
-    "after": "d6a823615f2e41876a3bbf9f4a32235391e09906b31a11a3943c205c0ddb3e62",
+    "after": "a791572ef2050d186be0526afe3037c9798999a71e45808ba2e4189842f33aef",
     "original": "e92325fa4ae089c1c462911266ce9f75b3b31017021447cf75942a2335fe226a"
   },
   "src/progress/progress.css": {
@@ -605,7 +605,7 @@
   },
   "src/i18n/messages.ts": {
     "before": "6b92dbaab57e5c275dd760b95c54ffb79489202f34c90772ca1e567f1289fa36",
-    "after": "5ad547adc1f9256e14feaffc73118e3159fec26b45d0f9c87665b22ea0849a19"
+    "after": "4132ddffb7eaf09da0c370db4976d28bb70e6eb05723ef5035dbaf29dd6e1b5f"
   },
   "public/i18n-content/de.json": {
     "before": "81fba327dc4162a5f17c6a08817438b9725f283611d1cf338d1149dba25753c6",

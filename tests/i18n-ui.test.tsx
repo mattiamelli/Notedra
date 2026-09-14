@@ -8,6 +8,7 @@ import {AppShell} from '../src/shell/AppShell';
 import {LANGUAGE_STORAGE_KEY,LanguageProvider,readLanguage,translate} from '../src/i18n/i18n';
 import {en,languages,translations} from '../src/i18n/messages';
 import {allExercises} from '../src/practice/catalog';
+import {MasteryCard} from '../src/progress/IndexCard';
 import itContent from '../public/i18n-content/it.json';
 import esContent from '../public/i18n-content/es.json';
 import frContent from '../public/i18n-content/fr.json';
@@ -28,6 +29,16 @@ describe('centralized interface languages',()=>{
     expect(readLanguage({getItem:()=>null})).toBe('en');
     expect(readLanguage({getItem:()=>'unsupported'})).toBe('en');
     expect(translate('en','dashboard.hello',{name:'Ada'})).toBe('Hello Ada');
+  });
+  it.each([
+    ['en','Insufficient','Local only'],['it','Insufficiente','Solo locale'],['es','Insuficiente','Solo local'],['fr','Insuffisante','Local uniquement'],['de','Unzureichend','Nur lokal'],
+  ] as const)('renders confidence and local sync status in %s',async(language,confidence,localOnly)=>{
+    localStorage.setItem(LANGUAGE_STORAGE_KEY,language);
+    const value={id:'CSE1400_CO',name:'CO',index:null,confidence:'Insufficient' as const,covered:0,total:46,recent:0,why:[],strongest:[],review:[],missing:[]};
+    await act(async()=>root.render(<LanguageProvider key={language}><MasteryCard value={value}/><AccountPage/></LanguageProvider>));
+    expect(host.querySelector('.progress-mastery-meta strong')?.textContent).toContain(confidence);
+    expect(host.querySelector('.ds-sync-badge')?.textContent).toBe(localOnly);
+    expect(host.querySelector('[role=status] strong')?.textContent).toBe(localOnly);
   });
   it('offers every language and restores the selected language after remount',async()=>{
     await act(async()=>root.render(<LanguageProvider><AccountPage/></LanguageProvider>));
