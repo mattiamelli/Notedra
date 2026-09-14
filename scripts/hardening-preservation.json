@@ -121,7 +121,7 @@
   },
   "tests/learning-ui.test.tsx": {
     "before": "8d506a2d2262717414c5bb149e1ff93e16df38d970837126ca531502f2cbcf5d",
-    "after": "a3bc0764c9aff1c907c436917ad02ef41245e174594b326dc9d5e6fc5256129d"
+    "after": "7d3f2e8e2401a8174d1a47f0d17f6c2b9a9f48f94a71fbb702d9ad2bab95702e"
   },
   "tests/application-routing.test.tsx": {
     "before": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902",

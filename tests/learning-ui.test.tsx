@@ -33,7 +33,10 @@ async function choose(text: string) {
 describe('student data UI', () => {
   it('shows no fabricated data on a fresh Dashboard', async () => {
     await mount(repository()); expect(container.textContent).not.toContain('Resume last topic');
-    expect(container.textContent).not.toMatch(/\d+%|streak/);
+    expect(container.textContent).not.toMatch(/streak/);
+    await vi.waitFor(() => expect(container.querySelectorAll('.ds-course-completion [role=progressbar]')).toHaveLength(3));
+    const completion = [...container.querySelectorAll<HTMLElement>('.ds-course-completion [role=progressbar]')];
+    expect(completion.every(item => item.getAttribute('aria-valuenow') === '0')).toBe(true);
   });
   it('shows the canonical saved topic label and safe route after remount', async () => {
     const repo = repository(); const initial = await loaded(repo); await repo.saveResume(position, initial.data);
