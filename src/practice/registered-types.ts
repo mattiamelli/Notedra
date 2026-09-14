@@ -4,4 +4,5 @@ import type {EnrichmentExercise} from '../enrichment/types';
 import type {Exercise} from './types';
 import type {COExercise} from '../co/types';
 import type {RLExercise} from '../rl/practice-types';
-export type PracticeExercise=InteractiveExercise|Exercise|COExercise|RLExercise|EnrichmentExercise|IPExercise;
+import type {AdvancedExercise} from '../advanced/types';
+export type PracticeExercise=InteractiveExercise|Exercise|COExercise|RLExercise|EnrichmentExercise|IPExercise|AdvancedExercise;

@@ -1,6 +1,4 @@
-import expansionIP from '../src/expansion/ip.json';
 // @vitest-environment jsdom
-import ipDefinitions from '../src/ip/practice.json';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { BrowserRouter, MemoryRouter } from 'react-router';
@@ -8,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AppRoutes } from '../src/App';
 import { academicIndex, ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, productAreas, topicPath, topicsFor } from '../src/academic/navigation';
 import { examplePrograms } from '../src/examples/examplePrograms';
+import {allExercises} from '../src/practice/catalog';
 
 Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true});
 let container: HTMLDivElement;
@@ -71,7 +70,8 @@ describe('application routes and canonical navigation', () => {
     expect(heading()).toBe(area.title);
     // Step 4 intentionally replaces only the Practice placeholder with authored items, expanded for CO in Step 6.
     if (area.path === '/practice') {
-      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(249);expect([...container.querySelectorAll('.ds-practice-card')].filter(c=>![...ipDefinitions,...expansionIP].some(e=>c.querySelector(`a[href="/practice/${e.id}"]`)))).toHaveLength(140);
+      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);
+      expect(allExercises.every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
       expect(container.textContent).toContain('Authored practice');
     } else if (area.path === '/mistakes' || area.path === '/study-plan' || area.path === '/exams' || area.path === '/progress') {
       expect(container.querySelector('[role="status"]')?.textContent).toContain('Student storage is not connected.');

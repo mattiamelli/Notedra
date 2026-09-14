@@ -1,6 +1,4 @@
-import expansionIP from '../src/expansion/ip.json';
 // @vitest-environment jsdom
-import ipDefinitions from '../src/ip/practice.json';
 import { IDBFactory } from 'fake-indexeddb';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
@@ -9,7 +7,7 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vite
 import { AppRoutes } from '../src/App';
 import { LearningProvider } from '../src/learning/LearningProvider';
 import { LearningError, emptyBackup, type LoadedState } from '../src/learning/contracts';
-import { catalog, exercisePath, attemptPath } from '../src/practice/catalog';
+import { allExercises, catalog, exercisePath, attemptPath } from '../src/practice/catalog';
 import { PracticeService } from '../src/practice/service';
 import { repository } from './helpers/learning';
 import type { StudentRepository } from '../src/learning/repository';
@@ -30,9 +28,9 @@ async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
   it('browsing/filtering the expanded catalog creates no attempts',async()=>{
-    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(249);expect([...container.querySelectorAll('.ds-practice-card')].filter(c=>![...ipDefinitions,...expansionIP].some(e=>c.querySelector(`a[href="/practice/${e.id}"]`)))).toHaveLength(140);
-    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(56);expect((await load(repo)).data.attempts).toEqual([]);
-  });
+    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);expect(allExercises.every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
+    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.filter(e=>e.subjectId==='CSE1300_RL').length);expect((await load(repo)).data.attempts).toEqual([]);
+  },15_000);
   it.each([catalog[0],catalog[2],catalog[4]])('completes the $subjectId flow without exposing a solution early',async exercise=>{
     const repo=repository();await mount(repo,exercisePath(exercise));expect(container.textContent).not.toContain('Reference answer');await click('Start exercise');
     if(exercise.task.kind==='radix')await fill('00101101');

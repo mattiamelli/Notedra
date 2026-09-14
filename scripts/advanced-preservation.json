@@ -1,0 +1,10 @@
+{
+  "src/co/grading.ts": "613b6b3c9dfab8c661ce826486e54b90ad0dc0169e048e3dd415581499b6953c",
+  "src/rl/grading.ts": "c49a43fa136eacc47c43ee2568eb2c371b5a8f965bd6dd117f5fa02f4532d961",
+  "src/ip/grading.ts": "5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+  "src/expansion/practice-lock.json": "387167981d86c58b0616dfd180c60e3827b7d97e96be9850432282658a65e749",
+  "src/expansion/completion-lock.json": "c08d11d9ced1020ba4d42ffb942c5514b1af9749f8ced9696b295bf0cb250d99",
+  "src/expansion/grader-lock.json": "008e50dd1b1f6e61d66b51f2871d0495ac4a49b02ae8047140d027ba7db036f7",
+  "src/expansion/completion-grader-lock.json": "373dbc40e8242684960f46601d9a293b09e25ca988ee90980ea90258153b9a82",
+  "scripts/expansion-accepted-checkpoint.json": "62875f46241227d2a3a24495c4940bde23854d76a2a62d1a756e2f7a7ff4b037"
+}

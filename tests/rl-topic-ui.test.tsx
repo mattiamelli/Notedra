@@ -97,7 +97,7 @@ describe('complete R&L topic learning routes', () => {
 
     await render('practice');
     expect(host.querySelectorAll('.ds-practice-card')).toHaveLength(expectedExercises.length);
-    expect(expectedExercises.filter(e=>!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact').length).toBe(capability.exerciseCount);expect(expectedExercises.length).toBe(capability.exerciseCount+(enrichment.find(e=>e.topicId===topic.id)?.exercises??0)+expectedExercises.filter(e=>e.id.startsWith('ds.practice.interactive-')).length+expectedExercises.filter(e=>e.id.startsWith('ds.practice.p7-')).length);
+    expect(expectedExercises.filter(e=>!e.id.startsWith('ds.practice.advanced-')&&!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact').length).toBe(capability.exerciseCount);expect(expectedExercises.length).toBe(capability.exerciseCount+(enrichment.find(e=>e.topicId===topic.id)?.exercises??0)+expectedExercises.filter(e=>e.id.startsWith('ds.practice.interactive-')).length+expectedExercises.filter(e=>e.id.startsWith('ds.practice.p7-')).length+expectedExercises.filter(e=>e.id.startsWith('ds.practice.advanced-')).length);
     expect(host.querySelectorAll('.ds-rl-guided')).toHaveLength(content.guided.length);
     expect(content.guided.length).toBe(capability.guidedCount);
     for (const exercise of expectedExercises) {

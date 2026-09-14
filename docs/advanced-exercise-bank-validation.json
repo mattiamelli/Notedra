@@ -1,0 +1,34 @@
+{
+  "gate": "PASS",
+  "generatedAtUtc": "2026-09-14T00:07:59.969Z",
+  "newExercises": 424,
+  "bySubject": {
+    "CSE1100_IP": 168,
+    "CSE1400_CO": 120,
+    "CSE1300_RL": 136
+  },
+  "byDifficulty": {
+    "Medium": 127,
+    "Hard": 267,
+    "Exam-level": 30
+  },
+  "byMode": {
+    "practice": 212,
+    "exam": 212
+  },
+  "canonicalUnits": 53,
+  "perUnitMinimum": 8,
+  "unitsBelowTarget": [],
+  "sourceAlignment": "PASS: every skill link resolves to HIGH-confidence evidence for the same canonical lecture unit.",
+  "exactGrading": "PASS: all 424 references validate and earn exactly one point.",
+  "javaRuntimeOracle": "Run scripts/verify-advanced-java.ts for the independent JDK 21 result.",
+  "duplicateAudit": {
+    "scope": "all new-new and new-existing pairs",
+    "exactIds": "PASS",
+    "exactTitles": "PASS",
+    "nearDuplicateThreshold": 0.78,
+    "result": "PASS",
+    "pairs": []
+  },
+  "preservation": "PASS: accepted graders and Patch 7 immutable artifacts match their recorded SHA-256 values."
+}

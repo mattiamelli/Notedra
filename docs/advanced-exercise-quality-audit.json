@@ -1,0 +1,753 @@
+{
+  "schemaVersion": 1,
+  "method": "Deterministic stratified manual review across the checked-in advanced bank",
+  "sampleSize": 90,
+  "sampling": {
+    "perSubject": 30,
+    "perDifficultyPerSubject": 10,
+    "difficulties": [
+      "Medium",
+      "Hard",
+      "Exam-level"
+    ]
+  },
+  "reviewCriteria": [
+    "source alignment",
+    "prompt clarity",
+    "reference-answer correctness",
+    "explanation correctness",
+    "difficulty appropriateness",
+    "absence of filler or duplicate wording",
+    "deterministic gradability"
+  ],
+  "result": "PASS",
+  "correctionsMadeBeforeFinalReview": [
+    "Corrected arithmetic, binary/fixed-point, cache, graph/tree, set/relation, and Java trace references found during authoring review.",
+    "Replaced shallow cross-unit variants in six CO/R&L lecture units with unit-specific problems.",
+    "Reclassified every merely hard item that had initially been labelled Exam-level, then authored and reviewed 30 genuinely multi-stage Exam-level problems: exactly 10 per subject.",
+    "Confirmed all 168 Java references by compiling and running their checked-in programs under Java 21.",
+    "Preserved technical tokens in every localized exercise string; unsafe translations use the documented English fallback."
+  ],
+  "samples": [
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-01-01",
+      "unitId": "CO_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-02-02",
+      "unitId": "CO_LEC_02",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-04-01",
+      "unitId": "CO_LEC_04",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-05-02",
+      "unitId": "CO_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-07-01",
+      "unitId": "CO_LEC_07",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-08-02",
+      "unitId": "CO_LEC_08",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-10-01",
+      "unitId": "CO_LEC_10",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-11-02",
+      "unitId": "CO_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-13-01",
+      "unitId": "CO_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-co-lec-14-02",
+      "unitId": "CO_LEC_14",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-01-03",
+      "unitId": "CO_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-02-06",
+      "unitId": "CO_LEC_02",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-04-03",
+      "unitId": "CO_LEC_04",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-05-06",
+      "unitId": "CO_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-07-03",
+      "unitId": "CO_LEC_07",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-08-06",
+      "unitId": "CO_LEC_08",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-10-03",
+      "unitId": "CO_LEC_10",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-11-06",
+      "unitId": "CO_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-13-03",
+      "unitId": "CO_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-co-lec-14-05",
+      "unitId": "CO_LEC_14",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-01-07",
+      "unitId": "CO_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-02-08",
+      "unitId": "CO_LEC_02",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-04-07",
+      "unitId": "CO_LEC_04",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-06-07",
+      "unitId": "CO_LEC_06",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-07-08",
+      "unitId": "CO_LEC_07",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-09-07",
+      "unitId": "CO_LEC_09",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-10-08",
+      "unitId": "CO_LEC_10",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-12-08",
+      "unitId": "CO_LEC_12",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-14-07",
+      "unitId": "CO_LEC_14",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1400_CO",
+      "subject": "Computer Organisation",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-co-lec-15-08",
+      "unitId": "CO_LEC_15",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-00-01",
+      "unitId": "RL_LEC_00",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-01-02",
+      "unitId": "RL_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-03-01",
+      "unitId": "RL_LEC_03",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-05-01",
+      "unitId": "RL_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-06-02",
+      "unitId": "RL_LEC_06",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-08-02",
+      "unitId": "RL_LEC_08",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-10-01",
+      "unitId": "RL_LEC_10",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-11-02",
+      "unitId": "RL_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-13-02",
+      "unitId": "RL_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-rl-lec-15-01",
+      "unitId": "RL_LEC_15",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-00-03",
+      "unitId": "RL_LEC_00",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-01-07",
+      "unitId": "RL_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-03-05",
+      "unitId": "RL_LEC_03",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-05-03",
+      "unitId": "RL_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-06-07",
+      "unitId": "RL_LEC_06",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-08-06",
+      "unitId": "RL_LEC_08",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-10-04",
+      "unitId": "RL_LEC_10",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-11-08",
+      "unitId": "RL_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-13-05",
+      "unitId": "RL_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-rl-lec-15-04",
+      "unitId": "RL_LEC_15",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-00-07",
+      "unitId": "RL_LEC_00",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-02-07",
+      "unitId": "RL_LEC_02",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-03-08",
+      "unitId": "RL_LEC_03",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-05-08",
+      "unitId": "RL_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-07-08",
+      "unitId": "RL_LEC_07",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-09-07",
+      "unitId": "RL_LEC_09",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-11-07",
+      "unitId": "RL_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-13-07",
+      "unitId": "RL_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-14-08",
+      "unitId": "RL_LEC_14",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1300_RL",
+      "subject": "Reasoning and Logic",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-rl-lec-16-08",
+      "unitId": "RL_LEC_16",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-01-01",
+      "unitId": "IP_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-03-01",
+      "unitId": "IP_LEC_03",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-05-01",
+      "unitId": "IP_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-07-01",
+      "unitId": "IP_LEC_07",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-09-02",
+      "unitId": "IP_LEC_09",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-11-02",
+      "unitId": "IP_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-13-02",
+      "unitId": "IP_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-15-03",
+      "unitId": "IP_LEC_15",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-17-03",
+      "unitId": "IP_LEC_17",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Medium",
+      "exerciseId": "ds.practice.advanced-ip-lec-19-03",
+      "unitId": "IP_LEC_19",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-01-04",
+      "unitId": "IP_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-03-04",
+      "unitId": "IP_LEC_03",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-05-05",
+      "unitId": "IP_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-07-05",
+      "unitId": "IP_LEC_07",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-09-06",
+      "unitId": "IP_LEC_09",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-11-06",
+      "unitId": "IP_LEC_11",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-13-07",
+      "unitId": "IP_LEC_13",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-15-07",
+      "unitId": "IP_LEC_15",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-17-08",
+      "unitId": "IP_LEC_17",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Hard",
+      "exerciseId": "ds.practice.advanced-ip-lec-19-08",
+      "unitId": "IP_LEC_19",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-01-07",
+      "unitId": "IP_LEC_01",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-03-08",
+      "unitId": "IP_LEC_03",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-05-08",
+      "unitId": "IP_LEC_05",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-08-07",
+      "unitId": "IP_LEC_08",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-10-07",
+      "unitId": "IP_LEC_10",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-12-08",
+      "unitId": "IP_LEC_12",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-14-08",
+      "unitId": "IP_LEC_14",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-17-07",
+      "unitId": "IP_LEC_17",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-19-07",
+      "unitId": "IP_LEC_19",
+      "result": "PASS"
+    },
+    {
+      "subjectId": "CSE1100_IP",
+      "subject": "Introduction to Programming",
+      "difficulty": "Exam-level",
+      "exerciseId": "ds.practice.advanced-ip-lec-21-08",
+      "unitId": "IP_LEC_21",
+      "result": "PASS"
+    }
+  ]
+}

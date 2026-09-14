@@ -1,0 +1,847 @@
+{
+  "jdk": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)",
+  "boundary": "Only checked-in authored fixtures run. Learner Java is never executed.",
+  "count": 168,
+  "results": [
+    {
+      "id": "ds.practice.advanced-ip-lec-01-01",
+      "result": "PASS",
+      "stdout": "127:14\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-02",
+      "result": "PASS",
+      "stdout": "-32536\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-03",
+      "result": "PASS",
+      "stdout": "6.5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-04",
+      "result": "PASS",
+      "stdout": "6:10\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-05",
+      "result": "PASS",
+      "stdout": "D:68\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-06",
+      "result": "PASS",
+      "stdout": "5411\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-07",
+      "result": "PASS",
+      "stdout": "-74:13:48\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-01-08",
+      "result": "PASS",
+      "stdout": "5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-01",
+      "result": "PASS",
+      "stdout": "3:false\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-02",
+      "result": "PASS",
+      "stdout": "27\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-03",
+      "result": "PASS",
+      "stdout": "6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-04",
+      "result": "PASS",
+      "stdout": "6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-05",
+      "result": "PASS",
+      "stdout": "1:6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-06",
+      "result": "PASS",
+      "stdout": "5:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-07",
+      "result": "PASS",
+      "stdout": "10\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-02-08",
+      "result": "PASS",
+      "stdout": "10\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-01",
+      "result": "PASS",
+      "stdout": "11:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-02",
+      "result": "PASS",
+      "stdout": "7:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-03",
+      "result": "PASS",
+      "stdout": "8\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-04",
+      "result": "PASS",
+      "stdout": "10:6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-05",
+      "result": "PASS",
+      "stdout": "9:7:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-06",
+      "result": "PASS",
+      "stdout": "17\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-07",
+      "result": "PASS",
+      "stdout": "go:go!\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-03-08",
+      "result": "PASS",
+      "stdout": "11:4:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-01",
+      "result": "PASS",
+      "stdout": "4:1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-02",
+      "result": "PASS",
+      "stdout": "7:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-03",
+      "result": "PASS",
+      "stdout": "3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-04",
+      "result": "PASS",
+      "stdout": "2:1:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-05",
+      "result": "PASS",
+      "stdout": "12\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-06",
+      "result": "PASS",
+      "stdout": "5:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-07",
+      "result": "PASS",
+      "stdout": "12:1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-04-08",
+      "result": "PASS",
+      "stdout": "5:8\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-01",
+      "result": "PASS",
+      "stdout": "[1, 3, 6, 10]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-02",
+      "result": "PASS",
+      "stdout": "7:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-03",
+      "result": "PASS",
+      "stdout": "[0, 4, 3, 2, 1]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-04",
+      "result": "PASS",
+      "stdout": "2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-05",
+      "result": "PASS",
+      "stdout": "3:[4, 2, 6, 2, 6]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-06",
+      "result": "PASS",
+      "stdout": "[4, 1, 2, 3]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-07",
+      "result": "PASS",
+      "stdout": "11\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-05-08",
+      "result": "PASS",
+      "stdout": "-1:4\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-01",
+      "result": "PASS",
+      "stdout": "9:7:1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-02",
+      "result": "PASS",
+      "stdout": "8:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-03",
+      "result": "PASS",
+      "stdout": "2:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-04",
+      "result": "PASS",
+      "stdout": "2:[3, 2]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-05",
+      "result": "PASS",
+      "stdout": "[2, 4, 5]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-06",
+      "result": "PASS",
+      "stdout": "[1, 3]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-07",
+      "result": "PASS",
+      "stdout": "3:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-06-08",
+      "result": "PASS",
+      "stdout": "3:1:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-01",
+      "result": "PASS",
+      "stdout": "21\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-02",
+      "result": "PASS",
+      "stdout": "4\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-03",
+      "result": "PASS",
+      "stdout": "[a, b, aa, cc]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-04",
+      "result": "PASS",
+      "stdout": "0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-05",
+      "result": "PASS",
+      "stdout": "[a, b]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-06",
+      "result": "PASS",
+      "stdout": "8\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-07",
+      "result": "PASS",
+      "stdout": "7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-07-08",
+      "result": "PASS",
+      "stdout": "[3, 1, 2]:[1, 2, 3]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-01",
+      "result": "PASS",
+      "stdout": "12\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-02",
+      "result": "PASS",
+      "stdout": "1:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-03",
+      "result": "PASS",
+      "stdout": "0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-04",
+      "result": "PASS",
+      "stdout": "true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-05",
+      "result": "PASS",
+      "stdout": "E 10 5 \n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-06",
+      "result": "PASS",
+      "stdout": "3:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-07",
+      "result": "PASS",
+      "stdout": "2:6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-08-08",
+      "result": "PASS",
+      "stdout": "false:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-01",
+      "result": "PASS",
+      "stdout": "AB\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-02",
+      "result": "PASS",
+      "stdout": "1:2:1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-03",
+      "result": "PASS",
+      "stdout": "8\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-04",
+      "result": "PASS",
+      "stdout": "7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-05",
+      "result": "PASS",
+      "stdout": "AB:4\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-06",
+      "result": "PASS",
+      "stdout": "5:7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-07",
+      "result": "PASS",
+      "stdout": "true:true:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-09-08",
+      "result": "PASS",
+      "stdout": "B\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-01",
+      "result": "PASS",
+      "stdout": "9\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-02",
+      "result": "PASS",
+      "stdout": "A:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-03",
+      "result": "PASS",
+      "stdout": "5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-04",
+      "result": "PASS",
+      "stdout": "9\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-05",
+      "result": "PASS",
+      "stdout": "9\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-06",
+      "result": "PASS",
+      "stdout": "A:B\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-07",
+      "result": "PASS",
+      "stdout": "8:1:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-10-08",
+      "result": "PASS",
+      "stdout": "17\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-01",
+      "result": "PASS",
+      "stdout": "false:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-02",
+      "result": "PASS",
+      "stdout": "1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-03",
+      "result": "PASS",
+      "stdout": "true:false\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-04",
+      "result": "PASS",
+      "stdout": "false\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-05",
+      "result": "PASS",
+      "stdout": "false:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-06",
+      "result": "PASS",
+      "stdout": "true:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-07",
+      "result": "PASS",
+      "stdout": "1:b\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-11-08",
+      "result": "PASS",
+      "stdout": "false:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-01",
+      "result": "PASS",
+      "stdout": "F:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-02",
+      "result": "PASS",
+      "stdout": "5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-03",
+      "result": "PASS",
+      "stdout": "IF\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-04",
+      "result": "PASS",
+      "stdout": "FC\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-05",
+      "result": "PASS",
+      "stdout": "B21"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-06",
+      "result": "PASS",
+      "stdout": "body:1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-07",
+      "result": "PASS",
+      "stdout": "arithmetic\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-12-08",
+      "result": "PASS",
+      "stdout": "F:B:C\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-01",
+      "result": "PASS",
+      "stdout": "3 6 \n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-02",
+      "result": "PASS",
+      "stdout": "2.0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-03",
+      "result": "PASS",
+      "stdout": "3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-04",
+      "result": "PASS",
+      "stdout": "false\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-05",
+      "result": "PASS",
+      "stdout": "4\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-06",
+      "result": "PASS",
+      "stdout": "a\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-07",
+      "result": "PASS",
+      "stdout": "6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-13-08",
+      "result": "PASS",
+      "stdout": "true:[1, 2, 3]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-01",
+      "result": "PASS",
+      "stdout": "1a2bb1c\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-02",
+      "result": "PASS",
+      "stdout": "8\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-03",
+      "result": "PASS",
+      "stdout": "chit:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-04",
+      "result": "PASS",
+      "stdout": "6.0:4.0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-05",
+      "result": "PASS",
+      "stdout": "[a, b, c]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-06",
+      "result": "PASS",
+      "stdout": "Integer:x\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-07",
+      "result": "PASS",
+      "stdout": "ab:abc:xbc\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-14-08",
+      "result": "PASS",
+      "stdout": "ccc|bb|a:6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-01",
+      "result": "PASS",
+      "stdout": "8\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-02",
+      "result": "PASS",
+      "stdout": "13\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-03",
+      "result": "PASS",
+      "stdout": "ab|c"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-04",
+      "result": "PASS",
+      "stdout": "Ada:14:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-05",
+      "result": "PASS",
+      "stdout": "8 ? ? \n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-06",
+      "result": "PASS",
+      "stdout": "[b, a]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-07",
+      "result": "PASS",
+      "stdout": "[0023:  2.5]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-15-08",
+      "result": "PASS",
+      "stdout": "4:[a, b, , ]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-01",
+      "result": "PASS",
+      "stdout": "258:true:0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-02",
+      "result": "PASS",
+      "stdout": "233:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-03",
+      "result": "PASS",
+      "stdout": "a/c:2\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-04",
+      "result": "PASS",
+      "stdout": "[1, 2, 3, 4, 5]:0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-05",
+      "result": "PASS",
+      "stdout": "455\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-06",
+      "result": "PASS",
+      "stdout": "3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-07",
+      "result": "PASS",
+      "stdout": "3:0:9:7:0\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-16-08",
+      "result": "PASS",
+      "stdout": "a:b:-1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-01",
+      "result": "PASS",
+      "stdout": "[6, 12]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-02",
+      "result": "PASS",
+      "stdout": "6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-03",
+      "result": "PASS",
+      "stdout": "true:4\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-04",
+      "result": "PASS",
+      "stdout": "24\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-05",
+      "result": "PASS",
+      "stdout": "43\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-06",
+      "result": "PASS",
+      "stdout": "{1=2, 2=2, 3=1}\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-07",
+      "result": "PASS",
+      "stdout": "38\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-17-08",
+      "result": "PASS",
+      "stdout": "9:12\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-01",
+      "result": "PASS",
+      "stdout": "6\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-02",
+      "result": "PASS",
+      "stdout": "1:[a]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-03",
+      "result": "PASS",
+      "stdout": "true:false:3\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-04",
+      "result": "PASS",
+      "stdout": "10\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-05",
+      "result": "PASS",
+      "stdout": "1\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-06",
+      "result": "PASS",
+      "stdout": "Ada:true\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-07",
+      "result": "PASS",
+      "stdout": "9\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-18-08",
+      "result": "PASS",
+      "stdout": "7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-01",
+      "result": "PASS",
+      "stdout": "12:12\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-02",
+      "result": "PASS",
+      "stdout": "work\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-03",
+      "result": "PASS",
+      "stdout": "true:1:P[x=1, y=2]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-04",
+      "result": "PASS",
+      "stdout": "2:ArrayList\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-05",
+      "result": "PASS",
+      "stdout": "N\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-06",
+      "result": "PASS",
+      "stdout": "10\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-07",
+      "result": "PASS",
+      "stdout": "16\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-19-08",
+      "result": "PASS",
+      "stdout": "[1, 4, 9]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-01",
+      "result": "PASS",
+      "stdout": "7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-02",
+      "result": "PASS",
+      "stdout": "7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-03",
+      "result": "PASS",
+      "stdout": "2000\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-04",
+      "result": "PASS",
+      "stdout": "7\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-05",
+      "result": "PASS",
+      "stdout": "42\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-06",
+      "result": "PASS",
+      "stdout": "100\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-07",
+      "result": "PASS",
+      "stdout": "9\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-20-08",
+      "result": "PASS",
+      "stdout": "12\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-01",
+      "result": "PASS",
+      "stdout": "{a=6, b=3}\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-02",
+      "result": "PASS",
+      "stdout": "11\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-03",
+      "result": "PASS",
+      "stdout": "10 E E \n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-04",
+      "result": "PASS",
+      "stdout": "[4, 2, 2, 4]\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-05",
+      "result": "PASS",
+      "stdout": "1:5\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-06",
+      "result": "PASS",
+      "stdout": "12\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-07",
+      "result": "PASS",
+      "stdout": "{a=6, b=6}\n"
+    },
+    {
+      "id": "ds.practice.advanced-ip-lec-21-08",
+      "result": "PASS",
+      "stdout": "{A=4, C=4}:10\n"
+    }
+  ]
+}
