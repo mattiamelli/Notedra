@@ -9,6 +9,7 @@ import { LearningProvider } from '../src/learning/LearningProvider';
 import { LearningError, emptyBackup, type LoadedState } from '../src/learning/contracts';
 import { allExercises, catalog, exercisePath, attemptPath } from '../src/practice/catalog';
 import { PracticeService } from '../src/practice/service';
+import {difficultyCategory} from '../src/practice/difficulty';
 import { repository } from './helpers/learning';
 import type { StudentRepository } from '../src/learning/repository';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
@@ -22,6 +23,8 @@ async function settleRoutes(){const loading=()=>[...container.querySelectorAll('
 async function settle(){await act(async()=>{await new Promise(resolve=>setTimeout(resolve,30));});await settleRoutes();}
 async function load(repo:StudentRepository){let state!:LoadedState;await act(async()=>{state=await repo.load();});return state;}
 async function mount(repo:StudentRepository,path='/practice'){await act(async()=>root.render(<MemoryRouter initialEntries={[path]}><LearningProvider createRepository={()=>repo}><AppRoutes/></LearningProvider></MemoryRouter>));await settle();}
+function select(label:string){const field=[...container.querySelectorAll('label')].find(item=>item.childNodes[0]?.textContent===label);expect(field,label).toBeDefined();return field!.querySelector('select')!;}
+async function choose(label:string,value:string){const control=select(label);await act(async()=>{control.value=value;control.dispatchEvent(new Event('change',{bubbles:true}));});}
 function button(name:string){const found=[...container.querySelectorAll('button')].find(item=>item.textContent===name);expect(found,name).toBeDefined();return found!;}
 async function click(name:string){await act(async()=>button(name).click());await settle();}
 async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>{await new Promise(resolve=>setTimeout(resolve,0));});expect(container.querySelector('.ds-practice-answer input')).not.toBeNull();});const input=container.querySelector<HTMLInputElement>('.ds-practice-answer input')!;await act(async()=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));});}
@@ -31,6 +34,20 @@ describe('shared practice UI',()=>{
     const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);expect(allExercises.every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
     const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.filter(e=>e.subjectId==='CSE1300_RL').length);expect((await load(repo)).data.attempts).toEqual([]);
   },15_000);
+  it('renders difficulty options and combines course and difficulty filters',async()=>{
+    const repo=repository();await mount(repo);
+    expect([...select('Difficulty').options].map(option=>option.textContent)).toEqual(['All difficulties','Low','Medium','High','Exam level']);
+    await choose('Course','CSE1300_RL');await choose('Difficulty','medium');
+    const expected=allExercises.filter(exercise=>exercise.subjectId==='CSE1300_RL'&&difficultyCategory(exercise)==='medium');
+    expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(expected.length);expect(container.textContent).toContain(`${expected.length} authored exercises`);
+    expect(expected.every(exercise=>container.querySelector(`a[href="${exercisePath(exercise)}"]`))).toBe(true);
+    await choose('Course','');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.filter(exercise=>difficultyCategory(exercise)==='medium').length);
+    await choose('Difficulty','');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);expect((await load(repo)).data.attempts).toEqual([]);
+  });
+  it('shows a useful empty state for filters with no matching topic',async()=>{
+    await mount(repository(),'/practice?subject=CSE1400_CO&topic=CSE1100_IP_T01&difficulty=exam');
+    expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(0);expect(container.querySelector('[role=status]')?.textContent).toContain('No authored exercises match this filter.');expect(container.textContent).toContain('Try changing one or both filters.');
+  });
   it.each([catalog[0],catalog[2],catalog[4]])('completes the $subjectId flow without exposing a solution early',async exercise=>{
     const repo=repository();await mount(repo,exercisePath(exercise));expect(container.textContent).not.toContain('Reference answer');await click('Start exercise');
     if(exercise.task.kind==='radix')await fill('00101101');

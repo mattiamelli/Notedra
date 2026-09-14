@@ -9,6 +9,7 @@ import {LANGUAGE_STORAGE_KEY,LanguageProvider,readLanguage,translate} from '../s
 import {en,languages,translations} from '../src/i18n/messages';
 import {allExercises} from '../src/practice/catalog';
 import {MasteryCard} from '../src/progress/IndexCard';
+import {PracticePage} from '../src/practice/PracticePage';
 import itContent from '../public/i18n-content/it.json';
 import esContent from '../public/i18n-content/es.json';
 import frContent from '../public/i18n-content/fr.json';
@@ -24,6 +25,13 @@ describe('centralized interface languages',()=>{
     expect(languages).toEqual(['en','it','es','fr','de']);
     const keys=Object.keys(en).sort();
     for(const language of languages)expect(Object.keys(translations[language]).sort(),language).toEqual(keys);
+  });
+  it.each([
+    ['en',['All difficulties','Low','Medium','High','Exam level']],['it',['Tutte le difficoltà','Bassa','Media','Alta','Livello esame']],['es',['Todas las dificultades','Baja','Media','Alta','Nivel de examen']],['fr',['Toutes les difficultés','Faible','Moyenne','Élevée','Niveau examen']],['de',['Alle Schwierigkeitsgrade','Niedrig','Mittel','Hoch','Prüfungsniveau']],
+  ] as const)('localizes every difficulty option in %s',async(language,labels)=>{
+    localStorage.setItem(LANGUAGE_STORAGE_KEY,language);await act(async()=>root.render(<LanguageProvider key={language}><MemoryRouter><PracticePage/></MemoryRouter></LanguageProvider>));
+    const select=[...host.querySelectorAll('label')].find(label=>label.querySelector('select')?.options.length===5)!.querySelector('select')!;
+    expect([...select.options].map(option=>option.textContent)).toEqual([...labels]);
   });
   it('uses English as the safe default and interpolates stable messages',()=>{
     expect(readLanguage({getItem:()=>null})).toBe('en');

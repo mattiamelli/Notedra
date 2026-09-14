@@ -259,7 +259,7 @@
   },
   "src/practice/PracticePage.tsx": {
     "before": "85769264eaed472fc59d2c973a311f3dd0849759bebc78dc1fd6f3fe45db1f56",
-    "after": "e9142caee0efb7b2f7bb265a933071f808621a2f87c0a6f2107ee3d0f4791a1d",
+    "after": "525d0236354db82f49a2f406055903b2d2904c945583b77b3491f018af9a7f9f",
     "original": "9d2a746bfeb5db88fef68382f198f331c1f5878c399f285a6ddbfe56894b6d12"
   },
   "tests/enrichment-ui.test.tsx": {
@@ -268,7 +268,7 @@
   },
   "tests/practice-ui.test.tsx": {
     "before": "3f7f6d300c42919836b679491797c2caba94e661acc75e545c4db26ee12bbecf",
-    "after": "772a1138c04d01ef9d2464c1a8aa8d3d0f14d322fa19b728fe4fac76703d7605"
+    "after": "1d4b5e0662b2adf58b2d65ad595ee9a502ab03c19326e4f0661d33dc2643bb13"
   },
   "src/exams/ExamsPage.tsx": {
     "before": "c5eb7b5e59fc5c7a1f3f14c3f9f67a1f44fddfb3f4e8c00e167bf0d50a3e16c3",
@@ -581,7 +581,7 @@
   },
   "src/practice/practice.css": {
     "before": "b91ea14299402805a2732e41446120d7b71b63ef865578dcada52e61783bbb67",
-    "after": "dd47137fedbddbadceb9eae1bae69c46607ef13f1d64674dd399dc98e4a178b0"
+    "after": "d958ada698677ae7bdb10bd6174f6218329f7b4d84b001478ab3a8276f693981"
   },
   "src/topic-study/content.ts": {
     "before": "8cec1cd3c216564026889abfa0de9417da91420f131bc4bbd88ee8ce97007198",
@@ -605,7 +605,7 @@
   },
   "src/i18n/messages.ts": {
     "before": "6b92dbaab57e5c275dd760b95c54ffb79489202f34c90772ca1e567f1289fa36",
-    "after": "4132ddffb7eaf09da0c370db4976d28bb70e6eb05723ef5035dbaf29dd6e1b5f"
+    "after": "29a91bd0151dba703588283e32ae43c867d5bfe2cdc3efc540b2e9a6d70c9b6c"
   },
   "public/i18n-content/de.json": {
     "before": "81fba327dc4162a5f17c6a08817438b9725f283611d1cf338d1149dba25753c6",
