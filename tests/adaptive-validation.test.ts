@@ -5,7 +5,7 @@ import {storageMigrationHash} from '../scripts/storage-migration-preservation';
 import type {IPBundleChunk} from '../scripts/ip-bundle';
 import actions from '../src/adaptive/actions.json';
 import {advancedExercises} from '../src/advanced/catalog';
-it('dedicated gates validate migration versions, retained bindings, the advanced bank and canonical action projection',()=>{expect(validateMistakes()).toEqual({schema:3,db:3,atomicItems:249+advancedExercises.length});expect(validateAdaptive().skills).toBe(147);});
+it('dedicated gates validate migration versions, retained bindings, the advanced bank and canonical action projection',()=>{expect(validateMistakes()).toEqual({schema:3,db:3,atomicItems:257+advancedExercises.length});expect(validateAdaptive().skills).toBe(147);});
 it.each(['skillIds','topicId','subjectId','id','minutes','to','kind'])('rejects corrupted %s in the action projection',field=>{const bad=structuredClone(actions);Object.assign(bad[0],{[field]:'unsupported'});expect(()=>validateAdaptive(bad)).toThrow();});
 it('rejects missing, duplicate and reordered action records',()=>{expect(()=>validateAdaptive(actions.slice(1))).toThrow();expect(()=>validateAdaptive([...actions,actions[0]])).toThrow();expect(()=>validateAdaptive([...actions].reverse())).toThrow();});
 it('storage exceptions bind exact original bytes and never exempt unrelated files',()=>{expect(storageMigrationHash('src/engine/cpu.ts','original')).toBe('original');expect(()=>storageMigrationHash('src/learning/contracts.ts','wrong')).toThrow('Invalid storage migration baseline');});

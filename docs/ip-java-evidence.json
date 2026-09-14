@@ -1,6 +1,6 @@
 {
   "jdk": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)",
-  "boundary": "Only checked-in original DelftStudy fixtures compiled/run during development. No learner Java execution. Race guarantees are reasoned independently, never inferred from a sample execution.",
+  "boundary": "Only checked-in original Notedra fixtures compiled/run during development. No learner Java execution. Race guarantees are reasoned independently, never inferred from a sample execution.",
   "results": [
     {
       "id": "ds.practice.ip-division",
@@ -41,7 +41,7 @@
       "result": "PASS",
       "kind": "RUN",
       "stdout": "8",
-      "reasoning": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8."
+      "reasoning": "The method parameter x and main's local x are separate variables in different method scopes. The argument value 3 is copied into the parameter. adjust returns 5; main's x remains 3, so the program prints 8."
     },
     {
       "id": "ds.practice.ip-pass-value",

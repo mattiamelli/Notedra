@@ -1,0 +1,490 @@
+[
+  {
+    "id": "ds.practice.assembly-trace-one-call",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Trace one call and caller arithmetic",
+    "prompt": "Start with %rsp=0x1000 and %rbp=0x2000. What are %rax and %rsp immediately after `addq $3, %rax` in main?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_01_SYNTAX_REGS",
+    "skillId": "CO_SK06_01_ASM_READ",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    movq $4, %rdi\n    call bump\n    addq $3, %rax\nbump:\n    movq %rdi, %rax\n    addq $2, %rax\n    ret",
+      "fields": [
+        {
+          "id": "rax",
+          "label": "%rax",
+          "target": "rax"
+        },
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        }
+      ],
+      "initialRegisters": {
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "addq $3, %rax",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "9,4096"
+    },
+    "explanation": "The call temporarily pushes one return address. bump copies 4 to %rax and adds 2; ret restores %rsp to 0x1000. The caller then adds 3, so the checkpoint holds %rax=9 and %rsp=0x1000.",
+    "difficulty": "Medium"
+  },
+  {
+    "id": "ds.practice.assembly-trace-frame-argument",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Read an argument through a stack frame",
+    "prompt": "Start with %rsp=0x1000 and %rbp=0x2000. What are %rax, %rsp and %rbp immediately after `addq $8, %rsp` in main?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    pushq $7\n    call double_arg\n    addq $8, %rsp\ndouble_arg:\n    pushq %rbp\n    movq %rsp, %rbp\n    movq 16(%rbp), %rax\n    imulq $2, %rax\n    movq %rbp, %rsp\n    popq %rbp\n    ret",
+      "fields": [
+        {
+          "id": "rax",
+          "label": "%rax",
+          "target": "rax"
+        },
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        },
+        {
+          "id": "rbp",
+          "label": "%rbp",
+          "target": "rbp"
+        }
+      ],
+      "initialRegisters": {
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "addq $8, %rsp",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "14,4096,8192"
+    },
+    "explanation": "The caller's 7 is at 16(%rbp) after the return address and saved %rbp. The callee doubles it to 14, restores the frame, and ret removes the return address. The caller cleanup removes the argument, restoring both pointers to their initial values.",
+    "difficulty": "Medium"
+  },
+  {
+    "id": "ds.practice.assembly-trace-call-transfer",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Capture the state after call transfers control",
+    "prompt": "Start with %rdi=9, %rsp=0x1000 and %rbp=0x2000. What are %rsp and %rdi immediately AFTER `call keep`, before keep's first instruction?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    movq $9, %rdi\n    call keep\n    addq $1, %rax\nkeep:\n    movq %rdi, %rax\n    ret",
+      "fields": [
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        },
+        {
+          "id": "rdi",
+          "label": "%rdi",
+          "target": "rdi"
+        }
+      ],
+      "initialRegisters": {
+        "rdi": "9",
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "call keep",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4088,9"
+    },
+    "explanation": "call pushes one 8-byte return address, moving %rsp from 0x1000 to 0x0ff8, then transfers control. It does not change %rdi, so %rdi remains 9 before the callee begins.",
+    "difficulty": "Medium-high"
+  },
+  {
+    "id": "ds.practice.assembly-trace-stack-slot",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Locate a saved value in the active frame",
+    "prompt": "Start with %rdi=11, %rsp=0x1000 and %rbp=0x2000. What are %rsp, %rbp and the 64-bit value at Memory[%rsp] immediately after `pushq %rdi`?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    call frame\n    addq $1, %rax\nframe:\n    pushq %rbp\n    movq %rsp, %rbp\n    pushq %rdi\n    movq %rdi, %rax\n    movq %rbp, %rsp\n    popq %rbp\n    ret",
+      "fields": [
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        },
+        {
+          "id": "rbp",
+          "label": "%rbp",
+          "target": "rbp"
+        },
+        {
+          "id": "slot",
+          "label": "Memory[%rsp]",
+          "target": "memory-rsp"
+        }
+      ],
+      "initialRegisters": {
+        "rdi": "11",
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "pushq %rdi",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "4072,4080,11"
+    },
+    "explanation": "call places the return address at 0x0ff8. Saving %rbp moves %rsp to 0x0ff0, which becomes the new frame pointer. Pushing %rdi then moves %rsp to 0x0fe8 and stores 11 in that cell.",
+    "difficulty": "Medium-high"
+  },
+  {
+    "id": "ds.practice.assembly-trace-sequential-calls",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Combine two sequential calls",
+    "prompt": "Start with %rsp=0x1000 and %rbp=0x2000. What are %rax, %rdi and %rsp immediately after `addq $4, %rax` in main?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_01_SYNTAX_REGS",
+    "skillId": "CO_SK06_01_ASM_READ",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    movq $2, %rax\n    movq $3, %rdi\n    call add_arg\n    movq %rax, %rdi\n    call triple\n    addq $4, %rax\nadd_arg:\n    addq %rdi, %rax\n    ret\ntriple:\n    imulq $3, %rdi\n    movq %rdi, %rax\n    ret",
+      "fields": [
+        {
+          "id": "rax",
+          "label": "%rax",
+          "target": "rax"
+        },
+        {
+          "id": "rdi",
+          "label": "%rdi",
+          "target": "rdi"
+        },
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        }
+      ],
+      "initialRegisters": {
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "addq $4, %rax",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "19,15,4096"
+    },
+    "explanation": "The first call adds 3 to 2, producing 5. main copies 5 into %rdi; the second call triples it to 15 and copies it to %rax. Both returns restore %rsp, and the final caller addition produces 19.",
+    "difficulty": "Hard"
+  },
+  {
+    "id": "ds.practice.assembly-trace-nested-frame",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Trace a nested call through one saved argument",
+    "prompt": "Start with %rax=4, %rdi=6, %rsp=0x1000 and %rbp=0x2000. What are %rax, %rdi, %rsp and %rbp immediately after `addq $2, %rax` in main?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    movq $4, %rax\n    movq $6, %rdi\n    call outer\n    addq $2, %rax\nouter:\n    pushq %rbp\n    movq %rsp, %rbp\n    pushq %rdi\n    call inner\n    popq %rdi\n    addq %rdi, %rax\n    movq %rbp, %rsp\n    popq %rbp\n    ret\ninner:\n    imulq $2, %rax\n    ret",
+      "fields": [
+        {
+          "id": "rax",
+          "label": "%rax",
+          "target": "rax"
+        },
+        {
+          "id": "rdi",
+          "label": "%rdi",
+          "target": "rdi"
+        },
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        },
+        {
+          "id": "rbp",
+          "label": "%rbp",
+          "target": "rbp"
+        }
+      ],
+      "initialRegisters": {
+        "rax": "4",
+        "rdi": "6",
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "addq $2, %rax",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "16,6,4096,8192"
+    },
+    "explanation": "inner doubles %rax from 4 to 8. outer restores the saved argument 6 and adds it, producing 14, then restores %rsp and %rbp. After outer returns, main adds 2, producing 16 with the original stack and frame pointers.",
+    "difficulty": "Hard"
+  },
+  {
+    "id": "ds.practice.assembly-trace-owner-benchmark",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Resolve nested frames and caller cleanup",
+    "prompt": "Start with %rsp=0x1000 and %rbp=0x2000. What are %rax, %rdi, %rsp and %rbp immediately after the FIRST execution of `addq $24, %rsp` in main, before execution continues into first?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    movq $4, %rax\n    pushq $11\n    pushq $6\n    pushq $3\n    movq $5, %rdi\n    call first\n    addq $24, %rsp\nfirst:\n    pushq %rbp\n    movq %rsp, %rbp\n    pushq %rax\n    pushq %rdi\n    movq 16(%rbp), %rax\n    addq 24(%rbp), %rax\n    movq -16(%rbp), %rdi\n    addq 32(%rbp), %rdi\n    call second\n    addq -8(%rbp), %rax\n    addq -16(%rbp), %rdi\n    movq %rbp, %rsp\n    popq %rbp\n    ret\nsecond:\n    pushq %rbp\n    movq %rsp, %rbp\n    pushq %rdi\n    imulq $2, %rax\n    subq $3, %rdi\n    addq -8(%rbp), %rax\n    movq %rbp, %rsp\n    popq %rbp\n    ret",
+      "fields": [
+        {
+          "id": "rax",
+          "label": "%rax",
+          "target": "rax"
+        },
+        {
+          "id": "rdi",
+          "label": "%rdi",
+          "target": "rdi"
+        },
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        },
+        {
+          "id": "rbp",
+          "label": "%rbp",
+          "target": "rbp"
+        }
+      ],
+      "initialRegisters": {
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "addq $24, %rsp",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "38,18,4096,8192"
+    },
+    "explanation": "The caller arguments occupy 0x0ff8, 0x0ff0 and 0x0fe8; call first pushes its return at 0x0fe0. first and second create nested frames and restore them. After second, %rax=34 and %rdi=13; first adds its saved 4 and 5, producing 38 and 18. Returning and removing 24 argument bytes restores %rsp=0x1000 and %rbp=0x2000.",
+    "difficulty": "High"
+  },
+  {
+    "id": "ds.practice.assembly-trace-three-calls",
+    "version": "1",
+    "subjectId": "CSE1400_CO",
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "authorship": "AUTHORED_PRACTICE",
+    "source": {
+      "kind": "LECTURE",
+      "documentId": "CO_LEC_02",
+      "filename": "CO Lecture 2 - Assembly.pdf",
+      "locator": "PDF_PAGES_1-64",
+      "precision": "DOCUMENT_RANGE"
+    },
+    "grader": {
+      "id": "assembly-trace-exact",
+      "version": "1"
+    },
+    "title": "Track three calls across nested and sequential phases",
+    "prompt": "Start with %rax=1, %rdi=2, %rsp=0x1000 and %rbp=0x2000. What are %rax, %rdi, %rsi, %rsp and %rbp immediately after `addq %rsi, %rax` in main?",
+    "rules": "Start immediately before main's first instruction. Registers use 64-bit values. Enter every requested value as decimal or 0x-prefixed hexadecimal. Stop immediately AFTER the named instruction executes; do not continue into the following label.",
+    "subtopicId": "CO_ST06_02_STACK_CALL",
+    "skillId": "CO_SK06_03_STACK_TRACE",
+    "task": {
+      "kind": "assembly-trace",
+      "code": "main:\n    movq $1, %rax\n    movq $2, %rdi\n    call first\n    movq %rax, %rsi\n    call third\n    addq %rsi, %rax\nfirst:\n    pushq %rbp\n    movq %rsp, %rbp\n    call second\n    addq $3, %rax\n    movq %rbp, %rsp\n    popq %rbp\n    ret\nsecond:\n    imulq $2, %rax\n    addq %rdi, %rax\n    ret\nthird:\n    imulq $3, %rax\n    ret",
+      "fields": [
+        {
+          "id": "rax",
+          "label": "%rax",
+          "target": "rax"
+        },
+        {
+          "id": "rdi",
+          "label": "%rdi",
+          "target": "rdi"
+        },
+        {
+          "id": "rsi",
+          "label": "%rsi",
+          "target": "rsi"
+        },
+        {
+          "id": "rsp",
+          "label": "%rsp",
+          "target": "rsp"
+        },
+        {
+          "id": "rbp",
+          "label": "%rbp",
+          "target": "rbp"
+        }
+      ],
+      "initialRegisters": {
+        "rax": "1",
+        "rdi": "2",
+        "rsp": "0x1000",
+        "rbp": "0x2000"
+      },
+      "checkpoint": {
+        "instruction": "addq %rsi, %rax",
+        "occurrence": 1,
+        "phase": "after"
+      }
+    },
+    "reference": {
+      "kind": "text",
+      "value": "28,2,7,4096,8192"
+    },
+    "explanation": "The nested second call changes %rax from 1 to 4; first adds 3, yielding 7, and restores its frame. main saves 7 in %rsi. third triples %rax to 21, then the checkpoint addition uses the saved 7 to produce 28. Three calls execute and every return restores the original stack and frame pointers.",
+    "difficulty": "Very high"
+  }
+]

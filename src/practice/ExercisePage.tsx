@@ -23,5 +23,5 @@ export function ExercisePage() {
     <p>{t('practice.newAttempt')}</p>
     {error&&<p className="ds-storage-error" role="alert">{error}</p>}
     <button className="ds-button" disabled={busy||!learning?.snapshot||learning.phase==='error'||learning.phase==='busy'} onClick={()=>void start()}>{t(busy?'practice.creating':'practice.start')}</button>
-    {!learning?.snapshot&&<p role="status">{learning?.message??'Student storage is not connected.'}</p>}</>;
+    {!learning?.snapshot&&<p role="status">{learning?.message??t('mistakes.storage')}</p>}</>;
 }

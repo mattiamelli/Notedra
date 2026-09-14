@@ -10,6 +10,8 @@ import {record} from './helpers/adaptive';
 import {useEvidence} from '../src/adaptive/useEvidence';
 import {useProgress} from '../src/progress/useProgress';
 import DashboardInsights from '../src/pages/DashboardInsights';
+import {presentAction} from '../src/adaptive/presentation';
+import {translate} from '../src/i18n/i18n';
 vi.mock('../src/adaptive/useEvidence');
 vi.mock('../src/progress/useProgress');
 let data=emptyBackup();
@@ -40,5 +42,5 @@ it('shows the existing recommender order, reasons, durations and destinations wi
  data.attempts=[record('wrong','ds.practice.co-binary-45',{kind:'text',value:'00000000'})];
  const {host,evidence}=render();const expected=recommend(evidence,{minutes:20,subjectId:'',topicId:''});expect(expected.length).toBeGreaterThan(0);
  const rows=[...host.querySelectorAll('.ds-dashboard-plan li')];expect(rows).toHaveLength(expected.length);
- rows.forEach((row,i)=>{expect(row.textContent).toContain(expected[i].reason);expect(row.textContent).toContain(`${expected[i].minutes} min`);expect(row.querySelector('a')!.getAttribute('href')).toBe(expected[i].to);});
+ rows.forEach((row,i)=>{const shown=presentAction(expected[i],(key,values)=>translate('en',key,values),text=>text);expect(row.textContent).toContain(shown.reason);expect(row.textContent).toContain(`${expected[i].minutes} min`);expect(row.querySelector('a')!.getAttribute('href')).toBe(expected[i].to);});
 });

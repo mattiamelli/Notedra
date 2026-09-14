@@ -33,10 +33,11 @@ describe('topic learning routes and modes',()=>{
   for(const topic of topicStudy.topics){await render(studyPath(topic,mode.id));expect(container.querySelector('h1')?.textContent).toBe(topic.name);expect(container.querySelectorAll('[role="tab"]')).toHaveLength(7);expect(container.querySelector('[aria-selected="true"]')?.textContent).toBe(mode.label);expect(container.querySelectorAll('main')).toHaveLength(1);}
  },30_000);
  it.each(['/co/CO_T04_DATA_REP_RADIX_INTEGER/nope','/co/IP_T02_CONTROL_FLOW/learn','/ip/MISSING/flashcards','/rl/RL_T01_PROP_LOGIC/learn/extra'])('rejects invalid topic/mode %s',async path=>{await render(path);expect(container.querySelector('h1')?.textContent).toBe('Page not found');});
- it('renders canonical description, prerequisites, grouped skills and honest broad/unknown sources',async()=>{
-  const ip=pilots[2];await render(studyPath(ip));expect(container.textContent).toContain(ip.description);expect(container.querySelector('a[href="/ip/IP_T01_JAVA_BASICS"]')?.textContent).toBe('Java basics and data');
-  for(const sub of ip.subtopics){expect(container.querySelector(`[id="${sub.id}"] h3`)?.textContent).toBe(sub.name);for(const skill of sub.skills)expect(container.querySelector(`[id="${skill.id}"]`)?.textContent).toContain(skill.description);}
-  expect(container.textContent).toContain('This reference covers a broad part of the document');expect(container.textContent).toContain('An exact supporting page is not recorded');expect(container.querySelectorAll('a[href$=".pdf"]')).toHaveLength(0);expect(container.textContent).not.toMatch(/\d+%|predicted grade|exam probability/);
+ it('renders a written Overview, then canonical prerequisites and skills in Learn with honest sources',async()=>{
+  const ip=pilots[2];await render(studyPath(ip));expect(container.querySelector('.ds-overview-copy')).not.toBeNull();expect(container.querySelector(`[id="${ip.subtopics[0].id}"]`)).toBeNull();expect(container.textContent).toContain('This reference covers a broad part of the document');
+  await render(studyPath(ip,'learn'));
+  for(const sub of ip.subtopics){expect(container.querySelector(`[id="${sub.id}"]`)).not.toBeNull();for(const skill of sub.skills)expect(container.querySelector(`[id="${skill.id}"]`)).not.toBeNull();}
+  expect(container.textContent).toContain('This reference covers a broad part of the document');expect(container.querySelectorAll('a[href$=".pdf"]')).toHaveLength(0);expect(container.textContent).not.toMatch(/\d+%|predicted grade|exam probability/);await render(studyPath(ip,'mental-map'));expect(container.querySelector('a[href="/ip/IP_T01_JAVA_BASICS"]')?.textContent).toBe('Java basics and data');for(const sub of ip.subtopics){expect(container.textContent).toContain(sub.name);for(const skill of sub.skills)expect(container.textContent).toContain(skill.name);}
  });
  it('provides a canonical map and text alternative with keyboard-accessible links',async()=>{
   const t=pilots[0];await render(studyPath(t,'mental-map'));expect(container.querySelectorAll('.ds-map-node')).toHaveLength(t.subtopics.length+t.subtopics.flatMap(s=>s.skills).length);

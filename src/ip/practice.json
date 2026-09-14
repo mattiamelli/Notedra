@@ -263,7 +263,7 @@
     },
     "task": {
       "kind": "ip-fixed",
-      "code": "public class Program {\n static int adjust(int n) { if (n < 0) return 0; return n + 2; }\n public static void main(String[] args) { int x = 3; System.out.print(adjust(x) + x); }\n}",
+      "code": "public class Program {\n    static int adjust(int x) {\n        if (x < 0) {\n            return 0;\n        }\n\n        return x + 2;\n    }\n\n    public static void main(String[] args) {\n        int x = 3;\n        System.out.print(adjust(x) + x);\n    }\n}",
       "options": [
         {
           "id": "reference",
@@ -285,7 +285,7 @@
         "reference"
       ]
     },
-    "explanation": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8."
+    "explanation": "The method parameter x and main's local x are separate variables in different method scopes. The argument value 3 is copied into the parameter. adjust returns 5; main's x remains 3, so the program prints 8."
   },
   {
     "id": "ds.practice.ip-pass-value",

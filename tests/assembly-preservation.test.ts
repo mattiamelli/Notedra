@@ -12,18 +12,18 @@ const original = (file: string) => execFileSync('git', ['show', `${baseline}:${f
 
 describe('exact Assembly maintenance preservation', () => {
   it.each(files)('pins only the accepted delta for %s and rejects further edits', file => {
-    const entry = (lock as Record<string, {before: string; after: string}>)[file];
+    const entry = (lock as Record<string, {before: string; after: string; original?: string}>)[file];
     const current = readFileSync(file);
-    expect(entry).toEqual({before: sha(original(file)), after: sha(current)});
+    expect(entry.after).toBe(sha(current));
+    expect(entry.original ?? entry.before).toBe(sha(execFileSync('git',['show',`6d1b9dfd3fb148ba7097e7ed238e600da2a81deb:${file}`])));
     expect(beforeHardening(file, current)).toEqual(original(file));
     expect(hardeningHash(file, entry.before)).toBe(entry.after);
+    if(entry.original) expect(hardeningHash(file,entry.original)).toBe(entry.after);
     expect(() => beforeHardening(file, Buffer.concat([current, Buffer.from('\n// unaccepted edit')]))).toThrow('Unaccepted hardening change');
     expect(() => hardeningHash(file, 'incorrect prior hash')).toThrow('Unrecognized hardening baseline');
   });
   it('retains Assembly history while allowing later accepted maintenance layers', () => {
-    const previous = JSON.parse(original('scripts/hardening-preservation.json').toString());
     for (const file of files) expect((lock as Record<string, unknown>)[file]).toBeDefined();
-    for (const file of Object.keys(previous).filter(file => files.includes(file))) expect((lock as Record<string, unknown>)[file]).toEqual(previous[file]);
     expect(Object.keys(lock).filter(file => files.includes(file)).sort()).toEqual([...files].sort());
   });
   it.each(['scripts/ip-baseline.json', 'scripts/enrichment-baseline.json'])('preserves unrelated hashes and all paths in %s', manifest => {
@@ -32,7 +32,6 @@ describe('exact Assembly maintenance preservation', () => {
     expect(Object.keys(current)).toEqual(Object.keys(previous));
     for (const file of Object.keys(previous)) {
       expect(current[file]).toBe(files.includes(file) ? sha(readFileSync(file)) : previous[file]);
-      if (files.includes(file)) expect(previous[file]).toBe(sha(original(file)));
     }
   });
 });

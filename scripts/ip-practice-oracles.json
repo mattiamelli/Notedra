@@ -33,7 +33,7 @@
     "exerciseId": "ds.practice.ip-method-return",
     "category": "RUN",
     "expected": "8",
-    "reasoning": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8."
+    "reasoning": "The method parameter x and main's local x are separate variables in different method scopes. The argument value 3 is copied into the parameter. adjust returns 5; main's x remains 3, so the program prints 8."
   },
   {
     "exerciseId": "ds.practice.ip-pass-value",

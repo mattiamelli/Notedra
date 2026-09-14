@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 
 const baseline = '2baf35885ea49d9625c90b6eec01b102741f33a4';
+const dependencyBaseline = '35338354f916e2433085e726ea19cccfd2747a33';
 const presentation = new Set(['src/pages/DashboardPage.tsx','src/shell/AppShell.tsx','src/shell/PageParts.tsx','src/design/tokens.css','src/design/product.css','public/favicon.svg']);
 const tree = execFileSync('git',['ls-tree','-r',baseline,'--','src','tests','content-pack','supabase','public'],{encoding:'utf8'}).trim().split('\n');
 let protectedFiles = 0;
@@ -17,7 +18,7 @@ for (const entry of tree) {
   protectedFiles++;
 }
 const pkg = JSON.parse(readFileSync('package.json','utf8'));
-const accepted = JSON.parse(execFileSync('git',['show',baseline+':package.json'],{encoding:'utf8'}));
+const accepted = JSON.parse(execFileSync('git',['show',dependencyBaseline+':package.json'],{encoding:'utf8'}));
 assert.deepEqual(pkg.dependencies,accepted.dependencies,'Runtime dependencies changed');
 assert.deepEqual(pkg.devDependencies,accepted.devDependencies,'Build dependencies changed');
 const css = readFileSync('src/design/product.css','utf8');

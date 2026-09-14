@@ -5,4 +5,5 @@ import type {Exercise} from './types';
 import type {COExercise} from '../co/types';
 import type {RLExercise} from '../rl/practice-types';
 import type {AdvancedExercise} from '../advanced/types';
-export type PracticeExercise=InteractiveExercise|Exercise|COExercise|RLExercise|EnrichmentExercise|IPExercise|AdvancedExercise;
+import type {AssemblyTraceExercise} from '../assembly-practice/types';
+export type PracticeExercise=InteractiveExercise|Exercise|COExercise|RLExercise|EnrichmentExercise|IPExercise|AdvancedExercise|AssemblyTraceExercise;

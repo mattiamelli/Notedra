@@ -67,7 +67,9 @@
 .ds-app .ds-main .ds-study-card { background: var(--ds-paper); border: 1px solid var(--ds-line); border-top: 4px solid var(--ds-course-color,var(--ds-primary)); border-radius: var(--ds-radius-lg); box-shadow: var(--ds-shadow-raised); padding: var(--ds-space-6); min-height: 300px; }
 .ds-app .ds-study-card #card-answer { border-color: var(--ds-line); background: var(--ds-primary-soft); padding: var(--ds-space-4); border-radius: var(--ds-radius); }
 .ds-app .ds-card-position { color: var(--ds-support); font-variant-numeric: tabular-nums; }
-.ds-app .ds-main :is(pre,.ds-answer-pair>div) { background: var(--ds-code-bg); color: var(--ds-code-text); border-color: var(--ds-line); border-radius: var(--ds-radius-sm); white-space: pre-wrap; overflow-wrap: anywhere; }
+.ds-app .ds-main :is(pre,.ds-answer-pair>div) { background: var(--ds-code-bg); color: var(--ds-code-text); border-color: var(--ds-line); border-radius: var(--ds-radius-sm); }
+.ds-app .ds-main pre{max-width:100%;overflow-x:auto;white-space:pre;overflow-wrap:normal;word-break:normal;tab-size:4;font:500 15px/1.7 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}
+.ds-app .ds-main :is(.ds-lesson-copy,.ds-overview-copy,.ds-practice-prompt,.ds-practice-feedback)>p{max-width:76ch;font-size:1rem;line-height:1.72}
 .ds-app .ds-main pre *, .ds-app .ds-answer-pair :is(dt,dd) { color: var(--ds-code-text); }
 .ds-app .ds-main .ds-practice-feedback { background: var(--ds-paper); border-color: var(--ds-line); border-left-width: 4px; border-radius: var(--ds-radius); }
 .ds-app .ds-main .ds-practice-feedback.is-correct { border-left-color: var(--ds-success); }
@@ -200,6 +202,11 @@ body { background: var(--ds-page); color: var(--ds-text); color-scheme: inherit;
 .ds-course-meta { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .75rem; color: var(--ds-support); margin: 16px 0 8px; }
 .ds-course-meta>span { display: inline-flex; align-items: center; gap: 6px; }
 .ds-app .ds-course-card .ds-card-action { padding-top: 9px; margin-top: 0; font-size: .8125rem; color: var(--ds-primary); }
+.ds-course-completion{display:grid;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--ds-line);font-size:.78rem;color:var(--ds-text)}
+.ds-course-completion>[role=progressbar]{height:7px;overflow:hidden;border-radius:999px;background:var(--ds-surface-muted);outline:1px solid color-mix(in srgb,var(--completion-color) 35%,transparent)}
+.ds-course-completion>[role=progressbar] i{display:block;height:100%;border-radius:inherit;background:var(--completion-color);transition:width .2s ease,background-color .2s ease}
+.ds-course-completion small{color:var(--ds-support);line-height:1.35}
+@media(prefers-reduced-motion:reduce){.ds-course-completion>[role=progressbar] i{transition:none}}
 .ds-app .ds-main .ds-dashboard-greeting { display: flex; justify-content: space-between; align-items: center; position: relative; margin: 4px 0 26px; gap: 20px; }
 .ds-app .ds-dashboard-greeting h1.ds-dashboard-label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 6px; color: var(--ds-support); }
 .ds-app .ds-dashboard-greeting p.ds-greeting-title { font-size: clamp(1.85rem,3vw,2.65rem); margin: 0; line-height: 1.15; letter-spacing: -.045em; font-weight: 750; color: var(--ds-ink); }

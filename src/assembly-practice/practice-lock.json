@@ -1,0 +1,10 @@
+{
+  "ds.practice.assembly-trace-one-call@1": "dc82d526aca8bbe2df6e3eff6179fdaeaa40c7cc62f05583286e763c40b54d22",
+  "ds.practice.assembly-trace-frame-argument@1": "eb9f0bf8d97b2709ee4a1ee5f80239131a7b113d0a1730e6d4a0f1531c7d83dd",
+  "ds.practice.assembly-trace-call-transfer@1": "0c387d191fdc0c1746cbd6e8c0a44afdff1fbf073f7abddaf8c3d4e1b84f435e",
+  "ds.practice.assembly-trace-stack-slot@1": "5b9782cea8332d563703f33d092bbd44b47f5ebb361e965296e95fc059887d2e",
+  "ds.practice.assembly-trace-sequential-calls@1": "193a46a8a97cd3cb6aae9e7da2724e35f02931d7a07de3920d2dbc880bedab89",
+  "ds.practice.assembly-trace-nested-frame@1": "03f5bc13f6b715bdad50c7a566155b1664ee1198efad2342bd6f0e05500e262b",
+  "ds.practice.assembly-trace-owner-benchmark@1": "405a9e7f02f94b3d8888adfeab823087c1ecdfda7d1984f866ba35eaf5742a0f",
+  "ds.practice.assembly-trace-three-calls@1": "4e4375ee0002b5606546e569c2198f70a275078669ea429aee874671e2958ff5"
+}

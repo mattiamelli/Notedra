@@ -7,7 +7,7 @@ import { Icon } from './Icon';
 import {useI18n} from '../i18n/i18n';
 interface Props {cpu: CPUState; step?: StepResult; format: ValueFormat; cursor: number;}
 export function StackVisualizer({cpu, step, format, cursor}: Props) {
-  const {lt}=useI18n();
+  const {t,lt}=useI18n();
   const addresses = stackAddresses(cpu, step);
   const used = 0x1000n - cpu.registers.rsp;
   const rows = useRef<HTMLDivElement>(null);
@@ -25,7 +25,7 @@ export function StackVisualizer({cpu, step, format, cursor}: Props) {
   return <section className="panel stack-panel" aria-labelledby="stack-heading">
     <div className="panel-heading"><h2 id="stack-heading"><Icon name="stack"/>{lt('Stack memory')}</h2><span className="small-label">8 bytes / cell</span></div>
     <div className="stack-context"><span><i className="legend-dot cyan"/>{lt('Stack grows downward')}</span><span className="mono">{used >= 0n ? `${used} B ${lt('below origin')}` : lt('Above origin')} <Icon name="arrow" size={14}/></span></div>
-    <div className="stack-table" role="table" aria-label="Stack memory, higher addresses first">
+    <div className="stack-table" role="table" aria-label={t('assembly.stackAria')}>
       <div className="stack-table-heading" role="row"><span role="columnheader">{lt('Address').toUpperCase()}</span><span role="columnheader">{lt('Value').toUpperCase()} <small>{format === 'decimal' ? 'DEC' : 'HEX'}</small></span><span role="columnheader">{lt('Pointer').toUpperCase()}</span></div>
       <div className="stack-rows" ref={rows}>{addresses.map((address, index) => {
         const rsp = cpu.registers.rsp === BigInt(address);
@@ -37,16 +37,16 @@ export function StackVisualizer({cpu, step, format, cursor}: Props) {
         const returnAddress = cpu.returnAddresses[address];
         const active = BigInt(address) >= cpu.registers.rsp && BigInt(address) < 0x1000n;
         return <Fragment key={address}>
-          {index > 0 && addresses[index - 1] - address > 8 && <div className="stack-gap">··· addresses omitted ···</div>}
+          {index > 0 && addresses[index - 1] - address > 8 && <div className="stack-gap">··· {t('assembly.addressesOmitted')} ···</div>}
           <div ref={rsp ? stackPointerRow : undefined} role="row" key={`${address}-${written || popped ? cursor : 'idle'}`} className={`stack-row ${rsp ? 'stack-rsp' : ''} ${rbp ? 'stack-rbp' : ''} ${written ? 'stack-written' : ''} ${popped ? 'stack-popped' : ''} ${active ? 'stack-active' : ''}`} data-address={addressHex(address)}>
             <span role="cell" className="stack-address">{addressHex(address)}</span>
-            <span role="cell" className="stack-value">{value === undefined ? <span className="unset">—</span> : <><span className={returnAddress !== undefined ? 'return-value' : ''} title={`Decimal: ${value} · Hex: ${formatValue(value, 'hex')}`}>{formatValue(value, format)}</span><span className="cell-annotation">{popped ? lt('popped') : returnAddress !== undefined ? lt('return address') : pushed ? lt('pushed') : written ? lt('written') : !active ? lt('stored') : ''}</span></>}</span>
+            <span role="cell" className="stack-value">{value === undefined ? <span className="unset">—</span> : <><span className={returnAddress !== undefined ? 'return-value' : ''} title={t('assembly.valueFormats',{decimal:value.toString(),hex:formatValue(value,'hex')})}>{formatValue(value, format)}</span><span className="cell-annotation">{popped ? lt('popped') : returnAddress !== undefined ? lt('return address') : pushed ? lt('pushed') : written ? lt('written') : !active ? lt('stored') : ''}</span></>}</span>
             <span role="cell" className="stack-pointer">{(rsp || rbp) && <span className={`pointer-badge ${rsp ? 'rsp' : 'rbp'}`}>← {rsp && rbp ? 'RSP, RBP' : rsp ? 'RSP' : 'RBP'}</span>}</span>
           </div>
         </Fragment>;
       })}</div>
     </div>
-    {pointerOutsideCells && <p className="stack-pointer-notice">RSP is {addressHex(cpu.registers.rsp)}. Stack access requires an aligned address within the simulated memory.</p>}
+    {pointerOutsideCells && <p className="stack-pointer-notice">{t('assembly.pointerOutside',{address:addressHex(cpu.registers.rsp)})}</p>}
     <div className="stack-legend"><span><i className="legend-dot cyan"/>{lt('Stack pointer')}</span><span><i className="legend-dot violet"/>{lt('Frame pointer')}</span><span><i className="legend-dot amber"/>{lt('Changed')}</span></div>
     <p className="stack-footnote">— {lt('Uninitialized memory')}<span>{lt('Higher addresses above')} <Icon name="arrow" size={13}/></span></p>
   </section>;

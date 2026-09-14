@@ -9,7 +9,7 @@
   "scripts": {
     "build:hosting": "node --import tsx scripts/build-hosting.ts",
     "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && vite --host 127.0.0.1",
-    "build": "node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && node --import tsx scripts/validate-advanced.ts && node --import tsx scripts/validate-mistakes.ts && node --import tsx scripts/validate-adaptive.ts && node --import tsx scripts/validate-exam.ts && node --import tsx scripts/validate-exam-content.ts && node --import tsx scripts/validate-mastery.ts && node --import tsx scripts/validate-readiness.ts && tsc --noEmit && vite build",
+    "build": "node --import tsx scripts/validate-assembly-traces.ts && node --import tsx scripts/validate-content.ts && node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && node --import tsx scripts/validate-advanced.ts && node --import tsx scripts/validate-mistakes.ts && node --import tsx scripts/validate-adaptive.ts && node --import tsx scripts/validate-exam.ts && node --import tsx scripts/validate-exam-content.ts && node --import tsx scripts/validate-mastery.ts && node --import tsx scripts/validate-readiness.ts && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -52,7 +52,8 @@
     "validate:hardening": "node --import tsx scripts/validate-hardening.ts",
     "validate:security-final": "node --import tsx scripts/validate-security-final.ts",
     "validate:launch": "node --import tsx scripts/validate-launch.ts",
-    "check:production-bundle": "node --import tsx scripts/inspect-production-build.ts"
+    "check:production-bundle": "node --import tsx scripts/inspect-production-build.ts",
+    "validate:assembly-traces": "node --import tsx scripts/validate-assembly-traces.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

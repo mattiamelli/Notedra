@@ -161,8 +161,8 @@
       "ip-t03"
     ],
     "exerciseId": "ds.practice.ip-method-return",
-    "binding": "1:sha256:8c4a5d0ce8b36bb51585f1392d1ae59de2cc33c9c6b2ab6b13c3c8f97180ce08:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
-    "reasoning": "adjust receives 3 and returns 5. The caller still has x=3, so 5+3 gives 8.",
+    "binding": "1:sha256:b7fce41b54e561f0f802238353b6a7cedf53538399c8e94668ad800ae38636ba:grader:5e8bab9fef0b01c7195cba5ae10d7be97a2c4e3471be13ba9634f89b00d6ee58",
+    "reasoning": "The method parameter x and main's local x are separate variables in different method scopes. The argument value 3 is copied into the parameter. adjust returns 5; main's x remains 3, so the program prints 8.",
     "remember": "A returned value does not itself reassign the caller variable.",
     "fallback": "This prediction differs from the verified reference. Follow the reasoning below; no particular misconception is inferred from this choice.",
     "paths": [

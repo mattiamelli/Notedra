@@ -1,4 +1,7 @@
 import {advancedExercises} from '../advanced/catalog';
+import {assemblyTraceExercises} from '../assembly-practice/catalog';
+import assemblyTraceFingerprints from '../assembly-practice/practice-lock.json';
+import assemblyTraceGraderLock from '../assembly-practice/grader-lock.json';
 import advancedFingerprints from '../advanced/practice-lock.json';
 import {expansionExercises} from '../expansion/catalog';
 import completionFingerprints from '../expansion/completion-lock.json';
@@ -38,9 +41,10 @@ function freeze<T>(value: T): T {
 }
 validateCatalog(definitions);
 export const catalog: readonly Exercise[] = freeze(definitions);
-export const allExercises: readonly PracticeExercise[] = freeze([...catalog,...expansionExercises,...interactiveDefinitions as InteractiveExercise[], ...coDefinitions as COExercise[],...rlDefinitions as RLExercise[],...extraDefinitions as EnrichmentExercise[],...ipDefinitions as IPExercise[],...advancedExercises]);
+export const allExercises: readonly PracticeExercise[] = freeze([...catalog,...expansionExercises,...interactiveDefinitions as InteractiveExercise[], ...coDefinitions as COExercise[],...rlDefinitions as RLExercise[],...extraDefinitions as EnrichmentExercise[],...ipDefinitions as IPExercise[],...advancedExercises,...assemblyTraceExercises]);
 export function getExercise(id: string) { return allExercises.find(item => item.id === id); }
 export function versionBinding(exercise: PracticeExercise): string {
+  if(Object.hasOwn(assemblyTraceFingerprints,exercise.id+'@'+exercise.version))return `${exercise.version}:sha256:${(assemblyTraceFingerprints as Record<string,string>)[exercise.id+'@'+exercise.version]}:grader:${assemblyTraceGraderLock.sha256}`;
   if(Object.hasOwn(advancedFingerprints,exercise.id+'@'+exercise.version)){
     const graderHash=exercise.task.kind==='ip-fixed'?ipGraderLock.sha256:exercise.task.kind==='rl-exact'?rlGraderLock.sha256:coGraderLock.sha256;
     return `${exercise.version}:sha256:${(advancedFingerprints as Record<string,string>)[exercise.id+'@'+exercise.version]}:grader:${graderHash}`;

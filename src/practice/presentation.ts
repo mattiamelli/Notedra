@@ -14,6 +14,7 @@ export const exerciseFormats={
  'co-exact':{label:'Numeric or state prediction',renderer:'declared-number',validator:'co-exact',feedback:'normalized reference'},
  'rl-exact':{label:'Structured logic answer',renderer:'declared-number-or-set',validator:'rl-exact',feedback:'normalized reference'},
  'enrichment-exact':{label:'Ordered result',renderer:'ordered-fields',validator:'enrichment-exact',feedback:'ordered components'},
+ 'assembly-trace':{label:'Assembly state snapshot',renderer:'labelled-integer-fields',validator:'assembly-trace-exact',feedback:'checkpoint trace'},
 } as const satisfies Record<PracticeExercise['task']['kind'],{label:string;renderer:string;validator:string;feedback:string}>;
 export function exerciseFormat(kind:string){return Object.hasOwn(exerciseFormats,kind)?exerciseFormats[kind as keyof typeof exerciseFormats]:null;}
 
@@ -30,7 +31,8 @@ export function displayAnswer(exercise:PracticeExercise,answer:import('../learni
  if(task.kind==='logic-build'&&answer.kind==='choice'){try{return booleanText(selectedFormula(task,answer.value));}catch{return 'Incomplete or unavailable structured answer';}}
  if(isInteractive(task))return displayInteractive(task,answer);
  if(typeof answer.value==='string'){
-  if(task.kind==='enrichment-exact'&&answer.value.split(',').length===task.parts)return answer.value.split(',').map((part,index)=>`Part ${index+1}: ${part.trim()}`).join('\n');
+ if(task.kind==='enrichment-exact'&&answer.value.split(',').length===task.parts)return answer.value.split(',').map((part,index)=>`Part ${index+1}: ${part.trim()}`).join('\n');
+  if(task.kind==='assembly-trace'&&answer.value.split(',').length===task.fields.length)return answer.value.split(',').map((part,index)=>`${task.fields[index].label}: ${part.trim()}`).join('\n');
   return answer.value;
  }
  if(task.kind==='java-output'||task.kind==='ip-fixed')return answer.value.map(id=>task.options.find(option=>option.id===id)?.output??'Original option unavailable').join('\n');

@@ -12,20 +12,21 @@ import type { GradeResult } from './types';
 import type { PracticeExercise as Exercise } from './registered-types';
 import {exerciseFormat,displayAnswer} from './presentation';
 import {TupleControls} from './TupleControls';
+import {AssemblyTraceControls} from '../assembly-practice/Controls';
 import {useI18n} from '../i18n/i18n';
 export function ExerciseSource({exercise}: {exercise: Exercise}) {
-  const {t,lt}=useI18n();
+  const {t}=useI18n();
   const topic = academicIndex.topics.find(topic => topic.topic_id === exercise.topicId)!;
   return <><p className="ds-practice-label">{t('practice.sourceLabel',{mode:t('mode' in exercise&&exercise.mode==='exam'?'practice.authoredExam':'practice.authored'),version:exercise.version})}</p>
-    <p><Link className="ds-text-link" to={topicPath(topic)}>{lt(topic.name)}</Link></p>
+    <p><Link className="ds-text-link" to={topicPath(topic)}>{topic.name}</Link></p>
     <details className="ds-practice-source"><summary>{t('learning.sourcesScope')}</summary><p>{exercise.source.filename}</p><p>{t('practice.sourceDocument')}</p><p>{t('practice.formatClaim',{format:exerciseFormat(exercise.task.kind)?.label??t('practice.unavailable')})}</p></details></>;
 }
 export function ExercisePrompt({exercise,mode='practice'}: {exercise: Exercise;mode?:'practice'|'exam'}) {
   const {t,lt}=useI18n();
   const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId);
   if('mode' in exercise&&exercise.mode==='exam')mode='exam';
-  const stimulus='stimulus' in exercise?exercise.stimulus as {language:string;code:string}:null;
-  return <div className="ds-practice-prompt"><h2>{lt(exercise.prompt)}</h2>{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{lt(exercise.rules)}</p>{mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:lt(topic.name)})}</Link></details>}</div>;
+  const stimulus=exercise.task.kind==='assembly-trace'?{language:'assembly',code:exercise.task.code}:'stimulus' in exercise?exercise.stimulus as {language:string;code:string}:null;
+  return <div className="ds-practice-prompt"><h2>{lt(exercise.prompt)}</h2>{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{lt(exercise.rules)}</p>{mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:topic.name})}</Link></details>}</div>;
 }
 export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: Exercise; answer: Answer; onChange: (answer: Answer)=>void; disabled: boolean}) {
   const {t}=useI18n();
@@ -33,6 +34,7 @@ export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: E
   if(!exerciseFormat(task.kind))return <p role="status">{t('practice.answerFormatUnavailable')}</p>;
   if(isInteractive(task))return <InteractiveControls task={task} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(task.kind==='enrichment-exact')return <TupleControls parts={task.parts} answer={answer} onChange={onChange} disabled={disabled}/>;
+  if(task.kind==='assembly-trace')return <AssemblyTraceControls fields={task.fields} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(task.kind==='radix'||task.kind==='co-exact'||task.kind==='rl-exact') return <label className="ds-practice-answer">{t('practice.yourAnswer')}<input aria-describedby="answer-rules" autoComplete="off" spellCheck={false} maxLength={16000} disabled={disabled} value={answer.kind==='text'?answer.value:''} onChange={event=>onChange({kind:'text',value:event.target.value})}/></label>;
   const selected = answer.kind==='choice'?answer.value:[];
   if((task.kind==='java-output'||task.kind==='ip-fixed')) return <fieldset disabled={disabled} className="ds-output-options" aria-describedby="answer-rules"><legend>{t('practice.predictedOutput')}</legend>{task.options.map(option=><label key={option.id}><input type="radio" name="java-output" value={option.id} checked={selected.includes(option.id)} onChange={()=>onChange({kind:'choice',value:[option.id]})}/><code>{option.output}</code></label>)}</fieldset>;
