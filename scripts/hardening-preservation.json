@@ -87,7 +87,7 @@
   },
   "src/topic-study/AuthoredViews.tsx": {
     "before": "d923bd3ec9410a1a3bb9fbe3e90aa9e48e893252cbfcef0a6324e69b66ebea5a",
-    "after": "d1cd0afad7fa819867a2ed8b4f8b2ffdcc3ad08fb5875b4e65314d342dbd70d5",
+    "after": "46d7c9f03e8fc4aeec4cff7aa87ac5ce8674f4568dc57fca0e4fd1617520adc7",
     "original": "3c88005fd9398bc02b3b659571e6dda9e37b44af282152144c614d172a2f782e"
   },
   "src/topic-study/AcademicViews.tsx": {
@@ -97,7 +97,7 @@
   },
   "src/topic-study/topic-study.css": {
     "before": "66fd5c28c1ac56e4c299672fbd021616d87f6dc54f9516946498a9ef04546790",
-    "after": "30524339e1fb9fe79cc0cdf9780053e9de95205b00ef93b6f469fffeab5ac2ad",
+    "after": "110178b068bccb1a24797003ff0e113bac1a73907853cff38ec94f353a212c4c",
     "original": "9ea475b7535de1f99fe9eda10dca8566d04e1ed8bce87ab9357d4bcd67aefcb3"
   },
   "src/progress/ProgressSummary.tsx": {

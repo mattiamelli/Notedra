@@ -33,10 +33,16 @@ describe.each(['CO_T02_BOOLEAN_KMAP','CO_T06_ASSEMBLY_X86_64','RL_T02_FOL','IP_T
  it('starts with a concise overview and keeps real instruction ahead of collapsed evidence',async()=>{
   await render(<LearnMode topic={topic} content={contentByTopic[topicId].lesson}/>);
   expect(host.querySelector('.ds-learn-intro')).not.toBeNull();
-  expect(host.querySelectorAll('.ds-learn-intro>p:not(.ds-study-eyebrow)').length).toBeGreaterThanOrEqual(1);
+  expect(host.querySelector('.ds-learn-opening')).not.toBeNull();
   expect(host.querySelectorAll('.ds-lesson-block').length).toBeGreaterThanOrEqual(3);
   expect(host.querySelectorAll('.ds-lesson-copy p').length).toBeGreaterThanOrEqual(4);
+  expect(host.querySelectorAll('.ds-study-reading>.ds-lesson-block').length).toBe(contentByTopic[topicId].lesson.blocks.length);
+  expect(host.querySelectorAll('strong.ds-learning-term').length).toBeGreaterThan(0);
   expect([...host.querySelectorAll<HTMLDetailsElement>('.ds-authored-scope details')].every(item=>!item.open)).toBe(true);
+ });
+ it('preserves every authored paragraph, title, code sample and table value',async()=>{
+  const lesson=contentByTopic[topicId].lesson;await render(<LearnMode topic={topic} content={lesson}/>);const rendered=(host.textContent??'').replace(/\s/g,'');
+  for(const block of lesson.blocks){expect(rendered).toContain(block.title.replace(/\s/g,''));for(const paragraph of block.paragraphs)expect(rendered).toContain(paragraph.replace(/\s/g,''));if(block.code)expect(host.querySelector('code')?.textContent).toContain(block.code);for(const value of block.table?.rows.flat()??[])expect(rendered).toContain(value.replace(/\s/g,''));}
  });
  it('renders a connected interactive hierarchy with routed nodes',async()=>{
   await render(<MentalMap topic={topic}/>);const structure=mapStructure(topic);
