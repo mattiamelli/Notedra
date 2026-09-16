@@ -24,7 +24,7 @@ describe('data movement and memory', () => {
   });
   it('allows unaligned effective addresses for LEA', () => expect(run('leaq -3(%rbp), %rax').registers.rax).toBe(0xffdn));
   it('rejects uninitialized memory', () => expect(() => run('movq (%rsp), %rax')).toThrow('No value has been stored'));
-  it('rejects unaligned memory', () => expect(() => run('movq $1, -3(%rbp)')).toThrow('aligned to 8 bytes'));
+  it('supports unaligned byte-addressable memory', () => expect(run('movq $1, -3(%rbp)').memory[0xffd]).toBe(1n));
   it('rejects out-of-range addresses before number conversion', () => expect(() => run('movq $1, (%rax)', {rax: 2n ** 60n})).toThrow('outside the simulated'));
 });
 

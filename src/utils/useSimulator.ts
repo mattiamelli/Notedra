@@ -28,6 +28,7 @@ export function useSimulator() {
   const [error, setError] = useState<string | null>(initial.error);
   const [errorLine, setErrorLine] = useState<number | undefined>(initial.errorLine);
   const [saved, setSaved] = useState(true);
+  const [terminalInput, setTerminalInputState] = useState('');
   const dirty = source !== machine.program.source;
   const cpu = currentCPU(machine.session);
 
@@ -44,14 +45,14 @@ export function useSimulator() {
     setSource(newSource);
     try {
       const program = parseProgram(newSource);
-      replaceMachine({program, session: createSession(program)});
+      replaceMachine({program, session: createSession(program, terminalInput)});
       clearError();
     } catch (failure) {
       const current = machineRef.current;
-      replaceMachine({...current, session: createSession(current.program)});
+      replaceMachine({...current, session: createSession(current.program, terminalInput)});
       reportError(failure);
     }
-  }, [pause, replaceMachine]);
+  }, [pause, replaceMachine, terminalInput]);
   const step = useCallback(() => {
     const current = machineRef.current;
     if (sourceRef.current !== current.program.source) { pause(); return; }
@@ -73,8 +74,8 @@ export function useSimulator() {
   const reset = useCallback(() => {
     pause(); clearError();
     const current = machineRef.current;
-    replaceMachine({...current, session: createSession(current.program)});
-  }, [pause, replaceMachine]);
+    replaceMachine({...current, session: createSession(current.program, terminalInput)});
+  }, [pause, replaceMachine, terminalInput]);
   const run = useCallback(() => {
     if (dirty || cpu.halted || error) return;
     runningRef.current = true;
@@ -84,11 +85,19 @@ export function useSimulator() {
     pause();
     if (sourceRef.current !== value) {
       const current = machineRef.current;
-      replaceMachine({...current, session: createSession(current.program)});
+      replaceMachine({...current, session: createSession(current.program, terminalInput)});
     }
     sourceRef.current = value;
     setSource(value);
     clearError();
+  }, [pause, replaceMachine, terminalInput]);
+
+  const setTerminalInput = useCallback((value: string) => {
+    pause();
+    setTerminalInputState(value);
+    clearError();
+    const current = machineRef.current;
+    replaceMachine({...current, session: createSession(current.program, value)});
   }, [pause, replaceMachine]);
 
   useEffect(() => {
@@ -115,5 +124,5 @@ export function useSimulator() {
     return () => window.removeEventListener('keydown', onKey);
   }, [source, dirty, running, error, load, pause, seek, step]);
 
-  return { ...machine, cpu, source, dirty, running, error, errorLine, saved, edit, load, step, seek, reset, run, pause };
+  return { ...machine, cpu, source, dirty, running, error, errorLine, saved, terminalInput, setTerminalInput, edit, load, step, seek, reset, run, pause };
 }

@@ -15,12 +15,12 @@ describe('launch legal and security surfaces',()=>{
     const root=await render('privacy');
     const text=host.textContent??'';
     for(const expected of ['use core study features without an account','Supabase Auth','synchronized learner snapshot','export a JSON backup','does not add analytics','strictly necessary security or session cookies','does not sell learner data'])expect(text).toContain(expected);
-    expect(text).not.toMatch(/GDPR compliant|official TU Delft/i);
+    expect(text).not.toMatch(/GDPR compliant|TU Delft/i);
     await act(async()=>root.unmount());
   });
   it('states the independent platform, learner responsibility, acceptable use and source limits',async()=>{
     const root=await render('terms');const text=host.textContent??'';
-    for(const expected of ['not an official TU Delft service','do not guarantee','responsible for checking official course information','automate abusive account creation','ownership of course sources'])expect(text).toContain(expected);
+    for(const expected of ['not an official service of any university','do not guarantee','responsible for checking official course information','automate abusive account creation','ownership of course sources'])expect(text).toContain(expected);
     await act(async()=>root.unmount());
   });
   it('uses the approved public contact consistently on both legal pages',async()=>{

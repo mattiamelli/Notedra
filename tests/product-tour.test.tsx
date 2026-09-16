@@ -1,0 +1,50 @@
+// @vitest-environment jsdom
+import {act} from 'react';
+import {createRoot,type Root} from 'react-dom/client';
+import {MemoryRouter} from 'react-router';
+import {afterEach,beforeEach,describe,expect,it,vi} from 'vitest';
+import {AccountPage} from '../src/accounts/AccountPage';
+import {LanguageProvider} from '../src/i18n/i18n';
+import {ProductTour,TOUR_EVENT,hasMeaningfulActivity,tourStorageKey} from '../src/tour/ProductTour';
+import {emptyBackup,type Dataset} from '../src/learning/contracts';
+
+let accountId:string|null='account-a',dataset:Dataset,phase:'loading'|'ready'|'error'='ready';
+vi.mock('../src/accounts/context',()=>({useAccount:()=>({state:{phase:accountId?'authenticated':'anonymous',user:accountId?{id:accountId,email:'student@example.test',displayName:'Student'}:null,message:'',epoch:0},config:{status:'unavailable',message:'Local test'},auth:null,syncStatus:'Local only',syncMessage:'',sync:null,adopt:null})}));
+vi.mock('../src/learning/LearningProvider',()=>({useLearning:()=>({snapshot:{data:dataset},phase}),StudentDataPanel:()=>null}));
+vi.mock('../src/appearance/theme',()=>({useTheme:()=>({preference:'light',resolved:'light',setPreference:vi.fn()})}));
+Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
+let host:HTMLDivElement,root:Root;
+const tree=()=> <LanguageProvider><MemoryRouter><AccountPage/><ProductTour/></MemoryRouter></LanguageProvider>;
+const mount=async()=>act(async()=>root.render(tree()));
+const rerender=async()=>act(async()=>root.render(tree()));
+const button=(label:string)=>[...host.querySelectorAll('button')].find(item=>item.textContent===label)!;
+const click=async(label:string)=>act(async()=>button(label).click());
+const launch=async()=>act(async()=>window.dispatchEvent(new CustomEvent(TOUR_EVENT)));
+const finish=async()=>{for(let i=0;i<6;i++)await click('Next');await click('Finish');};
+beforeEach(()=>{localStorage.clear();accountId='account-a';phase='ready';dataset={...emptyBackup(),generation:'test',revision:0};host=document.createElement('div');document.body.append(host);root=createRoot(host);Object.defineProperty(window,'innerWidth',{value:1440,writable:true,configurable:true});window.matchMedia=vi.fn().mockReturnValue({matches:false,addEventListener:vi.fn(),removeEventListener:vi.fn()});});
+afterEach(async()=>{await act(async()=>root.unmount());host.remove();vi.restoreAllMocks();});
+
+describe('Product Tour state and eligibility',()=>{
+  it('1 opens automatically for an authenticated unseen user without activity',async()=>{await mount();expect(host.querySelector('[role=dialog]')).not.toBeNull();expect(host.querySelector('.ds-product-tour')?.getAttribute('data-launch-mode')).toBe('auto');});
+  it('2 does not auto-open when meaningful activity exists',async()=>{dataset={...dataset,resume:{subjectId:'CSE1400_CO',topicId:'CO_T01',visitedAt:new Date().toISOString()}};expect(hasMeaningfulActivity(dataset)).toBe(true);await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it.each(['loading','error'] as const)('3 does not auto-open while learning is %s',async value=>{phase=value;await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it('4 does not auto-open when this account has seen the tour',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it('5 Skip persists seen',async()=>{await mount();await click('Skip tour');expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});
+  it('6 Finish persists seen after seven steps',async()=>{await mount();await finish();expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});
+  it('7 authenticated Settings relaunch opens step 1 despite seen state',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();await click('Take the Notedra tour again');await act(async()=>new Promise(resolve=>requestAnimationFrame(()=>resolve(undefined))));expect(host.textContent).toContain('Welcome to Notedra');expect(host.querySelector('.ds-product-tour')?.getAttribute('data-launch-mode')).toBe('manual');expect(document.activeElement).toBe(host.querySelector('.ds-tour-popover h2'));});
+  it('8 manual relaunch does not clear persisted seen state',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();await launch();expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});
+  it('9 manual relaunch works a second time',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();await launch();await click('Skip tour');await launch();expect(host.querySelector('[role=dialog]')).not.toBeNull();expect(host.textContent).toContain('Welcome to Notedra');});
+  it('10 manual Skip closes and preserves seen',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();await launch();await click('Skip tour');expect(host.querySelector('[role=dialog]')).toBeNull();expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});
+  it('11 manual Finish closes and preserves seen',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();await launch();await finish();expect(host.querySelector('[role=dialog]')).toBeNull();expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});
+  it('12 Escape closes manual launch without corrupting state',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();await launch();await act(async()=>window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})));expect(host.querySelector('[role=dialog]')).toBeNull();expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});
+  it('13 isolates account A completion from unseen account B',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();accountId='account-b';await rerender();expect(host.querySelector('[role=dialog]')).not.toBeNull();});
+  it('14 preserves seen state across logout and login of the same account',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();accountId=null;await rerender();accountId='account-a';await rerender();expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it('15 anonymous state creates no account-scoped tour key',async()=>{accountId=null;await mount();await launch();expect(host.querySelector('[role=dialog]')).toBeNull();expect(Object.keys(localStorage).filter(key=>key.startsWith('notedra.product-tour.'))).toHaveLength(0);});
+  it('16 anonymous Settings hides the relaunch action',async()=>{accountId=null;await mount();expect(host.textContent).not.toContain('Take the Notedra tour again');});
+  it('17 anonymous manual event causes neither dialog nor redirect side effect',async()=>{accountId=null;await mount();const before=window.location.href;await launch();expect(host.querySelector('[role=dialog]')).toBeNull();expect(window.location.href).toBe(before);});
+  it('18 falls back safely when a target is missing',async()=>{await mount();await click('Next');expect(host.querySelector('.ds-tour-spotlight')).toBeNull();expect(host.querySelector('[role=dialog]')).not.toBeNull();});
+  it('19 language switch does not reset persistence',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();const select=host.querySelector<HTMLSelectElement>('.ds-language-select select')!;await act(async()=>{select.value='it';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it('20 uses reduced motion and explicit desktop/mobile layouts',async()=>{window.matchMedia=vi.fn().mockReturnValue({matches:true,addEventListener:vi.fn(),removeEventListener:vi.fn()});await mount();expect(host.querySelector('.ds-product-tour')?.getAttribute('data-reduced-motion')).toBe('true');expect(host.querySelector('.ds-product-tour')?.classList.contains('is-mobile')).toBe(false);Object.defineProperty(window,'innerWidth',{value:390,writable:true});await act(async()=>window.dispatchEvent(new Event('resize')));expect(host.querySelector('.ds-product-tour')?.classList.contains('is-mobile')).toBe(true);});
+  it('keeps Next and Back keyboard-flow controls working',async()=>{await mount();await click('Next');expect(host.textContent).toContain('Start with your courses');await click('Back');expect(host.textContent).toContain('Welcome to Notedra');});
+  it('updates visible tour copy when the interface language changes',async()=>{localStorage.setItem('delftstudy.interface.language','it');await mount();expect(host.textContent).toContain('Benvenuto in Notedra');});
+});

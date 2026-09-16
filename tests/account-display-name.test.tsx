@@ -29,7 +29,7 @@ it('preserves greeting and avatar sourced from the same account state',()=>{
 });
 it('preserves anonymous greeting and avatar fallback',()=>{
   const host=document.createElement('div');host.innerHTML=renderToStaticMarkup(<MemoryRouter><AccountContext.Provider value={value(null)}><AppShell/><DashboardPage/></AccountContext.Provider></MemoryRouter>);
-  expect(host.querySelector('.ds-greeting-title')?.textContent).toContain('Welcome to');expect(host.querySelector('.ds-header-account .ds-avatar')?.textContent).toBe('DS');
+  expect(host.querySelector('.ds-greeting-title')?.textContent).toContain('Welcome to');expect(host.querySelector('.ds-header-account .ds-avatar')?.textContent).toBe('N');
 });
 it('keeps countdown text and editing controls usable alongside account identity',()=>{
   vi.useFakeTimers();vi.setSystemTime(new Date('2026-09-12T12:00:00Z'));

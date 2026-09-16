@@ -5,7 +5,7 @@ import {useI18n} from '../i18n/i18n';
 function download(backup: Backup, recovery: boolean) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(backup, null, 2)], {type: 'application/json'}));
   const anchor = document.createElement('a'); anchor.href = url;
-  anchor.download = recovery ? 'delftstudy-student-recovery.json' : 'delftstudy-student-backup.json';
+  anchor.download = recovery ? 'notedra-student-recovery.json' : 'notedra-student-backup.json';
   document.body.append(anchor); anchor.click(); anchor.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

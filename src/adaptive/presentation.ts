@@ -20,7 +20,7 @@ export function presentAction(action:Recommendation,t:T,lt:LT){
  else if(raw==='practice'){title=t('action.apply',{topic});reason=t('action.practiceReason',{topic});}
  else if(raw==='map'){title=t('action.connect',{topic});reason=t('action.mapReason',{topic});}
  else if(raw==='cards'){title=t('action.recall',{topic});reason=t('action.cardsReason',{topic});}
- else if(raw==='exam'){const course=courses.find(item=>item.subject_id===action.subjectId)?.short??'';title=t('action.exam',{course});reason=t('action.examReason',{course});}
+ else if(raw==='exam'){const course=courses.find(item=>item.subject_id===action.subjectId)?.compactName??'';title=t('action.exam',{course});reason=t('action.examReason',{course});}
  else if(raw.startsWith('prerequisite:')){const prerequisite=topicName(raw.slice(13));title=t('action.prerequisite',{topic:prerequisite});reason=t('action.prerequisiteReason',{prerequisite,topic});}
  else if(raw.startsWith('subtopic:')){const sub=topicStudy.topics.flatMap(item=>item.subtopics).find(item=>item.id===raw.slice(9));title=t('action.focus',{name:lt(sub?.name??raw.slice(9))});reason=t('action.focusReason',{name:lt(sub?.name??raw.slice(9)),topic});}
  else if(exercise){title=raw.startsWith('retry:')?t('action.retry',{title:lt(exercise.title)}):lt(exercise.title);reason=raw.startsWith('retry:')?t('action.retryReason',{skill}):t('action.exerciseReason',{topic});}

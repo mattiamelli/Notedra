@@ -1,129 +1,56 @@
-import { word } from './cpu';
-import { addressHex, effectiveAddress, memoryAddress, readMemory, readOperand } from './memory';
-import { AssemblyError, type CPUState, type Instruction, type Operand, type Program, type Registers } from './types';
+import {readRegister,registerAlias,word,writeRegister} from './cpu';
+import {addressHex,effectiveAddress,memoryAddress,readBytes,readCString,readMemory,readOperand,writeMemory} from './memory';
+import {AssemblyError,type CPUState,type Flags,type Instruction,type Operand,type OperandWidth,type Program,type Registers} from './types';
 
-export function applyInstruction(before: CPUState, instruction: Instruction, program: Program) {
-  const registers: Registers = { ...before.registers };
-  const memory = { ...before.memory };
-  const returnAddresses = { ...before.returnAddresses };
-  const state = { registers, memory };
-  let rip = before.rip + 1;
-  const explanation: string[] = [];
-  const writtenAddresses: number[] = [];
-  let pushedAddress: number | undefined;
-  let poppedAddress: number | undefined;
-  const [source, destination] = instruction.operands;
-  const read = (operand: Operand): bigint => readOperand(operand, state);
-  const describe = (operand: Operand): string => operand.kind === 'register' ? operand.name.toUpperCase() : operand.kind === 'memory' ? `Memory at ${addressHex(effectiveAddress(operand, registers))}` : 'Value';
-  const store = (address: bigint, value: bigint): number => {
-    const index = memoryAddress(address);
-    memory[index] = word(value);
-    delete returnAddresses[index];
-    writtenAddresses.push(index);
-    return index;
-  };
-  const write = (operand: Operand, value: bigint): void => {
-    if (operand.kind === 'register') registers[operand.name] = word(value);
-    else if (operand.kind === 'memory') store(effectiveAddress(operand, registers), value);
-    else throw new AssemblyError('Cannot write to this operand.');
-  };
+const alias=(name:string)=>{const value=registerAlias(name);if(!value)throw new AssemblyError(`Unknown internal register ${name}.`);return value;};
+const accumulator=(width:OperandWidth)=>alias(width===8?'al':width===16?'ax':width===32?'eax':'rax');
+const highRegister=(width:OperandWidth)=>alias(width===8?'ah':width===16?'dx':width===32?'edx':'rdx');
+const mask=(width:OperandWidth)=>(1n<<BigInt(width))-1n;
+const unsigned=(value:bigint,width:OperandWidth)=>BigInt.asUintN(width,value);
+const signed=(value:bigint,width:OperandWidth)=>BigInt.asIntN(width,value);
+function arithmeticFlags(kind:'add'|'sub',left:bigint,right:bigint,result:bigint,width:OperandWidth):Flags{const l=unsigned(left,width),r=unsigned(right,width),u=unsigned(result,width),sign=1n<<BigInt(width-1),ls=!!(l&sign),rs=!!(r&sign),os=!!(u&sign);return {zf:u===0n,sf:os,cf:kind==='add'?l+r>mask(width):l<r,of:kind==='add'?ls===rs&&os!==ls:ls!==rs&&os!==ls};}
+function logicFlags(result:bigint,width:OperandWidth):Flags{const value=unsigned(result,width);return {zf:value===0n,sf:!!(value&(1n<<BigInt(width-1))),of:false,cf:false};}
+function formatPrintf(format:string,args:bigint[],bytes:CPUState['bytes']):string{let output='',arg=0;for(let i=0;i<format.length;i++){if(format[i]!=='%'){output+=format[i];continue;}if(format[i+1]==='%'){output+='%';i++;continue;}const rest=format.slice(i),match=/^%(ld|lx|lX|lu|d|c|s)/.exec(rest);if(!match)throw new AssemblyError(`Unsupported printf format near "${rest.slice(0,4)}".`,undefined,'INVALID_OPERAND');const spec=match[1],value=args[arg++]??0n;i+=match[0].length-1;if(spec==='ld')output+=signed(value,64).toString();else if(spec==='d')output+=signed(value,32).toString();else if(spec==='lu')output+=unsigned(value,64).toString();else if(spec==='lx')output+=unsigned(value,64).toString(16);else if(spec==='lX')output+=unsigned(value,64).toString(16).toUpperCase();else if(spec==='c')output+=String.fromCodePoint(Number(unsigned(value,8)));else output+=readCString(bytes,value);}return output;}
+function targetIndex(operand:Operand,state:CPUState,program:Program):number{if(operand.kind==='label'){const target=program.labels.get(operand.name);if(target===undefined)throw new AssemblyError(`Invalid executable target "${operand.name}".`,undefined,'INVALID_JUMP_TARGET');return target;}if(operand.kind==='indirect'){const value=readOperand(operand.target,state,64);if(value<0n||value>=BigInt(program.instructions.length))throw new AssemblyError(`Invalid indirect target ${value}.`,undefined,'INVALID_JUMP_TARGET');return Number(value);}throw new AssemblyError('Invalid jump target.',undefined,'INVALID_JUMP_TARGET');}
 
-  switch (instruction.opcode) {
-    case 'movq': {
-      const value = read(source);
-      const target = describe(destination);
-      write(destination, value);
-      explanation.push(`${word(value)} was copied into ${target}. The source value is unchanged.`);
-      if (source.kind === 'register' && source.name === 'rsp' && destination.kind === 'register' && destination.name === 'rbp') {
-        explanation.splice(0, 1, 'The current stack pointer was copied into RBP.', `RBP changed from ${addressHex(before.registers.rbp)} to ${addressHex(registers.rbp)}.`, 'RBP can now be used as a stable reference point for this function’s stack frame.');
-      } else if (source.kind === 'register' && source.name === 'rbp' && destination.kind === 'register' && destination.name === 'rsp') {
-        explanation.push(`RSP moved from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}. This releases the local stack space; stored values remain in memory.`);
-      }
-      break;
-    }
-    case 'pushq': {
-      const value = read(source);
-      const sourceDescription = describe(source);
-      registers.rsp = word(registers.rsp - 8n);
-      pushedAddress = store(registers.rsp, value);
-      explanation.push(`RSP moved from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`, `${sourceDescription} (${value}) was stored at ${addressHex(registers.rsp)}.`);
-      if (source.kind === 'register' && source.name === 'rbp') explanation.push('This preserves the caller’s frame pointer at the beginning of a function.');
-      else explanation.push('The stack grows downward: pushing one 64-bit value uses 8 bytes.');
-      break;
-    }
-    case 'popq': {
-      const value = readMemory(memory, registers.rsp);
-      poppedAddress = memoryAddress(registers.rsp);
-      registers.rsp = word(registers.rsp + 8n);
-      const target = describe(source);
-      // x86 resolves an RSP-based pop destination after incrementing RSP.
-      write(source, value);
-      explanation.push(`${value} was read from ${addressHex(poppedAddress)} into ${target}.`, `RSP changed from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`, 'Popping does not erase memory. The old stack cell remains visible as a stored value.');
-      break;
-    }
-    case 'addq': case 'subq': case 'imulq': case 'incq': case 'decq': {
-      const target = destination ?? source;
-      const original = read(target);
-      const amount = destination ? read(source) : 1n;
-      const subtract = instruction.opcode === 'subq' || instruction.opcode === 'decq';
-      const multiply = instruction.opcode === 'imulq';
-      const result = word(multiply ? original * amount : subtract ? original - amount : original + amount);
-      const name = describe(target);
-      write(target, result);
-      explanation.push(`${name}: ${original} ${multiply ? '×' : subtract ? '−' : '+'} ${amount} = ${result}.`);
-      if (instruction.opcode === 'subq' && target.kind === 'register' && target.name === 'rsp' && amount > 0n) {
-        explanation.splice(0, 1, `${amount} bytes were reserved on the stack.`, `RSP changed from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`, `This creates ${amount} bytes of space for local variables. Reserving space does not initialize it.`);
-      }
-      break;
-    }
-    case 'shlq': {
-      const original = read(destination);
-      const count = read(source) & 63n;
-      const target = describe(destination);
-      const result = word(original << count);
-      // A zero effective count preserves memory and return-address annotations.
-      if (count !== 0n) write(destination, result);
-      explanation.push(`${target}: ${original} shifted left by ${count} = ${result}. Only the low 6 count bits and low 64 result bits are used.`);
-      break;
-    }
-    case 'mulq': {
-      // Read both inputs before changing either implicit destination (including aliases).
-      const left = BigInt.asUintN(64, registers.rax);
-      const right = BigInt.asUintN(64, read(source));
-      const product = left * right;
-      registers.rax = word(product);
-      registers.rdx = word(product >> 64n);
-      explanation.push(`Unsigned ${left} × ${right} = ${product}.`, `RDX:RAX holds the full 128-bit product: high ${BigInt.asUintN(64, registers.rdx)}, low ${BigInt.asUintN(64, registers.rax)}.`);
-      break;
-    }
-    case 'leaq': {
-      if (source.kind !== 'memory') throw new AssemblyError('leaq requires an effective address.');
-      const address = effectiveAddress(source, registers);
-      write(destination, address);
-      const indexTerm = source.index ? ` + ${source.index.toUpperCase()} (${before.registers[source.index]}) × ${source.scale ?? 1}` : '';
-      explanation.push(`${source.base.toUpperCase()} (${addressHex(before.registers[source.base])})${indexTerm} + (${source.displacement}) = ${addressHex(address)}.`, `The address was placed in ${describe(destination)}. No value was read from memory.`);
-      break;
-    }
-    case 'call': {
-      if (source.kind !== 'label') throw new AssemblyError('call requires a label.');
-      const target = program.labels.get(source.name);
-      if (target === undefined) throw new AssemblyError(`Unknown label "${source.name}"`);
-      registers.rsp = word(registers.rsp - 8n);
-      pushedAddress = store(registers.rsp, BigInt(rip));
-      returnAddresses[pushedAddress] = rip;
-      explanation.push(`Return address ${rip} (the next instruction index) was pushed at ${addressHex(registers.rsp)}.`, `Execution jumped to ${source.name}. RSP decreased by 8 bytes.`, 'The callee can return a result in RAX; RDI conventionally holds the first integer argument.');
-      rip = target;
-      break;
-    }
-    case 'ret': {
-      const target = readMemory(memory, registers.rsp);
-      if (target < 0n || target > BigInt(program.instructions.length)) throw new AssemblyError(`Invalid return address ${target}. Check the stack pointer and saved return address.`);
-      poppedAddress = memoryAddress(registers.rsp);
-      registers.rsp = word(registers.rsp + 8n);
-      rip = Number(target);
-      explanation.push(`Return address ${target} was read from ${addressHex(poppedAddress)}.`, `RSP increased to ${addressHex(registers.rsp)}. Execution ${rip === program.instructions.length ? 'reached the end of the program' : `resumed at instruction ${rip + 1}`}.`);
-      break;
-    }
-  }
-  return { state: {registers, memory, returnAddresses, rip, halted: rip === program.instructions.length}, instruction, explanation, writtenAddresses, pushedAddress, poppedAddress };
+export function applyInstruction(before:CPUState,instruction:Instruction,program:Program){
+ const registers:Registers={...before.registers},flags:Flags={...before.flags},memory={...before.memory},bytes={...before.bytes},returnAddresses={...before.returnAddresses};for(const [address,value] of Object.entries(memory))if(bytes[Number(address)]===undefined)writeMemory(bytes,memory,BigInt(address),64,value);
+ const state={registers,flags,memory,bytes,returnAddresses} as CPUState;let rip=before.rip+1,halted=false,terminal=before.terminal,inputOffset=before.inputOffset,exitCode=before.exitCode,callDepth=before.callDepth;
+ const explanation:string[]=[],warnings:string[]=[],writtenAddresses:number[]=[];let pushedAddress:number|undefined,poppedAddress:number|undefined;
+ const [source,destination]=instruction.operands,width=instruction.width;
+ const read=(operand:Operand,operandWidth:OperandWidth=width)=>readOperand(operand,state,operandWidth);
+ const describe=(operand:Operand)=>operand.kind==='register'?operand.alias.text.toUpperCase():operand.kind==='memory'?`Memory at ${addressHex(effectiveAddress(operand,registers))}`:operand.kind==='immediate'?'Value':operand.kind==='label'?operand.name:'indirect target';
+ const store=(address:bigint,value:bigint,storeWidth:OperandWidth=width)=>{const written=writeMemory(bytes,memory,address,storeWidth,value);if(written.length>0){writtenAddresses.push(written[0]);for(const item of written)delete returnAddresses[item];}return written[0];};
+ const write=(operand:Operand,value:bigint,storeWidth:OperandWidth=width)=>{if(operand.kind==='register')writeRegister(registers,operand.alias,value);else if(operand.kind==='memory')store(effectiveAddress(operand,registers),value,storeWidth);else throw new AssemblyError('Cannot write to this operand.',undefined,'INVALID_OPERAND');};
+ const setFlags=(next:Flags)=>Object.assign(flags,next);
+ const alignment=()=>{if(BigInt.asUintN(64,registers.rsp)%16n!==0n)warnings.push('Stack is not 16-byte aligned for this call.');};
+ const external=(name:string)=>{
+  alignment();
+  if(name==='exit'){exitCode=signed(registers.rdi,64);halted=true;explanation.push(`Program exited with code ${exitCode}.`);return;}
+  if(name==='printf'){const format=readCString(bytes,registers.rdi),args=[registers.rsi,registers.rdx,registers.rcx,registers.r8,registers.r9];for(let address=registers.rsp;args.length<24;address+=8n){try{args.push(readMemory(bytes,address,64));}catch{break;}}const output=formatPrintf(format,args,bytes);terminal+=output;registers.rax=word(BigInt(new TextEncoder().encode(output).length));explanation.push(`printf wrote ${registers.rax} byte${registers.rax===1n?'':'s'} to the simulated terminal.`);return;}
+  const format=readCString(bytes,registers.rdi),matches=[...format.matchAll(/%(ld|d)/g)];if(!matches.length)throw new AssemblyError('scanf requires %d or %ld in the supported teaching subset.',undefined,'INVALID_OPERAND');const rest=before.input.slice(inputOffset),tokens=rest.match(/^\s*([+-]?\d+)/);if(!tokens)throw new AssemblyError('scanf needs queued terminal input.',undefined,'INPUT_REQUIRED');const value=BigInt(tokens[1]),target=registers.rsi,scanfWidth:OperandWidth=matches[0][1]==='d'?32:64,written=writeMemory(bytes,memory,target,scanfWidth,value);if(written.length>0)writtenAddresses.push(written[0]);inputOffset+=tokens[0].length;registers.rax=1n;explanation.push(`scanf read ${value} and stored it at ${addressHex(target)}.`);
+ };
+
+ switch(instruction.opcode){
+  case'mov':{const value=read(source);const target=describe(destination);write(destination,value);explanation.push(`${signed(value,width)} was copied into ${target}. The source value is unchanged.`);if(source.kind==='register'&&source.name==='rsp'&&destination.kind==='register'&&destination.name==='rbp')explanation.splice(0,1,'The current stack pointer was copied into RBP.',`RBP changed from ${addressHex(before.registers.rbp)} to ${addressHex(registers.rbp)}.`,'RBP can now be used as a stable reference point for this function’s stack frame.');else if(source.kind==='register'&&source.name==='rbp'&&destination.kind==='register'&&destination.name==='rsp')explanation.push(`RSP moved from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}. This releases the local stack space; stored values remain in memory.`);break;}
+  case'movzx':{const value=read(source,instruction.sourceWidth!);write(destination,value,width);explanation.push(`${value} was zero-extended from ${instruction.sourceWidth} to ${width} bits and copied into ${describe(destination)}.`);break;}
+  case'push':{const value=read(source,64),sourceDescription=describe(source);registers.rsp=word(registers.rsp-8n);pushedAddress=store(registers.rsp,value,64);explanation.push(`RSP moved from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`,`${sourceDescription} (${signed(value,64)}) was stored at ${addressHex(registers.rsp)}.`,'The stack grows downward: pushing one 64-bit value uses 8 bytes.');break;}
+  case'pop':{let value:bigint;try{value=readMemory(bytes,registers.rsp,64);}catch{throw new AssemblyError(`No value is available: stack underflow at ${addressHex(registers.rsp)}.`,undefined,'STACK_UNDERFLOW');}poppedAddress=memoryAddress(registers.rsp,64);registers.rsp=word(registers.rsp+8n);write(source,value,64);explanation.push(`${signed(value,64)} was read from ${addressHex(poppedAddress)} into ${describe(source)}.`,`RSP changed from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`);break;}
+  case'xchg':{const left=read(source),right=read(destination);write(source,right);write(destination,left);explanation.push(`${describe(source)} and ${describe(destination)} exchanged their ${width}-bit values.`);break;}
+  case'lea':{if(source.kind!=='memory')throw new AssemblyError('lea requires an effective address.');const address=effectiveAddress(source,registers);write(destination,address,width);explanation.push(`${addressHex(address)} was placed in ${describe(destination)}. No value was read from memory.`);break;}
+  case'add':case'sub':case'inc':case'dec':{const target=destination??source,original=read(target),amount=destination?read(source):1n,subtract=instruction.opcode==='sub'||instruction.opcode==='dec',result=unsigned(subtract?original-amount:original+amount,width),priorCF=flags.cf;write(target,result);setFlags(arithmeticFlags(subtract?'sub':'add',original,amount,result,width));if(instruction.opcode==='inc'||instruction.opcode==='dec')flags.cf=priorCF;explanation.push(`${describe(target)}: ${signed(original,width)} ${subtract?'−':'+'} ${signed(amount,width)} = ${signed(result,width)}.`);if(instruction.opcode==='sub'&&target.kind==='register'&&target.name==='rsp'&&amount>0n)explanation.splice(0,1,`${amount} bytes were reserved on the stack.`,`RSP changed from ${addressHex(before.registers.rsp)} to ${addressHex(registers.rsp)}.`);break;}
+  case'mul':case'imul':{const signedMode=instruction.opcode==='imul';if(instruction.opcode==='imul'&&instruction.operands.length===2){const left=signed(read(destination),width),right=signed(read(source),width),product=left*right,low=unsigned(product,width);write(destination,low);const overflow=product!==signed(low,width);flags.cf=overflow;flags.of=overflow;explanation.push(`Signed multiplication produced ${signed(low,width)}.`);break;}const acc=accumulator(width),high=highRegister(width),left=signedMode?signed(readRegister(registers,acc),width):readRegister(registers,acc),right=signedMode?signed(read(source),width):unsigned(read(source),width),product=left*right,low=unsigned(product,width),highBits=unsigned(product>>BigInt(width),width);if(width===8)writeRegister(registers,alias('ax'),product);else{writeRegister(registers,acc,low);writeRegister(registers,high,highBits);}const overflow=signedMode?product!==signed(low,width):highBits!==0n;flags.cf=overflow;flags.of=overflow;explanation.push(`${signedMode?'Signed':'Unsigned'} ${left} × ${right} = ${product}.`,`${width===8?'AX':'RDX:RAX'} holds the full product.`);break;}
+  case'div':case'idiv':{const signedMode=instruction.opcode==='idiv',acc=accumulator(width),high=highRegister(width),divisorRaw=read(source),divisor=signedMode?signed(divisorRaw,width):unsigned(divisorRaw,width);if(divisor===0n)throw new AssemblyError('Division by zero.',undefined,'DIVIDE_BY_ZERO');const low=readRegister(registers,acc),highBits=readRegister(registers,high),combined=(highBits<<BigInt(width))|low,dividend=signedMode?BigInt.asIntN(width*2,combined):combined,quotient=dividend/divisor,remainder=dividend%divisor,min=signedMode?-(1n<<BigInt(width-1)):0n,max=signedMode?(1n<<BigInt(width-1))-1n:mask(width);if(quotient<min||quotient>max)throw new AssemblyError('Division quotient does not fit the destination register.',undefined,'DIVISION_OVERFLOW');writeRegister(registers,acc,quotient);writeRegister(registers,high,remainder);explanation.push(`${signedMode?'Signed':'Unsigned'} division produced quotient ${quotient} and remainder ${remainder}.`);break;}
+  case'xor':case'or':case'and':{const target=destination,original=read(target),amount=read(source),result=instruction.opcode==='xor'?original^amount:instruction.opcode==='or'?original|amount:original&amount;write(target,result);setFlags(logicFlags(result,width));explanation.push(`${instruction.opcode.toUpperCase()} produced ${signed(result,width)} in ${describe(target)}.`);break;}
+  case'shl':case'shr':{const original=read(destination),rawCount=read(source,8),count=rawCount&BigInt(width===64?63:31);if(count!==0n){let result:bigint,cf:boolean;if(instruction.opcode==='shl'){result=unsigned(original<<count,width);cf=!!((unsigned(original,width)>>BigInt(width-Number(count)))&1n);flags.of=count===1n?!!(((result>>BigInt(width-1))&1n)^BigInt(cf)):false;}else{result=unsigned(original,width)>>count;cf=!!((unsigned(original,width)>>(count-1n))&1n);flags.of=count===1n?!!((unsigned(original,width)>>BigInt(width-1))&1n):false;}write(destination,result);flags.cf=cf;flags.zf=result===0n;flags.sf=!!(result&(1n<<BigInt(width-1)));}explanation.push(`${describe(destination)} was shifted ${instruction.opcode==='shl'?'left':'right'} by ${count}.`);break;}
+  case'cmp':{const left=read(destination),right=read(source),result=unsigned(left-right,width);setFlags(arithmeticFlags('sub',left,right,result,width));explanation.push('CMP updated ZF, SF, OF and CF without storing the subtraction.');break;}
+  case'je':case'jne':case'jg':case'jge':case'jl':case'jle':{const take=instruction.opcode==='je'?flags.zf:instruction.opcode==='jne'?!flags.zf:instruction.opcode==='jg'?!flags.zf&&flags.sf===flags.of:instruction.opcode==='jge'?flags.sf===flags.of:instruction.opcode==='jl'?flags.sf!==flags.of:flags.zf||flags.sf!==flags.of;if(take)rip=targetIndex(source,before,program);explanation.push(`${instruction.mnemonic.toUpperCase()} ${take?'took':'did not take'} the branch using the current flags.`);break;}
+  case'jmp':rip=targetIndex(source,before,program);explanation.push(`Execution jumped to instruction ${rip+1}.`);break;
+  case'loop':registers.rcx=word(registers.rcx-1n);if(registers.rcx!==0n)rip=targetIndex(source,before,program);explanation.push(`RCX became ${registers.rcx}; the loop ${registers.rcx!==0n?'continued':'finished'}.`);break;
+  case'call':{if(source.kind==='label'&&['printf','scanf','exit'].includes(source.name)){external(source.name);break;}alignment();const target=targetIndex(source,before,program);registers.rsp=word(registers.rsp-8n);pushedAddress=store(registers.rsp,BigInt(rip),64);returnAddresses[pushedAddress]=rip;callDepth++;rip=target;explanation.push(`Return address ${before.rip+1} (the next instruction index) was pushed at ${addressHex(registers.rsp)}.`,`Execution jumped to ${source.kind==='label'?source.name:`instruction ${target+1}`}. RSP decreased by 8 bytes.`);break;}
+  case'ret':{if(callDepth===0&&program.labels.has("main")&&before.rip>=program.entry){halted=true;exitCode=registers.rax;explanation.push(`Returning from main finished the program with code ${signed(registers.rax,64)}.`);break;}let target:bigint;try{target=readMemory(bytes,registers.rsp,64);}catch{throw new AssemblyError(`No value is available: stack underflow at ${addressHex(registers.rsp)}.`,undefined,'STACK_UNDERFLOW');}if(target<0n||target>BigInt(program.instructions.length))throw new AssemblyError(`Invalid return address ${target}.`,undefined,'INVALID_JUMP_TARGET');poppedAddress=memoryAddress(registers.rsp,64);registers.rsp=word(registers.rsp+8n);rip=Number(target);callDepth--;explanation.push(`Return address ${target} was read from ${addressHex(poppedAddress)}.`,`RSP increased to ${addressHex(registers.rsp)}.`);break;}
+  case'syscall':{const number=unsigned(registers.rax,64);if(number===60n){exitCode=signed(registers.rdi,64);halted=true;explanation.push(`Simulated exit syscall finished with code ${exitCode}.`);}else if(number===1n){if(registers.rdi!==1n)throw new AssemblyError('The safe write shim supports stdout file descriptor 1 only.',undefined,'UNSUPPORTED_SYSCALL');const length=Number(unsigned(registers.rdx,64)),output=new TextDecoder().decode(readBytes(bytes,registers.rsi,length));terminal+=output;registers.rax=BigInt(length);explanation.push(`Simulated write sent ${length} bytes to the Visualizer terminal.`);}else throw new AssemblyError(`Unsupported simulated syscall ${number}. Only write (1) and exit (60) are allowed.`,undefined,'UNSUPPORTED_SYSCALL');break;}
+ }
+ if(!halted&&rip===program.instructions.length)halted=true;
+ return {state:{registers,flags,memory,bytes,returnAddresses,rip,halted,terminal,input:before.input,inputOffset,exitCode,callDepth},instruction,explanation,warnings,writtenAddresses,pushedAddress,poppedAddress};
 }

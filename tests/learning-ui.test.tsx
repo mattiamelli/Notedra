@@ -16,7 +16,7 @@ beforeEach(() => { container = document.createElement('div'); document.body.appe
 afterEach(async () => { await act(async () => root.unmount()); container.remove(); vi.restoreAllMocks(); });
 async function loaded(repo: StudentRepository) { let result!: LoadedState; await act(async () => { result = await repo.load(); }); return result; }
 async function settle() { await act(async () => { await new Promise(resolve => setTimeout(resolve, 35)); }); }
-async function mount(repo: StudentRepository, path = '/') {
+async function mount(repo: StudentRepository, path = '/dashboard') {
   await act(async () => root.render(<MemoryRouter initialEntries={[path]}><LearningProvider createRepository={() => repo}><AppRoutes/></LearningProvider></MemoryRouter>));
   await settle();
 }
@@ -65,7 +65,7 @@ describe('student data UI', () => {
   it('survives StrictMode setup and cleanup without closing the active repository', async () => {
     const factory = new IDBFactory();
     const create = () => new IndexedStudentRepository({factory, name: 'strict'});
-    await act(async () => root.render(<StrictMode><MemoryRouter><LearningProvider createRepository={create}><AppRoutes/></LearningProvider></MemoryRouter></StrictMode>)); await settle();
+    await act(async () => root.render(<StrictMode><MemoryRouter initialEntries={['/dashboard']}><LearningProvider createRepository={create}><AppRoutes/></LearningProvider></MemoryRouter></StrictMode>)); await settle();
     expect(container.querySelector('[role=alert]')).toBeNull();
     expect((await create().load()).data.attempts).toEqual([]);
   });

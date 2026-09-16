@@ -31,8 +31,7 @@ describe('program parsing', () => {
   });
   it('safely handles object-prototype label names', () => expect(parseProgram('main: call constructor\nconstructor: ret').labels.get('constructor')).toBe(1));
   it.each([
-    ['\n\n\nxorq %rax, %rax', 'Line 4: Unsupported instruction "xorq"'],
-    ['main:\nmain: ret', 'Duplicate label'],
+    ['main:\nmain: ret', 'Duplicate symbol'],
     ['call calculate', 'label "calculate"'],
     ['call end\nend:', 'label "end"'],
     ['# nothing\n', 'No instructions'],
@@ -51,6 +50,6 @@ describe('program parsing', () => {
     ['incq $1', 'destination'],
     ['movq 5, %rax', 'Invalid operand'],
     ['movq $1,, %rax', 'Invalid operand'],
-    ['.globl main', 'Unsupported instruction'],
+    ['.globl main', 'No instructions'],
   ])('rejects %s', (source, message) => expect(() => parseProgram(source)).toThrow(message));
 });

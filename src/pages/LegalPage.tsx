@@ -19,7 +19,7 @@ export function LegalPage({kind}:{kind:LegalKind}) {
   </article>;
   return <article className="ds-legal">
     <header className="ds-page-heading"><p className="ds-eyebrow">LEGAL</p><h1>Terms of Use</h1><p>Effective {effectiveDate}. Please use Notedra responsibly.</p></header>
-    <section><h2>Independent study support</h2><p>Notedra is an independent educational platform. It is not an official TU Delft service and does not represent university endorsement. Course names identify the material being studied.</p></section>
+    <section><h2>Independent study support</h2><p>Notedra is an independent educational platform and is not an official service of any university. Subject names identify the material being studied and do not imply endorsement.</p></section>
     <section><h2>No result guarantee</h2><p>Explanations, practice, readiness indicators, and study plans support learning. They do not guarantee correctness, admission, credit, grades, or exam results. You remain responsible for checking official course information and doing your own work.</p></section>
     <section><h2>Accounts and acceptable use</h2><p>Provide accurate account information, keep access credentials secure, and use only accounts you are authorized to use. Do not attempt to disrupt the service, automate abusive account creation, bypass access controls, access another learner’s records, or upload malicious or unlawful material.</p></section>
     <section><h2>Content and intellectual property</h2><p>Notedra respects the ownership of course sources and other referenced material. Access to the platform does not transfer rights in Notedra, source material, university marks, or third-party content. Use study material within the permissions that apply to it.</p></section>

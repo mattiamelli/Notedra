@@ -29,7 +29,7 @@ function MistakeCard({mistake:m,group}:{mistake:Mistake;group?:SkillEvidence}){
  }
  const topic=academicIndex.topics.find(t=>t.topic_id===m.attempt.topicId)!;
  return <article className="ds-mistake-card" aria-label={lt(m.exercise.title)}>
-  <div className="ds-evidence-meta"><Link to={topicPath(topic)}>{courses.find(c=>c.subject_id===m.attempt.subjectId)!.short} · {topic.name}</Link><span>{group?lt(group.state):t('mistakes.itemEvidence')}</span></div>
+  <div className="ds-evidence-meta"><Link to={topicPath(topic)}>{courses.find(c=>c.subject_id===m.attempt.subjectId)!.compactName} · {topic.name}</Link><span>{group?lt(group.state):t('mistakes.itemEvidence')}</span></div>
   <h2>{lt(m.exercise.title)}</h2><p><time dateTime={m.attempt.submission!.submittedAt}>{new Date(m.timestamp).toLocaleString(language)}</time></p>
   <p>{m.skill?lt(m.skill.name):t('mistakes.noSkill')}</p>
   <dl className="ds-answer-pair"><div><dt>{t('practice.submitted')}</dt><dd><pre>{answerText(m.attempt.answer,m)}</pre></dd></div><div><dt>{t('practice.reference')}</dt><dd><pre>{answerText(m.reference,m)}</pre></dd></div></dl>
@@ -56,7 +56,7 @@ export function MistakesPage({topicId}:{topicId?:string}){
   {topicId&&<h2>{t('mistakes.topicTitle')}</h2>}
   <p>{t('mistakes.evidenceRule')}</p>
   <div className="ds-mistake-filters" aria-label={t('mistakes.filterAria')}>
-   {!topicId&&<label>{t('mistakes.course')}<select value={filter.course} onChange={e=>change('course',e.target.value)}><option value="">{t('mistakes.allCourses')}</option>{courses.map(c=><option key={c.subject_id} value={c.subject_id}>{c.short}</option>)}</select></label>}
+   {!topicId&&<label>{t('mistakes.course')}<select value={filter.course} onChange={e=>change('course',e.target.value)}><option value="">{t('mistakes.allCourses')}</option>{courses.map(c=><option key={c.subject_id} value={c.subject_id}>{c.publicName}</option>)}</select></label>}
    {!topicId&&<label>{t('mistakes.topic')}<select value={filter.topic} onChange={e=>change('topic',e.target.value)}><option value="">{t('mistakes.allTopics')}</option>{academicIndex.topics.filter(t=>!filter.course||t.subject_id===filter.course).map(t=><option key={t.topic_id} value={t.topic_id}>{t.name}</option>)}</select></label>}
    <label>{t('mistakes.skill')}<select value={filter.skill} onChange={e=>change('skill',e.target.value)}><option value="">{t('mistakes.allSkills')}</option>{[...skills.values()].filter(s=>(!filter.course||s.subjectId===filter.course)&&(!filter.topic||s.topicId===filter.topic)).map(s=><option key={s.id} value={s.id}>{lt(s.name)}</option>)}</select></label>
    <label>{t('mistakes.pattern')}<select value={filter.pattern} onChange={e=>change('pattern',e.target.value)}><option value="">{t('mistakes.allPatterns')}</option>{patterns.map(([id,label])=><option key={id} value={id}>{lt(label)}</option>)}</select></label>

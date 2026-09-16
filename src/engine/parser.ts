@@ -1,127 +1,41 @@
-import { AssemblyError, OPCODES, REGISTER_NAMES, type Instruction, type Opcode, type Operand, type Program, type RegisterName } from './types';
+import {registerAlias} from './cpu';
+import {MAX_ALLOCATION_BYTES,MAX_MEMORY_ADDRESS} from './memory';
+import {AssemblyError,OPCODES,type Instruction,type MemoryOperand,type Opcode,type Operand,type OperandWidth,type Program,type ProgramSymbol,type ProgramVariable,type RegisterOperand} from './types';
 
-const integerPattern = /^[+-]?(?:0x[\da-f]+|\d+)$/i;
-const labelPattern = /^[A-Za-z_.][\w.]*$/;
+const integerPattern=/^[+-]?(?:0x[\da-f]+|\d+)$/i,labelPattern=/^[A-Za-z_.][\w.]*$/;
+const DATA_BASE=0x2000,BSS_BASE=0x4000,TEXT_DATA_BASE=0x1800,MAX_SOURCE_LENGTH=100_000;
+const externalSymbols=new Set(['printf','scanf','exit']);
+type Section='text'|'data'|'bss';
+interface SourceLine {line:number;text:string;body:string;labels:string[];section:Section;address?:number;size?:number;}
 
-function integer(text: string, line: number): bigint {
-  if (!integerPattern.test(text)) throw new AssemblyError(`Invalid operand "${text}"`, line);
-  const negative = text.startsWith('-');
-  const magnitude = BigInt(text.replace(/^[+-]/, ''));
-  return negative ? -magnitude : magnitude;
-}
+function fail(message:string,line?:number,code:ConstructorParameters<typeof AssemblyError>[2]='PARSE_ERROR'):never{throw new AssemblyError(message,line,code);}
+function integer(text:string,line:number):bigint{if(!integerPattern.test(text))return fail(`Invalid integer "${text}"`,line,'INVALID_OPERAND');const negative=text.startsWith('-'),magnitude=BigInt(text.replace(/^[+-]/,''));return negative?-magnitude:magnitude;}
+function stripComment(raw:string):string{let quoted=false,escaped=false;for(let i=0;i<raw.length;i++){const char=raw[i];if(escaped){escaped=false;continue;}if(char==='\\'&&quoted){escaped=true;continue;}if(char==='"'){quoted=!quoted;continue;}if(char==='#'&&!quoted)return raw.slice(0,i);}return raw;}
+function splitList(text:string,line:number,keepEmpty=false):string[]{const parts:string[]=[];let depth=0,quoted=false,escaped=false,start=0;for(let i=0;i<text.length;i++){const char=text[i];if(escaped){escaped=false;continue;}if(char==='\\'&&quoted){escaped=true;continue;}if(char==='"'){quoted=!quoted;continue;}if(!quoted&&char==='(')depth++;else if(!quoted&&char===')')depth--;else if(!quoted&&char===','&&depth===0){parts.push(text.slice(start,i).trim());start=i+1;}if(depth<0)fail(`Invalid operand "${text}".`,line,'INVALID_OPERAND');}if(quoted||depth!==0)fail(`Unterminated ${quoted?'string':'memory operand'}.`,line,'PARSE_ERROR');parts.push(text.slice(start).trim());if(!keepEmpty&&parts.some(part=>!part))fail(`Invalid operand "${text}".`,line,'INVALID_OPERAND');return parts;}
+function decodeString(text:string,line:number):number[]{const value=text.trim();if(value.length<2||value[0]!=='"'||value.at(-1)!=='"')return fail('Expected a quoted string.',line,'INVALID_OPERAND');const result:number[]=[];for(let i=1;i<value.length-1;i++){let char=value[i];if(char!=='\\'){result.push(...new TextEncoder().encode(char));continue;}char=value[++i];if(char===undefined)fail('Unterminated string escape.',line);if(char==='n')result.push(10);else if(char==='t')result.push(9);else if(char==='r')result.push(13);else if(char==='0')result.push(0);else if(char==='\\')result.push(92);else if(char==='"')result.push(34);else if(char==='x'){const hex=value.slice(i+1,i+3);if(!/^[\da-f]{2}$/i.test(hex))fail('Invalid hexadecimal string escape.',line);result.push(Number.parseInt(hex,16));i+=2;}else fail(`Unsupported string escape "\\${char}".`,line,'INVALID_OPERAND');}return result;}
+function expressionTokens(text:string,line:number):{sign:1|-1;token:string}[]{const compact=text.replace(/\s+/g,'');if(!compact)fail('Empty expression.',line,'INVALID_OPERAND');const result:{sign:1|-1;token:string}[]=[];let start=0,sign:1|-1=1;if(compact[0]==='+'||compact[0]==='-'){sign=compact[0]==='-'?-1:1;start=1;}for(let i=start;i<=compact.length;i++){if(i<compact.length&&compact[i]!=='+'&&compact[i]!=='-')continue;const token=compact.slice(start,i);if(!token)fail(`Invalid expression "${text}".`,line,'INVALID_OPERAND');result.push({sign,token});if(i<compact.length){sign=compact[i]==='-'?-1:1;start=i+1;}}return result;}
+function resolveExpression(text:string,line:number,symbols:ReadonlyMap<string,ProgramSymbol>,resolveConstant?:(name:string)=>bigint):bigint{return expressionTokens(text,line).reduce((sum,part)=>{let value:bigint;if(integerPattern.test(part.token))value=integer(part.token,line);else{const symbol=symbols.get(part.token);if(symbol)value=symbol.value;else if(resolveConstant)value=resolveConstant(part.token);else return fail(`Undefined symbol "${part.token}".`,line,'UNDEFINED_SYMBOL');}return sum+BigInt(part.sign)*value;},0n);}
+function directive(body:string):{name:string;args:string}|null{const match=/^\.([A-Za-z]+)\b\s*(.*)$/.exec(body);return match?{name:match[1].toLowerCase(),args:match[2].trim()}:null;}
+function dataSize(name:string,args:string,line:number,known:ReadonlyMap<string,ProgramSymbol>):number{if(name==='ascii'||name==='asciz')return decodeString(args,line).length+(name==='asciz'?1:0);if(name==='skip'){const size=Number(resolveExpression(args,line,known));if(!Number.isSafeInteger(size)||size<0||size>MAX_ALLOCATION_BYTES)fail(`.skip must allocate between 0 and ${MAX_ALLOCATION_BYTES} bytes.`,line,'MEMORY_ACCESS_ERROR');return size;}const widths:Record<string,number>={byte:1,word:2,long:4,quad:8};const width=widths[name];if(!width)return 0;return splitList(args,line).length*width;}
+function parseRegister(text:string,line:number):RegisterOperand{const alias=registerAlias(text.replace(/^%/,''));if(!alias)fail(`Unknown register "${text}"`,line,'UNKNOWN_REGISTER');const operand={kind:'register' as const,name:alias.name} as RegisterOperand;Object.defineProperty(operand,'alias',{value:alias,enumerable:false});return operand;}
+function parseMemory(text:string,line:number,symbols?:ReadonlyMap<string,ProgramSymbol>):MemoryOperand|null{const open=text.indexOf('(');if(open<0)return null;if(!text.endsWith(')')||text.indexOf('(',open+1)>=0)return fail(`Invalid operand "${text}": Invalid memory operand.`,line,'INVALID_OPERAND');const prefix=text.slice(0,open).trim(),parts=splitList(text.slice(open+1,-1),line,true);if(parts.length>3)return fail(`Invalid memory operand "${text}".`,line,'INVALID_OPERAND');const [baseText='',indexText='',scaleText='']=parts;if((parts.length>1&&!indexText)||(parts.length===3&&!scaleText))return fail(`Invalid memory operand "${text}".`,line,'INVALID_OPERAND');const base=baseText?parseRegister(baseText,line).name:undefined,index=indexText?parseRegister(indexText,line).name:undefined;if(index==='rsp')fail(`Invalid memory operand "${text}": RSP cannot be an index.`,line,'INVALID_OPERAND');if(!base&&!index)fail(`Invalid memory operand "${text}": expected a base or index register.`,line,'INVALID_OPERAND');if(scaleText&&!/^[1248]$/.test(scaleText))fail(`Invalid scale "${scaleText}": expected 1, 2, 4 or 8.`,line,'INVALID_SCALE');let displacement=0n,symbol:string|undefined;if(prefix){const token=expressionTokens(prefix,line).find(part=>!integerPattern.test(part.token));symbol=token?.token;displacement=symbols?resolveExpression(prefix,line,symbols):integerPattern.test(prefix)?integer(prefix,line):0n;}const operand:MemoryOperand={kind:'memory',displacement};if(base)operand.base=base;if(index){operand.index=index;operand.scale=Number(scaleText||1) as 1|2|4|8;}if(symbol)operand.symbol=symbol;return operand;}
+export function parseOperand(text:string,line=1,symbols?:ReadonlyMap<string,ProgramSymbol>,bareMemory=false):Operand{text=text.trim();if(text.startsWith('*')){const target=parseOperand(text.slice(1),line,symbols,true);if(target.kind!=='register'&&target.kind!=='memory')fail('Indirect control flow requires a register or memory target.',line,'INVALID_OPERAND');return {kind:'indirect',target};}if(text.startsWith('$')){const expr=text.slice(1);if(!symbols&&!integerPattern.test(expr))fail(`Invalid operand "${text}"`,line,'INVALID_OPERAND');return {kind:'immediate',value:symbols?resolveExpression(expr,line,symbols):integer(expr,line),symbol:labelPattern.test(expr)?expr:undefined};}if(/^%[A-Za-z0-9]+$/.test(text))return parseRegister(text,line);const memory=parseMemory(text,line,symbols);if(memory)return memory;if(/[()]/.test(text))fail(`Invalid operand "${text}": Invalid memory operand.`,line,'INVALID_OPERAND');if(labelPattern.test(text)){if(bareMemory&&symbols){const symbol=symbols.get(text);if(!symbol)fail(`Undefined symbol "${text}".`,line,'UNDEFINED_SYMBOL');return {kind:'memory',displacement:symbol.value,symbol:text};}return {kind:'label',name:text};}if(bareMemory&&symbols&&/[A-Za-z_.]/.test(text))return {kind:'memory',displacement:resolveExpression(text,line,symbols)};fail(`Invalid operand "${text}"`,line,'INVALID_OPERAND');}
+function decodeMnemonic(text:string,line:number):Pick<Instruction,'opcode'|'width'|'sourceWidth'|'mnemonic'>{const mnemonic=text.toLowerCase();const zx=/^movz([bw])([lq])$/.exec(mnemonic);if(zx)return {opcode:'movzx',mnemonic,width:zx[2]==='l'?32:64,sourceWidth:zx[1]==='b'?8:16};if(['ret','syscall'].includes(mnemonic))return {opcode:mnemonic as Opcode,mnemonic,width:64};if(['jmp','je','jne','jg','jge','jl','jle','loop','call'].includes(mnemonic))return {opcode:mnemonic as Opcode,mnemonic,width:64};const match=/^(mov|push|pop|xchg|lea|add|sub|inc|dec|mul|imul|div|idiv|xor|or|and|shl|shr|cmp)([bwlq])?$/.exec(mnemonic);if(!match||!OPCODES.includes(match[1] as Opcode))fail(`Unsupported instruction "${text}"`,line,'UNKNOWN_INSTRUCTION');const width=match[2]?({b:8,w:16,l:32,q:64}[match[2]] as OperandWidth):64;if((match[1]==='push'||match[1]==='pop')&&width!==64)fail(`${mnemonic} is outside the supported 64-bit stack subset.`,line,'INVALID_OPERAND');return {opcode:match[1] as Opcode,mnemonic,width};}
+function validate(instruction:Instruction,programSymbols:ReadonlyMap<string,ProgramSymbol>):void{const {opcode,operands,line,mnemonic}=instruction;const expected=['ret','syscall'].includes(opcode)?[0]:['push','pop','inc','dec','mul','div','idiv','loop'].includes(opcode)?[1]:opcode==='imul'?[1,2]:['jmp','je','jne','jg','jge','jl','jle','call'].includes(opcode)?[1]:[2];if(!expected.includes(operands.length))fail(`${mnemonic} expects ${expected.join(' or ')} operand${expected[0]===1?'':'s'}.`,line,'INVALID_OPERAND_COUNT');if(!operands.length)return;const [source,destination]=operands;if(['jmp','je','jne','jg','jge','jl','jle','call'].includes(opcode)){if(source.kind==='label'){if(!programSymbols.has(source.name)&&!(opcode==='call'&&externalSymbols.has(source.name)))fail(`Undefined label "${source.name}".`,line,'UNDEFINED_SYMBOL');}else if(source.kind!=='indirect')fail(`${mnemonic} requires a label or indirect target.`,line,'INVALID_OPERAND');return;}if(opcode==='loop'){if(source.kind!=='label'||!programSymbols.has(source.name))fail('loop requires a valid text label.',line,'UNDEFINED_SYMBOL');return;}if(opcode==='lea'){if(source.kind!=='memory'||destination.kind!=='register')fail(`${mnemonic} requires a memory address and destination register.`,line,'INVALID_OPERAND');return;}if(opcode==='push')return;if(opcode==='pop'){if(source.kind!=='register'&&source.kind!=='memory')fail(`${mnemonic} requires a register or memory destination.`,line,'INVALID_OPERAND');return;}if(['mul','div','idiv'].includes(opcode)||(opcode==='imul'&&operands.length===1)){if(source.kind!=='register'&&source.kind!=='memory')fail(`${mnemonic} expects one register or memory source.`,line,'INVALID_OPERAND');return;}if((opcode==='shl'||opcode==='shr')&&source.kind==='immediate'&&(source.value<0n||source.value>255n))fail(`${mnemonic} immediate count must be between 0 and 255.`,line,'INVALID_OPERAND');if((opcode==='shl'||opcode==='shr')&&source.kind!=='immediate'&&!(source.kind==='register'&&source.alias.text==='cl'))fail(`${mnemonic} requires an immediate count or %cl.`,line,'INVALID_OPERAND');const target=destination??source;if(target.kind!=='register'&&target.kind!=='memory')fail(`${mnemonic} requires a register or memory destination.`,line,'INVALID_OPERAND');if(destination&&source.kind==='memory'&&destination.kind==='memory')fail(`${mnemonic} does not support two memory operands. Use a register in between.`,line,'INVALID_OPERAND');if(opcode==='imul'&&operands.length===2&&destination.kind!=='register')fail('Two-operand imul requires a register destination.',line,'INVALID_OPERAND');if(opcode==='movzx'&&destination.kind!=='register')fail(`${mnemonic} requires a register destination.`,line,'INVALID_OPERAND');}
 
-function register(text: string, line: number): RegisterName {
-  const name = text.slice(1);
-  if (!REGISTER_NAMES.includes(name as RegisterName)) throw new AssemblyError(`Unknown register "${text}"`, line);
-  return name as RegisterName;
-}
-
-export function parseOperand(text: string, line = 1): Operand {
-  text = text.trim();
-  if (text.startsWith('$')) {
-    if (!integerPattern.test(text.slice(1))) throw new AssemblyError(`Invalid operand "${text}"`, line);
-    return { kind: 'immediate', value: integer(text.slice(1), line) };
-  }
-  if (/^%\w+$/.test(text)) return { kind: 'register', name: register(text, line) };
-  const memory = /^([+-]?(?:0x[\da-f]+|\d+))?\s*\(\s*(%\w+)\s*(?:,\s*(%\w+)\s*(?:,\s*([^,()\s]+)\s*)?)?\)$/i.exec(text);
-  if (memory) {
-    const base = register(memory[2], line);
-    const displacement = memory[1] ? integer(memory[1], line) : 0n;
-    if (!memory[3]) return {kind: 'memory', base, displacement};
-    const index = register(memory[3], line);
-    if (index === 'rsp') throw new AssemblyError(`Invalid memory operand "${text}": RSP cannot be an index.`, line);
-    const scale = memory[4] ?? '1';
-    if (!/^[1248]$/.test(scale)) throw new AssemblyError(`Invalid scale "${scale}": expected 1, 2, 4 or 8.`, line);
-    return {kind: 'memory', base, displacement, index, scale: Number(scale) as 1 | 2 | 4 | 8};
-  }
-  if (/[()]/.test(text)) throw new AssemblyError(`Invalid operand "${text}": Invalid memory operand.`, line);
-  if (labelPattern.test(text)) return { kind: 'label', name: text };
-  throw new AssemblyError(`Invalid operand "${text}"`, line);
-}
-
-function validate(instruction: Instruction): void {
-  const {opcode, operands, line} = instruction;
-  const expected = opcode === 'ret' ? 0 : ['pushq','popq','incq','decq','call','mulq'].includes(opcode) ? 1 : 2;
-  if (operands.length !== expected) throw new AssemblyError(`${opcode} expects ${expected} operand${expected === 1 ? '' : 's'}.`, line);
-  const fail = (message: string): never => { throw new AssemblyError(message, line); };
-  if (opcode === 'ret') return;
-  const [source, destination] = operands;
-  if (opcode === 'call') {
-    if (source.kind !== 'label') fail('call requires a label, such as call calculate.');
-    return;
-  }
-  if (operands.some(operand => operand.kind === 'label')) fail('Use $ for an immediate, % for a register, or displacement(%register) for memory.');
-  if (opcode === 'leaq') {
-    if (source.kind !== 'memory' || destination.kind !== 'register') fail('leaq requires a memory address and a destination register.');
-    return;
-  }
-  if (opcode === 'pushq') return;
-  if (opcode === 'mulq') {
-    if (source.kind !== 'register' && source.kind !== 'memory') fail('Invalid operand for mulq: expected one register or memory source.');
-    return;
-  }
-  if (opcode === 'shlq' && (source.kind !== 'immediate' || source.value < 0n || source.value > 255n)) {
-    fail('Invalid operand for shlq: expected an immediate count from $0 to $255.');
-  }
-  const target = destination ?? source;
-  if (target.kind !== 'register' && target.kind !== 'memory') fail(`${opcode} requires a register or memory destination.`);
-  if (opcode === 'imulq' && target.kind !== 'register') fail('Two-operand imulq requires a register destination.');
-  if (destination && source.kind === 'memory' && destination.kind === 'memory') fail(`${opcode} does not support two memory operands. Use a register in between.`);
-}
-
-// Commas inside a memory expression belong to that operand, not the instruction.
-function splitOperands(text: string, line: number): string[] {
-  const parts: string[] = [];
-  let depth = 0;
-  let start = 0;
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === '(') {
-      if (depth !== 0) throw new AssemblyError(`Invalid memory operand "${text}".`, line);
-      depth++;
-    } else if (text[i] === ')') {
-      if (depth !== 1) throw new AssemblyError(`Invalid memory operand "${text}".`, line);
-      depth--;
-    } else if (text[i] === ',' && depth === 0) {
-      parts.push(text.slice(start, i));
-      start = i + 1;
-    }
-  }
-  if (depth !== 0) throw new AssemblyError(`Invalid memory operand "${text}".`, line);
-  parts.push(text.slice(start));
-  return parts;
-}
-
-export function parseProgram(source: string): Program {
-  const instructions: Instruction[] = [];
-  const labels = new Map<string, number>();
-  source.split(/\r?\n/).forEach((raw, offset) => {
-    const line = offset + 1;
-    let text = raw.split('#')[0].trim();
-    while (true) {
-      const label = /^([A-Za-z_.][\w.]*):/.exec(text);
-      if (!label) break;
-      if (labels.has(label[1])) throw new AssemblyError(`Duplicate label "${label[1]}"`, line);
-      labels.set(label[1], instructions.length);
-      text = text.slice(label[0].length).trim();
-    }
-    if (!text) return;
-    const [mnemonic] = text.split(/\s+/);
-    if (!OPCODES.includes(mnemonic as Opcode)) throw new AssemblyError(`Unsupported instruction "${mnemonic}"`, line);
-    const argumentText = text.slice(mnemonic.length).trim();
-    const operands = argumentText ? splitOperands(argumentText, line).map(part => parseOperand(part, line)) : [];
-    const instruction = Object.freeze({ opcode: mnemonic as Opcode, operands: Object.freeze(operands.map(operand => Object.freeze(operand))), line, text });
-    validate(instruction);
-    instructions.push(instruction);
-  });
-  if (!instructions.length) throw new AssemblyError('No instructions found. Paste a program or choose an example.');
-  for (const instruction of instructions) {
-    if (instruction.opcode !== 'call') continue;
-    const target = instruction.operands[0];
-    if (target.kind === 'label' && (!labels.has(target.name) || labels.get(target.name) === instructions.length)) {
-      throw new AssemblyError(`Unknown or empty label "${target.name}"`, instruction.line);
-    }
-  }
-  const entry = labels.get('main') ?? 0;
-  if (entry === instructions.length) throw new AssemblyError('The main label has no instructions.');
-  return Object.freeze({ source, instructions: Object.freeze(instructions), labels, entry });
+export function parseProgram(source:string):Program{
+ if(source.length>MAX_SOURCE_LENGTH)fail(`Source exceeds the ${MAX_SOURCE_LENGTH.toLocaleString()} character simulator limit.`);
+ const lines:SourceLine[]=source.split(/\r?\n/).map((raw,index)=>{let body=stripComment(raw).trim();const labels:string[]=[];while(true){const match=/^([A-Za-z_.][\w.]*):/.exec(body);if(!match)break;labels.push(match[1]);body=body.slice(match[0].length).trim();}return {line:index+1,text:body||raw.trim(),body,labels,section:'text'};});
+ const symbols=new Map<string,ProgramSymbol>(),labels=new Map<string,number>(),exports=new Set<string>(),constantDefs=new Map<string,{expr:string;line:number}>(),variables:ProgramVariable[]=[];
+ let section:Section='text',instructionIndex=0;const cursors:Record<Section,number>={text:TEXT_DATA_BASE,data:DATA_BASE,bss:BSS_BASE};
+ const define=(name:string,symbol:ProgramSymbol,line:number)=>{if(symbols.has(name)||constantDefs.has(name))fail(`Duplicate symbol "${name}"`,line,'DUPLICATE_SYMBOL');symbols.set(name,symbol);};
+ for(const node of lines){node.section=section;const d=directive(node.body);if(d&&['text','data','bss'].includes(d.name)){for(const name of node.labels)define(name,{name,kind:section,value:BigInt(section==='text'?instructionIndex:cursors[section]),size:0,exported:exports.has(name)},node.line);section=d.name as Section;node.section=section;continue;}if(d?.name==='global'||d?.name==='globl'){for(const name of splitList(d.args,node.line)){if(!labelPattern.test(name))fail(`Invalid exported symbol "${name}".`,node.line);exports.add(name);}continue;}if(d?.name==='equ'){const [name,expr]=splitList(d.args,node.line);if(!name||!expr||!labelPattern.test(name))fail('.equ expects NAME, EXPRESSION.',node.line,'INVALID_OPERAND');if(symbols.has(name)||constantDefs.has(name))fail(`Duplicate symbol "${name}"`,node.line,'DUPLICATE_SYMBOL');constantDefs.set(name,{expr,line:node.line});continue;}
+  const isData=!!d&&['byte','word','long','quad','ascii','asciz','skip'].includes(d.name);const value=BigInt(isData?cursors[section]:instructionIndex),kind=isData?section:'text';for(const name of node.labels){define(name,{name,kind,value,size:0,exported:exports.has(name)},node.line);if(!isData)labels.set(name,instructionIndex);}if(!node.body)continue;if(d){if(!isData){if(d.name==='include')fail('.include requires the external GNU assembler and filesystem.',node.line,'UNKNOWN_INSTRUCTION');fail(`Unsupported directive ".${d.name}".`,node.line,'UNKNOWN_INSTRUCTION');}node.address=cursors[section];node.size=dataSize(d.name,d.args,node.line,symbols);if(node.size+Object.values(cursors).reduce((sum,item)=>sum+item,0)>Number(MAX_MEMORY_ADDRESS))fail('Program data exceeds simulated memory.',node.line,'MEMORY_ACCESS_ERROR');for(const name of node.labels)variables.push({name,address:node.address,size:node.size,segment:section});cursors[section]+=node.size;continue;}if(section!=='text')fail('Instructions are only valid in the .text section.',node.line,'PARSE_ERROR');instructionIndex++;}
+ const resolving=new Set<string>();const resolveConstant=(name:string):bigint=>{const existing=symbols.get(name);if(existing)return existing.value;const definition=constantDefs.get(name);if(!definition)fail(`Undefined symbol "${name}".`,undefined,'UNDEFINED_SYMBOL');if(resolving.has(name))fail(`Recursive constant definition involving "${name}".`,definition.line,'PARSE_ERROR');resolving.add(name);const value=resolveExpression(definition.expr,definition.line,symbols,resolveConstant);resolving.delete(name);symbols.set(name,{name,kind:'constant',value,size:0,exported:exports.has(name)});return value;};for(const name of constantDefs.keys())resolveConstant(name);
+ for(const [name,symbol] of symbols)symbols.set(name,{...symbol,exported:exports.has(name)});for(const name of exports)if(!symbols.has(name))symbols.set(name,{name,kind:'external',value:0n,size:0,exported:true});
+ const bytes:Record<number,number>={},initialMemory:Record<number,bigint>={};const store=(address:number,width:number,value:bigint)=>{const unsigned=BigInt.asUintN(width*8,value);for(let i=0;i<width;i++)bytes[address+i]=Number((unsigned>>BigInt(i*8))&0xffn);initialMemory[address]=BigInt.asIntN(width*8,unsigned);};
+ for(const node of lines){const d=directive(node.body);if(node.address===undefined||!d)continue;let address=node.address;if(d.name==='ascii'||d.name==='asciz'){const values=decodeString(d.args,node.line);if(d.name==='asciz')values.push(0);for(const value of values)bytes[address++]=value;initialMemory[node.address]=values.length<=8?values.reduce((sum,value,index)=>sum|(BigInt(value)<<BigInt(index*8)),0n):BigInt(values[0]??0);continue;}if(d.name==='skip'){for(let i=0;i<(node.size??0);i++)bytes[address+i]=0;initialMemory[address]=0n;continue;}const width={byte:1,word:2,long:4,quad:8}[d.name]??0;for(const value of splitList(d.args,node.line)){store(address,width,resolveExpression(value,node.line,symbols));address+=width;}}
+ const instructions:Instruction[]=[];for(const node of lines){if(!node.body||directive(node.body))continue;const [mnemonicText]=node.body.split(/\s+/),decoded=decodeMnemonic(mnemonicText,node.line),argumentText=node.body.slice(mnemonicText.length).trim(),control=['jmp','je','jne','jg','jge','jl','jle','loop','call'].includes(decoded.opcode);const operands:Operand[]=argumentText?splitList(argumentText,node.line).map(part=>parseOperand(part,node.line,symbols,!control)):[];const instruction:Instruction=Object.freeze({...decoded,operands:Object.freeze(operands.map(operand=>Object.freeze(operand) as Operand)),line:node.line,text:node.body});validate(instruction,symbols);instructions.push(instruction);}
+ for(const instruction of instructions){const target=instruction.operands[0];if(['jmp','je','jne','jg','jge','jl','jle','loop','call'].includes(instruction.opcode)&&target?.kind==='label'&&!externalSymbols.has(target.name)&&labels.get(target.name)===instructions.length)fail(`Invalid executable label "${target.name}".`,instruction.line,'INVALID_JUMP_TARGET');}
+ if(!instructions.length)fail('No instructions found. Paste a program or choose an example.');const entry=labels.get('main')??0;if(entry===instructions.length)fail('The main label has no instructions.');return Object.freeze({source,instructions:Object.freeze(instructions),labels,symbols,exports,initialBytes:Object.freeze(bytes),initialMemory:Object.freeze(initialMemory),variables:Object.freeze(variables),entry});
 }

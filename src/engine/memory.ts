@@ -1,33 +1,13 @@
-import { AssemblyError, type CPUState, type Operand, type Registers } from './types';
+import {readRegister} from './cpu';
+import {AssemblyError,type CPUState,type MemoryOperand,type Operand,type OperandWidth,type Registers} from './types';
 
-export const MAX_MEMORY_ADDRESS = 0xffff8n;
-export const addressHex = (value: bigint | number): string => `0x${BigInt.asUintN(64, BigInt(value)).toString(16).toUpperCase().padStart(4, '0')}`;
-
-export function memoryAddress(address: bigint): number {
-  if (address < 0n || address > MAX_MEMORY_ADDRESS) {
-    throw new AssemblyError(`Memory address ${addressHex(address)} is outside the simulated 1 MiB memory.`);
-  }
-  if (address % 8n !== 0n) throw new AssemblyError(`Memory address ${addressHex(address)} must be aligned to 8 bytes.`);
-  return Number(address);
-}
-
-export function effectiveAddress(operand: Extract<Operand, {kind: 'memory'}>, registers: Readonly<Registers>): bigint {
-  const indexed = operand.index ? registers[operand.index] * BigInt(operand.scale ?? 1) : 0n;
-  return BigInt.asIntN(64, registers[operand.base] + indexed + operand.displacement);
-}
-
-export function readMemory(memory: CPUState['memory'], address: bigint): bigint {
-  const index = memoryAddress(address);
-  const value = memory[index];
-  if (value === undefined) throw new AssemblyError(`No value has been stored at ${addressHex(index)}. Initialize this memory before reading it.`);
-  return value;
-}
-
-export function readOperand(operand: Operand, state: Pick<CPUState, 'registers' | 'memory'>): bigint {
-  switch (operand.kind) {
-    case 'immediate': return operand.value;
-    case 'register': return state.registers[operand.name];
-    case 'memory': return readMemory(state.memory, effectiveAddress(operand, state.registers));
-    case 'label': throw new AssemblyError('A label is only valid as a call target.');
-  }
-}
+export const MAX_MEMORY_ADDRESS=0xffff8n;
+export const MAX_ALLOCATION_BYTES=64*1024;
+export const addressHex=(value:bigint|number):string=>`0x${BigInt.asUintN(64,BigInt(value)).toString(16).toUpperCase().padStart(4,'0')}`;
+export function memoryAddress(address:bigint,width:OperandWidth=8):number{const bytes=width/8;if(address<0n||address+BigInt(bytes-1)>MAX_MEMORY_ADDRESS)throw new AssemblyError(`Memory address ${addressHex(address)} is outside the simulated 1 MiB memory.`,undefined,'MEMORY_ACCESS_ERROR');return Number(address);}
+export function effectiveAddress(operand:MemoryOperand,registers:Readonly<Registers>):bigint{const base=operand.base?registers[operand.base]:0n,index=operand.index?registers[operand.index]*BigInt(operand.scale??1):0n;return BigInt.asIntN(64,base+index+operand.displacement);}
+export function readMemory(bytes:CPUState['bytes'],address:bigint,width:OperandWidth=64):bigint{const start=memoryAddress(address,width);let value=0n;for(let i=0;i<width/8;i++){const byte=bytes[start+i];if(byte===undefined)throw new AssemblyError(`No value has been stored at ${addressHex(start+i)}. Initialize this memory before reading it.`,undefined,'MEMORY_ACCESS_ERROR');value|=BigInt(byte)<<BigInt(i*8);}return BigInt.asUintN(width,value);}
+export function writeMemory(bytes:Record<number,number>,memory:Record<number,bigint>,address:bigint,width:OperandWidth,value:bigint):number[]{const start=memoryAddress(address,width),unsigned=BigInt.asUintN(width,value),written:number[]=[];for(let i=0;i<width/8;i++){bytes[start+i]=Number((unsigned>>BigInt(i*8))&0xffn);written.push(start+i);}memory[start]=BigInt.asIntN(width,unsigned);return written;}
+export function readOperand(operand:Operand,state:Pick<CPUState,'registers'|'bytes'>,width:OperandWidth):bigint{switch(operand.kind){case'immediate':return operand.value;case'register':return readRegister(state.registers,operand.alias);case'memory':return readMemory(state.bytes,effectiveAddress(operand,state.registers),width);default:throw new AssemblyError('This operand cannot be read as a value.',undefined,'INVALID_OPERAND');}}
+export function readCString(bytes:CPUState['bytes'],address:bigint,max=4096):string{const start=memoryAddress(address),values:number[]=[];for(let i=0;i<max;i++){const value=bytes[start+i];if(value===undefined)throw new AssemblyError(`String crosses unmapped memory at ${addressHex(start+i)}.`,undefined,'MEMORY_ACCESS_ERROR');if(value===0)return new TextDecoder().decode(Uint8Array.from(values));values.push(value);}throw new AssemblyError(`String at ${addressHex(start)} exceeds the ${max}-byte simulator limit.`,undefined,'MEMORY_ACCESS_ERROR');}
+export function readBytes(bytes:CPUState['bytes'],address:bigint,length:number):Uint8Array{if(length<0||length>MAX_ALLOCATION_BYTES)throw new AssemblyError('Requested byte range exceeds the simulator limit.',undefined,'MEMORY_ACCESS_ERROR');const start=memoryAddress(address);return Uint8Array.from({length},(_,i)=>{const value=bytes[start+i];if(value===undefined)throw new AssemblyError(`No value has been stored at ${addressHex(start+i)}.`,undefined,'MEMORY_ACCESS_ERROR');return value;});}

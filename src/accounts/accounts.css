@@ -9,3 +9,8 @@
 .ds-account details>label { display: flex; align-items: flex-start; gap: 9px; margin: 14px 0; }
 .ds-language-select { display: grid; gap: 8px; margin-top: 18px; font-weight: 650; }
 .ds-language-select select { width: 100%; }
+.ds-account-tour { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--ds-line); }
+.ds-account-tour h3 { margin: 0 0 5px; font-size: 1rem; }
+.ds-account-tour p { margin: 0; }
+.ds-account-tour .ds-button { flex: 0 0 auto; }
+@media(max-width:650px){.ds-account-tour{align-items:flex-start;flex-direction:column}.ds-account-tour .ds-button{width:100%}}

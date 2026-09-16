@@ -11,7 +11,7 @@ import {AccountContext,anonymousState,type AccountContextValue} from '../src/acc
 import {AppShell} from '../src/shell/AppShell';
 
 it.each([
-  ['Fabio Rossi','FR'],['Mattia Melli','MM'],['Mattia','M'],['  Élodie   Alpha  ','ÉA'],['李 雷','李雷'],['---','DS'],[undefined,'DS'],
+  ['Fabio Rossi','FR'],['Mattia Melli','MM'],['Mattia','M'],['  Élodie   Alpha  ','ÉA'],['李 雷','李雷'],['---','N'],[undefined,'N'],
 ])('derives consistent profile initials from %s', (name,expected)=>expect(profileInitials(name)).toBe(expected));
 
 it('uses the same initials in the header, sidebar, and Account profile',()=>{

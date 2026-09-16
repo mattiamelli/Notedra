@@ -5,8 +5,8 @@ import {MemoryRouter} from 'react-router';
 import {afterEach,beforeEach,describe,expect,it} from 'vitest';
 import {AccountPage} from '../src/accounts/AccountPage';
 import {AppShell} from '../src/shell/AppShell';
-import {LANGUAGE_STORAGE_KEY,LanguageProvider,readLanguage,translate} from '../src/i18n/i18n';
-import {en,languages,translations} from '../src/i18n/messages';
+import {LANGUAGE_STORAGE_KEY,LanguageProvider,loadMessages,readLanguage,translate} from '../src/i18n/i18n';
+import {en,languages} from '../src/i18n/messages';
 import {allExercises} from '../src/practice/catalog';
 import {MasteryCard} from '../src/progress/IndexCard';
 import {PracticePage} from '../src/practice/PracticePage';
@@ -17,14 +17,14 @@ import deContent from '../public/i18n-content/de.json';
 
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let host:HTMLDivElement,root:Root;
-beforeEach(()=>{localStorage.clear();host=document.createElement('div');document.body.append(host);root=createRoot(host);});
+beforeEach(async()=>{await Promise.all(languages.map(loadMessages));localStorage.clear();host=document.createElement('div');document.body.append(host);root=createRoot(host);});
 afterEach(async()=>{await act(async()=>root.unmount());host.remove();document.documentElement.lang='en';});
 
 describe('centralized interface languages',()=>{
-  it('ships a complete stable-key catalog for all five languages',()=>{
+  it('ships a complete stable-key catalog for all five languages',async()=>{
     expect(languages).toEqual(['en','it','es','fr','de']);
     const keys=Object.keys(en).sort();
-    for(const language of languages)expect(Object.keys(translations[language]).sort(),language).toEqual(keys);
+    for(const language of languages)expect(Object.keys(await loadMessages(language)).sort(),language).toEqual(keys);
   });
   it.each([
     ['en',['All difficulties','Low','Medium','High','Exam level']],['it',['Tutte le difficoltà','Bassa','Media','Alta','Livello esame']],['es',['Todas las dificultades','Baja','Media','Alta','Nivel de examen']],['fr',['Toutes les difficultés','Faible','Moyenne','Élevée','Niveau examen']],['de',['Alle Schwierigkeitsgrade','Niedrig','Mittel','Hoch','Prüfungsniveau']],
@@ -64,7 +64,7 @@ describe('centralized interface languages',()=>{
     localStorage.setItem(LANGUAGE_STORAGE_KEY,'fr');
     await act(async()=>root.render(<LanguageProvider><MemoryRouter><AppShell/></MemoryRouter></LanguageProvider>));
     expect([...host.querySelectorAll('.ds-nav-group')].map(node=>node.textContent)).toEqual(['Principal','Secondaire','Compte']);
-    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/study-plan','/account#settings']);
+    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.getAttribute('href'))).toEqual(['/dashboard','/dashboard#courses','/practice','/progress','/study-plan','/account#settings']);
     expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.textContent)).toEqual(['Accueil','Cours','Exercices','Progression','Parcours d’étude','Paramètres']);
   });
   it('renders the Notedra wordmark as one consistently styled text element',async()=>{

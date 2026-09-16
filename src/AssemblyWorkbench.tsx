@@ -5,6 +5,7 @@ import { RegisterPanel } from './components/RegisterPanel';
 import { StackVisualizer } from './components/StackVisualizer';
 import { InstructionExplanation } from './components/InstructionExplanation';
 import { ExecutionHistory } from './components/ExecutionHistory';
+import { MachineIOPanel } from './components/MachineIOPanel';
 import { Icon } from './components/Icon';
 import { useSimulator } from './utils/useSimulator';
 import { readPreferences, writeLocal, type ValueFormat } from './utils/storage';
@@ -30,6 +31,7 @@ export default function AssemblyWorkbench() {
         <StackVisualizer cpu={cpu} step={step} format={format} cursor={session.cursor}/>
         <RegisterPanel cpu={cpu} step={step} format={format} cursor={session.cursor}/>
       </div>
+      <MachineIOPanel cpu={cpu} program={program} step={step} input={simulator.terminalInput} onInput={simulator.setTerminalInput}/>
       <div className="bottom-grid"><InstructionExplanation step={step} halted={cpu.halted} cursor={session.cursor} nextText={nextInstruction?.text}/><ExecutionHistory session={session} disabled={dirty} onSeek={simulator.seek}/></div>
       <footer className="app-footer"><span><span className="footer-brand">Notedra</span>{t('assembly.footerLearning')}</span><span><kbd>Alt</kbd> + <kbd>←</kbd> / <kbd>→</kbd> {t('assembly.footerStep')}<span className="footer-dot">·</span>{t('assembly.footerPrivacy')}</span></footer>
     </main>

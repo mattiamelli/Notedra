@@ -43,8 +43,14 @@ const heading = () => container.querySelector('h1')?.textContent;
 const register = (name: string) => container.querySelector(`[data-register="${name}"] .register-value`)?.textContent;
 
 describe('application routes and canonical navigation', () => {
-  it.each(['/', '/dashboard'])('renders the Dashboard at %s', async path => {
-    await renderRoute(path); expect(heading()).toBe('Dashboard');
+  it('renders the public positioning at /', async () => {
+    await renderRoute('/'); expect(heading()).toBe('Study what matters.Know what you actually understand.');
+    expect(container.textContent).toContain('A study system, not another chat window');
+    expect(container.textContent).toContain('Built for focused university study.');
+    expect(container.querySelector('a[href="/dashboard"]')).not.toBeNull();
+  });
+  it('renders the Dashboard at /dashboard', async () => {
+    await renderRoute('/dashboard'); expect(heading()).toBe('Dashboard');
     expect(container.querySelectorAll('.ds-course-card')).toHaveLength(3);
     expect(container.textContent).toContain('3 courses · 43 topics');
   });
@@ -56,7 +62,7 @@ describe('application routes and canonical navigation', () => {
     expect(links).toHaveLength(topics.length);
     expect(links.map(link => link.getAttribute('href'))).toEqual(topics.map(topicPath));
     topics.forEach((topic, index) => expect(links[index].textContent).toContain(topic.name));
-    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/#courses');
+    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/dashboard#courses');
   });
   it.each(academicIndex.topics)('renders the canonical topic $topic_id under its own course', async topic => {
     await renderRoute(topicPath(topic));
@@ -87,15 +93,15 @@ describe('application routes and canonical navigation', () => {
 
 describe('shell interaction and browser history', () => {
   it('provides the desktop navigation, landmark, skip link and all six primary destinations', async () => {
-    await renderRoute('/');
+    await renderRoute('/dashboard');
     const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')];
-    expect(links.map(link => link.getAttribute('href'))).toEqual(['/','/#courses','/practice','/progress','/study-plan','/account#settings']);
+    expect(links.map(link => link.getAttribute('href'))).toEqual(['/dashboard','/dashboard#courses','/practice','/progress','/study-plan','/account#settings']);
     expect(container.querySelectorAll('main')).toHaveLength(1);
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
     expect(document.title).toBe('Dashboard · Notedra');
   });
   it('opens and closes mobile navigation with an accessible expanded state', async () => {
-    await renderRoute('/');
+    await renderRoute('/dashboard');
     const menu = container.querySelector<HTMLButtonElement>('.ds-menu-button')!;
     expect(menu.getAttribute('aria-expanded')).toBe('false');
     await click('.ds-menu-button');
@@ -106,7 +112,7 @@ describe('shell interaction and browser history', () => {
     expect(document.activeElement).toBe(menu);
   });
   it('closes navigation after choosing a course and moves focus to the new content', async () => {
-    await renderRoute('/'); await click('.ds-menu-button');
+    await renderRoute('/dashboard'); await click('.ds-menu-button');
     await click('.ds-course-card[href="/co"]');
     expect(heading()).toBe(courses[0].name);
     expect(container.querySelector('.ds-menu-button')?.getAttribute('aria-expanded')).toBe('false');
@@ -114,8 +120,8 @@ describe('shell interaction and browser history', () => {
     expect(document.title).toBe(`${courses[0].name} · Notedra`);
   });
   it('returns focus to the menu when its current-page link closes mobile navigation', async () => {
-    await renderRoute('/'); await click('.ds-menu-button');
-    const link = container.querySelector<HTMLAnchorElement>('nav[aria-label="Primary navigation"] a[href="/"]')!;
+    await renderRoute('/dashboard'); await click('.ds-menu-button');
+    const link = container.querySelector<HTMLAnchorElement>('nav[aria-label="Primary navigation"] a[href="/dashboard"]')!;
     link.focus();
     await act(async () => link.click());
     expect(document.activeElement).toBe(container.querySelector('.ds-menu-button'));
@@ -124,11 +130,11 @@ describe('shell interaction and browser history', () => {
   it('navigates course → topic with working breadcrumbs and active course state', async () => {
     await renderRoute('/co'); await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
     expect(heading()).toBe('x86-64 Assembly and stack execution');
-    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/#courses');
+    expect(container.querySelector('nav[aria-label="Primary navigation"] [aria-current="page"]')?.getAttribute('href')).toBe('/dashboard#courses');
     await click('.ds-breadcrumbs a[href="/co"]'); expect(heading()).toBe(courses[0].name);
   });
   it('supports native BrowserRouter Back and Forward without losing route context', async () => {
-    await renderRoute('/', true);
+    await renderRoute('/dashboard', true);
     await click('.ds-course-card[href="/co"]');
     await click(`a[href="${ASSEMBLY_TOPIC_PATH}"]`);
     expect(window.location.pathname).toBe(ASSEMBLY_TOPIC_PATH);
@@ -208,7 +214,7 @@ describe('integrated Assembly workbench regression', () => {
     await click('.ds-tool-back'); expect(heading()).toBe('x86-64 Assembly and stack execution');
   });
   it('preserves load errors and can return to the course without running hidden instructions', async () => {
-    localStorage.setItem('delftstudy:v1:program', 'xorq %rax, %rax');
+    localStorage.setItem('delftstudy:v1:program', 'unknownq %rax, %rax');
     await renderRoute(ASSEMBLY_TOOL_PATH);
     expect(container.querySelector('[role="alert"]')?.textContent).toContain('Unsupported instruction');
     expect(button('Run').disabled).toBe(true);

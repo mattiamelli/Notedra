@@ -11,6 +11,8 @@ import { feedbackFor, PracticeService, resolveAttempt } from './service';
 import { AnswerControls, ExercisePrompt, ExerciseSource, Feedback } from './ExerciseParts';
 import type { PracticeExercise as Exercise } from './registered-types';
 import {useI18n} from '../i18n/i18n';
+import {track} from '../analytics/analytics';
+import {isFirstPracticeCompletion} from '../analytics/milestones';
 export function AttemptPage() {
   const {t}=useI18n(); const {exerciseId,attemptId}=useParams();const learning=useLearning();
   if(!learning?.snapshot)return <p role="status">{learning?.message??t('data.notConnected')}</p>;
@@ -34,8 +36,8 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
     if(pending.current||!editable)return;
     if(submit){const validation=validateResponse(exercise.task,answer);if(validation.status!=='VALID'){setError(validation.message);return;}}
     pending.current=true;setBusy(true);setError('');setMessage(t(submit?'practice.savingSubmission':'practice.savingDraft'));const finalAnswer=structuredClone(answer);
-    try{const state=await learning.changeStudentData(repo=>{const service=new PracticeService(repo);return submit?service.submit(saved.current,finalAnswer,`ds.submit.${attempt.attemptId}`,{generation:generation.current}):service.save(saved.current,finalAnswer,{generation:generation.current});});
-      saved.current=state.data.attempts.find(item=>item.attemptId===attempt.attemptId)!;setMessage(t(submit?'practice.submissionSaved':'practice.draftSaved'));
+    try{const firstCompletion=submit&&isFirstPracticeCompletion(learning.snapshot!.data.attempts,attempt.attemptId);const state=await learning.changeStudentData(repo=>{const service=new PracticeService(repo);return submit?service.submit(saved.current,finalAnswer,`ds.submit.${attempt.attemptId}`,{generation:generation.current}):service.save(saved.current,finalAnswer,{generation:generation.current});});
+      saved.current=state.data.attempts.find(item=>item.attemptId===attempt.attemptId)!;setMessage(t(submit?'practice.submissionSaved':'practice.draftSaved'));if(submit){const properties={course_id:exercise.subjectId,topic_id:exercise.topicId,activity_type:'practice' as const,completion_status:'completed' as const,source_surface:'practice_attempt' as const};track('practice_completed',properties);if(firstCompletion)track('first_practice_completed',properties);}
     }catch(failure){setError(errorMessage(failure));setMessage(t('practice.notSaved'));if(failure instanceof LearningError&&failure.code==='CONFLICT')setConflict(true);}
     finally{pending.current=false;setBusy(false);}
   }

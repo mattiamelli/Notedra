@@ -1,25 +1,26 @@
 {
-  "initialJS": 516561,
-  "initialGzip": 136863,
-  "totalAssets": 2258570,
-  "totalGzip": 630617,
+  "initialJS": 433887,
+  "initialGzip": 123504,
+  "totalAssets": 3252322,
+  "totalGzip": 842583,
   "owners": {
     "ProgressPage.tsx": {
-      "file": "assets/ProgressPage-DVyAcsXT.js",
-      "bytes": 4579,
-      "gzipBytes": 1847,
+      "file": "assets/ProgressPage-Bb1EzXud.js",
+      "bytes": 3969,
+      "gzipBytes": 1429,
       "entry": false,
       "imports": [
-        "assets/index-juTPjNzo.js",
-        "assets/useProgress-ufcZeJYK.js",
-        "assets/progress-lu6DlYHd.js",
-        "assets/catalog-C5U2wbBw.js",
-        "assets/service-BozQDa70.js",
+        "assets/index-BOfLxN7L.js",
+        "assets/useProgress-BkxAOBIV.js",
+        "assets/progress-Bh9fKRt0.js",
+        "assets/catalog-B2yEjM71.js",
+        "assets/content-lUtjmdU_.js",
+        "assets/service-4L17AvVE.js",
         "assets/logic-DTFjvJ0t.js",
-        "assets/evidence-LeXNIcWW.js",
-        "assets/feedback-CRTZA1tE.js",
-        "assets/engine-Cohhu3hF.js",
-        "assets/evaluation-BWLs8DEI.js"
+        "assets/evidence-CnOX_nvD.js",
+        "assets/feedback-BGzUG3AM.js",
+        "assets/engine-CUP4xYDh.js",
+        "assets/evaluation-Cl6LvWjp.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -27,21 +28,22 @@
       ]
     },
     "ProgressSummary.tsx": {
-      "file": "assets/ProgressSummary-DPUYKwur.js",
-      "bytes": 1895,
-      "gzipBytes": 841,
+      "file": "assets/ProgressSummary-YK_Ak8Qv.js",
+      "bytes": 1889,
+      "gzipBytes": 817,
       "entry": false,
       "imports": [
-        "assets/index-juTPjNzo.js",
-        "assets/useProgress-ufcZeJYK.js",
-        "assets/progress-lu6DlYHd.js",
-        "assets/catalog-C5U2wbBw.js",
-        "assets/service-BozQDa70.js",
+        "assets/index-BOfLxN7L.js",
+        "assets/useProgress-BkxAOBIV.js",
+        "assets/progress-Bh9fKRt0.js",
+        "assets/catalog-B2yEjM71.js",
+        "assets/content-lUtjmdU_.js",
+        "assets/service-4L17AvVE.js",
         "assets/logic-DTFjvJ0t.js",
-        "assets/evidence-LeXNIcWW.js",
-        "assets/feedback-CRTZA1tE.js",
-        "assets/engine-Cohhu3hF.js",
-        "assets/evaluation-BWLs8DEI.js"
+        "assets/evidence-CnOX_nvD.js",
+        "assets/feedback-BGzUG3AM.js",
+        "assets/engine-CUP4xYDh.js",
+        "assets/evaluation-Cl6LvWjp.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -49,18 +51,19 @@
       ]
     },
     "mastery.ts": {
-      "file": "assets/useProgress-ufcZeJYK.js",
-      "bytes": 11512,
-      "gzipBytes": 5051,
+      "file": "assets/useProgress-BkxAOBIV.js",
+      "bytes": 11544,
+      "gzipBytes": 5069,
       "entry": false,
       "imports": [
-        "assets/index-juTPjNzo.js",
-        "assets/catalog-C5U2wbBw.js",
-        "assets/service-BozQDa70.js",
-        "assets/evidence-LeXNIcWW.js",
-        "assets/feedback-CRTZA1tE.js",
-        "assets/engine-Cohhu3hF.js",
-        "assets/evaluation-BWLs8DEI.js"
+        "assets/index-BOfLxN7L.js",
+        "assets/catalog-B2yEjM71.js",
+        "assets/content-lUtjmdU_.js",
+        "assets/service-4L17AvVE.js",
+        "assets/evidence-CnOX_nvD.js",
+        "assets/feedback-BGzUG3AM.js",
+        "assets/engine-CUP4xYDh.js",
+        "assets/evaluation-Cl6LvWjp.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -72,18 +75,19 @@
       ]
     },
     "readiness.ts": {
-      "file": "assets/useProgress-ufcZeJYK.js",
-      "bytes": 11512,
-      "gzipBytes": 5051,
+      "file": "assets/useProgress-BkxAOBIV.js",
+      "bytes": 11544,
+      "gzipBytes": 5069,
       "entry": false,
       "imports": [
-        "assets/index-juTPjNzo.js",
-        "assets/catalog-C5U2wbBw.js",
-        "assets/service-BozQDa70.js",
-        "assets/evidence-LeXNIcWW.js",
-        "assets/feedback-CRTZA1tE.js",
-        "assets/engine-Cohhu3hF.js",
-        "assets/evaluation-BWLs8DEI.js"
+        "assets/index-BOfLxN7L.js",
+        "assets/catalog-B2yEjM71.js",
+        "assets/content-lUtjmdU_.js",
+        "assets/service-4L17AvVE.js",
+        "assets/evidence-CnOX_nvD.js",
+        "assets/feedback-BGzUG3AM.js",
+        "assets/engine-CUP4xYDh.js",
+        "assets/evaluation-Cl6LvWjp.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -95,18 +99,19 @@
       ]
     },
     "evidence.ts": {
-      "file": "assets/useProgress-ufcZeJYK.js",
-      "bytes": 11512,
-      "gzipBytes": 5051,
+      "file": "assets/useProgress-BkxAOBIV.js",
+      "bytes": 11544,
+      "gzipBytes": 5069,
       "entry": false,
       "imports": [
-        "assets/index-juTPjNzo.js",
-        "assets/catalog-C5U2wbBw.js",
-        "assets/service-BozQDa70.js",
-        "assets/evidence-LeXNIcWW.js",
-        "assets/feedback-CRTZA1tE.js",
-        "assets/engine-Cohhu3hF.js",
-        "assets/evaluation-BWLs8DEI.js"
+        "assets/index-BOfLxN7L.js",
+        "assets/catalog-B2yEjM71.js",
+        "assets/content-lUtjmdU_.js",
+        "assets/service-4L17AvVE.js",
+        "assets/evidence-CnOX_nvD.js",
+        "assets/feedback-BGzUG3AM.js",
+        "assets/engine-CUP4xYDh.js",
+        "assets/evaluation-Cl6LvWjp.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -118,18 +123,19 @@
       ]
     },
     "derive.ts": {
-      "file": "assets/useProgress-ufcZeJYK.js",
-      "bytes": 11512,
-      "gzipBytes": 5051,
+      "file": "assets/useProgress-BkxAOBIV.js",
+      "bytes": 11544,
+      "gzipBytes": 5069,
       "entry": false,
       "imports": [
-        "assets/index-juTPjNzo.js",
-        "assets/catalog-C5U2wbBw.js",
-        "assets/service-BozQDa70.js",
-        "assets/evidence-LeXNIcWW.js",
-        "assets/feedback-CRTZA1tE.js",
-        "assets/engine-Cohhu3hF.js",
-        "assets/evaluation-BWLs8DEI.js"
+        "assets/index-BOfLxN7L.js",
+        "assets/catalog-B2yEjM71.js",
+        "assets/content-lUtjmdU_.js",
+        "assets/service-4L17AvVE.js",
+        "assets/evidence-CnOX_nvD.js",
+        "assets/feedback-BGzUG3AM.js",
+        "assets/engine-CUP4xYDh.js",
+        "assets/evaluation-Cl6LvWjp.js"
       ],
       "dynamicImports": [],
       "modules": [

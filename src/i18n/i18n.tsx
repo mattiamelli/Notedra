@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useMemo, useState, type ReactNode} from 'react';
-import {en, languageOptions, languages, translations, type Language, type MessageKey} from './messages';
+import {en, languageOptions, languages, loadMessages, messagesFor, type Language, type MessageKey} from './messages';
 
 export const LANGUAGE_STORAGE_KEY = 'delftstudy.interface.language';
 
@@ -13,7 +13,7 @@ export function readLanguage(storage: Pick<Storage, 'getItem'> | null = typeof l
 }
 
 export function translate(language: Language, key: MessageKey, values: Record<string, string | number> = {}): string {
-  const template=translations[language][key] ?? en[key];
+  const template=messagesFor(language)[key] ?? en[key];
   return template.replace(/\{(\w+)\}/g, (_, name: string) => String(values[name] ?? `{${name}}`));
 }
 
@@ -25,6 +25,14 @@ interface I18nContextValue {
 }
 
 type ContentTranslations=Record<string,string>;
+const publicAcademicAliases:ContentTranslations={
+  'Computer Architecture':'Computer Organisation',
+  'Reasoning and Logic':'Logic',
+  'Introduction to Programming':'Programming',
+  'Build a full Delft-style program':'Build a complete integrated program',
+  'End-to-end Delft-style program synthesis: model, parse, process, filter, interact, test, write, optionally threads.':'End-to-end program synthesis: model, parse, process, filter, interact, test, write, and optionally use threads.',
+};
+export const neutralAcademicText=(sourceText:string)=>publicAcademicAliases[sourceText]??sourceText;
 async function loadContentTranslations(language: Exclude<Language,'en'>):Promise<ContentTranslations>{
   const response=await fetch(`${import.meta.env.BASE_URL}i18n-content/${language}.json`);
   if(!response.ok)throw new Error(`Localization catalog unavailable: ${language}`);
@@ -40,12 +48,13 @@ export function LanguageProvider({children}:{children:ReactNode}) {
   useEffect(()=>{let current=true;if(language==='en'){setContent({});return()=>{current=false;};}setContent({});loadContentTranslations(language).then(messages=>{if(current)setContent(messages);}).catch(()=>{if(current)setContent({});});return()=>{current=false;};},[language]);
   const value=useMemo<I18nContextValue>(()=>({
     language,
-    setLanguage(next){try{localStorage.setItem(LANGUAGE_STORAGE_KEY,next);}catch{/* The choice still applies for this session. */}setLanguageState(next);},
+    setLanguage(next){void loadMessages(next).then(()=>{try{localStorage.setItem(LANGUAGE_STORAGE_KEY,next);}catch{/* The choice still applies for this session. */}setLanguageState(next);});},
     t:(key,values)=>translate(language,key,values),
-    lt:sourceText=>content[sourceText]??sourceText,
+    lt:sourceText=>{const publicText=neutralAcademicText(sourceText);return content[publicText]??publicText;},
   }),[language,content]);
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 
 export const useI18n=()=>useContext(I18nContext);
 export {languageOptions};
+export {loadMessages};

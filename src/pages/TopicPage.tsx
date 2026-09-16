@@ -21,6 +21,8 @@ const TopicPractice=lazy(()=>import('../topic-study/TopicPractice').then(m=>({de
 import '../topic-study/topic-study.css';
 import {useI18n} from '../i18n/i18n';
 import type {MessageKey} from '../i18n/messages';
+import {track} from '../analytics/analytics';
+import {useTrackOnce} from '../analytics/react';
 const modeKeys:Record<StudyMode,MessageKey>={overview:'topic.overview',learn:'topic.learn','mental-map':'topic.mentalMap',flashcards:'topic.flashcards',practice:'practice.title','exam-style':'topic.examStyle',mistakes:'topic.mistakes'};
 export function TopicPage({course}:{course:Course}){
  const {topicId,mode='overview'}=useParams();const topic=topicStudy.topics.find(t=>t.id===topicId&&t.subjectId===course.subject_id);
@@ -28,6 +30,7 @@ export function TopicPage({course}:{course:Course}){
 }
 function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:StudyMode}){
  const {t}=useI18n();
+ useTrackOnce(topic.id,()=>track('topic_opened',{course_id:course.subject_id,topic_id:topic.id,activity_type:'topic',source_surface:'topic'}));
  const ip=topic.subjectId==='CSE1100_IP';
  const rl=topic.subjectId==='CSE1300_RL';
  const co=topic.subjectId==='CSE1400_CO'&&topic.id!=='CO_T04_DATA_REP_RADIX_INTEGER';
@@ -37,7 +40,7 @@ function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:S
   if(event.key==='ArrowRight')next=(index+1)%studyModes.length;else if(event.key==='ArrowLeft')next=(index+studyModes.length-1)%studyModes.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=studyModes.length-1;else return;
   event.preventDefault();choose(next);document.getElementById(`study-mode-${next}`)?.focus();
  }
- return <div className="ds-topic-study"><PageHeading eyebrow={`${course.code} · TOPIC ${topic.id.match(/_T(\d+)/)?.[1]??''}`} title={topic.name}><p><Link className="ds-text-link" to={course.path}>{course.name}</Link></p></PageHeading>
+ return <div className="ds-topic-study"><PageHeading eyebrow={`${course.compactName} · TOPIC ${topic.id.match(/_T(\d+)/)?.[1]??''}`} title={topic.name}><p><Link className="ds-text-link" to={course.path}>{course.publicName}</Link></p></PageHeading>
  {mode==='overview'&&<ProgressLoader courseId={course.subject_id} topicId={topic.id}/>}
  {mode!=='mistakes'&&<SummaryLoader topicId={topic.id}/>}
  <div className="ds-study-mode-tabs" role="tablist" aria-label={t('topic.modes')}>{studyModes.map((m,i)=><button key={m.id} id={`study-mode-${i}`} role="tab" aria-selected={mode===m.id} aria-controls="study-mode-panel" tabIndex={mode===m.id?0:-1} onClick={()=>choose(i)} onKeyDown={e=>move(e,i)}>{t(modeKeys[m.id])}</button>)}</div>

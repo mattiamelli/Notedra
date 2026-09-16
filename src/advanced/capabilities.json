@@ -1,0 +1,174 @@
+[
+  {
+    "topicId": "CO_T01_HISTORY",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T02_BOOLEAN_KMAP",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T03_DIGITAL_CMOS_SEQUENTIAL",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T04_DATA_REP_RADIX_INTEGER",
+    "count": 10
+  },
+  {
+    "topicId": "CO_T05_DATA_REP_FIXED_FLOAT",
+    "count": 6
+  },
+  {
+    "topicId": "CO_T06_ASSEMBLY_X86_64",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T07_ISA",
+    "count": 16
+  },
+  {
+    "topicId": "CO_T08_BPU_MICROCODE",
+    "count": 16
+  },
+  {
+    "topicId": "CO_T09_IO_INTERRUPTS",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T10_DMA_MEMORY",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T11_CACHE",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T12_PIPELINE",
+    "count": 8
+  },
+  {
+    "topicId": "CO_T13_PARALLELISM",
+    "count": 4
+  },
+  {
+    "topicId": "CO_T14_VIRTUAL_MEMORY",
+    "count": 4
+  },
+  {
+    "topicId": "IP_T01_JAVA_BASICS",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T02_CONTROL_FLOW",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T03_METHODS_SCOPE",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T04_CLASSES_OBJECTS",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T05_ARRAYS_RECURSION",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T06_CONTAINER_CLASSES",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T07_COMPOSITION_LIBRARIES",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T08_TESTING",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T09_INHERITANCE",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T10_POLYMORPHISM_BINDING",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T11_EQUALITY_HASHING",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T12_EXCEPTIONS",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T13_DEBUGGING",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T14_CODE_QUALITY_STRINGS_GENERICS",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T15_IO_PARSING",
+    "count": 16
+  },
+  {
+    "topicId": "IP_T16_FUNCTIONAL_JAVA",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T17_PROGRAM_DESIGN",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T18_MODERN_JAVA",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T19_THREADS_CONCURRENCY",
+    "count": 8
+  },
+  {
+    "topicId": "IP_T20_EXAM_PROGRAM_SYNTHESIS",
+    "count": 8
+  },
+  {
+    "topicId": "RL_T01_PROP_LOGIC",
+    "count": 16
+  },
+  {
+    "topicId": "RL_T02_FOL",
+    "count": 8
+  },
+  {
+    "topicId": "RL_T03_PROOF_METHODS",
+    "count": 16
+  },
+  {
+    "topicId": "RL_T04_INDUCTION_RECURSION",
+    "count": 16
+  },
+  {
+    "topicId": "RL_T05_TREES_GRAPHS",
+    "count": 24
+  },
+  {
+    "topicId": "RL_T06_SET_THEORY",
+    "count": 16
+  },
+  {
+    "topicId": "RL_T07_FUNCTIONS_RELATIONS",
+    "count": 8
+  },
+  {
+    "topicId": "RL_T08_LIMITS_COUNTABILITY",
+    "count": 8
+  },
+  {
+    "topicId": "RL_T09_TRANSFER_CONSTRAINT_PUZZLES",
+    "count": 24
+  }
+]

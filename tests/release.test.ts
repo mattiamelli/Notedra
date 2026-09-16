@@ -4,6 +4,9 @@ import {publicReleasePages,productionOrigin,sitemap,releaseHtml,releaseHeaders,r
 import {validateEnrichmentBundle} from '../scripts/enrichment-bundle';
 const template='<!doctype html><html><head><title>Notedra</title><meta name="description" content="Study" /></head><body><div id="root"></div></body></html>';
 describe('public release privacy and response preparation',()=>{
+  it('uses the owner-approved Notedra production origin',()=>{
+    expect(productionOrigin).toBe('https://notedra.com');
+  });
   it('allows only the exact release robots text while still rejecting source text',()=>{
     const chunks=[{file:'entry.js',entry:true,imports:[],modules:[]}];
     const content=`User-agent: *\nAllow: /\nSitemap: ${productionOrigin}/sitemap.xml\n`;
@@ -16,6 +19,7 @@ describe('public release privacy and response preparation',()=>{
     expect(pages.some(p=>/^\/(account|progress|practice|exams|mistakes|study-plan|dashboard)(\/|$)/.test(p.path))).toBe(false);
     expect(pages.filter(p=>['/','/privacy','/terms'].includes(p.path))).toHaveLength(3);
     expect(pages.map(p=>p.path)).toEqual([...pages.map(p=>p.path)].sort());
+    expect(pages.find(page=>page.path==='/')).toEqual({path:'/',title:'Notedra — Active, measurable study',description:'Turn course material into active, measurable study with authored practice, clear feedback, Study Paths and evidence of progress.'});
   });
   it('generates valid absolute HTTPS sitemap without learner IDs or query state',()=>{
     const doc=new DOMParser().parseFromString(sitemap(publicReleasePages()),'application/xml');
@@ -48,7 +52,7 @@ describe('public release privacy and response preparation',()=>{
     history.pushState({},'', '/practice/exercise/attempts/private-id');document.title='Practice · Notedra';await new Promise(resolve=>setTimeout(resolve,0));
     expect(document.querySelector('link[rel="canonical"]')).toBeNull();expect(document.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex,follow');
     expect(document.head.textContent).not.toContain('private-id');
-    history.pushState({},'', '/rl');document.title='Reasoning and Logic · Notedra';await new Promise(resolve=>setTimeout(resolve,0));
+    history.pushState({},'', '/rl');document.title='Logic · Notedra';await new Promise(resolve=>setTimeout(resolve,0));
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(productionOrigin+'/rl');
   });
 });

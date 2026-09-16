@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {readFileSync,writeFileSync} from 'node:fs';
 import advancedDefinitions from '../src/advanced/practice.json';
+import advancedCapabilities from '../src/advanced/capabilities.json';
 import advancedLocks from '../src/advanced/practice-lock.json';
 import {advancedExercises} from '../src/advanced/catalog';
 import {allExercises,versionBinding} from '../src/practice/catalog';
@@ -75,6 +76,8 @@ assert(difficultyCounts.get('Medium')===127,'Medium count mismatch');
 assert(difficultyCounts.get('Hard')===267,'Hard count mismatch');
 assert(difficultyCounts.get('Exam-level')===30,'Exam-level count mismatch');
 assert(modeCounts.get('exam')===212&&modeCounts.get('practice')===212,'Practice/exam distribution mismatch');
+const expectedCapabilities=[...new Set(advancedDefinitions.map(item=>item.topicId))].sort().map(topicId=>({topicId,count:advancedDefinitions.filter(item=>item.topicId===topicId).length}));
+assert(canonical(advancedCapabilities)===canonical(expectedCapabilities),'Displayed advanced capability counts are stale');
 
 const sourceById=new Map(topicStudy.sources.map(source=>[source.id,source]));
 const topicById=new Map(topicStudy.topics.map(topic=>[topic.id,topic]));

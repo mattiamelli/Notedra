@@ -7,6 +7,8 @@ import { getExercise, attemptPath } from './catalog';
 import { PracticeService } from './service';
 import { ExercisePrompt, ExerciseSource } from './ExerciseParts';
 import {useI18n} from '../i18n/i18n';
+import {track} from '../analytics/analytics';
+import {isFirstPracticeStart} from '../analytics/milestones';
 export function ExercisePage() {
   const {t,lt}=useI18n();
   const {exerciseId}=useParams();const exercise=getExercise(exerciseId??''); const learning=useLearning(); const navigate=useNavigate();
@@ -15,7 +17,7 @@ export function ExercisePage() {
   async function start(){
     if(pending.current||!learning?.snapshot||!exercise)return;
     pending.current=true;setBusy(true);setError('');startId.current??=crypto.randomUUID(); const id=startId.current;const token={generation:learning.snapshot.data.generation};
-    try{await learning.changeStudentData(repo=>new PracticeService(repo).start(exercise.id,id,token));navigate(attemptPath(exercise,id));}
+    try{const first=isFirstPracticeStart(learning.snapshot.data.attempts);await learning.changeStudentData(repo=>new PracticeService(repo).start(exercise.id,id,token));const properties={course_id:exercise.subjectId,topic_id:exercise.topicId,activity_type:'practice' as const,source_surface:'practice_catalog' as const};track('practice_started',properties);if(first)track('first_practice_started',properties);navigate(attemptPath(exercise,id));}
     catch(failure){setError(errorMessage(failure));}
     finally{pending.current=false;setBusy(false);}
   }

@@ -10,6 +10,8 @@ import {answered} from './records';
 import {useExamDraft} from './useExamDraft';
 import {ExamDialog} from './ExamDialog';
 import type {ExamBank,ExamSession} from './types';
+import {track} from '../analytics/analytics';
+import {durationBucket} from '../analytics/events';
 const OpenAnswer=lazy(()=>import('./ExamOpenAnswer'));
 export function ExamSessionPage({session,bank}:{session:ExamSession;bank:ExamBank}){
  const learning=useLearning()!,navigate=useNavigate(),[params,setParams]=useSearchParams();
@@ -26,6 +28,7 @@ export function ExamSessionPage({session,bank}:{session:ExamSession;bank:ExamBan
  async function confirm(){if(lock.current)return;lock.current=true;setBusy(true);setFailure('');try{
    const saved=state.saved.current;
    await learning.changeStudentData(repo=>dialog==='abandon'?repo.abandonExam(saved.sessionId,saved.revision,{generation:state.generation.current}):repo.submitExam(saved,'exam-submit:'+saved.sessionId,bank,{generation:state.generation.current}));
+   if(dialog==='submit')track('exam_completed',{course_id:saved.course,activity_type:saved.mode==='quick'?'quick_exam':'full_mock',duration_bucket:durationBucket((Date.now()-Date.parse(saved.startedAt))/60000),completion_status:'completed',source_surface:'exam'});
    navigate(`/exams/review/${session.sessionId}`,{replace:true});
   }catch(e){setFailure(errorMessage(e));}finally{lock.current=false;setBusy(false);}}
  const remaining=Math.ceil(clock.remainingMs/1000),timeText=`${Math.floor(remaining/60)}:${String(remaining%60).padStart(2,'0')}`;

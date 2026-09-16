@@ -6,7 +6,7 @@ import { createSession, currentCPU, MAX_STEPS, nextSession, seekSession } from '
 import { examplePrograms } from '../src/examples/examplePrograms';
 
 describe('execution and immutable history', () => {
-  it('starts from the specified defaults', () => expect(createCPU().registers).toEqual({rax:0n,rbx:0n,rcx:0n,rdx:0n,rdi:0n,rsi:0n,rsp:0x1000n,rbp:0x1000n}));
+  it('starts from the specified defaults', () => expect(createCPU().registers).toEqual({rax:0n,rbx:0n,rcx:0n,rdx:0n,rsi:0n,rdi:0n,rbp:0x1000n,rsp:0x1000n,r8:0n,r9:0n,r10:0n,r11:0n,r12:0n,r13:0n,r14:0n,r15:0n}));
   it('retains all snapshots and restores exact memory and registers', () => {
     const program = parseProgram('pushq $5\npopq %rax');
     const initial = createSession(program);

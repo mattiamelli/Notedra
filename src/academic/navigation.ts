@@ -3,7 +3,23 @@ import generated from '../generated/academic-index.json';
 import type { AcademicIndex, AcademicTopic } from './types';
 
 export const academicIndex: AcademicIndex = generated;
-// Stable application paths and presentation choices only; academic labels come from the generated index.
+export interface SubjectPresentation {
+  publicName: string;
+  compactName: string;
+  descriptionKey: 'course.cardCo' | 'course.cardRl' | 'course.cardIp';
+}
+
+const subjectPresentations: Record<string, SubjectPresentation> = {
+  CSE1400_CO: {publicName: 'Computer Organisation', compactName: 'Organisation', descriptionKey: 'course.cardCo'},
+  CSE1300_RL: {publicName: 'Logic', compactName: 'Logic', descriptionKey: 'course.cardRl'},
+  CSE1100_IP: {publicName: 'Programming', compactName: 'Programming', descriptionKey: 'course.cardIp'},
+};
+
+export function subjectPresentation(subjectId: string): SubjectPresentation | undefined {
+  return subjectPresentations[subjectId];
+}
+
+// Stable application paths and public presentation choices. Canonical academic records remain unchanged.
 const courseRoutes = [
   {subject_id: 'CSE1400_CO', path: '/co', tone: 'mint', icon: 'cpu'},
   {subject_id: 'CSE1300_RL', path: '/rl', tone: 'violet', icon: 'logic'},
@@ -12,7 +28,9 @@ const courseRoutes = [
 export const courses = courseRoutes.map(route => {
   const subject = academicIndex.subjects.find(item => item.subject_id === route.subject_id);
   if (!subject) throw new Error(`Missing canonical course ${route.subject_id}.`);
-  return {...subject, ...route};
+  const presentation = subjectPresentation(route.subject_id);
+  if (!presentation) throw new Error(`Missing public subject presentation ${route.subject_id}.`);
+  return {...subject, ...presentation, name: presentation.publicName, short: presentation.compactName, code: presentation.compactName, ...route};
 });
 export type Course = typeof courses[number];
 export const topicsFor = (subjectId: string) => academicIndex.topics.filter(topic => topic.subject_id === subjectId).sort((a, b) => a.order - b.order);
@@ -40,10 +58,10 @@ export const productAreas = [
 export type ProductArea = typeof productAreas[number];
 export interface Breadcrumb {label: string; to?: string;}
 export function pageContext(pathname: string): {title: string; breadcrumbs: Breadcrumb[]} {
-  if (pathname.startsWith('/exams/')) return {title:'Mock Exams',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Mock Exams',to:'/exams'},{label:pathname.includes('/review/')?'Saved review':pathname.includes('/sessions/')?'Exam session':pathname.endsWith('/history')?'History':'Setup'}]};
-  if (pathname.startsWith('/practice/')) return {title: 'Practice', breadcrumbs: [{label:'Dashboard',to:'/'},{label:'Practice',to:'/practice'},{label:pathname.includes('/attempts/')?'Saved attempt':'Exercise'}]};
+  if (pathname.startsWith('/exams/')) return {title:'Mock Exams',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Mock Exams',to:'/exams'},{label:pathname.includes('/review/')?'Saved review':pathname.includes('/sessions/')?'Exam session':pathname.endsWith('/history')?'History':'Setup'}]};
+  if (pathname.startsWith('/practice/')) return {title: 'Practice', breadcrumbs: [{label:'Dashboard',to:'/dashboard'},{label:'Practice',to:'/practice'},{label:pathname.includes('/attempts/')?'Saved attempt':'Exercise'}]};
   const path = pathname.replace(/\/+$/, '') || '/';
-  const dashboard = {label: 'Dashboard', to: '/'};
+  const dashboard = {label: 'Dashboard', to: '/dashboard'};
   if (path === '/' || path === '/dashboard') return {title: 'Dashboard', breadcrumbs: [{label: 'Dashboard'}]};
   const area = productAreas.find(item => item.path === path);
   if (area) return {title: area.title, breadcrumbs: [dashboard, {label: area.title}]};
@@ -54,8 +72,8 @@ export function pageContext(pathname: string): {title: string; breadcrumbs: Brea
     const topic = study?.topic ?? (path === ASSEMBLY_TOOL_PATH ? assemblyTopic : undefined);
     if (topic) {
       const tool = path === ASSEMBLY_TOOL_PATH;
-      if(study && study.mode !== 'overview'){const label=studyModes.find(m=>m.id===study.mode)!.label;return {title:`${label} · ${topic.name}`,breadcrumbs:[dashboard,{label:course.short,to:course.path},{label:topic.name,to:topicPath(topic)},{label}]};}
-      return {title: tool ? 'Assembly Visualizer' : topic.name, breadcrumbs: [dashboard, {label: course.short, to: course.path}, {label: topic.name, to: tool ? topicPath(topic) : undefined}, ...(tool ? [{label: 'Assembly Visualizer'}] : [])]};
+      if(study && study.mode !== 'overview'){const label=studyModes.find(m=>m.id===study.mode)!.label;return {title:`${label} · ${topic.name}`,breadcrumbs:[dashboard,{label:course.compactName,to:course.path},{label:topic.name,to:topicPath(topic)},{label}]};}
+      return {title: tool ? 'Assembly Visualizer' : topic.name, breadcrumbs: [dashboard, {label: course.compactName, to: course.path}, {label: topic.name, to: tool ? topicPath(topic) : undefined}, ...(tool ? [{label: 'Assembly Visualizer'}] : [])]};
     }
   }
   return {title: 'Page not found', breadcrumbs: [dashboard, {label: 'Page not found'}]};

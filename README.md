@@ -1,12 +1,10 @@
 # Notedra
 
-[![CI](https://github.com/mattiamelli/DelftStudy/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mattiamelli/DelftStudy/actions/workflows/ci.yml)
-
 Notedra is a browser-based study workspace for first-year Computer Science and Engineering topics. It combines structured learning content, deterministic practice, progress review and an interactive x86-64 Assembly Visualizer.
 
 It brings course explanations, practice and revision evidence into one workspace, helping students move from reading a topic to practising it and reviewing mistakes.
 
-The project is designed as a personal educational tool and is not affiliated with TU Delft.
+The project is an independent educational platform and is not an official service of any university.
 
 ## Why I built it
 
@@ -16,8 +14,8 @@ Notedra started as a focused way to turn first-year Computer Science material in
 
 - Course navigation and topic-based learning views.
 - Computer Organisation content with registers, memory, stack and function-call visualisations.
-- Reasoning & Logic learning material, guided practice and bounded workspaces.
-- Introduction to Programming content with Java-oriented guided exercises and a coding workbench.
+- Logic learning material, guided practice and bounded workspaces.
+- Programming content with Java-oriented guided exercises and a coding workbench.
 - Flashcards, authored practice and deterministic feedback.
 - Mock exams with timed sessions, autosave and review.
 - Local learner data with backups, mistake review, study-path suggestions and progress/readiness summaries.
@@ -216,4 +214,4 @@ This repository currently serves as a personal academic and portfolio project. C
 
 ## Author
 
-Mattia Melli — Computer Science and Engineering student at TU Delft.
+Mattia Melli — Computer Science and Engineering student.

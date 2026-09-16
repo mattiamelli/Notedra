@@ -10,5 +10,5 @@ const views=Object.fromEntries(Object.entries(files).map(([path,load])=>[path,la
 const Intro=lazy(()=>import('./IntroTopicContent'));
 export function IPStudyMode(props:IPStudyProps){
  const View=props.topic.id==='IP_T02_CONTROL_FLOW'?Intro:views[`./topics/${props.topic.id}.json`];
- return <Suspense fallback={<p role="status">Loading Introduction to Programming…</p>}><View key={`${props.topic.id}:${props.mode}`} {...props}/></Suspense>;
+ return <Suspense fallback={<p role="status">Loading Programming…</p>}><View key={`${props.topic.id}:${props.mode}`} {...props}/></Suspense>;
 }

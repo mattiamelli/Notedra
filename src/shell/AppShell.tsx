@@ -9,6 +9,7 @@ import {profileInitials} from '../accounts/profile';
 import {PUBLIC_LEGAL_CONTACT} from '../legal/contact';
 import {useI18n} from '../i18n/i18n';
 import type {MessageKey} from '../i18n/messages';
+import {ProductTour} from '../tour/ProductTour';
 
 const contextKeys:Partial<Record<string,MessageKey>>={
   Dashboard:'dashboard.title', Practice:'practice.title', Progress:'progress.title', 'Study Path':'studyPath.title',
@@ -16,10 +17,10 @@ const contextKeys:Partial<Record<string,MessageKey>>={
   'Terms of Use':'nav.terms', 'Page not found':'common.pageNotFound',
 };
 
-function SidebarLink({to,hash,icon,label,onSelect,activeWhen}:{to:string;hash?:string;icon:ShellIconName;label:MessageKey;onSelect:()=>void;activeWhen?:(pathname:string)=>boolean}) {
+function SidebarLink({to,hash,icon,label,onSelect,activeWhen,tourId}:{to:string;hash?:string;icon:ShellIconName;label:MessageKey;onSelect:()=>void;activeWhen?:(pathname:string)=>boolean;tourId?:string}) {
   const {pathname,hash:currentHash}=useLocation(); const {t}=useI18n();
   const active=activeWhen?.(pathname)??(pathname===to&&(hash ? currentHash===hash : !currentHash));
-  return <Link to={{pathname:to,hash}} className={`ds-nav-link${active?' active':''}`} aria-current={active?'page':undefined} onClick={onSelect}><ShellIcon name={icon}/><span>{t(label)}</span></Link>;
+  return <Link to={{pathname:to,hash}} className={`ds-nav-link${active?' active':''}`} aria-current={active?'page':undefined} data-tour={tourId} onClick={onSelect}><ShellIcon name={icon}/><span>{t(label)}</span></Link>;
 }
 
 function NavigationGroup({label,children}:{label:MessageKey;children:ReactNode}) {
@@ -31,9 +32,9 @@ export function AppShell() {
   const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
   const {pathname,hash}=useLocation(); const normalizedPath=pathname.replace(/\/+$/, '')||'/';
   const specialContext:Record<string,{title:string;breadcrumbs:{label:string;to?:string}[]}>= {
-    '/account':{title:'Account & Settings',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Account & Settings'}]},
-    '/privacy':{title:'Privacy Policy',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Privacy Policy'}]},
-    '/terms':{title:'Terms of Use',breadcrumbs:[{label:'Dashboard',to:'/'},{label:'Terms of Use'}]},
+    '/account':{title:'Account & Settings',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Account & Settings'}]},
+    '/privacy':{title:'Privacy Policy',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Privacy Policy'}]},
+    '/terms':{title:'Terms of Use',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Terms of Use'}]},
   };
   const context=specialContext[normalizedPath]??pageContext(pathname);
   const localized=(label:string)=>contextKeys[label]?t(contextKeys[label]!):label;
@@ -52,22 +53,22 @@ export function AppShell() {
   return <div className={`ds-app${tool?' ds-tool':''}`} data-course={course.subject_id}>
     <a className="ds-skip-link" href="#ds-content">{t('a11y.skip')}</a>
     <header className="ds-topbar">
-      <button ref={menuButton} className="ds-menu-button" aria-label={t(navigationOpen?'a11y.closeNavigation':'a11y.openNavigation')} aria-expanded={navigationOpen} aria-controls="ds-navigation" onClick={()=>setNavigationOpen(open=>!open)}><ShellIcon name={navigationOpen?'close':'menu'}/></button>
+      <button ref={menuButton} className="ds-menu-button" data-tour="mobile-menu" aria-label={t(navigationOpen?'a11y.closeNavigation':'a11y.openNavigation')} aria-expanded={navigationOpen} aria-controls="ds-navigation" onClick={()=>setNavigationOpen(open=>!open)}><ShellIcon name={navigationOpen?'close':'menu'}/></button>
       <nav className="ds-breadcrumbs" aria-label={t('a11y.breadcrumb')}><ol>{context.breadcrumbs.map((crumb,i)=><li key={`${i}-${crumb.label}`}>{crumb.to?<Link to={crumb.to}>{localized(crumb.label)}</Link>:<span aria-current="page">{localized(crumb.label)}</span>}</li>)}</ol></nav>
       <Link className="ds-header-account" to="/account#settings" aria-label={t('a11y.accountSettings')}><span className="ds-avatar">{initial}</span><span>{profileName??t('account.studySpace')}<small>{t('account.title')}</small></span></Link>
     </header>
     <aside className={`ds-sidebar${navigationOpen?' is-open':''}`} id="ds-navigation">
-      <Link className="ds-brand" to="/" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span className="ds-brand-name">Notedra</span></Link>
+      <Link className="ds-brand" to="/dashboard" onClick={closeNavigation}><span className="ds-brand-mark"><ShellIcon name="book" size={22}/></span><span className="ds-brand-name">Notedra</span></Link>
       <p className="ds-brand-tagline">{t('brand.tagline')}</p>
       <nav aria-label={t('a11y.primaryNavigation')}>
         <NavigationGroup label="nav.main">
-          <SidebarLink to="/" icon="dashboard" label="nav.home" onSelect={closeNavigation}/>
-          <SidebarLink to="/" hash="#courses" icon="book" label="nav.courses" onSelect={closeNavigation} activeWhen={path=>courses.some(course=>path===course.path||path.startsWith(course.path+'/'))}/>
-          <SidebarLink to="/practice" icon="practice" label="nav.practice" onSelect={closeNavigation}/>
-          <SidebarLink to="/progress" icon="progress" label="nav.progress" onSelect={closeNavigation}/>
+          <SidebarLink to="/dashboard" icon="dashboard" label="nav.home" onSelect={closeNavigation}/>
+          <SidebarLink to="/dashboard" hash="#courses" icon="book" label="nav.courses" tourId="courses" onSelect={closeNavigation} activeWhen={path=>courses.some(course=>path===course.path||path.startsWith(course.path+'/'))}/>
+          <SidebarLink to="/practice" icon="practice" label="nav.practice" tourId="practice" onSelect={closeNavigation}/>
+          <SidebarLink to="/progress" icon="progress" label="nav.progress" tourId="progress" onSelect={closeNavigation}/>
         </NavigationGroup>
         <NavigationGroup label="nav.secondary">
-          <SidebarLink to="/study-plan" icon="book" label="nav.studyPath" onSelect={closeNavigation}/>
+          <SidebarLink to="/study-plan" icon="book" label="nav.studyPath" tourId="study-path" onSelect={closeNavigation}/>
         </NavigationGroup>
         <NavigationGroup label="nav.accountGroup">
           <SidebarLink to="/account" hash="#settings" icon="settings" label="nav.settings" onSelect={closeNavigation}/>
@@ -80,5 +81,6 @@ export function AppShell() {
       <LearningNotice/><RouteBoundary resetKey={pathname}><Outlet/></RouteBoundary>
       {!tool&&<footer className="ds-legal-footer"><span>{t('brand.independent')}</span><nav aria-label={t('a11y.legalNavigation')}><Link to="/privacy">{t('nav.privacy')}</Link><Link to="/terms">{t('nav.terms')}</Link><a href={`mailto:${PUBLIC_LEGAL_CONTACT}`}>{t('nav.support')}</a></nav></footer>}
     </Content>
+    <ProductTour/>
   </div>;
 }

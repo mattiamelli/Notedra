@@ -40,6 +40,7 @@ export function AccountPage() {
       <section id="settings" className="ds-account-card" aria-labelledby="appearance-heading"><p className="ds-eyebrow">{t('account.personalization')}</p><h2 id="appearance-heading">{t('account.appearance')}</h2><p>{t('account.appearanceDescription')}</p>
         <fieldset className="ds-theme-picker"><legend>{t('account.theme')}</legend>{themes.map(option=><label key={option.value} className={theme.preference===option.value?'is-selected':''}><input type="radio" name="theme" value={option.value} checked={theme.preference===option.value} onChange={()=>theme.setPreference(option.value)}/><span><strong>{option.label}</strong><small>{option.description}</small></span></label>)}</fieldset>
         <p className="ds-account-meta">{t('theme.current',{theme:t(theme.resolved==='dark'?'theme.dark':'theme.light')})}</p>
+        {user&&<div className="ds-account-tour"><div><h3>{t('tour.settingsTitle')}</h3><p>{t('tour.settingsBody')}</p></div><button className="ds-button ds-button-quiet" type="button" onClick={event=>window.dispatchEvent(new CustomEvent('notedra:tour:start',{detail:{opener:event.currentTarget}}))}>{t('tour.settingsAction')}</button></div>}
       </section>
 
       <section className="ds-account-card ds-account-language" aria-labelledby="language-heading"><p className="ds-eyebrow">{t('account.personalization')}</p><h2 id="language-heading">{t('language.title')}</h2><p>{t('language.description')}</p>

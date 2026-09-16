@@ -8,7 +8,7 @@ export interface Session {
   readonly steps: readonly StepResult[];
   readonly cursor: number;
 }
-export const createSession = (program: Program): Session => Object.freeze({initial: createCPU(program.entry), steps: Object.freeze([]), cursor: 0});
+export const createSession = (program: Program, input = ''): Session => Object.freeze({initial: createCPU(program.entry, {}, program, input), steps: Object.freeze([]), cursor: 0});
 export const currentCPU = (session: Session): CPUState => session.cursor === 0 ? session.initial : session.steps[session.cursor - 1].state;
 export function seekSession(session: Session, cursor: number): Session {
   return Object.freeze({...session, cursor: Math.max(0, Math.min(session.steps.length, cursor))});

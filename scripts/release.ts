@@ -1,11 +1,12 @@
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import type {Plugin} from 'vite';
 import {releaseRobotsText} from './release-robots';
+import {productionOrigin} from './release-origin';
 import {academicIndex, courses, topicPath, ASSEMBLY_TOOL_PATH} from '../src/academic/navigation';
 
-export const productionOrigin = 'https://delftstudy-assembly.mattiamelli07.chatgpt.site';
+export {productionOrigin} from './release-origin';
 export interface ReleasePage {path:string; title:string; description:string;}
-export const homeReleasePage:ReleasePage={path:'/',title:'Notedra — Your study space',description:'Independent study support for TU Delft Computer Science & Engineering students. Study Computer Organisation, Reasoning and Logic, and Java programming.'};
+export const homeReleasePage:ReleasePage={path:'/',title:'Notedra — Active, measurable study',description:'Turn course material into active, measurable study with authored practice, clear feedback, Study Paths and evidence of progress.'};
 export const legalReleasePages:ReleasePage[]=[
   {path:'/privacy',title:'Privacy Policy · Notedra',description:'How Notedra handles account information, browser storage, synchronized learner records, backups, cookies, and privacy choices.'},
   {path:'/terms',title:'Terms of Use · Notedra',description:'Terms for using Notedra, an independent educational platform for computer science study support.'},
@@ -13,7 +14,7 @@ export const legalReleasePages:ReleasePage[]=[
 export function publicReleasePages():ReleasePage[] {
   return [
     homeReleasePage,
-    ...courses.map(course=>({path:course.path,title:`${course.name} · Notedra`,description:`Study ${course.name} through topic explanations, flashcards and authored practice. Independent study support for TU Delft Computer Science & Engineering students.`})),
+    ...courses.map(course=>({path:course.path,title:`${course.name} · Notedra`,description:`Study ${course.name} through topic explanations, flashcards and authored practice. Independent study support for focused, measurable learning.`})),
     ...academicIndex.topics.map(topic=>({path:topicPath(topic),title:`${topic.name} · Notedra`,description:`Explore ${topic.name}: learning material, flashcards and practice in Notedra, an independent student study platform.`})),
     {path:ASSEMBLY_TOOL_PATH,title:'x86-64 Assembly Visualizer · Notedra',description:'Step through AT&T x86-64 instructions and inspect registers, stack frames and function calls in your browser.'},
     ...legalReleasePages,
@@ -32,7 +33,7 @@ export function sitemap(pages:ReleasePage[]):string {
 }
 export function releaseHtml(template:string,page?:ReleasePage):string {
   const title=page?.title??'Notedra — Your study space';
-  const description=page?.description??'Independent study support for TU Delft Computer Science & Engineering students. Study Computer Organisation, Reasoning and Logic, and Java programming.';
+  const description=page?.description??'Independent study support for focused, measurable learning. Learn, practise, understand mistakes and build a clear study path with Notedra.';
   const image=productionOrigin+'/social-preview.png';
   const metadata=`<meta name="robots" content="${page?'index,follow':'noindex,follow'}" />\n<meta property="og:type" content="website" />\n<meta property="og:site_name" content="Notedra" />\n<meta property="og:title" content="${escapeMarkup(title)}" />\n<meta property="og:description" content="${escapeMarkup(description)}" />\n<meta property="og:image" content="${image}" />\n<meta property="og:image:width" content="1200" />\n<meta property="og:image:height" content="630" />\n<meta property="og:image:alt" content="Notedra — independent computer science study support" />\n<meta name="twitter:card" content="summary_large_image" />\n<meta name="twitter:title" content="${escapeMarkup(title)}" />\n<meta name="twitter:description" content="${escapeMarkup(description)}" />\n<meta name="twitter:image" content="${image}" />\n<meta name="twitter:image:alt" content="Notedra — independent computer science study support" />\n<link rel="manifest" href="/manifest.webmanifest" />\n${page?`<link rel="canonical" href="${productionOrigin+page.path}" />\n<meta property="og:url" content="${productionOrigin+page.path}" />`:''}\n<script src="/release-metadata.js" defer></script>`;
   return template.replace(/<title>[^<]*<\/title>/,`<title>${escapeMarkup(title)}</title>`).replace(/<meta name="description" content="[^"]*"\s*\/>/,`<meta name="description" content="${escapeMarkup(description)}" />`).replace('</head>',metadata+'\n</head>');
@@ -40,7 +41,7 @@ export function releaseHtml(template:string,page?:ReleasePage):string {
 
 // This script reads only the route and canonical public descriptions, never learner state.
 export function metadataScript(pages:ReleasePage[]):string {
-  return `(()=>{const origin=${JSON.stringify(productionOrigin)},pages=${JSON.stringify(pages)};function update(){const path=location.pathname.replace(/\\/+$/,'')||'/';const page=pages.find(p=>p.path===path);const title=page?.title||document.title;const description=page?.description||'Independent study support for TU Delft Computer Science & Engineering students.';const set=(selector,value)=>{const node=document.querySelector(selector);if(node)node.setAttribute('content',value)};set('meta[name="robots"]',page?'index,follow':'noindex,follow');set('meta[name="description"]',description);set('meta[property="og:title"]',title);set('meta[property="og:description"]',description);set('meta[name="twitter:title"]',title);set('meta[name="twitter:description"]',description);document.querySelectorAll('link[rel="canonical"],meta[property="og:url"]').forEach(node=>node.remove());if(page){const link=document.createElement('link');link.rel='canonical';link.href=origin+page.path;document.head.append(link);const og=document.createElement('meta');og.setAttribute('property','og:url');og.content=origin+page.path;document.head.append(og)}}const title=document.querySelector('title');if(title)new MutationObserver(update).observe(title,{childList:true,subtree:true,characterData:true});addEventListener('popstate',update);update()})();\n`;
+  return `(()=>{const origin=${JSON.stringify(productionOrigin)},pages=${JSON.stringify(pages)};function update(){const path=location.pathname.replace(/\\/+$/,'')||'/';const page=pages.find(p=>p.path===path);const title=page?.title||document.title;const description=page?.description||'Independent study support for focused, measurable learning.';const set=(selector,value)=>{const node=document.querySelector(selector);if(node)node.setAttribute('content',value)};set('meta[name="robots"]',page?'index,follow':'noindex,follow');set('meta[name="description"]',description);set('meta[property="og:title"]',title);set('meta[property="og:description"]',description);set('meta[name="twitter:title"]',title);set('meta[name="twitter:description"]',description);document.querySelectorAll('link[rel="canonical"],meta[property="og:url"]').forEach(node=>node.remove());if(page){const link=document.createElement('link');link.rel='canonical';link.href=origin+page.path;document.head.append(link);const og=document.createElement('meta');og.setAttribute('property','og:url');og.content=origin+page.path;document.head.append(og)}}const title=document.querySelector('title');if(title)new MutationObserver(update).observe(title,{childList:true,subtree:true,characterData:true});addEventListener('popstate',update);update()})();\n`;
 }
 export function releaseHeaders(supabaseOrigin:string):string {
   const url=new URL(supabaseOrigin);
