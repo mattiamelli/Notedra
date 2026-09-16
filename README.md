@@ -149,15 +149,57 @@ The build runs the content, projection, exercise, course and release validation 
 
 ## Project preview
 
-The dashboard brings the three course areas, study path, readiness evidence and practice entry points together in one view:
+These current production views show the complete Notedra study workflow using a clean anonymous local profile.
 
-![Notedra dashboard showing course areas, study path and practice tools](docs/assets/dashboard.jpg)
+### 1. Landing
 
-The Assembly workbench provides a bounded, visual x86-64 learning environment with the program, stack memory and register state visible together:
+The public product story connects course material, authored practice, feedback, progress and exam preparation.
 
-![Notedra Assembly workbench showing a function-call program, stack memory and registers](docs/assets/assembly-visualizer.jpg)
+![Notedra landing page](docs/project-preview/01-landing.png)
 
-These are real application views captured from a local session. They intentionally show no account data, tokens or administrative panels. Future screenshots should follow the same privacy check and remain limited to two or three focused views.
+### 2. Dashboard
+
+The dashboard opens with one clear next action, followed by Study Path and honest readiness context.
+
+![Notedra dashboard with Next Best Action](docs/project-preview/02-dashboard.png)
+
+### 3. Computer Organisation
+
+Subject pages organise canonical topics, prerequisites, lessons, flashcards and practice without exposing internal course identifiers.
+
+![Computer Organisation subject page](docs/project-preview/03-computer-organisation.png)
+
+### 4. Study Path
+
+Study Path combines course context, available time and six compact study methods with a transparent recommendation.
+
+![Notedra Study Path method selector](docs/project-preview/04-study-path.png)
+
+### 5. Practice
+
+Authored exercises are filterable by subject and difficulty, with deterministic feedback where supported.
+
+![Notedra authored practice catalogue](docs/project-preview/05-practice.png)
+
+### 6. Progress
+
+Mastery and exam readiness remain separate, evidence-based measures and report insufficient evidence honestly.
+
+![Notedra progress view](docs/project-preview/06-progress.png)
+
+### 7. Assembly Visualizer
+
+The x86-64 workbench exposes source, registers, flags, stack memory, terminal state and execution history step by step.
+
+![Notedra Assembly Visualizer](docs/project-preview/07-assembly-visualizer.png)
+
+### 8. Mobile
+
+The same Next Best Action and study workflow remain clear at a 390 px mobile viewport.
+
+![Notedra mobile dashboard](docs/project-preview/08-mobile-dashboard.png)
+
+These are real production application views captured from a clean anonymous session. They contain no account data, tokens or administrative panels.
 
 Useful additional commands:
 
