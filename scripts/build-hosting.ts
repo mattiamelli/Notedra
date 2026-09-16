@@ -18,7 +18,7 @@ const headersFile=readFileSync('dist/_headers','utf8');
 const headers=Object.fromEntries(headersFile.split('/assets/*')[0].split('\n').filter(line=>/^  [\w-]+: /.test(line)).map(line=>{const at=line.indexOf(':');return [line.slice(2,at),line.slice(at+2)];}));
 if(!headers['Content-Security-Policy-Report-Only'])throw Error('Missing built CSP');
 if(policy.cspMode==='enforce'){headers['Content-Security-Policy']=headers['Content-Security-Policy-Report-Only'];delete headers['Content-Security-Policy-Report-Only'];}
-const mime:Record<string,string>={js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',svg:'image/svg+xml',png:'image/png',xml:'application/xml; charset=utf-8',txt:'text/plain; charset=utf-8',webmanifest:'application/manifest+json',html:'text/html; charset=utf-8'};
+const mime:Record<string,string>={js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',png:'image/png',xml:'application/xml; charset=utf-8',txt:'text/plain; charset=utf-8',webmanifest:'application/manifest+json',html:'text/html; charset=utf-8'};
 function asset(file:string):HostedAsset {
  const bytes=readFileSync('dist/'+file),textBody=bytes.toString('utf8'),binary=!Buffer.from(textBody).equals(bytes),body=binary?bytes.toString('base64'):textBody;
  if(!binary)scanArtifact('dist/'+file,body);
