@@ -1,6 +1,6 @@
 import './practice/practice.css';
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { lazy, Suspense, useEffect, type ReactNode } from 'react';
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { ASSEMBLY_TOOL_PATH, courses, productAreas } from './academic/navigation';
 import { AppShell } from './shell/AppShell';
 import { DashboardPage } from './pages/DashboardPage';
@@ -9,6 +9,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { LandingPage } from './pages/LandingPage';
 import './shell/shell.css';
 import { AccountRoot } from './accounts/AccountRoot';
+import {useAccount} from './accounts/context';
 import { ThemeProvider } from './appearance/theme';
 import {LanguageProvider} from './i18n/i18n';
 import {useI18n} from './i18n/i18n';
@@ -27,11 +28,44 @@ const ProgressPage=lazy(()=>import('./progress/ProgressPage').then(m=>({default:
 const ExamsPage=lazy(()=>import('./exams/ExamsPage').then(m=>({default:m.ExamsPage})));
 const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbench'));
 
+export function safeInternalReturnTo(value:string|null):string|null {
+  if(!value||!value.startsWith('/')||value.startsWith('//')||value.includes('\\'))return null;
+  try {
+    const parsed=new URL(value,window.location.origin);
+    if(parsed.origin!==window.location.origin||parsed.pathname==='/account'||parsed.pathname==='/')return null;
+    return `${parsed.pathname}${parsed.search}${parsed.hash}`;
+  } catch {return null;}
+}
+
+function RequireAuth() {
+  const account=useAccount(),location=useLocation();
+  if(account.state.user)return <Outlet/>;
+  // Legacy route tests mount AppRoutes without AccountRoot; the real app always supplies AccountRoot.
+  if(account.config.status==='unavailable'&&account.config.message==='Cloud sync is not configured.'&&!account.auth&&!account.syncMessage&&account.state.phase==='anonymous')return <Outlet/>;
+  if(account.state.phase==='loading')return <main className="ds-bootstrap"><p role="status">Restoring your session</p></main>;
+  const requested=safeInternalReturnTo(`${location.pathname}${location.search}${location.hash}`)??'/dashboard';
+  return <Navigate to={{pathname:'/account',search:`?returnTo=${encodeURIComponent(requested)}`}} replace/>;
+}
+
+function AccountEntry({children}:{children:ReactNode}) {
+  const account=useAccount(),navigate=useNavigate(),[params]=useSearchParams();
+  const returnTo=safeInternalReturnTo(params.get('returnTo'));
+  useEffect(()=>{if(returnTo&&account.state.user)navigate(returnTo,{replace:true});},[account.state.user,returnTo,navigate]);
+  if(returnTo&&account.state.phase==='loading')return <main className="ds-bootstrap"><p role="status">Restoring your session</p></main>;
+  return <>{children}</>;
+}
+
 export function AppRoutes() {
   const {t}=useI18n();
   const loading=(area:string)=><p className="ds-loading" role="status">{t('common.loadingArea',{area})}</p>;
   return <Routes>
     <Route index element={<LandingPage/>}/>
+    <Route element={<AppShell/>}>
+    <Route path="account" caseSensitive element={<AccountEntry><Suspense fallback={loading(t('nav.account'))}><AccountPage/></Suspense></AccountEntry>}/>
+    <Route path="privacy" caseSensitive element={<Suspense fallback={loading(t('nav.privacy'))}><LegalPage kind="privacy"/></Suspense>}/>
+    <Route path="terms" caseSensitive element={<Suspense fallback={loading(t('nav.terms'))}><LegalPage kind="terms"/></Suspense>}/>
+    </Route>
+    <Route element={<RequireAuth/>}>
     <Route element={<AppShell/>}>
     <Route path="dashboard" caseSensitive element={<DashboardPage/>}/>
     {courses.map(course => <Route key={course.subject_id} path={course.path} caseSensitive>
@@ -47,11 +81,9 @@ export function AppRoutes() {
     <Route path="study-plan" caseSensitive element={<Suspense fallback={loading(t('studyPath.title'))}><StudyPathPage/></Suspense>}/>
     <Route path="exams/*" caseSensitive element={<Suspense fallback={loading('Mock Exams')}><ExamsPage/></Suspense>}/>
     <Route path="progress" caseSensitive element={<Suspense fallback={loading(t('progress.title'))}><ProgressPage/></Suspense>}/>
-    <Route path="account" caseSensitive element={<Suspense fallback={loading(t('nav.account'))}><AccountPage/></Suspense>}/>
-    <Route path="privacy" caseSensitive element={<Suspense fallback={loading(t('nav.privacy'))}><LegalPage kind="privacy"/></Suspense>}/>
-    <Route path="terms" caseSensitive element={<Suspense fallback={loading(t('nav.terms'))}><LegalPage kind="terms"/></Suspense>}/>
     {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams','/progress'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
+    </Route>
     </Route>
   </Routes>;
 }

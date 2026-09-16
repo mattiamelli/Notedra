@@ -21,7 +21,7 @@
   },
   "src/App.tsx": {
     "before": "f2eb328a11f281ebb38127c9a88e3d770c4a2e835feb1f8f4fa5c8b93f6be1ef",
-    "after": "37fc01e1f7f87a110225c533659976314cd8fe3a20697f2162dbb8a1eb5ed4a1"
+    "after": "bc7a3a8e80c018e57f6e967d014a95f6af2aee3dae38bfaaed0fdfdce8bdf90f"
   },
   "src/main.tsx": {
     "before": "07af17edf43a1c6bb20094beaddabc173b423c759286a98d2dd7ba3a7e7222cc",
@@ -121,7 +121,7 @@
   },
   "tests/cloud-ui.test.tsx": {
     "before": "1892c470a0fdb7bee29dfe6583f5a034ca04dcb730a2ceafd3b3740f1d9f1ac3",
-    "after": "44fd84a165933fc416c4e1972589d7d0b5329dae28a3d06ad0abe0fea5800c4a"
+    "after": "dddd0f217461afd8bb4ad836c29f80f936354920c8e070e8aad98cd25a91027b"
   },
   "tests/learning-ui.test.tsx": {
     "before": "8d506a2d2262717414c5bb149e1ff93e16df38d970837126ca531502f2cbcf5d",
@@ -130,7 +130,7 @@
   },
   "tests/application-routing.test.tsx": {
     "before": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902",
-    "after": "a2116d95a9111b8c6ace27a1f28a7b5f1d5e342de0cf0c369a8316f8d9e37f7c",
+    "after": "853f0c22ef1031b2952c533528f32d6ff9a5d369be36534c123ca26fbe9ab21e",
     "original": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902"
   },
   "tests/adaptive-ui.test.tsx": {

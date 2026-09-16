@@ -14,7 +14,7 @@ describe('launch legal and security surfaces',()=>{
   it('explains the real anonymous, account, sync, backup, cookie and analytics behavior',async()=>{
     const root=await render('privacy');
     const text=host.textContent??'';
-    for(const expected of ['use core study features without an account','Supabase Auth','synchronized learner snapshot','export a JSON backup','does not add analytics','strictly necessary security or session cookies','does not sell learner data'])expect(text).toContain(expected);
+    for(const expected of ['need an account to enter the study app','Supabase Auth','synchronized learner snapshot','export a JSON backup','does not add analytics','strictly necessary security or session cookies','does not sell learner data'])expect(text).toContain(expected);
     expect(text).not.toMatch(/GDPR compliant|TU Delft/i);
     await act(async()=>root.unmount());
   });

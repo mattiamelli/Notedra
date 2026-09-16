@@ -3,10 +3,11 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { BrowserRouter, MemoryRouter } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { AppRoutes } from '../src/App';
+import { AppRoutes, safeInternalReturnTo } from '../src/App';
 import { academicIndex, ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, productAreas, topicPath, topicsFor } from '../src/academic/navigation';
 import { examplePrograms } from '../src/examples/examplePrograms';
 import {allExercises} from '../src/practice/catalog';
+import {AccountContext, anonymousState, type AccountContextValue} from '../src/accounts/context';
 
 Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true});
 let container: HTMLDivElement;
@@ -22,10 +23,13 @@ afterEach(async () => { await act(async () => root.unmount()); container.remove(
 
 
 async function settleRoutes(){const loading=()=>[...container.querySelectorAll('[role="status"]')].some(n=>/^Loading /.test(n.textContent??''));for(let i=0;i<150&&loading();i++)await act(async()=>{await new Promise(r=>setTimeout(r,10));});expect(loading(),'lazy route resolved').toBe(false);}
-async function renderRoute(path: string, browser = false) {
+const accountBase:AccountContextValue={config:{status:'configured',url:'https://project.supabase.co',key:'sb_publishable_publicpublicpublicpublic'},auth:null,state:{...anonymousState,phase:'signed-in',user:{id:'11111111-1111-4111-8111-111111111111',email:'learner@example.invalid',displayName:'Learner'}},syncStatus:'Synced',syncMessage:'',sync:null,adopt:null};
+const anonymousAccount:AccountContextValue={...accountBase,state:anonymousState,syncStatus:'Local only'};
+async function renderRoute(path: string, browser = false, account:AccountContextValue=accountBase) {
   if (browser) window.history.replaceState(null, '', path);
   await act(async () => {
-    root.render(browser ? <BrowserRouter><AppRoutes/></BrowserRouter> : <MemoryRouter initialEntries={[path]}><AppRoutes/></MemoryRouter>);
+    const app=<AccountContext.Provider value={account}><AppRoutes/></AccountContext.Provider>;
+    root.render(browser ? <BrowserRouter>{app}</BrowserRouter> : <MemoryRouter initialEntries={[path]}>{app}</MemoryRouter>);
     if (path === ASSEMBLY_TOOL_PATH) await import('../src/AssemblyWorkbench');
   });await settleRoutes();
 }
@@ -44,10 +48,29 @@ const register = (name: string) => container.querySelector(`[data-register="${na
 
 describe('application routes and canonical navigation', () => {
   it('renders the public positioning at /', async () => {
-    await renderRoute('/'); expect(heading()).toBe('Study what matters.Know what you actually understand.');
+    await renderRoute('/', false, anonymousAccount); expect(heading()).toBe('Study what matters.Know what you actually understand.');
     expect(container.textContent).toContain('A study system, not another chat window');
     expect(container.textContent).toContain('Built for focused university study.');
-    expect(container.querySelector('a[href="/dashboard"]')).not.toBeNull();
+    expect(container.querySelector('a[href="/account?returnTo=%2Fdashboard"]')).not.toBeNull();
+  });
+  it('sends an anonymous deep link to auth with a safe return destination', async () => {
+    await renderRoute('/study-plan?course=CSE1400_CO#method', true, anonymousAccount);
+    expect(window.location.pathname).toBe('/account');
+    expect(window.location.search).toBe('?returnTo=%2Fstudy-plan%3Fcourse%3DCSE1400_CO%23method');
+    expect(heading()).toBe('Account & Settings');
+    expect(container.textContent).not.toContain('Study Method');
+  });
+  it('returns a signed-in learner from the auth entry to the requested internal route', async () => {
+    await renderRoute('/account?returnTo=%2Fpractice', true);
+    for(let i=0;i<30&&window.location.pathname!=='/practice';i++)await act(async()=>{await new Promise(r=>setTimeout(r,5));});
+    expect(window.location.pathname).toBe('/practice');
+    expect(heading()).toBe('Practice');
+  });
+  it('rejects external and account-loop return destinations', () => {
+    expect(safeInternalReturnTo('https://evil.example/dashboard')).toBeNull();
+    expect(safeInternalReturnTo('//evil.example/dashboard')).toBeNull();
+    expect(safeInternalReturnTo('/account')).toBeNull();
+    expect(safeInternalReturnTo('/co/CO_T06_ASSEMBLY_X86_64')).toBe('/co/CO_T06_ASSEMBLY_X86_64');
   });
   it('renders the Dashboard at /dashboard', async () => {
     await renderRoute('/dashboard'); expect(heading()).toBe('Dashboard');
