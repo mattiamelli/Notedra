@@ -51,14 +51,13 @@ describe('application routes and canonical navigation', () => {
     await renderRoute('/', false, anonymousAccount); expect(heading()).toBe('Study what matters.Know what you actually understand.');
     expect(container.textContent).toContain('A study system, not another chat window');
     expect(container.textContent).toContain('Built for focused university study.');
-    expect(container.querySelector('a[href="/account?returnTo=%2Fdashboard"]')).not.toBeNull();
+    expect(container.querySelector('a[href="/dashboard"]')).not.toBeNull();
   });
-  it('sends an anonymous deep link to auth with a safe return destination', async () => {
+  it('keeps anonymous deep links inside the local study app', async () => {
     await renderRoute('/study-plan?course=CSE1400_CO#method', true, anonymousAccount);
-    expect(window.location.pathname).toBe('/account');
-    expect(window.location.search).toBe('?returnTo=%2Fstudy-plan%3Fcourse%3DCSE1400_CO%23method');
-    expect(heading()).toBe('Account & Settings');
-    expect(container.textContent).not.toContain('Study Method');
+    expect(window.location.pathname).toBe('/study-plan');
+    expect(window.location.search).toBe('?course=CSE1400_CO');
+    expect(heading()).toBe('Study Path');
   });
   it('returns a signed-in learner from the auth entry to the requested internal route', async () => {
     await renderRoute('/account?returnTo=%2Fpractice', true);

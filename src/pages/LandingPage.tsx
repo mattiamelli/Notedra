@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import {Link} from 'react-router';
 import {ShellIcon, type ShellIconName} from '../shell/ShellIcon';
-import {useAccount} from '../accounts/context';
 import './landing.css';
 
 const description='Turn course material into active, measurable study with authored practice, clear feedback, Study Paths and evidence of progress.';
@@ -9,7 +8,7 @@ const workflow=[['01','Learn','Start from structured course material.'],['02','P
 const strengths:[ShellIconName,string,string][]=[['practice','Authored practice','Questions are designed around course concepts, not generated to fill a feed.'],['mistakes','Deterministic feedback','Where supported, answers produce explainable, repeatable feedback.'],['calendar','Study Path','Turn current evidence into a focused sequence for the time you have.'],['progress','Mastery and readiness','Understand topic learning separately from exam preparation.'],['logic','Prerequisite maps','See how foundational skills connect before moving forward.'],['cpu','Interactive tools','Step through x86-64 execution and inspect registers, stack frames and calls.']];
 
 export function LandingPage(){
-  const account=useAccount(),entry=account.state.user?'/dashboard':'/account?returnTo=%2Fdashboard';
+  const entry='/dashboard';
   useEffect(()=>{document.title='Notedra — Active, measurable study';document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute('content',description);window.scrollTo(0,0);},[]);
   return <div className="landing">
     <a className="landing-skip" href="#landing-content">Skip to content</a>

@@ -1,6 +1,6 @@
 import './practice/practice.css';
 import { lazy, Suspense, useEffect, type ReactNode } from 'react';
-import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useSearchParams } from 'react-router';
+import { BrowserRouter, Route, Routes, useNavigate, useSearchParams } from 'react-router';
 import { ASSEMBLY_TOOL_PATH, courses, productAreas } from './academic/navigation';
 import { AppShell } from './shell/AppShell';
 import { DashboardPage } from './pages/DashboardPage';
@@ -37,16 +37,6 @@ export function safeInternalReturnTo(value:string|null):string|null {
   } catch {return null;}
 }
 
-function RequireAuth() {
-  const account=useAccount(),location=useLocation();
-  if(account.state.user)return <Outlet/>;
-  // Legacy route tests mount AppRoutes without AccountRoot; the real app always supplies AccountRoot.
-  if(account.config.status==='unavailable'&&account.config.message==='Cloud sync is not configured.'&&!account.auth&&!account.syncMessage&&account.state.phase==='anonymous')return <Outlet/>;
-  if(account.state.phase==='loading')return <main className="ds-bootstrap"><p role="status">Restoring your session</p></main>;
-  const requested=safeInternalReturnTo(`${location.pathname}${location.search}${location.hash}`)??'/dashboard';
-  return <Navigate to={{pathname:'/account',search:`?returnTo=${encodeURIComponent(requested)}`}} replace/>;
-}
-
 function AccountEntry({children}:{children:ReactNode}) {
   const account=useAccount(),navigate=useNavigate(),[params]=useSearchParams();
   const returnTo=safeInternalReturnTo(params.get('returnTo'));
@@ -65,7 +55,6 @@ export function AppRoutes() {
     <Route path="privacy" caseSensitive element={<Suspense fallback={loading(t('nav.privacy'))}><LegalPage kind="privacy"/></Suspense>}/>
     <Route path="terms" caseSensitive element={<Suspense fallback={loading(t('nav.terms'))}><LegalPage kind="terms"/></Suspense>}/>
     </Route>
-    <Route element={<RequireAuth/>}>
     <Route element={<AppShell/>}>
     <Route path="dashboard" caseSensitive element={<DashboardPage/>}/>
     {courses.map(course => <Route key={course.subject_id} path={course.path} caseSensitive>
@@ -83,7 +72,6 @@ export function AppRoutes() {
     <Route path="progress" caseSensitive element={<Suspense fallback={loading(t('progress.title'))}><ProgressPage/></Suspense>}/>
     {productAreas.filter(area => !['/practice','/mistakes','/study-plan','/exams','/progress'].includes(area.path)).map(area => <Route key={area.path} path={area.path} caseSensitive element={<ProductAreaPage area={area}/>}/>)}
     <Route path="*" element={<NotFoundPage/>}/>
-    </Route>
     </Route>
   </Routes>;
 }

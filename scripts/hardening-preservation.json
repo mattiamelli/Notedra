@@ -21,7 +21,7 @@
   },
   "src/App.tsx": {
     "before": "f2eb328a11f281ebb38127c9a88e3d770c4a2e835feb1f8f4fa5c8b93f6be1ef",
-    "after": "bc7a3a8e80c018e57f6e967d014a95f6af2aee3dae38bfaaed0fdfdce8bdf90f"
+    "after": "7c16a0683e6319f196881f5418f972bf0f833124c7954afbc757fceaa2ac7085"
   },
   "src/main.tsx": {
     "before": "07af17edf43a1c6bb20094beaddabc173b423c759286a98d2dd7ba3a7e7222cc",
@@ -130,7 +130,7 @@
   },
   "tests/application-routing.test.tsx": {
     "before": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902",
-    "after": "853f0c22ef1031b2952c533528f32d6ff9a5d369be36534c123ca26fbe9ab21e",
+    "after": "50e0428a38bbfead33495b015ae051f3d592d7bfe8c9648405a514dfeac5e6fd",
     "original": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902"
   },
   "tests/adaptive-ui.test.tsx": {
