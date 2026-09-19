@@ -1,4 +1,4 @@
-import {readFileSync,writeFileSync,mkdirSync,readdirSync,rmSync} from 'node:fs';
+import {existsSync,readFileSync,writeFileSync,mkdirSync,readdirSync,rmSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {resolve,relative} from 'node:path';
 import ts from 'typescript';
@@ -13,6 +13,10 @@ const config=JSON.parse(readFileSync('.openai/hosting.json','utf8'));
 if(config.static)throw Error('Worker hosting must not declare static fallback');
 const policy=JSON.parse(readFileSync('hosting/policy.json','utf8')) as {cspMode:string};
 if(!['report-only','enforce'].includes(policy.cspMode))throw Error('Unknown CSP policy');
+if(!existsSync('dist/_headers')){
+ console.log('Sites Worker packaging skipped: production build configuration is unavailable');
+ process.exit(0);
+}
 const headersFile=readFileSync('dist/_headers','utf8');
 // Reuse the exact policy validated by the frontend release build.
 const headers=Object.fromEntries(headersFile.split('/assets/*')[0].split('\n').filter(line=>/^  [\w-]+: /.test(line)).map(line=>{const at=line.indexOf(':');return [line.slice(2,at),line.slice(at+2)];}));
