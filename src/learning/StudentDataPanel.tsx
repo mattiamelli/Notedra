@@ -1,4 +1,4 @@
-import { useRef, useState, type ChangeEvent } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { errorMessage, MAX_BACKUP_BYTES, parseBackup, type Backup, type Dataset } from './contracts';
 import { useLearning } from './LearningProvider';
 import {useI18n} from '../i18n/i18n';
@@ -16,6 +16,7 @@ export function StudentDataPanel() {
   const [error, setError] = useState(''); const [reading, setReading] = useState(false);
   const sequence = useRef(0); const input = useRef<HTMLInputElement>(null);
   const [confirmed, setConfirmed] = useState(false);
+  useEffect(()=>{if(window.location.hash==='#study-data'){const panel=document.getElementById('study-data');if(panel){panel.tabIndex=-1;panel.focus({preventScroll:true});panel.scrollIntoView?.({block:'start'});}}},[]);
   const unavailable = !learning?.snapshot || learning.phase === 'loading' || learning.phase === 'busy' || learning.phase === 'error' || reading;
   async function prepare(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]; if (!file || !learning?.snapshot) return;
@@ -39,7 +40,7 @@ export function StudentDataPanel() {
     try { await learning.restore(pending.backup, pending.expected); setPending(null); setConfirmed(false); }
     catch (failure) { setError(errorMessage(failure)); }
   }
-  return <section className="ds-storage ds-section" aria-labelledby="storage-heading">
+  return <section id="study-data" className="ds-storage ds-section" aria-labelledby="storage-heading">
     <div className="ds-section-heading"><h2 id="storage-heading">{t('data.title')}</h2><span>{t('data.subtitle')}</span></div>
     <p>{t('data.description')}</p>
     <p>{t('data.warning')}</p>

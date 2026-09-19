@@ -1,4 +1,4 @@
-import { Fragment,useState } from 'react';
+import { Fragment,useState,type ReactNode } from 'react';
 import { Link } from 'react-router';
 import { cardsFor,lessonFor,shuffledIds } from './content';
 import { CanonicalLink,Sources,studyPath } from './AcademicViews';
@@ -31,11 +31,11 @@ function EmphasizedText({text,subjectId}:{text:string;subjectId:string}){
 function LearningParagraphs({text,subjectId}:{text:string;subjectId:string}){
  const parts=splitDenseParagraph(text);return <div className={parts.length>1?'ds-learning-paragraph-group is-divided':'ds-learning-paragraph-group'}>{parts.map((part,index)=><p key={index}><EmphasizedText text={part} subjectId={subjectId}/></p>)}</div>;
 }
-function LessonSection({block,anchorIds,subjectId}:{block:LessonBlock;anchorIds:string[];subjectId:string}){
+function LessonSection({block,anchorIds,subjectId,action}:{block:LessonBlock;anchorIds:string[];subjectId:string;action?:ReactNode}){
  const {t,lt}=useI18n();const takeaway=['important_rule','recap'].includes(block.kind)&&block.paragraphs.length>1?block.paragraphs.at(-1):null;const paragraphs=takeaway?block.paragraphs.slice(0,-1):block.paragraphs;
- return <article className={`ds-lesson-block ds-lesson-${block.kind}`} id={block.id} aria-labelledby={`${block.id}-title`}>{anchorIds.map(id=><span className="ds-learning-anchor" id={id} key={id} aria-hidden="true"/>)}<p className="ds-study-eyebrow">{t(kindKeys[block.kind])}</p><h3 id={`${block.id}-title`}>{lt(block.title)}</h3><div className="ds-lesson-copy">{paragraphs.map((p,i)=><LearningParagraphs text={lt(p)} subjectId={subjectId} key={i}/>)}</div>{block.code&&<pre aria-label={`Java example: ${block.title}`}><code>{block.code}</code></pre>}{block.table&&<div className="ds-study-table-wrap"><table><caption>{block.title} — reference table</caption><thead><tr>{block.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{block.table.rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table></div>}{takeaway&&<aside className="ds-key-takeaway"><strong>{t('learning.keyTakeaway')}</strong><p><EmphasizedText text={lt(takeaway)} subjectId={subjectId}/></p></aside>}<AuthoredSources item={block}/></article>;
+ return <article className={`ds-lesson-block ds-lesson-${block.kind}`} id={block.id} aria-labelledby={`${block.id}-title`}>{anchorIds.map(id=><span className="ds-learning-anchor" id={id} key={id} aria-hidden="true"/>)}<p className="ds-study-eyebrow">{t(kindKeys[block.kind])}</p><h3 id={`${block.id}-title`}>{lt(block.title)}</h3><div className="ds-lesson-copy">{paragraphs.map((p,i)=><LearningParagraphs text={lt(p)} subjectId={subjectId} key={i}/>)}</div>{block.code&&<pre aria-label={`Java example: ${block.title}`}><code>{block.code}</code></pre>}{block.table&&<div className="ds-study-table-wrap"><table><caption>{block.title} — reference table</caption><thead><tr>{block.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{block.table.rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table></div>}{takeaway&&<aside className="ds-key-takeaway"><strong>{t('learning.keyTakeaway')}</strong><p><EmphasizedText text={lt(takeaway)} subjectId={subjectId}/></p></aside>}{action}<AuthoredSources item={block}/></article>;
 }
-export function LearnMode({topic,content}:{topic:StudyTopic;content?:Lesson}){
+export function LearnMode({topic,content,blockActions}:{topic:StudyTopic;content?:Lesson;blockActions?:Readonly<Record<string,ReactNode>>}){
  const {t,lt}=useI18n();
  const lesson=content??lessonFor(topic.id);
  if(!lesson)return <EmptyState title="Guided learning is not available yet"><p>Explore this topic’s canonical Overview and Mental Map. A guided lesson has not been authored for this topic.</p></EmptyState>;
@@ -43,7 +43,7 @@ export function LearnMode({topic,content}:{topic:StudyTopic;content?:Lesson}){
  for(const id of topic.subtopics.flatMap(subtopic=>[subtopic.id,...subtopic.skills.map(skill=>skill.id)])){const block=sections.find(item=>item.subtopicIds.includes(id)||item.skillIds.includes(id));if(block)anchors.set(block.id,[...(anchors.get(block.id)??[]),id]);}
  return <section className="ds-study-reading" data-subject={topic.subjectId}><header className="ds-learn-intro ds-lesson-block ds-lesson-introduction" id={introduction?.id}><p className="ds-study-eyebrow">{t('topic.learn')}</p><h2>{t('learning.learnTopic',{topic:topic.name})}</h2>{introduction&&<h3>{lt(introduction.title)}</h3>}<div className="ds-learn-opening">{(introduction?.paragraphs??[topic.description,topic.relevance]).slice(0,2).map((p,i)=><LearningParagraphs text={lt(p)} subjectId={topic.subjectId} key={i}/>)}</div><div className="ds-key-concepts"><strong>{t('learning.keyConcepts')}</strong><ul>{topic.subtopics.map(subtopic=><li key={subtopic.id}>{lt(subtopic.name)}</li>)}</ul></div>{introduction&&<AuthoredSources item={introduction}/>}</header>
  <nav aria-label={t('learning.lessonSections')} className="ds-lesson-outline"><strong>{t('learning.inThisLesson')}</strong><ol>{sections.map(b=><li key={b.id}><a href={`#${b.id}`}>{lt(b.title)}</a></li>)}</ol></nav>
- {sections.map(block=><LessonSection block={block} anchorIds={anchors.get(block.id)??[]} subjectId={topic.subjectId} key={block.id}/>)}
+ {sections.map(block=><LessonSection block={block} anchorIds={anchors.get(block.id)??[]} subjectId={topic.subjectId} action={blockActions?.[block.id]} key={block.id}/>)}
  <p className="ds-study-provenance">{t('learning.provenance',{version:lesson.version})}</p><div className="ds-study-next"><h3>{t('learning.putToWork')}</h3><Link className="ds-button" to={studyPath(topic,'flashcards')}>{t('learning.reviewFlashcards')}</Link><Link className="ds-button ds-practice-primary" to={studyPath(topic,'practice')}>{t('learning.openPractice')}</Link></div></section>;
 }
 export function FlashcardMode({topic,content}:{topic:StudyTopic;content?:Flashcard[]}){

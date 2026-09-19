@@ -9,6 +9,7 @@ import {useLearning} from '../learning/LearningProvider';
 import {useEvidence} from './useEvidence';
 import {filterMistakes,views} from './filters';
 import {skills,type Mistake,type SkillEvidence} from './evidence';
+import {selectReviewNow,type ReviewNowReason} from './review-queue';
 import './adaptive.css';
 import {useI18n} from '../i18n/i18n';
 export function answerText(answer:Answer,mistake:Mistake){
@@ -17,7 +18,8 @@ export function answerText(answer:Answer,mistake:Mistake){
  if(task.kind==='ip-fixed'||task.kind==='java-output')return answer.value.map(id=>task.options.find(o=>o.id===id)?.output??id).join(', ');
  return answer.value.join(', ');
 }
-function MistakeCard({mistake:m,group}:{mistake:Mistake;group?:SkillEvidence}){
+const reviewReasonKey:Record<ReviewNowReason,'mistakes.reasonRepeatedPattern'|'mistakes.reasonRepeatedSkill'|'mistakes.reasonUnreviewed'>={'repeated-pattern':'mistakes.reasonRepeatedPattern','repeated-skill':'mistakes.reasonRepeatedSkill',unreviewed:'mistakes.reasonUnreviewed'};
+function MistakeCard({mistake:m,group,reason}:{mistake:Mistake;group?:SkillEvidence;reason?:ReviewNowReason}){
  const learning=useLearning()!;const navigate=useNavigate();const {t,lt,language}=useI18n();const pending=useRef(false),retryId=useRef<string|null>(null);
  const [busy,setBusy]=useState(false),[error,setError]=useState('');
  const review=learning.snapshot!.data.reviews.find(r=>r.attemptId===m.attempt.attemptId);
@@ -28,6 +30,12 @@ function MistakeCard({mistake:m,group}:{mistake:Mistake;group?:SkillEvidence}){
   }catch(e){setError(errorMessage(e));}finally{pending.current=false;setBusy(false);}
  }
  const topic=academicIndex.topics.find(t=>t.topic_id===m.attempt.topicId)!;
+ if(reason)return <article className="ds-review-now-card" aria-label={lt(m.exercise.title)}>
+  <div className="ds-evidence-meta"><Link to={topicPath(topic)}>{courses.find(c=>c.subject_id===m.attempt.subjectId)!.compactName} · {topic.name}</Link><span>{m.skill?lt(m.skill.name):t('mistakes.itemEvidence')}</span></div>
+  <h3>{lt(m.exercise.title)}</h3><p>{t(reviewReasonKey[reason])}</p>
+  <div className="ds-storage-actions"><button className="ds-button ds-practice-primary" disabled={busy||learning.phase!=='ready'} onClick={()=>void act('retry')}>{t('mistakes.retry')}</button><Link className="ds-text-link" to={attemptPath(m.exercise,m.attempt.attemptId)}>{t('mistakes.openSaved')}</Link></div>
+  {error&&<p role="alert">{error}</p>}
+ </article>;
  return <article className="ds-mistake-card" aria-label={lt(m.exercise.title)}>
   <div className="ds-evidence-meta"><Link to={topicPath(topic)}>{courses.find(c=>c.subject_id===m.attempt.subjectId)!.compactName} · {topic.name}</Link><span>{group?lt(group.state):t('mistakes.itemEvidence')}</span></div>
   <h2>{lt(m.exercise.title)}</h2><p><time dateTime={m.attempt.submission!.submittedAt}>{new Date(m.timestamp).toLocaleString(language)}</time></p>
@@ -46,6 +54,7 @@ export function MistakesPage({topicId}:{topicId?:string}){
  const {learning,evidence,refresh}=useEvidence();const {t,lt}=useI18n();const [params,setParams]=useSearchParams();const [shown,setShown]=useState(20);
  const filter={course:params.get('course')??'',topic:topicId??params.get('topic')??'',skill:params.get('skill')??'',pattern:params.get('pattern')??'',days:params.get('days')??'all',view:params.get('view')??'all'};
  const filtered=filterMistakes(evidence,filter),groups=useMemo(()=>new Map(evidence.groups.map(g=>[g.skill.id,g])),[evidence]);
+ const reviewNow=useMemo(()=>selectReviewNow(evidence,{topicId}),[evidence,topicId]);
  const visibleSkills=new Set(filtered.flatMap(m=>m.skill?[m.skill.id]:[]));
  const repeatedSkills=evidence.groups.filter(g=>visibleSkills.has(g.skill.id)&&g.repeatedPatterns.length).length;
  const patterns=[...new Map(evidence.mistakes.flatMap(m=>{const p=m.explanation?.misconception;return p?[[`${p.id}@${p.version}`,p.label] as const]:[];})).entries()];
@@ -55,6 +64,10 @@ export function MistakesPage({topicId}:{topicId?:string}){
   {!topicId&&<PageHeading title={t('mistakes.title')} eyebrow={t('mistakes.eyebrow').toUpperCase()}><p>{t('mistakes.subtitle')}</p></PageHeading>}
   {topicId&&<h2>{t('mistakes.topicTitle')}</h2>}
   <p>{t('mistakes.evidenceRule')}</p>
+  <section className="ds-review-now" aria-labelledby="review-now-title"><div className="ds-review-now-heading"><h2 id="review-now-title">{t('mistakes.reviewNow')}</h2><p>{t('mistakes.reviewNowBody')}</p></div>
+   {reviewNow.length?<div className="ds-review-now-list">{reviewNow.map(item=><MistakeCard key={item.mistake.attempt.attemptId} mistake={item.mistake} group={item.group} reason={item.reason}/>)}</div>:<div className="ds-review-now-empty"><strong>{t('mistakes.reviewEmpty')}</strong><p>{t('mistakes.reviewEmptyBody')}</p></div>}
+  </section>
+  <h2 className="ds-mistake-history-title">{t('mistakes.allMistakes')}</h2>
   <div className="ds-mistake-filters" aria-label={t('mistakes.filterAria')}>
    {!topicId&&<label>{t('mistakes.course')}<select value={filter.course} onChange={e=>change('course',e.target.value)}><option value="">{t('mistakes.allCourses')}</option>{courses.map(c=><option key={c.subject_id} value={c.subject_id}>{c.publicName}</option>)}</select></label>}
    {!topicId&&<label>{t('mistakes.topic')}<select value={filter.topic} onChange={e=>change('topic',e.target.value)}><option value="">{t('mistakes.allTopics')}</option>{academicIndex.topics.filter(t=>!filter.course||t.subject_id===filter.course).map(t=><option key={t.topic_id} value={t.topic_id}>{t.name}</option>)}</select></label>}

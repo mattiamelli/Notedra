@@ -47,7 +47,7 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
     catch(failure){setError(errorMessage(failure));if(failure instanceof LearningError&&failure.code==='CONFLICT')setConflict(true);}
     finally{pending.current=false;setBusy(false);}
   }
-  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalogSaved')}</Link><PageHeading title={lt(exercise.title)} eyebrow={t(submitted?'practice.submittedEyebrow':'practice.draftEyebrow')}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise}/>
+  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalogSaved')}</Link><PageHeading title={lt(exercise.title)} eyebrow={t(submitted?'practice.submittedEyebrow':'practice.draftEyebrow')}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise} attemptId={attempt.attemptId}/>
     {invalidated&&<div className="ds-storage-error" role="alert"><p>{t('practice.replacedData')}</p><pre aria-label={t('practice.unsavedRecovery')}>{answer.kind==='choice'?answer.value.join('\n'):answer.value}</pre><button className="ds-button" onClick={()=>window.location.reload()}>{t('practice.reloadSafely')}</button></div>}
     <form onSubmit={event=>{event.preventDefault();void write(true);}}><AnswerControls exercise={exercise} answer={submitted?attempt.answer:answer} onChange={edit} disabled={busy||!editable}/>
       <p role="status" className="ds-practice-save">{message}</p>{error&&<p role="alert" className="ds-storage-error">{error}</p>}

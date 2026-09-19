@@ -1,7 +1,7 @@
 {
   "src/adaptive/adaptive.css": {
     "before": "00c0e017e67c247a38465d38fa6921b39937ae375083953e279ba49ef81766a0",
-    "after": "0e8f94620315e93af06617c562eccf98653544ea192b1db449b774a95d0b4067"
+    "after": "69a3b51c1e3ff12dee4d9bbbb7ef3b321f079341ed469a9de5e37d6661126825"
   },
   "tests/mistake-migration.test.ts": {
     "before": "703069d98fe8c9034dad7a43a63e43c1d8354026a4414a959321f36a8fcd75bc",
@@ -21,7 +21,7 @@
   },
   "src/App.tsx": {
     "before": "f2eb328a11f281ebb38127c9a88e3d770c4a2e835feb1f8f4fa5c8b93f6be1ef",
-    "after": "7c16a0683e6319f196881f5418f972bf0f833124c7954afbc757fceaa2ac7085"
+    "after": "759dff6ede68adb0fa8be55698d988cdbfe008ba98abec1df0e9b3df76f1fdc9"
   },
   "src/main.tsx": {
     "before": "07af17edf43a1c6bb20094beaddabc173b423c759286a98d2dd7ba3a7e7222cc",
@@ -49,12 +49,12 @@
   },
   "src/adaptive/MistakesPage.tsx": {
     "before": "00eb7e8bff18f16189e0a5c75a2dc6fd0c57356f43b65c3775714ffc803bd514",
-    "after": "963f331b1ddc30b9a98d02fc14cffe8317778c60b208fb1b83a1646acf2e0825",
+    "after": "4ce4cf1645eee0a9647349fe09eb15323233aae7ce2c320f1d8d85286c6379e2",
     "original": "ad5ef4a526709acda7968f9a3cedb824cab93cb8f8d001b9e2a013c42c49b9fd"
   },
   "src/adaptive/StudyPathPage.tsx": {
     "before": "6720c71de01ad1d52a5900ce2e9fdff01894de5fcf872285f1b1e0595790939a",
-    "after": "a7568f486006b2097aa34ab0a1b9014337e799e1c1ccd5916f6bdf07608a3e4d",
+    "after": "c684540b224973fa0f91965ed860c2de31ecb2760fea1f0d307c651fa381c98e",
     "original": "c033b6ce13c68fd239cfa0f52d26ceaf28feef721c223cf8d1aa8910790b9a3b"
   },
   "src/enrichment/TopicEnrichment.tsx": {
@@ -63,7 +63,7 @@
   },
   "src/pages/DashboardInsights.tsx": {
     "before": "002bf190bcd8fff9b45ec09e5bd66f5af324a42707cac5e2fb7f491d039cfeb9",
-    "after": "ec336245da2669fce2640dde84f781ce6d0d9dda575ac5fe95605678c6896576",
+    "after": "d83410c21a30d1156fdc22d946a45a28b0377ad7c13047db6ca568cb38de615a",
     "original": "039b68a3165d9450075b9cf67b58c6a8c34c8dabd793ab613de7f6e73750ce26"
   },
   "src/pages/TopicPage.tsx": {
@@ -73,11 +73,11 @@
   },
   "src/practice/AttemptPage.tsx": {
     "before": "65dfcbb51eb4b81fbf41fdd704e08caa6cf1365cad93a1887786b5b764d48084",
-    "after": "66f1e7688d46173ab2b86df2eed9dc29a14f629c728ab66ef1030be4556761ac"
+    "after": "f22278d48578cd76b1d3775d025ecb97c9cf213e872a55c358ef6db8a8cea282"
   },
   "src/progress/IndexCard.tsx": {
     "before": "396fb4d1e1b7cdce9474252a00c04d4877393245c6d0b8bc0ff0a91f5637854d",
-    "after": "a791572ef2050d186be0526afe3037c9798999a71e45808ba2e4189842f33aef",
+    "after": "0d8264175c58b18efc7d68902cefa768e65c4ccf379e145cf9ae5ad9a4244983",
     "original": "e92325fa4ae089c1c462911266ce9f75b3b31017021447cf75942a2335fe226a"
   },
   "src/progress/progress.css": {
@@ -91,7 +91,7 @@
   },
   "src/topic-study/AuthoredViews.tsx": {
     "before": "d923bd3ec9410a1a3bb9fbe3e90aa9e48e893252cbfcef0a6324e69b66ebea5a",
-    "after": "46d7c9f03e8fc4aeec4cff7aa87ac5ce8674f4568dc57fca0e4fd1617520adc7",
+    "after": "23bec1874d2fa07910f8bd29ecb21929600740527943067973ddea637ddfa420",
     "original": "3c88005fd9398bc02b3b659571e6dda9e37b44af282152144c614d172a2f782e"
   },
   "src/topic-study/AcademicViews.tsx": {
@@ -111,17 +111,17 @@
   },
   "tests/progress-ui.test.tsx": {
     "before": "8bcb1cbd21302f0905ef1f6e4321d5a87a8cd2b557f2be87e28ac0fa8131bfe6",
-    "after": "69643c8e94e9ba464acbde54af98dc5fa79a75459b61843edd6075ce99ebd391",
+    "after": "cccc832e4e969375ae1f1c641257ea33110c1fdfdd5a87e4bce93890e35943aa",
     "original": "457e3604e386d5b364f20ae1a01d381820340cc610b791ea960a7a9d2d029179"
   },
   "tests/dashboard-projection.test.tsx": {
     "before": "2f006cd14f20058b5b9126c7aa31e7705c9ddfac113aa9d329c58310ebb88ceb",
-    "after": "951becf3a460ee2ce14881b1185eea311cc9eeeda9e3e14845e6abe6b47c757d",
+    "after": "4d156c1c9e25ae79a08f04433b73a17c7b94997963d60afb95ebd12eb7564e07",
     "original": "0d81e0b2f84f1a4de9aadeff8c655ec87d9037d57c7088549c56684d04282590"
   },
   "tests/cloud-ui.test.tsx": {
     "before": "1892c470a0fdb7bee29dfe6583f5a034ca04dcb730a2ceafd3b3740f1d9f1ac3",
-    "after": "dddd0f217461afd8bb4ad836c29f80f936354920c8e070e8aad98cd25a91027b"
+    "after": "5440751890b4baee40dca1c77856fa01e21f74107c44b55ab0158a733ccc7b08"
   },
   "tests/learning-ui.test.tsx": {
     "before": "8d506a2d2262717414c5bb149e1ff93e16df38d970837126ca531502f2cbcf5d",
@@ -130,17 +130,17 @@
   },
   "tests/application-routing.test.tsx": {
     "before": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902",
-    "after": "50e0428a38bbfead33495b015ae051f3d592d7bfe8c9648405a514dfeac5e6fd",
+    "after": "0fa5c3f465f7a75aa175bcaf64e5d0a63e494b16de3ae7c4e584e8ff9c4e9964",
     "original": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902"
   },
   "tests/adaptive-ui.test.tsx": {
     "before": "27e0de4cf6eef0a8c6606808b7ac835ec4a7db375bf447a59d4045091fd6f01d",
-    "after": "fe4ca16bcb587a63b43cc363ce7dcb4cf47585b34846f0493ca44add5ba5e6ce",
+    "after": "abaa07d6ba4487bb048efc3b8d369f66e850d0af157dbcaf9bda59edff6adba7",
     "original": "61a2518a89a140b16887e9b4c076e53a172c9bfd7cbab7abd13637ffcdf19ef8"
   },
   "tests/rl-topic-ui.test.tsx": {
     "before": "ee876fcd94ef7b53da3d4eecb4a67f15da1170e42050d129febb699e935dfc88",
-    "after": "77b0bd14d9a8dc44ad506411384ce4290ba981905336ba0369bd7eb11a77c677"
+    "after": "e4564eaedf3dcd4f7427928437dfa5361a850cdbcccd9930681a5359a60e5bc3"
   },
   "tests/topic-ui.test.tsx": {
     "before": "5f83f95873e13948d0a5ebaad2869396ea328fc1d0929b23eb30d22516e339f0",
@@ -157,7 +157,7 @@
   },
   "src/design/product.css": {
     "before": "a1216043e462f0cb9eb300d23261a86c925016292a9692effd9d88efbc597191",
-    "after": "3961943773e6f0330e75c6e79186c73d86084e76fa206cc742d5384c02eb918d",
+    "after": "31cf382808f69365c30fd0fcda022be3accd3e553279d88741ea05f77e0444ba",
     "original": "34f29d6b8c302d908643961f605fb382fef4501d072fa62d3da47b33e6daafd1"
   },
   "src/design/tokens.css": {
@@ -191,12 +191,12 @@
   },
   "src/learning/StudentDataPanel.tsx": {
     "before": "bbb3b7ce2a30cba60f3495f6750daa1cc328cb2cbcdf06525919d4ccd6045764",
-    "after": "b471725e037cd21e6154f4567a59759794589852089365a49982cc701a3b9707",
+    "after": "8e1f589ac4fd0192584295823db809753ad1d94dde38c113dc8efdf692371456",
     "original": "bbb3b7ce2a30cba60f3495f6750daa1cc328cb2cbcdf06525919d4ccd6045764"
   },
   "src/shell/AppShell.tsx": {
     "before": "d7d7b71abdd598d3b908388533cae379d231574cb8b12911efef4a8972a026e0",
-    "after": "37c196c24a4d1f17ddd7b0073f7f66b031f73c8fb44afad846949885f878b12e"
+    "after": "6bb0ec6943ae6dfe0c213d133356441e9ee694b78a05b0a48e6cf6a629e5b025"
   },
   "tests/cloud-client.test.ts": {
     "before": "e99b410d0c69513486732f83cf6490403530ac6a4377a85591c3ed5d29e484d9",
@@ -252,11 +252,11 @@
   },
   "src/engine/session.ts": {
     "before": "2d544d3106bea78da082ed6ebf3f2d1088b3c16e26e0feb325f81701cc26564e",
-    "after": "5529542da35f69576aec07098be771295843cf827a3d7eaab0f02722536f3c33"
+    "after": "71029a4600bf71645f0ead484157a772943e204a44a5a9499108ae1cad9b1bce"
   },
   "src/utils/useSimulator.ts": {
     "before": "3503ba5e3effeb881a93cb2bece1f4523637e58babc8f98ca18250dedb43006a",
-    "after": "d93f86aa8a5328bf34f2e2e1113f8aa475b0bd41eeec7df8e8a6c9e66bb9be35"
+    "after": "d4d16097546a5ba751c4ce8e2a183591bfa34e3cacf2309c852908d036997600"
   },
   "tests/parser.test.ts": {
     "before": "2193caf7d8ed87b4e380b3e6d7a2967f5d734b2586fd485c1e6e1642e504805b",
@@ -272,12 +272,12 @@
   },
   "src/AssemblyWorkbench.tsx": {
     "before": "429c723795ed4a59e8cd2cae25b29c2f33b7c9e7d80b9f8eb252f1b4f1f937dd",
-    "after": "b364ba48101b07a68d5f2c1a237bed6eadac700a4d4a400f4ffd791bb29d2da9",
+    "after": "92e9000c55548b52449976fccb76bef3b65083514967cf46c1456b72e93b84de",
     "original": "e054a84c05c2ef77eafc9f69e50863f6600bbaada15c00db7c0b267ad4a3c0c5"
   },
   "src/practice/ExerciseParts.tsx": {
     "before": "091132322fcaa24391163b49036f388f95f69c00fb8d787ec9b2fa1a08554e22",
-    "after": "667ff394349c194197b37aaf7176b6e40c6bea26af2d017dd6ac8e90e9c8eb57",
+    "after": "f62e859ccdc4c27921e7b147c6aeb26b97df8b42d0fdf732dd876965bbe2854a",
     "original": "fa00b7abf670772fa3eb7ae4dde5904fd20b451b6a1164c17be221cdb05afb53"
   },
   "src/exams/ExamSessionPage.tsx": {
@@ -358,7 +358,7 @@
   },
   "src/ip/TopicContent.tsx": {
     "before": "7d7b1ee47ac03432ffac94090373e9cba172e617b2f40666712bb18fddb309ea",
-    "after": "2124644fd95ae5a7b9e0d94498ad8e5dc93505f5b9d15b16b5145cc7c7a56630"
+    "after": "42bffd9462fbe9ae46fcbe148ede9f765ea1ef1e78ab69f1707032d1bcc5ccfe"
   },
   "src/rl/GuidedPractice.tsx": {
     "before": "2780fc5d007b2a0453254c4d13544708585361e1fc9e832fae2a538a9c5f7004",
@@ -499,12 +499,12 @@
   },
   "scripts/enrichment-baseline.json": {
     "before": "7df137dd1fcc8f80b6c75a8070c7f24c86debb012bdc4621f8c15018444766f0",
-    "after": "21d9be1114d0f6f467116efa41e72c9215d5e5f821eea426b8f6f27625b6038b",
+    "after": "96e58c0b0f10418dfc65866e4745e3c711db8b19815107bd227043f5f917089f",
     "original": "6fcc46877d57b375fcd95055f4c04ccfeeac261a353dbd7765e310490150ec31"
   },
   "scripts/ip-baseline.json": {
     "before": "55e166d072297f786bc4f9cc130d2c11a1e3a27bdfc6497bc95966ff7d3f834f",
-    "after": "3d0e63ee8710f97f691a58457ef4f5322cb4ba06c1fec6391ce24e0a7ff4876f",
+    "after": "ee336de8b6fceec3a1c1f6c3b18b9a7d53bd4b6705fbce9ed3378141dae565c7",
     "original": "20ed38e35ae4d60415b46b5e3fd29b8b00da1999d879910b63bf909ac23ad9d8"
   },
   "scripts/storage-migration-preservation.ts": {
@@ -535,7 +535,7 @@
   },
   "src/shell/shell.css": {
     "before": "a61c03d57aecf559dabb930d5494624c4b975c59dde813c49aff74f4bc5a2268",
-    "after": "91da74a10e61c5c4026b820e72782419d43efe77991574131edfc9584aa1b947"
+    "after": "69de3d01802695cd9a3d2f2eb43d6012eec6172c988fd5b472143e85eb184d46"
   },
   "src/learning/LearningProvider.tsx": {
     "before": "9ffd72ad0fecab6032fe29df6b40969ab9fc6b066c848977a1a437d006ab1e85",
@@ -634,7 +634,7 @@
   },
   "src/i18n/messages.ts": {
     "before": "6b92dbaab57e5c275dd760b95c54ffb79489202f34c90772ca1e567f1289fa36",
-    "after": "c5a6b8d9c7abc9a0e71fcedb0cbb323859372fdcf65ea7f100e6127daf915410"
+    "after": "615d0ed44ec19c39e8896db80caea0701cce02169cdfe7f2b10a33368cdff031"
   },
   "public/i18n-content/de.json": {
     "before": "81fba327dc4162a5f17c6a08817438b9725f283611d1cf338d1149dba25753c6",
@@ -655,7 +655,7 @@
   },
   "src/co/TopicContent.tsx": {
     "before": "7fefb248c30845b7bc8aed334a621f4fd71948ea4c68b493355e7318b50bb57b",
-    "after": "d8b2a1757d652404ddc2bb63ac1835f31ded1283aaef4f098123aeccf58024f3"
+    "after": "10c5a12012b26e33ae57ba1493b5ca181c2d310592cb0e0cd4028307a2b5f66f"
   },
   "src/co/COStudyMode.tsx": {
     "before": "9e0abe220a3c9a188df0edc36d9783f6371f1f2526eeef789b2172002da08c3a",

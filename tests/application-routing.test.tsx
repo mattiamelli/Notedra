@@ -122,6 +122,17 @@ describe('shell interaction and browser history', () => {
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');
     expect(document.title).toBe('Dashboard · Notedra');
   });
+  it.each([
+    ['Local only','Saved on this device'],['Synced','Synced'],['Pending','Waiting to sync'],['Offline','Offline — saved on this device'],['Sync error','Sync needs attention'],['Conflict requires attention','Sync needs attention'],
+  ])('shows %s as a compact study-data status',async(syncStatus,label)=>{
+    await renderRoute('/dashboard',false,{...accountBase,syncStatus});
+    const status=container.querySelector<HTMLAnchorElement>('.ds-storage-status');
+    expect(status?.textContent).toContain(label);expect(status?.textContent).toContain('Manage study data');expect(status?.getAttribute('href')).toBe('/account#study-data');expect(container.textContent).not.toContain('Export student backup');
+  });
+  it('lets an anonymous learner open the existing study-data controls from the shell',async()=>{
+    await renderRoute('/dashboard',true,anonymousAccount);await click('.ds-storage-status');await settleRoutes();
+    expect(window.location.pathname).toBe('/account');expect(window.location.hash).toBe('#study-data');expect(container.querySelector('#study-data')).toBe(document.activeElement);expect(container.textContent).toContain('Export student backup');
+  });
   it('opens and closes mobile navigation with an accessible expanded state', async () => {
     await renderRoute('/dashboard');
     const menu = container.querySelector<HTMLButtonElement>('.ds-menu-button')!;

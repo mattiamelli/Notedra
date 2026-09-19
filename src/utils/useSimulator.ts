@@ -2,23 +2,24 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { parseProgram } from '../engine/parser';
 import { createSession, currentCPU, nextSession, seekSession, type Session } from '../engine/session';
 import { examplePrograms } from '../examples/examplePrograms';
-import { AssemblyError, type Program } from '../engine/types';
+import { AssemblyError, type Program, type Registers } from '../engine/types';
 import { readLocal, writeLocal } from './storage';
 
 interface Machine { program: Program; session: Session; }
-function initialMachine(): { machine: Machine; source: string; error: string | null; errorLine?: number } {
-  const source = readLocal('program') ?? examplePrograms[1].source;
+interface SimulatorOptions{initialSource?:string;initialRegisters?:Readonly<Partial<Registers>>;persistSource?:boolean}
+function initialMachine(explicitSource?:string,initialRegisters:Readonly<Partial<Registers>>={}): { machine: Machine; source: string; error: string | null; errorLine?: number } {
+  const source = explicitSource ?? readLocal('program') ?? examplePrograms[1].source;
   try {
     const program = parseProgram(source);
-    return {machine: {program, session: createSession(program)}, source, error: null};
+    return {machine: {program, session: createSession(program,'',initialRegisters)}, source, error: null};
   } catch (error) {
     const program = parseProgram(examplePrograms[1].source);
     return {machine: {program, session: createSession(program)}, source, error: error instanceof Error ? error.message : 'Could not load the saved program.', errorLine: error instanceof AssemblyError ? error.line : undefined};
   }
 }
 
-export function useSimulator() {
-  const [initial] = useState(initialMachine);
+export function useSimulator({initialSource,initialRegisters,persistSource=true}:SimulatorOptions={}) {
+  const [initial] = useState(()=>initialMachine(initialSource,initialRegisters));
   const [machine, setMachine] = useState(initial.machine);
   const machineRef = useRef(machine);
   const [source, setSource] = useState(initial.source);
@@ -45,14 +46,14 @@ export function useSimulator() {
     setSource(newSource);
     try {
       const program = parseProgram(newSource);
-      replaceMachine({program, session: createSession(program, terminalInput)});
+      replaceMachine({program, session: createSession(program, terminalInput, initialRegisters)});
       clearError();
     } catch (failure) {
       const current = machineRef.current;
-      replaceMachine({...current, session: createSession(current.program, terminalInput)});
+      replaceMachine({...current, session: createSession(current.program, terminalInput, initialRegisters)});
       reportError(failure);
     }
-  }, [pause, replaceMachine, terminalInput]);
+  }, [initialRegisters, pause, replaceMachine, terminalInput]);
   const step = useCallback(() => {
     const current = machineRef.current;
     if (sourceRef.current !== current.program.source) { pause(); return; }
@@ -74,8 +75,8 @@ export function useSimulator() {
   const reset = useCallback(() => {
     pause(); clearError();
     const current = machineRef.current;
-    replaceMachine({...current, session: createSession(current.program, terminalInput)});
-  }, [pause, replaceMachine, terminalInput]);
+    replaceMachine({...current, session: createSession(current.program, terminalInput, initialRegisters)});
+  }, [initialRegisters, pause, replaceMachine, terminalInput]);
   const run = useCallback(() => {
     if (dirty || cpu.halted || error) return;
     runningRef.current = true;
@@ -85,29 +86,30 @@ export function useSimulator() {
     pause();
     if (sourceRef.current !== value) {
       const current = machineRef.current;
-      replaceMachine({...current, session: createSession(current.program, terminalInput)});
+      replaceMachine({...current, session: createSession(current.program, terminalInput, initialRegisters)});
     }
     sourceRef.current = value;
     setSource(value);
     clearError();
-  }, [pause, replaceMachine, terminalInput]);
+  }, [initialRegisters, pause, replaceMachine, terminalInput]);
 
   const setTerminalInput = useCallback((value: string) => {
     pause();
     setTerminalInputState(value);
     clearError();
     const current = machineRef.current;
-    replaceMachine({...current, session: createSession(current.program, value)});
-  }, [pause, replaceMachine]);
+    replaceMachine({...current, session: createSession(current.program, value, initialRegisters)});
+  }, [initialRegisters, pause, replaceMachine]);
 
   useEffect(() => {
+    if(!persistSource){setSaved(true);return;}
     const timer = window.setTimeout(() => setSaved(writeLocal('program', source)), 250);
     return () => {
       window.clearTimeout(timer);
       // Leaving the routed workbench must not discard an edit waiting for autosave.
       writeLocal('program', source);
     };
-  }, [source]);
+  }, [source,persistSource]);
   useEffect(() => {
     if (!running) return;
     const timer = window.setInterval(() => { if (runningRef.current) step(); }, 650);

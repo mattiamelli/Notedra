@@ -7,6 +7,7 @@ import {AccountPage} from '../src/accounts/AccountPage';
 import {LanguageProvider} from '../src/i18n/i18n';
 import {ProductTour,TOUR_EVENT,hasMeaningfulActivity,tourStorageKey} from '../src/tour/ProductTour';
 import {emptyBackup,type Dataset} from '../src/learning/contracts';
+import {success} from './helpers/progress';
 
 let accountId:string|null='account-a',dataset:Dataset,phase:'loading'|'ready'|'error'='ready';
 vi.mock('../src/accounts/context',()=>({useAccount:()=>({state:{phase:accountId?'authenticated':'anonymous',user:accountId?{id:accountId,email:'student@example.test',displayName:'Student'}:null,message:'',epoch:0},config:{status:'unavailable',message:'Local test'},auth:null,syncStatus:'Local only',syncMessage:'',sync:null,adopt:null})}));
@@ -21,12 +22,12 @@ const button=(label:string)=>[...host.querySelectorAll('button')].find(item=>ite
 const click=async(label:string)=>act(async()=>button(label).click());
 const launch=async()=>act(async()=>window.dispatchEvent(new CustomEvent(TOUR_EVENT)));
 const finish=async()=>{for(let i=0;i<6;i++)await click('Next');await click('Finish');};
-beforeEach(()=>{localStorage.clear();accountId='account-a';phase='ready';dataset={...emptyBackup(),generation:'test',revision:0};host=document.createElement('div');document.body.append(host);root=createRoot(host);Object.defineProperty(window,'innerWidth',{value:1440,writable:true,configurable:true});window.matchMedia=vi.fn().mockReturnValue({matches:false,addEventListener:vi.fn(),removeEventListener:vi.fn()});});
+beforeEach(()=>{localStorage.clear();accountId='account-a';phase='ready';dataset={...emptyBackup(),generation:'test',revision:0,attempts:[success('normal')]};host=document.createElement('div');document.body.append(host);root=createRoot(host);Object.defineProperty(window,'innerWidth',{value:1440,writable:true,configurable:true});window.matchMedia=vi.fn().mockReturnValue({matches:false,addEventListener:vi.fn(),removeEventListener:vi.fn()});});
 afterEach(async()=>{await act(async()=>root.unmount());host.remove();vi.restoreAllMocks();});
 
 describe('Product Tour state and eligibility',()=>{
-  it('1 opens automatically for an authenticated unseen user without activity',async()=>{await mount();expect(host.querySelector('[role=dialog]')).not.toBeNull();expect(host.querySelector('.ds-product-tour')?.getAttribute('data-launch-mode')).toBe('auto');});
-  it('2 does not auto-open when meaningful activity exists',async()=>{dataset={...dataset,resume:{subjectId:'CSE1400_CO',topicId:'CO_T01',visitedAt:new Date().toISOString()}};expect(hasMeaningfulActivity(dataset)).toBe(true);await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it('1 does not auto-open for an authenticated unseen user without completed activity',async()=>{dataset={...emptyBackup(),generation:'test',revision:0};expect(hasMeaningfulActivity(dataset)).toBe(false);await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
+  it('2 opens automatically after meaningful activity exists',async()=>{expect(hasMeaningfulActivity(dataset)).toBe(true);await mount();expect(host.querySelector('[role=dialog]')).not.toBeNull();expect(host.querySelector('.ds-product-tour')?.getAttribute('data-launch-mode')).toBe('auto');});
   it.each(['loading','error'] as const)('3 does not auto-open while learning is %s',async value=>{phase=value;await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
   it('4 does not auto-open when this account has seen the tour',async()=>{localStorage.setItem(tourStorageKey('account-a'),'seen');await mount();expect(host.querySelector('[role=dialog]')).toBeNull();});
   it('5 Skip persists seen',async()=>{await mount();await click('Skip tour');expect(localStorage.getItem(tourStorageKey('account-a'))).toBe('seen');});

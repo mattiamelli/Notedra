@@ -174,7 +174,8 @@ describe('complete R&L topic learning routes', () => {
       if (!topic.prerequisites.length) expect(row.textContent).toContain('No topic prerequisites');
     }
     expect(host.textContent).toContain('reading does not mark a topic complete');
-    expect(host.textContent).not.toMatch(/\d+%|predicted grade|streak/);
+    expect(host.textContent).not.toMatch(/\d+%|streak/);
+    expect(host.textContent).toContain('not a predicted grade');
     expect(await repo.exportBackup()).toEqual(before);
   });
 

@@ -11,7 +11,7 @@ import {track} from '../analytics/analytics';
 export const TOUR_EVENT='notedra:tour:start';
 const TOUR_VERSION='v1';
 export const tourStorageKey=(accountId:string)=>`notedra.product-tour.${TOUR_VERSION}.${encodeURIComponent(accountId)}`;
-export const hasMeaningfulActivity=(data:Dataset)=>Boolean(data.resume||data.attempts.length||data.reviews.length||data.exams.length||data.examReviews.length||data.upcomingExams?.length);
+export const hasMeaningfulActivity=(data:Dataset)=>Boolean(data.attempts.length||data.reviews.length||data.exams.length||data.examReviews.length);
 
 type TourStep={title:MessageKey;body:MessageKey;selectors:string[]};
 const steps:TourStep[]=[
@@ -39,7 +39,7 @@ export function ProductTour(){
   const start=useCallback((mode:'auto'|'manual',source?:HTMLElement|null)=>{if(!accountId)return;opener.current=source??document.activeElement as HTMLElement|null;setIndex(0);setLaunchMode(mode);setActive(true);track('product_tour_started',{source_surface:mode==='auto'?'dashboard':'account_settings'});navigate('/dashboard');},[accountId,navigate]);
   const close=useCallback((outcome:'completed'|'skipped')=>{if(accountId)writeSeen(accountId);track(outcome==='completed'?'product_tour_completed':'product_tour_skipped',{source_surface:'product_tour'});setActive(false);setLaunchMode(null);setRect(null);requestAnimationFrame(()=>{const destination=opener.current?.isConnected?opener.current:document.querySelector<HTMLElement>('#ds-content');destination?.focus();});},[accountId]);
 
-  useEffect(()=>{if(!accountId||!learning?.snapshot||learning.phase!=='ready'||checked.current===accountId)return;checked.current=accountId;if(!hasMeaningfulActivity(learning.snapshot.data)&&!readSeen(accountId))start('auto');},[accountId,learning?.snapshot,learning?.phase,start]);
+  useEffect(()=>{if(!accountId||!learning?.snapshot||learning.phase!=='ready'||checked.current===accountId||!hasMeaningfulActivity(learning.snapshot.data))return;checked.current=accountId;if(!readSeen(accountId))start('auto');},[accountId,learning?.snapshot,learning?.phase,start]);
   useEffect(()=>{const launch=(event:Event)=>start('manual',(event as CustomEvent<{opener?:HTMLElement}>).detail?.opener);window.addEventListener(TOUR_EVENT,launch);return()=>window.removeEventListener(TOUR_EVENT,launch);},[start]);
   useEffect(()=>{const resize=()=>setMobile(window.innerWidth<=1000);window.addEventListener('resize',resize);return()=>window.removeEventListener('resize',resize);},[]);
   useEffect(()=>{if(!active)return;const key=(event:KeyboardEvent)=>{if(event.key==='Escape')close('skipped');else if(event.key==='ArrowRight'&&index<steps.length-1)setIndex(value=>value+1);else if(event.key==='ArrowLeft'&&index>0)setIndex(value=>value-1);};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[active,index,close]);

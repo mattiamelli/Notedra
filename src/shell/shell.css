@@ -26,7 +26,14 @@
 .ds-nav-section + .ds-nav-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ds-border); }
 .ds-nav-section h2 { margin: 0; }
 .ds-nav-items { display: grid; gap: 3px; }
-.ds-sidebar-footer { display: flex; align-items: center; gap: 8px; margin-top: auto; padding: 30px 12px 0; font-size: 12px; color: #93a1b3; }
+.ds-sidebar-footer { display: grid; gap: 12px; margin-top: auto; padding: 30px 12px 0; font-size: 12px; color: #93a1b3; }
+.ds-sidebar-footer > * { min-width: 0; margin: 0; }
+.ds-storage-status { display: grid; gap: 3px; padding: 10px 0; color: inherit; border-block: 1px solid color-mix(in srgb,currentColor 22%,transparent); overflow-wrap: anywhere; }
+.ds-storage-status > span { color: currentColor; font-weight: 650; }
+.ds-storage-status small { font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.ds-storage-status:hover small { color: var(--ds-accent); }
+.ds-sidebar-account { display: flex; align-items: center; gap: 8px; color: inherit; }
+.ds-sidebar-account > span:last-child { display: grid; gap: 2px; overflow-wrap: anywhere; }
 .ds-menu-button { display: none; place-items: center; flex-shrink: 0; min-width: 40px; min-height: 40px; border: 1px solid #3b4958; color: #d8e4ee; background: #1c2630; border-radius: 6px; }
 .ds-main { grid-column: 2; min-width: 0; width: 100%; max-width: 1280px; margin: 0 auto; padding: 36px 40px 48px; outline: none; }
 .ds-page-heading { margin-bottom: 32px; }
@@ -97,7 +104,8 @@
   .ds-sidebar nav { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
   .ds-nav-group { grid-column: 1 / -1; padding-top: 12px; }
   .ds-brand { margin: 0 12px 18px; }
-  .ds-sidebar-footer { display: none; }
+  .ds-sidebar-footer { display: grid; margin-top: 16px; padding-top: 16px; }
+  .ds-sidebar-footer :is(.ds-sidebar-note,.ds-sidebar-account) { display: none; }
   .ds-main { padding: 30px 24px 40px; }
 }
 @media (max-width: 650px) {

@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import {readFileSync} from 'node:fs';
 import {act,type ReactNode} from 'react';
 import {createRoot,type Root} from 'react-dom/client';
 import {MemoryRouter} from 'react-router';
@@ -70,7 +71,11 @@ it('reorganizes and focuses the map without changing canonical topology',async()
 it('renders a single flippable card with visible deterministic progress',async()=>{
  const topic=topicStudy.topics.find(item=>item.id==='CO_T02_BOOLEAN_KMAP')!;
  await render(<FlashcardMode topic={topic} content={(coBoolean as {cards:import('../src/topic-study/types').Flashcard[]}).cards}/>);
- const progress=host.querySelector<HTMLElement>('.ds-flashcard-progress')!,flip=host.querySelector<HTMLButtonElement>('.ds-flashcard-flip')!;
+ const progress=host.querySelector<HTMLElement>('.ds-flashcard-progress')!,flip=host.querySelector<HTMLButtonElement>('.ds-flashcard-flip')!,answer=host.querySelector<HTMLElement>('#card-answer')!;
  expect(progress.getAttribute('role')).toBe('progressbar');expect(progress.getAttribute('aria-valuenow')).toBe('1');expect(host.querySelectorAll('.ds-study-card')).toHaveLength(1);
- expect(flip.getAttribute('aria-pressed')).toBe('false');await act(async()=>flip.click());expect(flip.getAttribute('aria-pressed')).toBe('true');
+ expect(flip.tagName).toBe('BUTTON');expect(flip.getAttribute('aria-pressed')).toBe('false');expect(answer.getAttribute('aria-hidden')).toBe('true');
+ await act(async()=>flip.click());expect(flip.getAttribute('aria-pressed')).toBe('true');expect(answer.getAttribute('aria-hidden')).toBe('false');
+ const css=readFileSync('src/design/product.css','utf8');
+ expect(css.match(/:hover:not\(:disabled\):not\(\.ds-flashcard-flip\)/g)).toHaveLength(2);
+ await act(async()=>flip.click());expect(flip.getAttribute('aria-pressed')).toBe('false');expect(answer.getAttribute('aria-hidden')).toBe('true');
 });

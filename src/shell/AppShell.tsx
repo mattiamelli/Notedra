@@ -17,6 +17,10 @@ const contextKeys:Partial<Record<string,MessageKey>>={
   'Terms of Use':'nav.terms', 'Page not found':'common.pageNotFound',
 };
 
+const storageStatusKeys:Record<string,MessageKey>={
+  'Local only':'account.storageLocal','Pending':'account.storagePending','Offline':'account.storageOffline','Syncing':'account.syncing','Synced':'account.synced','Sync error':'account.storageAttention','Conflict requires attention':'account.storageAttention',
+};
+
 function SidebarLink({to,hash,icon,label,onSelect,activeWhen,tourId}:{to:string;hash?:string;icon:ShellIconName;label:MessageKey;onSelect:()=>void;activeWhen?:(pathname:string)=>boolean;tourId?:string}) {
   const {pathname,hash:currentHash}=useLocation(); const {t}=useI18n();
   const active=activeWhen?.(pathname)??(pathname===to&&(hash ? currentHash===hash : !currentHash));
@@ -29,7 +33,8 @@ function NavigationGroup({label,children}:{label:MessageKey;children:ReactNode})
 
 export function AppShell() {
   const {t}=useI18n();
-  const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
+  const account=useAccount(),{state}=account; const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
+  const storageStatusKey=storageStatusKeys[account.syncStatus],storageStatus=storageStatusKey?t(storageStatusKey):account.syncStatus;
   const {pathname,hash}=useLocation(); const normalizedPath=pathname.replace(/\/+$/, '')||'/';
   const specialContext:Record<string,{title:string;breadcrumbs:{label:string;to?:string}[]}>= {
     '/account':{title:'Account & Settings',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Account & Settings'}]},
@@ -74,7 +79,7 @@ export function AppShell() {
           <SidebarLink to="/account" hash="#settings" icon="settings" label="nav.settings" onSelect={closeNavigation}/>
         </NavigationGroup>
       </nav>
-      <div className="ds-sidebar-footer"><p className="ds-sidebar-note">{t('brand.sidebarNote')}</p><Link to="/account" onClick={closeNavigation}><span className="ds-avatar">{initial}</span><span>{profileName??t('account.studySpace')}<small>{t('account.title')}</small></span></Link></div>
+      <div className="ds-sidebar-footer"><p className="ds-sidebar-note">{t('brand.sidebarNote')}</p><Link className="ds-storage-status" to="/account#study-data" onClick={closeNavigation}><span>{storageStatus}</span><small>{t('account.manageStudyData')}</small></Link><Link className="ds-sidebar-account" to="/account" onClick={closeNavigation}><span className="ds-avatar">{initial}</span><span>{profileName??t('account.studySpace')}<small>{t('account.title')}</small></span></Link></div>
     </aside>
     <Content ref={element=>{content.current=element;}} id="ds-content" tabIndex={-1} className={tool?'ds-tool-content':'ds-main'}>
       {tool&&<Link className="ds-tool-back" to={ASSEMBLY_TOPIC_PATH}><ShellIcon name="back" size={16}/> {t('nav.backAssembly')}</Link>}

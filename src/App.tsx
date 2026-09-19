@@ -26,7 +26,7 @@ const MistakesPage=lazy(()=>import('./adaptive/MistakesPage').then(m=>({default:
 const StudyPathPage=lazy(()=>import('./adaptive/StudyPathPage').then(m=>({default:m.StudyPathPage})));
 const ProgressPage=lazy(()=>import('./progress/ProgressPage').then(m=>({default:m.ProgressPage})));
 const ExamsPage=lazy(()=>import('./exams/ExamsPage').then(m=>({default:m.ExamsPage})));
-const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbench'));
+const AssemblyWorkbench = lazy(() => import('./AssemblyWorkbenchRoute'));
 
 export function safeInternalReturnTo(value:string|null):string|null {
   if(!value||!value.startsWith('/')||value.startsWith('//')||value.includes('\\'))return null;

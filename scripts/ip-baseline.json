@@ -9,7 +9,7 @@
   "content-pack/v1.0.1/INSTRUCTIONS_FOR_CODEX.md": "13196ba214edd60b1abb42277a3c2a4bd5c374efa3b997416385303ea2b7b5a3",
   "content-pack/v1.0.1/manifest.json": "d26c0384029d261185cd118979c874d86771439e49cf68a8deb96ee450653bcc",
   "pnpm-lock.yaml": "dd62e22e779e58c122d811d1eb83b15617e34c72eb8fb23f2ef1086c0b3081d8",
-  "src/AssemblyWorkbench.tsx": "b364ba48101b07a68d5f2c1a237bed6eadac700a4d4a400f4ffd791bb29d2da9",
+  "src/AssemblyWorkbench.tsx": "92e9000c55548b52449976fccb76bef3b65083514967cf46c1456b72e93b84de",
   "src/co/capabilities.json": "4ffa3a4a7d907d6a4fe932efaccb9339a2bd01970a84ea7cf3096d3642fec91b",
   "src/co/content-lock.json": "6ff52fec36176f88d25c2d3775fa4a35fe43b4d03b98454693a3999d621fd66f",
   "src/co/coverage.json": "dc4c41b77da5df3ea7fbbd0463aca6d9fd67a1755c76704d303db7a5031529eb",
@@ -44,7 +44,7 @@
   "src/engine/instructions.ts": "a998f6af52d67ffc90dae8a171a2a48d9719d61d976dd9322174a9f3f77bb5f6",
   "src/engine/memory.ts": "ce0b980e7a0a4a4df6d67cf42a2d9a98b252ff1e4a95bf2dcfe92224e9ca881e",
   "src/engine/parser.ts": "293bee79a2ef857c557c222e55b502c25d1a3179f466e06fede4d63d5323d91c",
-  "src/engine/session.ts": "5529542da35f69576aec07098be771295843cf827a3d7eaab0f02722536f3c33",
+  "src/engine/session.ts": "71029a4600bf71645f0ead484157a772943e204a44a5a9499108ae1cad9b1bce",
   "src/engine/types.ts": "e16d22fd27889d5d73fe9271209195da6d6d4de5bcb16d3a3baf02449e88b4f0",
   "src/enrichment/capabilities.json": "d574c4988a310c3462b924c090b9af76953e6594d4b6df67e8da67101d4d7000",
   "src/enrichment/cards.json": "f0e830da36aec691310e7fb163e157687009f1afefcc6dbde6aba55ca51f4bf7",
@@ -93,5 +93,5 @@
   "src/topic-study/lessons.json": "f29bf2fd528704a230a59b9f4ee0231c5cc4460bdd4aa2b67e5b700d81a85f76",
   "src/utils/stackRows.ts": "47bc355e7d37155168653fedc18b1d0c636c4d26230398dcf6dd112a84262b17",
   "src/utils/storage.ts": "5f6e692b9660407bca249b32916ce58ec960e2b1f1c86658990ae7c4bc5a7aaf",
-  "src/utils/useSimulator.ts": "d93f86aa8a5328bf34f2e2e1113f8aa475b0bd41eeec7df8e8a6c9e66bb9be35"
+  "src/utils/useSimulator.ts": "d4d16097546a5ba751c4ce8e2a183591bfa34e3cacf2309c852908d036997600"
 }

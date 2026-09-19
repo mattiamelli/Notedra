@@ -13,6 +13,7 @@ import type { PracticeExercise as Exercise } from './registered-types';
 import {exerciseFormat,displayAnswer} from './presentation';
 import {TupleControls} from './TupleControls';
 import {AssemblyTraceControls} from '../assembly-practice/Controls';
+import {assemblyVisualizerPath} from '../assembly-practice/navigation';
 import {useI18n} from '../i18n/i18n';
 export function ExerciseSource({exercise}: {exercise: Exercise}) {
   const {t}=useI18n();
@@ -21,12 +22,12 @@ export function ExerciseSource({exercise}: {exercise: Exercise}) {
     <p><Link className="ds-text-link" to={topicPath(topic)}>{topic.name}</Link></p>
     <details className="ds-practice-source"><summary>{t('learning.sourcesScope')}</summary><p>{exercise.source.filename}</p><p>{t('practice.sourceDocument')}</p><p>{t('practice.formatClaim',{format:exerciseFormat(exercise.task.kind)?.label??t('practice.unavailable')})}</p></details></>;
 }
-export function ExercisePrompt({exercise,mode='practice'}: {exercise: Exercise;mode?:'practice'|'exam'}) {
+export function ExercisePrompt({exercise,mode='practice',attemptId}: {exercise: Exercise;mode?:'practice'|'exam';attemptId?:string}) {
   const {t,lt}=useI18n();
   const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId);
   if('mode' in exercise&&exercise.mode==='exam')mode='exam';
   const stimulus=exercise.task.kind==='assembly-trace'?{language:'assembly',code:exercise.task.code}:'stimulus' in exercise?exercise.stimulus as {language:string;code:string}:null;
-  return <div className="ds-practice-prompt"><h2>{lt(exercise.prompt)}</h2>{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{lt(exercise.rules)}</p>{mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:topic.name})}</Link></details>}</div>;
+  return <div className="ds-practice-prompt"><h2>{lt(exercise.prompt)}</h2>{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{exercise.task.kind==='assembly-trace'&&<p><Link className="ds-text-link" to={assemblyVisualizerPath(exercise.id,attemptId)}>{t('practice.exploreAssembly')}</Link></p>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules">{lt(exercise.rules)}</p>{mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:topic.name})}</Link></details>}</div>;
 }
 export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: Exercise; answer: Answer; onChange: (answer: Answer)=>void; disabled: boolean}) {
   const {t}=useI18n();
