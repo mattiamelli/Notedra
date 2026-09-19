@@ -39,6 +39,9 @@ const worker=source+'\nexport default createHandler('+JSON.stringify(manifest)+'
 scanArtifact('dist/server/index.js',worker);
 if(stage!==resolve(root,'.sites-release'))throw Error('Unexpected staging directory');
 rmSync(stage,{recursive:true,force:true});mkdirSync(stage+'/dist/server',{recursive:true});mkdirSync(stage+'/.openai',{recursive:true});mkdirSync(stage+'/dist/.openai',{recursive:true});
+mkdirSync('dist/server',{recursive:true});mkdirSync('dist/.openai',{recursive:true});
+writeFileSync('dist/server/index.js',worker);
+writeFileSync('dist/.openai/hosting.json',JSON.stringify(config,null,2)+'\n');
 writeFileSync(stage+'/dist/server/index.js',worker);
 for(const dir of ['/.openai','/dist/.openai'])writeFileSync(stage+dir+'/hosting.json',JSON.stringify(config,null,2)+'\n');
 console.log('Sites Worker artifact prepared', {documents:Object.keys(documents).length,assets:Object.keys(assets).length,workerBytes:Buffer.byteLength(worker),csp:policy.cspMode});
