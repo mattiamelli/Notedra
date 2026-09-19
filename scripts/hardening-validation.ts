@@ -33,7 +33,7 @@ export function validateHardening(){
   assert(!paths.some(p=>/(?:^|\/)\.env(?:\.|$)/.test(p)&&p!=='.env.example'),'Tracked environment file');
   execFileSync('git',['check-ignore','.env.local']);
   const example=readFileSync('.env.example','utf8').split(/\r?\n/).filter(l=>l&&!l.startsWith('#'));
-  assert.deepEqual(example,['VITE_SUPABASE_URL=','VITE_SUPABASE_PUBLISHABLE_KEY=']);
+  assert.deepEqual(example,['VITE_SUPABASE_URL=','VITE_SUPABASE_PUBLISHABLE_KEY=','VITE_POSTHOG_KEY=','VITE_POSTHOG_HOST=']);
   const runtime=paths.filter(p=>/^src\/.*\.tsx?$/.test(p));for(const p of runtime)scanRuntime(readFileSync(p,'utf8'),p);
   const tree=execFileSync('git',['ls-tree','-r','6d1b9dfd3fb148ba7097e7ed238e600da2a81deb','--','src','tests','content-pack','supabase','public'],{encoding:'utf8'}).trim().split('\n');
   for(const row of tree){const [meta,path]=row.split('\t'),data=beforeHardening(path,readFileSync(path));assert.equal(createHash('sha1').update(`blob ${data.length}\0`).update(data).digest('hex'),meta.split(' ')[2],'Step 13 baseline changed: '+path);}

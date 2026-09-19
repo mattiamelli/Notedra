@@ -45,6 +45,9 @@ describe('public release privacy and response preparation',()=>{
   it('limits CSP connections to the configured project and excludes unsafe scripts',()=>{
     const headers=releaseHeaders('https://project.supabase.co');expect(headers).toContain("script-src 'self';");expect(headers).not.toContain('unsafe-eval');expect(headers).toContain('frame-ancestors \'none\'');
     expect(headers).toContain('max-age=31536000');expect(headers).not.toContain('preload');expect(()=>releaseHeaders('https://project.supabase.co/evil')).toThrow();
+    expect(headers).not.toContain('eu.i.posthog.com');
+    expect(releaseHeaders('https://project.supabase.co','https://eu.i.posthog.com')).toContain("connect-src 'self' https://project.supabase.co https://eu.i.posthog.com;");
+    expect(()=>releaseHeaders('https://project.supabase.co','https://us.i.posthog.com')).toThrow();
   });
   it('updates metadata on navigation and removes public canonical for saved attempts',async()=>{
     document.head.innerHTML=new DOMParser().parseFromString(releaseHtml(template,publicReleasePages().find(p=>p.path==='/co')),'text/html').head.innerHTML;

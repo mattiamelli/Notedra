@@ -1,4 +1,5 @@
 import {analyticsEventRegistry,type AnalyticsEventMap} from './events';
+import {createConfiguredPostHogSink} from './posthog';
 
 export type AnalyticsEventName=keyof AnalyticsEventMap;
 export type AnalyticsRecord<E extends AnalyticsEventName=AnalyticsEventName>={event:E;properties:AnalyticsEventMap[E];occurredAt:string};
@@ -11,7 +12,7 @@ export class MemoryAnalyticsSink implements AnalyticsSink {
 }
 
 export const localAnalyticsSink=new MemoryAnalyticsSink();
-let activeSink:AnalyticsSink|null=import.meta.env.DEV?localAnalyticsSink:null;
+let activeSink:AnalyticsSink|null=import.meta.env.DEV?localAnalyticsSink:createConfiguredPostHogSink(import.meta.env,import.meta.env.PROD);
 const forbidden=/(^|_)(answer|code|document|email|name|token|ip|prompt|health|user)($|_)/i;
 const canonicalId=/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/;
 
@@ -20,7 +21,7 @@ export function track<E extends AnalyticsEventName>(event:E,properties:Analytics
  if(definition.required.some(key=>!(key in (properties as object)))||entries.some(([key])=>forbidden.test(key)||!allowed.has(key)))return false;
  if(entries.some(([key,value])=>(key==='course_id'||key==='topic_id')&&(typeof value!=='string'||!canonicalId.test(value))))return false;
  if(!activeSink)return true;
- activeSink.capture({event,properties:structuredClone(properties),occurredAt:new Date().toISOString()} as AnalyticsRecord);
+ try {activeSink.capture({event,properties:structuredClone(properties),occurredAt:new Date().toISOString()} as AnalyticsRecord);} catch { /* Analytics must never affect product behavior. */ }
  return true;
 }
 

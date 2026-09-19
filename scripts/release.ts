@@ -43,10 +43,12 @@ export function releaseHtml(template:string,page?:ReleasePage):string {
 export function metadataScript(pages:ReleasePage[]):string {
   return `(()=>{const origin=${JSON.stringify(productionOrigin)},pages=${JSON.stringify(pages)};function update(){const path=location.pathname.replace(/\\/+$/,'')||'/';const page=pages.find(p=>p.path===path);const title=page?.title||document.title;const description=page?.description||'Independent study support for focused, measurable learning.';const set=(selector,value)=>{const node=document.querySelector(selector);if(node)node.setAttribute('content',value)};set('meta[name="robots"]',page?'index,follow':'noindex,follow');set('meta[name="description"]',description);set('meta[property="og:title"]',title);set('meta[property="og:description"]',description);set('meta[name="twitter:title"]',title);set('meta[name="twitter:description"]',description);document.querySelectorAll('link[rel="canonical"],meta[property="og:url"]').forEach(node=>node.remove());if(page){const link=document.createElement('link');link.rel='canonical';link.href=origin+page.path;document.head.append(link);const og=document.createElement('meta');og.setAttribute('property','og:url');og.content=origin+page.path;document.head.append(og)}}const title=document.querySelector('title');if(title)new MutationObserver(update).observe(title,{childList:true,subtree:true,characterData:true});addEventListener('popstate',update);update()})();\n`;
 }
-export function releaseHeaders(supabaseOrigin:string):string {
+export function releaseHeaders(supabaseOrigin:string,posthogHost=''):string {
   const url=new URL(supabaseOrigin);
   if(url.protocol!=='https:'||url.origin!==supabaseOrigin||url.username||url.password)throw Error('Release requires an HTTPS Supabase origin');
-  const csp=`default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' ${url.origin}; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`;
+  const posthogOrigin=posthogHost.replace(/\/$/,'');
+  if(posthogOrigin&&posthogOrigin!=='https://eu.i.posthog.com')throw Error('PostHog host must be the approved EU ingestion origin');
+  const csp=`default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' ${url.origin}${posthogOrigin?` ${posthogOrigin}`:''}; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`;
   return `/*\n  Content-Security-Policy-Report-Only: ${csp}\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n  X-Frame-Options: DENY\n  Strict-Transport-Security: max-age=31536000\n  Cache-Control: public, max-age=0, must-revalidate\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n`;
 }
 export function releaseRedirects(pages:ReleasePage[]):string {
@@ -55,8 +57,8 @@ export function releaseRedirects(pages:ReleasePage[]):string {
   return [...publicRules,...privateRules].join('\n')+'\n';
 }
 export function releaseBuildGuard():Plugin {
-  let output='dist',supabaseOrigin='';
-  return {name:'delftstudy-release',apply:'build',configResolved(config){output=config.build.outDir;supabaseOrigin=config.env.VITE_SUPABASE_URL??'';},closeBundle(){
+  let output='dist',supabaseOrigin='',posthogHost='';
+  return {name:'delftstudy-release',apply:'build',configResolved(config){output=config.build.outDir;supabaseOrigin=config.env.VITE_SUPABASE_URL??'';posthogHost=config.env.VITE_POSTHOG_HOST??'';},closeBundle(){
     if(!supabaseOrigin)return; // Local-only builds remain available without cloud configuration.
     const template=readFileSync(`${output}/index.html`,'utf8'),pages=publicReleasePages(),documents=publicDocumentPages();
     mkdirSync(`${output}/release`,{recursive:true});
@@ -67,7 +69,7 @@ export function releaseBuildGuard():Plugin {
     writeFileSync(`${output}/sitemap.xml`,sitemap(pages));
     writeFileSync(`${output}/release-metadata.js`,metadataScript(documents));
     writeFileSync(`${output}/manifest.webmanifest`,JSON.stringify({name:'Notedra',short_name:'Notedra',description:'Independent computer science study tools',start_url:'/',display:'standalone',theme_color:'#0066ff',background_color:'#f0f7ff',icons:[{src:'/favicon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]})+'\n');
-    writeFileSync(`${output}/_headers`,releaseHeaders(supabaseOrigin.replace(/\/$/,'')));
+    writeFileSync(`${output}/_headers`,releaseHeaders(supabaseOrigin.replace(/\/$/,''),posthogHost));
     writeFileSync(`${output}/_redirects`,releaseRedirects(documents));
   }};
 }

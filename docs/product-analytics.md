@@ -2,7 +2,9 @@
 
 ## NOW
 
-Events are typed, validated against an allowlist and captured only by a volatile in-memory development/test sink. Production has no sink: no network requests, cookies, persistent analytics identity or provider integration. Events describe product interactions, never academic responses.
+Events are typed and validated against an explicit allowlist. Development and tests use the volatile in-memory sink. Production uses the lazy PostHog sink only when both `VITE_POSTHOG_KEY` and the approved EU host `VITE_POSTHOG_HOST=https://eu.i.posthog.com` are configured; otherwise analytics is a safe no-op. Events describe product interactions, never academic responses.
+
+The PostHog boundary disables autocapture, automatic pageviews/page-leave, session replay, surveys, flags, heatmaps, performance and exception capture, person profiles, device-model enrichment and browser persistence. It never calls `identify`. A final `before_send` filter rejects unknown events and removes unapproved properties, including full URLs and browser/device metadata. PostHog still assigns a non-persistent anonymous browser identifier required to ingest an event; Notedra does not correlate it with an account or learner record.
 
 | Event | Trigger | Required properties | Optional | Metric | Privacy note |
 | --- | --- | --- | --- | --- | --- |
@@ -35,11 +37,19 @@ Events are typed, validated against an allowlist and captured only by a volatile
 
 ## FUTURE
 
-- Explicit consent controls and a documented lawful basis before enabling any provider.
+- Additional consent controls if required by the owner's documented lawful-basis assessment.
 - A first-party, rotating analytics session ID separate from account and learner records.
 - Clear deletion/export behavior, retention period, environment controls and provider approval.
 - First usable-session event needed for activation denominators, time to value and D1/D7 return measurement.
 
 ## DO NOT TRACK
 
-Answer text, submitted code, uploaded document content, email, name, account/access tokens, manually collected IP addresses, free-form prompts, health or sensitive data, grades, feedback text, recommendation reasons, exact navigation history and browser/device fingerprints.
+Answer text, submitted code, uploaded document content, email, name, account IDs, Supabase IDs, account/access tokens, manually collected IP addresses, free-form prompts, health or sensitive data, grades, feedback text, recommendation prose, exact navigation history, full URLs and browser/device fingerprints.
+
+## Final SDK privacy boundary
+
+The pinned 1.434.0 integration loads the official `dist/module.slim.no-external` entrypoint. Optional replay, console-log, metrics and feature-flag extensions are absent, external dependency loading is disabled, and explicit SDK options disable each optional product. Configuration is checked against the installed SDK types; the unsupported `disable_device_id_rotation` option is not used.
+
+`before_send` retains the event UUID/timestamp, project ingestion token and ephemeral `distinct_id`, plus approved event properties. It strips top-level person updates and other enrichment, forces `$process_person_profile: false`, and sets `$geoip_disable: true`. No device or session identifiers are transmitted separately. The `ip` option is deprecated and ineffective in this SDK and is deliberately not used. Network connections necessarily expose an IP to the receiving infrastructure; the owner's reported IP-anonymization setting governs server-side storage and has not been independently verified here.
+
+Targeted tests run the actual SDK up to an intercepted transport dispatch, verify allowed capture and automatic-event rejection, and create independent instances to prove different anonymous IDs with no cookie/localStorage/sessionStorage writes. They do not verify live ingestion.
