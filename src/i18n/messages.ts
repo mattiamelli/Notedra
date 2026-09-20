@@ -407,7 +407,7 @@ export const en = {
   'course.openWorkbench': 'Open workbench',
   'nav.studyPath': 'Study Path',
   'assembly.program': 'Program',
-  'assembly.create': 'Create',
+  'assembly.create': 'New program',
   'assembly.exampleProgram': 'Example program',
   'assembly.examples': 'Examples',
   'assembly.programAria': 'Assembly program',

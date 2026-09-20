@@ -22,7 +22,7 @@ describe('custom assembly editor', () => {
   it('creates and focuses a completely blank program while keeping examples available', async () => {
     await act(async () => root.render(<AssemblyWorkbench/>));
     expect(host.querySelector('textarea')?.getAttribute('value') ?? host.querySelector('textarea')?.textContent).not.toBe('');
-    await click('Create');
+    await click('New program');
     const editor=host.querySelector<HTMLTextAreaElement>('textarea')!;
     expect(editor.value).toBe('');
     expect(document.activeElement).toBe(editor);
