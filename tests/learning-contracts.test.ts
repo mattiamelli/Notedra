@@ -42,6 +42,11 @@ describe('bounded student contracts', () => {
     expect(() => parseBackup(' '.repeat(16_000_001))).toThrow('16 MB');
     expect(() => validateBackup({...emptyBackup(), resume: {...position, url: 'https://evil.invalid'}})).toThrow('unsupported student-data fields');
   });
+  it.each(['__proto__', 'constructor', 'prototype'])('rejects dangerous object key %s without prototype mutation', key => {
+    const json = JSON.stringify(emptyBackup()).replace('{', `{"${key}":{"polluted":true},`);
+    expect(() => parseBackup(json)).toThrow('unsupported student-data fields');
+    expect((Object.prototype as {polluted?:boolean}).polluted).toBeUndefined();
+  });
   it('leaves hints and exposure unknown, and all source mappings ineligible', () => {
     expect(attempt().hintsUsed).toBeNull(); expect(attempt().solutionViewed).toBeNull();
     for (const source of references.questions) {

@@ -705,5 +705,10 @@
   "src/ip/ip.css": {
     "before": "1f9b7c269b066969feb459371486163f99c94f846a608755984e1e3e23cad2bb",
     "after": "74771738411ff70a03cbb066fa692229c0d269d32c97e65544ec54a1bc3c54a4"
+  },
+  "tests/learning-contracts.test.ts": {
+    "before": "2ab20308558a02dfd3449fee638937453c9aa99e18b98876fd892a4b9eb65baa",
+    "after": "a5cb3571621dea282b035c7d9ca68101d5842c17616ac306614629c921b2f4d0",
+    "original": "2ab20308558a02dfd3449fee638937453c9aa99e18b98876fd892a4b9eb65baa"
   }
 }
