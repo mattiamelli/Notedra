@@ -1,0 +1,8 @@
+{
+  "before": "9e6dd4ca95785fbdc62ad72756426716b8f56619db8f34fb00dc5f39e0d67a93",
+  "after": "c733dd664fd278729948b37998ab299d3e7c903a9a3b360043789dfe90aa4aef",
+  "updated": [
+    "esbuild@0.27.3 -> esbuild@0.28.2"
+  ],
+  "reason": "Development-only GHSA-g7r4-m6w7-qqqr remediation within Vite 7.3.6's supported range"
+}
