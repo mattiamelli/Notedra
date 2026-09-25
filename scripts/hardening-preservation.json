@@ -535,7 +535,7 @@
   },
   "src/shell/shell.css": {
     "before": "a61c03d57aecf559dabb930d5494624c4b975c59dde813c49aff74f4bc5a2268",
-    "after": "2af49f15074cd951efec5219af9105ebab3a0ed5d9a5b46dac61c84f51095a89"
+    "after": "55349f40a882593ccf02e9a7b5c7513bd123640095522ebe65b7814a815fbfd7"
   },
   "src/learning/LearningProvider.tsx": {
     "before": "9ffd72ad0fecab6032fe29df6b40969ab9fc6b066c848977a1a437d006ab1e85",
@@ -694,7 +694,7 @@
   },
   "src/shell/CourseArtwork.tsx": {
     "before": "3f42cfbab551598d243de79d6858d6dbfbb5a506250f1f714e1fcea1152280e0",
-    "after": "9a610b16765b492df49d7592d905bf33b4f4bacab76b0f3cf4605dfb1e4bf917",
+    "after": "99ff7b3e2c3e5a5927231ce425887bb23c245f8382a3e7df527abc3539f03a54",
     "original": "3f42cfbab551598d243de79d6858d6dbfbb5a506250f1f714e1fcea1152280e0"
   },
   "src/ip/IPStudyMode.tsx": {

@@ -6,10 +6,8 @@
 .ds-curriculum-nav .ds-nav-link { min-width: 0; align-items: flex-start; }
 .ds-curriculum-nav .ds-nav-link span { overflow-wrap: anywhere; }
 .ds-curriculum-nav .ds-nav-link svg { flex-shrink: 0; margin-top: 2px; }
-.ds-course-art.ds-curriculum-art { position: relative; display: grid; place-items: center; height: 112px; background: #e0efec; color: #215e54; }
-.ds-course-art.ds-curriculum-art-3 { background: #ece6f3; color: #604078; }
-.ds-course-art.ds-curriculum-art-4 { background: #e2ebf5; color: #355b7d; }
-.ds-curriculum-symbol { font-family: var(--font-mono, monospace); font-size: 38px; line-height: 1; letter-spacing: 0; }
+.ds-course-art.ds-curriculum-art { background: #e0efec; }
+.ds-curriculum-art > img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .ds-dash-courses .ds-course-body { min-width: 0; }
 .ds-dash-courses .ds-course-body h3 { overflow-wrap: anywhere; letter-spacing: 0; }
 .ds-dash-courses .ds-course-body > .ds-text-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; }
