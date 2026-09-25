@@ -75,10 +75,10 @@ export function AppShell() {
           <SidebarLink to="/practice" icon="practice" label="nav.practice" tourId="practice" onSelect={closeNavigation}/>
           <SidebarLink to="/progress" icon="progress" label="nav.progress" tourId="progress" onSelect={closeNavigation}/>
         </NavigationGroup>
-        <section className="ds-nav-section ds-curriculum-nav" aria-label="Courses by trimester">
+        <section className="ds-nav-section ds-curriculum-nav" aria-label="Courses by trimester" data-trimester={selectedTrimester}>
           <label className="ds-nav-group" htmlFor="sidebar-trimester">Trimester</label>
           <select id="sidebar-trimester" value={selectedTrimester} onChange={event=>setSelectedTrimester(Number(event.target.value))}>{trimesters.map(value=><option key={value} value={value}>Trimester {value}</option>)}</select>
-          <div className="ds-nav-items">{courses.filter(item=>item.trimester===selectedTrimester).map(item=><Link key={item.subject_id} to={item.path} className={`ds-nav-link${activeCourse?.subject_id===item.subject_id?' active':''}`} aria-current={activeCourse?.subject_id===item.subject_id?'page':undefined} onClick={closeNavigation}><ShellIcon name={item.icon}/><span>{item.publicName}</span></Link>)}</div>
+          <div className="ds-nav-items">{courses.filter(item=>item.trimester===selectedTrimester).map(item=><Link key={item.subject_id} to={item.path} className={`ds-nav-link${activeCourse?.subject_id===item.subject_id?' active':''}`} aria-current={activeCourse?.subject_id===item.subject_id?'page':undefined} onClick={closeNavigation}><span className="ds-course-nav-icon"><ShellIcon name={item.icon}/></span><span className="ds-course-nav-name">{item.publicName}</span></Link>)}</div>
         </section>
         <NavigationGroup label="nav.secondary">
           <SidebarLink to="/study-plan" icon="book" label="nav.studyPath" tourId="study-path" onSelect={closeNavigation}/>

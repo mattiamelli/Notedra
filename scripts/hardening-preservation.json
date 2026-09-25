@@ -196,7 +196,7 @@
   },
   "src/shell/AppShell.tsx": {
     "before": "d7d7b71abdd598d3b908388533cae379d231574cb8b12911efef4a8972a026e0",
-    "after": "f21536d4ca4a3a1ffafe39f9e15685ec32ea75ee474ce1c53a6f55f15d8ef771"
+    "after": "c5e279e979a3e3ad1872c8d4b0da6ed651c164031f7ae6a3f5dd6334d96ffb32"
   },
   "tests/cloud-client.test.ts": {
     "before": "e99b410d0c69513486732f83cf6490403530ac6a4377a85591c3ed5d29e484d9",
@@ -535,7 +535,7 @@
   },
   "src/shell/shell.css": {
     "before": "a61c03d57aecf559dabb930d5494624c4b975c59dde813c49aff74f4bc5a2268",
-    "after": "55349f40a882593ccf02e9a7b5c7513bd123640095522ebe65b7814a815fbfd7"
+    "after": "8b3bd25d3cfad0218b7c9f95e11bc49bb45236128c4ad16469a467ba3664314f"
   },
   "src/learning/LearningProvider.tsx": {
     "before": "9ffd72ad0fecab6032fe29df6b40969ab9fc6b066c848977a1a437d006ab1e85",

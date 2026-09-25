@@ -2,10 +2,19 @@
 .ds-trimester-selector button { min-height: 58px; padding: 10px 12px; border: 1px solid var(--ds-line, #ccc); border-radius: 6px; background: var(--ds-paper, #fff); color: var(--ds-ink, #222); font: inherit; font-weight: 600; text-align: left; cursor: pointer; letter-spacing: 0; }
 .ds-trimester-selector button[aria-pressed='true'] { border-color: var(--ds-primary, #744b69); box-shadow: inset 0 -3px var(--ds-primary, #744b69); }
 .ds-trimester-selector button span { display: block; margin-top: 3px; font-size: 12px; font-weight: 400; }
-.ds-curriculum-nav select { width: 100%; min-height: 40px; margin: 4px 0 10px; padding: 8px; border: 1px solid var(--ds-line, #aaa); border-radius: 6px; background: var(--ds-paper, #fff); color: var(--ds-ink, #222); font: inherit; }
-.ds-curriculum-nav .ds-nav-link { min-width: 0; align-items: flex-start; }
-.ds-curriculum-nav .ds-nav-link span { overflow-wrap: anywhere; }
-.ds-curriculum-nav .ds-nav-link svg { flex-shrink: 0; margin-top: 2px; }
+.ds-curriculum-nav { --ds-trimester-accent: #744b69; min-width: 0; }
+.ds-curriculum-nav[data-trimester='2'] { --ds-trimester-accent: #287d72; }
+.ds-curriculum-nav[data-trimester='3'] { --ds-trimester-accent: #526fa3; }
+.ds-curriculum-nav[data-trimester='4'] { --ds-trimester-accent: #9a5f68; }
+.ds-curriculum-nav select { width: 100%; min-height: 40px; margin: 4px 0 10px; padding: 8px; border: 1px solid var(--ds-line, #aaa); border-inline-start: 3px solid var(--ds-trimester-accent); border-radius: 6px; background: var(--ds-paper, #fff); color: var(--ds-ink, #222); font: inherit; }
+.ds-curriculum-nav .ds-nav-link { min-width: 0; min-height: 44px; align-items: flex-start; gap: 10px; padding-block: 10px; }
+.ds-curriculum-nav .ds-course-nav-icon { display: grid; place-items: center; flex: 0 0 24px; width: 24px; height: 24px; color: inherit; }
+.ds-curriculum-nav .ds-course-nav-icon svg { display: block; margin: 0; }
+.ds-curriculum-nav .ds-course-nav-name { min-width: 0; padding-top: 1px; line-height: 1.45; overflow-wrap: anywhere; }
+.ds-curriculum-nav .ds-nav-link:hover { border-color: color-mix(in srgb,var(--ds-trimester-accent) 24%,transparent); }
+.ds-curriculum-nav .ds-nav-link.active { background: color-mix(in srgb,var(--ds-trimester-accent) 12%,transparent); border-color: color-mix(in srgb,var(--ds-trimester-accent) 34%,transparent); color: var(--ds-ink); }
+.ds-curriculum-nav .ds-nav-link.active::before { background: var(--ds-trimester-accent)!important; }
+.ds-curriculum-nav .ds-nav-link.active .ds-course-nav-icon { color: var(--ds-trimester-accent); }
 .ds-course-art.ds-curriculum-art { background: #e0efec; }
 .ds-curriculum-art > img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .ds-dash-courses .ds-course-body { min-width: 0; }
@@ -116,6 +125,7 @@
   .ds-sidebar { display: none; position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--ds-border); padding: 18px; }
   .ds-sidebar.is-open { display: block; }
   .ds-sidebar nav { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .ds-curriculum-nav { grid-column: 1 / -1; }
   .ds-nav-group { grid-column: 1 / -1; padding-top: 12px; }
   .ds-brand { margin: 0 12px 18px; }
   .ds-sidebar-footer { display: grid; margin-top: 16px; padding-top: 16px; }

@@ -77,6 +77,9 @@ describe('centralized interface languages',()=>{
       await act(async()=>{select.value=String(trimester);select.dispatchEvent(new Event('change',{bubbles:true}));});
       const expected=courses.filter(course=>course.trimester===trimester);
       expect([...host.querySelectorAll('.ds-curriculum-nav .ds-nav-link')].map(link=>[link.getAttribute('href'),link.textContent])).toEqual(expected.map(course=>[course.path,course.publicName]));
+      expect(host.querySelector('.ds-curriculum-nav')?.getAttribute('data-trimester')).toBe(String(trimester));
+      expect([...host.querySelectorAll('.ds-curriculum-nav .ds-course-nav-icon path')].map(path=>path.getAttribute('d'))).toHaveLength(expected.length);
+      expect(new Set([...host.querySelectorAll('.ds-curriculum-nav .ds-course-nav-icon path')].map(path=>path.getAttribute('d'))).size).toBe(expected.length);
     }
   });
   it('renders the Notedra wordmark as one consistently styled text element',async()=>{
