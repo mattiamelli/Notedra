@@ -188,6 +188,7 @@ body { background: var(--ds-page); color: var(--ds-text); color-scheme: inherit;
 .ds-course-body { padding: 12px 14px; }
 .ds-app .ds-main .ds-course-card h3 { font-size: 1rem; line-height: 1.3; font-weight: 700; margin: 0 0 5px; }
 .ds-app .ds-course-card p.ds-course-subtitle { font-size: .8125rem; line-height: 1.4; color: var(--ds-support); margin: 0; }
+.ds-app .ds-course-card p.ds-course-subtitle-compact { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .ds-course-meta { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .75rem; color: var(--ds-support); margin: 16px 0 8px; }
 .ds-course-meta>span { display: inline-flex; align-items: center; gap: 6px; }
 .ds-course-completion{display:grid;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--ds-line);font-size:.78rem;color:var(--ds-text)}

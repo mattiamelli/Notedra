@@ -31,10 +31,18 @@ it('switches the dashboard course group and restores a linked trimester',async()
   await act(async()=>root.render(<MemoryRouter initialEntries={['/dashboard?trimester=3']}><DashboardCourses/></MemoryRouter>));
   const links=()=>[...container.querySelectorAll<HTMLAnchorElement>('.ds-course-grid > a')].map(link=>link.getAttribute('href'));
   expect(links()).toEqual(courses.filter(course=>course.trimester===3).map(course=>course.path));
+  expect(container.querySelectorAll('.ds-course-subtitle-compact')).toHaveLength(3);
   const button=[...container.querySelectorAll('button')].find(button=>button.textContent?.startsWith('Trimester 4'))!;
   await act(async()=>button.click());
   expect(button.getAttribute('aria-pressed')).toBe('true');
   expect(links()).toEqual(['/probability','/networks']);
+  expect(container.querySelectorAll('.ds-course-subtitle-compact')).toHaveLength(2);
+});
+
+it('does not compact the original trimester-one descriptions',async()=>{
+  await act(async()=>root.render(<MemoryRouter initialEntries={['/dashboard?trimester=1']}><DashboardCourses/></MemoryRouter>));
+  expect(container.querySelectorAll('.ds-course-card')).toHaveLength(3);
+  expect(container.querySelector('.ds-course-subtitle-compact')).toBeNull();
 });
 
 it('shows source limitations and topic links for every new course',async()=>{

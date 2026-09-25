@@ -157,7 +157,7 @@
   },
   "src/design/product.css": {
     "before": "a1216043e462f0cb9eb300d23261a86c925016292a9692effd9d88efbc597191",
-    "after": "31cf382808f69365c30fd0fcda022be3accd3e553279d88741ea05f77e0444ba",
+    "after": "99af276418d985bbefbb9559bc59b36c877dae82c3367fa5a72d442b48f42189",
     "original": "34f29d6b8c302d908643961f605fb382fef4501d072fa62d3da47b33e6daafd1"
   },
   "src/design/tokens.css": {
@@ -543,7 +543,7 @@
   },
   "src/shell/PageParts.tsx": {
     "before": "57b1b0f57e9edb232f4bf96adf471a81bdf0a2193480554380eb8d1d0b8f30cc",
-    "after": "20ad8d829d3ba42084aecaf270cb5cce8dd12ed51e25bb31e558e6a62b42e65a",
+    "after": "4f702d56363b386adb1e8a1301f920b993469e561bd80e337d0b5bb1a61d7ef5",
     "original": "1ef7532937a1271addd83432001fb982ed94caf71c65dc531ec86ad434876deb"
   },
   "src/components/ControlPanel.tsx": {

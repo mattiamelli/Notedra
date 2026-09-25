@@ -14,7 +14,7 @@ export function CourseCard({course,completion}: {course: Course;completion:{comp
   const percent=completion.percentage??0;const color=completionColor(percent);
   return <Link to={course.path} aria-label={course.name} className={`ds-course-card ds-tone-${course.tone}`}>
     <CourseArtwork course={course}/>
-    <div className="ds-course-body"><h3>{course.publicName}</h3><p className="ds-course-subtitle">{course.description||t(course.descriptionKey)}</p>
+    <div className="ds-course-body"><h3>{course.publicName}</h3><p className={`ds-course-subtitle${course.trimester === 1 ? '' : ' ds-course-subtitle-compact'}`}>{course.description||t(course.descriptionKey)}</p>
     <div className="ds-course-meta"><span><ShellIcon name="book" size={15}/>{t('course.topicCount',{count:topicsFor(course.subject_id).length})}</span></div>
     <div className="ds-course-completion"><span>{completion.eligible?t('dashboard.exerciseProgress',{completed:completion.completed,total:completion.eligible,percentage:percent}):t('dashboard.noExercises')}</span><div role="progressbar" aria-label={t('dashboard.exerciseProgressAria',{course:course.name})} aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} style={{'--completion-color':color} as CSSProperties}><i style={{width:`${percent}%`}}/></div><small>{t('dashboard.exerciseProgressHint')}</small></div></div>
   </Link>;
