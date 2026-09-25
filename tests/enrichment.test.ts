@@ -23,9 +23,10 @@ describe('supplemental authority and immutable authoring',()=>{
  it('rejects stale capability counts, missing topics and extra product fields',()=>{const counts=JSON.parse(readFileSync('src/enrichment/capabilities.json','utf8')) as {topicId:string;cards:number;exercises:number;guides:number;mastery?:number}[];expect(()=>validateCapabilities(data,counts)).not.toThrow();for(const mutate of [(c:typeof counts)=>c[0].cards++,(c:typeof counts)=>c.pop(),(c:typeof counts)=>c[0].mastery=50]){const c=structuredClone(counts);mutate(c);expect(()=>validateCapabilities(data,c)).toThrow();}});
  it('runs the enrichment gate on direct Vite builds',()=>{const guard=enrichmentGuard(()=>{throw new Error('bad enrichment');});expect(guard.buildStart as ()=>void).toThrow('bad enrichment');});
  it('retains all historical grader fingerprints and item bindings plus eight Assembly traces',()=>{
-  expect(allExercises.filter(e=>!e.id.startsWith('ds.practice.advanced-')&&!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact'&&e.task.kind!=='ip-fixed')).toHaveLength(69);
+  const historical=allExercises.filter(e=>!e.id.startsWith('ds.practice.advanced-')&&!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact'&&e.task.kind!=='ip-fixed'&&e.task.kind!=='curriculum');
+  expect(historical).toHaveLength(69);
   for(const dir of ['practice','co','rl']){const grader=JSON.parse(readFileSync(`src/${dir}/grader-lock.json`,'utf8'));expect(createHash('sha256').update(readFileSync(`src/${dir}/grading.ts`)).digest('hex')).toBe(grader.sha256);}
-  for(const e of allExercises.filter(e=>!e.id.startsWith('ds.practice.advanced-')&&!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact'&&e.task.kind!=='ip-fixed'))expect(versionBinding(e)).toMatch(/^1:sha256:[a-f0-9]{64}:grader:[a-f0-9]{64}$/);
+  for(const e of historical)expect(versionBinding(e)).toMatch(/^1:sha256:[a-f0-9]{64}:grader:[a-f0-9]{64}$/);
  });
 });
 describe('controlled tuple grading',()=>{

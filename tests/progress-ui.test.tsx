@@ -8,6 +8,8 @@ import {LearningProvider} from '../src/learning/LearningProvider';
 import {repository} from './helpers/learning';
 import {emptyBackup,success,mock,CLOCK} from './helpers/progress';
 import type {Backup} from '../src/learning/contracts';
+import {courses} from '../src/academic/navigation';
+import {curriculumCourses} from '../src/curriculum/registry';
 let host:HTMLDivElement,root:Root;
 async function settle(){for(let n=0;n<60;n++)await act(async()=>{await new Promise(r=>setTimeout(r,5));});}
 beforeEach(()=>{Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});vi.spyOn(Date,'now').mockReturnValue(CLOCK);vi.spyOn(window,'scrollTo').mockImplementation(()=>{});host=document.createElement('div');document.body.append(host);root=createRoot(host);});
@@ -19,7 +21,26 @@ async function mount(path:string,data:Backup=emptyBackup()){
 }
 it('empty Progress reports unknown and actionable next steps, not failure',async()=>{await mount('/progress');expect(host.textContent).toContain('Not enough practice yet');expect(host.textContent).toContain('Missing practice stays unknown; this is not a zero score.');expect(host.textContent).toContain('Complete graded practice in more skills');expect(host.textContent).toContain('Not enough exam practice yet');expect(host.textContent).toContain('Complete graded exam-style questions across more topics.');expect(host.textContent).toContain('Confidence: Insufficient');expect(host.textContent).not.toMatch(/0%|0 \/ 100/);expect(host.querySelector('select')).not.toBeNull();});
 it('exact normal evidence exposes skill, topic and course context plus explanation',async()=>{const d=emptyBackup(),a=success('ui');d.attempts=[a];const repo=await mount('/progress?course='+a.subjectId+'&topic='+a.topicId,d);expect(host.textContent).toContain('55 / 100');expect(host.textContent).toContain('1 completed practice records');expect(host.textContent).toContain('How is this calculated?');expect(host.textContent).toContain('Confidence: Low');expect((await repo.load()).data.attempts).toEqual(d.attempts);});
-it('course filters write URL state and topic filters preserve mapped skills',async()=>{await mount('/progress');const course=host.querySelector('select')!;await act(async()=>{course.value='CSE1100_IP';course.dispatchEvent(new Event('change',{bubbles:true}));});await settle();expect(location.search).toBe('?course=CSE1100_IP');expect(host.textContent).toContain('Integrated programming');const topic=host.querySelectorAll('select')[1];await act(async()=>{topic.value=topic.options[1].value;topic.dispatchEvent(new Event('change',{bubbles:true}));});expect(location.search).toContain('&topic=IP_');expect(host.querySelector('section[aria-label="Topic and skill progress"]')!.children).toHaveLength(1);});
+it('course filters write URL state and topic filters preserve mapped skills',async()=>{await mount('/progress');const course=host.querySelector('.progress-page select')!;await act(async()=>{(course as HTMLSelectElement).value='CSE1100_IP';course.dispatchEvent(new Event('change',{bubbles:true}));});await settle();expect(location.search).toBe('?course=CSE1100_IP');expect(host.textContent).toContain('Integrated programming');const topic=host.querySelectorAll<HTMLSelectElement>('.progress-page select')[1];await act(async()=>{topic.value=topic.options[1].value;topic.dispatchEvent(new Event('change',{bubbles:true}));});expect(location.search).toContain('&topic=IP_');expect(host.querySelector('section[aria-label="Topic and skill progress"]')!.children).toHaveLength(1);});
+it('offers every course in Progress and filters curriculum topics independently of sidebar trimester',async()=>{
+ await mount('/progress');
+ const course=host.querySelector<HTMLSelectElement>('.progress-page select')!;
+ expect([...course.options].map(option=>option.value)).toEqual(courses.map(item=>item.subject_id));
+ const sidebar=host.querySelector<HTMLSelectElement>('#sidebar-trimester')!;
+ const trimester=sidebar.value;
+ for(const curriculum of curriculumCourses){
+  await act(async()=>{course.value=curriculum.id;course.dispatchEvent(new Event('change',{bubbles:true}));});
+  expect(location.search).toBe('?course='+curriculum.id);expect(sidebar.value).toBe(trimester);
+  const topic=host.querySelectorAll<HTMLSelectElement>('.progress-page select')[1];
+  expect([...topic.options].slice(1).map(option=>option.value)).toEqual(curriculum.topics.map(item=>item.id));
+  await act(async()=>{topic.value=curriculum.topics[0].id;topic.dispatchEvent(new Event('change',{bubbles:true}));});
+  expect(new URLSearchParams(location.search).get('topic')).toBe(curriculum.topics[0].id);
+  const section=host.querySelector('section[aria-label="Topic and skill progress"]')!;
+  expect(section.children).toHaveLength(1);expect(section.textContent).toContain(curriculum.topics[0].name);
+  for(const skill of curriculum.topics[0].skills)expect(section.textContent).toContain(skill.name);
+  expect(section.textContent).toContain('Not enough practice yet');
+ }
+});
 it('unavailable historical exams keep normal evidence and disclose excluded records',async()=>{const d=emptyBackup();d.attempts=[success('ui')];const s=mock(d,0,0,'history');s.blueprint.version='missing';await mount('/progress',d);expect(host.textContent).toContain('1 /');expect(host.textContent).toContain('unresolved historical records');expect(host.textContent).toContain('Not enough exam practice yet');});
 it('exam readiness explains evidence without presenting a predicted grade',async()=>{const d=emptyBackup();mock(d,0,0,'readiness-copy');await mount('/progress',d);expect(host.textContent).toContain('An estimate from recent exam-style evidence, not a predicted grade.');expect(host.textContent).toMatch(/Reliable evidence includes 1 exam sessions, \d+ different items and \d+ \/ \d+ assessed topics\./);expect(host.textContent).toContain('correctness is not automatically verified');});
 it.each(['/dashboard','/co','/co/CO_T06_ASSEMBLY_X86_64'])('summaries on %s remain plain-language and link to Progress',async path=>{await mount(path);expect(host.textContent).toContain('Learning Mastery');expect(host.querySelector('a[href^="/progress?"]')).not.toBeNull();if(!path.includes('CO_T06'))expect(host.textContent).toContain('Exam Readiness');});

@@ -1,6 +1,7 @@
 import {academicIndex,courses,topicPath} from '../academic/navigation';
 import {allExercises,exercisePath} from '../practice/catalog';
 import {topicStudy} from '../topic-study/content';
+import {examCourse} from '../exams/catalog';
 import type {Evidence} from './evidence';
 import {recommend,type ActionKind,type Recommendation} from './engine';
 
@@ -34,7 +35,8 @@ export function buildStudySession(evidence:Evidence,options:{minutes:StudyTimePr
  add('practice',`Apply ${focus.name}`,'guided',`${base}/practice`,`Work in the topic's existing guided or graded practice area so the session stays tied to actual Notedra content.`,20);
  add('map',`Connect the ideas in ${focus.name}`,'review',`${base}/mental-map`,`Use the canonical topic map to connect subtopics, skills and documented prerequisite relationships.`,10);
  add('cards',`Recall the key points in ${focus.name}`,'flashcards',`${base}/flashcards`,`Use the authored recall activity for the selected scope, with a different study mode from concept review and practice.`,10);
- add('exam',`Bring ${course.compactName} ideas into exam-style work`,'practice',`/exams/${course.subject_id}/setup`,`Choose an existing authored mock for ${course.compactName} and keep your work centered on the selected course.`,20);
+ if(examCourse(course.subject_id))add('exam',`Bring ${course.compactName} ideas into exam-style work`,'practice',`/exams/${course.subject_id}/setup`,`Choose an existing authored mock for ${course.compactName} and keep your work centered on the selected course.`,20);
+ else add('revision',`Review ${focus.name}`,'practice',`${base}/exam-style`,'Revisit authored problems and open reasoning. This revision is not a calibrated mock exam and does not create exam-readiness evidence.',20);
 
  for(const prerequisiteId of canonical.prerequisites){
   const prerequisite=academicIndex.topics.find(topic=>topic.topic_id===prerequisiteId&&topic.subject_id===course.subject_id);

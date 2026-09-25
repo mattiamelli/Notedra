@@ -13,6 +13,7 @@ import { FlashcardMode,LearnMode } from '../topic-study/AuthoredViews';
 import { RLStudyMode } from '../rl/RLStudyMode';
 import { COStudyMode } from '../co/COStudyMode';
 const CompletionGuides=lazy(()=>import('../expansion/CompletionGuides'));
+const CurriculumRevision=lazy(()=>import('../curriculum/CourseContent').then(module=>({default:module.CurriculumRevision})));
 const TopicMistakes=lazy(()=>import('../adaptive/MistakesPage').then(m=>({default:m.MistakesPage})));
 const IPCues=lazy(()=>import('../ip/MapCues'));
 const TopicEnrichment=lazy(()=>import('../enrichment/TopicEnrichment'));
@@ -31,6 +32,7 @@ export function TopicPage({course}:{course:Course}){
 function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:StudyMode}){
  const {t}=useI18n();
  useTrackOnce(topic.id,()=>track('topic_opened',{course_id:course.subject_id,topic_id:topic.id,activity_type:'topic',source_surface:'topic'}));
+ const curriculum=course.trimester!==1;
  const ip=topic.subjectId==='CSE1100_IP';
  const rl=topic.subjectId==='CSE1300_RL';
  const co=topic.subjectId==='CSE1400_CO'&&topic.id!=='CO_T04_DATA_REP_RADIX_INTEGER';
@@ -47,9 +49,9 @@ function TopicContent({course,topic,mode}:{course:Course;topic:StudyTopic;mode:S
  <section id="study-mode-panel" className="ds-mode-panel" role="tabpanel" aria-labelledby={`study-mode-${selected}`} tabIndex={0}>
  {mode==='overview'&&<>{topic.id===ASSEMBLY_TOPIC_ID&&<AssemblyToolCard/>}<TopicOverview topic={topic}/><div className="ds-study-next"><Link className="ds-button" to={studyPath(topic,'learn')}>{t('topic.openLearn')}</Link><Link className="ds-text-link" to={studyPath(topic,'mental-map')}>{t('topic.exploreMap')}</Link></div></>}
  {mode==='learn'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<LearnMode topic={topic}/>)}{mode==='mental-map'&&<><MentalMap topic={topic}/>{ip&&<Suspense fallback={<p role="status">Loading study cues…</p>}><IPCues topicId={topic.id}/></Suspense>}</>}{mode==='flashcards'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<FlashcardMode key={topic.id} topic={topic}/>)}{mode==='practice'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:rl?<RLStudyMode topic={topic} mode={mode}/>:co?<COStudyMode topic={topic} mode={mode}/>:<Suspense fallback={<p role="status">Loading Practice…</p>}><TopicPractice topicId={topic.id}/></Suspense>)}
- {mode==='exam-style'&&(ip?<IPStudyMode topic={topic} mode={mode}/>:<Suspense fallback={<p role="status">Loading exam-style exercises…</p>}><TopicPractice topicId={topic.id} mode="exam" hasStudyActivities/></Suspense>)}
- { !ip&&(mode==='practice'||mode==='exam-style')&&<Suspense fallback={<p role="status">Loading guided reasoning…</p>}><CompletionGuides topicId={topic.id} mode={mode==='practice'?'practice':'exam'}/></Suspense>}
+ {mode==='exam-style'&&(curriculum?<Suspense fallback={<p role="status">Loading authored revision...</p>}><CurriculumRevision courseId={course.subject_id} topicId={topic.id}/></Suspense>:ip?<IPStudyMode topic={topic} mode={mode}/>:<Suspense fallback={<p role="status">Loading exam-style exercises…</p>}><TopicPractice topicId={topic.id} mode="exam" hasStudyActivities/></Suspense>)}
+ { !ip&&!curriculum&&(mode==='practice'||mode==='exam-style')&&<Suspense fallback={<p role="status">Loading guided reasoning…</p>}><CompletionGuides topicId={topic.id} mode={mode==='practice'?'practice':'exam'}/></Suspense>}
  {mode==='mistakes'&&<Suspense fallback={<p role="status">Loading mistakes…</p>}><TopicMistakes topicId={topic.id}/></Suspense>}
- {['flashcards','mental-map','practice'].includes(mode)&&!topic.id.startsWith('IP_')&&<Suspense fallback={<p role="status">Loading supplemental study…</p>}><TopicEnrichment key={topic.id+mode} topicId={topic.id} mode={mode}/></Suspense>}
+ {['flashcards','mental-map','practice'].includes(mode)&&!curriculum&&!topic.id.startsWith('IP_')&&<Suspense fallback={<p role="status">Loading supplemental study…</p>}><TopicEnrichment key={topic.id+mode} topicId={topic.id} mode={mode}/></Suspense>}
  </section></div>;
 }

@@ -1,27 +1,29 @@
 {
-  "initialJS": 437433,
-  "initialGzip": 124478,
-  "totalAssets": 3275157,
-  "totalGzip": 849504,
+  "initialJS": 470852,
+  "initialGzip": 135360,
+  "totalAssets": 4319944,
+  "totalGzip": 1172156,
   "owners": {
     "ProgressPage.tsx": {
-      "file": "assets/ProgressPage-CRcWdO-c.js",
-      "bytes": 3999,
-      "gzipBytes": 1443,
+      "file": "assets/ProgressPage-qZBOZTAb.js",
+      "bytes": 4060,
+      "gzipBytes": 1470,
       "entry": false,
       "imports": [
-        "assets/index-B_MO8Tog.js",
-        "assets/useProgress-gRHdcAZb.js",
-        "assets/progress-DL3QJwqy.js",
-        "assets/catalog-Cy5euFRn.js",
-        "assets/content-lUtjmdU_.js",
-        "assets/service-CC0gu4EV.js",
-        "assets/grading-C25B5zN1.js",
+        "assets/index-NTk3OFuj.js",
+        "assets/useProgress-B5CzXoMv.js",
+        "assets/progress-CjAEmEiH.js",
+        "assets/catalog-DIGSnZLx.js",
+        "assets/content-BINqucEl.js",
+        "assets/registry-BbVsgPcH.js",
+        "assets/service-C17fQjNR.js",
+        "assets/catalog-CfJTJEQL.js",
         "assets/logic-DTFjvJ0t.js",
-        "assets/evidence-DK5U5zAk.js",
-        "assets/feedback-Cu4HG0cT.js",
-        "assets/engine-COOsCYWD.js",
-        "assets/evaluation-C-sfx0Us.js"
+        "assets/grading-Bn7Bkj35.js",
+        "assets/evidence-DzzJF3CK.js",
+        "assets/feedback-DtWmG7FW.js",
+        "assets/engine-DCtIhMW3.js",
+        "assets/evaluation-80Fe_2AC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -29,23 +31,25 @@
       ]
     },
     "ProgressSummary.tsx": {
-      "file": "assets/ProgressSummary-ThQfOYxK.js",
-      "bytes": 1919,
-      "gzipBytes": 830,
+      "file": "assets/ProgressSummary-BHI8EeDY.js",
+      "bytes": 1980,
+      "gzipBytes": 858,
       "entry": false,
       "imports": [
-        "assets/index-B_MO8Tog.js",
-        "assets/useProgress-gRHdcAZb.js",
-        "assets/progress-DL3QJwqy.js",
-        "assets/catalog-Cy5euFRn.js",
-        "assets/content-lUtjmdU_.js",
-        "assets/service-CC0gu4EV.js",
-        "assets/grading-C25B5zN1.js",
+        "assets/index-NTk3OFuj.js",
+        "assets/useProgress-B5CzXoMv.js",
+        "assets/progress-CjAEmEiH.js",
+        "assets/catalog-DIGSnZLx.js",
+        "assets/content-BINqucEl.js",
+        "assets/registry-BbVsgPcH.js",
+        "assets/service-C17fQjNR.js",
+        "assets/catalog-CfJTJEQL.js",
         "assets/logic-DTFjvJ0t.js",
-        "assets/evidence-DK5U5zAk.js",
-        "assets/feedback-Cu4HG0cT.js",
-        "assets/engine-COOsCYWD.js",
-        "assets/evaluation-C-sfx0Us.js"
+        "assets/grading-Bn7Bkj35.js",
+        "assets/evidence-DzzJF3CK.js",
+        "assets/feedback-DtWmG7FW.js",
+        "assets/engine-DCtIhMW3.js",
+        "assets/evaluation-80Fe_2AC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -53,19 +57,19 @@
       ]
     },
     "mastery.ts": {
-      "file": "assets/useProgress-gRHdcAZb.js",
-      "bytes": 11544,
-      "gzipBytes": 5065,
+      "file": "assets/useProgress-B5CzXoMv.js",
+      "bytes": 11787,
+      "gzipBytes": 5143,
       "entry": false,
       "imports": [
-        "assets/index-B_MO8Tog.js",
-        "assets/catalog-Cy5euFRn.js",
-        "assets/content-lUtjmdU_.js",
-        "assets/service-CC0gu4EV.js",
-        "assets/evidence-DK5U5zAk.js",
-        "assets/feedback-Cu4HG0cT.js",
-        "assets/engine-COOsCYWD.js",
-        "assets/evaluation-C-sfx0Us.js"
+        "assets/index-NTk3OFuj.js",
+        "assets/catalog-DIGSnZLx.js",
+        "assets/content-BINqucEl.js",
+        "assets/service-C17fQjNR.js",
+        "assets/evidence-DzzJF3CK.js",
+        "assets/feedback-DtWmG7FW.js",
+        "assets/engine-DCtIhMW3.js",
+        "assets/evaluation-80Fe_2AC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -77,19 +81,19 @@
       ]
     },
     "readiness.ts": {
-      "file": "assets/useProgress-gRHdcAZb.js",
-      "bytes": 11544,
-      "gzipBytes": 5065,
+      "file": "assets/useProgress-B5CzXoMv.js",
+      "bytes": 11787,
+      "gzipBytes": 5143,
       "entry": false,
       "imports": [
-        "assets/index-B_MO8Tog.js",
-        "assets/catalog-Cy5euFRn.js",
-        "assets/content-lUtjmdU_.js",
-        "assets/service-CC0gu4EV.js",
-        "assets/evidence-DK5U5zAk.js",
-        "assets/feedback-Cu4HG0cT.js",
-        "assets/engine-COOsCYWD.js",
-        "assets/evaluation-C-sfx0Us.js"
+        "assets/index-NTk3OFuj.js",
+        "assets/catalog-DIGSnZLx.js",
+        "assets/content-BINqucEl.js",
+        "assets/service-C17fQjNR.js",
+        "assets/evidence-DzzJF3CK.js",
+        "assets/feedback-DtWmG7FW.js",
+        "assets/engine-DCtIhMW3.js",
+        "assets/evaluation-80Fe_2AC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -101,19 +105,19 @@
       ]
     },
     "evidence.ts": {
-      "file": "assets/useProgress-gRHdcAZb.js",
-      "bytes": 11544,
-      "gzipBytes": 5065,
+      "file": "assets/useProgress-B5CzXoMv.js",
+      "bytes": 11787,
+      "gzipBytes": 5143,
       "entry": false,
       "imports": [
-        "assets/index-B_MO8Tog.js",
-        "assets/catalog-Cy5euFRn.js",
-        "assets/content-lUtjmdU_.js",
-        "assets/service-CC0gu4EV.js",
-        "assets/evidence-DK5U5zAk.js",
-        "assets/feedback-Cu4HG0cT.js",
-        "assets/engine-COOsCYWD.js",
-        "assets/evaluation-C-sfx0Us.js"
+        "assets/index-NTk3OFuj.js",
+        "assets/catalog-DIGSnZLx.js",
+        "assets/content-BINqucEl.js",
+        "assets/service-C17fQjNR.js",
+        "assets/evidence-DzzJF3CK.js",
+        "assets/feedback-DtWmG7FW.js",
+        "assets/engine-DCtIhMW3.js",
+        "assets/evaluation-80Fe_2AC.js"
       ],
       "dynamicImports": [],
       "modules": [
@@ -125,19 +129,19 @@
       ]
     },
     "derive.ts": {
-      "file": "assets/useProgress-gRHdcAZb.js",
-      "bytes": 11544,
-      "gzipBytes": 5065,
+      "file": "assets/useProgress-B5CzXoMv.js",
+      "bytes": 11787,
+      "gzipBytes": 5143,
       "entry": false,
       "imports": [
-        "assets/index-B_MO8Tog.js",
-        "assets/catalog-Cy5euFRn.js",
-        "assets/content-lUtjmdU_.js",
-        "assets/service-CC0gu4EV.js",
-        "assets/evidence-DK5U5zAk.js",
-        "assets/feedback-Cu4HG0cT.js",
-        "assets/engine-COOsCYWD.js",
-        "assets/evaluation-C-sfx0Us.js"
+        "assets/index-NTk3OFuj.js",
+        "assets/catalog-DIGSnZLx.js",
+        "assets/content-BINqucEl.js",
+        "assets/service-C17fQjNR.js",
+        "assets/evidence-DzzJF3CK.js",
+        "assets/feedback-DtWmG7FW.js",
+        "assets/engine-DCtIhMW3.js",
+        "assets/evaluation-80Fe_2AC.js"
       ],
       "dynamicImports": [],
       "modules": [

@@ -1,0 +1,2733 @@
+{
+  "id": "CSE13C_ADS",
+  "code": "CSE13C",
+  "name": "Algorithms and Data Structures",
+  "short": "ADS",
+  "trimester": 3,
+  "slug": "algorithms",
+  "description": "A complete study path through the supplied CSE13C syllabus: algorithm reasoning, complexity, linear containers, trees, sorting and selection, maps, balanced search trees, and graph algorithms. Original worked examples and practice connect implementation decisions to correctness and cost.",
+  "limitations": [
+    "Based on the supplied local course archive, including legacy CSE1305 material; this is a study curriculum, not an official assessment specification.",
+    "Exercises are original teaching problems aligned with the sources, not transcriptions of exam questions or official marking schemes.",
+    "Open proofs, designs and Java/pseudocode responses require self or instructor review using their rubrics. No code is executed and no compilation or implementation-exam equivalence is claimed.",
+    "PDF page references are one-based physical PDF pages. Some lecture filenames misdescribe their contents; locators identify the actual relevant sections.",
+    "Textbook coverage is bounded to the sections listed in the supplied course outline; unrelated textbook chapters are not additional syllabus requirements."
+  ],
+  "sources": [
+    {
+      "id": "CSE13C_src_analysis",
+      "filename": "ADS Lectures/ADS Lecture 2 - Complexity Analysis and Big-Oh Notation.pdf",
+      "locator": "PDF pp. 7-22: asymptotic definitions, proofs and operation counting; pp. 24-38: binary search, recurrences and space."
+    },
+    {
+      "id": "CSE13C_src_book_analysis",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sixth edition, sections 4.1-4.4 and 5.1-5.5 (analysis, proof techniques and recursion)."
+    },
+    {
+      "id": "CSE13C_src_linear",
+      "filename": "ADS Notes.pdf",
+      "locator": "PDF pp. 6-13, sections 2.1-2.11: arrays, linked lists, equality, stacks, queues, positional lists and iterators."
+    },
+    {
+      "id": "CSE13C_src_book_linear",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sections 3.1-3.6, 6.1-6.3 and 7.1-7.4; array copying, linear containers and amortized analysis."
+    },
+    {
+      "id": "CSE13C_src_trees",
+      "filename": "ADS Lectures/ADS Lecture 5 - Stacks and Queues.pdf",
+      "locator": "Actual content: PDF pp. 5-7 positional lists/iterators and pp. 8-16 tree definitions, traversals and representations."
+    },
+    {
+      "id": "CSE13C_src_heaps",
+      "filename": "ADS Lectures/ADS Lecture 6 - Trees and Binary Trees.pdf",
+      "locator": "Actual content: PDF pp. 6-21 priority queues, heap insertion/deletion, heapify and its analysis."
+    },
+    {
+      "id": "CSE13C_src_sort",
+      "filename": "ADS Lectures/ADS Lecture 8 - Sorting Algorithms Part 1.pdf",
+      "locator": "PDF pp. 5-13: quicksort, randomization, in-place sorting, stability and quickselect."
+    },
+    {
+      "id": "CSE13C_src_sort2",
+      "filename": "ADS Lectures/ADS Lecture 9 - Sorting Algorithms Part 2.pdf",
+      "locator": "PDF pp. 2-15: tradeoffs, counting sort, external sorting and stability; pp. 16-29: radix sort, duplicate detection and selection."
+    },
+    {
+      "id": "CSE13C_src_book_sort",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sixth edition, sections 9.4 and 12.1-12.5: priority-queue sorting, merge/quick sort, comparison lower bounds, key-based sorting and selection. Actual PDF TOC pp. 15-17; the supplied course outline uses differing chapter numbers."
+    },
+    {
+      "id": "CSE13C_src_maps",
+      "filename": "ADS Notes.pdf",
+      "locator": "PDF pp. 25-29, sections 6.1-6.3: maps, hashing, collision handling and sorted maps."
+    },
+    {
+      "id": "CSE13C_src_book_maps",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sections 10.1-10.3 and 10.5: maps, hash tables, sorted maps, sets, multisets and multimaps."
+    },
+    {
+      "id": "CSE13C_src_balanced",
+      "filename": "ADS Notes.pdf",
+      "locator": "PDF pp. 30-34, sections 7.1-7.5: BSTs, AVL, (2,4) and red-black trees."
+    },
+    {
+      "id": "CSE13C_src_book_balanced",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sixth edition, sections 11.1-11.3, 11.5 and 11.6: BSTs, balanced trees, AVL, (2,4) trees and red-black trees. Section 11.4 is splay trees and is not required by the supplied outline."
+    },
+    {
+      "id": "CSE13C_src_graphs",
+      "filename": "ADS Lectures/ADS Lecture 13 - Graphs and Graph Traversal.pdf",
+      "locator": "PDF pp. 2-18: definitions, degree counts and representations; pp. 19-23: DFS and BFS."
+    },
+    {
+      "id": "CSE13C_src_graph_alg",
+      "filename": "ADS Lectures/ADS Lecture 14 - Graph Algorithms.pdf",
+      "locator": "PDF pp. 2-6: DAGs and topological order; pp. 7-21: shortest paths and Dijkstra; pp. 22-27: MST and Kruskal."
+    },
+    {
+      "id": "CSE13C_src_book_graph",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sections 14.1-14.3 and 14.5-14.7: representations, traversals, DAGs, shortest paths, Prim and Kruskal."
+    },
+    {
+      "id": "CSE13C_src_acing",
+      "filename": "ADS LLM Files/Knowledge Files/Acing ADS.md",
+      "locator": "Named activities: Waves of Water; A Leafy Linked List; The Heart of the Heap; The Surprisingly Space-efficient Set."
+    },
+    {
+      "id": "CSE13C_src_outline",
+      "filename": "ADS LLM Files/Knowledge Files/Course Overview.md",
+      "locator": "Course Outline 2024-2025, Weeks 3.1-3.8; supplied 2026-27 curriculum-status note."
+    },
+    {
+      "id": "CSE13C_src_implementation",
+      "filename": "ADS LLM Files/Knowledge Files/Implementation Exercises.md",
+      "locator": "Named exercises: Iterative Sum, Recursive Sum, Reverse an array; later weekly data-structure and graph implementation exercises."
+    },
+    {
+      "id": "CSE13C_src_book_trees",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sections 8.1-8.4: general and binary trees, representations and traversals."
+    },
+    {
+      "id": "CSE13C_src_book_heaps",
+      "filename": "Data Structures and Algorithms in Java.pdf",
+      "locator": "Sections 9.1-9.3 and 9.5, including bottom-up construction (9.3.4) and location-aware adaptable entries (9.5.1-9.5.2)."
+    }
+  ],
+  "topics": [
+    {
+      "id": "CSE13C_analysis",
+      "name": "Algorithm contracts and asymptotic reasoning",
+      "description": "Translate an input/output contract into an algorithm and justify its growth with counts, witnesses and invariants.",
+      "prerequisites": [],
+      "sourceIds": [
+        "CSE13C_src_analysis",
+        "CSE13C_src_book_analysis"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_analysis_bounds",
+          "name": "Asymptotic bounds",
+          "description": "Distinguish O, Omega and Theta and give explicit constants."
+        },
+        {
+          "id": "CSE13C_analysis_count",
+          "name": "Operation counting",
+          "description": "Count dependent loops and distinguish input cases."
+        },
+        {
+          "id": "CSE13C_analysis_proof",
+          "name": "Correctness arguments",
+          "description": "Use invariants, termination measures and counterexamples."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Start with a contract",
+          "paragraphs": [
+            "An algorithm solves a class of inputs, not just the example on the page. State the domain, required output, and special cases before selecting a data structure. For a minimum search the empty-array policy must be specified; for a search in sorted data, sortedness is a precondition. A trace can reveal a bug but cannot prove correctness for all inputs.",
+            "To prove a loop correct, state an invariant that is true before the first iteration, show that one iteration preserves it, and combine it with the exit condition. Termination needs a separate decreasing nonnegative measure. For a minimum scan, after processing i entries, best equals the minimum of that prefix. Advancing i preserves the claim; i=n gives the desired answer."
+          ]
+        },
+        {
+          "title": "Count work before simplifying",
+          "paragraphs": [
+            "Choose an input size and cost model, such as constant-time array access and arithmetic on bounded-size integers. A loop over i=1,...,n with an inner loop of i iterations performs n(n+1)/2 body executions, not n squared exactly. Independent consecutive loops add their costs; dependent nested loops require a sum.",
+            "Worst case maximizes over inputs of the same size, best case minimizes, and an average requires an explicit distribution. An early-return search can take one comparison on some inputs and n on others. Calling it O(n) is a worst-case upper bound, not a promise that every invocation scans the array."
+          ]
+        },
+        {
+          "title": "Worked bounds",
+          "paragraphs": [
+            "For eventually nonnegative f and g, f is O(g) when some fixed c>0 and n0 make f(n)<=c*g(n) for every n>=n0. Omega reverses the inequality; Theta requires both. Constants must be chosen independently of n. A quadratic function is also O(n^3), but Theta(n^2) states a tight growth class.",
+            "Example: for n>=1, 3n^2+7n+4 is at least 3n^2 and at most 14n^2 because n<=n^2 and 1<=n^2. Thus witnesses 3,14,1 prove Theta(n^2). To disprove n^2=O(n), assume a proposed c,n0 and take an integer n larger than both c and n0; then n^2>cn."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_analysis_triangular",
+          "title": "Dependent loop count",
+          "prompt": "For i=1 through 12 inclusive, a loop executes a constant-time body exactly i times. How many body executions occur?",
+          "skillId": "CSE13C_analysis_count",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "integer",
+          "explanation": "The sum is 12*13/2=78; the inner bound depends on i.",
+          "answer": "78"
+        },
+        {
+          "id": "CSE13C_analysis_quantifiers",
+          "title": "Quantifier order",
+          "prompt": "Which statement correctly defines f(n)=O(g(n)) for eventually nonnegative functions?",
+          "skillId": "CSE13C_analysis_bounds",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "choice",
+          "explanation": "The witnesses c and n0 must work for every sufficiently large n, not change with n.",
+          "options": [
+            {
+              "id": "CSE13C_analysis_quantifiers_o1",
+              "text": "For every c>0 there exists n with f(n)<=c*g(n)."
+            },
+            {
+              "id": "CSE13C_analysis_quantifiers_o2",
+              "text": "There exist c>0 and n0 such that for all n>=n0, f(n)<=c*g(n)."
+            },
+            {
+              "id": "CSE13C_analysis_quantifiers_o3",
+              "text": "For every n there exists c>0 with f(n)<=c*g(n)."
+            },
+            {
+              "id": "CSE13C_analysis_quantifiers_o4",
+              "text": "There exists n0 such that f(n)=g(n) for n>=n0."
+            }
+          ],
+          "answer": "CSE13C_analysis_quantifiers_o2"
+        },
+        {
+          "id": "CSE13C_analysis_polynomial",
+          "title": "Give actual witnesses",
+          "prompt": "Prove 5n^2+2n+9 is Theta(n^2) for integer n>=1. State both constants and a threshold.",
+          "skillId": "CSE13C_analysis_bounds",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "open",
+          "explanation": "Since 2n<=2n^2 and 9<=9n^2 for n>=1, 5n^2<=5n^2+2n+9<=16n^2.",
+          "rubric": [
+            "Give positive lower and upper constants independent of n.",
+            "Prove both inequalities for every n beyond the threshold.",
+            "A valid choice is c1=5, c2=16, n0=1."
+          ]
+        },
+        {
+          "id": "CSE13C_analysis_early_exit",
+          "title": "Best versus worst",
+          "prompt": "Linear search checks entries left to right and stops at the first match. For length n>=1, which pair describes best-case and worst-case comparison counts?",
+          "skillId": "CSE13C_analysis_count",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "choice",
+          "explanation": "A first-position match costs one comparison; an absent key requires n.",
+          "options": [
+            {
+              "id": "CSE13C_analysis_early_exit_o1",
+              "text": "n and n"
+            },
+            {
+              "id": "CSE13C_analysis_early_exit_o2",
+              "text": "0 and log2(n)"
+            },
+            {
+              "id": "CSE13C_analysis_early_exit_o3",
+              "text": "1 and n"
+            },
+            {
+              "id": "CSE13C_analysis_early_exit_o4",
+              "text": "1 and n^2"
+            }
+          ],
+          "answer": "CSE13C_analysis_early_exit_o3"
+        },
+        {
+          "id": "CSE13C_analysis_invariant",
+          "title": "Repair a maximum scan",
+          "prompt": "A programmer sets best=0 and then replaces best whenever an array entry is larger. The contract accepts any nonempty integer array. Give a counterexample, repair the initialization, and prove the corrected loop.",
+          "skillId": "CSE13C_analysis_proof",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "open",
+          "explanation": "For [-5,-2] the buggy answer is 0. Initialize best=array[0] (here -5) and scan the remaining entries. At each step best is the maximum of the processed nonempty prefix; the remaining-length measure decreases.",
+          "rubric": [
+            "Use an all-negative counterexample.",
+            "Initialize from the first entry and scan remaining entries.",
+            "State and preserve the prefix-maximum invariant and give termination."
+          ]
+        },
+        {
+          "id": "CSE13C_analysis_two_loops",
+          "title": "Sequential work",
+          "prompt": "A loop does n^2 constant-time steps, followed by a separate loop doing n log2(n) steps. What is the tight asymptotic total?",
+          "skillId": "CSE13C_analysis_count",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "choice",
+          "explanation": "Sequential costs add: n^2+n log n is Theta(n^2).",
+          "options": [
+            {
+              "id": "CSE13C_analysis_two_loops_o1",
+              "text": "Theta(n^2)"
+            },
+            {
+              "id": "CSE13C_analysis_two_loops_o2",
+              "text": "Theta(n^3 log n)"
+            },
+            {
+              "id": "CSE13C_analysis_two_loops_o3",
+              "text": "Theta(n log n)"
+            },
+            {
+              "id": "CSE13C_analysis_two_loops_o4",
+              "text": "Theta(log n)"
+            }
+          ],
+          "answer": "CSE13C_analysis_two_loops_o1"
+        },
+        {
+          "id": "CSE13C_analysis_counterbound",
+          "title": "Disprove a bound",
+          "prompt": "Disprove the claim that 2^n is O(n). Give an argument that handles arbitrary fixed witnesses, rather than listing a few small inputs.",
+          "skillId": "CSE13C_analysis_bounds",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "open",
+          "explanation": "For n>=2 the ratio between successive values of 2^n/n is 2n/(n+1)>=4/3. Thus the ratio grows without bound and eventually exceeds any proposed c.",
+          "rubric": [
+            "Explain why a finite table cannot refute an eventual bound.",
+            "Show the ratio 2^n/n is unbounded, for example using n=2k and 4^k/(2k).",
+            "Connect unboundedness to defeating any fixed c and n0."
+          ]
+        },
+        {
+          "id": "CSE13C_analysis_benchmark",
+          "title": "Interpret a benchmark",
+          "prompt": "Algorithm A beats B on arrays of at most 100 elements on one laptop. Explain why this does not establish a better asymptotic complexity and design a more informative comparison.",
+          "skillId": "CSE13C_analysis_count",
+          "sourceIds": [
+            "CSE13C_src_analysis",
+            "CSE13C_src_book_analysis"
+          ],
+          "kind": "open",
+          "explanation": "Small inputs may be dominated by startup overhead and constants. Measured scaling can support an analysis but cannot prove a bound over arbitrarily large inputs.",
+          "rubric": [
+            "Separate finite timings and constant factors from growth classes.",
+            "Vary size and representative/worst-case input structure.",
+            "Control implementation and environment and also derive operation counts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_recursion",
+      "name": "Recursion, recurrences and live space",
+      "description": "Derive recursive costs, solve recurrences and reason about progress and peak live storage.",
+      "prerequisites": [
+        "CSE13C_analysis"
+      ],
+      "sourceIds": [
+        "CSE13C_src_book_analysis",
+        "CSE13C_src_analysis"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_recursion_recurrence",
+          "name": "Recurrence analysis",
+          "description": "Account for subproblem sizes and nonrecursive work."
+        },
+        {
+          "id": "CSE13C_recursion_space",
+          "name": "Live-space analysis",
+          "description": "Distinguish all calls from simultaneously active frames."
+        },
+        {
+          "id": "CSE13C_recursion_design",
+          "name": "Recursive design",
+          "description": "State base cases and progress conditions."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Recursion as a contract on smaller inputs",
+          "paragraphs": [
+            "A recursive method relies on the same specification for a smaller input. Specify a base case and prove the size decreases. Binary search on an inclusive interval [lo,hi] stops when lo>hi; after checking mid, recurse on [lo,mid-1] or [mid+1,hi]. Reusing mid as an unchanged boundary can cause nontermination.",
+            "For a sum of n entries, use sum(0)=0 and sum(n)=sum(n-1)+a[n-1]. Induction proves the result. Its cost is T(n)=T(n-1)+Theta(1)=Theta(n), and its call stack is Theta(n). An accumulator can make a call tail-recursive, but Java does not promise elimination of tail-call frames."
+          ]
+        },
+        {
+          "title": "Unfold instead of guessing",
+          "paragraphs": [
+            "For T(1)=1 and T(n)=2T(n/2)+n on powers of two, there are log2(n) internal levels, each costing n, and n leaves costing one. The exact result is n log2(n)+n. For one recursive call with constant work, T(n)=T(n/2)+1 instead gives log2(n)+1.",
+            "If a method copies its half-array before recurring, the nonrecursive work is linear in the copied length. If it traverses a linked list to obtain a midpoint, that access is not constant-time. A recurrence must reflect the implementation, not merely the name of the algorithm."
+          ]
+        },
+        {
+          "title": "Worked live-space distinction",
+          "paragraphs": [
+            "Two half-sized recursive calls performed sequentially do not create two simultaneous recursion stacks. With constant local storage, S(n)=S(n/2)+Theta(1), so peak auxiliary space is Theta(log n), even if total calls are Theta(n). Time adds sibling work; peak space measures what coexists.",
+            "If each active frame retains a fresh array of length n and then recurses on n/2, live arrays sum to n+n/2+n/4+...<2n. Peak auxiliary space is Theta(n), plus logarithmic frames. Count the original input separately and state whether child copies or returned results remain reachable."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_recursion_exact",
+          "title": "Exact divide-and-conquer cost",
+          "prompt": "Let T(1)=1 and T(n)=2T(n/2)+n for powers of two. What is T(8)?",
+          "skillId": "CSE13C_recursion_recurrence",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "integer",
+          "explanation": "There are three internal levels of cost 8 and eight leaves: 24+8=32.",
+          "answer": "32"
+        },
+        {
+          "id": "CSE13C_recursion_frames",
+          "title": "Sequential recursive calls",
+          "prompt": "A function on n=32 makes two sequential calls on n/2 until n=1, retaining only constant local data. Including the root and base case, what is the maximum number of active frames?",
+          "skillId": "CSE13C_recursion_space",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "integer",
+          "explanation": "The live path has sizes 32,16,8,4,2,1. Sibling calls do not coexist.",
+          "answer": "6"
+        },
+        {
+          "id": "CSE13C_recursion_copying",
+          "title": "Copying changes the recurrence",
+          "prompt": "A search halves its candidate array, creates a copy of the retained half, and recurses on that copy. Derive its worst-case time and peak auxiliary space, assuming parent copies remain live.",
+          "skillId": "CSE13C_recursion_space",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "open",
+          "explanation": "Copy lengths n/2+n/4+... sum to less than n. The copied search is linear-time in the worst case despite only logarithmically many comparisons.",
+          "rubric": [
+            "Use T(n)=T(n/2)+Theta(n).",
+            "Sum the geometric series to Theta(n) time.",
+            "Sum simultaneously retained copies to Theta(n) space, distinguishing input and stack."
+          ]
+        },
+        {
+          "id": "CSE13C_recursion_binarybug",
+          "title": "Nonshrinking binary search",
+          "prompt": "On inclusive bounds, a search sets lo=mid when a[mid]<target. Give a smallest nonempty interval that can repeat forever and repair the update.",
+          "skillId": "CSE13C_recursion_design",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "open",
+          "explanation": "On [lo,hi]=[0,0] with a[0]=2 and target=3, mid remains zero. lo=mid+1 makes the interval empty and terminates.",
+          "rubric": [
+            "Use a singleton or two-element interval where mid equals lo.",
+            "Advance lo to mid+1 after ruling mid out.",
+            "Explain interval shrinkage and absent-target termination."
+          ]
+        },
+        {
+          "id": "CSE13C_recursion_unfold",
+          "title": "Unfold a decrement recurrence",
+          "prompt": "T(0)=0 and T(n)=T(n-1)+n. Derive the exact closed form and prove it by induction.",
+          "skillId": "CSE13C_recursion_recurrence",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "open",
+          "explanation": "Adding n to (n-1)n/2 gives n(n+1)/2. Decrementing input alone does not imply linear time.",
+          "rubric": [
+            "Obtain n(n+1)/2 by unfolding.",
+            "Verify the base case.",
+            "Show the inductive substitution and conclude Theta(n^2)."
+          ]
+        },
+        {
+          "id": "CSE13C_recursion_tail",
+          "title": "Tail recursion in Java",
+          "prompt": "A tail-recursive Java method makes n nested calls. Which auxiliary stack bound can be safely claimed without a tail-call optimization guarantee?",
+          "skillId": "CSE13C_recursion_space",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "choice",
+          "explanation": "An accumulator removes pending arithmetic but does not itself remove Java call frames.",
+          "options": [
+            {
+              "id": "CSE13C_recursion_tail_o1",
+              "text": "Theta(1) automatically"
+            },
+            {
+              "id": "CSE13C_recursion_tail_o2",
+              "text": "Theta(n)"
+            },
+            {
+              "id": "CSE13C_recursion_tail_o3",
+              "text": "Theta(log n) automatically"
+            },
+            {
+              "id": "CSE13C_recursion_tail_o4",
+              "text": "Theta(n^2) necessarily"
+            }
+          ],
+          "answer": "CSE13C_recursion_tail_o2"
+        },
+        {
+          "id": "CSE13C_recursion_power",
+          "title": "Fast exponentiation",
+          "prompt": "For a nonnegative integer k, design exponentiation by squaring that computes x^k with one recursive call per level. Explain why making the identical half-power call twice changes the work.",
+          "skillId": "CSE13C_recursion_design",
+          "sourceIds": [
+            "CSE13C_src_book_analysis",
+            "CSE13C_src_analysis"
+          ],
+          "kind": "open",
+          "explanation": "Store h=power(x,floor(k/2)); return h*h for even k and x*h*h for odd k. Reusing h is essential; duplicating recursion yields a binary recursion tree.",
+          "rubric": [
+            "Handle k=0 with result 1.",
+            "Compute half once, square it, multiply by x only for odd k.",
+            "Derive Theta(log k) multiplications versus Theta(k) with duplicated half calls, for k>=2."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_linear",
+      "name": "Arrays, linked lists and amortization",
+      "description": "Choose a representation based on actual operations, maintain pointer invariants, and analyze resizing sequences.",
+      "prerequisites": [
+        "CSE13C_analysis"
+      ],
+      "sourceIds": [
+        "CSE13C_src_linear",
+        "CSE13C_src_book_linear"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_linear_representation",
+          "name": "Representation costs",
+          "description": "Distinguish indexed access from known-node access."
+        },
+        {
+          "id": "CSE13C_linear_links",
+          "name": "Pointer correctness",
+          "description": "Maintain head, tail, size and bidirectional links."
+        },
+        {
+          "id": "CSE13C_linear_amortized",
+          "name": "Amortized costs",
+          "description": "Analyze resizing across an operation sequence."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "What an operation really receives",
+          "paragraphs": [
+            "An array supports O(1) indexed access, but insertion at index i shifts the suffix and can cost Theta(n). A singly linked list takes Theta(i+1) to locate index i. Once the predecessor is known, deleting its successor is O(1). Deleting a known tail is still not constant-time in a singly linked list without its predecessor.",
+            "A doubly linked list stores both next and previous links. With a valid node handle, deletion updates its two neighbors in O(1). Header and trailer sentinels simplify boundary cases but are not user elements. In a circular singly linked list with a tail pointer, the head is tail.next, so a rotation can move tail to tail.next."
+          ]
+        },
+        {
+          "title": "Maintain structure and ownership",
+          "paragraphs": [
+            "For an empty head/tail list, both references are null and size is zero. Appending to an empty list sets both; removing its only node clears both. A correct local pointer edit must also preserve the global size and endpoint invariants.",
+            "Copying a container and copying its elements are different. A new chain of nodes containing references to the same mutable objects is structurally independent but shares payloads. A deep copy requires an element-copy policy; generic code cannot silently assume every object supports a meaningful clone."
+          ]
+        },
+        {
+          "title": "Worked amortized analysis",
+          "paragraphs": [
+            "Suppose a dynamic array starts with capacity one and doubles only when an append finds it full. Appending eight elements copies 1+2+4=7 old elements, plus eight writes of new values. One append may cost Theta(n), but a prefix of n appends costs O(n), giving amortized O(1) per append.",
+            "Growing by one slot instead copies 1+2+...+(n-1)=Theta(n^2). Shrinking at half-full immediately after doubling can oscillate under alternating insertion and deletion. A gap between grow and shrink thresholds, such as doubling at full and halving at quarter-full, leaves enough cheap operations to pay for resizing."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_linear_resize",
+          "title": "Count copied entries",
+          "prompt": "A dynamic array starts at capacity 1 and doubles when full before appending. After 9 appends to an initially empty array, how many existing entries have been copied during resizing? Exclude the nine new writes.",
+          "skillId": "CSE13C_linear_amortized",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "integer",
+          "explanation": "Resizes copy 1,2,4 and 8 entries, totaling 15.",
+          "answer": "15"
+        },
+        {
+          "id": "CSE13C_linear_tail_delete",
+          "title": "The missing predecessor",
+          "prompt": "A singly linked list stores head and tail, but no previous pointers. What is the worst-case time to delete the last node of a list of n>=2 nodes?",
+          "skillId": "CSE13C_linear_representation",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "choice",
+          "explanation": "The tail pointer does not reveal its predecessor; finding that node requires traversal.",
+          "options": [
+            {
+              "id": "CSE13C_linear_tail_delete_o1",
+              "text": "Theta(1)"
+            },
+            {
+              "id": "CSE13C_linear_tail_delete_o2",
+              "text": "Theta(log n)"
+            },
+            {
+              "id": "CSE13C_linear_tail_delete_o3",
+              "text": "Theta(n)"
+            },
+            {
+              "id": "CSE13C_linear_tail_delete_o4",
+              "text": "Theta(n^2)"
+            }
+          ],
+          "answer": "CSE13C_linear_tail_delete_o3"
+        },
+        {
+          "id": "CSE13C_linear_unlink",
+          "title": "Unlink safely",
+          "prompt": "For an interior node x in a doubly linked list, write the pointer updates to remove x. State how you would reject a sentinel or stale handle.",
+          "skillId": "CSE13C_linear_links",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "Neighbors must bypass x in both directions. A position API should prevent a removed or foreign node from corrupting the list.",
+          "rubric": [
+            "Set x.prev.next=x.next and x.next.prev=x.prev.",
+            "Update size and invalidate/detach the removed handle under a stated policy.",
+            "Validate ownership and reject sentinels or already removed nodes before edits."
+          ]
+        },
+        {
+          "id": "CSE13C_linear_clone",
+          "title": "Container copy versus payload copy",
+          "prompt": "Two lists have distinct nodes but both first nodes reference the same mutable Box with value 4. Updating the second list's Box to 9 changes the first list's displayed value. Explain the copy semantics and how to obtain independent payloads.",
+          "skillId": "CSE13C_linear_links",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "Fresh nodes isolate list topology, not the objects stored inside them. Independent payloads require independent Box instances.",
+          "rubric": [
+            "Identify a structural copy with shared element references.",
+            "Explain why changing a node link and mutating a Box have different effects.",
+            "Specify cloning each Box or using immutable values, with a policy for nested references."
+          ]
+        },
+        {
+          "id": "CSE13C_linear_growth",
+          "title": "Additive growth proof",
+          "prompt": "An array grows by exactly one slot whenever full. Prove the total copying cost of n appends from empty is Theta(n^2).",
+          "skillId": "CSE13C_linear_amortized",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "Each new capacity triggers another copy of the entire previous content, yielding the triangular sum.",
+          "rubric": [
+            "Count the copied prefixes 1 through n-1.",
+            "Sum to n(n-1)/2.",
+            "Distinguish total quadratic cost from individual linear resize and amortized linear append."
+          ]
+        },
+        {
+          "id": "CSE13C_linear_reverse",
+          "title": "Reverse without losing nodes",
+          "prompt": "Design an in-place singly linked list reversal with O(1) auxiliary space. Include empty and singleton cases and say what happens to head and tail.",
+          "skillId": "CSE13C_linear_links",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "The processed prefix is reversed and prev points to its front; current starts the untouched suffix. Saving next preserves access to that suffix.",
+          "rubric": [
+            "Save next before redirecting current.next.",
+            "Maintain prev/current and iterate until current is null.",
+            "Set tail to old head and head to final prev; explain Theta(n) time."
+          ]
+        },
+        {
+          "id": "CSE13C_linear_iterator",
+          "title": "An expensive traversal",
+          "prompt": "A linked list has get(i) implemented by scanning from its head. A loop visits get(0), get(1), ..., get(n-1). Give the tight total cost and a linear-time replacement.",
+          "skillId": "CSE13C_linear_representation",
+          "sourceIds": [
+            "CSE13C_src_linear",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "The loop repeatedly retraverses the prefix. Keeping a current node makes the whole traversal Theta(n).",
+          "rubric": [
+            "Sum costs 1+2+...+n to Theta(n^2).",
+            "Use a single node traversal or lazy iterator.",
+            "Explain that each link is then followed once."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_stack_queue",
+      "name": "Stacks, queues, deques and positions",
+      "description": "Use access discipline to solve matching and scheduling problems, and implement bounded containers without ambiguity.",
+      "prerequisites": [
+        "CSE13C_linear"
+      ],
+      "sourceIds": [
+        "CSE13C_src_book_linear",
+        "CSE13C_src_linear",
+        "CSE13C_src_trees"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_stack_queue_trace",
+          "name": "Container traces",
+          "description": "Follow LIFO, FIFO and double-ended operations."
+        },
+        {
+          "id": "CSE13C_stack_queue_invariant",
+          "name": "Container invariants",
+          "description": "Handle wraparound, underflow and iterator state."
+        },
+        {
+          "id": "CSE13C_stack_queue_application",
+          "name": "Container applications",
+          "description": "Use the right discipline for parsing and deferred work."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Access discipline is part of the specification",
+          "paragraphs": [
+            "A stack removes the most recently pushed element; a queue removes the oldest enqueued element. A deque supports both ends. The same list representation can implement several abstract types, but exposing an operation does not change the intended access discipline.",
+            "For matching brackets, a closing bracket must match the most recent unmatched opening bracket, so use a stack. On ([)] the closing parenthesis meets [, revealing the error immediately. Checking equal counts of openings and closings misses ordering and nesting. A successful scan also requires an empty stack at the end."
+          ]
+        },
+        {
+          "title": "Worked circular queue",
+          "paragraphs": [
+            "Store front and size in an array of capacity C. The next enqueue slot is (front+size) mod C; dequeue reads front, clears that slot and advances front=(front+1) mod C. An empty queue has size=0 and a full queue has size=C. Keeping size avoids confusing these states when indices coincide.",
+            "Example: C=5, front=3, size=3 means entries occupy slots 3,4,0. The next enqueue writes slot 1. After a dequeue, front becomes 4 and size becomes 2. Never use an unbounded front+size as an array index, and check underflow or overflow before modifying state."
+          ]
+        },
+        {
+          "title": "Positions, iteration and compound operations",
+          "paragraphs": [
+            "A positional list identifies an element by a handle rather than a changing numeric index. Inserting before a known valid node can be O(1); finding that node by value still costs a search. A lazy iterator stores a cursor, while a snapshot iterator first copies a view; those choices affect creation cost and behavior under mutation.",
+            "A queue built from two stacks enqueues onto an input stack and dequeues from an output stack. Transfer only when the output stack is empty. Each element is pushed and popped at most once per stack, so a sequence of operations has constant amortized cost even though a single transfer is linear."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_stack_queue_lifo",
+          "title": "Stack trace",
+          "prompt": "Starting empty, push 6, push 2, pop, push 9, push 4, pop, pop. What integer is returned by the final pop?",
+          "skillId": "CSE13C_stack_queue_trace",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "integer",
+          "explanation": "The pops return 2, then 4, then 9; 6 remains.",
+          "answer": "9"
+        },
+        {
+          "id": "CSE13C_stack_queue_wrap",
+          "title": "Wraparound slot",
+          "prompt": "A circular queue has capacity 7, front=5 and size=4. What array index receives the next enqueued element?",
+          "skillId": "CSE13C_stack_queue_invariant",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "integer",
+          "explanation": "(5+4) mod 7=2. The current occupied slots are 5,6,0,1.",
+          "answer": "2"
+        },
+        {
+          "id": "CSE13C_stack_queue_deque",
+          "title": "Two-ended trace",
+          "prompt": "An empty deque receives addLast(3), addFirst(8), addLast(5), removeFirst(), addFirst(1), removeLast(). What is now the last element?",
+          "skillId": "CSE13C_stack_queue_trace",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "integer",
+          "explanation": "The states are [3], [8,3], [8,3,5], [3,5], [1,3,5], [1,3].",
+          "answer": "3"
+        },
+        {
+          "id": "CSE13C_stack_queue_brackets",
+          "title": "A correct bracket recognizer",
+          "prompt": "Give stack-based pseudocode for checking strings containing (), [] and {}. Explain rejection of ([)] and of (() and prove a suitable invariant.",
+          "skillId": "CSE13C_stack_queue_application",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "open",
+          "explanation": "The top is the only opening that may close next. ([)] mismatches at the third symbol; (() ends with an unmatched opening.",
+          "rubric": [
+            "Push opening symbols; on closing symbols require a matching nonempty top.",
+            "Reject leftover openings after the scan.",
+            "Invariant: the stack contains exactly unmatched openings in encounter order; give O(n) time and O(n) space."
+          ]
+        },
+        {
+          "id": "CSE13C_stack_queue_two_stacks",
+          "title": "Amortized queue design",
+          "prompt": "Describe enqueue, dequeue and peek using two stacks. Explain why transferring on every dequeue is unnecessary and justify an amortized constant bound.",
+          "skillId": "CSE13C_stack_queue_application",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "open",
+          "explanation": "Elements already in output precede all later enqueues. Premature transfers can break ordering or waste work; delayed transfer costs O(n) over n elements.",
+          "rubric": [
+            "Transfer input to output only when output is empty.",
+            "Show transfer reversal makes the oldest item the output top.",
+            "Charge each element for at most two pushes and two pops, handling empty queue explicitly."
+          ]
+        },
+        {
+          "id": "CSE13C_stack_queue_empty_full",
+          "title": "Disambiguate queue states",
+          "prompt": "A circular queue stores only head and tail, and head==tail means empty. Which change permits all C array cells to be used while also recognizing full?",
+          "skillId": "CSE13C_stack_queue_invariant",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "choice",
+          "explanation": "A separate size distinguishes zero from C even when head and tail coincide.",
+          "options": [
+            {
+              "id": "CSE13C_stack_queue_empty_full_o1",
+              "text": "Treat head==tail as full and empty simultaneously."
+            },
+            {
+              "id": "CSE13C_stack_queue_empty_full_o2",
+              "text": "Store a size counter or full flag."
+            },
+            {
+              "id": "CSE13C_stack_queue_empty_full_o3",
+              "text": "Compare the values of the first and last elements."
+            },
+            {
+              "id": "CSE13C_stack_queue_empty_full_o4",
+              "text": "Always shift the queue on enqueue."
+            }
+          ],
+          "answer": "CSE13C_stack_queue_empty_full_o2"
+        },
+        {
+          "id": "CSE13C_stack_queue_lazy",
+          "title": "Iterator state bug",
+          "prompt": "A loop repeats list.iterator().next() three times instead of creating one iterator before the loop. On [10,20,30], explain the result and repair it.",
+          "skillId": "CSE13C_stack_queue_invariant",
+          "sourceIds": [
+            "CSE13C_src_book_linear",
+            "CSE13C_src_linear",
+            "CSE13C_src_trees"
+          ],
+          "kind": "open",
+          "explanation": "Iteration progress belongs to the iterator object. Recreating that object discards the cursor.",
+          "rubric": [
+            "Explain that each new iterator restarts at the first element.",
+            "Identify output 10,10,10.",
+            "Create one iterator and call next on it after checking hasNext."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_trees",
+      "name": "Tree structure and traversal",
+      "description": "Reason about tree shape, traverse ordered trees and choose linked or array representations.",
+      "prerequisites": [
+        "CSE13C_stack_queue",
+        "CSE13C_recursion"
+      ],
+      "sourceIds": [
+        "CSE13C_src_trees",
+        "CSE13C_src_book_linear",
+        "CSE13C_src_book_trees"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_trees_shape",
+          "name": "Tree shape",
+          "description": "Distinguish height, depth, complete and proper trees."
+        },
+        {
+          "id": "CSE13C_trees_traversal",
+          "name": "Tree traversal",
+          "description": "Derive traversal orders and recursive algorithms."
+        },
+        {
+          "id": "CSE13C_trees_storage",
+          "name": "Tree storage",
+          "description": "Analyze array indices and linked representations."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Height and shape",
+          "paragraphs": [
+            "Depth counts edges from the root; height counts edges on the longest downward path to a leaf. A leaf has height zero. A proper binary tree gives every internal node two children; a complete binary tree fills levels left to right except possibly the last. Proper does not imply complete or balanced.",
+            "For a proper binary tree with I internal nodes and L leaves, counting child edges gives 2I=I+L-1, hence L=I+1. Any tree with n nodes has n-1 edges. A binary tree of height h can contain at most 2^(h+1)-1 nodes, but a chain of height h has only h+1 nodes."
+          ]
+        },
+        {
+          "title": "Worked traversal",
+          "paragraphs": [
+            "Preorder visits node, left subtree, right subtree; inorder visits left, node, right; postorder visits left, right, node. Breadth-first traversal uses a queue and visits by depth. For root A with children B,C, with B's children D,E and C's right child F, preorder is A B D E C F, inorder D B E A C F, postorder D E B F C A, and breadth-first A B C D E F.",
+            "Postorder is useful when a parent's result depends on children, as in computing height or freeing an owned tree. A recursive height method returns -1 for a null subtree, then 1+max(leftHeight,rightHeight). A single traversal costs Theta(n); recomputing each subtree height from scratch at every node can become quadratic."
+          ]
+        },
+        {
+          "title": "Representation and traversal space",
+          "paragraphs": [
+            "With a zero-based root, a node at i has children 2i+1 and 2i+2 and parent floor((i-1)/2), if those nodes exist. This packs complete trees tightly but wastes space for skewed trees: repeatedly taking the right child gives indices 0,2,6,14,... . Linked nodes store only existing nodes.",
+            "Depth-first recursion uses O(h) frames; breadth-first traversal stores a frontier that can have Theta(n) nodes in a wide tree. Neither traversal is universally smaller in auxiliary space. When the structure is a graph with sharing or cycles, tree traversal assumptions no longer suffice and a visited set is needed."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_trees_leaves",
+          "title": "Proper-tree leaf count",
+          "prompt": "A proper binary tree has 17 internal nodes. How many leaves does it have?",
+          "skillId": "CSE13C_trees_shape",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "integer",
+          "explanation": "L=I+1 follows by counting two child edges per internal node.",
+          "answer": "18"
+        },
+        {
+          "id": "CSE13C_trees_height",
+          "title": "Edge-based height",
+          "prompt": "A complete binary tree contains 20 nodes. What is its height in edges?",
+          "skillId": "CSE13C_trees_shape",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "integer",
+          "explanation": "Levels through depth 3 hold 15 nodes; the remaining five are at depth 4.",
+          "answer": "4"
+        },
+        {
+          "id": "CSE13C_trees_preorder",
+          "title": "Read a traversal",
+          "prompt": "Root R has left child L and right child M. L has only right child P; M has only left child Q. Which is the postorder?",
+          "skillId": "CSE13C_trees_traversal",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "choice",
+          "explanation": "Visit P before L and Q before M, then R.",
+          "options": [
+            {
+              "id": "CSE13C_trees_preorder_o1",
+              "text": "R L P M Q"
+            },
+            {
+              "id": "CSE13C_trees_preorder_o2",
+              "text": "L P R Q M"
+            },
+            {
+              "id": "CSE13C_trees_preorder_o3",
+              "text": "P L Q M R"
+            },
+            {
+              "id": "CSE13C_trees_preorder_o4",
+              "text": "P Q L M R"
+            }
+          ],
+          "answer": "CSE13C_trees_preorder_o3"
+        },
+        {
+          "id": "CSE13C_trees_index",
+          "title": "Sparse array index",
+          "prompt": "A tree uses zero-based heap-style indices. Starting at the root, follow the right child four times. What is the final index?",
+          "skillId": "CSE13C_trees_storage",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "integer",
+          "explanation": "The indices are 0,2,6,14,30 by i'=2i+2.",
+          "answer": "30"
+        },
+        {
+          "id": "CSE13C_trees_height_algo",
+          "title": "Compute height once",
+          "prompt": "Write recursive pseudocode to compute a binary tree's height in edges, with height(empty)=-1. Explain time and stack cost.",
+          "skillId": "CSE13C_trees_traversal",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "Each node combines two already-computed child values in constant time, so no subtree needs to be rescanned.",
+          "rubric": [
+            "Return -1 for null and otherwise 1+max of recursive child heights.",
+            "Visit each node once for Theta(n) time.",
+            "Use O(h+1) active frames and mention a skewed tree's linear stack."
+          ]
+        },
+        {
+          "id": "CSE13C_trees_proper",
+          "title": "Proper is not balanced",
+          "prompt": "Construct a proper binary tree with 9 nodes and height 4. Explain why it refutes a logarithmic-height guarantee for proper binary trees in general.",
+          "skillId": "CSE13C_trees_shape",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "A comb-shaped proper tree has height (n-1)/2. Requiring zero or two children does not require comparable subtree sizes.",
+          "rubric": [
+            "Use four internal nodes on a chain, each with an extra leaf child, ending in two leaves.",
+            "Count five leaves and four internal nodes.",
+            "Generalize to height I for 2I+1 nodes."
+          ]
+        },
+        {
+          "id": "CSE13C_trees_space_compare",
+          "title": "Choose a traversal's memory",
+          "prompt": "Compare peak auxiliary space of BFS and recursive DFS on a perfect binary tree of height h and on a chain of n nodes.",
+          "skillId": "CSE13C_trees_storage",
+          "sourceIds": [
+            "CSE13C_src_trees",
+            "CSE13C_src_book_linear"
+          ],
+          "kind": "open",
+          "explanation": "BFS retains a level; DFS retains ancestors. The favorable choice depends on shape.",
+          "rubric": [
+            "Perfect tree: BFS Theta(2^h), DFS Theta(h+1).",
+            "Chain: BFS Theta(1), recursive DFS Theta(n).",
+            "Exclude input storage and explain frontier versus active path."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_heaps",
+      "name": "Priority queues, heaps and adaptable entries",
+      "description": "Maintain complete-tree heap order, build heaps efficiently and support changing priorities.",
+      "prerequisites": [
+        "CSE13C_trees",
+        "CSE13C_linear"
+      ],
+      "sourceIds": [
+        "CSE13C_src_heaps",
+        "CSE13C_src_book_heaps"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_heaps_heap",
+          "name": "Heap maintenance",
+          "description": "Trace insertion, removal and key updates."
+        },
+        {
+          "id": "CSE13C_heaps_cost",
+          "name": "Priority queue cost",
+          "description": "Compare list and heap implementations."
+        },
+        {
+          "id": "CSE13C_heaps_adapt",
+          "name": "Adaptable entries",
+          "description": "Maintain handles when priorities and indices change."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Two independent heap invariants",
+          "paragraphs": [
+            "A min-heap is a complete binary tree whose parent key is no larger than either child's. Completeness controls height; heap order makes the root a minimum. Siblings need not be ordered, and an inorder traversal is not sorted. An array provides the shape without explicit child pointers.",
+            "Insertion appends at the next free slot and sifts upward while the parent is larger. Removing the minimum moves the last entry to the root, removes the last slot, and sifts downward by selecting the smaller child. Choosing the larger child can leave the other child smaller than the new parent."
+          ]
+        },
+        {
+          "title": "Worked insertion and removal",
+          "paragraphs": [
+            "Start with min-heap [2,5,4,9,7]. Inserting 3 appends at index 5 and compares with index 2 holding 4. Swap to obtain [2,5,3,9,7,4]; 3 is no smaller than root 2, so stop. Removing 2 next puts 4 at the root and sifts toward child 3, yielding [3,5,4,9,7].",
+            "The height is floor(log2 n), so insertion and removal take O(log n), while reading the minimum is O(1). In an unsorted list insertion is O(1) and minimum removal O(n); in a sorted array minimum access is cheap but insertion shifts entries. Choose based on the complete workload."
+          ]
+        },
+        {
+          "title": "Heapify and adaptable priorities",
+          "paragraphs": [
+            "Bottom-up heapify starts at the last internal node and sifts each node down in reverse index order. Most nodes are near the leaves and move little. Summing roughly n/2^(k+1) nodes of height k yields O(n) total work, better than the O(n log n) worst-case bound for repeated insertion.",
+            "An adaptable queue returns a handle for an entry and records its current array index. Every swap must update both handles. Decreasing a min-heap key sifts up; increasing it sifts down. To delete a known entry, replace it with the last entry and restore order in the necessary direction. Finding an entry by value without a handle can still cost O(n)."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_heaps_insert",
+          "title": "Insert into a min-heap",
+          "prompt": "Insert 1 into min-heap [3,6,4,8,7,9], appending then sifting up. How many swaps occur?",
+          "skillId": "CSE13C_heaps_heap",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "integer",
+          "explanation": "1 starts at index 6, swaps with 4 at index 2, then with 3 at the root.",
+          "answer": "2"
+        },
+        {
+          "id": "CSE13C_heaps_remove",
+          "title": "Restore heap order",
+          "prompt": "Remove the minimum from [1,4,2,7,5,3] using last-to-root replacement and the smaller child. Which array results?",
+          "skillId": "CSE13C_heaps_heap",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "choice",
+          "explanation": "Move 3 to the root, then exchange it with child 2.",
+          "options": [
+            {
+              "id": "CSE13C_heaps_remove_o1",
+              "text": "[4,2,3,7,5]"
+            },
+            {
+              "id": "CSE13C_heaps_remove_o2",
+              "text": "[2,4,3,7,5]"
+            },
+            {
+              "id": "CSE13C_heaps_remove_o3",
+              "text": "[2,3,4,5,7]"
+            },
+            {
+              "id": "CSE13C_heaps_remove_o4",
+              "text": "[3,4,2,7,5]"
+            }
+          ],
+          "answer": "CSE13C_heaps_remove_o2"
+        },
+        {
+          "id": "CSE13C_heaps_heapify",
+          "title": "Why heapify is linear",
+          "prompt": "Explain why multiplying n nodes by a logarithmic worst-case sift bound is loose for bottom-up heap construction. Give a summation supporting O(n).",
+          "skillId": "CSE13C_heaps_cost",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "open",
+          "explanation": "Only a few nodes can travel many levels; most nodes are leaves or one level above them.",
+          "rubric": [
+            "Bound the number of nodes at height k by O(n/2^k).",
+            "Sum O(n)*sum(k/2^k), whose series converges.",
+            "Distinguish heapify from inserting each key into an initially empty heap."
+          ]
+        },
+        {
+          "id": "CSE13C_heaps_workload",
+          "title": "Bulk insertion workload",
+          "prompt": "You receive n items, then only one minimum query and removal, with no further operations. Compare an unsorted list with n heap insertions and with bottom-up heapify.",
+          "skillId": "CSE13C_heaps_cost",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "open",
+          "explanation": "An asymptotically cheaper individual remove does not automatically make the whole workload cheaper.",
+          "rubric": [
+            "Unsorted list: O(n) total including the minimum scan.",
+            "Repeated heap insertion: O(n log n) worst-case total.",
+            "Heapify: O(n) build plus O(log n) removal; explain why operation mix matters."
+          ]
+        },
+        {
+          "id": "CSE13C_heaps_handles",
+          "title": "The stale-handle bug",
+          "prompt": "An adaptable heap swaps entries but leaves their recorded indices unchanged. Explain a concrete consequence and state the invariant every swap must maintain.",
+          "skillId": "CSE13C_heaps_adapt",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "open",
+          "explanation": "The handle is only useful if it follows the entry rather than the slot where the entry used to be.",
+          "rubric": [
+            "Explain that a later update/delete can address the wrong entry.",
+            "Require heap[i].index=i for all live entries.",
+            "Update both indices atomically with each swap and invalidate removed handles."
+          ]
+        },
+        {
+          "id": "CSE13C_heaps_increase",
+          "title": "Increase a key",
+          "prompt": "A min-heap entry's key increases while all other keys stay fixed. Which direction may be necessary to restore heap order?",
+          "skillId": "CSE13C_heaps_heap",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "choice",
+          "explanation": "The parent remains no larger than the increased key, but a child may now be smaller.",
+          "options": [
+            {
+              "id": "CSE13C_heaps_increase_o1",
+              "text": "Down toward the smaller child"
+            },
+            {
+              "id": "CSE13C_heaps_increase_o2",
+              "text": "Up toward the root"
+            },
+            {
+              "id": "CSE13C_heaps_increase_o3",
+              "text": "Always both directions"
+            },
+            {
+              "id": "CSE13C_heaps_increase_o4",
+              "text": "No repair can ever be needed"
+            }
+          ],
+          "answer": "CSE13C_heaps_increase_o1"
+        },
+        {
+          "id": "CSE13C_heaps_topk",
+          "title": "Keep the largest k values",
+          "prompt": "Design a streaming algorithm that retains the largest k integers seen, for k>=1, using O(k) memory. Explain the heap orientation, replacement rule and running time for n arrivals.",
+          "skillId": "CSE13C_heaps_adapt",
+          "sourceIds": [
+            "CSE13C_src_heaps",
+            "CSE13C_src_book_heaps"
+          ],
+          "kind": "open",
+          "explanation": "The smallest retained value is the threshold for entry. A max-heap exposes the wrong endpoint for efficient replacement.",
+          "rubric": [
+            "Use a min-heap of at most k retained values.",
+            "Fill it, then replace its minimum only when an incoming value is larger.",
+            "Give O(n log(k+1)) time, O(k) storage and an invariant about the retained multiset."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_elementary_sort",
+      "name": "Insertion, selection and heap sort",
+      "description": "Trace sorting states and connect stability, inversion counts, movement and memory to algorithm choice.",
+      "prerequisites": [
+        "CSE13C_heaps"
+      ],
+      "sourceIds": [
+        "CSE13C_src_book_sort",
+        "CSE13C_src_sort2"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_elementary_sort_trace",
+          "name": "Sorting traces",
+          "description": "Identify invariants and exact moves."
+        },
+        {
+          "id": "CSE13C_elementary_sort_stability",
+          "name": "Stable ordering",
+          "description": "Preserve equal-key records when required."
+        },
+        {
+          "id": "CSE13C_elementary_sort_choice",
+          "name": "Sorting tradeoffs",
+          "description": "Compare comparisons, movement and auxiliary memory."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Insertion and selection use different invariants",
+          "paragraphs": [
+            "Insertion sort grows a sorted prefix containing the original first i elements. It inserts the next value by shifting larger prefix elements right. If comparisons use strictly greater rather than greater-or-equal, equal records retain their relative order. Its time is Theta(n+I), where I is the number of inversions.",
+            "Selection sort scans the remaining suffix for its minimum and swaps it into the next prefix position. Its prefix contains the globally smallest processed number of elements. Standard selection sort performs n(n-1)/2 key comparisons regardless of initial order, though it uses only O(n) swaps."
+          ]
+        },
+        {
+          "title": "Worked stability counterexample",
+          "paragraphs": [
+            "Take [2a,2b,1], where letters identify records but comparisons use only the number. Standard selection sort swaps 1 with 2a and produces [1,2b,2a], reversing the equal-key records. A stable alternative removes the minimum and shifts the intervening block right, but that changes movement costs.",
+            "For insertion sort on [4,1,3,2], inserting 1 shifts 4; inserting 3 shifts 4; inserting 2 shifts 4 and 3. There are four shifts, matching inversions (4,1), (4,3), (4,2), (3,2). Nearly sorted data with O(n) inversions therefore gives linear work."
+          ]
+        },
+        {
+          "title": "In-place heap sort",
+          "paragraphs": [
+            "For ascending output, build a max-heap in the input array. Swap the maximum root with the last active heap element, shorten the heap, and sift down. The active prefix remains a heap and the suffix is sorted in final positions. Build costs O(n); repeated extraction costs O(n log n).",
+            "An iterative array heap sort uses O(1) auxiliary storage and has O(n log n) worst-case time. It is normally unstable because distant swaps can reverse equal records. Stability and in-place operation describe different properties; neither follows simply from good asymptotic time."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_elementary_sort_shifts",
+          "title": "Count insertion shifts",
+          "prompt": "Insertion sort uses shifts of strictly larger elements. How many shifts are needed to sort [5,2,4,1]? Count only shifts of old entries, not writes of the held key.",
+          "skillId": "CSE13C_elementary_sort_trace",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "integer",
+          "explanation": "The insertions shift 1,1 and 3 entries. Equivalently there are five inversions.",
+          "answer": "5"
+        },
+        {
+          "id": "CSE13C_elementary_sort_comparisons",
+          "title": "Selection comparison count",
+          "prompt": "Standard selection sort scans the full unsorted suffix to choose each next minimum. How many key comparisons occur on 7 distinct already sorted values?",
+          "skillId": "CSE13C_elementary_sort_trace",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "integer",
+          "explanation": "6+5+4+3+2+1=21; sorted input does not eliminate those scans.",
+          "answer": "21"
+        },
+        {
+          "id": "CSE13C_elementary_sort_stable",
+          "title": "A stability requirement",
+          "prompt": "Records are already sorted by surname and must now be sorted by department while keeping surname order within each department. Which property of the second sort is essential?",
+          "skillId": "CSE13C_elementary_sort_stability",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "choice",
+          "explanation": "Stability preserves the existing relative order among equal department keys.",
+          "options": [
+            {
+              "id": "CSE13C_elementary_sort_stable_o1",
+              "text": "In-place storage"
+            },
+            {
+              "id": "CSE13C_elementary_sort_stable_o2",
+              "text": "Random pivot selection"
+            },
+            {
+              "id": "CSE13C_elementary_sort_stable_o3",
+              "text": "Stability"
+            },
+            {
+              "id": "CSE13C_elementary_sort_stable_o4",
+              "text": "A binary search tree"
+            }
+          ],
+          "answer": "CSE13C_elementary_sort_stable_o3"
+        },
+        {
+          "id": "CSE13C_elementary_sort_prefix",
+          "title": "Identify the invariant",
+          "prompt": "After three full outer iterations starting from a one-element prefix, insertion sort has processed four entries. Which claim is necessarily true?",
+          "skillId": "CSE13C_elementary_sort_trace",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "choice",
+          "explanation": "Insertion sort orders the original processed prefix; smaller elements may still be in the suffix.",
+          "options": [
+            {
+              "id": "CSE13C_elementary_sort_prefix_o1",
+              "text": "The first four original entries occupy a sorted prefix."
+            },
+            {
+              "id": "CSE13C_elementary_sort_prefix_o2",
+              "text": "The prefix contains the four globally smallest entries."
+            },
+            {
+              "id": "CSE13C_elementary_sort_prefix_o3",
+              "text": "The last four entries are in final positions."
+            },
+            {
+              "id": "CSE13C_elementary_sort_prefix_o4",
+              "text": "Every prefix element is smaller than every suffix element."
+            }
+          ],
+          "answer": "CSE13C_elementary_sort_prefix_o1"
+        },
+        {
+          "id": "CSE13C_elementary_sort_heap_phase",
+          "title": "One heap-sort extraction",
+          "prompt": "A max-heap is [9,7,8,1,3,2]. Perform one ascending heap-sort extraction and full sift-down. Give the resulting full array and identify the inactive suffix.",
+          "skillId": "CSE13C_elementary_sort_trace",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "open",
+          "explanation": "The sorted suffix must be excluded from subsequent heap comparisons.",
+          "rubric": [
+            "Swap 9 with last active value 2 and reduce heap size to 5.",
+            "Sift 2 under the larger child 8.",
+            "Result [8,7,2,1,3,9], with suffix [9] fixed."
+          ]
+        },
+        {
+          "id": "CSE13C_elementary_sort_nearly",
+          "title": "Nearly sorted workload",
+          "prompt": "An input of n records has at most 3n inversions. Compare insertion sort's time with selection sort's, and explain the operational reason for the difference.",
+          "skillId": "CSE13C_elementary_sort_choice",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "open",
+          "explanation": "The disorder bound limits how far insertion moves items, but selection continues scanning even when little movement is needed.",
+          "rubric": [
+            "Use Theta(n+I) to obtain Theta(n) insertion time.",
+            "Selection still performs Theta(n^2) comparisons.",
+            "Relate insertion shifts to inversions and selection to repeated full scans."
+          ]
+        },
+        {
+          "id": "CSE13C_elementary_sort_stable_selection",
+          "title": "Make selection stable",
+          "prompt": "Modify selection sort to preserve equal-key order without using another array. Explain how this affects the maximum number of element writes.",
+          "skillId": "CSE13C_elementary_sort_stability",
+          "sourceIds": [
+            "CSE13C_src_book_sort",
+            "CSE13C_src_sort2"
+          ],
+          "kind": "open",
+          "explanation": "A rotation of the block preserves order; a distant swap does not. Stability costs more movement in this version.",
+          "rubric": [
+            "Select the first minimum of the suffix.",
+            "Save it, shift intervening entries right, insert at the prefix boundary.",
+            "Explain O(n^2) worst-case writes while comparisons remain quadratic and auxiliary storage constant."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_divide_sort",
+      "name": "Merge sort, quicksort and comparison lower bounds",
+      "description": "Analyze split-and-combine sorting, precise partition contracts and the limits of comparisons.",
+      "prerequisites": [
+        "CSE13C_recursion",
+        "CSE13C_elementary_sort"
+      ],
+      "sourceIds": [
+        "CSE13C_src_sort",
+        "CSE13C_src_book_sort"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_divide_sort_merge",
+          "name": "Merge reasoning",
+          "description": "Merge sorted ranges with correct ties and bounds."
+        },
+        {
+          "id": "CSE13C_divide_sort_quick",
+          "name": "Partition reasoning",
+          "description": "State partition invariants and recursion progress."
+        },
+        {
+          "id": "CSE13C_divide_sort_lower",
+          "name": "Lower bounds",
+          "description": "Use decision trees without overgeneralizing."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Merge sorted pieces",
+          "paragraphs": [
+            "Merge sort splits, recursively sorts each half, then merges. With two sorted inputs, compare their current first unused keys and emit the smaller; after one is exhausted, append the remainder. On equal keys choose the left input first to retain stability. The merge invariant says the output prefix contains the smallest already-consumed elements in order.",
+            "Merging [1,4,8] and [2,3,9] compares (1,2), (4,2), (4,3), (4,9), (8,9), then appends 9: five key comparisons. For n elements, balanced merge sort has Theta(n log n) time and standard array merging needs Theta(n) auxiliary storage. Linked-list merging can relink existing nodes."
+          ]
+        },
+        {
+          "title": "A partition is not a full sort",
+          "paragraphs": [
+            "A partition must define where keys smaller, equal and larger than the pivot end up. In a two-way scheme with a pivot fixed at index p, recursive calls must exclude p. In a three-way scheme, recurse only on the less-than and greater-than regions; the equality block is already resolved.",
+            "Balanced quicksort splits give Theta(n log n) work, but always choosing an extreme key leads to T(n)=T(n-1)+Theta(n)=Theta(n^2). Random pivot selection yields expected Theta(n log n) over its own random choices for a fixed input. It does not remove the quadratic worst case. Recursing on the smaller side and iterating on the larger bounds the stack by O(log n)."
+          ]
+        },
+        {
+          "title": "Why comparisons need n log n in the worst case",
+          "paragraphs": [
+            "For n distinct keys there are n! possible input orders. A deterministic comparison sorting decision tree must distinguish them, so it needs at least n! leaves. A binary tree of height h has at most 2^h leaves; hence some path has length at least ceil(log2(n!))=Omega(n log n).",
+            "The argument concerns comparison-based sorting of arbitrary keys. It does not forbid faster sorting when keys are bounded integers and can be used as indices. It is also a worst-case statement, not a claim that every particular input requires that many comparisons."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_divide_sort_mergecount",
+          "title": "Merge comparisons",
+          "prompt": "Merge [1,5,7] and [2,3,8] by comparing front entries until one side empties, then append the remainder. How many key comparisons occur?",
+          "skillId": "CSE13C_divide_sort_merge",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "integer",
+          "explanation": "Compare 1:2, 5:2, 5:3, 5:8, 7:8, then append 8.",
+          "answer": "5"
+        },
+        {
+          "id": "CSE13C_divide_sort_tie",
+          "title": "Stable merge rule",
+          "prompt": "Two equal-key records are at the heads of the left and right merge inputs. Which choice preserves global stability?",
+          "skillId": "CSE13C_divide_sort_merge",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "choice",
+          "explanation": "The left subarray came earlier in the original order, so its equal record must be emitted first.",
+          "options": [
+            {
+              "id": "CSE13C_divide_sort_tie_o1",
+              "text": "Always take the right record."
+            },
+            {
+              "id": "CSE13C_divide_sort_tie_o2",
+              "text": "Take the left record."
+            },
+            {
+              "id": "CSE13C_divide_sort_tie_o3",
+              "text": "Choose randomly."
+            },
+            {
+              "id": "CSE13C_divide_sort_tie_o4",
+              "text": "Compare their memory addresses."
+            }
+          ],
+          "answer": "CSE13C_divide_sort_tie_o2"
+        },
+        {
+          "id": "CSE13C_divide_sort_worst",
+          "title": "Extreme pivots",
+          "prompt": "Quicksort on 8 distinct keys always picks the smallest key and compares it with every other active key. How many pivot-key comparisons are made in total?",
+          "skillId": "CSE13C_divide_sort_quick",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "integer",
+          "explanation": "The counts are 7+6+5+4+3+2+1=28.",
+          "answer": "28"
+        },
+        {
+          "id": "CSE13C_divide_sort_duplicates",
+          "title": "Duplicate-heavy quicksort",
+          "prompt": "A two-way partition repeatedly leaves n-1 equal keys for recursion. Explain the performance problem and design a three-way partition contract that avoids it on all-equal input.",
+          "skillId": "CSE13C_divide_sort_quick",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "open",
+          "explanation": "Grouping all pivot-equal values at once prevents their repeated participation in smaller recursive problems.",
+          "rubric": [
+            "Identify quadratic work from repeated near-full subproblems.",
+            "Maintain contiguous less/equal/greater regions and an unclassified region.",
+            "Recurse only outside the equality block; all-equal input finishes in Theta(n)."
+          ]
+        },
+        {
+          "id": "CSE13C_divide_sort_decision",
+          "title": "Decision-tree minimum",
+          "prompt": "For sorting 4 distinct elements by comparisons, what integer lower bound on worst-case comparisons follows from ceil(log2(4!))?",
+          "skillId": "CSE13C_divide_sort_lower",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "integer",
+          "explanation": "4!=24 and 2^4<24<=2^5, so height is at least 5.",
+          "answer": "5"
+        },
+        {
+          "id": "CSE13C_divide_sort_random",
+          "title": "Interpret randomization",
+          "prompt": "Which statement about randomized quicksort on arbitrary distinct keys is correct?",
+          "skillId": "CSE13C_divide_sort_quick",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "choice",
+          "explanation": "Randomization makes balanced behavior likely in expectation but permits unlucky extreme pivots.",
+          "options": [
+            {
+              "id": "CSE13C_divide_sort_random_o1",
+              "text": "Every execution takes O(n log n)."
+            },
+            {
+              "id": "CSE13C_divide_sort_random_o2",
+              "text": "Sorted inputs always cause quadratic time."
+            },
+            {
+              "id": "CSE13C_divide_sort_random_o3",
+              "text": "Expected time is O(n log n), while worst-case time remains O(n^2)."
+            },
+            {
+              "id": "CSE13C_divide_sort_random_o4",
+              "text": "Randomization guarantees stability."
+            }
+          ],
+          "answer": "CSE13C_divide_sort_random_o3"
+        },
+        {
+          "id": "CSE13C_divide_sort_smallside",
+          "title": "Bound quicksort stack",
+          "prompt": "Explain why recursively sorting the smaller partition and handling the larger partition in a loop uses O(log n) stack space even when runtime is quadratic.",
+          "skillId": "CSE13C_divide_sort_quick",
+          "sourceIds": [
+            "CSE13C_src_sort",
+            "CSE13C_src_book_sort"
+          ],
+          "kind": "open",
+          "explanation": "Stack depth follows nested recursive calls, not the total number of partitions performed.",
+          "rubric": [
+            "Each recursive child has at most half the parent's active elements.",
+            "A recursive chain therefore has logarithmic length.",
+            "The large partition is processed without adding a frame; bad partitions can still sum to quadratic work."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_key_sort_select",
+      "name": "Key-based sorting, selection and algorithm design",
+      "description": "Exploit key domains or rank information without assuming all sorting must use comparisons.",
+      "prerequisites": [
+        "CSE13C_divide_sort"
+      ],
+      "sourceIds": [
+        "CSE13C_src_sort2",
+        "CSE13C_src_book_sort",
+        "CSE13C_src_acing"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_key_sort_select_key",
+          "name": "Key-based sorting",
+          "description": "Analyze counting, bucket and radix assumptions."
+        },
+        {
+          "id": "CSE13C_key_sort_select_select",
+          "name": "Rank selection",
+          "description": "Keep only the partition containing a requested rank."
+        },
+        {
+          "id": "CSE13C_key_sort_select_design",
+          "name": "Linear-time design",
+          "description": "Replace repeated scans with reusable summaries."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Keys can carry useful structure",
+          "paragraphs": [
+            "Counting sort stores frequencies for keys in a known range of K possible values. Counting costs O(n+K) time and O(K) storage; reconstructing plain keys is simple, but sorting records stably needs positions computed from prefix sums and typically an output array. A huge key range can make counting wasteful even for a short input.",
+            "Bucket sorting distributes values by a domain-aware bucket function. Linear expected work needs a distribution assumption and controlled within-bucket sorting. It is not a worst-case linear algorithm merely because the word bucket appears. If all values land in one bucket, the internal sorting algorithm determines the cost."
+          ]
+        },
+        {
+          "title": "Worked radix sort and selection",
+          "paragraphs": [
+            "Least-significant-digit radix sort processes digits from right to left, using a stable sort on each digit. For [21,13,12,22], a stable units pass yields [21,12,22,13]; a stable tens pass yields [12,13,21,22]. Stability preserves the ordering established by lower digits. With d digits and base b, counting-based passes cost O(d(n+b)).",
+            "Quickselect partitions around a pivot and compares the desired rank with the sizes of the less and equal regions. It recurses into only the needed side and adjusts the rank if moving right. Randomized quickselect has expected O(n) time but O(n^2) worst case. If many keys equal the pivot, handle their rank interval together."
+          ]
+        },
+        {
+          "title": "Worked reusable summaries",
+          "paragraphs": [
+            "In the water-basin problem, water above position i is max(0,min(maxLeft,maxRight)-height[i]). Recomputing both maxima separately at every position is quadratic. Precompute prefix maxima and suffix maxima, then scan once: O(n) time and O(n) extra space.",
+            "For heights [3,0,2,0,4], the internal water amounts are 3,1,3, totaling 7. A two-pointer refinement maintains the best boundary seen on each side and resolves the side with the smaller controlling maximum, using O(1) additional storage. Correctness comes from proving that the other boundary is already high enough for that resolved side."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_key_sort_select_counts",
+          "title": "Counting array size",
+          "prompt": "Keys are integers in the inclusive range -3 through 8. How many frequency counters are needed with an offset-based counting sort?",
+          "skillId": "CSE13C_key_sort_select_key",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "integer",
+          "explanation": "There are 8-(-3)+1=12 possible keys; index a key by key+3.",
+          "answer": "12"
+        },
+        {
+          "id": "CSE13C_key_sort_select_radix",
+          "title": "Radix pass trace",
+          "prompt": "After one stable units-digit pass on [42,31,22,13,11], which order results?",
+          "skillId": "CSE13C_key_sort_select_key",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "choice",
+          "explanation": "Units are 2,1,2,3,1; within the 1 and 2 buckets retain original order.",
+          "options": [
+            {
+              "id": "CSE13C_key_sort_select_radix_o1",
+              "text": "[11,13,22,31,42]"
+            },
+            {
+              "id": "CSE13C_key_sort_select_radix_o2",
+              "text": "[31,11,42,22,13]"
+            },
+            {
+              "id": "CSE13C_key_sort_select_radix_o3",
+              "text": "[11,31,22,42,13]"
+            },
+            {
+              "id": "CSE13C_key_sort_select_radix_o4",
+              "text": "[42,22,31,11,13]"
+            }
+          ],
+          "answer": "CSE13C_key_sort_select_radix_o2"
+        },
+        {
+          "id": "CSE13C_key_sort_select_rank",
+          "title": "Adjust the requested rank",
+          "prompt": "Quickselect seeks the 8th smallest element using one-based ranks. A three-way partition has 3 keys less than the pivot and 2 equal to it. What one-based rank should it seek in the greater partition?",
+          "skillId": "CSE13C_key_sort_select_select",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "integer",
+          "explanation": "Ranks 1-3 are less and 4-5 equal, so subtract 5 from 8.",
+          "answer": "3"
+        },
+        {
+          "id": "CSE13C_key_sort_select_unstable",
+          "title": "Why stable digit passes matter",
+          "prompt": "Give a two-number example showing that an unstable tens-digit pass can destroy the result of a correct units-digit pass in LSD radix sorting.",
+          "skillId": "CSE13C_key_sort_select_key",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "open",
+          "explanation": "A later pass must preserve ordering among records with equal current digits.",
+          "rubric": [
+            "Choose numbers with equal tens but different units, such as 12 and 13.",
+            "Show the units pass orders them correctly.",
+            "Explain that reversing the equal-tens group gives 13,12 and breaks numeric order."
+          ]
+        },
+        {
+          "id": "CSE13C_key_sort_select_range",
+          "title": "Reject a poor counting-sort choice",
+          "prompt": "You have 200 integers with keys between 0 and 10^12. Compare straightforward counting sort with comparison sorting and state what information would justify bucket sorting.",
+          "skillId": "CSE13C_key_sort_select_key",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "open",
+          "explanation": "The input length is small while the domain is enormous. Range-dependent algorithms must account for both parameters.",
+          "rubric": [
+            "Identify infeasible Theta(10^12) direct counting storage/work.",
+            "Use an O(n log n) comparison sort without range-sized storage.",
+            "State that bucket efficiency requires knowledge of distribution and bucket occupancy."
+          ]
+        },
+        {
+          "id": "CSE13C_key_sort_select_water",
+          "title": "Water accumulation",
+          "prompt": "Unit-width ground heights are [4,1,3,0,5]. How many units of water can be trapped, with no walls outside the array?",
+          "skillId": "CSE13C_key_sort_select_design",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "integer",
+          "explanation": "Interior levels are bounded by min(4,5)=4, yielding 3+1+4=8.",
+          "answer": "8"
+        },
+        {
+          "id": "CSE13C_key_sort_select_median",
+          "title": "Selection instead of sorting",
+          "prompt": "Design an expected-linear-time algorithm for the median of an odd-length nonempty array. Specify the rank and explain the remaining worst-case risk.",
+          "skillId": "CSE13C_key_sort_select_select",
+          "sourceIds": [
+            "CSE13C_src_sort2",
+            "CSE13C_src_book_sort",
+            "CSE13C_src_acing"
+          ],
+          "kind": "open",
+          "explanation": "Full sorting establishes all ranks unnecessarily. Selection only resolves the path to the middle rank.",
+          "rubric": [
+            "Select one-based rank (n+1)/2 with randomized quickselect.",
+            "Partition and recurse only into the region containing that rank.",
+            "Explain expected O(n), worst-case O(n^2), and that equal values occupy a rank block."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_maps",
+      "name": "Maps, hashing, sets and sorted maps",
+      "description": "Maintain key identity and collision chains, and select a map representation that fits ordering requirements.",
+      "prerequisites": [
+        "CSE13C_linear",
+        "CSE13C_analysis"
+      ],
+      "sourceIds": [
+        "CSE13C_src_maps",
+        "CSE13C_src_book_maps"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_maps_hash",
+          "name": "Hash table behavior",
+          "description": "Trace collisions, probing and deletion."
+        },
+        {
+          "id": "CSE13C_maps_identity",
+          "name": "Key identity",
+          "description": "Relate equality, hashing and mutation."
+        },
+        {
+          "id": "CSE13C_maps_map",
+          "name": "Map abstractions",
+          "description": "Choose between maps, sets, multisets and ordered operations."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "A map is not a multimap",
+          "paragraphs": [
+            "A map associates at most one current value with each key; putting an existing key replaces its value. A set stores distinct keys, a multiset stores multiplicities, and a multimap permits multiple values per key. Decide which contract is needed before choosing an implementation.",
+            "A sorted map additionally supports predecessor, successor and range queries. A sorted array offers binary search in O(log n), but updates can shift O(n) entries. Hash tables usually support expected O(1) equality lookup under suitable hashing and controlled load, but do not provide sorted order."
+          ]
+        },
+        {
+          "title": "Hashing and equality",
+          "paragraphs": [
+            "A hash code is compressed into a bucket index. Different keys can collide, so equality still decides whether a found entry is the same key. Equal keys must have equal hashes; equal hashes do not imply equal keys. In Java, identity-based default behavior is not a promise that hashCode equals a memory address.",
+            "Separate chaining stores a collection per bucket. With n entries and m buckets, load factor alpha=n/m, and uniform distribution gives expected O(1+alpha) search. Open addressing stores entries in the table itself and probes alternative slots. Its performance deteriorates as occupancy approaches one, and it requires available slots."
+          ]
+        },
+        {
+          "title": "Worked probing and deletion",
+          "paragraphs": [
+            "For capacity 7 with h(k)=k mod 7, insert 10,17,24 using linear probing. They occupy slots 3,4,5. If deleting 17 changes slot 4 to never-used-empty, a lookup for 24 can stop early and falsely report absence. Use a tombstone or correctly repair the probe cluster.",
+            "When inserting through tombstones, remember a reusable tombstone but continue far enough to check whether the key already exists. Resizing must reinsert using the new capacity, because compression and probe positions change. Keys used in hash tables should keep their equality/hash-relevant fields stable while stored."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_maps_probe",
+          "title": "Linear probing position",
+          "prompt": "An empty table has capacity 7 and h(k)=k mod 7. Insert 5,12,19,26 in that order with linear probing. Which slot contains 26?",
+          "skillId": "CSE13C_maps_hash",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "integer",
+          "explanation": "Slots are 5,6,0,1 after wrapping around.",
+          "answer": "1"
+        },
+        {
+          "id": "CSE13C_maps_delete",
+          "title": "Why tombstones exist",
+          "prompt": "Why can replacing a deleted linear-probing entry with a never-used-empty marker break lookup?",
+          "skillId": "CSE13C_maps_hash",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "choice",
+          "explanation": "A later colliding key can lie beyond that slot, and lookup commonly stops at a never-used slot.",
+          "options": [
+            {
+              "id": "CSE13C_maps_delete_o1",
+              "text": "It changes every key's mathematical hash."
+            },
+            {
+              "id": "CSE13C_maps_delete_o2",
+              "text": "It necessarily fills the table."
+            },
+            {
+              "id": "CSE13C_maps_delete_o3",
+              "text": "It can terminate a probe sequence before a displaced key."
+            },
+            {
+              "id": "CSE13C_maps_delete_o4",
+              "text": "It sorts the cluster accidentally."
+            }
+          ],
+          "answer": "CSE13C_maps_delete_o3"
+        },
+        {
+          "id": "CSE13C_maps_equals",
+          "title": "Equal keys and hashes",
+          "prompt": "Which implication must a correct equality/hash implementation satisfy?",
+          "skillId": "CSE13C_maps_identity",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "choice",
+          "explanation": "Equal objects must have equal hash codes, but collisions between unequal keys are allowed.",
+          "options": [
+            {
+              "id": "CSE13C_maps_equals_o1",
+              "text": "a.equals(b) implies equal hash codes."
+            },
+            {
+              "id": "CSE13C_maps_equals_o2",
+              "text": "Equal hash codes imply a.equals(b)."
+            },
+            {
+              "id": "CSE13C_maps_equals_o3",
+              "text": "Unequal objects must have different hash codes."
+            },
+            {
+              "id": "CSE13C_maps_equals_o4",
+              "text": "A hash code must remain the same across every program execution."
+            }
+          ],
+          "answer": "CSE13C_maps_equals_o1"
+        },
+        {
+          "id": "CSE13C_maps_mutable",
+          "title": "Mutation breaks lookup",
+          "prompt": "A Person key hashes and compares by surname. After insertion, its surname changes in place. Explain why lookup may fail and propose a sound update policy.",
+          "skillId": "CSE13C_maps_identity",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "open",
+          "explanation": "Lookup uses the new surname/hash while the table was organized using the old one.",
+          "rubric": [
+            "The entry remains in a bucket selected from the old hash.",
+            "Use immutable key data or remove before mutation and reinsert afterward.",
+            "Explain that resizing alone is not a reliable application-level repair policy."
+          ]
+        },
+        {
+          "id": "CSE13C_maps_rehash",
+          "title": "Rehash placement",
+          "prompt": "Keys 8,15,22 were hashed modulo 7. After rehashing into capacity 11 with separate chaining, what bucket index receives 22?",
+          "skillId": "CSE13C_maps_hash",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "integer",
+          "explanation": "Recompute the compression: 22 mod 11=0. Old bucket numbers cannot be retained.",
+          "answer": "0"
+        },
+        {
+          "id": "CSE13C_maps_multiset",
+          "title": "A frequency representation",
+          "prompt": "Design a structure supporting add(x), removeOne(x), and count(x) for duplicate integers. State absent-key behavior and expected operation costs using hashing.",
+          "skillId": "CSE13C_maps_map",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "open",
+          "explanation": "A set loses counts. A frequency map compactly represents the multiset while retaining duplicate information.",
+          "rubric": [
+            "Use a map from value to nonnegative occurrence count.",
+            "Increment on add, decrement on remove, erase at zero and define missing removal.",
+            "Expected O(1) under hashing/load assumptions; distinguish multiplicity from number of keys."
+          ]
+        },
+        {
+          "id": "CSE13C_maps_rangequery",
+          "title": "Ordered queries",
+          "prompt": "An application frequently asks for all keys in [a,b] as well as exact lookup. Compare an unordered hash map and a balanced search tree with k reported keys.",
+          "skillId": "CSE13C_maps_map",
+          "sourceIds": [
+            "CSE13C_src_maps",
+            "CSE13C_src_book_maps"
+          ],
+          "kind": "open",
+          "explanation": "Hashing optimizes equality lookup; ordered traversal needs ordering information.",
+          "rubric": [
+            "Hash-map range retrieval generally scans all n entries.",
+            "A balanced tree can locate the lower bound in O(log n) then traverse k results in O(k).",
+            "State O(log n+k) output-sensitive cost and the exact-lookup tradeoff."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_bst",
+      "name": "Binary search trees and ordered operations",
+      "description": "Maintain global key bounds, delete correctly, and augment a BST with useful summaries.",
+      "prerequisites": [
+        "CSE13C_trees",
+        "CSE13C_maps"
+      ],
+      "sourceIds": [
+        "CSE13C_src_balanced",
+        "CSE13C_src_book_balanced"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_bst_order",
+          "name": "BST ordering",
+          "description": "Use subtree-wide rather than local ordering constraints."
+        },
+        {
+          "id": "CSE13C_bst_update",
+          "name": "BST updates",
+          "description": "Perform search, insertion and deletion."
+        },
+        {
+          "id": "CSE13C_bst_augment",
+          "name": "Augmentation",
+          "description": "Maintain subtree sizes for rank and selection."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "The invariant applies to entire subtrees",
+          "paragraphs": [
+            "With distinct keys, every key in a node's left subtree is smaller and every key in its right subtree is larger. Checking only the immediate children is insufficient. Search follows exactly one branch at each comparison, so time is O(h), where h is tree height.",
+            "Inserting sorted keys into a plain BST creates a chain with h=n-1. The name search tree does not guarantee logarithmic operations. An inorder traversal emits keys in increasing order because the left subtree, node and right subtree satisfy the global bounds."
+          ]
+        },
+        {
+          "title": "Worked deletion",
+          "paragraphs": [
+            "Insert 8,3,11,1,6,9,14,4,7 into an empty BST. Deleting 3 with the inorder successor replaces its key/value by 4, the minimum in its right subtree, then deletes the old node holding 4. Deleting a two-child node is reduced to deleting a node with at most one child.",
+            "For a leaf, unlink it. For a one-child node, connect its parent directly to that child, updating parent pointers and possibly the root. If clients hold entry handles, distinguish moving entries from merely copying a key, because handle identity may be observable."
+          ]
+        },
+        {
+          "title": "Validation and augmentation",
+          "paragraphs": [
+            "Validate a BST by passing an allowed lower and upper key bound into each recursive call. Tighten the upper bound when descending left and the lower bound when descending right. This catches a deep descendant that crosses an ancestor's boundary. State a duplicate-key policy explicitly.",
+            "Store size(x)=1+size(left)+size(right). To select the kth smallest key with one-based rank, compare k to size(left)+1. Move left when smaller, return the node on equality, or move right with k reduced by size(left)+1. Every insertion, deletion and rotation must maintain sizes along affected paths."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_bst_successor",
+          "title": "Successor after insertion",
+          "prompt": "Insert 8,3,11,1,6,9,14,4,7 into a distinct-key BST. What is the inorder successor of 3?",
+          "skillId": "CSE13C_bst_update",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "integer",
+          "explanation": "The successor is the minimum of 3's right subtree.",
+          "answer": "4"
+        },
+        {
+          "id": "CSE13C_bst_chain",
+          "title": "Worst-case height",
+          "prompt": "Insert 1,2,3,4,5,6 into an ordinary empty BST. What is its height measured in edges?",
+          "skillId": "CSE13C_bst_order",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "integer",
+          "explanation": "All insertions go right, forming a six-node chain.",
+          "answer": "5"
+        },
+        {
+          "id": "CSE13C_bst_global",
+          "title": "Local checks miss a violation",
+          "prompt": "Root 10 has left child 5; node 5 has right child 12. Every immediate left/right comparison holds. Is this a BST? Explain a validator that catches the problem.",
+          "skillId": "CSE13C_bst_order",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "The right child of 5 must be greater than 5 and still less than 10. Local child comparisons lose the second constraint.",
+          "rubric": [
+            "Reject because 12 lies in the left subtree of 10.",
+            "Pass ancestor bounds through recursion.",
+            "Explain O(n) time and handle duplicates under an explicit policy."
+          ]
+        },
+        {
+          "id": "CSE13C_bst_delete_root",
+          "title": "Delete a root with one child",
+          "prompt": "A BST root 5 has no left child and right child 8, which itself has child 7. Describe deleting 5 without losing the subtree.",
+          "skillId": "CSE13C_bst_update",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "No successor search is needed when only one child exists; promote the entire child subtree.",
+          "rubric": [
+            "Set root to the old right child 8.",
+            "If parent pointers exist, clear the new root's parent.",
+            "Preserve 8's child 7, update size and handle the old root's ownership."
+          ]
+        },
+        {
+          "id": "CSE13C_bst_select",
+          "title": "Rank with subtree sizes",
+          "prompt": "At a BST node, the left subtree has 6 keys. You seek the 10th smallest key in this node's whole subtree. What rank do you seek after moving right?",
+          "skillId": "CSE13C_bst_augment",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "integer",
+          "explanation": "Skip six left keys and the node itself: 10-7=3.",
+          "answer": "3"
+        },
+        {
+          "id": "CSE13C_bst_predecessor",
+          "title": "Predecessor without a left child",
+          "prompt": "Describe how to find the predecessor of a node with no left child when parent pointers exist. Include the case where no predecessor exists.",
+          "skillId": "CSE13C_bst_update",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "An ancestor reached from the left is greater than the target; the first right-side ancestor is the closest smaller candidate.",
+          "rubric": [
+            "Walk upward while arriving from a left child.",
+            "The first ancestor reached from its right subtree is the predecessor.",
+            "If no such ancestor exists, the key is the minimum and has no predecessor."
+          ]
+        },
+        {
+          "id": "CSE13C_bst_augmentation",
+          "title": "Maintain sizes after a rotation",
+          "prompt": "A right rotation promotes y=x.left above x. Explain the order for recomputing subtree sizes of x and y and why untouched subtrees need no recomputation.",
+          "skillId": "CSE13C_bst_augment",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "The new size of y depends on the new size of x, so recomputing y first can use stale information.",
+          "rubric": [
+            "Reconnect the middle subtree and links correctly.",
+            "Recompute demoted x first using its new children, then promoted y.",
+            "Use existing sizes of unchanged subtrees; constant metadata work per rotation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_balanced",
+      "name": "AVL, (2,4) and red-black trees",
+      "description": "Recover balanced search-tree invariants after updates and relate binary and multiway representations.",
+      "prerequisites": [
+        "CSE13C_bst"
+      ],
+      "sourceIds": [
+        "CSE13C_src_balanced",
+        "CSE13C_src_book_balanced"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_balanced_avl",
+          "name": "AVL balancing",
+          "description": "Select rotations from path shape and maintain heights."
+        },
+        {
+          "id": "CSE13C_balanced_multiway",
+          "name": "Multiway balancing",
+          "description": "Split, transfer and fuse while preserving leaf depth."
+        },
+        {
+          "id": "CSE13C_balanced_redblack",
+          "name": "Red-black invariants",
+          "description": "Reason about color constraints and the multiway correspondence."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "AVL controls local height difference",
+          "paragraphs": [
+            "An AVL node's child subtree heights differ by at most one. With null height -1 and leaf height 0, store and update heights bottom-up. On insertion, identify the first unbalanced ancestor and the directions of the path through its heavier child and grandchild. Straight left-left or right-right paths need one rotation; zigzags need two.",
+            "Worked left-right case: insert 30,10,20. Node 30 becomes left-heavy but its child 10 is right-heavy. Rotate left at 10, then right at 30, yielding root 20 with children 10 and 30. Inorder order remains unchanged. After deletion, height reductions can propagate and require repairs at several ancestors."
+          ]
+        },
+        {
+          "title": "Multiway search nodes",
+          "paragraphs": [
+            "A (2,4) tree stores one to three keys per ordinary node and, for internal nodes, two to four children separated by those keys. All external leaves lie at the same depth. Insertion descends to a leaf-level node; overflow temporarily creates four keys, so promote a middle key and split into legal nodes. Splits may reach and replace the root.",
+            "Deletion can leave a node without enough keys. Borrow from an adjacent sibling through a separator key if the sibling has spare capacity; otherwise fuse with a sibling and parent separator. A root that loses its last key can be replaced by its only child. These operations preserve key intervals and uniform external-leaf depth."
+          ]
+        },
+        {
+          "title": "Red-black correspondence and cost",
+          "paragraphs": [
+            "In the conventional sentinel model, null leaves and the root are black, a red node cannot have a red child, and every path from a node to a descendant null leaf has the same number of black nodes. Collapsing red children into their black parent yields a (2,4) node. Equal black height and no adjacent red nodes bound total height by O(log n).",
+            "A new ordinary node is inserted red, then repaired. A red parent with a red uncle permits recoloring and may propagate a conflict upward; a black uncle calls for restructuring and recoloring. Removing a black node may create a black-height deficit that must be transferred, recolored or rotated away. Red-black trees are height-balanced in an asymptotic sense but need not satisfy the stricter AVL difference of one."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_balanced_lr",
+          "title": "AVL double rotation",
+          "prompt": "Insert 30,10,20 into an empty AVL tree. What key is at the root after rebalancing?",
+          "skillId": "CSE13C_balanced_avl",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "integer",
+          "explanation": "A left rotation at 10 followed by a right rotation at 30 promotes 20.",
+          "answer": "20"
+        },
+        {
+          "id": "CSE13C_balanced_balance",
+          "title": "AVL height convention",
+          "prompt": "An AVL candidate node has left-subtree height 3 and right-subtree height 1. With balance=left minus right, what is its balance factor?",
+          "skillId": "CSE13C_balanced_avl",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "integer",
+          "explanation": "3-1=2, which violates the allowed absolute difference of at most one.",
+          "answer": "2"
+        },
+        {
+          "id": "CSE13C_balanced_split",
+          "title": "Split with a stated convention",
+          "prompt": "A leaf-level (2,4) node overflows to [4,9,13,18]. Promote the lower middle key. Which key moves to the parent?",
+          "skillId": "CSE13C_balanced_multiway",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "integer",
+          "explanation": "With the specified lower-middle convention, promote 9, leaving [4] and [13,18].",
+          "answer": "9"
+        },
+        {
+          "id": "CSE13C_balanced_avldelete",
+          "title": "Insertion versus deletion repair",
+          "prompt": "Explain why repairing the first AVL imbalance can finish insertion rebalancing, whereas deletion can require continuing toward the root.",
+          "skillId": "CSE13C_balanced_avl",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "Deletion removes height that ancestors may have relied on; a local repair need not stop the effect.",
+          "rubric": [
+            "Insertion repair restores the affected subtree's previous height.",
+            "Deletion repair may leave a subtree shorter than before.",
+            "Explain how that height change can unbalance another ancestor and why heights must be updated."
+          ]
+        },
+        {
+          "id": "CSE13C_balanced_rbviolation",
+          "title": "Which red-black rule fails?",
+          "prompt": "A black root has a red left child whose left child is also red. Assume all null leaves are black. Which explicit invariant is already violated, regardless of remaining structure?",
+          "skillId": "CSE13C_balanced_redblack",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "choice",
+          "explanation": "Two adjacent red ordinary nodes violate the no-red-parent/red-child rule.",
+          "options": [
+            {
+              "id": "CSE13C_balanced_rbviolation_o1",
+              "text": "Keys must be consecutive integers."
+            },
+            {
+              "id": "CSE13C_balanced_rbviolation_o2",
+              "text": "A red node cannot have a red child."
+            },
+            {
+              "id": "CSE13C_balanced_rbviolation_o3",
+              "text": "All ordinary leaves must be red."
+            },
+            {
+              "id": "CSE13C_balanced_rbviolation_o4",
+              "text": "Every black node must have two nonnull children."
+            }
+          ],
+          "answer": "CSE13C_balanced_rbviolation_o2"
+        },
+        {
+          "id": "CSE13C_balanced_borrow",
+          "title": "Repair a multiway underflow",
+          "prompt": "A parent has separator 20; its two leaf-level children are an empty left node and right node [30,40]. Describe borrowing to repair the underflow.",
+          "skillId": "CSE13C_balanced_multiway",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "The repaired local structure is parent [30] with children [20] and [40]. Directly moving 40 to the left would violate ordering.",
+          "rubric": [
+            "Move separator 20 into the left child.",
+            "Move smallest right key 30 into the parent.",
+            "Leave [40] on the right, preserving ordered intervals and leaf depth."
+          ]
+        },
+        {
+          "id": "CSE13C_balanced_collapse",
+          "title": "Collapse a red-black fragment",
+          "prompt": "A black node 20 has red children 10 and 30, and those children have only black child roots or null leaves. What keys occur in the corresponding single (2,4) node? Explain the child intervals.",
+          "skillId": "CSE13C_balanced_redblack",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "Red links join keys within one multiway node; black links cross to another multiway level.",
+          "rubric": [
+            "Collapse to [10,20,30].",
+            "Describe four ordered child intervals: below 10, between 10/20, between 20/30, above 30.",
+            "Do not collapse black grandchildren into the same node."
+          ]
+        },
+        {
+          "id": "CSE13C_balanced_deletion_case",
+          "title": "A red leaf versus a black leaf",
+          "prompt": "Explain why deleting a red leaf from a valid red-black tree is locally simple, while deleting a black leaf can require repair. State the path property involved.",
+          "skillId": "CSE13C_balanced_redblack",
+          "sourceIds": [
+            "CSE13C_src_balanced",
+            "CSE13C_src_book_balanced"
+          ],
+          "kind": "open",
+          "explanation": "The difficult issue is restoring equal black counts, not merely finding the key or preserving search order.",
+          "rubric": [
+            "Removing a red leaf does not change black counts to null leaves.",
+            "Removing a black leaf creates unequal black height on affected paths.",
+            "Describe the need for sibling-based recoloring/restructuring without claiming every deletion needs rotation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_graph_traversal",
+      "name": "Graph representations, DFS, BFS and DAGs",
+      "description": "Model relationships, analyze representations and use traversal invariants for reachability, shortest unweighted paths and dependency order.",
+      "prerequisites": [
+        "CSE13C_stack_queue",
+        "CSE13C_maps",
+        "CSE13C_trees"
+      ],
+      "sourceIds": [
+        "CSE13C_src_graphs",
+        "CSE13C_src_graph_alg",
+        "CSE13C_src_book_graph"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_graph_traversal_model",
+          "name": "Graph models",
+          "description": "Count degrees and compare storage choices."
+        },
+        {
+          "id": "CSE13C_graph_traversal_search",
+          "name": "Graph traversal",
+          "description": "Trace BFS/DFS and detect disconnected components."
+        },
+        {
+          "id": "CSE13C_graph_traversal_dag",
+          "name": "DAG reasoning",
+          "description": "Produce topological orders or expose a directed cycle."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Representation determines traversal cost",
+          "paragraphs": [
+            "A graph consists of vertices and edges; state whether edges are directed, weighted, duplicated or self-loops. For a simple undirected graph, the maximum edge count is n(n-1)/2 and the sum of degrees is 2m. For a directed graph, each edge contributes one outgoing and one incoming incidence.",
+            "An adjacency list uses O(n+m) space and enumerates a vertex's neighbors in time proportional to its degree. An adjacency matrix uses Theta(n^2) space and supports an edge-existence check in O(1), but scanning one row costs Theta(n). Adjacency maps offer expected constant-time keyed edge lookup, under hashing assumptions, without matrix storage."
+          ]
+        },
+        {
+          "title": "Worked traversal",
+          "paragraphs": [
+            "For the undirected edges A-B, A-C, B-D, C-D, D-E, BFS from A with alphabetical neighbor order discovers A,B,C,D,E. Distances are 0,1,1,2,3. Mark vertices when enqueuing, so D is not queued twice when reached from both B and C. A predecessor map reconstructs one shortest path.",
+            "DFS follows one branch fully before backtracking. With the same ordering its discovery order is A,B,D,C,E. Recursive DFS marks a vertex before exploring its neighbors. To count components, start a new search at every still-unvisited vertex. An adjacency-list whole-graph traversal takes O(n+m), including isolated vertices."
+          ]
+        },
+        {
+          "title": "Dependency order and cycle detection",
+          "paragraphs": [
+            "A topological ordering places each source before its target on every directed edge. Kahn's algorithm repeatedly removes a zero-indegree vertex and decreases its outgoing neighbors' indegrees. If fewer than n vertices are removed, the remaining graph contains a directed cycle. More than one available zero-indegree vertex can give multiple valid orders.",
+            "Directed DFS can detect a cycle through an edge to a currently active ancestor, using unvisited/active/finished states. An edge to an already finished vertex does not by itself prove a cycle. Reverse finish order is topological for a DAG. For undirected DFS, ignore the parent edge when looking for a back edge."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_graph_traversal_edges",
+          "title": "Maximum simple edges",
+          "prompt": "How many edges can a simple undirected graph on 9 vertices have at most?",
+          "skillId": "CSE13C_graph_traversal_model",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "integer",
+          "explanation": "Choose an unordered pair of endpoints: 9*8/2=36.",
+          "answer": "36"
+        },
+        {
+          "id": "CSE13C_graph_traversal_degrees",
+          "title": "Degree-sum audit",
+          "prompt": "An undirected graph has vertex degrees 3,3,2,2,2,0. How many edges does it have?",
+          "skillId": "CSE13C_graph_traversal_model",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "integer",
+          "explanation": "The degree sum is 12, and each edge contributes two.",
+          "answer": "6"
+        },
+        {
+          "id": "CSE13C_graph_traversal_bfs",
+          "title": "Unweighted distance",
+          "prompt": "In an undirected graph with edges A-B, A-C, B-D, C-E, E-F, D-F, what is the minimum number of edges from A to F?",
+          "skillId": "CSE13C_graph_traversal_search",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "integer",
+          "explanation": "Both A-B-D-F and A-C-E-F use three edges; BFS reaches F in layer three.",
+          "answer": "3"
+        },
+        {
+          "id": "CSE13C_graph_traversal_enqueue",
+          "title": "Duplicate BFS work",
+          "prompt": "A BFS marks a vertex visited only when dequeuing and unconditionally queues every apparently unvisited neighbor. Explain the duplicate-queue problem on a diamond A-B,A-C,B-D,C-D, and fix it.",
+          "skillId": "CSE13C_graph_traversal_search",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "Discovery is the moment a shortest BFS route is established. Deferring the mark allows redundant frontier entries.",
+          "rubric": [
+            "Show B and C can both enqueue D before D is dequeued.",
+            "Mark discovered at enqueue time and enqueue each vertex once.",
+            "Explain stable first-discovery predecessor/distance and O(n+m) traversal."
+          ]
+        },
+        {
+          "id": "CSE13C_graph_traversal_topo",
+          "title": "Order a three-vertex dependency graph",
+          "prompt": "A DAG has vertices A,B,C,D and edges A-C, B-C, C-D. How many topological orderings exist?",
+          "skillId": "CSE13C_graph_traversal_dag",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "integer",
+          "explanation": "Only A,B can swap; both precede C, which precedes D.",
+          "answer": "2"
+        },
+        {
+          "id": "CSE13C_graph_traversal_cycle",
+          "title": "Diagnose a dependency cycle",
+          "prompt": "Run Kahn's reasoning on A->B, B->C, C->A, C->D. Explain why no initial zero-indegree vertex exists and why deleting an arbitrary edge is not a justified scheduling solution.",
+          "skillId": "CSE13C_graph_traversal_dag",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "Topological sort detects inconsistent dependencies; it cannot choose which requirement is expendable.",
+          "rubric": [
+            "Compute positive indegrees for A,B,C,D.",
+            "Identify the cycle A->B->C->A and report unschedulable constraints.",
+            "Explain that removing an edge changes requirements and needs a domain decision."
+          ]
+        },
+        {
+          "id": "CSE13C_graph_traversal_matrix",
+          "title": "Sparse traversal cost",
+          "prompt": "A graph has n vertices and m=2n edges. Compare traversing the entire graph using an adjacency matrix versus adjacency lists, including storage.",
+          "skillId": "CSE13C_graph_traversal_model",
+          "sourceIds": [
+            "CSE13C_src_graphs",
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "A sparse edge count does not shrink the matrix rows.",
+          "rubric": [
+            "Lists use O(n+m)=O(n) storage and traversal.",
+            "A matrix uses Theta(n^2) storage and scans n entries per visited vertex.",
+            "Note matrix constant-time edge queries may still be a reason to choose it for a different workload."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_weighted_graphs",
+      "name": "Shortest paths and minimum spanning trees",
+      "description": "Separate route optimization from network construction, trace greedy algorithms and justify their preconditions.",
+      "prerequisites": [
+        "CSE13C_graph_traversal",
+        "CSE13C_heaps",
+        "CSE13C_balanced"
+      ],
+      "sourceIds": [
+        "CSE13C_src_graph_alg",
+        "CSE13C_src_book_graph"
+      ],
+      "skills": [
+        {
+          "id": "CSE13C_weighted_graphs_shortest",
+          "name": "Shortest paths",
+          "description": "Relax edges and reconstruct Dijkstra paths."
+        },
+        {
+          "id": "CSE13C_weighted_graphs_mst",
+          "name": "Minimum spanning trees",
+          "description": "Use cut/cycle reasoning with Prim and Kruskal."
+        },
+        {
+          "id": "CSE13C_weighted_graphs_design",
+          "name": "Algorithm selection",
+          "description": "Choose algorithms from graph assumptions and required output."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Dijkstra maintains tentative routes",
+          "paragraphs": [
+            "Initialize the source distance to zero and all others to infinity. Repeatedly extract the unsettled vertex of smallest tentative distance, settle it, then relax outgoing edges: if d[u]+w(u,v)<d[v], update d[v] and its predecessor. With nonnegative weights, no later route through an unsettled vertex can improve a settled distance.",
+            "Worked directed example: A->B=7, A->C=2, C->B=1, B->D=3, C->D=8. Settle A then C, improving B from 7 to 3 and setting D=10. Settle B and improve D to 6; settle D last. The path A,C,B,D has weight 6. A tentative distance before extraction is not necessarily final."
+          ]
+        },
+        {
+          "title": "A spanning tree solves another problem",
+          "paragraphs": [
+            "An MST connects all vertices of a connected undirected weighted graph with minimum total edge weight. It has n-1 edges and need not give shortest paths from any chosen source. Negative edge weights are allowed for MSTs; disconnected input instead admits a minimum spanning forest.",
+            "Kruskal processes edges in increasing weight and joins endpoints only when they belong to different components, using a disjoint-set structure. Prim grows one tree by repeatedly choosing the lightest edge crossing from that tree to an outside vertex. Neither algorithm should confuse edge weight with total source-to-vertex distance."
+          ]
+        },
+        {
+          "title": "Correctness and complexity",
+          "paragraphs": [
+            "The cut property says a lightest crossing edge is safe for some MST, and a uniquely lightest crossing edge belongs to every MST. If a chosen MST lacks a safe edge, adding it creates a cycle; remove another crossing edge no lighter to obtain an equally good or better tree. Ties can allow multiple MSTs.",
+            "Using adjacency lists and an adaptable binary heap, Dijkstra and Prim run in O((n+m) log n); simple dense-array versions take O(n^2). Kruskal typically costs O(m log m) for sorting plus near-linear disjoint-set work with rank and path compression. Always account for output size and unreachable vertices."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13C_weighted_graphs_distance",
+          "title": "Dijkstra final distance",
+          "prompt": "For directed edges A->B=7, A->C=2, C->B=1, B->D=3, C->D=8, what is the shortest distance from A to D?",
+          "skillId": "CSE13C_weighted_graphs_shortest",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "integer",
+          "explanation": "A-C-B-D costs 2+1+3=6, improving both initial routes to D.",
+          "answer": "6"
+        },
+        {
+          "id": "CSE13C_weighted_graphs_negative",
+          "title": "A violated precondition",
+          "prompt": "Give a directed three-vertex example with one negative edge and no negative cycle where Dijkstra's settle-once rule can finalize a wrong distance. Explain the failure.",
+          "skillId": "CSE13C_weighted_graphs_shortest",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "A later path through B can improve A because a negative edge reverses the ordering argument.",
+          "rubric": [
+            "For example use S->A=2, S->B=5, B->A=-4.",
+            "Show A settles at 2 before B, although the true distance is 1.",
+            "Identify nonnegative weights as the missing condition and avoid claiming BFS repairs the problem."
+          ]
+        },
+        {
+          "id": "CSE13C_weighted_graphs_kruskal",
+          "title": "MST total weight",
+          "prompt": "An undirected graph has edges AB=1, BC=2, AC=4, CD=3, BD=5. What is the total weight of an MST?",
+          "skillId": "CSE13C_weighted_graphs_mst",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "integer",
+          "explanation": "Kruskal accepts AB, BC, CD, connecting all four vertices with weight 1+2+3=6.",
+          "answer": "6"
+        },
+        {
+          "id": "CSE13C_weighted_graphs_prim",
+          "title": "Prim versus Dijkstra",
+          "prompt": "In Prim's algorithm, what key is maintained for a vertex outside the current tree?",
+          "skillId": "CSE13C_weighted_graphs_mst",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "choice",
+          "explanation": "Prim minimizes the next connecting edge, not the accumulated distance from a source.",
+          "options": [
+            {
+              "id": "CSE13C_weighted_graphs_prim_o1",
+              "text": "Its shortest known source-to-vertex path length."
+            },
+            {
+              "id": "CSE13C_weighted_graphs_prim_o2",
+              "text": "The minimum weight of an edge connecting it to the current tree."
+            },
+            {
+              "id": "CSE13C_weighted_graphs_prim_o3",
+              "text": "Its degree."
+            },
+            {
+              "id": "CSE13C_weighted_graphs_prim_o4",
+              "text": "The total weight of all edges incident to it."
+            }
+          ],
+          "answer": "CSE13C_weighted_graphs_prim_o2"
+        },
+        {
+          "id": "CSE13C_weighted_graphs_not_path",
+          "title": "MST is not a shortest-path tree",
+          "prompt": "For an undirected triangle AB=2, BC=2, AC=3, compare the MST route from A to C with the shortest path. What distinction does this demonstrate?",
+          "skillId": "CSE13C_weighted_graphs_design",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "Optimizing the sum of selected edges is a different objective from optimizing each path from a source.",
+          "rubric": [
+            "MST uses AB and BC with total tree weight 4.",
+            "Its A-to-C route costs 4 while direct AC costs 3.",
+            "Explain total network weight versus one-source route distances."
+          ]
+        },
+        {
+          "id": "CSE13C_weighted_graphs_cut",
+          "title": "Prove a safe edge",
+          "prompt": "Explain an exchange argument proving that a lightest edge crossing a cut can be included in some MST. Address equal weights.",
+          "skillId": "CSE13C_weighted_graphs_mst",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "Every cycle crossing a cut must cross back. This supplies the exchange edge.",
+          "rubric": [
+            "Add the edge to an MST that lacks it, producing a cycle.",
+            "Find another cycle edge crossing the same cut and remove it.",
+            "Its weight is no smaller, so total weight does not rise; ties do not imply uniqueness."
+          ]
+        },
+        {
+          "id": "CSE13C_weighted_graphs_choose",
+          "title": "Choose by the output contract",
+          "prompt": "Choose methods for (a) fewest edges in an unweighted directed graph, (b) cheapest route with nonnegative fares, and (c) minimum total cable cost connecting an undirected network. State a precondition and cost for each.",
+          "skillId": "CSE13C_weighted_graphs_design",
+          "sourceIds": [
+            "CSE13C_src_graph_alg",
+            "CSE13C_src_book_graph"
+          ],
+          "kind": "open",
+          "explanation": "The graph's weights and the requested output determine which invariant can justify a greedy choice.",
+          "rubric": [
+            "Use BFS for fewest edges with O(n+m) adjacency-list cost.",
+            "Use Dijkstra for nonnegative route weights, O((n+m) log n) with a binary heap.",
+            "Use Prim or Kruskal for MST/forest and give a compatible cost."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import { LearningProvider } from '../src/learning/LearningProvider';
 import { emptyBackup, type LoadedState } from '../src/learning/contracts';
 import { IndexedStudentRepository, type StudentRepository } from '../src/learning/repository';
 import { position, repository } from './helpers/learning';
-import { academicIndex, topicPath } from '../src/academic/navigation';
+import { academicIndex, courses, topicPath } from '../src/academic/navigation';
 Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true});
 let container: HTMLDivElement; let root: Root;
 beforeEach(() => { container = document.createElement('div'); document.body.append(container); root = createRoot(container); vi.spyOn(window, 'scrollTo').mockImplementation(() => {}); });
@@ -34,7 +34,7 @@ describe('student data UI', () => {
   it('shows no fabricated data on a fresh Dashboard', async () => {
     await mount(repository()); expect(container.textContent).not.toContain('Resume last topic');
     expect(container.textContent).not.toMatch(/streak/);
-    await vi.waitFor(() => expect(container.querySelectorAll('.ds-course-completion [role=progressbar]')).toHaveLength(3));
+    await vi.waitFor(() => expect(container.querySelectorAll('.ds-course-completion [role=progressbar]')).toHaveLength(courses.filter(course=>course.trimester===1).length));
     const completion = [...container.querySelectorAll<HTMLElement>('.ds-course-completion [role=progressbar]')];
     expect(completion.every(item => item.getAttribute('aria-valuenow') === '0')).toBe(true);
   });

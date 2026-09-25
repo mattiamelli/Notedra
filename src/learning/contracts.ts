@@ -1,5 +1,5 @@
 import {validateExamData, type ExamSession, type ExamReview} from '../exams/records';
-import references from '../generated/student-references.json';
+import {studentReferences as references} from './references';
 
 export const STUDENT_SCHEMA_VERSION = 3 as const;
 export const CONTENT = Object.freeze(references.content);

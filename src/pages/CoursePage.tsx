@@ -18,12 +18,15 @@ import { ShellIcon } from '../shell/ShellIcon';
 import {useI18n} from '../i18n/i18n';
 import {track} from '../analytics/analytics';
 import {useTrackOnce} from '../analytics/react';
+import {lazy, Suspense} from 'react';
+const CurriculumCourseContent=lazy(()=>import('../curriculum/CourseContent'));
 const advancedCounts=new Map(advancedCapabilities.map(item=>[item.topicId,item.count]));
 const advancedCount=(topicId:string)=>advancedCounts.get(topicId)??0;
 export function CoursePage({course}: {course: Course}) {
   const {t}=useI18n();
   useTrackOnce(course.subject_id,()=>track('course_opened',{course_id:course.subject_id,activity_type:'course',source_surface:'course'}));
   const topics = topicsFor(course.subject_id);
+  if(course.trimester!==1)return <Suspense fallback={<p role="status">Loading course...</p>}><CurriculumCourseContent course={course}/></Suspense>;
   return <div data-course={course.subject_id}>
     <div className="ds-course-intro"><PageHeading eyebrow={course.compactName} title={course.publicName}><p>{t('course.catalogueCount',{count:topics.length})}</p>{['CSE1400_CO','CSE1300_RL'].includes(course.subject_id)&&<p>{t('course.orderHelp')}</p>}</PageHeading><div className="ds-study-next"><a className="ds-button" href="#topics-title">{t('course.explore')} <ShellIcon name="arrow" size={17}/></a><Link className="ds-text-link" to={`/study-plan?course=${course.subject_id}`}>{t('course.next')}</Link></div></div>
     <section className={`ds-section ds-tone-${course.tone}`} aria-labelledby="topics-title"><div className="ds-section-heading"><h2 id="topics-title">{t('course.topics')}</h2></div>

@@ -2,10 +2,11 @@
 import {act} from 'react';
 import {createRoot,type Root} from 'react-dom/client';
 import {MemoryRouter} from 'react-router';
-import {afterEach,beforeEach,describe,expect,it} from 'vitest';
+import {afterEach,beforeEach,describe,expect,it,vi} from 'vitest';
 import {AccountPage} from '../src/accounts/AccountPage';
 import {AppShell} from '../src/shell/AppShell';
-import {LANGUAGE_STORAGE_KEY,LanguageProvider,loadMessages,readLanguage,translate} from '../src/i18n/i18n';
+import {LANGUAGE_STORAGE_KEY,LanguageProvider,loadMessages,readLanguage,translate,useI18n} from '../src/i18n/i18n';
+import {courses,trimesters} from '../src/academic/navigation';
 import {en,languages} from '../src/i18n/messages';
 import {allExercises} from '../src/practice/catalog';
 import {MasteryCard} from '../src/progress/IndexCard';
@@ -18,7 +19,7 @@ import deContent from '../public/i18n-content/de.json';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let host:HTMLDivElement,root:Root;
 beforeEach(async()=>{await Promise.all(languages.map(loadMessages));localStorage.clear();host=document.createElement('div');document.body.append(host);root=createRoot(host);});
-afterEach(async()=>{await act(async()=>root.unmount());host.remove();document.documentElement.lang='en';});
+afterEach(async()=>{await act(async()=>root.unmount());host.remove();document.documentElement.lang='en';vi.unstubAllGlobals();});
 
 describe('centralized interface languages',()=>{
   it('ships a complete stable-key catalog for all five languages',async()=>{
@@ -63,9 +64,20 @@ describe('centralized interface languages',()=>{
   it('localizes grouped navigation without changing its routes',async()=>{
     localStorage.setItem(LANGUAGE_STORAGE_KEY,'fr');
     await act(async()=>root.render(<LanguageProvider><MemoryRouter><AppShell/></MemoryRouter></LanguageProvider>));
-    expect([...host.querySelectorAll('.ds-nav-group')].map(node=>node.textContent)).toEqual(['Principal','Secondaire','Compte']);
-    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.getAttribute('href'))).toEqual(['/dashboard','/dashboard#courses','/practice','/progress','/study-plan','/account#settings']);
-    expect([...host.querySelectorAll('.ds-nav-link')].map(link=>link.textContent)).toEqual(['Accueil','Cours','Exercices','Progression','Parcours d’étude','Paramètres']);
+    expect([...host.querySelectorAll('.ds-nav-section:not(.ds-curriculum-nav) .ds-nav-group')].map(node=>node.textContent)).toEqual(['Principal','Secondaire','Compte']);
+    expect([...host.querySelectorAll('.ds-nav-section:not(.ds-curriculum-nav) .ds-nav-link')].map(link=>link.getAttribute('href'))).toEqual(['/dashboard','/dashboard#courses','/practice','/progress','/study-plan','/account#settings']);
+    expect([...host.querySelectorAll('.ds-nav-section:not(.ds-curriculum-nav) .ds-nav-link')].map(link=>link.textContent)).toEqual(['Accueil','Cours','Exercices','Progression','Parcours d’étude','Paramètres']);
+  });
+  it('keeps all trimester course routes and authored names available in a localized shell',async()=>{
+    localStorage.setItem(LANGUAGE_STORAGE_KEY,'fr');
+    await act(async()=>root.render(<LanguageProvider><MemoryRouter><AppShell/></MemoryRouter></LanguageProvider>));
+    const select=host.querySelector<HTMLSelectElement>('#sidebar-trimester')!;
+    expect([...select.options].map(option=>Number(option.value))).toEqual([...trimesters]);
+    for(const trimester of trimesters){
+      await act(async()=>{select.value=String(trimester);select.dispatchEvent(new Event('change',{bubbles:true}));});
+      const expected=courses.filter(course=>course.trimester===trimester);
+      expect([...host.querySelectorAll('.ds-curriculum-nav .ds-nav-link')].map(link=>[link.getAttribute('href'),link.textContent])).toEqual(expected.map(course=>[course.path,course.publicName]));
+    }
   });
   it('renders the Notedra wordmark as one consistently styled text element',async()=>{
     await act(async()=>root.render(<LanguageProvider><MemoryRouter><AppShell/></MemoryRouter></LanguageProvider>));
@@ -74,10 +86,10 @@ describe('centralized interface languages',()=>{
     expect(name.children).toHaveLength(0);
     expect(host.querySelector('.ds-brand strong,.ds-brand b')).toBeNull();
   });
-  it('localizes every visible exercise text without changing technical notation',()=>{
+  it('retains every legacy exercise translation without changing technical notation',()=>{
     const content={it:itContent,es:esContent,fr:frContent,de:deContent} as const;
     const source=new Set<string>();
-    for(const exercise of allExercises){
+    for(const exercise of allExercises.filter(exercise=>exercise.task.kind!=='curriculum')){
       for(const field of ['title','prompt','rules','explanation'] as const){const text=exercise[field];if(typeof text==='string'&&text.trim())source.add(text);}
       if(exercise.task.kind==='logic-build')for(const slot of exercise.task.slots)source.add(slot.label);
     }
@@ -87,5 +99,18 @@ describe('centralized interface languages',()=>{
       expect(localized,`${language}: ${text}`).toBeTruthy();
       expect(localized.match(technical)?.sort()??[],`${language}: ${text}`).toEqual(text.match(technical)?.sort()??[]);
     }
+  });
+  it.each(['it','es','fr','de'] as const)('preserves authored English curriculum text when %s content translations are unavailable',async language=>{
+    const translated={it:itContent,es:esContent,fr:frContent,de:deContent}[language] as Record<string,string>;
+    const texts=courses.filter(course=>course.trimester!==1).flatMap(course=>{
+      const exercise=allExercises.find(item=>item.subjectId===course.subject_id)!;
+      return [exercise.title,exercise.prompt,exercise.rules,exercise.explanation];
+    }).filter(text=>!Object.hasOwn(translated,text));
+    expect(texts.length).toBeGreaterThan(0);
+    vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>translated})));
+    function CurriculumText(){const {lt}=useI18n();return <div data-curriculum-text>{texts.map((text,index)=><p key={index}>{lt(text)}</p>)}</div>;}
+    localStorage.setItem(LANGUAGE_STORAGE_KEY,language);
+    await act(async()=>root.render(<LanguageProvider><CurriculumText/></LanguageProvider>));
+    expect([...host.querySelectorAll('[data-curriculum-text] p')].map(node=>node.textContent)).toEqual(texts);
   });
 });

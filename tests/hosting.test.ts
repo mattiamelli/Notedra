@@ -6,7 +6,7 @@ const html=(body:string):HostedAsset=>({body,type:'text/html; charset=utf-8',eta
 const manifest:HostingManifest={assets:{'/assets/app-abcdefgh.js':{body:'export {};',type:'text/javascript',etag:'"asset"'},'/favicon.svg':{body:'<svg/>',type:'image/svg+xml',etag:'"svg"'},'/social-preview.png':{body:'aGVsbG8=',type:'image/png',etag:'"png"',encoding:'base64'}},documents:Object.fromEntries(publicDocumentPages().map(p=>[p.path,html(releaseHtml(template,p))])),applicationPaths:['/','/account','/privacy','/terms','/progress','/mistakes','/study-plan','/practice','/exams','/co/CO_T01_HISTORY/mistakes'],shell:html(releaseHtml(template)),notFound:html(releaseHtml(template)),headers:{'Content-Security-Policy':"default-src 'self'; frame-ancestors 'none'",'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Permissions-Policy':'camera=(), microphone=(), geolocation=()','X-Frame-Options':'DENY','Strict-Transport-Security':'max-age=31536000'}};
 const handler=createHandler(manifest),get=(path:string,options?:RequestInit)=>handler.fetch(new Request(productionOrigin+path,options));
 describe('Sites HTTP delivery',()=>{
- for(const prefix of ['/co','/rl','/ip']){
+ for(const prefix of ['/co','/rl','/ip','/calculus','/hci','/data-management','/linear-algebra','/software-engineering','/algorithms','/probability','/networks']){
   const topic=publicReleasePages().find(p=>p.path.startsWith(prefix+'/')&&!p.path.endsWith('/visualizer'))!;
   for(const path of [prefix,topic.path,topic.path+'/learn'])it(path+' has correct initial public head without hydration',async()=>{
    const page=publicDocumentPages().find(p=>p.path===path)!,response=get(path),body=await response.text();
@@ -27,5 +27,5 @@ describe('Sites HTTP delivery',()=>{
   expect(get('/account',{method:'POST'}).status).toBe(405);expect(get('/account',{method:'POST'}).headers.get('Allow')).toBe('GET, HEAD');
  });
  it('supports HEAD and conditional revalidation without body or losing security headers',async()=>{const head=get('/co',{method:'HEAD'}),cached=get('/co',{headers:{'If-None-Match':'"test"'}});expect(head.status).toBe(200);expect(await head.text()).toBe('');expect(cached.status).toBe(304);expect(await cached.text()).toBe('');expect(cached.headers.get('X-Frame-Options')).toBe('DENY');});
- it('adds landing and legal pages while keeping private routes out',()=>{expect(publicReleasePages()).toHaveLength(50);expect(publicDocumentPages()).toHaveLength(93);expect(new Set(publicDocumentPages().map(p=>p.path)).size).toBe(93);});
+ it('adds landing and legal pages while keeping private routes out',()=>{expect(publicReleasePages()).toHaveLength(163);expect(publicDocumentPages()).toHaveLength(311);expect(new Set(publicDocumentPages().map(p=>p.path)).size).toBe(311);});
 });

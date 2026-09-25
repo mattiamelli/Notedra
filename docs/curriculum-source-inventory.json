@@ -1,0 +1,2045 @@
+{
+  "scope": "File inventory and SHA-256, not semantic review",
+  "courses": [
+    {
+      "id": "CSE12A_CALC",
+      "files": [
+        {
+          "path": "CALC Exams/CALC Endterms/CALC Endterm 2019 Solutions.pdf",
+          "bytes": 1238239,
+          "sha256": "2a1edb1c77cc3c628fedf591c4c2dca4393e1865528f67ab170699ae68528713"
+        },
+        {
+          "path": "CALC Exams/CALC Endterms/CALC Endterm 2020 Solutions.pdf",
+          "bytes": 660721,
+          "sha256": "5a15a78820f1f5035735c85dad0875c09b99b35e80336c30a4083e76a89dc3fe"
+        },
+        {
+          "path": "CALC Exams/CALC Endterms/CALC Endterm 2023.pdf",
+          "bytes": 796096,
+          "sha256": "43f194b9ce3875a0e6c592844e5e5e1caa44a9d3094790230d0aa1f00b125cae"
+        },
+        {
+          "path": "CALC Exams/CALC Endterms/CALC Endterm 2024.pdf",
+          "bytes": 573576,
+          "sha256": "6209047230114e2fdae53d9834e8cc532bc81b38f8fb2d14ff726f17e574b78e"
+        },
+        {
+          "path": "CALC Exams/CALC Endterms/CALC Endterm 2025.pdf",
+          "bytes": 566310,
+          "sha256": "3fda974f2f28fc4c6cf20bc1f2c18a734673dab1c778e569f2acfb98888250b7"
+        },
+        {
+          "path": "CALC Exams/CALC Midterms/CALC Midterm 2020 Solutions.pdf",
+          "bytes": 147569,
+          "sha256": "7a73e83f1940f2d4248e2c63eef32a05d89933fc9288e1d0cc3caded2c995135"
+        },
+        {
+          "path": "CALC Exams/CALC Midterms/CALC Midterm 2023.pdf",
+          "bytes": 313050,
+          "sha256": "7638bfc2145e603e9387c5d36a9a65bf373f01029701980d9ff88f0f484b21c5"
+        },
+        {
+          "path": "CALC Exams/CALC Midterms/CALC Midterm 2024.pdf",
+          "bytes": 367406,
+          "sha256": "9489522cc8b0ddb1185ee1756f58ce388ba0243016dec33fa11df18c92b8f7cc"
+        },
+        {
+          "path": "CALC Exams/CALC Midterms/CALC Midterm 2025.pdf",
+          "bytes": 339365,
+          "sha256": "9b35616535d6a33d153ef57166ab0bb87b64630ff5c5bef057f1b10ded415729"
+        },
+        {
+          "path": "CALC Exams/CALC Resits/CALC Resit 2019 Solutions.pdf",
+          "bytes": 271472,
+          "sha256": "2417bce1e77e7a232836495fcb4bd8c79c8abab6d738cff87387b339bce10481"
+        },
+        {
+          "path": "CALC Exams/CALC Resits/CALC Resit 2023.pdf",
+          "bytes": 909363,
+          "sha256": "65050e86ae6f824dc023387b8b2888d004f635d9a5b1b41833c38a63e7aa4ba6"
+        },
+        {
+          "path": "CALC Exams/CALC Resits/CALC Resit 2024.pdf",
+          "bytes": 343374,
+          "sha256": "b0ea3d41da5d99437b6edcc8762b7c95cdae0e1bc4dfe97fcd002079edb635bc"
+        },
+        {
+          "path": "CALC Exams/CALC Resits/CALC Resit 2025 Solutions.pdf",
+          "bytes": 426608,
+          "sha256": "7d69aa88a539f8a046c26cb8365c4604d77df55700402df3dd7925383d670665"
+        },
+        {
+          "path": "CALC Formula Sheet.pdf",
+          "bytes": 696975,
+          "sha256": "79300e26599c326e29a6a56090e059b299c94e4a9473376813e29ed8860bcb66"
+        },
+        {
+          "path": "CALC LLM Files/Instructions.md",
+          "bytes": 4578,
+          "sha256": "5ce7ee99a77c764b3dd2c416a0690dbe9107481364382a38f7919ec388c4a6f8"
+        },
+        {
+          "path": "CALC LLM Files/Knowledge Files/Calculus Early Transcendentals.md",
+          "bytes": 10856579,
+          "sha256": "3182c7592ff62e766e174fc860aee4851dcb007381da793276feac51bcb42f76"
+        },
+        {
+          "path": "CALC LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 53176,
+          "sha256": "c2ab2dbcfd39e297fc54fe22e78a1d3250a34729522100ab97c0ad0a21e89fe8"
+        },
+        {
+          "path": "CALC LLM Files/Knowledge Files/Exams.md",
+          "bytes": 242032,
+          "sha256": "05b33deb5badaf152839184d201c16021797acebf9e1544a7eeec5c192d1a0eb"
+        },
+        {
+          "path": "CALC LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 354635,
+          "sha256": "bb35809362654e8326ceb265a87cdfe232cc7da6f41d706e50780f8e5c431251"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 1 - Functions and Continuity.pdf",
+          "bytes": 3149391,
+          "sha256": "561b9eef0a18117bd8755adba2fd9563b34e40a1f3ec2caeb343953581e67e09"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 10 - Sequences.pdf",
+          "bytes": 2501274,
+          "sha256": "1ee14be6079d7cc1b1b59cd58c97be0eba983349f7e39fd9d52f76c8ecc90fcb"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 11 - Series.pdf",
+          "bytes": 2258206,
+          "sha256": "e3111acf43d23e745b7d75c3a7b573c7977d266f1fd2d1970a8ae8f9b1ad669e"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 12 - Alternating Series and Comparison Test.pdf",
+          "bytes": 1953450,
+          "sha256": "dc29d08d6252c9885a90c9c6d02a40261e20e5ae4e8a2a3c956ea4abdec447d7"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 13 - Ratio Test and Power Series.pdf",
+          "bytes": 2199206,
+          "sha256": "8e657ad5b8a7e6c5b0268ea0780205633abefb9d97a0f753f4570ea9fe021fef"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 14 - Functions as Power Series.pdf",
+          "bytes": 2286363,
+          "sha256": "03bf9cc2f3bad1869ea99e1d48a85bec503c1f7fdee1eb5abb9da11769c0ab25"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 15 - Taylor Series.pdf",
+          "bytes": 1698285,
+          "sha256": "a7bb094f40ba0c49650d5b4f4fd09e1efece376f9ebacd0b54fdbe9e2528d9cb"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 16 - Functions of Several Variables.pdf",
+          "bytes": 4479665,
+          "sha256": "a76272107995cba73dde5d8267f75c68a564057c744c75ccedaae6edded7d453"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 17 - Partial Derivatives and Linearization.pdf",
+          "bytes": 3355257,
+          "sha256": "3114e35b79c9f37e2c0e218e5690ad9d547766ea7b41b35365739ac03727a8fb"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 18 - The Chain Rule and the Directional Derivative.pdf",
+          "bytes": 2836293,
+          "sha256": "4eacc2b15f168265b46b010fd3be707aee9e3a8f468a649c61e8b8340d220959"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 19 - Minimum and Maximum Values.pdf",
+          "bytes": 4003143,
+          "sha256": "db171f7e6e1dce7c591f5b3efbccfdc31cad649b492d9a07b2f8944763901707"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 2 - Limits of Functions.pdf",
+          "bytes": 3373128,
+          "sha256": "2046a3e2a108f7493584b376b38065b615403ca23cf37d53db6b3d8393d84af0"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 20 - Complex Numbers Part 1.pdf",
+          "bytes": 2363338,
+          "sha256": "bd423d77a4c0c3a1df23228f5a2dbb8ce94ea6443279c4128dbbd06a3f7c373b"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 21 - Complex Numbers Part 2.pdf",
+          "bytes": 1586342,
+          "sha256": "a13ebe3d38a24b362e324052a17c14886dbf9d4e8af76c4301e4615a041abed7"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 22 - Integration Over Rectangles.pdf",
+          "bytes": 2157290,
+          "sha256": "0800601cbad963ba61e68739ca7decee60cedab134710d762713082cd1007f77"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 23 - Integration Over General Regions.pdf",
+          "bytes": 2141387,
+          "sha256": "7a8a76cba54107eccdfa22bffad198b8783c7a4e3af289e16f406c9017c34f19"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 24 - Exam Preparation.pdf",
+          "bytes": 2162790,
+          "sha256": "66f001aef3242bbf47404d0a14cdc792c264f03040184d1d166a99f6fc3a1e6a"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 3 - Limits at Infinity (Asymptotes).pdf",
+          "bytes": 3975784,
+          "sha256": "3cb46f3dce6bcdce826b9833686172b5f3debd3b046ff9de270a0978bbda6130"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 4 - Linearization and Extreme Values.pdf",
+          "bytes": 5936407,
+          "sha256": "5f923195e8f7bed97578625d5f124575050eb6dea40e25dcc30635f5c8e06c70"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 5 - Implicit Differentiation and Newton's Method.pdf",
+          "bytes": 2227375,
+          "sha256": "aa7f181a426169d73d2f60fc560f146cebcfcbd5107ca77e0e0baa07001baf99"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 6 - L'Hospital's Rule.pdf",
+          "bytes": 1410118,
+          "sha256": "ecb5e0354f004097deaa9be85bc8e093d425c3a998bd5579d6e65ec6fef9f32a"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 7 - Integrals and the Substitution Rule.pdf",
+          "bytes": 3272961,
+          "sha256": "f726138da2c0d8941a136603c1a66acdb11f73da008cc3f8a3a7002b9b6db79f"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 8 - Integration by Parts.pdf",
+          "bytes": 1432701,
+          "sha256": "2d6af3b0b8d65c69ea8f1c93ae09ab958f627e36eef86dc39b810aa1a8281a21"
+        },
+        {
+          "path": "CALC Lectures/CALC Lecture 9 - Improper Integrals.pdf",
+          "bytes": 1962997,
+          "sha256": "a96de45bd7e6554d51fd97bbc32b249ef17e8754de3231fde5e566ce30cc8dc7"
+        },
+        {
+          "path": "CALC Notes.pdf",
+          "bytes": 323294,
+          "sha256": "8b882f67ea8df4bb04e523987e6b173a301eb445f799b8ccd42a96b270976d38"
+        },
+        {
+          "path": "Calculus Early Transcendentals.pdf",
+          "bytes": 67765130,
+          "sha256": "8951ce32d04840924940275548f2697ceb07a03639a5a5dea8f2ece513246f4b"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2151,
+          "sha256": "2343f7ac55f878eb9c16fe654f10644f8c80070d8943b302d1176fd719114749"
+        }
+      ]
+    },
+    {
+      "id": "CSE12B_HCIAP",
+      "files": [
+        {
+          "path": "From HCI/Designing User Experience.pdf",
+          "bytes": 28641004,
+          "sha256": "3473fcd30c3c10e3b4ddef06cc2df254121371223e26a16ec01ee2ae4d4aecb4"
+        },
+        {
+          "path": "From HCI/HCI Exam Practice/HCI Expert Analysis Practice Solutions.pdf",
+          "bytes": 152237,
+          "sha256": "f5cf8bcfd591e274763573f6684af59224cb0da71ec9a91be4df2a80d257a9ba"
+        },
+        {
+          "path": "From HCI/HCI Exam Practice/HCI General Exam Practice Solutions.pdf",
+          "bytes": 2938133,
+          "sha256": "748c658a11c88aa5b5ed46eec1104f86555e1f197798f741967b3a701cd62aa7"
+        },
+        {
+          "path": "From HCI/HCI Exam Practice/HCI Inclusivity Practice Solutions.pdf",
+          "bytes": 1027376,
+          "sha256": "92c8f40f4bb0113677547c21487f35c40affc8129c3e05ca1577ff7cec0a1e4f"
+        },
+        {
+          "path": "From HCI/HCI LLM Files/Instructions.md",
+          "bytes": 3127,
+          "sha256": "f6e0253ceb18ee3de6cc539000a2e06bf259ae287bda20c8427f4ed2d31d06dc"
+        },
+        {
+          "path": "From HCI/HCI LLM Files/Knowledge Files/Assignments.md",
+          "bytes": 33540,
+          "sha256": "702a7d6ffcf838934f07fb3a1902277eae248fd56d2531812dad843b5d6825eb"
+        },
+        {
+          "path": "From HCI/HCI LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 73172,
+          "sha256": "7dfc2168d9a46a9763b1baae73fce10b85c17f2ea0ce3641f9d621ad78325b20"
+        },
+        {
+          "path": "From HCI/HCI LLM Files/Knowledge Files/Designing User Experience.md",
+          "bytes": 2163987,
+          "sha256": "57cfa043d78ff4b7bb3d26231992ddc2fe7cc4b1cb4a5b5b9c683c9f019e2746"
+        },
+        {
+          "path": "From HCI/HCI LLM Files/Knowledge Files/Exams.md",
+          "bytes": 11992,
+          "sha256": "115e1224de90161fb31128362c49cd791d9ea2eb6c2f723526c546aec4317b5c"
+        },
+        {
+          "path": "From HCI/HCI LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 441744,
+          "sha256": "84ae1c8d3655668d35cc430f043014a36959efc801474200863719f55e9912ef"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 1 - Introduction to HCI.pdf",
+          "bytes": 51666644,
+          "sha256": "0efa15497b9dc80bcbdc7940cba74c0bc38e93856190bead726a63d3b7fd1174"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 2 - Requirements and Information Architecture.pdf",
+          "bytes": 9734107,
+          "sha256": "e4424352efa74ec96c11365bc253cd0fe3bb3f0c75f46389ba121278cd67873f"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 3 - User Experience and Accessibility.pdf",
+          "bytes": 2147827,
+          "sha256": "3d1cccc7fe39578be470da2784b7651a1aec487059daaae8074ab48071fa6ccd"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 4 - Design and Prototyping.pdf",
+          "bytes": 28568936,
+          "sha256": "8fbc434309e210edf9160cee4b5dbd4c259b36b8f7b76849164fb442853d5890"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 5 - Expert Evaluation.pdf",
+          "bytes": 1787225,
+          "sha256": "fc7e19136fc325cd9edceab6d65c41ad083c3f6f94bc0c98670bda61f01fae6a"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 6 - User Evaluation and Controlled Experiments.pdf",
+          "bytes": 1068738,
+          "sha256": "293f2181de5839deedad10a7da6c0fa94a9b37562ada925925b20a1b96dc2e51"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 7 - Interactive Systems.pdf",
+          "bytes": 1476815,
+          "sha256": "2d26197041dece372130521e4b8119812f9b440ce4bb80a86dad4de1c72d6e2d"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 8 - Conversational Interfaces.pdf",
+          "bytes": 6886733,
+          "sha256": "863a527891ac825bc28dc54c59092bb9f0eb72c0b88dc2333f2b038b34c66601"
+        },
+        {
+          "path": "From HCI/HCI Lectures/HCI Lecture 9 - Exam Prep.pdf",
+          "bytes": 226806,
+          "sha256": "c2a80fa9e0a1cb3e0d6b6cef519b57b5666e75dda1633daa20a1efadda05c953"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Endterm 2020.pdf",
+          "bytes": 1057841,
+          "sha256": "6bd473240d6a4b47804760080549f69b72e290cf84d1f090b7bc38247d50c630"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Endterm 2022.pdf",
+          "bytes": 1039859,
+          "sha256": "60576cf4008c296ccafaca606c7fc6fad07f94d3c7a71b5b96d22e80ca76e89d"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Endterm 2024.pdf",
+          "bytes": 801017,
+          "sha256": "0c904ab7575c3979acfa048a92fb48e21acd8c080c4b3292fc9143ca141c72d0"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Practice Endterm.pdf",
+          "bytes": 1040893,
+          "sha256": "7f3395723bf020eb4e91cc461eaffabfa3e0ab0bf84203ca961d5913f5f22d36"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Exams/WDT WEB Resits/WDT WEB Resit 2024.pdf",
+          "bytes": 574104,
+          "sha256": "2a0e0d5fb6cd68244136abae04815ec138a7ac4f63031a339e992106d6a2a31c"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB LLM Files/Instructions.md",
+          "bytes": 3977,
+          "sha256": "ca37c9c34fa260136173721af77a1dc9fa1ca2a68b30ced49f38fa14ff2166e5"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 55700,
+          "sha256": "052f130ac0e7f45bda5d8bb6e6dbed43e5922d343df50fa10a484ab530b2ccc0"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Exams.md",
+          "bytes": 174891,
+          "sha256": "fc036984cc5022eeec2de04eb38b6f351414ee97bfdb4458dcdb45319f8022d2"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Exercises.md",
+          "bytes": 120850,
+          "sha256": "1e320914aac5813268b40e2b36dd0a76468b72d09cbbaa6b2b032c19c2820989"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Lab Assignments.md",
+          "bytes": 37685,
+          "sha256": "7c85c79df7f87c557cdfd822ac96c14cbf253b8b2795bdad3792a65081e5e48c"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 489653,
+          "sha256": "e12a22529c8057411dee2890b4ba63ef4b96faa5d84e1935826bb6dd27de99fa"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lab Assignment Solutions/WDT WEB Lab Assignment 4 Solutions.pdf",
+          "bytes": 279712,
+          "sha256": "30b3881f26a88988a63004c9388279d9384c59208662baf5db66c73d412450b6"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 1 - Why Web Technology & HTTP.pdf",
+          "bytes": 8560079,
+          "sha256": "fb2babc0251f3774b809902a12e647f39aa0f7e71de9ab68d023308999fb5339"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 2 - HTML and CSS.pdf",
+          "bytes": 2852288,
+          "sha256": "9ff12afec43a9b37ec5cea4a7e9b59c0ac6346873bf21e7df765b0650a4b3333"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 3 - JavaScript.pdf",
+          "bytes": 962396,
+          "sha256": "5faf0064baf55648a6e1759d6da6800d06e998cb04daf682162cb6e745d50ab8"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 4 - REST and RESTful APIs.pdf",
+          "bytes": 1209576,
+          "sha256": "3fdc524e047e063741af91855bfbd3775661cd0351662318fe063e3060d6a327"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 5 - NodeJS and Express.pdf",
+          "bytes": 645225,
+          "sha256": "7caa0e0b6d52965f37377f5483c2710c3f4ed5c7b2b2a0090866dc9c8b83169b"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 6 - NodeJS & Postgres & Design Patterns.pdf",
+          "bytes": 851985,
+          "sha256": "5f8f130ab1e38c4773caf95b9c4ac115266959a02550e3fb4e5cd215ac989f1e"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 7 - More About React.pdf",
+          "bytes": 326860,
+          "sha256": "d0624e47f9eb50eb426dd9d252aa75c16629c2bf958f3bc9193b55dbbfc92f29"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 8 - Real-time Applications with Web Sockets.pdf",
+          "bytes": 1007160,
+          "sha256": "f50ebe5f16ef9b7d2296592fd508ffd2e669f012ac129f72c496eaf199303a94"
+        },
+        {
+          "path": "From WDT WEB/WDT WEB Notes.pdf",
+          "bytes": 1421484,
+          "sha256": "2789ea895d9b275db31c583684f6cd63be697a242565bd79fd61dbc3f44caaf7"
+        },
+        {
+          "path": "HCIAP LLM Files/Instructions.md",
+          "bytes": 3499,
+          "sha256": "93798836b8d5aee3f7bc0e2e6b628edcd78ebc449fb61d12581b3edcdee35dfe"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Assignments (HCI).md",
+          "bytes": 33540,
+          "sha256": "702a7d6ffcf838934f07fb3a1902277eae248fd56d2531812dad843b5d6825eb"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Course Overview (HCI).md",
+          "bytes": 72705,
+          "sha256": "2daaf835e3953a7e16cd96c9e0eb64f99dcb139634c383ba90b23a6a13f33307"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Course Overview (WDT WEB).md",
+          "bytes": 56288,
+          "sha256": "842cc269315c4cd068f5d8f575d8a1656dd35fca2ee500faf3efb32ee4a30a67"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Designing User Experience.md",
+          "bytes": 2163987,
+          "sha256": "57cfa043d78ff4b7bb3d26231992ddc2fe7cc4b1cb4a5b5b9c683c9f019e2746"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Exams (HCI).md",
+          "bytes": 11992,
+          "sha256": "115e1224de90161fb31128362c49cd791d9ea2eb6c2f723526c546aec4317b5c"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Exams (WDT WEB).md",
+          "bytes": 174891,
+          "sha256": "fc036984cc5022eeec2de04eb38b6f351414ee97bfdb4458dcdb45319f8022d2"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Exercises (WDT WEB).md",
+          "bytes": 120850,
+          "sha256": "1e320914aac5813268b40e2b36dd0a76468b72d09cbbaa6b2b032c19c2820989"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Lab Assignments (WDT WEB).md",
+          "bytes": 37685,
+          "sha256": "7c85c79df7f87c557cdfd822ac96c14cbf253b8b2795bdad3792a65081e5e48c"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Lectures (HCI).md",
+          "bytes": 441744,
+          "sha256": "84ae1c8d3655668d35cc430f043014a36959efc801474200863719f55e9912ef"
+        },
+        {
+          "path": "HCIAP LLM Files/Knowledge Files/Lectures (WDT WEB).md",
+          "bytes": 489653,
+          "sha256": "e12a22529c8057411dee2890b4ba63ef4b96faa5d84e1935826bb6dd27de99fa"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2983,
+          "sha256": "9198bbc13b901a26126ab14a99427d26b4382dbc5872354cd2cc540831086f72"
+        }
+      ]
+    },
+    {
+      "id": "CSE12C_DM",
+      "files": [
+        {
+          "path": "DM LLM Files/Instructions.md",
+          "bytes": 3162,
+          "sha256": "34c5804d0f87ed4d56abc6c7be8dd36a0626f1b24dc6f4581110356d0ac72c41"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Assignments (IDM).md",
+          "bytes": 76386,
+          "sha256": "68913e06c7ce9ef0d9ad93c12cabc7810daee0d8a19867df92e6c997e89a13c1"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Course Overview (IDM).md",
+          "bytes": 48364,
+          "sha256": "6dcc7addc0199156c8ad302f1fa6170cc153a95187b751dbf97a1bbb63c7cb7d"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Course Overview (WDT DB).md",
+          "bytes": 42144,
+          "sha256": "c595c4a9f776ec5f57ca65c7045d6f91f05388c7b0b2ca5cf445d5f1289f6c31"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Database Systems the Complete Book.md",
+          "bytes": 3012680,
+          "sha256": "648accc8ed3abf87d2eb32476a6cda4e8f3a609e4922194fe8a31c0741a9dc9d"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Exams (IDM).md",
+          "bytes": 407002,
+          "sha256": "12f12d30f06de5f072acf21f13e546dc176565e0483104db93fb0948f8e12d19"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Exams (WDT DB).md",
+          "bytes": 247795,
+          "sha256": "c5221a2eaa9f0de84ed19b7a9095cbba0409d0eedd0b1ce07c3774f45d12081d"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Fundamentals of Database Systems.md",
+          "bytes": 3685183,
+          "sha256": "2a8c5eadf12a22205fc392d200ed2a614221a3a6bfe040c47078cf55ab77a5cb"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Lab Assignments (WDT DB).md",
+          "bytes": 41706,
+          "sha256": "669a82d50f050f3756bd6ff18a60891e06524793b3099889246d8de084fd0d6e"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Lectures (IDM).md",
+          "bytes": 876404,
+          "sha256": "cffbd09c5cfcb3417cf6380bd1296e1d08040f3503a7924252daefe0105907bb"
+        },
+        {
+          "path": "DM LLM Files/Knowledge Files/Lectures (WDT DB).md",
+          "bytes": 1480938,
+          "sha256": "9455826ccd75e5bd7ca6ae68a9939c8b61792e61c85237397023bfdb0f7e1527"
+        },
+        {
+          "path": "From IDM/Database Systems the Complete Book.pdf",
+          "bytes": 29416089,
+          "sha256": "d869f1217eb8d682f270f2b9b8306b96eae7fe414b27f3543903404646fa9ba8"
+        },
+        {
+          "path": "From IDM/IDM Assignment Solutions/IDM Assignment 1 Task 1 Solutions.pdf",
+          "bytes": 418562,
+          "sha256": "10793d4b0cd01a8f30ad4a40ff076c033003cc29db6bec1f74ab353188faa75e"
+        },
+        {
+          "path": "From IDM/IDM Assignment Solutions/IDM Assignment 2 Solutions.pdf",
+          "bytes": 1130093,
+          "sha256": "0fe44312322eefea51f993ad700a1092869947831bf9a41b336049f23a947ef1"
+        },
+        {
+          "path": "From IDM/IDM Assignment Solutions/IDM Assignment 3 Solutions.pdf",
+          "bytes": 517446,
+          "sha256": "9ca482b8bc37d5b31f69d681404020e3a2202a275710def2308ca0ef8493c39d"
+        },
+        {
+          "path": "From IDM/IDM Cheat Sheet.pdf",
+          "bytes": 2030235,
+          "sha256": "b3fb90894c282d2ae2290daefe7f0cca4f220d226792f2406c4b36ed45fc5452"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2020.pdf",
+          "bytes": 699389,
+          "sha256": "1f1d2bce1b683fef794e42da9d6e09a89aa4eb8954d86ac0864deb415d392e6a"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2022.pdf",
+          "bytes": 587676,
+          "sha256": "000876d518c8ed1052917d5a811e730d9826be209bb4651b242ef85b3cfc7c58"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2023 Solutions.pdf",
+          "bytes": 8777486,
+          "sha256": "aba128ca2996e63f2d294591405ee3e63d0d089dbf7fad6038ca562b86d81a9e"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2024.pdf",
+          "bytes": 985673,
+          "sha256": "c23973edc137754be41dc17fa54bed99fe8d1cf1c2132e8af62e57774ddbcac2"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Resits/IDM Resit 2020.pdf",
+          "bytes": 622118,
+          "sha256": "3ada47ff770e9afe664f4ba6c0857bd08b1f3c80bb32252df1e9506c385e274f"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Resits/IDM Resit 2022.pdf",
+          "bytes": 572355,
+          "sha256": "19e3e1cf5aa4b7f9eab14140e14fbdb97437291e25c2980aa3cd41b778c52bf5"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Resits/IDM Resit 2023.pdf",
+          "bytes": 516844,
+          "sha256": "3ff1b2adb10a9b205fa1f8f9139b43d546e8609705cfc74e25edd684da984da0"
+        },
+        {
+          "path": "From IDM/IDM Exams/IDM Resits/IDM Resit 2024.pdf",
+          "bytes": 1194920,
+          "sha256": "9b90c9ae51b3d25f6e7ae58fae5993ce4a27c5e5dd56dca282425945599a91e6"
+        },
+        {
+          "path": "From IDM/IDM LLM Files/Instructions.md",
+          "bytes": 6849,
+          "sha256": "d99fac27474a54a5468cc0e3e5f1e45843d9011a432db7da03e7db2b132ede8e"
+        },
+        {
+          "path": "From IDM/IDM LLM Files/Knowledge Files/Assignments.md",
+          "bytes": 76386,
+          "sha256": "68913e06c7ce9ef0d9ad93c12cabc7810daee0d8a19867df92e6c997e89a13c1"
+        },
+        {
+          "path": "From IDM/IDM LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 48364,
+          "sha256": "6dcc7addc0199156c8ad302f1fa6170cc153a95187b751dbf97a1bbb63c7cb7d"
+        },
+        {
+          "path": "From IDM/IDM LLM Files/Knowledge Files/Database Systems the Complete Book.md",
+          "bytes": 3012680,
+          "sha256": "648accc8ed3abf87d2eb32476a6cda4e8f3a609e4922194fe8a31c0741a9dc9d"
+        },
+        {
+          "path": "From IDM/IDM LLM Files/Knowledge Files/Exams.md",
+          "bytes": 407002,
+          "sha256": "12f12d30f06de5f072acf21f13e546dc176565e0483104db93fb0948f8e12d19"
+        },
+        {
+          "path": "From IDM/IDM LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 876404,
+          "sha256": "cffbd09c5cfcb3417cf6380bd1296e1d08040f3503a7924252daefe0105907bb"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 1 - Introduction.pdf",
+          "bytes": 1644906,
+          "sha256": "0c63b42520c004beae5db5072046d4edcaf6ffbe803584b33a80d1ff7dca8773"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 10 - Query Processing Part 3.pdf",
+          "bytes": 3494384,
+          "sha256": "1559014213efa2970512c07ec4674ada4e498338dff0225de9214fc7f8aacbc8"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 11 - Transactions Concurrency.pdf",
+          "bytes": 3274834,
+          "sha256": "087d4eedbd18787c6797abbb10a65e6b98baff6ef709ffcaa44f989d63487e8e"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 12 - Recovery Distributed Transactions.pdf",
+          "bytes": 2566352,
+          "sha256": "ef4ec5c74c1acef70f3a70c17e55ee78d6be7a9256c76a5948b4d23fcdb8b103"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 13 - NoSQL.pdf",
+          "bytes": 4787326,
+          "sha256": "d5bfddbbf737c540a15b7377258917332260aca6ce3d8a3a080504d2169dc5fc"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 2 - SQL.pdf",
+          "bytes": 3758759,
+          "sha256": "517cbe1152b355dfb0dd67acb0c2ef2819a2710bbb865fbd6954429013bb95cf"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 3 - API Persistance.pdf",
+          "bytes": 2780033,
+          "sha256": "02aa274041995d99e208ce5b0e17ce830336a47c33a38f18b8468816d2c2e25e"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 4 - Towards Query Processing.pdf",
+          "bytes": 2844635,
+          "sha256": "0cbff8598779d60a937ae3f7a68536d62d4614c8dcfa50c26c8c3188d97fdb36"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 5 - Storage.pdf",
+          "bytes": 3049000,
+          "sha256": "4b9539ede9c230d3faadd225bdd31a7230c8edf0931e4f92b6a48e8ead89a156"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 6 - Logical Storage Indexing.pdf",
+          "bytes": 1045659,
+          "sha256": "6db9a93d436e63da5e50fc110f85e3c2d014ddd51a5530c9d7faf528b38ed5c8"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 7 - Indexing.pdf",
+          "bytes": 1706174,
+          "sha256": "2c286fc304feb26ab8edc51b96c96d21f17cf3628a482ec30c75a0e8fad070e6"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 8 - Query Processing Part 1.pdf",
+          "bytes": 3846157,
+          "sha256": "17ab5d097ec0dc81cc4a98cd991efd37f475ef11b0b9cc4d382f18c413f5e6fd"
+        },
+        {
+          "path": "From IDM/IDM Lectures/IDM Lecture 9 - Query Processing Part 2.pdf",
+          "bytes": 3000370,
+          "sha256": "56d73e26c71426b75f735beac4e8716818049651d9843561768e496ffe0b33bc"
+        },
+        {
+          "path": "From IDM/IDM Notes.pdf",
+          "bytes": 2400304,
+          "sha256": "d2a791fa763ea75b35a79a3668f1c52ce92e7824777911f8351c2f83d163764a"
+        },
+        {
+          "path": "From IDM/SQL Cheat Sheet.pdf",
+          "bytes": 711278,
+          "sha256": "132a9ace52a9098a06be49cba8af3da169184d0b1866d6dfe33e207017c7ca4b"
+        },
+        {
+          "path": "From WDT DB/Fundamentals of Database Systems.pdf",
+          "bytes": 10034812,
+          "sha256": "e9b23e67401170cc2da351ee0b6255b9468a9631e81187b17261d84fa7c4a1da"
+        },
+        {
+          "path": "From WDT DB/SQL Cheat Sheet.pdf",
+          "bytes": 711278,
+          "sha256": "132a9ace52a9098a06be49cba8af3da169184d0b1866d6dfe33e207017c7ca4b"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2020.pdf",
+          "bytes": 2263105,
+          "sha256": "b6b4f65ee297e702c40ea33fd02174b9e3a5dfb72bc34327dc2685edc3d8ae72"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2022.pdf",
+          "bytes": 361157,
+          "sha256": "53846af955af6b47c2b0c5171a0b71d1cee35aed0e864c3e733f38294900e15a"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2023.pdf",
+          "bytes": 2011151,
+          "sha256": "e3f01108d2ab4109cf447a6a3c99df0b87cf8b62043552fdf646061a82cce340"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2024.pdf",
+          "bytes": 1515329,
+          "sha256": "4dcdaf6d62699990be30c832a4010004305f8f3e4fdb7de92955b11786ea7cb1"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2022.pdf",
+          "bytes": 339631,
+          "sha256": "57023411e7c9f2a3b4f65116e56752d003d9672765aa87329434d63b1343725e"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2023.pdf",
+          "bytes": 832134,
+          "sha256": "1a24a3770ac6c6df61f63875e821545435a967bf3057ae54bb0fbe008c6fc346"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2024.pdf",
+          "bytes": 4951541,
+          "sha256": "9e2bec49f72444a94af0f6aa75d11eae1f1257561eb14e7636567a2b168cbb5e"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2025 Solutions.pdf",
+          "bytes": 948749,
+          "sha256": "0ea8bb26974c93129fd82675dd7aadd4bd8d26fd3e8ffd293ff7ce7e62c14a6c"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Mock 1.pdf",
+          "bytes": 1082524,
+          "sha256": "47e25ce7308bd06c4ae29c779ab01eed4915c54e0398a3ea1e24edcccf97136b"
+        },
+        {
+          "path": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Mock 2.pdf",
+          "bytes": 990047,
+          "sha256": "f3fb5a3581b9bfe9e94bb26ac62f0cd266e3775f412e5047340d0b4e0cd28fad"
+        },
+        {
+          "path": "From WDT DB/WDT DB LLM Files/Instructions.md",
+          "bytes": 4311,
+          "sha256": "15d9660afa33fdf32d809bf9840c9485bd4a0b6a95163876570be01586b71328"
+        },
+        {
+          "path": "From WDT DB/WDT DB LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 42144,
+          "sha256": "c595c4a9f776ec5f57ca65c7045d6f91f05388c7b0b2ca5cf445d5f1289f6c31"
+        },
+        {
+          "path": "From WDT DB/WDT DB LLM Files/Knowledge Files/Exams.md",
+          "bytes": 247795,
+          "sha256": "c5221a2eaa9f0de84ed19b7a9095cbba0409d0eedd0b1ce07c3774f45d12081d"
+        },
+        {
+          "path": "From WDT DB/WDT DB LLM Files/Knowledge Files/Fundamentals of Database Systems.md",
+          "bytes": 3685183,
+          "sha256": "2a8c5eadf12a22205fc392d200ed2a614221a3a6bfe040c47078cf55ab77a5cb"
+        },
+        {
+          "path": "From WDT DB/WDT DB LLM Files/Knowledge Files/Lab Assignments.md",
+          "bytes": 41706,
+          "sha256": "669a82d50f050f3756bd6ff18a60891e06524793b3099889246d8de084fd0d6e"
+        },
+        {
+          "path": "From WDT DB/WDT DB LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 1480938,
+          "sha256": "9455826ccd75e5bd7ca6ae68a9939c8b61792e61c85237397023bfdb0f7e1527"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lab Assignment Solutions/WDT DB Lab Assignment 1 Solutions.pdf",
+          "bytes": 477089,
+          "sha256": "a9f03318c372eefe220a7d99fd652ae0e3e470eb8eef988adf0cfb5b1e720e38"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lab Assignment Solutions/WDT DB Lab Assignment 2 Solutions.pdf",
+          "bytes": 490509,
+          "sha256": "6819d0edb6471feee27dfbdf254fe3189acb4311335d7a74779d1667d0beb748"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lab Assignment Solutions/WDT DB Lab Assignment 3 Solutions.pdf",
+          "bytes": 436628,
+          "sha256": "fd1b5322f0f0397b9a1164492ff9b9632145fa9b9d605e7b4c45dcd9d5612d10"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 1 - Introduction.pdf",
+          "bytes": 7910041,
+          "sha256": "02e847c02762881bc358626b47d3623fbeda24b35f530c8bf66495a5cbfbca9b"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 2 - Modelling-ER.pdf",
+          "bytes": 8847663,
+          "sha256": "1fae31a5195808aee0225059de3a90d8ade2d406565bdac2043587c61a0d1263"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 3 - More on ER.pdf",
+          "bytes": 9330466,
+          "sha256": "6bc14900176edcdfcf63ff50311a04194c28d723ba4edfa39c98f0d3adc9927d"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 4 - SQL Part 1.pdf",
+          "bytes": 4306737,
+          "sha256": "708e09b45f87cf767919d5c712a3eb9cf4a94d504e885b3542d068200b503785"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 5 - SQL Part 2.pdf",
+          "bytes": 3531605,
+          "sha256": "ad17353b0c00857519d82331032657ccedb17878eb0d121a274c81d4b963b917"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 6 - Relational Model.pdf",
+          "bytes": 5297328,
+          "sha256": "3bc2551012df6963afd2fa098197329142b3c6cd44edd76f31cef8a639b80d84"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 7 - Database Normalization.pdf",
+          "bytes": 7862510,
+          "sha256": "e01b1907aeaba16c7be50bbfcda61d5b42590ad782eae48f0a7ceff2e535fdfa"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 8 - JDBC.pdf",
+          "bytes": 5772388,
+          "sha256": "dd74135c69564e31b4625b4e98233bfdfd97936fd57b1ca0bb494e80b73f69f5"
+        },
+        {
+          "path": "From WDT DB/WDT DB Lectures/WDT DB Lecture 9 - QA.pdf",
+          "bytes": 961993,
+          "sha256": "83200bde9ecb131409080713ce7fe128e104e9b925b272249798c703dd6d627e"
+        },
+        {
+          "path": "From WDT DB/WDT DB Notes.pdf",
+          "bytes": 1161840,
+          "sha256": "3236a4ceb41ad4aec54c331a285126bd82f25dc7bd8f84dff3f0eccb3b2f704f"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2733,
+          "sha256": "7c6755356f42b254a5d0c177b153167865e79812079abcf9a42407e983bf7d95"
+        }
+      ]
+    },
+    {
+      "id": "CSE13A_LA",
+      "files": [
+        {
+          "path": "LA Exams/LA Endterms/LA Endterm 2019.pdf",
+          "bytes": 723509,
+          "sha256": "ad07487739842140d1070884ae1e9ecbe77c9802e583c7a1f6a6f80fd1496444"
+        },
+        {
+          "path": "LA Exams/LA Endterms/LA Endterm 2022 Solutions.pdf",
+          "bytes": 154829,
+          "sha256": "32ed6a7925b021a105dc409ee5576642c06e87d8bd3b9b4888512a186c73e3cc"
+        },
+        {
+          "path": "LA Exams/LA Endterms/LA Endterm 2023 Solutions.pdf",
+          "bytes": 139043,
+          "sha256": "f8b559b696af467d3404aa6a08a00b1d6a8d1add03470f6700f99a636e3d3918"
+        },
+        {
+          "path": "LA Exams/LA Endterms/LA Endterm 2024.pdf",
+          "bytes": 529891,
+          "sha256": "532c5a5e4b7f9d53ba1dfcb346fc2e250bb2374e8e36ba5327e5bf674f4a804a"
+        },
+        {
+          "path": "LA Exams/LA Midterms/LA Midterm 2020.pdf",
+          "bytes": 124470,
+          "sha256": "4047ac0d2f189673b1c9ec3f2dd4f5e4c212c81b199763e562e7cd6804168b65"
+        },
+        {
+          "path": "LA Exams/LA Midterms/LA Midterm 2023.pdf",
+          "bytes": 1911407,
+          "sha256": "e75e851add102e5c7ce75d6c865f1fe4973a573e804b247e7903f114872283cb"
+        },
+        {
+          "path": "LA Exams/LA Midterms/LA Midterm 2024.pdf",
+          "bytes": 449458,
+          "sha256": "4b11f5b9ad91b3001ac0c2352aca4f7c2c56eb1ba900932fa25760d11d4f653c"
+        },
+        {
+          "path": "LA Exams/LA Resits/LA Resit 2019 Solutions.pdf",
+          "bytes": 169767,
+          "sha256": "696f9b5168a6d4bea5c99328075320454d32cfc49c8aba9d799d660a5dee1f7f"
+        },
+        {
+          "path": "LA Exams/LA Resits/LA Resit 2022 Solutions.pdf",
+          "bytes": 162098,
+          "sha256": "6fb5b34dcfcdbf1415915a6617e55e6e529605b8d16d8fc5808de4fa6eb1a324"
+        },
+        {
+          "path": "LA Exams/LA Resits/LA Resit 2023 Solutions.pdf",
+          "bytes": 144003,
+          "sha256": "ca7c443a1ad617b90b28384b7ee0da30b0ed39dcb5a0e31a8d9ec396f10074ab"
+        },
+        {
+          "path": "LA Exams/LA Resits/LA Resit 2024.pdf",
+          "bytes": 414883,
+          "sha256": "56e3e993dfeb969bd623a7001a158ad43352fe5b39d5c5bc703472c682c5c186"
+        },
+        {
+          "path": "LA Formula Sheet.pdf",
+          "bytes": 711307,
+          "sha256": "e4f3ded0e134d46c4b836b4cd394475864d79bf762d6992ea2b24759954fb5c4"
+        },
+        {
+          "path": "LA LLM Files/Instructions.md",
+          "bytes": 4694,
+          "sha256": "18571dff5d0c7889f5a2dec8f2fe7ea92078c2ec6c7dad0112214a7b8d5dafd3"
+        },
+        {
+          "path": "LA LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 51199,
+          "sha256": "c1d2563f58babdf41f6327f7336ea5e0cd5b609ea735fcc9c48776344d24d7f9"
+        },
+        {
+          "path": "LA LLM Files/Knowledge Files/Exams.md",
+          "bytes": 133723,
+          "sha256": "e996fa5cd90eac94b6510e564e1683e88a410bd719230205c023f5d6c6ab5477"
+        },
+        {
+          "path": "LA LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 378985,
+          "sha256": "6958ca3e58a1bacfabc9a4e57959d22b4820a624850421e39e8b7f3e4e711e80"
+        },
+        {
+          "path": "LA LLM Files/Knowledge Files/Linear Algebra and Its Applications.md",
+          "bytes": 4379926,
+          "sha256": "bbcfd85f0be475dcba87ba21b9ad0d926f0e0e3902f6e0fc9fe5b2967d80b9f7"
+        },
+        {
+          "path": "LA Lecture Recordings 2024.pdf",
+          "bytes": 75073,
+          "sha256": "351d7a8a88f60ea396cc675228e4c0580ceb07b9d862313d22f76abb0058ef57"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 1 - Linear systems and echelon forms-course organization.pdf",
+          "bytes": 3826864,
+          "sha256": "3eef2967775313f4ff571feefefc52ecfd2d03074cc4030a6c544f34b3f4e0da"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 10 - Determinants.pdf",
+          "bytes": 1883300,
+          "sha256": "764b5e9aa19860f7ac4f84d689976d722509b4cfdaccc5e9ef9c3bbdbd4dac39"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 11 - Eigenvectors and eigenvalues.pdf",
+          "bytes": 3113242,
+          "sha256": "a5e31754ae0c6246351f1d1c16c083f8a6fd35253806afe2aae2e6ae6780543c"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 12 - Diagonalization.pdf",
+          "bytes": 2347971,
+          "sha256": "f0563d0314256ebe6a916a936bb355cb2ad99b94f8b04f57cd85d86f35100504"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 13 - Complex eigenvalues.pdf",
+          "bytes": 2237299,
+          "sha256": "ebb6195dbea8b0d31f7ab9c19919ef508fe1850c5730cb2de90fb667828e440d"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 14 - Discrete dynamical systems.pdf",
+          "bytes": 3236465,
+          "sha256": "3f5b9630044d391a630360028ee9e6815543b8122799974f36abb7fe3e789a0f"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 15 - Inner product and orthogonality.pdf",
+          "bytes": 3766821,
+          "sha256": "b49c325ccb376132e4fd97ae2f802d7ec29f1b0b247024549fb1a10191bf23ee"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 16 - Orthogonal projections.pdf",
+          "bytes": 2344361,
+          "sha256": "8483fc7e70cb73274af57e47e4d0eebaf5505c05adc4ad0ed10fbf04bb647d7d"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 17 - Academic Reasoning-2.pdf",
+          "bytes": 2089248,
+          "sha256": "aab1a37788233e0095677361d61a788a05d0a6f50cfb9703e10e401e32008675"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 18 - The Gram-Schmidt process.pdf",
+          "bytes": 2128006,
+          "sha256": "137c20bb3de3b3b39f56f387f4c827728e00943f95674675191a0dbce3061dd4"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 19 - Least-squares problems.pdf",
+          "bytes": 2085876,
+          "sha256": "eb1888256f99ab8027771fd3cc9ace1263ed36dc2353260b74c54a7dcef2a1ab"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 2 - Spans and vector equations.pdf",
+          "bytes": 2958297,
+          "sha256": "22cbfbff9a1259e29c6b492ec47118911fddfb91d282e6efd170657752d41e94"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 20 - Symmetric matrices.pdf",
+          "bytes": 1985583,
+          "sha256": "df47fa2962485c02aead842f901edd4273ec7d6dd0dfc275ade1388dd35c6ed8"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 21 - QA-and-Exam-Training-with-answers.pdf",
+          "bytes": 4033826,
+          "sha256": "9dde59c273ae295b26855d8af65595aedb83a81d5473949ef921022edd1b4743"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 3 - Solution sets and linear independence.pdf",
+          "bytes": 2395449,
+          "sha256": "01c9c92cbd04e2e9ca632297843f5f01521c2e1fcf680021bafcfea3ab807017"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 4 - Linear transformations.pdf",
+          "bytes": 2937240,
+          "sha256": "f5cd32dd08d8f3640235b4483d38747a04d676fd04c8d056ca2b6a7f40d47f65"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 5 - Matrix operations.pdf",
+          "bytes": 3919826,
+          "sha256": "23a26b962b059a01bcca4581980c2d7eade5a6b5c03d837d52e4617247ba947e"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 6 - Invertibility of matrices.pdf",
+          "bytes": 2458026,
+          "sha256": "f1f7a691dbc791bd42a2b898e6677119ca3a61b29e18ba23c5c314c05bcad705"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 7 - Academic Reasoning-1.pdf",
+          "bytes": 1694174,
+          "sha256": "bf8e5206ffb9229f5de59b0e228ca273a0ab21231cf2fab53eb42db9a98e7721"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 8 - Subspaces.pdf",
+          "bytes": 2742515,
+          "sha256": "9158f84c0d9e84deb84344909f496cdcd6edee0e8446bd6c064b69f4c7a57085"
+        },
+        {
+          "path": "LA Lectures/LA Lecture 9 - Coordinates and dimension.pdf",
+          "bytes": 1796076,
+          "sha256": "22a7f2cb4ed03d5dc37b82577c405c2d956d6a6efbd5a5a33c81b6d5e630d50a"
+        },
+        {
+          "path": "LA Notes.pdf",
+          "bytes": 222821,
+          "sha256": "0eb9d83a7b310fc2b85eb32fe9818d1ad833a6175f8197134391513f2e37f6eb"
+        },
+        {
+          "path": "Linear Algebra and Its Applications.pdf",
+          "bytes": 21725635,
+          "sha256": "0c9dc510e4966f27ed992d3a0cf2b18d54a30343764f7a5a184151bf25dadd0e"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2048,
+          "sha256": "4db5753e93d3e38c259560c553ef7c24f4030f4b53ca78aa59afc56ba95ede3f"
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_SDE",
+      "files": [
+        {
+          "path": "From SEM/SEM Exams/SEM Endterms/SEM Endterm 2019.pdf",
+          "bytes": 514751,
+          "sha256": "70a9ccd5d76a78133f2ddb2ab11b74edc438f26494ae4bee5ad2790ccdbc7b7c"
+        },
+        {
+          "path": "From SEM/SEM Exams/SEM Endterms/SEM Endterm 2021.pdf",
+          "bytes": 301037,
+          "sha256": "4ebb63a42227c22a5772bb17ab7d2878cb9c2c376f48e65ca1a58410ae7c0b34"
+        },
+        {
+          "path": "From SEM/SEM Exams/SEM Endterms/SEM Endterm 2022.pdf",
+          "bytes": 863245,
+          "sha256": "d43cdc0333f4248ffe7a0b6ae580d5558753861ffb032ad040a9bbe60d7725d1"
+        },
+        {
+          "path": "From SEM/SEM Exams/SEM Endterms/SEM Endterm 2023.pdf",
+          "bytes": 780173,
+          "sha256": "4db33829992c4706dfac1379adcfbd4bd0ff105209e15363f8fe199c7da91a03"
+        },
+        {
+          "path": "From SEM/SEM Exams/SEM Resits/SEM Resit 2021.pdf",
+          "bytes": 161230,
+          "sha256": "50b1b37c63ad3786f387cc6e37dc39800ac99cf4f0ebc0766f829a6beab20f48"
+        },
+        {
+          "path": "From SEM/SEM Exams/SEM Resits/SEM Resit 2022.pdf",
+          "bytes": 213715,
+          "sha256": "542db7bf9a91930b6a10ef55746d54e7217bdc9d1955024b7b5528ac54acb395"
+        },
+        {
+          "path": "From SEM/SEM LLM Files/Instructions.md",
+          "bytes": 5022,
+          "sha256": "8eb7715a945867b39f8f646e457d6914def2ae2b6c68e5085f20a914aba51afa"
+        },
+        {
+          "path": "From SEM/SEM LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 40904,
+          "sha256": "1be40ec7ae54c17a619c21468b68516138fcaf0277380dba76eb52ff63733ece"
+        },
+        {
+          "path": "From SEM/SEM LLM Files/Knowledge Files/Exams.md",
+          "bytes": 269004,
+          "sha256": "d64ec9326adf899316423c1e2a26c67d289932bbdd2769930f89707cb878663c"
+        },
+        {
+          "path": "From SEM/SEM LLM Files/Knowledge Files/Exercises.md",
+          "bytes": 104566,
+          "sha256": "bb6c2deca958947c29dc48b6cf58e1c5eab1d8c261e7f94e53a1133932242b0d"
+        },
+        {
+          "path": "From SEM/SEM LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 819121,
+          "sha256": "b94bb028c88d13a5ab3f11b1e1e60386e7689886d52f71e9458f46fe0cbe4af4"
+        },
+        {
+          "path": "From SEM/SEM LLM Files/Knowledge Files/Oral Presentation.md",
+          "bytes": 127345,
+          "sha256": "ae9112df3093a35145ab4a7f91d27fbcade6d55ef2e6b7009f476a4860daf9ab"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Guest Lecture - bol.com.pdf",
+          "bytes": 11723018,
+          "sha256": "c5161adc7b5c8abaf7f769229b928e5f175d3a6476cfb58f50004bc6cfe10351"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 1 - Introduction and Requirements Engineering.pdf",
+          "bytes": 7885621,
+          "sha256": "2b33862db9606beb07f515cfc73dd2448ed489800fa5e00e20a273026893a07b"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 11 - Software at Scale.pdf",
+          "bytes": 2117615,
+          "sha256": "d028f1c3ba40f2d05e3e00a7f3ce255f1b1275fd6a35f625a94913ec3f1a0499"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 12 - Software at Scale Part 2.pdf",
+          "bytes": 1138316,
+          "sha256": "a1deb0a5e17306b62204459f1d2420bef705271666f7637f39e415a6f24c0ef6"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 13 - Introduction to ML4SE.pdf",
+          "bytes": 1352280,
+          "sha256": "58bee21ca4fc11a0b7eb895f487814d4614ac06abef7538f00b6851ac944041b"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 14 - GenAI for Development.pdf",
+          "bytes": 4944769,
+          "sha256": "45372e8f683e784e85f0db8c695890db431f3c4d547b8c4121406ac328619d6a"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 15 - Recap and Q&A.pdf",
+          "bytes": 1541733,
+          "sha256": "4fe6bab7bd71de47a0126699d1792645ff025250758c834c595881c2de364b30"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 2 - Requirements Engineering and UML.pdf",
+          "bytes": 1665644,
+          "sha256": "ed383d950a876c54638ef3ad17f8fd558782c8a518bf5f483b4bd4c1633d14f9"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 3 - Software Architecture.pdf",
+          "bytes": 4479947,
+          "sha256": "d43fe4fd70e32ecffcca6461dae1d50a37c2899c44addd59099b25cd31eb800b"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 4 - Design Patterns.pdf",
+          "bytes": 6297791,
+          "sha256": "c238c4b683d76dfde302d054b1da4e9638bc39b671f6f6927a118ea73ae9a555"
+        },
+        {
+          "path": "From SEM/SEM Lectures/SEM Lecture 5 - Working with Open-source Software.pdf",
+          "bytes": 17424318,
+          "sha256": "5124cf2c8ac5f17a84d31e2aa5ab91bb1ec83ea00baa2b7d1b0c81eebe19e4d2"
+        },
+        {
+          "path": "From SEM/SEM Notes.pdf",
+          "bytes": 4175308,
+          "sha256": "9f9bf7891557abf5c14fdbac1fd5942db3dd458bdb4c8d349577e1fdee2fe7b4"
+        },
+        {
+          "path": "From SEM/SEM Oral Presentation Rubric.pdf",
+          "bytes": 219967,
+          "sha256": "1fb4e06854097bb1c433978cdef3c67c8034a397263d58534d4abce006a5854d"
+        },
+        {
+          "path": "From SQT/Effective Software Testing - A Developer's Guide.pdf",
+          "bytes": 7508525,
+          "sha256": "b65be789fcb458d3bc89752539ebdbda569812485810a12f70d39b9d31f75b5c"
+        },
+        {
+          "path": "From SQT/SQT LLM Files/Instructions.md",
+          "bytes": 3606,
+          "sha256": "30f919ae29b67ed03d63dcb4944e9cf54c1a74321fd66fb96b6278583f153a3c"
+        },
+        {
+          "path": "From SQT/SQT LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 51442,
+          "sha256": "ba7f21ec0fd8a28ec7ec0abaae682f8a07638438cfb69b6b253a323b2ef0b333"
+        },
+        {
+          "path": "From SQT/SQT LLM Files/Knowledge Files/Effective Software Testing - A Developer's Guide.md",
+          "bytes": 840344,
+          "sha256": "83b1b09bb653a8df76b97aa91e284ecc6004e11f6aa3f2c61a34e56fcc9b9deb"
+        },
+        {
+          "path": "From SQT/SQT LLM Files/Knowledge Files/Exams.md",
+          "bytes": 468569,
+          "sha256": "5fadab080133d6db525fa8a907f8121ed483079321cf46768f166a7671ff1fbb"
+        },
+        {
+          "path": "From SQT/SQT LLM Files/Knowledge Files/Exercises.md",
+          "bytes": 353648,
+          "sha256": "d0b0d608cdeab73046cce3bed95ddda2567ad493a741c60d2680ac8cb9d3ae45"
+        },
+        {
+          "path": "From SQT/SQT LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 252068,
+          "sha256": "10c204fa5e57e5a832fdf95b1e5317a81a805fbda3ce2d4792932f05603918b2"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 1 - Effective and Systematic Software Testing.pdf",
+          "bytes": 3506702,
+          "sha256": "dff5bad113b0a0ff54c679074c62250bc54c7fa97d2837d3ad43c352355b155d"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 10 - Test code quality.pdf",
+          "bytes": 3508417,
+          "sha256": "97b5ea44be9fef00426dff804da6c05c49b91764bbe25407a8e9ec718d1b60ed"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 11 - Exam Q&A.pdf",
+          "bytes": 286516,
+          "sha256": "ad0e6c8e5d34113ff85626cf2175ada4b530019f9a7e7919a73627e396acc0b9"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 2 - Specification-based testing.pdf",
+          "bytes": 528161,
+          "sha256": "5e3e2926578e88a8888aaf7953d752a7b88fdf806a4ee779cba6433f27883aea"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 3 - Structural testing.pdf",
+          "bytes": 1715521,
+          "sha256": "703e85523be5f2688f00d57ba8b8aee42e08334784fafd4d771f8e9a8e75bb4f"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 4 - Designing contracts.pdf",
+          "bytes": 2336005,
+          "sha256": "44f1a44fd2e2bdc0fc9b77f203eb6a1880345dfea968d1c9271f8446590f6b00"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 5 - Property-based testing.pdf",
+          "bytes": 706430,
+          "sha256": "f1c33d96b5d245c1efb95ab7b92d5563a955c430cd3ebcc29930a4e67119f200"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 6 - Test Doubles and Mocks.pdf",
+          "bytes": 342527,
+          "sha256": "2b9b0a97bce1190479d6d773dc27eb1b901f4a96be2132cbf2d1e4785f7856e7"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 7 - Design for Testability.pdf",
+          "bytes": 512261,
+          "sha256": "da576c297aa5a7822d98ac3aa0d1178465bd7e7f49e628e3cc6e553cd5fc76c6"
+        },
+        {
+          "path": "From SQT/SQT Lectures/SQT Lecture 9 - Larger Tests.pdf",
+          "bytes": 961962,
+          "sha256": "f4ec7fc3632bbdbfdd9d575728c2a896862c75779b7f48de58b03cc15ef8ea8b"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2647,
+          "sha256": "28990aa24acacb5baeb9bd89fac9f9c7502a855b335e12a5d9b45e2cbb9b84a2"
+        },
+        {
+          "path": "SDE LLM Files/Instructions.md",
+          "bytes": 3572,
+          "sha256": "e1c68366700a05b44d33053092c6350f00e59be7b0fb112566ded2365fd51484"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Course Overview (SEM).md",
+          "bytes": 40572,
+          "sha256": "be3af2389b77062ff9f23a56701c7a0bfd14d2046c702469aec63f7e1f5323b3"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Course Overview (SQT).md",
+          "bytes": 51429,
+          "sha256": "8c155f4c9ecbd29b40edae5433d400f8971e6674cd197212863f00a3f5ae4a9f"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Effective Software Testing - A Developer's Guide.md",
+          "bytes": 840344,
+          "sha256": "83b1b09bb653a8df76b97aa91e284ecc6004e11f6aa3f2c61a34e56fcc9b9deb"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Exams (SEM).md",
+          "bytes": 269004,
+          "sha256": "d64ec9326adf899316423c1e2a26c67d289932bbdd2769930f89707cb878663c"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Exams (SQT).md",
+          "bytes": 468569,
+          "sha256": "5fadab080133d6db525fa8a907f8121ed483079321cf46768f166a7671ff1fbb"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Exercises (SEM).md",
+          "bytes": 104566,
+          "sha256": "bb6c2deca958947c29dc48b6cf58e1c5eab1d8c261e7f94e53a1133932242b0d"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Exercises (SQT).md",
+          "bytes": 353648,
+          "sha256": "d0b0d608cdeab73046cce3bed95ddda2567ad493a741c60d2680ac8cb9d3ae45"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Lectures (SEM).md",
+          "bytes": 819121,
+          "sha256": "b94bb028c88d13a5ab3f11b1e1e60386e7689886d52f71e9458f46fe0cbe4af4"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Lectures (SQT).md",
+          "bytes": 252068,
+          "sha256": "10c204fa5e57e5a832fdf95b1e5317a81a805fbda3ce2d4792932f05603918b2"
+        },
+        {
+          "path": "SDE LLM Files/Knowledge Files/Oral Presentation (SEM).md",
+          "bytes": 127345,
+          "sha256": "ae9112df3093a35145ab4a7f91d27fbcade6d55ef2e6b7009f476a4860daf9ab"
+        }
+      ]
+    },
+    {
+      "id": "CSE13C_ADS",
+      "files": [
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Endterms/ADS Analysis Endterm 2019.pdf",
+          "bytes": 208611,
+          "sha256": "05bb3b99e22efccc540bd9a5b6b15530f196fc854b334b2499ef08581db539ab"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Endterms/ADS Analysis Endterm 2020.pdf",
+          "bytes": 455894,
+          "sha256": "599e4dcd8829899fd6d66a4161c83eeeecac990782b61015b5d7258b65895b54"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Endterms/ADS Analysis Endterm 2022.pdf",
+          "bytes": 426346,
+          "sha256": "6e146d15cee3370c2fced984ff7601cf10a072e3f9a385aeab2c6da828a62456"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Endterms/ADS Analysis Endterm 2023.pdf",
+          "bytes": 452427,
+          "sha256": "f6ae9e92e5a384c767f94f3194d5063066afc51ae4c01a99e3dcc2e2015d4b91"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Endterms/ADS Analysis Endterm 2024.pdf",
+          "bytes": 387565,
+          "sha256": "b48810b64b58afa1aa042df539872e32de2ab9ef56ed09dd5d98c19d382876cb"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Endterms/ADS Analysis Endterm 2025.pdf",
+          "bytes": 438429,
+          "sha256": "7ac3e50e503b55b664fbb84e13057c38e2025e7e2fe3893b2fdd83836cbe58cd"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Midterms/ADS Analysis Midterm 2019.pdf",
+          "bytes": 403025,
+          "sha256": "9d32cdfc9dd05c9625ce4546ba6061ae6df589c5b36afcf1a6dd5a89a302da31"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Midterms/ADS Analysis Midterm 2020.pdf",
+          "bytes": 394421,
+          "sha256": "ec3e6071be466d596d48d3dedd5331b58dc055afe253ab013d50fe769ac3132d"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Midterms/ADS Analysis Midterm 2022.pdf",
+          "bytes": 399695,
+          "sha256": "d26d08d9f6b42cefd842a3d05cfdee75f0dad27d51c5ac3ad22959f407c94d9c"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Midterms/ADS Analysis Midterm 2024.pdf",
+          "bytes": 381525,
+          "sha256": "bf3e12519e963223daa54524433ac75a99eaa890d92fca52cac1aaa9daee6206"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Midterms/ADS Analysis Midterm 2025.pdf",
+          "bytes": 405818,
+          "sha256": "187eee1703cb45981a3bf2261576af9c6d9b28ed3c8b7881cf0b313577de622e"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Resits/ADS Analysis Resit 2019.pdf",
+          "bytes": 406448,
+          "sha256": "ba11937888e56525a6a1e114fc51ea4776609cac8d87eb2b62a4ffdedb9101bc"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Resits/ADS Analysis Resit 2022.pdf",
+          "bytes": 420214,
+          "sha256": "b3a1b3e18a9adaf36b7de8040f08ba27a61b45e452d4bc2a112ad5e505ceec5f"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Resits/ADS Analysis Resit 2023.pdf",
+          "bytes": 389428,
+          "sha256": "365acd05dfac16a8e99246bcf4cab707db7fd107a81839165aeb6f1b0def6694"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Resits/ADS Analysis Resit 2024.pdf",
+          "bytes": 344765,
+          "sha256": "d6be461ee89895d14034133abdfc4679863ca77a3a725c6439022ead820a26d0"
+        },
+        {
+          "path": "ADS Analysis Exams/ADS Analysis Resits/ADS Analysis Resit 2025.pdf",
+          "bytes": 458570,
+          "sha256": "521ada33eb2b30cde84dd2cca9c7b85e0ac6753282eadd959f7bbc7be2c6d879"
+        },
+        {
+          "path": "ADS Cheat Sheet.pdf",
+          "bytes": 1959287,
+          "sha256": "1778d4885450ae8e35384585a441d5e8e6b475a00344cbe5cadec4eb796b8738"
+        },
+        {
+          "path": "ADS LLM Files/Instructions.md",
+          "bytes": 5330,
+          "sha256": "4cde6a8e363f3778b7365f9f5d52157b45842b1277a8fe484792460976f7d041"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Acing ADS.md",
+          "bytes": 74273,
+          "sha256": "14396f1c148e7ebd8452f45072ac94824445cf324d2ab7d56aa793220984c891"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Analysis Exams.md",
+          "bytes": 497914,
+          "sha256": "9a68ff5795dd83f4436f03238ffb5ef0385ae4034f109188c65295b976cbc2cc"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Analysis Exercises.md",
+          "bytes": 131552,
+          "sha256": "c3257b73e11bc6e9c4944347a28217078908ecd04dbc9582b475789842de923f"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 56874,
+          "sha256": "6a51353907128855106625f2280b37fe64bfdb3633d1ee56b9757e4a757a4d32"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Data Structures and Algorithms in Java.md",
+          "bytes": 1917619,
+          "sha256": "6fed979363210c49ef5278f8e1ea3bfa824f0da63ad7502aba27a4d0822c2e9b"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Implementation Exams.md",
+          "bytes": 385552,
+          "sha256": "0e37cf0a3ea760b0d7f4d988eb2ff8afad1a05f721c72fde68b8ed2d61208d61"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Implementation Exercises.md",
+          "bytes": 258550,
+          "sha256": "cbebbdc03ae07a2885310ccde1c07851b01748cde9b86e74af3659577a60be64"
+        },
+        {
+          "path": "ADS LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 1101765,
+          "sha256": "dc1506e398cd675355cd56c0c48393ac8e91a9c8513360446acb11594d343adc"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 1 - Introduction to Algorithms.pdf",
+          "bytes": 4791410,
+          "sha256": "9a0731bd9bed185b73135b61eaef09b434e6133b3bfc61da0f253a459c31a48d"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 10 - Hash Tables and Maps.pdf",
+          "bytes": 3718319,
+          "sha256": "7a99ea4bc7ebd18f09f1b898b56e92dc3bafc2c6a63b473d09f35c00c8479ec9"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 11 - Binary Search Trees.pdf",
+          "bytes": 2091751,
+          "sha256": "1622384b07c8215810c65e238f180314e7b91ed2850b036a9f649f3a6e81d3f5"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 12 - AVL Trees and Balanced Trees.pdf",
+          "bytes": 3754075,
+          "sha256": "d38877bb1de35e063eb766aa6fc19a1ecbed83f3cd6dc4cccaffac97081be83b"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 13 - Graphs and Graph Traversal.pdf",
+          "bytes": 2527645,
+          "sha256": "ec7b06b29a21b92a303d72cab5a87430fa8c4f9cb26e4f33c895c1c311e72062"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 14 - Graph Algorithms.pdf",
+          "bytes": 3138817,
+          "sha256": "ba0e3700b7892bcbaa23bbec783da81b6069af0492d74f580ae8ccf186f0b8ef"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 15 - QA Exam Practice.pdf",
+          "bytes": 1129916,
+          "sha256": "a89ffca77e36af048fe64639ed0d5df9b0c40172cbdf3f922253c9f39127f788"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 2 - Complexity Analysis and Big-Oh Notation.pdf",
+          "bytes": 622071,
+          "sha256": "09cb7da79c867089114d4475f6152da8922b61da91352b14fbd5883a4b2ed255"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 3 - Recursion and Analysis.pdf",
+          "bytes": 1321407,
+          "sha256": "44fd0b100e34e063ab99e49b20bbf234087f6274f1e4686ffb5888a15a35ec95"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 4 - Arrays and Linked Lists.pdf",
+          "bytes": 1326279,
+          "sha256": "f824b68eeef23106a794d815a95929aaf16975252611780847f2f303c6b38703"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 5 - Stacks and Queues.pdf",
+          "bytes": 563286,
+          "sha256": "31dd43d2baa7a7f3eadbf0294438547d65a15f6a258d4a25257aadc0c168881a"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 6 - Trees and Binary Trees.pdf",
+          "bytes": 815237,
+          "sha256": "0e52fe6cade3e4fa8e41b68b6849966f2f16b66bc2b94d55eaca04dbf6f155f6"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 7 - Priority Queues and Heaps.pdf",
+          "bytes": 359789,
+          "sha256": "87da0de7d74253fe6ef856d15d9cb8604d9efcc4e73075bed8ae085b28467cbc"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 8 - Sorting Algorithms Part 1.pdf",
+          "bytes": 253112,
+          "sha256": "b23f2bf65495ad04e9dd859d14ff23e89997b07065e73f93a38fe30b92101982"
+        },
+        {
+          "path": "ADS Lectures/ADS Lecture 9 - Sorting Algorithms Part 2.pdf",
+          "bytes": 1125514,
+          "sha256": "1aaedae6492b87ac356d45bdd01cca599432b8aaa33ab44c654488761017e110"
+        },
+        {
+          "path": "ADS Notes.pdf",
+          "bytes": 816847,
+          "sha256": "5a7f5fa07c5192b44267a1011bc448fd7e63744470c10567f653920a0a788ef3"
+        },
+        {
+          "path": "Data Structures and Algorithms in Java.pdf",
+          "bytes": 9859137,
+          "sha256": "0448e8569d4571a1d74dfcdf3512c0b072ad18b57da15b51c88cec8ad9ed8c7f"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2861,
+          "sha256": "364c129075e92e65cc06ce9154c658ccd2e354a765f458f4e1bd5c6fa980f0c6"
+        }
+      ]
+    },
+    {
+      "id": "CSE14A_PTS",
+      "files": [
+        {
+          "path": "A Modern Introduction to Probability and Statistics.pdf",
+          "bytes": 4046117,
+          "sha256": "96bc964ca13d9d8171916cf5d1a37d8df92f0bf3a585c2044a9132c2b746b59c"
+        },
+        {
+          "path": "PTS Endterm Cheat Sheet.pdf",
+          "bytes": 2284058,
+          "sha256": "eeaec2ae3a7d150874717c927e26dd4dafdaced4260501b4f80d26b04a7affb6"
+        },
+        {
+          "path": "PTS Exams/PTS Endterms/PTS Endterm 2021 Solutions.pdf",
+          "bytes": 291955,
+          "sha256": "1397f788d78e5cd0697d26b62be7b5e22a5755efd8717662cf35839007ce5c0f"
+        },
+        {
+          "path": "PTS Exams/PTS Endterms/PTS Endterm 2022.pdf",
+          "bytes": 212418,
+          "sha256": "b4c5de9cdb82fc28c62812072d2685ebe7805c4317d3ab0973fd059688aee859"
+        },
+        {
+          "path": "PTS Exams/PTS Endterms/PTS Endterm 2023.pdf",
+          "bytes": 272976,
+          "sha256": "126d6cd24eb98ba1229d1f42d725aaf1674dc690a686b2c261f674f92bce7327"
+        },
+        {
+          "path": "PTS Exams/PTS Endterms/PTS Endterm 2024.pdf",
+          "bytes": 279855,
+          "sha256": "6c889e09795f27d7d1df5d0a280425ad937435560c969c0f399f6ba076fcb185"
+        },
+        {
+          "path": "PTS Exams/PTS Endterms/PTS Endterm 2025.pdf",
+          "bytes": 464649,
+          "sha256": "28ca23b4caf0f975b37f4bde57050d4e51a82235ac537d889577924c0e5a468d"
+        },
+        {
+          "path": "PTS Exams/PTS Midterms/PTS Midterm 2019.pdf",
+          "bytes": 60144,
+          "sha256": "7556c1ec96feac0d7c6ef1c1ec0d04b2ac3d70d114f19d0073bd5d45a6f0c079"
+        },
+        {
+          "path": "PTS Exams/PTS Midterms/PTS Midterm 2021.pdf",
+          "bytes": 650128,
+          "sha256": "b7674489e514bbe2643caaa03bdd0456d6c88592a4ae9f008a440be13fd04741"
+        },
+        {
+          "path": "PTS Exams/PTS Midterms/PTS Midterm 2022.pdf",
+          "bytes": 155479,
+          "sha256": "3e2d5b078e6e33ed7d05ad52dd58354fcedff53dc5231362355b947bf2edcc97"
+        },
+        {
+          "path": "PTS Exams/PTS Midterms/PTS Midterm 2023.pdf",
+          "bytes": 151896,
+          "sha256": "942f0c6c7e87461fafec39dc469b07802371a867bc58095d3a142915344ac93f"
+        },
+        {
+          "path": "PTS Exams/PTS Midterms/PTS Midterm 2024.pdf",
+          "bytes": 158872,
+          "sha256": "fbe6e66325949619d59db3fa64cdd14556c21cbab865dd9863c102224d36652d"
+        },
+        {
+          "path": "PTS Exams/PTS Midterms/PTS Midterm 2025.pdf",
+          "bytes": 180328,
+          "sha256": "5991a1ff01809371bd986e3987b1fba06c81dffc161778437d2f87ec5fb16f60"
+        },
+        {
+          "path": "PTS Exams/PTS Resits/PTS Resit 2023.pdf",
+          "bytes": 252169,
+          "sha256": "f0f9941219f19e8105af1b816f0db790f49207f10dd66c870a6ec10103da2c35"
+        },
+        {
+          "path": "PTS Exams/PTS Resits/PTS Resit 2024.pdf",
+          "bytes": 268570,
+          "sha256": "f5bb029d3cc78f34b48530a788b35c6f671fd8af3a079b68030afaa7c3163058"
+        },
+        {
+          "path": "PTS Exams/PTS Resits/PTS Resit 2025.pdf",
+          "bytes": 673035,
+          "sha256": "07d884a49b486efa7e4d080e697b37731510d73a7a3986904c36ae1ebbcda6fe"
+        },
+        {
+          "path": "PTS Exercise Sheet Solutions/PTS Exercise Sheet 1 Solutions.pdf",
+          "bytes": 127911,
+          "sha256": "8dfa0cdf8ec43280d0b51c3928e64b1680e15ca72298e98620fc1a507a65baba"
+        },
+        {
+          "path": "PTS Exercise Sheet Solutions/PTS Exercise Sheet 2 Solutions.pdf",
+          "bytes": 148961,
+          "sha256": "c02d18d3a7952a568674973aa5f15da3fc3686a316e02231f21ce2af19998c8d"
+        },
+        {
+          "path": "PTS Exercise Sheet Solutions/PTS Exercise Sheet 3 Solutions.pdf",
+          "bytes": 184237,
+          "sha256": "fc6ca03e8000029380e701620bfd6d92fb5449498d2d412f151b7a1ae43a804e"
+        },
+        {
+          "path": "PTS Exercise Sheet Solutions/PTS Exercise Sheet 4 Solutions.pdf",
+          "bytes": 256532,
+          "sha256": "37721061fabb9b8e02f95d868f1fa3ba93622722af2553adebf898803062d95f"
+        },
+        {
+          "path": "PTS LLM Files/Instructions.md",
+          "bytes": 3725,
+          "sha256": "044dfc408c4b5ddc85cabbbbecfa189ad50a06be5ca9045f98dc455137f3c502"
+        },
+        {
+          "path": "PTS LLM Files/Knowledge Files/A Modern Introduction to Probability and Statistics.md",
+          "bytes": 1414931,
+          "sha256": "a471ad5201dc544fc8aa211597483d7e604b804110ff1d860bdc67295b197ca3"
+        },
+        {
+          "path": "PTS LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 79653,
+          "sha256": "913427264846f99e958db4cba658b959889e3e3fe3513ab8ea891602a9148c5f"
+        },
+        {
+          "path": "PTS LLM Files/Knowledge Files/Exams.md",
+          "bytes": 314308,
+          "sha256": "184b740dc9cef95b41e668db91487b6f1636e5aaf3df83d3c4ef73fd22665322"
+        },
+        {
+          "path": "PTS LLM Files/Knowledge Files/Exercise Sheets.md",
+          "bytes": 39909,
+          "sha256": "9ee8a04b5d8823494973159978c6d0ff8339cd9e547539e98df4a26bb93c8b21"
+        },
+        {
+          "path": "PTS LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 598421,
+          "sha256": "bec6633c1aed72740fdfc4693c43165db4504b4a8fc2a84d1dc22f6755a7d96c"
+        },
+        {
+          "path": "PTS Lecture Recordings 2024.pdf",
+          "bytes": 74394,
+          "sha256": "cf7dd468aef96e6eccf69993d8715dabd92c5a95ef25153afe844140fb8a276e"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 1 - Introduction to Course and Uncertainty.pdf",
+          "bytes": 4710934,
+          "sha256": "414a8be8f9e9997eb0a727517ceb35912b6966ccd81e8836b3489ef35b813666"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 10 - CLT and Maximum Likelihood.pdf",
+          "bytes": 4517206,
+          "sha256": "320d38c753a489b1def734505c210cbc9f29763adff507438b212815cb8ba46c"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 11 - Confidence Intervals.pdf",
+          "bytes": 5297978,
+          "sha256": "2ba0d92a7df9c58095b18d986f81382ae9a0d82f694d76138c61fda58e7787d7"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 12 - Hypothesis Testing.pdf",
+          "bytes": 5350038,
+          "sha256": "54772cfc674ee0979f333df5cf48c811b8bf525a0b85e8c1093f5aa1fea00de4"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 13 - Linear Regression Part 1.pdf",
+          "bytes": 4118082,
+          "sha256": "b921e51a97e049cbbf2eb8ee8281b571fc5e64a564e8ae0dfc89a5e165f9d737"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 14 - Linear Regression Part 2.pdf",
+          "bytes": 4864135,
+          "sha256": "f8023c772548a01568f4ef222f445740a6af5cf168d5b392e1579475ecf1ea58"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 15 - More Hypothesis Testing.pdf",
+          "bytes": 5100328,
+          "sha256": "ef0892de7d8ddc6830d36386f19576bb61b8f23103f2ef0ebc8fb6596248e97c"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 16 - Even More Hypothesis Testing.pdf",
+          "bytes": 5808478,
+          "sha256": "a19a80d8c31dab1cf918c3c6e84722b56a731cad57a735a168bf5130f8865392"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 2 - Conditional Probability and Bayes' Rule.pdf",
+          "bytes": 4772444,
+          "sha256": "f4c064c8bfedbf7e1c218ff921a308bf152ddb5340015bf0c9e77fa59e2d1345"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 3 - Random Variables and Distributions.pdf",
+          "bytes": 4608085,
+          "sha256": "e40c2015e84457874a5737258efc88ce5d401ec1c9b4d9e70452079ff03ec0fc"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 4 - Modelling.pdf",
+          "bytes": 5155050,
+          "sha256": "c5733e630195bfcd8a77cc8de8e176180c06ba13dac7108f438120e5686a590a"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 5 - Independence and Expectation.pdf",
+          "bytes": 5280874,
+          "sha256": "89799c18bc875aa1022294eb1fcd32fe21ba9c76f0e0da8c765e10c3045a88b7"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 6 - Estimation.pdf",
+          "bytes": 5030233,
+          "sha256": "5c9e3b6bb4ed1fa331b21d6605a577c81b272aea78cb1e73b3a93c24d5c38ef0"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 7 - Variance and MSE.pdf",
+          "bytes": 5698912,
+          "sha256": "9f7d9b6758595f25b5b81a014762a98be15306ec1f8bcac7d3a7468c5ef2bd93"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 8 - Joint Continuous Distribution and Correlation.pdf",
+          "bytes": 4951562,
+          "sha256": "d3ff55da481da401f929de9143410be4799e9e21ab1b03135c08ef376232a028"
+        },
+        {
+          "path": "PTS Lectures/PTS Lecture 9 - Sums of Random Variables and the Multivariate Gaussian.pdf",
+          "bytes": 5945593,
+          "sha256": "712d455db8d1bc4e05411e56ee4556fd2434d0534bc18380ad66e4cd6bbd74cc"
+        },
+        {
+          "path": "PTS Midterm Cheat Sheet.pdf",
+          "bytes": 983928,
+          "sha256": "da651bfe34894f57a71127ca2503063dafb0475dd94630eb36fc9645df897960"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2714,
+          "sha256": "0c6f1f2e9afc27623edd2f4c63fbc32de98fc479b09063a96d969c9e061925f2"
+        },
+        {
+          "path": "Tail Probabilities and Critical Values Tables.pdf",
+          "bytes": 88537,
+          "sha256": "071455f987c0f97c3e7bde4c8f96c445a416c7138d36fdd080ce09fa3916c527"
+        }
+      ]
+    },
+    {
+      "id": "CSE14B_CN",
+      "files": [
+        {
+          "path": "CN Exams/CN Endterms/CN Endterm 2019.pdf",
+          "bytes": 631862,
+          "sha256": "71a4a08bff14627375845ca0d1eb6b9213e21bb10da6886e9368daf50c8a2e3f"
+        },
+        {
+          "path": "CN Exams/CN Endterms/CN Endterm 2022.pdf",
+          "bytes": 503738,
+          "sha256": "8d1c63c08e10221820636cd52781d7b1c085520413e238188cfff5e48f140e69"
+        },
+        {
+          "path": "CN Exams/CN Endterms/CN Endterm 2023.pdf",
+          "bytes": 500035,
+          "sha256": "d59c6c63ee6afaeac818d2e0066f079d1c27fdac763196f39e5bcaba223d86b6"
+        },
+        {
+          "path": "CN Exams/CN Endterms/CN Endterm 2024.pdf",
+          "bytes": 495361,
+          "sha256": "0ff30a126d2300c4d34fd0dcd5ddd0a494427554c0b4da482c96c2479a7de7f7"
+        },
+        {
+          "path": "CN Exams/CN Endterms/CN Endterm 2025.pdf",
+          "bytes": 279860,
+          "sha256": "4b757784400b64b0577fb176842084a170cc9b29f2e7fce3aa27350929f7fcc7"
+        },
+        {
+          "path": "CN Exams/CN Practice Exams/CN Practice Exam 1.pdf",
+          "bytes": 248666,
+          "sha256": "b0cdc5765584de1b73683750ffc9f26699c71e7a7ecc74fb8d7268c0cae2ff93"
+        },
+        {
+          "path": "CN Exams/CN Practice Exams/CN Practice Exam 2.pdf",
+          "bytes": 311000,
+          "sha256": "c2fd4570f1656e3413d23ddd44cefda02e017473e163abfde6af59bbd497e51c"
+        },
+        {
+          "path": "CN Exams/CN Resits/CN Resit 2022.pdf",
+          "bytes": 441571,
+          "sha256": "bd41f8fcd7213de7ead5dc5792c0f92ed640b8d62f824866ec82bbf02978802b"
+        },
+        {
+          "path": "CN Exams/CN Resits/CN Resit 2024.pdf",
+          "bytes": 397781,
+          "sha256": "e9c2acb01a58f1666a3da6025bb670209dc79690d707f68dbe019e591cbeae26"
+        },
+        {
+          "path": "CN Exams/CN Resits/CN Resit 2025.pdf",
+          "bytes": 299921,
+          "sha256": "7ab4bed1f0853c353810e218381d61b33a2fcc2ec371a92570e76d814647ec86"
+        },
+        {
+          "path": "CN LLM Files/Instructions.md",
+          "bytes": 5999,
+          "sha256": "9594da35a06a7802d3c19e46b4063d08908c56464edb402cda6e969a94a8acbf"
+        },
+        {
+          "path": "CN LLM Files/Knowledge Files/Chapter Summaries.md",
+          "bytes": 130314,
+          "sha256": "e7c2e421bd641c6896095b9f622be30f0b70cdd4d15ab25d07b56908629a0c6c"
+        },
+        {
+          "path": "CN LLM Files/Knowledge Files/Course Overview.md",
+          "bytes": 31221,
+          "sha256": "ff4b792980014bf02678a4d6a8e0f4838b16d2c1cf2997e60a6894d100e67c19"
+        },
+        {
+          "path": "CN LLM Files/Knowledge Files/Exams.md",
+          "bytes": 194507,
+          "sha256": "44d06d8ca5bd0e323f3fff3812519966722c13e23e5e8adb3058dc380bc6b028"
+        },
+        {
+          "path": "CN LLM Files/Knowledge Files/Lectures.md",
+          "bytes": 386758,
+          "sha256": "0280c1b69ef9775d3a0a8bd0faa655384c1ea86a51d246fdf31d46475ff901e3"
+        },
+        {
+          "path": "CN LLM Files/Knowledge Files/Tutorials.md",
+          "bytes": 102823,
+          "sha256": "ddbc1369972b7e5cbda774d76e058dd06b1312275960bb2d52bc83d8cc86ca64"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 1 - Intro + Data Link Layer.pdf",
+          "bytes": 3340779,
+          "sha256": "8277bd8229bd7e7ca9e202842cfcf23546051aa4ad98cb4440eb54ec9781b4da"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 10 - Network Security.pdf",
+          "bytes": 1328316,
+          "sha256": "092ab0190a0ab010fba3f4b5189b3824b697ba0a2943fae3361a679af57e2334"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 11 - Application Layer.pdf",
+          "bytes": 2262283,
+          "sha256": "1dd130fe00a3322f55982e0b72810632279c4eb1eaa4754f3dba16f6eac9adb7"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 12 - Application Layer.pdf",
+          "bytes": 1578238,
+          "sha256": "80a1ceec1966244f6e1500e3df1d888813dc7753cbb6f851e7cd644639b8c31f"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 2 - Data Link Layer + First Part MAC Sublayer.pdf",
+          "bytes": 1108368,
+          "sha256": "fd6768c76a1b5077004fd695c1f91909ded4a01f740b3df014b0ff6cf5f01ee2"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 3 - MAC Sublayer.pdf",
+          "bytes": 952517,
+          "sha256": "b942068562741992722e4a244668defd24b82ad2d1cae2eab30c443839f53299"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 4 - MAC Sublayer.pdf",
+          "bytes": 782884,
+          "sha256": "ea5ffe03ea9062c16f86402de465481d319862ee33da055ef5a424b04aa42c4c"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 5 - Network Layer.pdf",
+          "bytes": 790378,
+          "sha256": "6d315696264b84b0b08f2a947b9a5032be8ef8965ecf159bb0bfbbc842bfff4d"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 6 - Network Layer.pdf",
+          "bytes": 954384,
+          "sha256": "e22d883826c2cd6f2cb0d2058e0d14f65905778eac5670d7360a9752f8ffb157"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 7 - Transport Layer.pdf",
+          "bytes": 487690,
+          "sha256": "6ad8db457fbe16015e66c195f99cee8b00efc08372615765e9c315823409000c"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 8 - Transport Layer.pdf",
+          "bytes": 763349,
+          "sha256": "ce902b617bc868999be653f52573cd094224a496b2638ee9c8942e4ac1984bfc"
+        },
+        {
+          "path": "CN Lectures/CN Lecture 9 - Transport Layer.pdf",
+          "bytes": 743644,
+          "sha256": "b508b2271ddfce071fb0f0408e42b5203cd6ecb0e4beef43b38f9502172076bb"
+        },
+        {
+          "path": "CN Notes.pdf",
+          "bytes": 925142,
+          "sha256": "94a9b29de94d07856a27cc0f94b8b212d1a3753e26f27f8e86832ba6694da6a1"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 1 Solutions.pdf",
+          "bytes": 221082,
+          "sha256": "b7b7002b0312c46cef87f1d9f9069dc02f8cc4f40de7bdf1ae90af6f75c03101"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 2 Solutions.pdf",
+          "bytes": 143001,
+          "sha256": "70a3455ee7493dce921128846ef0fb17f0fe796233ad1c64470a984327a96ff5"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 3 Solutions.pdf",
+          "bytes": 271916,
+          "sha256": "224701045f0d13451632ae23429ad37036fee10f001096a9ec63929eff00fc7c"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 4 Solutions.pdf",
+          "bytes": 209697,
+          "sha256": "cb4874d294795b5ed55b6ef56c9f1443cfe355f0fd8e90a9c85e3c2f6a9caf75"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 5 Solutions.pdf",
+          "bytes": 162524,
+          "sha256": "7d31ee8a622d7c698fa1d4912f58f7a1378542baa34c023a413f63384199ddb9"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 6 Solutions.pdf",
+          "bytes": 323563,
+          "sha256": "514978c2502fce0f1c2e245c8b2dde18f6bdee0f92a07ee3bd7214ac8880368c"
+        },
+        {
+          "path": "CN Tutorial Solutions/CN Tutorial 7 Solutions.pdf",
+          "bytes": 848257,
+          "sha256": "1df831e84bbff821827c76feb91bc1798a215750bb43619b83d9e8bd082ecb84"
+        },
+        {
+          "path": "Computer Networks Summary.pdf",
+          "bytes": 599586,
+          "sha256": "5c58505423f50439e928a0c2fe33c4ed6f43261c891ba74b11a0887da46ef238"
+        },
+        {
+          "path": "Computer Networks.pdf",
+          "bytes": 19843686,
+          "sha256": "6b1eb251d44e5d691081d892fedd132bf19e2cd27ef2c5757f83de94023d53b1"
+        },
+        {
+          "path": "README.md",
+          "bytes": 1930,
+          "sha256": "d38eda39541cc155fdad6b9f0634a01d3e85c26262970fad9b5b6cabb847db65"
+        }
+      ]
+    }
+  ]
+}

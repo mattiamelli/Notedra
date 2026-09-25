@@ -1,8 +1,10 @@
 import { isStudyMode, studyModes } from '../topic-study/types';
 import generated from '../generated/academic-index.json';
+import {curriculumMetadata, curriculumAcademicIndex} from '../curriculum/metadata';
 import type { AcademicIndex, AcademicTopic } from './types';
 
-export const academicIndex: AcademicIndex = generated;
+export const academicIndex: AcademicIndex = {subjects: [...generated.subjects, ...curriculumAcademicIndex.subjects], topics: [...generated.topics, ...curriculumAcademicIndex.topics]};
+export const trimesters = [1, 2, 3, 4] as const;
 export interface SubjectPresentation {
   publicName: string;
   compactName: string;
@@ -16,7 +18,10 @@ const subjectPresentations: Record<string, SubjectPresentation> = {
 };
 
 export function subjectPresentation(subjectId: string): SubjectPresentation | undefined {
-  return subjectPresentations[subjectId];
+  const original=subjectPresentations[subjectId];
+  if(original)return original;
+  const course=curriculumMetadata.find(item=>item.id===subjectId);
+  return course?{publicName:course.name,compactName:course.short,descriptionKey:'course.cardIp'}:undefined;
 }
 
 // Stable application paths and public presentation choices. Canonical academic records remain unchanged.
@@ -25,13 +30,19 @@ const courseRoutes = [
   {subject_id: 'CSE1300_RL', path: '/rl', tone: 'violet', icon: 'logic'},
   {subject_id: 'CSE1100_IP', path: '/ip', tone: 'blue', icon: 'code'},
 ] as const;
-export const courses = courseRoutes.map(route => {
+const originalCourses = courseRoutes.map(route => {
   const subject = academicIndex.subjects.find(item => item.subject_id === route.subject_id);
   if (!subject) throw new Error(`Missing canonical course ${route.subject_id}.`);
   const presentation = subjectPresentation(route.subject_id);
   if (!presentation) throw new Error(`Missing public subject presentation ${route.subject_id}.`);
-  return {...subject, ...presentation, name: presentation.publicName, short: presentation.compactName, code: presentation.compactName, ...route};
+  return {...subject, ...presentation, name: presentation.publicName, short: presentation.compactName, code: presentation.compactName, ...route, trimester: 1 as const, description: ''};
 });
+export const courses = [...originalCourses, ...curriculumMetadata.map(course => ({
+  subject_id: course.id, code: course.code, name: course.name, short: course.short,
+  publicName: course.name, compactName: course.short, description: course.description,
+  descriptionKey: 'course.cardIp' as const, trimester: course.trimester,
+  path: `/${course.slug}`, tone: (course.trimester === 2 ? 'mint' : course.trimester === 3 ? 'violet' : 'blue') as 'mint' | 'violet' | 'blue', icon: 'book' as const,
+}))];
 export type Course = typeof courses[number];
 export const topicsFor = (subjectId: string) => academicIndex.topics.filter(topic => topic.subject_id === subjectId).sort((a, b) => a.order - b.order);
 export function topicPath(topic: AcademicTopic): string {

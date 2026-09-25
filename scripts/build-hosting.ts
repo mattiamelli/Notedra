@@ -5,6 +5,7 @@ import ts from 'typescript';
 import {publicDocumentPages} from './release';
 import {academicIndex,topicPath,courses} from '../src/academic/navigation';
 import {studyModes} from '../src/topic-study/types';
+import {examCourse} from '../src/exams/catalog';
 import {scanArtifact} from './hardening-validation';
 import type {HostedAsset,HostingManifest} from '../hosting/handler';
 import {prepareSitesStage,resolveSourceSha,writeSitesPackage} from './sites-package';
@@ -34,7 +35,7 @@ for(const entry of readdirSync('dist',{recursive:true,withFileTypes:true}).filte
  assets['/'+file]=asset(file);
 }
 const documents=Object.fromEntries(publicDocumentPages().map((page,index)=>[page.path,asset(`release/page-${index}.html`)]));
-const applicationPaths=['/','/dashboard','/account','/privacy','/terms','/progress','/mistakes','/study-plan','/practice','/exams','/exams/history',...courses.map(c=>`/exams/${c.subject_id}/setup`),...academicIndex.topics.flatMap(t=>studyModes.map(mode=>`${topicPath(t)}/${mode.id}`))];
+const applicationPaths=['/','/dashboard','/account','/privacy','/terms','/progress','/mistakes','/study-plan','/practice','/exams','/exams/history',...courses.filter(c=>examCourse(c.subject_id)).map(c=>`/exams/${c.subject_id}/setup`),...academicIndex.topics.flatMap(t=>studyModes.map(mode=>`${topicPath(t)}/${mode.id}`))];
 const manifest:HostingManifest={assets,documents,applicationPaths,shell:asset('index.html'),notFound:asset('404.html'),headers};
 const source=ts.transpileModule(readFileSync('hosting/handler.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
 const worker=source+'\nexport default createHandler('+JSON.stringify(manifest)+');\n';

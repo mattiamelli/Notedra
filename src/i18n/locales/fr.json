@@ -479,7 +479,7 @@
   "common.no": "non",
   "dashboard.exerciseProgress": "{completed} / {total} exercices · {percentage} %",
   "dashboard.exerciseProgressAria": "Progression des exercices pour {course}",
-  "dashboard.exerciseProgressHint": "Terminé après un envoi valide et évalué ; distinct de la maîtrise et de la préparation.",
+  "dashboard.exerciseProgressHint": "Terminé après un envoi valide ; le travail non évalué ne démontre ni maîtrise ni préparation.",
   "dashboard.noExercises": "Aucun exercice admissible",
   "assemblyTrace.snapshot": "Valeurs demandées au point de contrôle",
   "assemblyTrace.savedAnswer": "Réponse enregistrée au point de contrôle",

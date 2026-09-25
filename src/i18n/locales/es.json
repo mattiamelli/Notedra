@@ -479,7 +479,7 @@
   "common.no": "no",
   "dashboard.exerciseProgress": "{completed} / {total} ejercicios · {percentage}%",
   "dashboard.exerciseProgressAria": "Progreso de ejercicios de {course}",
-  "dashboard.exerciseProgressHint": "Completado tras un envío válido y evaluado; separado del dominio y la preparación.",
+  "dashboard.exerciseProgressHint": "Completado tras un envío válido; el trabajo sin evaluar no demuestra dominio ni preparación.",
   "dashboard.noExercises": "No hay ejercicios aptos",
   "assemblyTrace.snapshot": "Valores solicitados en el punto de control",
   "assemblyTrace.savedAnswer": "Respuesta guardada del punto de control",

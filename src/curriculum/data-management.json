@@ -1,0 +1,3356 @@
+{
+  "id": "CSE12C_DM",
+  "code": "CSE12C",
+  "name": "Data Management",
+  "short": "DM",
+  "trimester": 2,
+  "slug": "data-management",
+  "description": "Source-grounded preparation covering data modelling, relational querying, database access and the inherited database-systems material. Introductory WDT DB foundations precede explicitly labelled IDM extensions. This is an archive-based study curriculum, not a verified official 2026-27 syllabus.",
+  "limitations": [
+    "The supplied README and DM instructions describe CSE12C as a new 5 EC merger. They explicitly warn that the combined predecessor content is broader than the new course. No complete official CSE12C teaching schedule or assessment specification is supplied.",
+    "Storage, multidimensional indexing, query-optimization internals, concurrency protocols, recovery and distributed systems are retained as labelled legacy IDM extensions. Their inclusion here does not establish that they are examinable.",
+    "URIs/URLs are explicitly mentioned in the supplied new-course description. The concrete inherited material teaches JDBC connection URLs and persistence APIs; this does not establish a full REST syllabus.",
+    "All SQL and schema-design submissions are open reasoning exercises with rubrics. No SQL is executed, and no string comparison is presented as semantic SQL grading. SQL examples use conventional relational/PostgreSQL-style syntax; engine-specific behaviour is stated when needed.",
+    "Sources include legacy exams, student notes, textbook transcriptions and duplicated bundles. Some dates, labels and example solutions conflict. New exercises are original and self-contained; historical marks, deadlines, pass thresholds and permitted aids are not carried forward.",
+    "All 77 supplied non-hidden PDF/Markdown files were inventoried and text-extracted; document-level contents and course-relevant passages were inspected. Large textbooks were consulted selectively, not read cover to cover. Image-only SQL sheets were visually inspected. Not every diagram or historical worked answer was independently verified."
+  ],
+  "sources": [
+    {
+      "id": "DM_SRC_001",
+      "filename": "DM LLM Files/Instructions.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    },
+    {
+      "id": "DM_SRC_002",
+      "filename": "DM LLM Files/Knowledge Files/Assignments (IDM).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_003",
+      "filename": "DM LLM Files/Knowledge Files/Course Overview (IDM).md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "DM_SRC_004",
+      "filename": "DM LLM Files/Knowledge Files/Course Overview (WDT DB).md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "DM_SRC_005",
+      "filename": "DM LLM Files/Knowledge Files/Database Systems the Complete Book.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_006",
+      "filename": "DM LLM Files/Knowledge Files/Exams (IDM).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_007",
+      "filename": "DM LLM Files/Knowledge Files/Exams (WDT DB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_008",
+      "filename": "DM LLM Files/Knowledge Files/Fundamentals of Database Systems.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_009",
+      "filename": "DM LLM Files/Knowledge Files/Lab Assignments (WDT DB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_010",
+      "filename": "DM LLM Files/Knowledge Files/Lectures (IDM).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_011",
+      "filename": "DM LLM Files/Knowledge Files/Lectures (WDT DB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_012",
+      "filename": "From IDM/Database Systems the Complete Book.pdf",
+      "locator": "PDF pages 1-1240; reference textbook; course-relevant chapters only, not a new-course reading requirement"
+    },
+    {
+      "id": "DM_SRC_013",
+      "filename": "From IDM/IDM Assignment Solutions/IDM Assignment 1 Task 1 Solutions.pdf",
+      "locator": "PDF pages 1-9; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_014",
+      "filename": "From IDM/IDM Assignment Solutions/IDM Assignment 2 Solutions.pdf",
+      "locator": "PDF pages 1-13; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_015",
+      "filename": "From IDM/IDM Assignment Solutions/IDM Assignment 3 Solutions.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_016",
+      "filename": "From IDM/IDM Cheat Sheet.pdf",
+      "locator": "PDF pages 1-2; reference sheet"
+    },
+    {
+      "id": "DM_SRC_017",
+      "filename": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2020.pdf",
+      "locator": "PDF pages 1-19; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_018",
+      "filename": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2022.pdf",
+      "locator": "PDF pages 1-17; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_019",
+      "filename": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2023 Solutions.pdf",
+      "locator": "PDF pages 1-28; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_020",
+      "filename": "From IDM/IDM Exams/IDM Endterms/IDM Endterm 2024.pdf",
+      "locator": "PDF pages 1-20; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_021",
+      "filename": "From IDM/IDM Exams/IDM Resits/IDM Resit 2020.pdf",
+      "locator": "PDF pages 1-19; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_022",
+      "filename": "From IDM/IDM Exams/IDM Resits/IDM Resit 2022.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_023",
+      "filename": "From IDM/IDM Exams/IDM Resits/IDM Resit 2023.pdf",
+      "locator": "PDF pages 1-8; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_024",
+      "filename": "From IDM/IDM Exams/IDM Resits/IDM Resit 2024.pdf",
+      "locator": "PDF pages 1-22; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_025",
+      "filename": "From IDM/IDM LLM Files/Instructions.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    },
+    {
+      "id": "DM_SRC_026",
+      "filename": "From IDM/IDM LLM Files/Knowledge Files/Assignments.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_027",
+      "filename": "From IDM/IDM LLM Files/Knowledge Files/Course Overview.md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "DM_SRC_028",
+      "filename": "From IDM/IDM LLM Files/Knowledge Files/Database Systems the Complete Book.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_029",
+      "filename": "From IDM/IDM LLM Files/Knowledge Files/Exams.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_030",
+      "filename": "From IDM/IDM LLM Files/Knowledge Files/Lectures.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_031",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 1 - Introduction.pdf",
+      "locator": "PDF pages 1-49; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_032",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 10 - Query Processing Part 3.pdf",
+      "locator": "PDF pages 1-97; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_033",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 11 - Transactions Concurrency.pdf",
+      "locator": "PDF pages 1-78; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_034",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 12 - Recovery Distributed Transactions.pdf",
+      "locator": "PDF pages 1-82; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_035",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 13 - NoSQL.pdf",
+      "locator": "PDF pages 1-76; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_036",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 2 - SQL.pdf",
+      "locator": "PDF pages 1-80; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_037",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 3 - API Persistance.pdf",
+      "locator": "PDF pages 1-74; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_038",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 4 - Towards Query Processing.pdf",
+      "locator": "PDF pages 1-93; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_039",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 5 - Storage.pdf",
+      "locator": "PDF pages 1-64; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_040",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 6 - Logical Storage Indexing.pdf",
+      "locator": "PDF pages 1-34; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_041",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 7 - Indexing.pdf",
+      "locator": "PDF pages 1-75; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_042",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 8 - Query Processing Part 1.pdf",
+      "locator": "PDF pages 1-90; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_043",
+      "filename": "From IDM/IDM Lectures/IDM Lecture 9 - Query Processing Part 2.pdf",
+      "locator": "PDF pages 1-109; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_044",
+      "filename": "From IDM/IDM Notes.pdf",
+      "locator": "PDF pages 1-37; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_045",
+      "filename": "From IDM/SQL Cheat Sheet.pdf",
+      "locator": "PDF pages 1-2; reference sheet"
+    },
+    {
+      "id": "DM_SRC_046",
+      "filename": "From WDT DB/Fundamentals of Database Systems.pdf",
+      "locator": "PDF pages 1-1273; reference textbook; course-relevant chapters only, not a new-course reading requirement"
+    },
+    {
+      "id": "DM_SRC_047",
+      "filename": "From WDT DB/SQL Cheat Sheet.pdf",
+      "locator": "PDF pages 1-2; reference sheet"
+    },
+    {
+      "id": "DM_SRC_048",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2020.pdf",
+      "locator": "PDF pages 1-29; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_049",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2022.pdf",
+      "locator": "PDF pages 1-15; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_050",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2023.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_051",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterm Resits/WDT DB Midterm Resit 2024.pdf",
+      "locator": "PDF pages 1-33; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_052",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2022.pdf",
+      "locator": "PDF pages 1-15; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_053",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2023.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_054",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2024.pdf",
+      "locator": "PDF pages 1-33; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_055",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Midterm 2025 Solutions.pdf",
+      "locator": "PDF pages 1-23; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_056",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Mock 1.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_057",
+      "filename": "From WDT DB/WDT DB Exams/WDT DB Midterms/WDT DB Mock 2.pdf",
+      "locator": "PDF pages 1-12; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_058",
+      "filename": "From WDT DB/WDT DB LLM Files/Instructions.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    },
+    {
+      "id": "DM_SRC_059",
+      "filename": "From WDT DB/WDT DB LLM Files/Knowledge Files/Course Overview.md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "DM_SRC_060",
+      "filename": "From WDT DB/WDT DB LLM Files/Knowledge Files/Exams.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_061",
+      "filename": "From WDT DB/WDT DB LLM Files/Knowledge Files/Fundamentals of Database Systems.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_062",
+      "filename": "From WDT DB/WDT DB LLM Files/Knowledge Files/Lab Assignments.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_063",
+      "filename": "From WDT DB/WDT DB LLM Files/Knowledge Files/Lectures.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "DM_SRC_064",
+      "filename": "From WDT DB/WDT DB Lab Assignment Solutions/WDT DB Lab Assignment 1 Solutions.pdf",
+      "locator": "PDF pages 1-8; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_065",
+      "filename": "From WDT DB/WDT DB Lab Assignment Solutions/WDT DB Lab Assignment 2 Solutions.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_066",
+      "filename": "From WDT DB/WDT DB Lab Assignment Solutions/WDT DB Lab Assignment 3 Solutions.pdf",
+      "locator": "PDF pages 1-8; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_067",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 1 - Introduction.pdf",
+      "locator": "PDF pages 1-89; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_068",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 2 - Modelling-ER.pdf",
+      "locator": "PDF pages 1-167; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_069",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 3 - More on ER.pdf",
+      "locator": "PDF pages 1-167; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_070",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 4 - SQL Part 1.pdf",
+      "locator": "PDF pages 1-74; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_071",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 5 - SQL Part 2.pdf",
+      "locator": "PDF pages 1-135; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_072",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 6 - Relational Model.pdf",
+      "locator": "PDF pages 1-139; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_073",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 7 - Database Normalization.pdf",
+      "locator": "PDF pages 1-305; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_074",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 8 - JDBC.pdf",
+      "locator": "PDF pages 1-107; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_075",
+      "filename": "From WDT DB/WDT DB Lectures/WDT DB Lecture 9 - QA.pdf",
+      "locator": "PDF pages 1-30; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "DM_SRC_076",
+      "filename": "From WDT DB/WDT DB Notes.pdf",
+      "locator": "PDF pages 1-10; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "DM_SRC_077",
+      "filename": "README.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    }
+  ],
+  "topics": [
+    {
+      "id": "DM_FOUNDATIONS",
+      "name": "Database architecture and data independence",
+      "description": "Introductory foundations supported by WDT DB and the supplied CSE12C scope.",
+      "prerequisites": [],
+      "sourceIds": [
+        "DM_SRC_001",
+        "DM_SRC_031",
+        "DM_SRC_067",
+        "DM_SRC_076",
+        "DM_SRC_077"
+      ],
+      "skills": [
+        {
+          "id": "DM_FOUNDATIONS_S1",
+          "name": "Explain database abstractions",
+          "description": "Distinguish data, schema, constraints and DBMS responsibilities."
+        },
+        {
+          "id": "DM_FOUNDATIONS_S2",
+          "name": "Trace database requests",
+          "description": "Follow a request through application, query processing and storage."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Why a DBMS exists",
+          "paragraphs": [
+            "A database stores related facts; a DBMS manages their definition, retrieval, updates and shared use. A spreadsheet of bookings may work for one person, but two simultaneous edits can overwrite each other. Central constraints and transactions make the rules part of the shared system instead of relying on every application to behave correctly.",
+            "A schema describes permitted structure, such as Booking(id, room_id, starts_at). An instance is the set of rows at a particular time. A key identifies a row; a constraint expresses a rule such as uniqueness. Checking one small instance can reveal a violation, but cannot prove that a proposed rule holds for all possible future data."
+          ]
+        },
+        {
+          "title": "From domain to stored bytes",
+          "paragraphs": [
+            "Start with a conceptual model of people, objects and relationships. Choose a logical model next, such as relations with keys. Choose physical structures, such as heap files and indexes, after considering the workload. For example, Room and Booking are domain concepts; their tables are logical structures; a B+-tree on starts_at is a physical access choice.",
+            "A client sends a query through a database interface. The DBMS parses and validates it, chooses an execution plan, executes operators, and obtains pages through a buffer/storage manager. Transaction and recovery components coordinate correct shared updates and failure handling. The catalogue stores metadata used to interpret the schema and plan queries."
+          ]
+        },
+        {
+          "title": "Independence and practical boundaries",
+          "paragraphs": [
+            "Physical data independence means changing storage details without requiring every application query to change. Adding an index should preserve the meaning of a query. Logical changes, such as splitting a table, are harder to hide, though a view can preserve a previous interface. Neither kind of independence promises that performance remains constant.",
+            "Use DDL to define structure and DML to change facts. Before choosing a representation, write down who updates the data, which questions must be answered, and which constraints must never be violated. Avoid selecting a fashionable database first and then forcing the domain to fit it. Historical product lists and course assessments in the archive are background, not current requirements."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Schema versus instance",
+          "prompt": "A new booking row is inserted without changing columns. What changed?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_FOUNDATIONS_E01_O1",
+              "text": "The instance"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E01_O2",
+              "text": "The schema only"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E01_O3",
+              "text": "The relational model itself"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E01_O4",
+              "text": "The DBMS catalogue must lose all keys"
+            }
+          ],
+          "explanation": "The stored facts changed; the table definition did not.",
+          "id": "DM_FOUNDATIONS_E01",
+          "skillId": "DM_FOUNDATIONS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ],
+          "answer": "DM_FOUNDATIONS_E01_O1"
+        },
+        {
+          "title": "Shared booking file",
+          "prompt": "Two staff members edit separate copies of a room-booking file. Explain two failures a DBMS could help prevent and the relevant mechanisms.",
+          "kind": "open",
+          "explanation": "Concurrent copies can cause lost updates and inconsistent references. Transactions and shared integrity constraints address different parts of the problem.",
+          "rubric": [
+            "Give two concrete failures.",
+            "Associate each with a suitable mechanism.",
+            "Do not claim that using any DBMS automatically enforces every business rule."
+          ],
+          "id": "DM_FOUNDATIONS_E02",
+          "skillId": "DM_FOUNDATIONS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ]
+        },
+        {
+          "title": "Physical independence",
+          "prompt": "A DBA replaces a heap scan with an index scan while preserving query results. Which abstraction is illustrated?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_FOUNDATIONS_E03_O1",
+              "text": "Conceptual modelling"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E03_O2",
+              "text": "Physical data independence"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E03_O3",
+              "text": "Changing the user requirement"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E03_O4",
+              "text": "Removing transactions"
+            }
+          ],
+          "explanation": "The storage/access strategy changes while the logical request keeps its meaning.",
+          "id": "DM_FOUNDATIONS_E03",
+          "skillId": "DM_FOUNDATIONS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ],
+          "answer": "DM_FOUNDATIONS_E03_O2"
+        },
+        {
+          "title": "Three representations",
+          "prompt": "For a library loan system, give one conceptual, one relational and one physical design decision.",
+          "kind": "open",
+          "explanation": "A loan relationship is conceptual; Loan(member_id,copy_id,due_date) with foreign keys is logical; an index on due_date is physical.",
+          "rubric": [
+            "Separate all three levels.",
+            "Include identity or relationships at the logical level.",
+            "Explain which workload motivates the physical choice."
+          ],
+          "id": "DM_FOUNDATIONS_E04",
+          "skillId": "DM_FOUNDATIONS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ]
+        },
+        {
+          "title": "Catalogue responsibility",
+          "prompt": "Where should a query planner obtain table and column definitions?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_FOUNDATIONS_E05_O1",
+              "text": "From the query result order"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E05_O2",
+              "text": "From a random application object"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E05_O3",
+              "text": "From the DBMS catalogue"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E05_O4",
+              "text": "From the browser history"
+            }
+          ],
+          "explanation": "The catalogue records schema metadata used to validate and plan requests.",
+          "id": "DM_FOUNDATIONS_E05",
+          "skillId": "DM_FOUNDATIONS_S2",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ],
+          "answer": "DM_FOUNDATIONS_E05_O3"
+        },
+        {
+          "title": "Trace a read",
+          "prompt": "Describe the main stages between submitting SELECT title FROM Book WHERE id = 7 and receiving a row. Do not execute it.",
+          "kind": "open",
+          "explanation": "Parsing and name checking precede planning and execution; an operator obtains data pages through buffering/storage and returns projected values.",
+          "rubric": [
+            "Include validation, planning, execution and storage access.",
+            "Explain the possible role of an index.",
+            "Do not equate the SQL text with a fixed physical algorithm."
+          ],
+          "id": "DM_FOUNDATIONS_E06",
+          "skillId": "DM_FOUNDATIONS_S2",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ]
+        },
+        {
+          "title": "Definition language",
+          "prompt": "Which action primarily defines a database schema?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_FOUNDATIONS_E07_O1",
+              "text": "Reading the current bookings"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E07_O2",
+              "text": "Changing one due date"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E07_O3",
+              "text": "Counting books"
+            },
+            {
+              "id": "DM_FOUNDATIONS_E07_O4",
+              "text": "Declaring a table and primary key"
+            }
+          ],
+          "explanation": "Declaring structural objects and constraints is DDL.",
+          "id": "DM_FOUNDATIONS_E07",
+          "skillId": "DM_FOUNDATIONS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ],
+          "answer": "DM_FOUNDATIONS_E07_O4"
+        },
+        {
+          "title": "A sample is not a rule",
+          "prompt": "A sample table contains unique surnames. Explain why surname is not thereby established as a candidate key.",
+          "kind": "open",
+          "explanation": "Uniqueness in observed data is accidental unless the domain guarantees it for all valid instances. Minimality must also be checked.",
+          "rubric": [
+            "Distinguish observed uniqueness from a domain constraint.",
+            "Provide a valid future counterexample.",
+            "Mention stable identity or a justified alternative key."
+          ],
+          "id": "DM_FOUNDATIONS_E08",
+          "skillId": "DM_FOUNDATIONS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_031",
+            "DM_SRC_067",
+            "DM_SRC_076",
+            "DM_SRC_077"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_MODELLING",
+      "name": "ER modelling and relational mapping",
+      "description": "Introductory conceptual design, cardinality, participation and mapping.",
+      "prerequisites": [
+        "DM_FOUNDATIONS"
+      ],
+      "sourceIds": [
+        "DM_SRC_068",
+        "DM_SRC_069",
+        "DM_SRC_064",
+        "DM_SRC_072"
+      ],
+      "skills": [
+        {
+          "id": "DM_MODELLING_S1",
+          "name": "Model domain constraints",
+          "description": "Express entity identity, relationship roles, cardinality and participation."
+        },
+        {
+          "id": "DM_MODELLING_S2",
+          "name": "Map an ER design",
+          "description": "Construct relational keys and foreign keys while preserving stated rules."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Ask about identity and multiplicity",
+          "paragraphs": [
+            "An entity type groups objects with an identity independent of the current values of their descriptive attributes. A relationship connects instances in named roles. Begin by extracting nouns, then ask which are identifiable entities, which are attributes, and which represent associations. A course title can change without creating a different course; a course code may therefore be a better identifier than its title.",
+            "For each relationship end, ask for both a minimum and a maximum. A student may have zero or many enrolments; each enrolment belongs to exactly one student. Maximum multiplicity and mandatory participation answer different questions. Do not infer mandatory participation simply because every object in an example happens to participate."
+          ]
+        },
+        {
+          "title": "Translate deliberately",
+          "paragraphs": [
+            "Map a strong entity to a table with a primary key. For a one-to-many relationship, a foreign key normally goes on the many side. Make it NOT NULL if that side must participate. For many-to-many enrolment, use an associative table Enrolment(student_id,course_id,grade); its key is the pair only if repeat enrolments are forbidden. Otherwise a term or attempt identifier is needed.",
+            "A weak entity relies on an owner and a partial key: Room(building_id,number) can identify room 101 within a building. A multivalued attribute such as phone numbers becomes a separate relation. For a one-to-one relationship, a foreign key plus UNIQUE enforces the upper bound, while NOT NULL enforces mandatory reference from that side. It does not automatically force every referenced row to have a partner."
+          ]
+        },
+        {
+          "title": "Preserve meaning, not just diagram shapes",
+          "paragraphs": [
+            "Relationship attributes belong where their meaning is determined. The hours an employee spends on a project depend on the employee-project association, not on either entity alone. A ternary Supplier-Part-Project relationship may record combinations that three independent binary links cannot recover without inventing combinations.",
+            "For specialisation, record whether subclasses overlap and whether coverage is total. Several relational mappings can be valid: a superclass table with subclass tables preserves shared identity but needs additional enforcement for some cross-table rules. State assumptions and test counterexamples such as repeated attempts, missing owners and duplicate associations rather than treating one reference diagram as the only acceptable design."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Loan identity",
+          "prompt": "A member can borrow the same physical copy many times. Propose Loan attributes and a key, explaining why (member_id,copy_id) alone fails.",
+          "kind": "open",
+          "explanation": "That pair identifies a recurring association, not an individual loan event; a loan_id or a sufficiently constrained event key distinguishes occurrences.",
+          "rubric": [
+            "Distinguish book title, physical copy and loan event.",
+            "Give a key that permits repeated loans.",
+            "Include foreign keys and state any date uniqueness assumption."
+          ],
+          "id": "DM_MODELLING_E01",
+          "skillId": "DM_MODELLING_S2",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Mandatory many side",
+          "prompt": "Every Booking must reference one existing Room. Which constraints directly express this on Booking.room_id?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_MODELLING_E02_O1",
+              "text": "UNIQUE only"
+            },
+            {
+              "id": "DM_MODELLING_E02_O2",
+              "text": "A nullable string"
+            },
+            {
+              "id": "DM_MODELLING_E02_O3",
+              "text": "NOT NULL and a foreign key to Room"
+            },
+            {
+              "id": "DM_MODELLING_E02_O4",
+              "text": "An index only"
+            }
+          ],
+          "explanation": "The foreign key checks the reference; NOT NULL disallows an absent reference.",
+          "id": "DM_MODELLING_E02",
+          "skillId": "DM_MODELLING_S2",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ],
+          "answer": "DM_MODELLING_E02_O3"
+        },
+        {
+          "title": "Relationship attribute",
+          "prompt": "Students take courses and receive a grade for each attempt. Locate grade and define a repeat-attempt key.",
+          "kind": "open",
+          "explanation": "Grade belongs to the attempt association. Student-course alone is insufficient when attempts repeat.",
+          "rubric": [
+            "Place grade on an attempt/enrolment relation.",
+            "Include student and course references.",
+            "Add an attempt discriminator and justify it."
+          ],
+          "id": "DM_MODELLING_E03",
+          "skillId": "DM_MODELLING_S2",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Many-to-many mapping",
+          "prompt": "Use the standard separate-table mapping for Author and Book with a many-to-many Writes relationship. With no other entities or multivalued attributes, how many tables result?",
+          "kind": "integer",
+          "answer": "3",
+          "explanation": "Author, Book and Writes are three tables.",
+          "id": "DM_MODELLING_E04",
+          "skillId": "DM_MODELLING_S2",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Weak room",
+          "prompt": "Room numbers are unique only within a building. Design Building and Room keys and explain identification dependence.",
+          "kind": "open",
+          "explanation": "Room uses (building_id,room_number), with building_id also referencing Building.",
+          "rubric": [
+            "Give the composite Room key.",
+            "Give the owner foreign key.",
+            "Explain why room_number alone is insufficient."
+          ],
+          "id": "DM_MODELLING_E05",
+          "skillId": "DM_MODELLING_S2",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Participation distinction",
+          "prompt": "A customer is allowed to have no orders, but each order must have a customer. Which statement is correct?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_MODELLING_E06_O1",
+              "text": "Customer participation is optional"
+            },
+            {
+              "id": "DM_MODELLING_E06_O2",
+              "text": "Order participation is optional"
+            },
+            {
+              "id": "DM_MODELLING_E06_O3",
+              "text": "Both sides must have maximum one"
+            },
+            {
+              "id": "DM_MODELLING_E06_O4",
+              "text": "Every customer needs a placeholder order"
+            }
+          ],
+          "explanation": "The minimum number of orders for a customer is zero.",
+          "id": "DM_MODELLING_E06",
+          "skillId": "DM_MODELLING_S1",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ],
+          "answer": "DM_MODELLING_E06_O1"
+        },
+        {
+          "title": "Ternary fact",
+          "prompt": "A supplier delivers a particular part to a particular project. Explain how three pairwise relations can lose information.",
+          "kind": "open",
+          "explanation": "Pairwise projections can permit reconstructed supplier-part-project combinations that never occurred.",
+          "rubric": [
+            "Give a concrete combination that can become spurious.",
+            "Explain that the original fact involves three roles together.",
+            "Propose a ternary relation with a justified key."
+          ],
+          "id": "DM_MODELLING_E07",
+          "skillId": "DM_MODELLING_S1",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Overlapping subtypes",
+          "prompt": "A university person may be both a student and employee, or neither. Specify specialisation constraints and a relational mapping.",
+          "kind": "open",
+          "explanation": "The specialisation is overlapping and partial; shared Person identity with optional subtype rows is one valid mapping.",
+          "rubric": [
+            "Identify overlapping and partial.",
+            "Share the Person key through subtype foreign keys.",
+            "Do not add a constraint forbidding dual membership."
+          ],
+          "id": "DM_MODELLING_E08",
+          "skillId": "DM_MODELLING_S2",
+          "sourceIds": [
+            "DM_SRC_068",
+            "DM_SRC_069",
+            "DM_SRC_064",
+            "DM_SRC_072"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_SQL_BASIC",
+      "name": "SQL selection, joins and aggregation",
+      "description": "Introductory SQL reasoning with explicit NULL, duplicate and empty-group semantics.",
+      "prerequisites": [
+        "DM_MODELLING"
+      ],
+      "sourceIds": [
+        "DM_SRC_070",
+        "DM_SRC_071",
+        "DM_SRC_036",
+        "DM_SRC_065",
+        "DM_SRC_045",
+        "DM_SRC_047"
+      ],
+      "skills": [
+        {
+          "id": "DM_SQL_BASIC_S1",
+          "name": "Reason about SQL results",
+          "description": "Track rows, duplicates, NULLs and grouping through a query."
+        },
+        {
+          "id": "DM_SQL_BASIC_S2",
+          "name": "Construct and repair SQL",
+          "description": "Write and justify self-contained read queries without executing them."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Read a query as a pipeline",
+          "paragraphs": [
+            "For reasoning, start with FROM and JOIN, then WHERE, GROUP BY, HAVING, SELECT and ORDER BY. This is a logical explanation, not a promise about execution order. WHERE retains only rows where its condition is TRUE. A comparison to NULL is UNKNOWN, so use IS NULL or IS NOT NULL when testing absence. SQL normally preserves duplicates; SELECT DISTINCT removes duplicate projected rows.",
+            "Suppose Mark(student_id,score) contains (1,8),(2,NULL),(3,8). COUNT(*) is 3, COUNT(score) is 2 and COUNT(DISTINCT score) is 1. AVG(score) ignores the unknown score rather than treating it as zero. State whether missing means not yet marked or truly zero before using COALESCE. ORDER BY needs a tie-breaker when the output must be deterministic."
+          ]
+        },
+        {
+          "title": "Join with the intended preservation rule",
+          "paragraphs": [
+            "An inner join retains matching combinations. If one member has three loans, that member appears three times before grouping or deduplication. A left join additionally preserves members without loans, supplying NULL for right-side columns. After that join, COUNT(Loan.id) counts real matching loans; COUNT(*) also counts the placeholder row.",
+            "To count active loans while retaining every member, put the active predicate in ON or prefilter the loan input. A right-side condition in WHERE can remove the NULL-extended rows and effectively undo preservation. Use explicit join conditions: NATURAL JOIN can silently start matching an added same-named column that was never intended as a key."
+          ]
+        },
+        {
+          "title": "Aggregate at the correct grain",
+          "paragraphs": [
+            "First state what one output row represents: one member, one course or one city. Group by that identity and any required selected descriptive columns. WHERE filters input rows; HAVING filters groups after aggregation. Joining two independent one-to-many relations can multiply facts and overcount; aggregate each relation to the needed grain before combining them.",
+            "For Member(id,name) and Loan(id,member_id), a zero-inclusive count is SELECT m.id, m.name, COUNT(l.id) AS n FROM Member m LEFT JOIN Loan l ON l.member_id=m.id GROUP BY m.id,m.name. This query is instructional text, not executable assessment. Always test reasoning against no matches, repeated names, multiple matches and NULL values. A query that happens to fit one example can still be wrong."
+          ]
+        },
+        {
+          "title": "Define and change data deliberately",
+          "paragraphs": [
+            "CREATE TABLE defines columns, types and constraints. PRIMARY KEY supplies unique non-null identity; a FOREIGN KEY requires a matching referenced key when its value is present. NOT NULL is separate from a rule such as CHECK(quantity > 0): in conventional SQL, a CHECK condition evaluating UNKNOWN does not reject the row, so the positivity check alone does not prohibit NULL. Choose ON DELETE behaviour according to the domain: CASCADE removes dependent rows, while a rejecting policy can preserve an important dependency for explicit handling.",
+            "INSERT adds rows, UPDATE changes rows selected by its condition and DELETE removes selected rows while leaving the table definition. Omitting a WHERE restriction can affect every row. DROP TABLE removes the table object and is different from deleting its contents. Before proposing a modification, identify the intended rows, preserved invariants and transaction boundary. These are written reasoning exercises only; no statement is executed.",
+            "A view names a query and can present a stable or restricted logical shape without necessarily storing another physical copy. A simple view may support updates under an engine's rules; a grouped summary should not be assumed directly updatable because one output row can represent many base rows. A view definition is also not an automatic proof of access control: privileges and the database's security semantics determine what a caller may read or change."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Count known marks",
+          "prompt": "Mark(score) contains 8, NULL, 8, 5. What integer does COUNT(score) return?",
+          "kind": "integer",
+          "answer": "3",
+          "explanation": "COUNT of an expression ignores NULL, so it counts three values.",
+          "id": "DM_SQL_BASIC_E01",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Distinct projected marks",
+          "prompt": "Mark(score) contains 8, 8, 5. How many rows does SELECT DISTINCT score FROM Mark return?",
+          "kind": "integer",
+          "answer": "2",
+          "explanation": "There are two distinct projected values, 8 and 5.",
+          "id": "DM_SQL_BASIC_E02",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Missing grade test",
+          "prompt": "Which condition selects rows whose grade is NULL?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_SQL_BASIC_E03_O1",
+              "text": "grade = NULL"
+            },
+            {
+              "id": "DM_SQL_BASIC_E03_O2",
+              "text": "grade <> NULL"
+            },
+            {
+              "id": "DM_SQL_BASIC_E03_O3",
+              "text": "grade IS NULL"
+            },
+            {
+              "id": "DM_SQL_BASIC_E03_O4",
+              "text": "grade = 0"
+            }
+          ],
+          "explanation": "IS NULL explicitly tests absence; ordinary comparisons to NULL are not TRUE.",
+          "id": "DM_SQL_BASIC_E03",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ],
+          "answer": "DM_SQL_BASIC_E03_O3"
+        },
+        {
+          "title": "Zero-inclusive counts",
+          "prompt": "Given Member(id primary key,name) and Loan(id primary key,member_id foreign key), write SQL returning every member id and loan count, including zero.",
+          "kind": "open",
+          "explanation": "Use Member LEFT JOIN Loan and COUNT(Loan.id), grouped by member identity.",
+          "rubric": [
+            "Preserve members without loans.",
+            "Count a non-null Loan key rather than COUNT(*).",
+            "Group by member id and use explicit join keys."
+          ],
+          "id": "DM_SQL_BASIC_E04",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Join multiplication",
+          "prompt": "A has two rows with key 7. B has three rows with key 7. With no other rows, how many rows are in A INNER JOIN B ON A.key=B.key?",
+          "kind": "integer",
+          "answer": "6",
+          "explanation": "Every matching A row pairs with each matching B row: 2 times 3.",
+          "id": "DM_SQL_BASIC_E05",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Group threshold",
+          "prompt": "Which clause filters groups to those with COUNT(*) > 2?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_SQL_BASIC_E06_O1",
+              "text": "WHERE"
+            },
+            {
+              "id": "DM_SQL_BASIC_E06_O2",
+              "text": "HAVING"
+            },
+            {
+              "id": "DM_SQL_BASIC_E06_O3",
+              "text": "ORDER BY"
+            },
+            {
+              "id": "DM_SQL_BASIC_E06_O4",
+              "text": "DISTINCT"
+            }
+          ],
+          "explanation": "HAVING applies a condition after grouping and aggregation.",
+          "id": "DM_SQL_BASIC_E06",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ],
+          "answer": "DM_SQL_BASIC_E06_O2"
+        },
+        {
+          "title": "Repair outer-join filter",
+          "prompt": "Member has ids 1 and 2. Loan has (id=10,member_id=1,active=true). A query left-joins Loan then uses WHERE Loan.active=true. Explain the missing member and repair the query conceptually.",
+          "kind": "open",
+          "explanation": "The unmatched member receives NULL active, which fails WHERE. Move the active restriction into ON to preserve every member.",
+          "rubric": [
+            "Explain UNKNOWN/non-TRUE rejection.",
+            "Place the right-side predicate in ON or a prefiltered input.",
+            "Retain the left join and zero-count logic."
+          ],
+          "id": "DM_SQL_BASIC_E07",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Two separate totals",
+          "prompt": "Book(id), Loan(id,book_id) and Review(id,book_id) are joined to count loans and reviews per book. A book has 2 loans and 3 reviews. Diagnose inflated counts and propose a robust repair.",
+          "kind": "open",
+          "explanation": "The joined rows form six loan-review combinations. Preaggregate each child relation before joining to Book, or use carefully justified distinct keys.",
+          "rubric": [
+            "Identify the 2-by-3 multiplication.",
+            "Give a correction that handles arbitrary child counts.",
+            "Retain books with no children when the requirement says every book."
+          ],
+          "id": "DM_SQL_BASIC_E08",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Unknown comparisons",
+          "prompt": "T(x) contains 2, NULL, 7. How many rows survive WHERE x <> 2?",
+          "kind": "integer",
+          "answer": "1",
+          "explanation": "Only 7 yields TRUE. NULL <> 2 is UNKNOWN.",
+          "id": "DM_SQL_BASIC_E09",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "title": "Stable top results",
+          "prompt": "Book(id,title,rating) may contain tied ratings and repeated titles. Write a query for the first three books by descending rating, with deterministic id tie-breaking. Assume all ratings are non-null.",
+          "kind": "open",
+          "explanation": "Order by rating DESC and id ASC before applying LIMIT 3 in PostgreSQL-style SQL.",
+          "rubric": [
+            "Return book identity.",
+            "Specify both sort keys and directions.",
+            "Apply the limit to the ordered result."
+          ],
+          "id": "DM_SQL_BASIC_E10",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": [
+            "DM_SRC_070",
+            "DM_SRC_071",
+            "DM_SRC_036",
+            "DM_SRC_065",
+            "DM_SRC_045",
+            "DM_SRC_047"
+          ]
+        },
+        {
+          "id": "DM_SQL_BASIC_E11",
+          "title": "Define constrained order lines",
+          "prompt": "Product(id) and Orders(id) already have primary keys. Write a table definition for OrderLine(order_id,product_id,quantity): each product may occur at most once per order, both references are mandatory, and quantity must be a known positive integer. Do not execute SQL.",
+          "kind": "open",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": ["DM_SRC_036", "DM_SRC_071"],
+          "explanation": "Use a composite primary key (order_id,product_id), foreign keys to the parent tables, and quantity INTEGER NOT NULL CHECK (quantity > 0). The primary key makes both key columns non-null under conventional SQL semantics.",
+          "rubric": ["Define both foreign-key references and the composite key.", "Give quantity an integer type and a positivity check.", "Explicitly prohibit an unknown quantity instead of relying on CHECK alone."]
+        },
+        {
+          "id": "DM_SQL_BASIC_E12",
+          "title": "Choose a deletion policy",
+          "prompt": "An archived order must retain its line-item history even when a product is no longer sold. A schema uses ON DELETE CASCADE from Product to OrderLine. Explain the conflict and propose an alternative with tradeoffs.",
+          "kind": "open",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": ["DM_SRC_036", "DM_SRC_071"],
+          "explanation": "Cascading product deletion destroys order-line history. Retaining products with an inactive status or rejecting referenced deletions can preserve links; historical snapshots are another design requiring explicit identity and update semantics.",
+          "rubric": ["Explain the cascade's effect on historical rows.", "Propose a policy that actually retains the needed history.", "State how inactive products, references or historical copies are handled."]
+        },
+        {
+          "id": "DM_SQL_BASIC_E13",
+          "title": "Bound a price update",
+          "prompt": "Product(id,category,price) contains non-null prices. Write SQL to increase only category 'stationery' prices by 10 percent. Explain the consequence of omitting the predicate and one transaction-related concern. Do not execute it.",
+          "kind": "open",
+          "skillId": "DM_SQL_BASIC_S2",
+          "sourceIds": ["DM_SRC_036", "DM_SRC_071"],
+          "explanation": "UPDATE Product SET price=price*1.10 WHERE category='stationery' limits the change. Without WHERE every row is affected; a failed or repeated business operation needs deliberate rollback/retry semantics and appropriate numeric rounding rules.",
+          "rubric": ["Use a multiplicative 1.10 increase on the current value.", "Restrict the update to the specified category.", "Explain the all-row risk and a justified transaction/retry concern."]
+        },
+        {
+          "id": "DM_SQL_BASIC_E14",
+          "title": "Aggregate view ambiguity",
+          "prompt": "A view returns category and SUM(price) from Product grouped by category. Explain why setting one displayed total to 100 does not uniquely specify which base product prices should change.",
+          "kind": "open",
+          "skillId": "DM_SQL_BASIC_S1",
+          "sourceIds": ["DM_SRC_036", "DM_SRC_071"],
+          "explanation": "Several base rows contribute to a total, and many assignments of their prices can produce 100. A separate business rule and operation would be needed; direct view updatability cannot be assumed.",
+          "rubric": ["Identify the many-base-rows to one-summary-row mapping.", "Give or describe multiple possible price assignments.", "Distinguish a readable view from a well-defined update operation."]
+        }
+      ]
+    },
+    {
+      "id": "DM_SQL_ADVANCED",
+      "name": "Subqueries, sets and query validation",
+      "description": "Inherited SQL extensions: CTEs, correlated queries, universal conditions and counterexamples.",
+      "prerequisites": [
+        "DM_SQL_BASIC"
+      ],
+      "sourceIds": [
+        "DM_SRC_036",
+        "DM_SRC_013",
+        "DM_SRC_002",
+        "DM_SRC_006",
+        "DM_SRC_071"
+      ],
+      "skills": [
+        {
+          "id": "DM_SQL_ADVANCED_S1",
+          "name": "Express nested conditions",
+          "description": "Use EXISTS, set operations and CTEs with explicit quantifier semantics."
+        },
+        {
+          "id": "DM_SQL_ADVANCED_S2",
+          "name": "Validate query meaning",
+          "description": "Find counterexamples involving ties, NULLs, duplicates and missing groups."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Existence and absence",
+          "paragraphs": [
+            "EXISTS asks whether a subquery returns at least one row. It is useful when the result should contain one outer row regardless of the number of matches. For Book b, EXISTS(SELECT 1 FROM Loan l WHERE l.book_id=b.id) means that this book has a loan. The outer reference makes the subquery correlated. A scalar subquery instead supplies one value and must not return multiple rows.",
+            "For absence, NOT EXISTS often expresses the intended rule more directly than NOT IN. If NOT IN compares with a set containing NULL, its result may be UNKNOWN even for a value not among the known entries. Work through the three-valued logic before replacing one form with the other; equivalence requires suitable non-null assumptions."
+          ]
+        },
+        {
+          "title": "Build named intermediate results",
+          "paragraphs": [
+            "A CTE introduced by WITH gives a name to an intermediate query, making complex reasoning easier to inspect. For a second-highest distinct score, first determine the maximum score, then the maximum strictly below it, then return every row tied at that score. Sorting and skipping one row does not skip a whole tied rank. A CTE is not, by itself, a promise that the engine stores its result.",
+            "UNION removes duplicates while UNION ALL preserves them. INTERSECT keeps rows present in both results and EXCEPT keeps rows in the first but not the second, under default set semantics. Corresponding output columns need compatible types and meanings. Counting an actor who also directs can be an intersection of person ids; intersecting names risks confusing different people."
+          ]
+        },
+        {
+          "title": "Translate every into no counterexample",
+          "paragraphs": [
+            "A student has completed every required course precisely when there is no required course for which no matching completion exists. This yields a nested NOT EXISTS formulation. If there are no required courses, the condition is true for every student under ordinary universal-quantification semantics. Decide whether the application additionally requires at least one required course.",
+            "Validate a proposed query by constructing the smallest counterexample: two people with one name, a NULL in an exclusion subquery, a student with no completions, or a tie at the requested rank. A rubric can accept multiple equivalent SQL formulations and require an explanation. Exact text matching cannot establish correctness, and these exercises do not submit SQL to any database."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Members without loans",
+          "prompt": "Member(id) and Loan(id,member_id) use non-null keys. Write a correlated NOT EXISTS query for members with no loans.",
+          "kind": "open",
+          "explanation": "Select each Member for which no Loan has that member_id.",
+          "rubric": [
+            "Correlate Loan.member_id to the outer Member.id.",
+            "Use absence rather than a test for some different member.",
+            "Return each qualifying member once."
+          ],
+          "id": "DM_SQL_ADVANCED_E01",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "NOT IN with NULL",
+          "prompt": "Evaluate 5 NOT IN (1,NULL) using SQL three-valued logic.",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_SQL_ADVANCED_E02_O1",
+              "text": "TRUE"
+            },
+            {
+              "id": "DM_SQL_ADVANCED_E02_O2",
+              "text": "FALSE"
+            },
+            {
+              "id": "DM_SQL_ADVANCED_E02_O3",
+              "text": "UNKNOWN"
+            },
+            {
+              "id": "DM_SQL_ADVANCED_E02_O4",
+              "text": "5"
+            }
+          ],
+          "explanation": "5 differs from 1 but comparison against NULL is UNKNOWN, so the exclusion test is UNKNOWN.",
+          "id": "DM_SQL_ADVANCED_E02",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ],
+          "answer": "DM_SQL_ADVANCED_E02_O3"
+        },
+        {
+          "title": "Set versus bag union",
+          "prompt": "Query A returns ids [1,1,2] and B returns [2,3]. How many rows does A UNION B produce with default set semantics?",
+          "kind": "integer",
+          "answer": "3",
+          "explanation": "The unique ids are 1, 2 and 3.",
+          "id": "DM_SQL_ADVANCED_E03",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "Preserving union duplicates",
+          "prompt": "Query A returns ids [1,1,2] and B returns [2,3]. How many rows does A UNION ALL B produce?",
+          "kind": "integer",
+          "answer": "5",
+          "explanation": "UNION ALL concatenates both bags: three plus two rows.",
+          "id": "DM_SQL_ADVANCED_E04",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "Second distinct score",
+          "prompt": "Result(id,score) contains non-null integer scores and ties are allowed. Write SQL returning every id at the second-highest distinct score. State behaviour if only one distinct score exists.",
+          "kind": "open",
+          "explanation": "Compute MAX(score) below the overall maximum, then match that value. No second distinct score means no returned ids.",
+          "rubric": [
+            "Skip a distinct value, not a single row.",
+            "Preserve all ties at the second value.",
+            "Handle absence of a second value."
+          ],
+          "id": "DM_SQL_ADVANCED_E05",
+          "skillId": "DM_SQL_ADVANCED_S2",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "Every required course",
+          "prompt": "Given Student(id), Required(course_id) and Pass(student_id,course_id), express students who passed every required course. Discuss an empty Required table.",
+          "kind": "open",
+          "explanation": "Use no required course lacking a pass; this is true for all students when Required is empty.",
+          "rubric": [
+            "Use correct student/course correlation.",
+            "Express universal rather than any-match logic.",
+            "Explain vacuous truth and any alternative business requirement."
+          ],
+          "id": "DM_SQL_ADVANCED_E06",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "Scalar subquery cardinality",
+          "prompt": "A scalar subquery returns three rows in a context requiring one value. What is the problem?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_SQL_ADVANCED_E07_O1",
+              "text": "SQL always chooses the first"
+            },
+            {
+              "id": "DM_SQL_ADVANCED_E07_O2",
+              "text": "The scalar cardinality requirement is violated"
+            },
+            {
+              "id": "DM_SQL_ADVANCED_E07_O3",
+              "text": "It behaves like UNION"
+            },
+            {
+              "id": "DM_SQL_ADVANCED_E07_O4",
+              "text": "It automatically counts the rows"
+            }
+          ],
+          "explanation": "A scalar subquery must supply at most one row; multiple rows require another formulation.",
+          "id": "DM_SQL_ADVANCED_E07",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ],
+          "answer": "DM_SQL_ADVANCED_E07_O2"
+        },
+        {
+          "title": "Wrong quantifier",
+          "prompt": "A proposed query returns books with at least one loan to a member other than member 4. The requirement is books never borrowed by member 4. Construct a counterexample and repair the logic.",
+          "kind": "open",
+          "explanation": "A book borrowed by both members 4 and 5 satisfies the proposed query but violates the requirement. Exclude any matching loan to member 4.",
+          "rubric": [
+            "Give the shared-book counterexample.",
+            "Use NOT EXISTS or an equivalent anti-join.",
+            "Include books with no loans."
+          ],
+          "id": "DM_SQL_ADVANCED_E08",
+          "skillId": "DM_SQL_ADVANCED_S2",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "CTE count reuse",
+          "prompt": "OrderLine(order_id,product_id,quantity) has non-null positive quantities. Use a CTE to return orders whose total quantity is above the average total quantity across orders represented in OrderLine.",
+          "kind": "open",
+          "explanation": "First group totals per order, then compare each total with the average of those totals, not the average line quantity.",
+          "rubric": [
+            "Aggregate at order grain.",
+            "Average the per-order totals.",
+            "Use a strict greater-than condition."
+          ],
+          "id": "DM_SQL_ADVANCED_E09",
+          "skillId": "DM_SQL_ADVANCED_S1",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        },
+        {
+          "title": "Review generated SQL",
+          "prompt": "Person(id,name) and Credit(person_id,title_id,role) permit both acting and directing credits. Generated SQL groups by name to find people who both acted and directed. Explain a failure and propose a key-based approach.",
+          "kind": "open",
+          "explanation": "Two different people sharing a name can be merged into a false match. Intersect person ids or test both roles with correlated EXISTS.",
+          "rubric": [
+            "Give the same-name counterexample.",
+            "Match both roles for the same id.",
+            "Preserve names only as descriptive output."
+          ],
+          "id": "DM_SQL_ADVANCED_E10",
+          "skillId": "DM_SQL_ADVANCED_S2",
+          "sourceIds": [
+            "DM_SRC_036",
+            "DM_SRC_013",
+            "DM_SRC_002",
+            "DM_SRC_006",
+            "DM_SRC_071"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_NORMALIZATION",
+      "name": "Functional dependencies and normalization",
+      "description": "Introductory design theory through 3NF/BCNF, including losslessness and dependency preservation.",
+      "prerequisites": [
+        "DM_MODELLING"
+      ],
+      "sourceIds": [
+        "DM_SRC_073",
+        "DM_SRC_066",
+        "DM_SRC_056",
+        "DM_SRC_057",
+        "DM_SRC_046"
+      ],
+      "skills": [
+        {
+          "id": "DM_NORMALIZATION_S1",
+          "name": "Derive keys and normal forms",
+          "description": "Compute closure and evaluate dependencies against candidate keys."
+        },
+        {
+          "id": "DM_NORMALIZATION_S2",
+          "name": "Justify decompositions",
+          "description": "Distinguish anomaly reduction, lossless reconstruction and dependency preservation."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Dependencies describe all valid instances",
+          "paragraphs": [
+            "X -> Y means any two valid tuples agreeing on X must agree on Y. It does not mean that each X value currently appears once, nor that a temporal cause runs from X to Y. To compute X+, start with X and repeatedly add the right-hand side of every dependency whose left-hand side is already present. Stop at a fixed point.",
+            "For R(A,B,C,D) with A -> B, B -> C and A -> D, A+ is ABCD. A is a candidate key because it determines everything and no smaller subset does. A superkey need not be minimal. A prime attribute belongs to at least one candidate key, so finding only the first key may lead to an incorrect 3NF classification."
+          ]
+        },
+        {
+          "title": "Spot redundancy through counterexamples",
+          "paragraphs": [
+            "In Registration(student,course,student_name,course_title,grade), student -> student_name and course -> course_title create repeated descriptive facts when the key is (student,course). Updating one copy but not another causes an update anomaly. A separate Student and Course relation removes these partial dependencies. First normal form assumes atomic values relative to the chosen domains; second normal form rules out partial dependency of a non-prime attribute on a candidate key.",
+            "Third normal form requires each nontrivial dependency X -> A to have X a superkey or A prime. BCNF requires X to be a superkey without the prime-attribute exception. For R(A,B,C) with AB -> C and C -> B, AB and AC are keys; C -> B violates BCNF, but its right-hand side is prime, so 3NF is possible. The formal test avoids misleading slogans about transitive dependencies."
+          ]
+        },
+        {
+          "title": "Check what a decomposition preserves",
+          "paragraphs": [
+            "For a binary decomposition R into R1 and R2 under functional dependencies, a sufficient and necessary lossless-join test is that their intersection determines all of R1 or all of R2. With R(A,B,C), A -> B and decomposition AB/AC, intersection A determines AB, so reconstruction is lossless. Without an appropriate dependency, joining projections may invent tuples.",
+            "Dependency preservation is a different property: can all original dependencies be enforced using constraints within the component relations? A lossless BCNF decomposition can lose this convenience. Evaluate candidate keys, choose a violating dependency, decompose, and then test both properties. A good explanation states tradeoffs rather than claiming that more tables or a higher normal form is always better."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Closure size",
+          "prompt": "For R(A,B,C,D), F={A->B,B->C,C->D}, how many attributes are in A+?",
+          "kind": "integer",
+          "answer": "4",
+          "explanation": "Repeatedly applying the dependencies yields A, B, C and D.",
+          "id": "DM_NORMALIZATION_E01",
+          "skillId": "DM_NORMALIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ]
+        },
+        {
+          "title": "Find every key",
+          "prompt": "For R(A,B,C), F={A->B,B->A}, find all candidate keys and show minimality.",
+          "kind": "open",
+          "explanation": "C cannot be derived and must occur in every key. AC and BC each determine all attributes; neither can lose a member.",
+          "rubric": [
+            "Find AC and BC.",
+            "Explain why C is necessary.",
+            "Show closure and minimality for both."
+          ],
+          "id": "DM_NORMALIZATION_E02",
+          "skillId": "DM_NORMALIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ]
+        },
+        {
+          "title": "Prime attribute",
+          "prompt": "What makes an attribute prime?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_NORMALIZATION_E03_O1",
+              "text": "It has integer type"
+            },
+            {
+              "id": "DM_NORMALIZATION_E03_O2",
+              "text": "It appears in at least one candidate key"
+            },
+            {
+              "id": "DM_NORMALIZATION_E03_O3",
+              "text": "It is the first column"
+            },
+            {
+              "id": "DM_NORMALIZATION_E03_O4",
+              "text": "It appears in every foreign key"
+            }
+          ],
+          "explanation": "Prime means membership in some candidate key, not necessarily all keys.",
+          "id": "DM_NORMALIZATION_E03",
+          "skillId": "DM_NORMALIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ],
+          "answer": "DM_NORMALIZATION_E03_O2"
+        },
+        {
+          "title": "Partial dependency repair",
+          "prompt": "Registration(student,course,student_name,grade) is in 1NF, has (student,course) as its only candidate key, and satisfies student->student_name. Diagnose the partial dependency and give a lossless decomposition that removes it.",
+          "kind": "open",
+          "explanation": "The non-prime name depends on only part of the key. Student(student,student_name) and Registration(student,course,grade) remove it.",
+          "rubric": [
+            "Identify the 2NF violation.",
+            "Keep grade with the full registration key.",
+            "Justify lossless reconstruction on student."
+          ],
+          "id": "DM_NORMALIZATION_E04",
+          "skillId": "DM_NORMALIZATION_S2",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ]
+        },
+        {
+          "title": "BCNF determinant",
+          "prompt": "Which nontrivial dependency violates BCNF?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_NORMALIZATION_E05_O1",
+              "text": "A dependency whose determinant is not a superkey"
+            },
+            {
+              "id": "DM_NORMALIZATION_E05_O2",
+              "text": "Every dependency with one right-hand attribute"
+            },
+            {
+              "id": "DM_NORMALIZATION_E05_O3",
+              "text": "Every dependency involving a primary key"
+            },
+            {
+              "id": "DM_NORMALIZATION_E05_O4",
+              "text": "Only dependencies involving NULL"
+            }
+          ],
+          "explanation": "BCNF requires every nontrivial determinant to be a superkey.",
+          "id": "DM_NORMALIZATION_E05",
+          "skillId": "DM_NORMALIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ],
+          "answer": "DM_NORMALIZATION_E05_O1"
+        },
+        {
+          "title": "3NF but not BCNF",
+          "prompt": "For R(A,B,C), F={AB->C,C->B}, derive candidate keys and decide 3NF and BCNF.",
+          "kind": "open",
+          "explanation": "AB and AC are candidate keys. C is not a superkey, so C->B violates BCNF; B is prime, so the dependency passes 3NF.",
+          "rubric": [
+            "Derive both AB and AC.",
+            "Explain why C is not a superkey.",
+            "Apply the prime-attribute exception correctly."
+          ],
+          "id": "DM_NORMALIZATION_E06",
+          "skillId": "DM_NORMALIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ]
+        },
+        {
+          "title": "Lossless binary split",
+          "prompt": "R(A,B,C) satisfies A->B. Is decomposition AB and AC lossless? Explain with the intersection test.",
+          "kind": "open",
+          "explanation": "The common attribute A determines AB, one entire component, so the decomposition is lossless under the stated dependency.",
+          "rubric": [
+            "Identify intersection A.",
+            "Show A->AB using reflexivity and A->B.",
+            "Distinguish the result from a claim about dependency preservation in general."
+          ],
+          "id": "DM_NORMALIZATION_E07",
+          "skillId": "DM_NORMALIZATION_S2",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ]
+        },
+        {
+          "title": "Spurious tuples",
+          "prompt": "R(A,B,C) contains (1,x,p) and (2,x,q), with no additional dependencies. Project to AB and BC, then rejoin. Identify the extra tuples and explain the loss.",
+          "kind": "open",
+          "explanation": "The shared B=x combines both A values with both C values, introducing (1,x,q) and (2,x,p).",
+          "rubric": [
+            "Identify both extra tuples.",
+            "Explain that B does not determine either component.",
+            "Relate spurious combinations to a lossy decomposition."
+          ],
+          "id": "DM_NORMALIZATION_E08",
+          "skillId": "DM_NORMALIZATION_S2",
+          "sourceIds": [
+            "DM_SRC_073",
+            "DM_SRC_066",
+            "DM_SRC_056",
+            "DM_SRC_057",
+            "DM_SRC_046"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_ACCESS",
+      "name": "Database access, persistence and resource identifiers",
+      "description": "JDBC foundations and inherited persistence concepts; URI coverage stays within supplied evidence.",
+      "prerequisites": [
+        "DM_SQL_BASIC"
+      ],
+      "sourceIds": [
+        "DM_SRC_001",
+        "DM_SRC_037",
+        "DM_SRC_074",
+        "DM_SRC_054"
+      ],
+      "skills": [
+        {
+          "id": "DM_ACCESS_S1",
+          "name": "Design persistence boundaries",
+          "description": "Map application identity and requests to durable relational state."
+        },
+        {
+          "id": "DM_ACCESS_S2",
+          "name": "Reason about safe database access",
+          "description": "Explain parameter binding, resource lifetime and transaction boundaries."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Connect an application to durable state",
+          "paragraphs": [
+            "An in-memory object disappears when the process stops unless its state is stored. Persistence reconstructs relevant state later. Object identity is implicit in memory, while a relational row needs an explicit key. Two loaded objects representing the same row should not accidentally create two independent database identities. Object graphs and tables also differ in nullability, types and relationships: this is the object-relational impedance mismatch.",
+            "JDBC separates an application-facing API from a database-specific driver. A connection URL identifies the driver and database endpoint; a typical schematic shape is jdbc:postgresql://host:port/database. It is a locator, not a complete authorisation policy. The supplied new-course scope mentions URIs/URLs, while the inherited lecture chiefly teaches connection and persistence APIs."
+          ]
+        },
+        {
+          "title": "Treat query structure and input values separately",
+          "paragraphs": [
+            "A prepared statement fixes SQL structure and binds input values through parameters. For a lookup by name, the name belongs in a value parameter rather than concatenated into the SQL text. A parameter usually cannot stand for an arbitrary column or table identifier; dynamic identifier choices need a constrained design. Parameter binding and access authorisation solve different problems.",
+            "Acquire a connection, prepare a statement, bind values, execute, process the result and release resources even on failure. Result sets must be read using the correct types and NULL handling. Closing a result set or statement does not mean that an unfinished multi-step transaction has been committed. A connection pool reuses connections, so leaked transaction state can affect a later request."
+          ]
+        },
+        {
+          "title": "Keep business operations atomic",
+          "paragraphs": [
+            "A transfer debits one account and credits another. With auto-commit on, the first successful statement might be durable before the second fails. Use an explicit transaction boundary around the whole business operation; commit only after success and roll back after failure. Isolation still matters when concurrent operations read and change the same values.",
+            "An ORM can map classes and relations, but it does not remove the need to understand keys, joins or transaction boundaries. Loading each child collection separately can produce many small queries. Review the intended state changes and query counts, and keep the reasoning at the persistence boundary. The exercises here ask for explanations or pseudocode, never live connections or arbitrary SQL execution."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Persistence identity",
+          "prompt": "Two application objects represent the same Customer row loaded in different sessions. Which value should establish their database identity?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_ACCESS_E01_O1",
+              "text": "Their memory addresses"
+            },
+            {
+              "id": "DM_ACCESS_E01_O2",
+              "text": "The Customer primary key"
+            },
+            {
+              "id": "DM_ACCESS_E01_O3",
+              "text": "Their current display names"
+            },
+            {
+              "id": "DM_ACCESS_E01_O4",
+              "text": "Their result-set positions"
+            }
+          ],
+          "explanation": "The stable relational key identifies the persisted entity across process and session boundaries.",
+          "id": "DM_ACCESS_E01",
+          "skillId": "DM_ACCESS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ],
+          "answer": "DM_ACCESS_E01_O2"
+        },
+        {
+          "title": "Interpret a connection URL",
+          "prompt": "For the schematic URL jdbc:postgresql://db.example:5432/library, identify driver family, host, port and database. Explain one thing the URL alone does not establish.",
+          "kind": "open",
+          "explanation": "It selects PostgreSQL, host db.example, port 5432 and database library. It does not alone establish the caller permissions or successful connection.",
+          "rubric": [
+            "Identify all four parts.",
+            "Distinguish locating from authorising.",
+            "Treat the URL as instructional, not a connection to execute."
+          ],
+          "id": "DM_ACCESS_E02",
+          "skillId": "DM_ACCESS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ]
+        },
+        {
+          "title": "Parameter binding",
+          "prompt": "A lookup concatenates an untrusted name into WHERE name = ... . Explain a prepared-statement replacement and why the value must stay separate from SQL structure.",
+          "kind": "open",
+          "explanation": "Prepare the query with a value placeholder and bind the name through the driver; the input is data rather than query syntax.",
+          "rubric": [
+            "Give placeholder-based pseudocode or SQL text.",
+            "Bind the input as a value.",
+            "Do not propose escaping alone as an equivalent general design."
+          ],
+          "id": "DM_ACCESS_E03",
+          "skillId": "DM_ACCESS_S2",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ]
+        },
+        {
+          "title": "Dynamic column name",
+          "prompt": "A user chooses a sort column. What is the appropriate distinction?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_ACCESS_E04_O1",
+              "text": "Bind any SQL keyword as a normal string value"
+            },
+            {
+              "id": "DM_ACCESS_E04_O2",
+              "text": "Concatenate any input because ORDER BY is safe"
+            },
+            {
+              "id": "DM_ACCESS_E04_O3",
+              "text": "Validate the column against supported choices; bind separate data values"
+            },
+            {
+              "id": "DM_ACCESS_E04_O4",
+              "text": "Remove all constraints"
+            }
+          ],
+          "explanation": "Value parameters do not generally substitute SQL identifiers. A supported-choice mapping controls structure.",
+          "id": "DM_ACCESS_E04",
+          "skillId": "DM_ACCESS_S2",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ],
+          "answer": "DM_ACCESS_E04_O3"
+        },
+        {
+          "title": "Half a transfer",
+          "prompt": "The debit succeeds under auto-commit, then credit fails. Explain the invariant failure and a better transaction boundary.",
+          "kind": "open",
+          "explanation": "The two statements must form one atomic operation so that both persist or neither does.",
+          "rubric": [
+            "Describe the inconsistent intermediate outcome.",
+            "Disable per-statement auto-commit for this operation.",
+            "Commit after both succeed and roll back on failure."
+          ],
+          "id": "DM_ACCESS_E05",
+          "skillId": "DM_ACCESS_S2",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ]
+        },
+        {
+          "title": "NULL result handling",
+          "prompt": "An optional graduation_year is SQL NULL. Explain why blindly converting it to integer zero changes meaning and propose a representation.",
+          "kind": "open",
+          "explanation": "Absence is not year zero. Use a nullable/optional application value and preserve the distinction through the driver.",
+          "rubric": [
+            "Explain the semantic difference.",
+            "Use an explicit optional or nullable representation.",
+            "Mention driver-level NULL detection or equivalent mapping."
+          ],
+          "id": "DM_ACCESS_E06",
+          "skillId": "DM_ACCESS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ]
+        },
+        {
+          "title": "Resource lifetime",
+          "prompt": "Which statement about database resources is correct?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_ACCESS_E07_O1",
+              "text": "A garbage collector guarantees timely connection release"
+            },
+            {
+              "id": "DM_ACCESS_E07_O2",
+              "text": "A result set never needs closing"
+            },
+            {
+              "id": "DM_ACCESS_E07_O3",
+              "text": "Closing a statement always commits all work"
+            },
+            {
+              "id": "DM_ACCESS_E07_O4",
+              "text": "Resources should be released on both success and failure"
+            }
+          ],
+          "explanation": "Resource lifetime should be explicit; transaction completion is a separate concern.",
+          "id": "DM_ACCESS_E07",
+          "skillId": "DM_ACCESS_S2",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ],
+          "answer": "DM_ACCESS_E07_O4"
+        },
+        {
+          "title": "ORM query explosion",
+          "prompt": "A page loads 30 authors, then fetches each author's books separately. Explain the likely query pattern and two possible improvements.",
+          "kind": "open",
+          "explanation": "One author query plus 30 child queries is an N+1 pattern. A suitable join or batched fetch can reduce round trips, with attention to duplicates and pagination.",
+          "rubric": [
+            "Identify the 31-query pattern.",
+            "Offer two alternatives or one alternative with a clear tradeoff.",
+            "Preserve author identity and reason about duplicate joined rows."
+          ],
+          "id": "DM_ACCESS_E08",
+          "skillId": "DM_ACCESS_S1",
+          "sourceIds": [
+            "DM_SRC_001",
+            "DM_SRC_037",
+            "DM_SRC_074",
+            "DM_SRC_054"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_ALGEBRA",
+      "name": "Relational algebra and logical plans",
+      "description": "Relational foundations plus legacy IDM plan-rewriting exercises.",
+      "prerequisites": [
+        "DM_SQL_ADVANCED"
+      ],
+      "sourceIds": [
+        "DM_SRC_038",
+        "DM_SRC_042",
+        "DM_SRC_014",
+        "DM_SRC_072"
+      ],
+      "skills": [
+        {
+          "id": "DM_ALGEBRA_S1",
+          "name": "Translate relational operations",
+          "description": "Compose selection, projection, joins and set difference."
+        },
+        {
+          "id": "DM_ALGEBRA_S2",
+          "name": "Preserve semantics while rewriting",
+          "description": "Check attribute availability, join type and set/bag assumptions."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Operators make query structure explicit",
+          "paragraphs": [
+            "Selection sigma chooses tuples satisfying a predicate; projection pi chooses attributes. In classical relational algebra, relations are sets, so projection eliminates duplicate tuples. Product forms every pair, and an equijoin is a product followed by an equality selection. SQL differs by normally retaining duplicates and admitting NULL, so translations must state which semantics apply.",
+            "For Student(sid,name) and Enrol(sid,cid), names of students enrolled in course D can be expressed by selecting cid=D from Enrol, joining with Student on sid, and projecting name. Projecting sid away before the join makes the required comparison impossible. Rename an input when using a relation twice, such as comparing two enrolments of the same student."
+          ]
+        },
+        {
+          "title": "Read and rewrite a plan tree",
+          "paragraphs": [
+            "Leaves are input relations; internal nodes are logical operations; the root is the final result. Read bottom-up to work out which attributes and rows remain. Push a selection towards a leaf when it uses only that input and the rewrite preserves semantics. This often reduces intermediate rows before an expensive join.",
+            "Projection pushdown retains not only final output columns but also columns required by future predicates and joins. With an inner join, a predicate on one side can often move below the join. With an outer join, moving a predicate can change which unmatched rows survive. A familiar optimisation slogan does not prove a specific rewrite correct."
+          ]
+        },
+        {
+          "title": "Test equivalence, then consider cost",
+          "paragraphs": [
+            "Set union and difference require union-compatible schemas: the corresponding attributes represent compatible domains. Difference R-S expresses facts present in R without a counterpart in S. To express everyone who meets all requirements, derive candidates minus candidates with at least one missing requirement; this is the same no-counterexample idea used in nested SQL.",
+            "Equivalence is about results for all valid inputs, not a lucky example or faster runtime. Start a rewrite justification by naming its algebraic law and preconditions. Then use a tiny instance to challenge it. After preserving meaning, compare estimated cardinalities and I/O; a logical rewrite and a physical algorithm choice are separate decisions."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Selection meaning",
+          "prompt": "Which classical relational operator keeps rows satisfying a predicate?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_ALGEBRA_E01_O1",
+              "text": "Projection"
+            },
+            {
+              "id": "DM_ALGEBRA_E01_O2",
+              "text": "Selection"
+            },
+            {
+              "id": "DM_ALGEBRA_E01_O3",
+              "text": "Rename"
+            },
+            {
+              "id": "DM_ALGEBRA_E01_O4",
+              "text": "Cartesian product"
+            }
+          ],
+          "explanation": "Selection filters tuples; projection selects attributes.",
+          "id": "DM_ALGEBRA_E01",
+          "skillId": "DM_ALGEBRA_S1",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ],
+          "answer": "DM_ALGEBRA_E01_O2"
+        },
+        {
+          "title": "Product cardinality",
+          "prompt": "R contains 4 tuples and S contains 7 tuples. How many tuples are in R x S?",
+          "kind": "integer",
+          "answer": "28",
+          "explanation": "Cartesian product contains every pair: 4 times 7.",
+          "id": "DM_ALGEBRA_E02",
+          "skillId": "DM_ALGEBRA_S1",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Translate a query",
+          "prompt": "Student(sid,name) and Enrol(sid,cid) are sets. Give a relational-algebra expression for names of students enrolled in course DM.",
+          "kind": "open",
+          "explanation": "Select DM enrolments, join on sid, then project name.",
+          "rubric": [
+            "Filter the course on Enrol.",
+            "Join using sid.",
+            "Project name and acknowledge set semantics."
+          ],
+          "id": "DM_ALGEBRA_E03",
+          "skillId": "DM_ALGEBRA_S1",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Projection duplicates",
+          "prompt": "Under classical set relational algebra, projecting rows (1,x) and (2,x) to their second attribute yields how many tuples?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_ALGEBRA_E04_O1",
+              "text": "0"
+            },
+            {
+              "id": "DM_ALGEBRA_E04_O2",
+              "text": "2"
+            },
+            {
+              "id": "DM_ALGEBRA_E04_O3",
+              "text": "1"
+            },
+            {
+              "id": "DM_ALGEBRA_E04_O4",
+              "text": "It must be a SQL NULL"
+            }
+          ],
+          "explanation": "Projection produces the set containing x once.",
+          "id": "DM_ALGEBRA_E04",
+          "skillId": "DM_ALGEBRA_S1",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ],
+          "answer": "DM_ALGEBRA_E04_O3"
+        },
+        {
+          "title": "Push a selection",
+          "prompt": "Explain why a Student.age>18 selection may move below an inner join of Student and Enrol on sid, and name the needed condition.",
+          "kind": "open",
+          "explanation": "The predicate uses only Student attributes and the inner join does not preserve unmatched rows.",
+          "rubric": [
+            "Locate the predicate entirely on Student.",
+            "Explain preservation of matching combinations.",
+            "Avoid claiming the rule holds unchanged for every outer join."
+          ],
+          "id": "DM_ALGEBRA_E05",
+          "skillId": "DM_ALGEBRA_S2",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Projection too early",
+          "prompt": "A plan projects Student to name before joining Enrol on sid. Diagnose and repair it.",
+          "kind": "open",
+          "explanation": "The join attribute has been discarded. Retain sid with name until after the join.",
+          "rubric": [
+            "Identify missing sid.",
+            "Keep all future join/predicate attributes.",
+            "Project to final output only after their last use."
+          ],
+          "id": "DM_ALGEBRA_E06",
+          "skillId": "DM_ALGEBRA_S2",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Difference compatibility",
+          "prompt": "Why is subtracting a relation of customer ids from a relation of (customer id,order count) not a well-formed direct set difference? Repair the shape.",
+          "kind": "open",
+          "explanation": "The operands differ in arity and meaning. Project or construct corresponding attributes before subtraction.",
+          "rubric": [
+            "Identify the schema mismatch.",
+            "Align both operands to customer ids if that is the goal.",
+            "State the intended meaning of the difference."
+          ],
+          "id": "DM_ALGEBRA_E07",
+          "skillId": "DM_ALGEBRA_S1",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ]
+        },
+        {
+          "title": "Self-join roles",
+          "prompt": "Enrol(sid,cid) is a set. Express students enrolled in both A and B using renaming and a self-join, or equivalent set algebra.",
+          "kind": "open",
+          "explanation": "Rename two Enrol inputs, select A and B respectively, join matching sid and project sid; intersecting projected student sets also works.",
+          "rubric": [
+            "Separate the two course conditions into two roles or sets.",
+            "Require the same student identity.",
+            "Avoid requiring one row to have cid=A and cid=B simultaneously."
+          ],
+          "id": "DM_ALGEBRA_E08",
+          "skillId": "DM_ALGEBRA_S1",
+          "sourceIds": [
+            "DM_SRC_038",
+            "DM_SRC_042",
+            "DM_SRC_014",
+            "DM_SRC_072"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_STORAGE",
+      "name": "Pages, files and storage tradeoffs",
+      "description": "Legacy IDM extension; depth and examinability in CSE12C are unconfirmed.",
+      "prerequisites": [
+        "DM_FOUNDATIONS"
+      ],
+      "sourceIds": [
+        "DM_SRC_039",
+        "DM_SRC_040",
+        "DM_SRC_044",
+        "DM_SRC_012"
+      ],
+      "skills": [
+        {
+          "id": "DM_STORAGE_S1",
+          "name": "Compute storage costs",
+          "description": "Use explicit page, record and buffering assumptions."
+        },
+        {
+          "id": "DM_STORAGE_S2",
+          "name": "Compare storage layouts",
+          "description": "Connect heap/sorted files, row/column layouts and redundancy to workloads."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Count transfers, not just records",
+          "paragraphs": [
+            "The storage manager transfers pages or blocks between secondary storage and a memory buffer. A page may contain several records, so reading 1,000 records is not necessarily 1,000 I/Os. For fixed-size unspanned records, records per page is floor(usable_page_bytes/record_bytes). Required pages is the ceiling of record_count divided by that capacity.",
+            "For 4,000 usable bytes and 100-byte records, a page holds 40 records; 81 records occupy 3 pages. State whether page headers, slot entries, partial fill, cached pages and output writes are included. Mixing bytes, tuples and pages produces plausible-looking but meaningless estimates. The archive often uses idealised I/O models rather than real timing predictions."
+          ]
+        },
+        {
+          "title": "Match layout to access",
+          "paragraphs": [
+            "A heap file keeps records without a search-key order, making append-oriented insertion simple but often requiring a scan for an unindexed predicate. A sorted file supports ordered/range access but inserts may need reorganisation. A clustered organisation places nearby key values near each other physically, improving locality for some range queries.",
+            "A row store keeps a record's attributes together and is a natural fit for fetching or changing a small number of complete records. A column store groups values of an attribute, helping scans that aggregate a few columns over many rows. Compression and vectorised processing can help analytics, but no layout is universally faster for every workload."
+          ]
+        },
+        {
+          "title": "Buffering and redundancy answer different questions",
+          "paragraphs": [
+            "A buffer hit can avoid a storage read. Dirty pages have changed in memory and will need coordinated persistence. Latency depends on locality and the storage medium, so random and sequential access need not cost the same in practice. When doing a classroom estimate, use the specified cost model consistently.",
+            "Striping spreads data across disks to increase throughput; mirroring keeps redundant copies; parity can reconstruct certain failures. RAID is not a substitute for recovery logging or backups because it may reproduce a mistaken deletion and does not address every failure mode. Distinguish capacity, availability, transaction durability and historical recovery when comparing designs."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Records per page",
+          "prompt": "A page has 4096 usable bytes. Fixed records occupy 100 bytes and cannot span pages. How many complete records fit?",
+          "kind": "integer",
+          "answer": "40",
+          "explanation": "floor(4096/100)=40 complete records; 96 bytes remain.",
+          "id": "DM_STORAGE_E01",
+          "skillId": "DM_STORAGE_S1",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ]
+        },
+        {
+          "title": "Required pages",
+          "prompt": "There are 101 unspanned records and each page fits 20 records. Ignoring all other overhead, how many pages are needed?",
+          "kind": "integer",
+          "answer": "6",
+          "explanation": "ceil(101/20)=6.",
+          "id": "DM_STORAGE_E02",
+          "skillId": "DM_STORAGE_S1",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ]
+        },
+        {
+          "title": "Analytical layout",
+          "prompt": "A workload scans two numeric columns from a wide table with millions of rows. Which layout is most directly aligned with avoiding unrelated columns?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_STORAGE_E03_O1",
+              "text": "Column-oriented storage"
+            },
+            {
+              "id": "DM_STORAGE_E03_O2",
+              "text": "A separate file per query result"
+            },
+            {
+              "id": "DM_STORAGE_E03_O3",
+              "text": "A larger primary key"
+            },
+            {
+              "id": "DM_STORAGE_E03_O4",
+              "text": "Random row ordering alone"
+            }
+          ],
+          "explanation": "A column layout can read only the needed columns, subject to other workload and system tradeoffs.",
+          "id": "DM_STORAGE_E03",
+          "skillId": "DM_STORAGE_S2",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ],
+          "answer": "DM_STORAGE_E03_O1"
+        },
+        {
+          "title": "Heap or sorted file",
+          "prompt": "Compare a heap file and a file sorted by timestamp for frequent appends plus occasional timestamp-range reports. State a tradeoff rather than an unconditional winner.",
+          "kind": "open",
+          "explanation": "Heap insertion is simple, while sorted access can benefit ranges; append order and maintenance costs affect the decision.",
+          "rubric": [
+            "Discuss insertion and range access.",
+            "State whether arrivals are already timestamp-ordered.",
+            "Connect the recommendation to frequency and maintenance costs."
+          ],
+          "id": "DM_STORAGE_E04",
+          "skillId": "DM_STORAGE_S2",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ]
+        },
+        {
+          "title": "Read misses",
+          "prompt": "A query needs 12 distinct pages exactly once. Five are already in the buffer and no eviction occurs. How many storage page reads are needed?",
+          "kind": "integer",
+          "answer": "7",
+          "explanation": "Only the seven uncached pages require storage reads.",
+          "id": "DM_STORAGE_E05",
+          "skillId": "DM_STORAGE_S1",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ]
+        },
+        {
+          "title": "RAID and deletion",
+          "prompt": "An operator accidentally deletes valid rows on a mirrored storage system. Explain why mirroring alone does not recover their previous logical values.",
+          "kind": "open",
+          "explanation": "The bad change can be written to both copies. Recovery requires an appropriate retained history such as backups/log-based recovery, not merely another current copy.",
+          "rubric": [
+            "Distinguish device failure from logical error.",
+            "Explain replication of the deletion.",
+            "Identify a relevant recovery-history mechanism without promising a specific configured recovery."
+          ],
+          "id": "DM_STORAGE_E06",
+          "skillId": "DM_STORAGE_S2",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ]
+        },
+        {
+          "title": "Unspanned assumption",
+          "prompt": "What does unspanned fixed-length storage mean in the capacity calculation?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_STORAGE_E07_O1",
+              "text": "One record may cross any number of pages"
+            },
+            {
+              "id": "DM_STORAGE_E07_O2",
+              "text": "Every page stores exactly one record"
+            },
+            {
+              "id": "DM_STORAGE_E07_O3",
+              "text": "A record must fit entirely within one page"
+            },
+            {
+              "id": "DM_STORAGE_E07_O4",
+              "text": "There can be no free bytes"
+            }
+          ],
+          "explanation": "Unspanned records cannot cross a page boundary.",
+          "id": "DM_STORAGE_E07",
+          "skillId": "DM_STORAGE_S1",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ],
+          "answer": "DM_STORAGE_E07_O3"
+        },
+        {
+          "title": "Interpret a cost claim",
+          "prompt": "A solution estimates 500 I/Os from 500 tuples without any page or cache information. Explain what information is missing.",
+          "kind": "open",
+          "explanation": "Tuple count alone does not determine page traffic; records per page, access pattern, caching and output policy matter.",
+          "rubric": [
+            "Distinguish tuples from pages.",
+            "Ask for packing and cache assumptions.",
+            "Explain why clustered and scattered retrieval can differ."
+          ],
+          "id": "DM_STORAGE_E08",
+          "skillId": "DM_STORAGE_S1",
+          "sourceIds": [
+            "DM_SRC_039",
+            "DM_SRC_040",
+            "DM_SRC_044",
+            "DM_SRC_012"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_INDEXING",
+      "name": "B+-trees, hashing and multidimensional access",
+      "description": "Legacy IDM extension, with workload-based index reasoning and explicit counting conventions.",
+      "prerequisites": [
+        "DM_STORAGE"
+      ],
+      "sourceIds": [
+        "DM_SRC_040",
+        "DM_SRC_041",
+        "DM_SRC_014",
+        "DM_SRC_018",
+        "DM_SRC_022"
+      ],
+      "skills": [
+        {
+          "id": "DM_INDEXING_S1",
+          "name": "Reason about index structure",
+          "description": "Explain tree routing, leaves, hashing and multidimensional splits."
+        },
+        {
+          "id": "DM_INDEXING_S2",
+          "name": "Choose an access path",
+          "description": "Compare lookup cost, range support and update overhead."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Separate routing from stored entries",
+          "paragraphs": [
+            "A B+-tree is a balanced search tree with internal routing nodes and leaf entries ordered by key. Linked leaves make range scans possible after locating the first qualifying entry. High fanout reduces height because a node fits many keys/pointers in one storage page. In a common convention, an internal node with k separator keys has k+1 child pointers.",
+            "Always state the split convention in an insertion exercise: maximum leaf keys, maximum internal children, separator semantics, and whether the separator is copied from the right leaf. If a leaf holding [2,5,8] can hold only three keys, inserting 6 overflows it; a two-and-two split can produce [2,5] and [6,8] with separator 6 copied upward. Other capacities or conventions change the exact shape."
+          ]
+        },
+        {
+          "title": "Hashing and clustering",
+          "paragraphs": [
+            "A hash index maps a search key to a bucket, making equality access attractive when buckets and overflow chains are well behaved. Hashing does not naturally arrange neighbouring key values together, so a range such as 20<=age<=30 cannot normally be answered by scanning one ordered run of buckets. B+-trees support both equality and ordered access.",
+            "Index pages and data pages contribute separately to cost. If a root-to-leaf path has three pages and the root is cached, two index reads remain. Retrieving the matching record can require an additional data-page read. With many qualifying rows, an unclustered index may cause scattered data reads and lose to a scan. Every additional index also costs storage and update work."
+          ]
+        },
+        {
+          "title": "Choose using the workload",
+          "paragraphs": [
+            "List predicate columns, equality/range conditions, ordering needs and update frequency before choosing an index. A composite index ordered by (city,date) is naturally useful for a fixed city and date range; an arbitrary date-only search may not benefit in the same way. Avoid indexing every projected column when it does not improve the required access path.",
+            "A kd-tree partitions point data by alternating dimensions; a query rectangle may require visiting both subtrees when it crosses a split. This is legacy multidimensional material, not confirmed CSE12C core. Distinguish locating a candidate set from validating the final predicate, and do not reuse one-dimensional equality intuition for multidimensional regions."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Ordered range",
+          "prompt": "Which inherited index structure directly supports an ordered leaf scan for a key range?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_INDEXING_E01_O1",
+              "text": "A hash bucket directory alone"
+            },
+            {
+              "id": "DM_INDEXING_E01_O2",
+              "text": "A B+-tree"
+            },
+            {
+              "id": "DM_INDEXING_E01_O3",
+              "text": "A transaction log only"
+            },
+            {
+              "id": "DM_INDEXING_E01_O4",
+              "text": "An unordered result buffer"
+            }
+          ],
+          "explanation": "B+-tree leaf order and links support ordered ranges.",
+          "id": "DM_INDEXING_E01",
+          "skillId": "DM_INDEXING_S1",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ],
+          "answer": "DM_INDEXING_E01_O2"
+        },
+        {
+          "title": "Internal pointers",
+          "prompt": "Under the convention that an internal B+-tree node with k separators has k+1 children, how many children correspond to 5 separators?",
+          "kind": "integer",
+          "answer": "6",
+          "explanation": "Five boundaries separate six child ranges.",
+          "id": "DM_INDEXING_E02",
+          "skillId": "DM_INDEXING_S1",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ]
+        },
+        {
+          "title": "Cold path except root",
+          "prompt": "A B+-tree search visits root, internal node and leaf. Only root is cached. Ignore data pages. How many index-page reads are needed?",
+          "kind": "integer",
+          "answer": "2",
+          "explanation": "The internal page and leaf page are uncached.",
+          "id": "DM_INDEXING_E03",
+          "skillId": "DM_INDEXING_S2",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ]
+        },
+        {
+          "title": "Leaf split",
+          "prompt": "A leaf holds [2,5,8], capacity 3 keys. Insert 6; split 2 keys left and 2 right, copying the minimum right key to the parent. Give leaves and separator.",
+          "kind": "open",
+          "explanation": "Sorted keys are [2,5,6,8], yielding [2,5] and [6,8]; separator 6 is copied to the parent.",
+          "rubric": [
+            "Give both ordered leaves.",
+            "Use separator 6.",
+            "Distinguish copying the separator from removing the leaf key."
+          ],
+          "id": "DM_INDEXING_E04",
+          "skillId": "DM_INDEXING_S1",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ]
+        },
+        {
+          "title": "Index or scan",
+          "prompt": "A query matches 80% of a table and a nonclustered index points to scattered records. Explain why a sequential scan may be cheaper.",
+          "kind": "open",
+          "explanation": "The index requires traversal plus many scattered data-page fetches, potentially touching most pages less efficiently than one scan.",
+          "rubric": [
+            "Mention both index and data-page costs.",
+            "Explain low selectivity in this workload.",
+            "Avoid claiming a scan is always superior independent of caching and layout."
+          ],
+          "id": "DM_INDEXING_E05",
+          "skillId": "DM_INDEXING_S2",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ]
+        },
+        {
+          "title": "Hash limitation",
+          "prompt": "Why is a conventional hash index poorly suited to a broad ordered range query?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_INDEXING_E06_O1",
+              "text": "It cannot store integers"
+            },
+            {
+              "id": "DM_INDEXING_E06_O2",
+              "text": "It always has height four"
+            },
+            {
+              "id": "DM_INDEXING_E06_O3",
+              "text": "Nearby key values need not occupy neighbouring ordered buckets"
+            },
+            {
+              "id": "DM_INDEXING_E06_O4",
+              "text": "It removes all duplicates automatically"
+            }
+          ],
+          "explanation": "Hashing organises by hash value rather than key order.",
+          "id": "DM_INDEXING_E06",
+          "skillId": "DM_INDEXING_S1",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ],
+          "answer": "DM_INDEXING_E06_O3"
+        },
+        {
+          "title": "Composite order",
+          "prompt": "An index is ordered lexicographically by (city,date). Compare searches for city=Delft with a date range versus a date range across every city.",
+          "kind": "open",
+          "explanation": "The first selects a contiguous city region then a date interval; the second may need multiple regions or another path.",
+          "rubric": [
+            "Explain the leading-column role.",
+            "Avoid an unconditional engine-specific claim that the second can never use the index.",
+            "Suggest an alternative only after considering workload."
+          ],
+          "id": "DM_INDEXING_E07",
+          "skillId": "DM_INDEXING_S2",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ]
+        },
+        {
+          "title": "kd-tree pruning",
+          "prompt": "A kd-tree root splits points at x=10, with x<10 left and x>=10 right. A rectangle query has 8<=x<=12. Explain which sides can be pruned at this split.",
+          "kind": "open",
+          "explanation": "Neither side can be pruned solely from the x bound because the query crosses the split. Later dimensions may permit pruning.",
+          "rubric": [
+            "Visit both candidate subtrees.",
+            "Explain the interval intersection.",
+            "Distinguish candidate traversal from points actually matching all dimensions."
+          ],
+          "id": "DM_INDEXING_E08",
+          "skillId": "DM_INDEXING_S1",
+          "sourceIds": [
+            "DM_SRC_040",
+            "DM_SRC_041",
+            "DM_SRC_014",
+            "DM_SRC_018",
+            "DM_SRC_022"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_OPTIMIZATION",
+      "name": "Physical operators and cost-based planning",
+      "description": "Legacy IDM extension; all numeric exercises specify simplified I/O assumptions.",
+      "prerequisites": [
+        "DM_ALGEBRA",
+        "DM_INDEXING"
+      ],
+      "sourceIds": [
+        "DM_SRC_042",
+        "DM_SRC_043",
+        "DM_SRC_032",
+        "DM_SRC_015",
+        "DM_SRC_019"
+      ],
+      "skills": [
+        {
+          "id": "DM_OPTIMIZATION_S1",
+          "name": "Estimate plan costs",
+          "description": "Compute simple join, sorting and cardinality estimates under stated models."
+        },
+        {
+          "id": "DM_OPTIMIZATION_S2",
+          "name": "Explain plan tradeoffs",
+          "description": "Separate estimates from guarantees and choose operators based on constraints."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Logical meaning versus physical execution",
+          "paragraphs": [
+            "A logical join says which pairs belong in the result. A physical join algorithm says how to find them. Nested loops compare one input with another, index nested loops probe an index for each outer tuple, sort-merge joins exploit sorted inputs, and hash joins group equal keys into matching partitions. Available memory, input order and indexes influence the choice.",
+            "For block nested loops with B buffer pages, reserve one for the inner scan and one for output; at most B-2 pages hold an outer chunk. A simplified read cost is P_outer + ceil(P_outer/(B-2))*P_inner. This excludes output writes and assumes no helpful cache reuse. Swapping the outer relation may change the number of inner rescans."
+          ]
+        },
+        {
+          "title": "Estimate intermediate results carefully",
+          "paragraphs": [
+            "Under a uniform distribution over V distinct values, equality selection on one value estimates N/V rows from N rows. Real data may be skewed; histograms improve estimates but are still summaries. For an equijoin, N_R*N_S/max(V_R,V_S) is a common estimate with containment/uniformity assumptions, not a universal identity.",
+            "A valid non-null foreign key to a unique parent key provides stronger information: every child matches exactly one parent in an unrestricted join. Additional filters can change this. Keep a plan table with output attributes, estimated rows, record size, pages and operator costs; do not reuse the original table size after a selective predicate without justification."
+          ]
+        },
+        {
+          "title": "Choose a plan and challenge its assumptions",
+          "paragraphs": [
+            "Push safe selections and useful projections down to reduce intermediate size, then choose join order and physical operators. A greedy choice of the smallest immediate result may miss a better global plan. Dynamic programming compares alternatives for subsets, while practical optimizers may limit search. A CTE or SQL clause order does not mandate one physical strategy.",
+            "External sorting first creates sorted runs that fit memory, then merges runs with a limited fan-in. Count both reads and writes for materialised passes when instructed. Pipelining can avoid some intermediate writes, but not every operator is streaming. Treat an estimated cheaper plan as conditional on cardinalities, memory, data distribution and cost assumptions; a wrong estimate can reverse the recommendation."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Block nested loops",
+          "prompt": "R has 100 pages, S has 20 pages, and B=12 buffers. Use cost P_R + ceil(P_R/(B-2))*P_S, ignore output writes. With R outer, what is the read cost?",
+          "kind": "integer",
+          "answer": "300",
+          "explanation": "100 + ceil(100/10)*20 = 300 page reads.",
+          "id": "DM_OPTIMIZATION_E01",
+          "skillId": "DM_OPTIMIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        },
+        {
+          "title": "Swap the outer input",
+          "prompt": "Using the same formula, R has 100 pages, S has 20, B=12. With S outer and R inner, what is the cost?",
+          "kind": "integer",
+          "answer": "220",
+          "explanation": "20 + ceil(20/10)*100 = 220 reads.",
+          "id": "DM_OPTIMIZATION_E02",
+          "skillId": "DM_OPTIMIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        },
+        {
+          "title": "Uniform equality estimate",
+          "prompt": "A relation has 1200 rows and a column with 40 equally frequent distinct non-null values. Estimate rows matching one existing value.",
+          "kind": "integer",
+          "answer": "30",
+          "explanation": "Under uniformity, 1200/40=30.",
+          "id": "DM_OPTIMIZATION_E03",
+          "skillId": "DM_OPTIMIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        },
+        {
+          "title": "Skew counterexample",
+          "prompt": "An optimizer estimates 100 rows for city=Delft using 10,000 rows and 100 distinct cities. In fact 6,000 rows are Delft. Explain the failed assumption and likely planning impact.",
+          "kind": "open",
+          "explanation": "Uniformity fails. Underestimating by a large factor can favour a scattered index lookup or join order that performs poorly.",
+          "rubric": [
+            "Identify skew.",
+            "Explain at least one access/join consequence.",
+            "Suggest distribution statistics rather than treating distinct count as sufficient."
+          ],
+          "id": "DM_OPTIMIZATION_E04",
+          "skillId": "DM_OPTIMIZATION_S2",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        },
+        {
+          "title": "Foreign-key join size",
+          "prompt": "Child has 250 rows, each with one non-null valid foreign key to Parent.id, a unique key. With no filters, how many rows are in the inner join?",
+          "kind": "integer",
+          "answer": "250",
+          "explanation": "Each child matches exactly one parent.",
+          "id": "DM_OPTIMIZATION_E05",
+          "skillId": "DM_OPTIMIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        },
+        {
+          "title": "Equality hashing",
+          "prompt": "Which join condition is directly suited to an ordinary hash join?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_OPTIMIZATION_E06_O1",
+              "text": "R.id = S.id"
+            },
+            {
+              "id": "DM_OPTIMIZATION_E06_O2",
+              "text": "R.x < S.y only"
+            },
+            {
+              "id": "DM_OPTIMIZATION_E06_O3",
+              "text": "Every possible pair regardless of values"
+            },
+            {
+              "id": "DM_OPTIMIZATION_E06_O4",
+              "text": "Rows must be output in arbitrary user-defined rank"
+            }
+          ],
+          "explanation": "Ordinary hash joins partition matching equality keys; they are not a generic ordered inequality algorithm.",
+          "id": "DM_OPTIMIZATION_E06",
+          "skillId": "DM_OPTIMIZATION_S2",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ],
+          "answer": "DM_OPTIMIZATION_E06_O1"
+        },
+        {
+          "title": "External sort runs",
+          "prompt": "A 95-page file is initially sorted in runs using 10 pages of memory. Each initial run fits at most 10 pages. How many initial runs are produced?",
+          "kind": "integer",
+          "answer": "10",
+          "explanation": "ceil(95/10)=10 initial runs.",
+          "id": "DM_OPTIMIZATION_E07",
+          "skillId": "DM_OPTIMIZATION_S1",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        },
+        {
+          "title": "Greedy limitation",
+          "prompt": "A planner always joins the two smallest base tables first. Explain why this can be a bad heuristic and identify information needed for a better decision.",
+          "kind": "open",
+          "explanation": "Small inputs may have a huge many-to-many result, while a selective join involving a larger relation may shrink the plan early.",
+          "rubric": [
+            "Give a plausible selectivity/cross-product counterexample.",
+            "Mention predicates, distinct counts or key constraints.",
+            "Separate base size from intermediate result and total execution cost."
+          ],
+          "id": "DM_OPTIMIZATION_E08",
+          "skillId": "DM_OPTIMIZATION_S2",
+          "sourceIds": [
+            "DM_SRC_042",
+            "DM_SRC_043",
+            "DM_SRC_032",
+            "DM_SRC_015",
+            "DM_SRC_019"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DM_TRANSACTIONS",
+      "name": "Transactions and concurrency control",
+      "description": "Legacy IDM extension building on practical transaction boundaries.",
+      "prerequisites": [
+        "DM_ACCESS"
+      ],
+      "sourceIds": [
+        "DM_SRC_033",
+        "DM_SRC_031",
+        "DM_SRC_015",
+        "DM_SRC_044"
+      ],
+      "skills": [
+        {
+          "id": "DM_TRANSACTIONS_S1",
+          "name": "Analyse transaction schedules",
+          "description": "Identify anomalies and build conflict graphs."
+        },
+        {
+          "id": "DM_TRANSACTIONS_S2",
+          "name": "Explain concurrency protocols",
+          "description": "Relate locks, isolation and deadlocks to correctness."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "ACID names different guarantees",
+          "paragraphs": [
+            "Atomicity makes a transaction an all-or-nothing unit; consistency concerns preservation of declared and application invariants; isolation controls interference between concurrent work; durability concerns survival of committed effects. Consistency is not a promise that arbitrary application logic is correct. A transfer still needs to check the relevant account and business rules.",
+            "A lost update occurs when two transactions read the same old value and later write independently computed replacements. A dirty read observes an uncommitted value that might be rolled back. A non-repeatable read changes the value seen when reading a row again; a phantom changes the set of rows satisfying a repeated predicate. State the exact operations before naming an anomaly."
+          ]
+        },
+        {
+          "title": "Use conflict graphs for serializability",
+          "paragraphs": [
+            "Two operations conflict when they belong to different transactions, access the same item and at least one is a write. Add edge Ti->Tj if Ti's conflicting operation appears first. An acyclic precedence graph means the schedule is conflict-serializable; a topological ordering gives an equivalent serial order. Two reads of the same item do not create an edge.",
+            "For r1(A), w1(A), r2(A), w2(A), the cross-transaction conflicts point from T1 to T2. If a second item creates an edge back from T2 to T1, the cycle prevents conflict serializability. This test is not a complete test of every possible form of serializability, and it says nothing by itself about whether commits were durable."
+          ]
+        },
+        {
+          "title": "Locks constrain schedules but can block",
+          "paragraphs": [
+            "Two-phase locking has a growing phase acquiring locks and a shrinking phase after lock release begins; acquiring a new lock after entering the shrinking phase violates the protocol. Strict two-phase locking keeps exclusive locks until commit or abort, preventing other transactions from reading or overwriting those uncommitted writes. Some conventions hold all locks to completion; state the convention.",
+            "Locks can produce deadlock: T1 holds A while waiting for B, and T2 holds B while waiting for A. A wait-for graph exposes the cycle; a system can detect it and abort a participant, or use an appropriate prevention rule. Do not confuse two-phase locking, a concurrency protocol, with two-phase commit, a distributed atomic-commit protocol."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Committed survival",
+          "prompt": "Which ACID property concerns preserving committed effects after a crash?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_TRANSACTIONS_E01_O1",
+              "text": "Atomicity only"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E01_O2",
+              "text": "Isolation only"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E01_O3",
+              "text": "Durability"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E01_O4",
+              "text": "Query optimisation"
+            }
+          ],
+          "explanation": "Durability concerns the survival of committed effects.",
+          "id": "DM_TRANSACTIONS_E01",
+          "skillId": "DM_TRANSACTIONS_S1",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ],
+          "answer": "DM_TRANSACTIONS_E01_O3"
+        },
+        {
+          "title": "Lost update trace",
+          "prompt": "x starts at 10. T1 reads x; T2 reads x; T1 writes 11; T2 writes 12, each intending to add 1 and 2 respectively. Explain the final error and a prevention approach.",
+          "kind": "open",
+          "explanation": "The final value is 12 rather than serially expected 13 because T2 overwrites T1's increment from a stale read.",
+          "rubric": [
+            "Identify 12 versus 13.",
+            "Explain the stale read/write pattern.",
+            "Propose serializable coordination, appropriate locking or atomic increments with suitable semantics."
+          ],
+          "id": "DM_TRANSACTIONS_E02",
+          "skillId": "DM_TRANSACTIONS_S1",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ]
+        },
+        {
+          "title": "Conflict-edge count",
+          "prompt": "For r1(A), w1(A), r2(A), w2(A), how many distinct directed edges are in the precedence graph?",
+          "kind": "integer",
+          "answer": "1",
+          "explanation": "All cross-transaction conflicts create the same T1->T2 edge.",
+          "id": "DM_TRANSACTIONS_E03",
+          "skillId": "DM_TRANSACTIONS_S1",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ]
+        },
+        {
+          "title": "Cycle in a schedule",
+          "prompt": "Analyse w1(A), r2(A), w2(B), r1(B). Give graph edges and decide conflict serializability.",
+          "kind": "open",
+          "explanation": "A creates T1->T2 and B creates T2->T1, so the graph contains a cycle.",
+          "rubric": [
+            "Show both edges with their item/operation witnesses.",
+            "Identify the cycle.",
+            "Conclude not conflict-serializable without claiming every non-conflict-serializable schedule is impossible."
+          ],
+          "id": "DM_TRANSACTIONS_E04",
+          "skillId": "DM_TRANSACTIONS_S1",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ]
+        },
+        {
+          "title": "Read-read pair",
+          "prompt": "T1 and T2 both read A and neither writes A. Does this pair create a conflict edge?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_TRANSACTIONS_E05_O1",
+              "text": "No"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E05_O2",
+              "text": "Yes, in both directions"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E05_O3",
+              "text": "Only if A is an integer"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E05_O4",
+              "text": "Only if A is a key"
+            }
+          ],
+          "explanation": "Read-read operations do not conflict.",
+          "id": "DM_TRANSACTIONS_E05",
+          "skillId": "DM_TRANSACTIONS_S1",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ],
+          "answer": "DM_TRANSACTIONS_E05_O1"
+        },
+        {
+          "title": "Two-phase locking violation",
+          "prompt": "T1 locks A, unlocks A, then acquires a new lock on B. Explain whether this follows basic two-phase locking.",
+          "kind": "open",
+          "explanation": "It acquires a lock after entering the shrinking phase, violating 2PL.",
+          "rubric": [
+            "Identify the phase boundary at first unlock.",
+            "State that no new locks are then allowed.",
+            "Avoid confusing lock phases with commit messages."
+          ],
+          "id": "DM_TRANSACTIONS_E06",
+          "skillId": "DM_TRANSACTIONS_S2",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ]
+        },
+        {
+          "title": "Deadlock repair",
+          "prompt": "T1 holds an exclusive lock on A and waits for B; T2 holds an exclusive lock on B and waits for A. Explain detection and one recovery action.",
+          "kind": "open",
+          "explanation": "The wait-for graph is cyclic. Aborting and rolling back a chosen transaction can release its locks and let the other continue.",
+          "rubric": [
+            "Give both wait edges.",
+            "Explain why waiting forever does not resolve the cycle.",
+            "Include rollback before retrying a victim when appropriate."
+          ],
+          "id": "DM_TRANSACTIONS_E07",
+          "skillId": "DM_TRANSACTIONS_S2",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ]
+        },
+        {
+          "title": "Dirty read",
+          "prompt": "T1 writes x=20 without committing; T2 reads 20; T1 aborts. What did T2 perform?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_TRANSACTIONS_E08_O1",
+              "text": "A range scan"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E08_O2",
+              "text": "A dirty read"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E08_O3",
+              "text": "A durable commit"
+            },
+            {
+              "id": "DM_TRANSACTIONS_E08_O4",
+              "text": "A normalisation step"
+            }
+          ],
+          "explanation": "T2 observed a value from an uncommitted transaction that was later undone.",
+          "id": "DM_TRANSACTIONS_E08",
+          "skillId": "DM_TRANSACTIONS_S1",
+          "sourceIds": [
+            "DM_SRC_033",
+            "DM_SRC_031",
+            "DM_SRC_015",
+            "DM_SRC_044"
+          ],
+          "answer": "DM_TRANSACTIONS_E08_O2"
+        }
+      ]
+    },
+    {
+      "id": "DM_RECOVERY",
+      "name": "Recovery, distributed commit and alternative models",
+      "description": "Legacy IDM extension: recovery assumptions, 2PC and NoSQL/CAP; not confirmed assessment scope.",
+      "prerequisites": [
+        "DM_TRANSACTIONS",
+        "DM_STORAGE"
+      ],
+      "sourceIds": [
+        "DM_SRC_034",
+        "DM_SRC_035",
+        "DM_SRC_015",
+        "DM_SRC_020",
+        "DM_SRC_024"
+      ],
+      "skills": [
+        {
+          "id": "DM_RECOVERY_S1",
+          "name": "Reason about recovery",
+          "description": "Distinguish log ordering, committed redo, uncommitted undo and checkpoint limits."
+        },
+        {
+          "id": "DM_RECOVERY_S2",
+          "name": "Compare distributed guarantees",
+          "description": "Separate atomic commit, concurrency and partition tradeoffs."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Begin with the persistence policy",
+          "paragraphs": [
+            "A crash may leave a mixture of old disk pages, new disk pages and volatile changes that never reached storage. Recovery uses durable log information to reconstruct a correct state. Write-ahead logging requires the relevant log record to reach stable storage before its changed data page is flushed. A commit acknowledgement needs the log durability required by the chosen protocol.",
+            "A steal policy may flush uncommitted changes, creating a need for undo. A no-force policy may commit without immediately flushing all changed data pages, creating a need for redo. For simplified undo/redo logging, record transaction, item, old value and new value. Determine winners and losers from durable commit records, then apply the specified algorithm; do not invent missing records."
+          ]
+        },
+        {
+          "title": "Use checkpoints and commit protocols correctly",
+          "paragraphs": [
+            "A checkpoint reduces the amount of recovery work by recording suitable progress/state, but is not a universal command to forget every earlier active transaction. Precise recovery depends on the logging design. In a simple classroom example with initial A=10, uncommitted T1 changing A to 15 may need undo if the value reached disk; committed T2 changing another item may need redo if it did not.",
+            "Two-phase commit asks participants to prepare, then broadcasts a commit or abort decision. A participant voting yes must preserve enough durable state to honour a later decision. A prepared participant may block if it cannot learn the coordinator's decision after a failure. Two-phase commit does not make all machines commit at the same physical instant and does not replace concurrency control."
+          ]
+        },
+        {
+          "title": "Choose a model and name the guarantee",
+          "paragraphs": [
+            "Document models group related data into documents; key-value models emphasise key lookup; graph models emphasise relationships and traversals; wide-column models support other distribution/access patterns. Model choice starts from queries and update boundaries, not from the assumption that non-relational means no structure or no transactions. Denormalisation can move consistency work to updates.",
+            "CAP concerns the impossibility, during a network partition, of simultaneously guaranteeing linearizable consistency and availability for all requests in the model. It is not a permanent menu to choose any two letters and ignore partition behaviour. Compare how a design responds when replicas cannot communicate, and distinguish CAP consistency from the C in ACID. The archive supplies this as advanced predecessor material, not a verified CSE12C endpoint."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "WAL ordering",
+          "prompt": "Before a modified data page reaches stable storage, what must write-ahead logging ensure?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_RECOVERY_E01_O1",
+              "text": "Every table is sorted"
+            },
+            {
+              "id": "DM_RECOVERY_E01_O2",
+              "text": "The relevant log record is durable"
+            },
+            {
+              "id": "DM_RECOVERY_E01_O3",
+              "text": "Every transaction has ended"
+            },
+            {
+              "id": "DM_RECOVERY_E01_O4",
+              "text": "All replicas have identical clocks"
+            }
+          ],
+          "explanation": "The recovery information must survive before the data change it protects.",
+          "id": "DM_RECOVERY_E01",
+          "skillId": "DM_RECOVERY_S1",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ],
+          "answer": "DM_RECOVERY_E01_O2"
+        },
+        {
+          "title": "No-force consequence",
+          "prompt": "Committed pages may remain only in memory under a no-force policy. Which recovery operation may be needed after a crash?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_RECOVERY_E02_O1",
+              "text": "Redo"
+            },
+            {
+              "id": "DM_RECOVERY_E02_O2",
+              "text": "Only schema renaming"
+            },
+            {
+              "id": "DM_RECOVERY_E02_O3",
+              "text": "Always delete committed rows"
+            },
+            {
+              "id": "DM_RECOVERY_E02_O4",
+              "text": "No recovery can ever help"
+            }
+          ],
+          "explanation": "Redo restores committed effects not yet propagated to disk.",
+          "id": "DM_RECOVERY_E02",
+          "skillId": "DM_RECOVERY_S1",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ],
+          "answer": "DM_RECOVERY_E02_O1"
+        },
+        {
+          "title": "Undo and redo decisions",
+          "prompt": "Assume a simple undo/redo log: T1 changes A 10->15 and has no durable commit; T2 changes B 20->25 and has a durable commit. Both data pages may or may not have been flushed. Explain the required recovery intentions.",
+          "kind": "open",
+          "explanation": "Restore A to 10 for the loser and ensure B=25 for the committed winner, following the specified recovery algorithm and log order.",
+          "rubric": [
+            "Undo the uncommitted T1 effect if present.",
+            "Redo the committed T2 effect if needed.",
+            "Distinguish log durability from whether the data page was flushed."
+          ],
+          "id": "DM_RECOVERY_E03",
+          "skillId": "DM_RECOVERY_S1",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ]
+        },
+        {
+          "title": "Prepared participant",
+          "prompt": "In 2PC a participant has voted yes, then loses contact with the coordinator. Why can it not simply assume abort?",
+          "kind": "open",
+          "explanation": "The coordinator may already have committed and informed another participant. A unilateral conflicting outcome would break atomicity.",
+          "rubric": [
+            "Explain the uncertain global decision.",
+            "Mention durable prepared state.",
+            "Identify possible blocking while resolving the outcome."
+          ],
+          "id": "DM_RECOVERY_E04",
+          "skillId": "DM_RECOVERY_S2",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ]
+        },
+        {
+          "title": "2PC versus 2PL",
+          "prompt": "Which pairing is correct?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "DM_RECOVERY_E05_O1",
+              "text": "2PC chooses indexes; 2PL logs pages"
+            },
+            {
+              "id": "DM_RECOVERY_E05_O2",
+              "text": "Both are names for the same protocol"
+            },
+            {
+              "id": "DM_RECOVERY_E05_O3",
+              "text": "2PC coordinates atomic commit; 2PL constrains concurrent lock schedules"
+            },
+            {
+              "id": "DM_RECOVERY_E05_O4",
+              "text": "2PL guarantees all nodes share one clock"
+            }
+          ],
+          "explanation": "The two protocols solve distinct atomicity and isolation-related problems.",
+          "id": "DM_RECOVERY_E05",
+          "skillId": "DM_RECOVERY_S2",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ],
+          "answer": "DM_RECOVERY_E05_O3"
+        },
+        {
+          "title": "Partition tradeoff",
+          "prompt": "Two replicas cannot communicate. Explain the tension between answering every request and guaranteeing reads reflect a single linearizable history.",
+          "kind": "open",
+          "explanation": "Independent responses can expose inconsistent histories; preserving linearizability may require refusing or delaying some requests during the partition.",
+          "rubric": [
+            "Describe the partition explicitly.",
+            "Use linearizable consistency rather than generic data correctness.",
+            "Avoid describing CAP as an unrestricted choose-any-two slogan."
+          ],
+          "id": "DM_RECOVERY_E06",
+          "skillId": "DM_RECOVERY_S2",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ]
+        },
+        {
+          "title": "Document boundary",
+          "prompt": "A shop stores an order with line items as one document. Give a benefit and a consistency challenge if product descriptions are copied into each order.",
+          "kind": "open",
+          "explanation": "Reading the order can be local to an aggregate; copied product descriptions may require many updates, unless intentionally historical snapshots.",
+          "rubric": [
+            "Relate the benefit to a query/update boundary.",
+            "Discuss duplication and historical versus current semantics.",
+            "Avoid asserting that all document databases lack transactions."
+          ],
+          "id": "DM_RECOVERY_E07",
+          "skillId": "DM_RECOVERY_S2",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ]
+        },
+        {
+          "title": "Checkpoint misconception",
+          "prompt": "A colleague claims a checkpoint means every earlier log record can immediately be deleted. Explain why an active transaction can invalidate this claim.",
+          "kind": "open",
+          "explanation": "An active transaction may still require earlier undo or other recovery information. Retention depends on checkpoint and logging semantics.",
+          "rubric": [
+            "Mention transactions spanning the checkpoint.",
+            "Connect retention to recovery requirements.",
+            "Do not prescribe truncation without the protocol's conditions."
+          ],
+          "id": "DM_RECOVERY_E08",
+          "skillId": "DM_RECOVERY_S1",
+          "sourceIds": [
+            "DM_SRC_034",
+            "DM_SRC_035",
+            "DM_SRC_015",
+            "DM_SRC_020",
+            "DM_SRC_024"
+          ]
+        }
+      ]
+    }
+  ]
+}

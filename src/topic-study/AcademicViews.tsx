@@ -17,7 +17,7 @@ export function Sources({ids,label}:{ids:string[];label?:string}){
   const {t}=useI18n();
   return <details className="ds-study-sources"><summary>{label??t('learning.sourcesScope')}</summary><ul>{ids.map(id=>{
     const source=topicStudy.sources.find(s=>s.id===id)!;
-    return <li key={id}><strong>{source.filename}</strong><p>{t(source.precision==='DOCUMENT_RANGE'?'learning.sourceBroad':source.precision==='UNKNOWN'?'learning.sourceUnknown':'learning.sourceExact')}</p></li>;
+    return <li key={id}><strong>{source.filename}</strong>{source.kind==='DOCUMENT_SECTION'&&<p>{source.locator}</p>}<p>{t(source.precision==='DOCUMENT_RANGE'?'learning.sourceBroad':source.precision==='UNKNOWN'?'learning.sourceUnknown':'learning.sourceExact')}</p></li>;
   })}</ul><p>{t('learning.sourcesNote')}</p></details>;
 }
 export function TopicOverview({topic}:{topic:StudyTopic}){

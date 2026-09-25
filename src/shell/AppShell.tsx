@@ -2,7 +2,7 @@ import {RouteBoundary} from './RouteBoundary';
 import {LearningNotice} from '../learning/LearningProvider';
 import {useEffect, useRef, useState, type ReactNode} from 'react';
 import {Link, Outlet, useLocation} from 'react-router';
-import {ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext} from '../academic/navigation';
+import {ASSEMBLY_TOOL_PATH, ASSEMBLY_TOPIC_PATH, courses, pageContext, trimesters} from '../academic/navigation';
 import {ShellIcon, type ShellIconName} from './ShellIcon';
 import {useAccount} from '../accounts/context';
 import {profileInitials} from '../accounts/profile';
@@ -35,7 +35,7 @@ export function AppShell() {
   const {t}=useI18n();
   const account=useAccount(),{state}=account; const profileName=state.user?.displayName?.trim(); const initial=profileInitials(profileName);
   const storageStatusKey=storageStatusKeys[account.syncStatus],storageStatus=storageStatusKey?t(storageStatusKey):account.syncStatus;
-  const {pathname,hash}=useLocation(); const normalizedPath=pathname.replace(/\/+$/, '')||'/';
+  const {pathname,hash,search}=useLocation(); const normalizedPath=pathname.replace(/\/+$/, '')||'/';
   const specialContext:Record<string,{title:string;breadcrumbs:{label:string;to?:string}[]}>= {
     '/account':{title:'Account & Settings',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Account & Settings'}]},
     '/privacy':{title:'Privacy Policy',breadcrumbs:[{label:'Dashboard',to:'/dashboard'},{label:'Privacy Policy'}]},
@@ -46,6 +46,9 @@ export function AppShell() {
   const tool=normalizedPath===ASSEMBLY_TOOL_PATH;
   const course=courses.find(item=>pathname===item.path||pathname.startsWith(item.path+'/'))??{subject_id:undefined};
   const [navigationOpen,setNavigationOpen]=useState(false);
+  const activeCourse=courses.find(item=>pathname===item.path||pathname.startsWith(item.path+'/'));
+  const [selectedTrimester,setSelectedTrimester]=useState<number>(activeCourse?.trimester??1);
+  useEffect(()=>{if(activeCourse)setSelectedTrimester(activeCourse.trimester);else if(normalizedPath==='/dashboard'){const requested=Number(new URLSearchParams(search).get('trimester')??1);setSelectedTrimester(trimesters.includes(requested as 1|2|3|4)?requested:1);}},[activeCourse?.subject_id,normalizedPath,search]);
   const menuButton=useRef<HTMLButtonElement>(null),content=useRef<HTMLElement>(null),previousPath=useRef(pathname);
   function closeNavigation(){if(navigationOpen)menuButton.current?.focus();setNavigationOpen(false);}
   useEffect(()=>{
@@ -72,6 +75,11 @@ export function AppShell() {
           <SidebarLink to="/practice" icon="practice" label="nav.practice" tourId="practice" onSelect={closeNavigation}/>
           <SidebarLink to="/progress" icon="progress" label="nav.progress" tourId="progress" onSelect={closeNavigation}/>
         </NavigationGroup>
+        <section className="ds-nav-section ds-curriculum-nav" aria-label="Courses by trimester">
+          <label className="ds-nav-group" htmlFor="sidebar-trimester">Trimester</label>
+          <select id="sidebar-trimester" value={selectedTrimester} onChange={event=>setSelectedTrimester(Number(event.target.value))}>{trimesters.map(value=><option key={value} value={value}>Trimester {value}</option>)}</select>
+          <div className="ds-nav-items">{courses.filter(item=>item.trimester===selectedTrimester).map(item=><Link key={item.subject_id} to={item.path} className={`ds-nav-link${activeCourse?.subject_id===item.subject_id?' active':''}`} aria-current={activeCourse?.subject_id===item.subject_id?'page':undefined} onClick={closeNavigation}><ShellIcon name={item.icon}/><span>{item.publicName}</span></Link>)}</div>
+        </section>
         <NavigationGroup label="nav.secondary">
           <SidebarLink to="/study-plan" icon="book" label="nav.studyPath" tourId="study-path" onSelect={closeNavigation}/>
         </NavigationGroup>

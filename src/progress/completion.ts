@@ -1,13 +1,19 @@
 import type {Attempt} from '../learning/contracts';
 import type {PracticeExercise} from '../practice/registered-types';
 import {exerciseFormat} from '../practice/presentation';
-import {feedbackFor} from '../practice/service';
+import {feedbackFor,resolveAttempt} from '../practice/service';
 export {completionColor} from './completion-color';
 export interface CourseCompletion {subjectId:string;completed:number;eligible:number;percentage:number|null;}
-/** Activity completion: one finalized, valid, persisted graded submission per current eligible exercise. */
+/** Activity completion is not correctness: a saved open response may count without receiving a score. */
 export function deriveCourseCompletion(exercises:readonly PracticeExercise[],attempts:readonly Attempt[]):CourseCompletion[]{
  const eligible=exercises.filter(exercise=>!!exerciseFormat(exercise.task.kind));
- const completed=new Set(attempts.filter(attempt=>attempt.status==='SUBMITTED'&&feedbackFor(attempt).status==='GRADED').map(attempt=>attempt.templateRef).filter(Boolean));
+ const completed=new Set(attempts.filter(attempt=>{
+  if(attempt.status!=='SUBMITTED')return false;
+  const feedback=feedbackFor(attempt);
+  if(feedback.status==='GRADED')return true;
+  const resolved=resolveAttempt(attempt);
+  return resolved.status==='AVAILABLE'&&resolved.exercise.task.kind==='curriculum'&&resolved.exercise.task.format==='open'&&feedback.status==='NOT_AUTOGRADABLE';
+ }).map(attempt=>attempt.templateRef).filter(Boolean));
  return completionFromIds(eligible,completed as Set<string>);
 }
 /** Pure selector used by UI and regression fixtures; an exercise identity is counted at most once. */

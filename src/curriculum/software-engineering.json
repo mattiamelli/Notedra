@@ -1,0 +1,3152 @@
+{
+  "id": "CSE13B_SDE",
+  "code": "CSE13B",
+  "name": "Software Design and Engineering",
+  "short": "SDE",
+  "trimester": 3,
+  "slug": "software-engineering",
+  "description": "An integrated study curriculum across the supplied software engineering and testing archive: requirements, modeling, architecture, design, teamwork and evolution, systematic testing, delivery, and responsible evaluation of development tools. Original cases connect design decisions with observable quality.",
+  "limitations": [
+    "CSE13B is a merged course. This curriculum covers the supplied CSE2115 SEM and CSE1110 SQT predecessor material; it does not claim a verified final CSE13B syllabus or examination specification.",
+    "The supplied README explicitly leaves merged-course assessment, oral-presentation requirements and depth of inherited advanced topics unconfirmed. Communication practice is included as a useful inherited skill, not a mandatory CSE13B assessment.",
+    "Past SEM exams span older formats and are used for topic/problem-style evidence only. SQT exams and exercises are supplied mainly as Markdown WebLab exports; their copied solutions are not treated as authoritative new marking schemes.",
+    "All problems and lesson prose are newly authored. Open design, diagrams, proofs and test/code-writing responses are ungraded and require rubric-based self or instructor review; no code or arbitrary user input is executed.",
+    "PDF locators use one-based physical pages. Text extraction, content sampling and selected visual checks were used; not every source page was visually reviewed.",
+    "Historical tool names, organizational examples and AI claims in source slides are context, not verified current recommendations. The material teaches durable reasoning rather than current product capabilities."
+  ],
+  "sources": [
+    {
+      "id": "CSE13B_src_status",
+      "filename": "README.md",
+      "locator": "Sections 'What it covers', 'Assessment' and 'Worth knowing': merger and explicit uncertainty about the new CSE13B course."
+    },
+    {
+      "id": "CSE13B_src_requirements",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 1 - Introduction and Requirements Engineering.pdf",
+      "locator": "PDF pp. 57-101: requirements, stakeholders, elicitation and contextual inquiry."
+    },
+    {
+      "id": "CSE13B_src_req_uml",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 2 - Requirements Engineering and UML.pdf",
+      "locator": "PDF pp. 11-66: requirement types, verifiability, SMART, MoSCoW and Kano; pp. 68-76: use cases, include and extend."
+    },
+    {
+      "id": "CSE13B_src_architecture",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 3 - Software Architecture.pdf",
+      "locator": "PDF pp. 15-67: architectural views, UML and C4; pp. 68-122: client-server, layers, MVC, pipes, microservices, publish-subscribe and distributed tradeoffs."
+    },
+    {
+      "id": "CSE13B_src_solid",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 4 - Design Patterns.pdf",
+      "locator": "PDF pp. 15-48: class diagrams, cohesion, coupling and SOLID."
+    },
+    {
+      "id": "CSE13B_src_behavioral",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 4 - Design Patterns.pdf",
+      "locator": "PDF pp. 54-85: Iterator, Strategy, Chain of Responsibility and Observer."
+    },
+    {
+      "id": "CSE13B_src_structural",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 4 - Design Patterns.pdf",
+      "locator": "PDF pp. 86-124: Adapter, Facade, Proxy, Decorator and Composite."
+    },
+    {
+      "id": "CSE13B_src_creational",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 4 - Design Patterns.pdf",
+      "locator": "PDF pp. 125-160: Factory Method, Abstract Factory, Builder and Singleton."
+    },
+    {
+      "id": "CSE13B_src_ddd",
+      "filename": "From SEM/SEM Notes.pdf",
+      "locator": "PDF pp. 8-11 and 29-31: domain modeling, bounded contexts, context relationships, entities, value objects and aggregates; corroborated by SEM recap pp. 35-38."
+    },
+    {
+      "id": "CSE13B_src_process",
+      "filename": "From SEM/SEM Notes.pdf",
+      "locator": "PDF pp. 12-18: agile principles, Scrum, Kanban and organizational scaling approaches."
+    },
+    {
+      "id": "CSE13B_src_oss",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 5 - Working with Open-source Software.pdf",
+      "locator": "PDF pp. 8-10: licensing concepts; pp. 20-77: selecting, evaluating, adapting, maintaining and contributing to dependencies."
+    },
+    {
+      "id": "CSE13B_src_sustainable",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 5 - Working with Open-source Software.pdf",
+      "locator": "Appended sustainability material, PDF pp. 80-103: sustainability dimensions, measurement, energy versus carbon and a container comparison."
+    },
+    {
+      "id": "CSE13B_src_metrics",
+      "filename": "From SEM/SEM Notes.pdf",
+      "locator": "PDF pp. 37-42: maintenance, smells, refactoring, cyclomatic complexity and LCOM."
+    },
+    {
+      "id": "CSE13B_src_recap",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 15 - Recap and Q&A.pdf",
+      "locator": "PDF pp. 52-60: cohesion/coupling, cyclomatic complexity, LCOM and sustainability; pp. 35-40: DDD and agility."
+    },
+    {
+      "id": "CSE13B_src_scale",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 11 - Software at Scale.pdf",
+      "locator": "PDF pp. 19-43: measurement, reproducing problems and caching; pp. 44-64: scaling, decomposition and fault tolerance."
+    },
+    {
+      "id": "CSE13B_src_delivery",
+      "filename": "From SEM/SEM Notes.pdf",
+      "locator": "PDF pp. 43-47: DevOps, CI, deployment strategies, canaries and monitoring."
+    },
+    {
+      "id": "CSE13B_src_deployment",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 12 - Software at Scale Part 2.pdf",
+      "locator": "PDF pp. 12-36: fault tolerance, containers versus VMs, cloud, infrastructure as code and serverless."
+    },
+    {
+      "id": "CSE13B_src_industry",
+      "filename": "From SEM/SEM Lectures/SEM Guest Lecture - bol.com.pdf",
+      "locator": "PDF pp. 7-38: request, design, testing, review and release; pp. 39-48: process adaptation and engineering communication."
+    },
+    {
+      "id": "CSE13B_src_ml",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 13 - Introduction to ML4SE.pdf",
+      "locator": "PDF pp. 9-25: tasks, code data, structure and evaluation; pp. 30-34: latency, UX and realistic deployment evaluation."
+    },
+    {
+      "id": "CSE13B_src_genai",
+      "filename": "From SEM/SEM Lectures/SEM Lecture 14 - GenAI for Development.pdf",
+      "locator": "PDF pp. 29-35: lifecycle uses; pp. 51-68: context, examples and prompting; pp. 72-86: security, ethical and data concerns."
+    },
+    {
+      "id": "CSE13B_src_oral",
+      "filename": "From SEM/SEM Oral Presentation Rubric.pdf",
+      "locator": "PDF pp. 1-3: audience adaptation, structure, visuals, questions and delivery; inherited SEM rubric, not confirmed CSE13B assessment."
+    },
+    {
+      "id": "CSE13B_src_testing",
+      "filename": "From SQT/Effective Software Testing - A Developer's Guide.pdf",
+      "locator": "Chapter 1: systematic testing, developer workflow, testing pyramid and principles."
+    },
+    {
+      "id": "CSE13B_src_spec",
+      "filename": "From SQT/Effective Software Testing - A Developer's Guide.pdf",
+      "locator": "Chapter 2: specification-based testing, partitions, boundaries and deriving tests."
+    },
+    {
+      "id": "CSE13B_src_coverage",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 3 - Structural testing.pdf",
+      "locator": "PDF pp. 3-10: coverage interpretation; pp. 11-30: branches, conditions, MC/DC and subsumption; pp. 31-42: mutation testing."
+    },
+    {
+      "id": "CSE13B_src_contracts",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 4 - Designing contracts.pdf",
+      "locator": "PDF pp. 3-22: contracts and assertions; pp. 23-47: preconditions, postconditions, invariants; pp. 48-59: inheritance and substitutability."
+    },
+    {
+      "id": "CSE13B_src_pbt",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 5 - Property-based testing.pdf",
+      "locator": "PDF pp. 4-19: generators, properties, shrinking and property families; pp. 22-37: generator coverage, construction and framework randomness."
+    },
+    {
+      "id": "CSE13B_src_doubles",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 6 - Test Doubles and Mocks.pdf",
+      "locator": "PDF pp. 5-9: double types and query/command distinction; pp. 15-30: missing assertions, wrong verification, injected dependencies and captured arguments."
+    },
+    {
+      "id": "CSE13B_src_testability",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 7 - Design for Testability.pdf",
+      "locator": "PDF pp. 4-18: infrastructure/domain separation, ports/adapters, dependency injection, controllability, observability and clocks."
+    },
+    {
+      "id": "CSE13B_src_tdd",
+      "filename": "From SQT/Effective Software Testing - A Developer's Guide.pdf",
+      "locator": "Chapter 8: test-driven development; chapter 10: test code quality."
+    },
+    {
+      "id": "CSE13B_src_quality",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 10 - Test code quality.pdf",
+      "locator": "PDF pp. 14-52: DAMP, behavior-based names, clear assertions, public APIs and avoiding shared mutable state."
+    },
+    {
+      "id": "CSE13B_src_larger",
+      "filename": "From SQT/SQT Lectures/SQT Lecture 9 - Larger Tests.pdf",
+      "locator": "PDF pp. 5-16: component/database tests and SQL partitions; pp. 18-24: browser testing, exploratory testing and test infrastructure."
+    },
+    {
+      "id": "CSE13B_src_book_larger",
+      "filename": "From SQT/Effective Software Testing - A Developer's Guide.pdf",
+      "locator": "Chapter 9: integration, database and system tests; web testing and page objects."
+    },
+    {
+      "id": "CSE13B_src_sem_exercises",
+      "filename": "SDE LLM Files/Knowledge Files/Exercises (SEM).md",
+      "locator": "Named exercises and sections on requirements, UML, domain modeling, design patterns, metrics and development methods."
+    },
+    {
+      "id": "CSE13B_src_sqt_exercises",
+      "filename": "SDE LLM Files/Knowledge Files/Exercises (SQT).md",
+      "locator": "Named specification exercises containsAny, lastIndexOf, isSorted, swapCase, repeat and intersection; later property, mocking and system-test exercises."
+    },
+    {
+      "id": "CSE13B_src_regression",
+      "filename": "From SEM/SEM Exams/SEM Endterms/SEM Endterm 2022.pdf",
+      "locator": "PDF p. 9: regression-testing coverage matrix question; pp. 24-25: additional-greedy selection worked answer. Used for method and problem style, not current assessment rules."
+    }
+  ],
+  "topics": [
+    {
+      "id": "CSE13B_requirements",
+      "name": "Requirements and stakeholder discovery",
+      "description": "Turn stakeholder needs into verifiable requirements, priorities and acceptance scenarios.",
+      "prerequisites": [],
+      "sourceIds": [
+        "CSE13B_src_requirements",
+        "CSE13B_src_req_uml"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_requirements_elicit",
+          "name": "Elicitation",
+          "description": "Select techniques and include overlooked stakeholders."
+        },
+        {
+          "id": "CSE13B_requirements_specify",
+          "name": "Verifiable requirements",
+          "description": "Separate services from quality constraints and remove ambiguity."
+        },
+        {
+          "id": "CSE13B_requirements_prioritize",
+          "name": "Prioritization",
+          "description": "Use priorities with context, evidence and traceability."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Discover the problem before the feature",
+          "paragraphs": [
+            "A stakeholder can influence requirements, be affected by the system, or have responsibility for operating it. Interview end users, support staff, administrators and people with accessibility needs; a purchaser's perspective is not the whole workflow. Contextual inquiry combines observation with questions about why the current work is done that way.",
+            "Interviews reveal detail, surveys reach broader groups, prototypes make assumptions tangible, and scenarios expose exceptions. Ask for a recent concrete case, including its initial state, actions, failure paths and desired outcome. Record unresolved disagreements instead of silently choosing a requirement on behalf of all parties."
+          ]
+        },
+        {
+          "title": "Make success observable",
+          "paragraphs": [
+            "A functional requirement describes a service or response, such as canceling an eligible reservation. A quality requirement constrains operation, such as response time under a specified load. User requirements communicate goals; system requirements add enough precision to support design and verification. A quality label alone does not make a requirement measurable.",
+            "Worked rewrite: 'Search should be fast' becomes 'For the agreed 50,000-record dataset and 100 concurrent users, at least 95% of title searches shall return results within 500 ms during a ten-minute test.' The threshold is an example to negotiate, not an established course or product requirement. Specify empty queries, unauthorized access and failures separately."
+          ]
+        },
+        {
+          "title": "Priorities and traceability",
+          "paragraphs": [
+            "MoSCoW ranks needs relative to a delivery timebox: Must, Should, Could and Won't this time. Calling every item Must removes the method's value. Kano analyzes how the presence and absence of a feature affects satisfaction; a basic expectation may not delight users but still be essential.",
+            "Trace a stakeholder need to a requirement, implementation issue and acceptance test. For a booking system, 'avoid double booking' may lead to a concurrency rule, transactional design and a test where two clients compete for the last slot. Breaking work into tickets should preserve this connection to the intended outcome."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_requirements_missing",
+          "title": "Find missing stakeholders",
+          "prompt": "A university room-booking team interviews only lecturers. Name four other stakeholder groups, explain a distinct concern for each, and choose one elicitation technique for an overlooked workflow.",
+          "skillId": "CSE13B_requirements_elicit",
+          "sourceIds": [
+            "CSE13B_src_requirements",
+            "CSE13B_src_req_uml"
+          ],
+          "kind": "open",
+          "explanation": "Different groups encounter conflicts, maintenance outages, support failures and access barriers that a lecturer-only interview may omit.",
+          "rubric": [
+            "Identify groups such as students, facilities staff, support and users with accessibility needs.",
+            "Connect each group to a specific need or constraint.",
+            "Choose a technique with a reason, such as observing room changeovers."
+          ]
+        },
+        {
+          "id": "CSE13B_requirements_latency",
+          "title": "Repair an ambiguous requirement",
+          "prompt": "Rewrite 'the application must be reliable and quick' into two independently verifiable requirements. State measurement conditions and identify assumptions requiring stakeholder agreement.",
+          "skillId": "CSE13B_requirements_specify",
+          "sourceIds": [
+            "CSE13B_src_requirements",
+            "CSE13B_src_req_uml"
+          ],
+          "kind": "open",
+          "explanation": "A latency percentile under load and a recovery or availability target can be tested separately; vague adjectives cannot.",
+          "rubric": [
+            "Separate performance from reliability/availability.",
+            "Specify measurable targets, workload/window and failure definition.",
+            "Label chosen numbers as proposed assumptions rather than discovered facts."
+          ]
+        },
+        {
+          "id": "CSE13B_requirements_type",
+          "title": "Requirement classification",
+          "prompt": "Which statement most directly specifies a functional service?",
+          "skillId": "CSE13B_requirements_specify",
+          "sourceIds": [
+            "CSE13B_src_requirements",
+            "CSE13B_src_req_uml"
+          ],
+          "kind": "choice",
+          "explanation": "Exporting a user's booking list is observable system functionality.",
+          "options": [
+            {
+              "id": "CSE13B_requirements_type_o1",
+              "text": "95% of searches finish within 500 ms under a stated load."
+            },
+            {
+              "id": "CSE13B_requirements_type_o2",
+              "text": "The monthly service availability target is 99.5%."
+            },
+            {
+              "id": "CSE13B_requirements_type_o3",
+              "text": "An authenticated user can export their own bookings as CSV."
+            },
+            {
+              "id": "CSE13B_requirements_type_o4",
+              "text": "The deployment must fit in 2 GB of memory."
+            }
+          ],
+          "answer": "CSE13B_requirements_type_o3"
+        },
+        {
+          "id": "CSE13B_requirements_scope",
+          "title": "Resolve priority inflation",
+          "prompt": "All 30 backlog items are marked Must for a two-week release. Describe a prioritization workshop that produces a defensible release scope without silently dropping an accessibility requirement.",
+          "skillId": "CSE13B_requirements_prioritize",
+          "sourceIds": [
+            "CSE13B_src_requirements",
+            "CSE13B_src_req_uml"
+          ],
+          "kind": "open",
+          "explanation": "Must is a release constraint, not a synonym for desirable. Ethical and user needs require evidence-based discussion, not automatic demotion.",
+          "rubric": [
+            "Agree on release goals, capacity and consequences of omission.",
+            "Challenge Must labels through concrete scenarios and dependencies.",
+            "Discuss accessibility with affected stakeholders and record explicit decisions and deferred scope."
+          ]
+        },
+        {
+          "id": "CSE13B_requirements_trace",
+          "title": "Trace a concurrency requirement",
+          "prompt": "An initially available room slot receives two valid simultaneous reservation requests during healthy operation. The system must make successful progress while ensuring at most one confirmed reservation per room and time interval. Propose an acceptance scenario and name the observable outcomes.",
+          "skillId": "CSE13B_requirements_specify",
+          "sourceIds": [
+            "CSE13B_src_requirements",
+            "CSE13B_src_req_uml"
+          ],
+          "kind": "open",
+          "explanation": "A test that submits requests one after another misses the concurrency risk that motivates the requirement.",
+          "rubric": [
+            "Create competing requests for the same slot.",
+            "Require exactly one confirmation and a clear rejection/conflict outcome for the other.",
+            "Check persistent state, not just two success/failure messages."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_modeling",
+      "name": "UML and architectural communication",
+      "description": "Choose a diagram for a question and express relationships, behavior and abstraction levels precisely.",
+      "prerequisites": [
+        "CSE13B_requirements"
+      ],
+      "sourceIds": [
+        "CSE13B_src_req_uml",
+        "CSE13B_src_architecture",
+        "CSE13B_src_solid",
+        "CSE13B_src_oral"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_modeling_notation",
+          "name": "Model semantics",
+          "description": "Distinguish multiplicity, ownership, include and extend."
+        },
+        {
+          "id": "CSE13B_modeling_behavior",
+          "name": "Behavioral diagrams",
+          "description": "Model interactions, alternatives and concurrency."
+        },
+        {
+          "id": "CSE13B_modeling_audience",
+          "name": "Audience and abstraction",
+          "description": "Choose UML or C4 views and explain a design clearly."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Model only what answers the question",
+          "paragraphs": [
+            "Use-case diagrams show actors and system goals, not internal method-call order. An include relationship represents required reused behavior; extend adds conditional behavior at an extension point in a base use case that is meaningful on its own. Actor roles need not correspond one-to-one with named people.",
+            "Class diagrams describe types, associations and multiplicities. In an association Customer 1 to Order 0..*, each Order has one Customer while a Customer may have many Orders. Composition means strong whole-part ownership and lifecycle dependence; use an ordinary association when the part exists independently or is shared."
+          ]
+        },
+        {
+          "title": "Worked interaction model",
+          "paragraphs": [
+            "For a checkout sequence, draw Customer, Checkout, Inventory and Payment lifelines. Checkout first reserves stock, then requests payment, then confirms the order. Use alternatives for unavailable stock and declined payment. The declined branch must release the reservation; a diagram containing only the happy path hides that obligation.",
+            "Sequence diagrams emphasize messages among participants over time. Activity diagrams emphasize control flow, decisions, forks and joins. A decision selects one path using guards; a fork starts concurrent paths and a join synchronizes them. Joining alternative paths as though both must occur can model an impossible wait."
+          ]
+        },
+        {
+          "title": "Zoom and communicate",
+          "paragraphs": [
+            "C4 moves from system context to containers, components and code. A C4 container is an application or data store, not necessarily a Docker container. A context diagram for a booking system can show students and an external identity provider without exposing implementation classes.",
+            "For a nontechnical stakeholder, begin with their concern, show only relevant system boundaries and explain labels. For a developer, include contracts, multiplicities and failure behavior. A useful presentation links each design choice to evidence and a tradeoff, cites sources, and makes questions and uncertainty visible; it does not prove its quality by diagram density."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_modeling_multiplicity",
+          "title": "Read multiplicity",
+          "prompt": "An association places '1' at the Customer end and '0..*' at the Order end. What does it mean?",
+          "skillId": "CSE13B_modeling_notation",
+          "sourceIds": [
+            "CSE13B_src_req_uml",
+            "CSE13B_src_architecture",
+            "CSE13B_src_solid",
+            "CSE13B_src_oral"
+          ],
+          "kind": "choice",
+          "explanation": "Multiplicity at an end counts possible instances at that end for one instance at the opposite end.",
+          "options": [
+            {
+              "id": "CSE13B_modeling_multiplicity_o1",
+              "text": "Each Order has one Customer; each Customer may have zero or more Orders."
+            },
+            {
+              "id": "CSE13B_modeling_multiplicity_o2",
+              "text": "Each Customer has exactly one Order."
+            },
+            {
+              "id": "CSE13B_modeling_multiplicity_o3",
+              "text": "An Order may have any number of Customers."
+            },
+            {
+              "id": "CSE13B_modeling_multiplicity_o4",
+              "text": "Customers and Orders have identical lifecycles."
+            }
+          ],
+          "answer": "CSE13B_modeling_multiplicity_o1"
+        },
+        {
+          "id": "CSE13B_modeling_extension",
+          "title": "Include or extend?",
+          "prompt": "A base 'View article' use case works without translation. A user can optionally request translation while viewing. Explain an appropriate extend relationship and contrast it with required authentication in a protected checkout.",
+          "skillId": "CSE13B_modeling_notation",
+          "sourceIds": [
+            "CSE13B_src_req_uml",
+            "CSE13B_src_architecture",
+            "CSE13B_src_solid",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "The relationship describes required versus conditional use-case behavior; it is not selected merely because one action happens later.",
+          "rubric": [
+            "Model optional translation as extending View article under a condition.",
+            "Explain that protected checkout can include required authentication behavior under the specified scenario.",
+            "Distinguish optional extension from an implementation call graph."
+          ]
+        },
+        {
+          "id": "CSE13B_modeling_failureflow",
+          "title": "Draw a failure-aware sequence",
+          "prompt": "Describe or write text UML for stock reservation followed by payment. Include the payment-declined branch and the externally visible final state.",
+          "skillId": "CSE13B_modeling_behavior",
+          "sourceIds": [
+            "CSE13B_src_req_uml",
+            "CSE13B_src_architecture",
+            "CSE13B_src_solid",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "A successful reservation is not a completed checkout. The failure branch must undo or expire the reserved resource.",
+          "rubric": [
+            "Provide participant lifelines and ordered reserve/pay/confirm messages.",
+            "On decline release stock and report failure without a confirmed order.",
+            "Name return values/guards sufficiently to distinguish branches."
+          ]
+        },
+        {
+          "id": "CSE13B_modeling_c4",
+          "title": "Choose the right view",
+          "prompt": "A university administrator wants to know which external systems receive booking data. Which view is the best starting point?",
+          "skillId": "CSE13B_modeling_audience",
+          "sourceIds": [
+            "CSE13B_src_req_uml",
+            "CSE13B_src_architecture",
+            "CSE13B_src_solid",
+            "CSE13B_src_oral"
+          ],
+          "kind": "choice",
+          "explanation": "A context view explains system boundaries and external relationships at a suitable level.",
+          "options": [
+            {
+              "id": "CSE13B_modeling_c4_o1",
+              "text": "A full class diagram with private fields."
+            },
+            {
+              "id": "CSE13B_modeling_c4_o2",
+              "text": "A system context diagram with labeled data relationships."
+            },
+            {
+              "id": "CSE13B_modeling_c4_o3",
+              "text": "A CPU instruction trace."
+            },
+            {
+              "id": "CSE13B_modeling_c4_o4",
+              "text": "A diagram of every unit test."
+            }
+          ],
+          "answer": "CSE13B_modeling_c4_o2"
+        },
+        {
+          "id": "CSE13B_modeling_pitch",
+          "title": "Explain a design decision",
+          "prompt": "Prepare a short spoken outline proposing a queue for slow report generation to nontechnical course staff. Include user benefit, one tradeoff, a visual idea and a question you would invite.",
+          "skillId": "CSE13B_modeling_audience",
+          "sourceIds": [
+            "CSE13B_src_req_uml",
+            "CSE13B_src_architecture",
+            "CSE13B_src_solid",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "Audience adaptation and evidence matter more than architectural vocabulary. This is inherited communication practice, not a confirmed CSE13B presentation requirement.",
+          "rubric": [
+            "Lead with staff/user needs and explain asynchronous completion plainly.",
+            "State a real cost such as delay, status tracking or retry handling.",
+            "Use a simple request-to-report visual, support claims and invite a relevant question."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_architecture",
+      "name": "Architecture and quality tradeoffs",
+      "description": "Choose system boundaries and communication styles from quality requirements, including distributed failure behavior.",
+      "prerequisites": [
+        "CSE13B_modeling"
+      ],
+      "sourceIds": [
+        "CSE13B_src_architecture",
+        "CSE13B_src_scale"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_architecture_patterns",
+          "name": "Architectural patterns",
+          "description": "Match layers, MVC, pipelines and events to responsibilities."
+        },
+        {
+          "id": "CSE13B_architecture_tradeoffs",
+          "name": "Quality tradeoffs",
+          "description": "Compare monoliths, services and distributed guarantees."
+        },
+        {
+          "id": "CSE13B_architecture_decision",
+          "name": "Architecture decisions",
+          "description": "Document a scenario, alternatives and consequences."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Architecture captures costly decisions",
+          "paragraphs": [
+            "Architecture describes important components, responsibilities and relationships. A layered design separates presentation, application/domain behavior and infrastructure; MVC separates model, view and controller concerns. These divisions can support independent reasoning, but a layer that merely forwards every call may add ceremony without useful responsibility.",
+            "A pipe-and-filter architecture fits a stream transformed through stages with clear input/output contracts. Publish-subscribe decouples producers from consumers through event channels, but introduces questions about delivery, ordering, duplicate processing and failures. Patterns describe tradeoffs in context, not universal upgrades."
+          ]
+        },
+        {
+          "title": "Worked choice: a student booking service",
+          "paragraphs": [
+            "A small team with shared release cadence can start with a modular monolith: bookings, identity adapters and notifications have explicit internal interfaces while deployment stays simple. Split services when independent ownership, scaling or failure isolation provides a concrete benefit that outweighs network and operational complexity.",
+            "Suppose sending email is slow and should not block confirmation. Publish a BookingConfirmed event after reliable persistence and let a notification consumer process it. Retrying an event may deliver it twice, so the consumer needs an idempotency rule. A queue moves failure handling; it does not make failure disappear."
+          ]
+        },
+        {
+          "title": "Distributed tradeoffs and evidence",
+          "paragraphs": [
+            "During a network partition, a distributed service cannot guarantee both linearizable consistency and successful responses to every request. This is the useful scope of the CAP tradeoff, not an unrestricted 'choose any two at all times' slogan. Some domains can tolerate temporarily stale displays; others must reject uncertain updates.",
+            "Write an architectural decision record with context, constraints, alternatives, decision and consequences. Use quality scenarios: a stimulus under stated conditions produces a response measured by a target. For example, a worker outage should delay emails without losing confirmed bookings. Validate with a fault experiment or test rather than treating a diagram as evidence."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_architecture_pipeline",
+          "title": "Choose a pipeline",
+          "prompt": "A tool reads sensor records, validates them, converts units and aggregates hourly values. Which style most directly supports reusable sequential transformation stages?",
+          "skillId": "CSE13B_architecture_patterns",
+          "sourceIds": [
+            "CSE13B_src_architecture",
+            "CSE13B_src_scale"
+          ],
+          "kind": "choice",
+          "explanation": "Each stage transforms a well-defined stream for the next stage.",
+          "options": [
+            {
+              "id": "CSE13B_architecture_pipeline_o1",
+              "text": "A single global mutable singleton."
+            },
+            {
+              "id": "CSE13B_architecture_pipeline_o2",
+              "text": "An inheritance tree for every file."
+            },
+            {
+              "id": "CSE13B_architecture_pipeline_o3",
+              "text": "Pipe-and-filter."
+            },
+            {
+              "id": "CSE13B_architecture_pipeline_o4",
+              "text": "An unstructured set of cross-calling components."
+            }
+          ],
+          "answer": "CSE13B_architecture_pipeline_o3"
+        },
+        {
+          "id": "CSE13B_architecture_services",
+          "title": "Justify a deployment boundary",
+          "prompt": "A three-person team proposes 12 microservices for an early booking product. Evaluate this choice using two possible benefits, three concrete costs and evidence that could justify starting with a modular monolith.",
+          "skillId": "CSE13B_architecture_tradeoffs",
+          "sourceIds": [
+            "CSE13B_src_architecture",
+            "CSE13B_src_scale"
+          ],
+          "kind": "open",
+          "explanation": "Service count is not a quality metric. Independent deployment is valuable only when its benefits exceed coordination and operational costs.",
+          "rubric": [
+            "Mention independent scale/ownership or isolation as conditional benefits.",
+            "Discuss network failure, deployment/observability, contract/data consistency costs.",
+            "Tie the choice to actual team size, workload and change/release needs."
+          ]
+        },
+        {
+          "id": "CSE13B_architecture_duplicate",
+          "title": "Duplicate event handling",
+          "prompt": "A notification consumer receives the same BookingConfirmed event twice after a retry. Propose an idempotency strategy and explain what must be persisted.",
+          "skillId": "CSE13B_architecture_patterns",
+          "sourceIds": [
+            "CSE13B_src_architecture",
+            "CSE13B_src_scale"
+          ],
+          "kind": "open",
+          "explanation": "Deduplication must survive restarts. External side effects require an explicit retry/idempotency design.",
+          "rubric": [
+            "Use a stable event or business-operation identifier.",
+            "Persist processed/sent state with an appropriate atomicity policy.",
+            "Discuss the send-and-record failure window rather than assuming an in-memory set is enough."
+          ]
+        },
+        {
+          "id": "CSE13B_architecture_partition",
+          "title": "CAP in context",
+          "prompt": "Two replicas are partitioned. A booking service must prevent conflicting confirmations for the last seat. Explain a possible availability tradeoff and why 'choose two' is an incomplete explanation.",
+          "skillId": "CSE13B_architecture_tradeoffs",
+          "sourceIds": [
+            "CSE13B_src_architecture",
+            "CSE13B_src_scale"
+          ],
+          "kind": "open",
+          "explanation": "Continuing to accept conflicting writes on both sides sacrifices the chosen consistency guarantee.",
+          "rubric": [
+            "Restrict or reject writes where authoritative agreement is unavailable.",
+            "Explain the partition-specific conflict between consistency and availability.",
+            "Separate this from normal-operation latency and other quality attributes."
+          ]
+        },
+        {
+          "id": "CSE13B_architecture_adr",
+          "title": "Write a bounded decision",
+          "prompt": "Write a concise decision record for keeping report generation in a background worker. Include context, an alternative, two consequences and one measurable validation scenario.",
+          "skillId": "CSE13B_architecture_decision",
+          "sourceIds": [
+            "CSE13B_src_architecture",
+            "CSE13B_src_scale"
+          ],
+          "kind": "open",
+          "explanation": "A reviewable decision names both the benefit and what the team must now operate and test.",
+          "rubric": [
+            "State the slow-report/user-response problem and why a worker fits.",
+            "Compare synchronous generation or another plausible alternative.",
+            "Include status/retry complexity and a concrete response or recovery experiment."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_contracts",
+      "name": "SOLID, contracts and substitutability",
+      "description": "Use responsibility boundaries and behavioral promises to make designs extensible and testable.",
+      "prerequisites": [
+        "CSE13B_architecture"
+      ],
+      "sourceIds": [
+        "CSE13B_src_solid",
+        "CSE13B_src_contracts"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_contracts_solid",
+          "name": "Design principles",
+          "description": "Apply cohesion, interface segregation and dependency inversion."
+        },
+        {
+          "id": "CSE13B_contracts_contract",
+          "name": "Behavioral contracts",
+          "description": "Specify preconditions, postconditions and invariants."
+        },
+        {
+          "id": "CSE13B_contracts_lsp",
+          "name": "Substitutability",
+          "description": "Check inherited promises without strengthening caller obligations."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Principles guide change boundaries",
+          "paragraphs": [
+            "Single responsibility means a coherent reason to change, not one method per class. Open/closed design isolates a likely variation behind an interface so a new implementation does not require editing all clients. Interface segregation keeps clients dependent on the operations they actually need.",
+            "Dependency inversion makes high-level policy depend on abstractions instead of concrete infrastructure. Dependency injection supplies those collaborators from outside; it is a construction technique, not the same concept. A booking rule can depend on a ReservationStore interface, implemented by a database adapter and a test fake."
+          ]
+        },
+        {
+          "title": "Worked account contract",
+          "paragraphs": [
+            "For withdraw(amount), a possible precondition is 0<amount<=balance, a postcondition is balance'=old(balance)-amount, and an invariant is balance>=0 at public method boundaries. If the public API instead promises an exception for invalid amounts, that error behavior belongs in the specification and should be tested.",
+            "Invariants can be temporarily false inside a carefully controlled operation but must hold when the object is observable through its public boundary. Java assertions may be disabled, so do not rely on them for always-required input validation. Exceptions and explicit checks can enforce public error behavior; contracts still describe what those checks mean."
+          ]
+        },
+        {
+          "title": "Subclasses must keep promises",
+          "paragraphs": [
+            "A subtype cannot demand more than the base method's precondition from existing callers. It may accept more inputs, and it must provide at least the promised postcondition. Preserving a method signature is insufficient if behavior changes incompatibly.",
+            "Example: a base withdraw accepts any positive amount up to balance. A subtype that rejects all amounts below 10 strengthens the precondition and breaks a client that legally withdraws 5. A subtype that additionally logs successful withdrawals can strengthen behavior without invalidating that client's expectations, provided the original success and failure semantics remain."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_contracts_responsibility",
+          "title": "Separate reasons to change",
+          "prompt": "A Report class calculates totals, renders HTML and sends SMTP messages. Propose a responsibility split and explain which dependency direction keeps calculation independent of email infrastructure.",
+          "skillId": "CSE13B_contracts_solid",
+          "sourceIds": [
+            "CSE13B_src_solid",
+            "CSE13B_src_contracts"
+          ],
+          "kind": "open",
+          "explanation": "Tax or aggregation changes should not require changing SMTP setup; delivery details should not dictate the total-calculation contract.",
+          "rubric": [
+            "Separate calculation, formatting and delivery concerns.",
+            "Keep domain policy independent of SMTP-specific classes.",
+            "Explain benefits through independent change/test scenarios rather than number of classes."
+          ]
+        },
+        {
+          "id": "CSE13B_contracts_post",
+          "title": "Write a postcondition",
+          "prompt": "For a nonnegative account balance and valid withdraw(amount), state precondition, postcondition using old balance, and class invariant. Specify one boundary test.",
+          "skillId": "CSE13B_contracts_contract",
+          "sourceIds": [
+            "CSE13B_src_solid",
+            "CSE13B_src_contracts"
+          ],
+          "kind": "open",
+          "explanation": "A relational postcondition checks the transition, not just that the resulting balance is nonnegative.",
+          "rubric": [
+            "Require amount>0 and amount<=old balance under the cooperative contract.",
+            "Require new balance=old balance-amount and nonnegative invariant.",
+            "Start with a positive balance, withdraw exactly that balance, and check that the result is zero."
+          ]
+        },
+        {
+          "id": "CSE13B_contracts_subtype",
+          "title": "Subtype restriction",
+          "prompt": "A base method accepts all nonempty strings. A subtype accepts only strings of length at least 8. Which principle is violated for callers using the base contract?",
+          "skillId": "CSE13B_contracts_lsp",
+          "sourceIds": [
+            "CSE13B_src_solid",
+            "CSE13B_src_contracts"
+          ],
+          "kind": "choice",
+          "explanation": "The subtype rejects inputs that were legal under the base promise.",
+          "options": [
+            {
+              "id": "CSE13B_contracts_subtype_o1",
+              "text": "Single responsibility necessarily."
+            },
+            {
+              "id": "CSE13B_contracts_subtype_o2",
+              "text": "Liskov substitutability through a stronger precondition."
+            },
+            {
+              "id": "CSE13B_contracts_subtype_o3",
+              "text": "Stable sorting."
+            },
+            {
+              "id": "CSE13B_contracts_subtype_o4",
+              "text": "Dependency injection necessarily."
+            }
+          ],
+          "answer": "CSE13B_contracts_subtype_o2"
+        },
+        {
+          "id": "CSE13B_contracts_assert",
+          "title": "Always-on validation",
+          "prompt": "A public method must reject invalid booking dates in every deployment. Why is a Java assert statement alone insufficient, and what should the API specify instead?",
+          "skillId": "CSE13B_contracts_contract",
+          "sourceIds": [
+            "CSE13B_src_solid",
+            "CSE13B_src_contracts"
+          ],
+          "kind": "open",
+          "explanation": "A required production check must not depend on the assertion-enabled runtime flag.",
+          "rubric": [
+            "Assertions can be disabled.",
+            "Use explicit validation with documented exception/error behavior.",
+            "Test invalid dates and ensure no partial booking state survives rejection."
+          ]
+        },
+        {
+          "id": "CSE13B_contracts_interface",
+          "title": "Segregate an interface",
+          "prompt": "A ReadOnlyArchive implementation must implement delete() only to throw UnsupportedOperationException because clients share a giant Archive interface. Propose smaller interfaces and explain how this improves substitutability.",
+          "skillId": "CSE13B_contracts_solid",
+          "sourceIds": [
+            "CSE13B_src_solid",
+            "CSE13B_src_contracts"
+          ],
+          "kind": "open",
+          "explanation": "A capability-specific interface avoids promising a deletion operation the object cannot support.",
+          "rubric": [
+            "Separate read operations from mutation capabilities.",
+            "Type read-only clients against the read interface and mutating clients against the write-capable interface.",
+            "Explain that advertised operations should have satisfiable contracts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_behavioral",
+      "name": "Behavioral design patterns",
+      "description": "Separate interchangeable algorithms, notification and traversal responsibilities without hiding control flow.",
+      "prerequisites": [
+        "CSE13B_contracts"
+      ],
+      "sourceIds": [
+        "CSE13B_src_behavioral"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_behavioral_select",
+          "name": "Pattern selection",
+          "description": "Distinguish Strategy, Observer, Iterator and Chain of Responsibility."
+        },
+        {
+          "id": "CSE13B_behavioral_collaborate",
+          "name": "Collaborations",
+          "description": "Describe roles, call flow and lifetime hazards."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Strategy isolates a changing algorithm",
+          "paragraphs": [
+            "A Strategy interface represents one interchangeable behavior. A route planner delegates computeRoute to a walking or driving strategy while retaining stable orchestration. This can remove a growing conditional, but only helps when variation is real; tiny fixed cases do not automatically need a class hierarchy.",
+            "An Iterator exposes traversal without exposing representation. Different iterators can traverse the same tree in depth-first or breadth-first order. Each iterator needs its own cursor and a defined policy for collection mutation. The collection should not store one shared traversal cursor used by all clients."
+          ]
+        },
+        {
+          "title": "Observer communicates a change",
+          "paragraphs": [
+            "A subject keeps observers that wish to receive change notifications. A score model can notify a table view and chart without knowing their display details. The observer interface decouples notification from the reaction; subscription and unsubscription still require lifecycle management.",
+            "Worked scenario: a view subscribes when opened, updates on score changes, then unsubscribes when closed. If it remains registered, it may receive stale updates or be retained in memory. Notification order, reentrant changes and exceptions in one observer need explicit policies. Observer within one process is not automatically a reliable distributed message broker."
+          ]
+        },
+        {
+          "title": "Chain of Responsibility makes ordered handling explicit",
+          "paragraphs": [
+            "A chain passes a request through handlers. One variant stops at the first handler that handles it; another performs a sequence of validations and stops on failure. State which semantics apply. An authorization-then-format-validation pipeline differs from a fallback chain of support desks.",
+            "A useful pattern explanation names the client, interface, concrete collaborators and message sequence. For a validation chain, each validator returns a result or forwards to next; the terminal case must accept or reject explicitly. Changing handler order can change behavior, so treat ordering as part of the contract and test it."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_behavioral_strategy",
+          "title": "Select an algorithm at runtime",
+          "prompt": "A delivery planner must switch between walking and cycling routing rules without changing request validation. Which pattern best isolates the route calculation?",
+          "skillId": "CSE13B_behavioral_select",
+          "sourceIds": [
+            "CSE13B_src_behavioral"
+          ],
+          "kind": "choice",
+          "explanation": "Strategy encapsulates interchangeable algorithms behind a shared operation.",
+          "options": [
+            {
+              "id": "CSE13B_behavioral_strategy_o1",
+              "text": "Strategy"
+            },
+            {
+              "id": "CSE13B_behavioral_strategy_o2",
+              "text": "Singleton"
+            },
+            {
+              "id": "CSE13B_behavioral_strategy_o3",
+              "text": "Composite"
+            },
+            {
+              "id": "CSE13B_behavioral_strategy_o4",
+              "text": "Abstract Factory solely for unrelated products"
+            }
+          ],
+          "answer": "CSE13B_behavioral_strategy_o1"
+        },
+        {
+          "id": "CSE13B_behavioral_observer",
+          "title": "Manage observer lifetime",
+          "prompt": "A dashboard opens and closes repeatedly but keeps receiving duplicate notifications. Explain a likely Observer lifecycle bug and propose both a repair and a regression test.",
+          "skillId": "CSE13B_behavioral_collaborate",
+          "sourceIds": [
+            "CSE13B_src_behavioral"
+          ],
+          "kind": "open",
+          "explanation": "Decoupled notification does not remove lifecycle obligations; retained subscriptions can duplicate effects and retain obsolete views.",
+          "rubric": [
+            "Identify repeated registration or missing unsubscription.",
+            "Return/dispose a subscription or make registration policy explicit.",
+            "Open/close/reopen and verify only current observers receive one notification."
+          ]
+        },
+        {
+          "id": "CSE13B_behavioral_iterator",
+          "title": "Independent iteration",
+          "prompt": "Two clients traverse the same collection simultaneously. Explain why one cursor stored on the collection is problematic and describe the Iterator roles needed.",
+          "skillId": "CSE13B_behavioral_collaborate",
+          "sourceIds": [
+            "CSE13B_src_behavioral"
+          ],
+          "kind": "open",
+          "explanation": "A shared cursor makes one client's next call skip data for the other.",
+          "rubric": [
+            "Each client needs independent progress.",
+            "Collection creates separate iterator objects holding their own cursor.",
+            "Define end-of-iteration and mutation behavior."
+          ]
+        },
+        {
+          "id": "CSE13B_behavioral_chain",
+          "title": "State chain semantics",
+          "prompt": "Design a booking-validation chain for authorization, valid dates and capacity. Specify stopping behavior and a test proving unauthorized requests do not query capacity.",
+          "skillId": "CSE13B_behavioral_collaborate",
+          "sourceIds": [
+            "CSE13B_src_behavioral"
+          ],
+          "kind": "open",
+          "explanation": "Order can encode meaningful cost and access constraints; the chain must have observable failure semantics.",
+          "rubric": [
+            "Name handlers and order.",
+            "Stop immediately with an explicit failure on authorization rejection.",
+            "Verify the capacity collaborator is not called for unauthorized input while a valid request reaches it."
+          ]
+        },
+        {
+          "id": "CSE13B_behavioral_compare",
+          "title": "Strategy or Observer?",
+          "prompt": "A teammate proposes Observer to choose one compression algorithm for each export. Explain the mismatch and a better pattern, including the caller-to-collaborator flow.",
+          "skillId": "CSE13B_behavioral_select",
+          "sourceIds": [
+            "CSE13B_src_behavioral"
+          ],
+          "kind": "open",
+          "explanation": "Selection of a behavior and notification of an event solve different coordination problems.",
+          "rubric": [
+            "Choosing one calculation is Strategy, not broadcasting a change.",
+            "Exporter delegates compress(data) to the chosen strategy.",
+            "Observer could separately notify listeners after export, but does not choose the compression algorithm."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_structural",
+      "name": "Structural design patterns",
+      "description": "Adapt interfaces, compose object trees and add wrappers while preserving clear ownership and semantics.",
+      "prerequisites": [
+        "CSE13B_contracts"
+      ],
+      "sourceIds": [
+        "CSE13B_src_structural"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_structural_intent",
+          "name": "Structural intent",
+          "description": "Distinguish Adapter, Facade, Proxy, Decorator and Composite."
+        },
+        {
+          "id": "CSE13B_structural_design",
+          "name": "Structural collaborations",
+          "description": "Specify wrapped interfaces, delegation and composition behavior."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Adapter and Facade change how clients see a system",
+          "paragraphs": [
+            "Adapter converts an existing interface into the interface a client expects. If an external weather client reports Fahrenheit while a domain port expects Celsius, the adapter translates values and errors. It does not change the client's conceptual contract to match the library.",
+            "Facade provides a simpler entry point into a complex subsystem, such as a single exportReport call coordinating formatting, file creation and delivery. A facade can coordinate several collaborators; it is not necessarily a wrapper implementing the same interface as one object."
+          ]
+        },
+        {
+          "title": "Proxy and Decorator preserve an interface for different reasons",
+          "paragraphs": [
+            "A Proxy controls access to another object, for example by lazy loading, remote access or authorization. A Decorator adds behavior around the same interface and can be stacked. Both may delegate to a wrapped object, so intent and observable contract matter more than the superficial class diagram.",
+            "Worked example: a DataSource returns bytes. A lazy proxy delays opening the file until first read. A decompression decorator transforms returned bytes, and a logging decorator records access. Order matters: logging outside decompression observes the public operation, while logging raw storage accesses may expose different timing or data. Define exceptions and resource closure through the wrapper chain."
+          ]
+        },
+        {
+          "title": "Composite models part-whole trees",
+          "paragraphs": [
+            "A Composite gives leaf and group objects a common operation. A menu item may be an action or a submenu containing other menu items; rendering calls the same interface recursively. The client need not branch on every concrete class.",
+            "A common interface must still make sense for leaves. Forcing a leaf to implement addChild only to fail is a design tradeoff; keep child management on composites when appropriate. Cycles and shared ownership must be addressed if the structure is intended to be a tree. Summing a shared child's cost twice may or may not match the domain."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_structural_adapter",
+          "title": "Translate a legacy interface",
+          "prompt": "A legacy sensor returns temperature in Fahrenheit; clients expect a CelsiusSensor interface. Design an adapter and identify two boundary/error tests.",
+          "skillId": "CSE13B_structural_design",
+          "sourceIds": [
+            "CSE13B_src_structural"
+          ],
+          "kind": "open",
+          "explanation": "The adapter owns interface translation, so all clients receive the domain's units consistently.",
+          "rubric": [
+            "Wrap the legacy sensor and convert (F-32)*5/9 with appropriate numeric precision.",
+            "Preserve or translate documented failures.",
+            "Test 32 F -> 0 C and a nontrivial or failure case such as 212 F -> 100 C."
+          ]
+        },
+        {
+          "id": "CSE13B_structural_proxy",
+          "title": "Choose lazy access",
+          "prompt": "A large image should load only when first displayed while exposing the same Image interface. Which pattern most directly fits?",
+          "skillId": "CSE13B_structural_intent",
+          "sourceIds": [
+            "CSE13B_src_structural"
+          ],
+          "kind": "choice",
+          "explanation": "A virtual proxy controls when the expensive real object is created.",
+          "options": [
+            {
+              "id": "CSE13B_structural_proxy_o1",
+              "text": "Iterator"
+            },
+            {
+              "id": "CSE13B_structural_proxy_o2",
+              "text": "Builder"
+            },
+            {
+              "id": "CSE13B_structural_proxy_o3",
+              "text": "Proxy"
+            },
+            {
+              "id": "CSE13B_structural_proxy_o4",
+              "text": "Abstract Factory"
+            }
+          ],
+          "answer": "CSE13B_structural_proxy_o3"
+        },
+        {
+          "id": "CSE13B_structural_decorator",
+          "title": "Order of wrappers",
+          "prompt": "An output stream is wrapped by compression and encryption decorators. Explain why compress-then-encrypt and encrypt-then-compress are not equivalent, and describe the corresponding read pipeline.",
+          "skillId": "CSE13B_structural_design",
+          "sourceIds": [
+            "CSE13B_src_structural"
+          ],
+          "kind": "open",
+          "explanation": "Composition order is part of the contract. A matching inverse pipeline is needed to recover the original data.",
+          "rubric": [
+            "Explain that order changes the byte stream and compressibility.",
+            "For compress then encrypt, read by decrypting then decompressing.",
+            "Define wrapper ownership/close behavior and test round-trip recovery."
+          ]
+        },
+        {
+          "id": "CSE13B_structural_composite",
+          "title": "Composite price calculation",
+          "prompt": "A package contains two leaf items costing 4 and 7, plus a subpackage containing one item costing 3. Groups add no fee. What total should a Composite price operation return?",
+          "skillId": "CSE13B_structural_design",
+          "sourceIds": [
+            "CSE13B_src_structural"
+          ],
+          "kind": "integer",
+          "explanation": "The recursive sum is 4+7+3=14; groups contribute only their children's totals.",
+          "answer": "14"
+        },
+        {
+          "id": "CSE13B_structural_facade",
+          "title": "Facade versus Adapter",
+          "prompt": "An ExportFacade coordinates renderer, storage and email behind export(report). A CurrencyAdapter translates a vendor API to MoneyConverter. Explain why these are different despite both simplifying client code.",
+          "skillId": "CSE13B_structural_intent",
+          "sourceIds": [
+            "CSE13B_src_structural"
+          ],
+          "kind": "open",
+          "explanation": "The design goal distinguishes coordination from compatibility.",
+          "rubric": [
+            "Facade offers a coarser subsystem entry point.",
+            "Adapter satisfies a pre-existing target interface through translation.",
+            "Describe different collaborators and avoid classifying only by delegation syntax."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_creational",
+      "name": "Creational design patterns",
+      "description": "Control object construction and compatible product families without introducing hidden global dependencies.",
+      "prerequisites": [
+        "CSE13B_contracts"
+      ],
+      "sourceIds": [
+        "CSE13B_src_creational"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_creational_choose",
+          "name": "Construction intent",
+          "description": "Distinguish Factory Method, Abstract Factory and Builder."
+        },
+        {
+          "id": "CSE13B_creational_construct",
+          "name": "Construction design",
+          "description": "Preserve object validity and dependency visibility."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Separate construction from use",
+          "paragraphs": [
+            "Factory Method defines a creation operation that subclasses can vary while a shared workflow uses the abstract product. For example, a report exporter uses createWriter without hard-coding a concrete file writer. A plain helper function can also centralize construction, but is not automatically the inheritance-based GoF pattern.",
+            "Abstract Factory creates a compatible family of products. A UI factory may create buttons and dialogs for one platform theme. Clients depend on product interfaces and a family factory, preventing accidental mixtures of incompatible families. Adding a new family is easy; adding a new product kind changes the factory interface and its implementations."
+          ]
+        },
+        {
+          "title": "Worked Builder",
+          "paragraphs": [
+            "A data-import job has required source and destination plus optional delimiter, encoding and validation rules. A Builder accumulates configuration and build() checks required values and incompatible combinations. The built Job can then be immutable and valid from the time it becomes visible.",
+            "A director can express a reusable construction recipe, while different builders produce different representations. Builder differs from Abstract Factory: one emphasizes stepwise construction of a complex result, the other creates related product types. A builder should not leak a partly built mutable object before validation is complete."
+          ]
+        },
+        {
+          "title": "Singleton and hidden state",
+          "paragraphs": [
+            "Singleton restricts a class to one instance and provides access to it. This may fit an intentional process-wide identity, but it often introduces global dependencies and mutable state that make tests order-dependent. 'Only one currently needed' does not prove the lifetime must be globally enforced.",
+            "Prefer passing a shared service instance explicitly when callers simply need the same collaborator. This gives shared use without hiding the dependency. If uniqueness is required, define its scope, initialization, concurrency and reset/lifecycle policy. One singleton per process is not one instance across a distributed deployment."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_creational_family",
+          "title": "Compatible product families",
+          "prompt": "An application must create matching light-theme or dark-theme buttons and dialogs. Which pattern most directly creates the whole compatible family?",
+          "skillId": "CSE13B_creational_choose",
+          "sourceIds": [
+            "CSE13B_src_creational"
+          ],
+          "kind": "choice",
+          "explanation": "Abstract Factory groups creation operations for related products.",
+          "options": [
+            {
+              "id": "CSE13B_creational_family_o1",
+              "text": "Observer"
+            },
+            {
+              "id": "CSE13B_creational_family_o2",
+              "text": "Abstract Factory"
+            },
+            {
+              "id": "CSE13B_creational_family_o3",
+              "text": "Iterator"
+            },
+            {
+              "id": "CSE13B_creational_family_o4",
+              "text": "Proxy"
+            }
+          ],
+          "answer": "CSE13B_creational_family_o2"
+        },
+        {
+          "id": "CSE13B_creational_builder",
+          "title": "Validate a built object",
+          "prompt": "Design a builder for an ImportJob requiring source and destination, with optional delimiter. State what build() rejects and how the final object avoids later builder mutations.",
+          "skillId": "CSE13B_creational_construct",
+          "sourceIds": [
+            "CSE13B_src_creational"
+          ],
+          "kind": "open",
+          "explanation": "A builder's value is controlled construction, not merely replacing a constructor with many setters.",
+          "rubric": [
+            "Validate required fields and illegal combinations at build.",
+            "Create an independent immutable result or defensively copy mutable settings.",
+            "Specify builder reuse policy and tests for missing fields and independence."
+          ]
+        },
+        {
+          "id": "CSE13B_creational_factory",
+          "title": "Factory Method collaboration",
+          "prompt": "Describe a base Exporter workflow that calls a factory method to obtain a Writer, and two subclasses that vary only the writer type. Identify creator, product and concrete product roles.",
+          "skillId": "CSE13B_creational_construct",
+          "sourceIds": [
+            "CSE13B_src_creational"
+          ],
+          "kind": "open",
+          "explanation": "The creation hook varies within a stable algorithm.",
+          "rubric": [
+            "Base Exporter owns workflow and declares createWriter.",
+            "Concrete exporters override creation to return Writer implementations.",
+            "Client workflow uses the Writer interface and does not branch on concrete classes."
+          ]
+        },
+        {
+          "id": "CSE13B_creational_singleton",
+          "title": "Remove a hidden global clock",
+          "prompt": "Tests fail around midnight because code reads a mutable singleton clock. Propose a design preserving one shared production clock while letting each test use an independent fixed clock.",
+          "skillId": "CSE13B_creational_construct",
+          "sourceIds": [
+            "CSE13B_src_creational"
+          ],
+          "kind": "open",
+          "explanation": "Sharing an instance does not require globally accessible mutable state.",
+          "rubric": [
+            "Inject a Clock dependency through constructor or parameters.",
+            "Construct one shared production instance in composition code.",
+            "Give tests separate fixed clocks without global reset ordering."
+          ]
+        },
+        {
+          "id": "CSE13B_creational_tradeoff",
+          "title": "New family versus new product",
+          "prompt": "In an Abstract Factory with createButton and createDialog, compare adding a new theme with adding createSlider. Which requires changing the common factory interface, and why?",
+          "skillId": "CSE13B_creational_choose",
+          "sourceIds": [
+            "CSE13B_src_creational"
+          ],
+          "kind": "open",
+          "explanation": "Patterns make some changes easier by making other variation dimensions explicit.",
+          "rubric": [
+            "A new theme adds a factory and product implementations using existing operations.",
+            "A new product kind requires extending the factory interface and all families.",
+            "Connect the tradeoff to likely dimensions of future change."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_ddd",
+      "name": "Domain modeling and bounded contexts",
+      "description": "Model identity, value and consistency boundaries using the language of the domain.",
+      "prerequisites": [
+        "CSE13B_requirements",
+        "CSE13B_modeling",
+        "CSE13B_contracts"
+      ],
+      "sourceIds": [
+        "CSE13B_src_ddd",
+        "CSE13B_src_recap"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_ddd_context",
+          "name": "Bounded contexts",
+          "description": "Separate meanings and integration responsibilities."
+        },
+        {
+          "id": "CSE13B_ddd_objects",
+          "name": "Domain objects",
+          "description": "Distinguish entities, values, aggregates and repositories."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "One word can have several valid meanings",
+          "paragraphs": [
+            "A bounded context defines where a model and its vocabulary apply consistently. 'Student' in enrollment may mean an academic registration, while in billing it means a payer with an account balance. A single universal Student class can couple teams and business rules that evolve differently.",
+            "Work with domain experts to establish a ubiquitous language within each context. Event storming can expose past-tense business events, commands, actors and policies, such as ReservationRequested, SlotReserved and ReservationCancelled. Those observations inform boundaries; they do not automatically imply one service per event or context."
+          ]
+        },
+        {
+          "title": "Worked identity and value",
+          "paragraphs": [
+            "A Reservation is an entity because its identity persists when its dates or status change. A TimeRange can be a value object because equal start/end values express the same value and replacement is usually more natural than identity tracking. Value objects should enforce validity, such as end being later than start.",
+            "An aggregate is a consistency boundary with a root that mediates changes. A Reservation aggregate might own reserved participants and enforce capacity internally. External code addresses the root rather than mutating its children directly. A repository gives domain-oriented access to aggregates; it is not an invitation to expose arbitrary persistence operations everywhere."
+          ]
+        },
+        {
+          "title": "Integrating contexts",
+          "paragraphs": [
+            "A context map describes relationships, such as customer-supplier collaboration or a downstream system translating an upstream model. An anti-corruption layer prevents an external vocabulary or data format from leaking into the local domain. It can use adapters, validation and explicit mapping.",
+            "Example: an external timetable identifies a room by a campus-specific code, while booking uses a stable RoomId and explicit capacity. The translation layer maps codes and handles unknown rooms. Keeping both models distinct makes change consequences visible. Aggregates and bounded contexts are related ideas at different scales, not interchangeable terms."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_ddd_identity",
+          "title": "Entity or value?",
+          "prompt": "A reservation keeps the same identity after changing its date, while a date range is compared solely by start/end. Which classification best fits?",
+          "skillId": "CSE13B_ddd_objects",
+          "sourceIds": [
+            "CSE13B_src_ddd",
+            "CSE13B_src_recap"
+          ],
+          "kind": "choice",
+          "explanation": "Persistent identity makes the reservation an entity; equal contents define the date-range value.",
+          "options": [
+            {
+              "id": "CSE13B_ddd_identity_o1",
+              "text": "Reservation entity; date range value object."
+            },
+            {
+              "id": "CSE13B_ddd_identity_o2",
+              "text": "Both must be singletons."
+            },
+            {
+              "id": "CSE13B_ddd_identity_o3",
+              "text": "Reservation value object; date range entity necessarily."
+            },
+            {
+              "id": "CSE13B_ddd_identity_o4",
+              "text": "Both must be database tables without domain behavior."
+            }
+          ],
+          "answer": "CSE13B_ddd_identity_o1"
+        },
+        {
+          "id": "CSE13B_ddd_contexts",
+          "title": "Separate meanings of student",
+          "prompt": "Enrollment and billing disagree on the fields and lifecycle of Student. Propose bounded contexts and an integration mapping without forcing one shared mutable class.",
+          "skillId": "CSE13B_ddd_context",
+          "sourceIds": [
+            "CSE13B_src_ddd",
+            "CSE13B_src_recap"
+          ],
+          "kind": "open",
+          "explanation": "Different meanings are not automatically modeling mistakes; they may indicate different business contexts.",
+          "rubric": [
+            "Keep context-specific models and shared terminology only where meaning agrees.",
+            "Use an explicit identifier and translation contract at the boundary.",
+            "Discuss how updates and unknown/deactivated identities are handled."
+          ]
+        },
+        {
+          "id": "CSE13B_ddd_aggregate",
+          "title": "Protect an invariant",
+          "prompt": "An Order contains line items and must never have a negative total quantity. Explain how an aggregate root controls mutations and why exposing the mutable line-item collection can undermine this.",
+          "skillId": "CSE13B_ddd_objects",
+          "sourceIds": [
+            "CSE13B_src_ddd",
+            "CSE13B_src_recap"
+          ],
+          "kind": "open",
+          "explanation": "Ownership is useful only when callers cannot evade the consistency boundary.",
+          "rubric": [
+            "Route additions/removals/quantity changes through Order.",
+            "Validate changes and keep internals encapsulated or expose read-only views.",
+            "Identify external mutation as bypassing invariant enforcement."
+          ]
+        },
+        {
+          "id": "CSE13B_ddd_acl",
+          "title": "Shield the domain model",
+          "prompt": "A vendor changes room status strings from AVAILABLE/BLOCKED to 0/1. Explain how an anti-corruption layer limits change impact and name a mapping test.",
+          "skillId": "CSE13B_ddd_context",
+          "sourceIds": [
+            "CSE13B_src_ddd",
+            "CSE13B_src_recap"
+          ],
+          "kind": "open",
+          "explanation": "Vendor representation changes should be contained in translation rather than spread through domain rules.",
+          "rubric": [
+            "Translate external status at a dedicated boundary.",
+            "Keep internal RoomAvailability independent of vendor encoding.",
+            "Test each supported value and a deliberate unknown-value policy."
+          ]
+        },
+        {
+          "id": "CSE13B_ddd_events",
+          "title": "Event storming distinction",
+          "prompt": "For a canceled reservation, distinguish a command, an event and a policy that reacts to that event. Provide one concrete example of each.",
+          "skillId": "CSE13B_ddd_context",
+          "sourceIds": [
+            "CSE13B_src_ddd",
+            "CSE13B_src_recap"
+          ],
+          "kind": "open",
+          "explanation": "A command may be rejected; an event describes something already accepted as having happened.",
+          "rubric": [
+            "Command requests action, such as CancelReservation.",
+            "Event records a fact, such as ReservationCancelled.",
+            "Policy reacts, such as releasing capacity or initiating a notification, with failure behavior acknowledged."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_process",
+      "name": "Development process, feedback and coordination",
+      "description": "Choose iterative practices and coordination mechanisms based on uncertainty and delivery needs.",
+      "prerequisites": [
+        "CSE13B_requirements"
+      ],
+      "sourceIds": [
+        "CSE13B_src_process",
+        "CSE13B_src_industry",
+        "CSE13B_src_oral"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_process_method",
+          "name": "Process choice",
+          "description": "Compare staged and iterative approaches."
+        },
+        {
+          "id": "CSE13B_process_flow",
+          "name": "Delivery flow",
+          "description": "Use feedback, work limits and completion criteria."
+        },
+        {
+          "id": "CSE13B_process_communication",
+          "name": "Team communication",
+          "description": "Coordinate dependencies and evidence-based reviews."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Lifecycle activities are not a single mandatory order",
+          "paragraphs": [
+            "Requirements, design, implementation, verification, deployment and maintenance occur in every substantial system, but processes organize them differently. A staged approach emphasizes planned phase outputs; iterative approaches revisit assumptions through increments and feedback. Neither a board nor a meeting schedule proves a team can adapt.",
+            "For uncertain booking workflows, an early small increment can test whether staff can resolve conflicts before the team commits to a large design. For fixed external interfaces and strict evidence requirements, explicit documentation and review gates can be valuable. Adapt the process to risk and feedback needs rather than treating method names as guarantees."
+          ]
+        },
+        {
+          "title": "Scrum and Kanban emphasize different controls",
+          "paragraphs": [
+            "In the supplied teaching material, Scrum organizes work around a goal, a prioritized product backlog, bounded iterations and inspection/adaptation. Distinguish product direction, facilitation and delivery responsibilities. A review inspects the increment with stakeholders; a retrospective improves the way the team works.",
+            "Kanban visualizes work and limits work in progress to improve flow. Worked example: a team has eight items in development but a testing capacity of two. Starting more items increases queues; a work limit and collaboration on testing can reduce unfinished inventory. Measure completed outcomes and waiting time, not just how many cards entered Doing."
+          ]
+        },
+        {
+          "title": "Coordinate without disguising uncertainty",
+          "paragraphs": [
+            "Scaling frameworks add structures for cross-team dependencies, but overhead can exceed value. The supplied notes discuss SAFe, Scrum at Scale, LeSS and the Spotify-style organization as distinct approaches, not interchangeable prescriptions. Begin by identifying which teams depend on which contracts and who can resolve conflicts.",
+            "A definition of done makes completion observable: reviewed code, relevant passing checks, acceptance behavior and operational readiness as appropriate. Present progress with evidence and unresolved assumptions. The industry lecture demonstrates that process can be adapted while retaining planning, review and feedback; copying its rituals is not proof that the same process fits another team."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_process_uncertainty",
+          "title": "Choose a process for discovery",
+          "prompt": "Users disagree about a new scheduling workflow and cannot evaluate a written specification easily. Propose a first iteration and explain what feedback would change the next one.",
+          "skillId": "CSE13B_process_method",
+          "sourceIds": [
+            "CSE13B_src_process",
+            "CSE13B_src_industry",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "A small increment is useful when it creates actionable learning about the problem.",
+          "rubric": [
+            "Build a narrow prototype or end-to-end workflow addressing a concrete uncertainty.",
+            "Observe representative stakeholders on realistic tasks.",
+            "Use evidence to revise requirements and priorities rather than only checking on-time completion."
+          ]
+        },
+        {
+          "id": "CSE13B_process_wip",
+          "title": "Limit unfinished work",
+          "prompt": "A team has ten half-finished items and one overloaded reviewer. Explain why beginning five more items is unlikely to improve delivery and propose a measurable intervention.",
+          "skillId": "CSE13B_process_flow",
+          "sourceIds": [
+            "CSE13B_src_process",
+            "CSE13B_src_industry",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "Starting tasks is not delivering them; the constraint determines flow.",
+          "rubric": [
+            "Identify the review bottleneck and queue.",
+            "Limit new work and help complete review/verification.",
+            "Track completion time, age of work or throughput while watching quality."
+          ]
+        },
+        {
+          "id": "CSE13B_process_review",
+          "title": "Review versus retrospective",
+          "prompt": "Which pairing best distinguishes an iteration review from a retrospective?",
+          "skillId": "CSE13B_process_flow",
+          "sourceIds": [
+            "CSE13B_src_process",
+            "CSE13B_src_industry",
+            "CSE13B_src_oral"
+          ],
+          "kind": "choice",
+          "explanation": "The review inspects product outcomes with stakeholders, while the retrospective examines team process.",
+          "options": [
+            {
+              "id": "CSE13B_process_review_o1",
+              "text": "Both exist only to assign blame."
+            },
+            {
+              "id": "CSE13B_process_review_o2",
+              "text": "Review: product increment and feedback; retrospective: ways of working."
+            },
+            {
+              "id": "CSE13B_process_review_o3",
+              "text": "Review: individual salaries; retrospective: source formatting only."
+            },
+            {
+              "id": "CSE13B_process_review_o4",
+              "text": "Review: no stakeholders; retrospective: product acceptance only."
+            }
+          ],
+          "answer": "CSE13B_process_review_o2"
+        },
+        {
+          "id": "CSE13B_process_done",
+          "title": "Define done",
+          "prompt": "A booking feature is marked Done when code is merged, but users cannot complete it after release. Propose a more useful definition of done and explain why it should remain proportionate.",
+          "skillId": "CSE13B_process_flow",
+          "sourceIds": [
+            "CSE13B_src_process",
+            "CSE13B_src_industry",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "Merge is an engineering event; the feature's completion should include the intended usable behavior.",
+          "rubric": [
+            "Include observable acceptance behavior and relevant integration checks.",
+            "Include release/configuration readiness when necessary.",
+            "Keep criteria risk-based and avoid an unrelated exhaustive checklist."
+          ]
+        },
+        {
+          "id": "CSE13B_process_coordination",
+          "title": "Coordinate an interface change",
+          "prompt": "Two teams change the booking API and notification consumer. Describe a coordination plan and a short review presentation that exposes compatibility risks before release.",
+          "skillId": "CSE13B_process_communication",
+          "sourceIds": [
+            "CSE13B_src_process",
+            "CSE13B_src_industry",
+            "CSE13B_src_oral"
+          ],
+          "kind": "open",
+          "explanation": "Coordination should make assumptions and compatibility visible, rather than rely on both teams deploying simultaneously by luck.",
+          "rubric": [
+            "Agree on versioned contract, owners and transition timing.",
+            "Provide producer/consumer examples or contract checks.",
+            "Present user impact, alternatives, evidence and unresolved questions with audience-appropriate detail."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_oss",
+      "name": "Open-source selection and contribution",
+      "description": "Evaluate dependencies as maintained relationships and plan reproducible, reviewable contributions.",
+      "prerequisites": [
+        "CSE13B_architecture",
+        "CSE13B_process"
+      ],
+      "sourceIds": [
+        "CSE13B_src_oss"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_oss_evaluate",
+          "name": "Dependency evaluation",
+          "description": "Use functionality, maintenance and compatibility evidence."
+        },
+        {
+          "id": "CSE13B_oss_contribute",
+          "name": "Contribution workflow",
+          "description": "Prepare minimal reproducible fixes and account for maintenance."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Source availability is only one consideration",
+          "paragraphs": [
+            "Evaluate whether a component solves the required problem, fits the language/runtime, builds reproducibly and has usable documentation. Examine release activity, issue handling, governance and contribution practices. Popularity can suggest ecosystem support but does not establish correctness, safety or future maintenance.",
+            "The source lecture distinguishes permissive and copyleft license families and compatibility as a selection concern. This curriculum treats them conceptually: actual use depends on the specific license and distribution context, not on a star count or a generic label. Record the actual license and unresolved compatibility questions rather than assuming public code is unrestricted."
+          ]
+        },
+        {
+          "title": "Worked dependency comparison",
+          "paragraphs": [
+            "Library A has many stars but no supported release for the required runtime; Library B has fewer users, recent releases, clear tests and the needed feature. Define dealbreakers first, then compare evidence. A small integration experiment can reveal undocumented behavior or build problems before adoption.",
+            "Dependencies bring transitive dependencies and update obligations. Record selected versions and how updates will be tested. Assess what happens if maintenance stops: replace, maintain a fork, contribute upstream or reduce dependence behind an adapter. The cost of adopting a library includes the cost of keeping it working."
+          ]
+        },
+        {
+          "title": "Contribute a problem the maintainer can reproduce",
+          "paragraphs": [
+            "Before proposing a fix, inspect the contribution guidelines and existing issues. Describe observed behavior, expected behavior, minimal reproduction and relevant environment. Add a focused regression test and keep the patch small enough to review. Avoid mixing unrelated formatting or feature changes.",
+            "An upstream contribution can reduce long-lived fork divergence, but acceptance is not guaranteed. Explain compatibility and migration impacts. Reproducibility means another person can observe the same failure and verify the fix; 'works on my machine' and a screenshot alone may omit the decisive inputs."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_oss_stars",
+          "title": "Evaluate competing dependencies",
+          "prompt": "One library has 40,000 stars but no compatible release; another has 800 stars, tested compatibility and active issue responses. Propose a selection matrix with dealbreakers and explain what experiment you would run.",
+          "skillId": "CSE13B_oss_evaluate",
+          "sourceIds": [
+            "CSE13B_src_oss"
+          ],
+          "kind": "open",
+          "explanation": "Popularity is evidence about adoption, not a substitute for meeting the application's constraints.",
+          "rubric": [
+            "Prioritize required behavior, runtime and license compatibility.",
+            "Compare maintenance, documentation, security/update and integration costs.",
+            "Run a bounded integration/reproducibility test with representative inputs."
+          ]
+        },
+        {
+          "id": "CSE13B_oss_public",
+          "title": "Interpret source availability",
+          "prompt": "Which conclusion is justified solely by finding source code in a public repository?",
+          "skillId": "CSE13B_oss_evaluate",
+          "sourceIds": [
+            "CSE13B_src_oss"
+          ],
+          "kind": "choice",
+          "explanation": "Public visibility establishes access to view the code, not unrestricted permission or maintenance quality.",
+          "options": [
+            {
+              "id": "CSE13B_oss_public_o1",
+              "text": "All commercial redistribution is unrestricted."
+            },
+            {
+              "id": "CSE13B_oss_public_o2",
+              "text": "The package is secure."
+            },
+            {
+              "id": "CSE13B_oss_public_o3",
+              "text": "The source can be inspected, while permissions and quality need separate checks."
+            },
+            {
+              "id": "CSE13B_oss_public_o4",
+              "text": "Every transitive dependency has the same license."
+            }
+          ],
+          "answer": "CSE13B_oss_public_o3"
+        },
+        {
+          "id": "CSE13B_oss_report",
+          "title": "Write a reproducible issue outline",
+          "prompt": "A parser crashes only when the last line of an input file lacks a newline. Draft an issue outline suitable for a maintainer without including private user data.",
+          "skillId": "CSE13B_oss_contribute",
+          "sourceIds": [
+            "CSE13B_src_oss"
+          ],
+          "kind": "open",
+          "explanation": "A small public-safe reproducer makes the boundary condition clear and can become a regression test.",
+          "rubric": [
+            "Provide a minimal synthetic input with the final-newline condition.",
+            "State version, steps, expected result and actual failure.",
+            "Include a focused test and distinguish reproduction from a speculative root cause."
+          ]
+        },
+        {
+          "id": "CSE13B_oss_fork",
+          "title": "Plan for a stalled dependency",
+          "prompt": "Your application needs a bug fix in an unresponsive upstream project. Compare maintaining a fork, using an adapter workaround and replacing the dependency.",
+          "skillId": "CSE13B_oss_evaluate",
+          "sourceIds": [
+            "CSE13B_src_oss"
+          ],
+          "kind": "open",
+          "explanation": "A fork offers control but creates maintenance ownership; an adapter may contain a workaround while replacement may reduce future dependence.",
+          "rubric": [
+            "Discuss integration cost and future update burden for each.",
+            "Preserve license/provenance and verify compatibility under the chosen path.",
+            "Use scope and evidence rather than claiming any option is always best."
+          ]
+        },
+        {
+          "id": "CSE13B_oss_patch",
+          "title": "Make a contribution reviewable",
+          "prompt": "A one-line parser fix is bundled with 400 lines of unrelated reformatting. Explain a better contribution structure and the evidence that should accompany the fix.",
+          "skillId": "CSE13B_oss_contribute",
+          "sourceIds": [
+            "CSE13B_src_oss"
+          ],
+          "kind": "open",
+          "explanation": "A narrow patch helps maintainers assess causality and regression risk.",
+          "rubric": [
+            "Keep the bug fix and necessary regression test focused.",
+            "Separate unrelated reformatting.",
+            "Show failing-before/passing-after behavior and explain affected inputs."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_quality_metrics",
+      "name": "Maintainability, technical debt and sustainability",
+      "description": "Use metrics to investigate quality while distinguishing measurements, causes and tradeoffs.",
+      "prerequisites": [
+        "CSE13B_contracts",
+        "CSE13B_process"
+      ],
+      "sourceIds": [
+        "CSE13B_src_metrics",
+        "CSE13B_src_recap",
+        "CSE13B_src_sustainable"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_quality_metrics_measure",
+          "name": "Code metrics",
+          "description": "Compute stated complexity/cohesion measures and interpret their limits."
+        },
+        {
+          "id": "CSE13B_quality_metrics_refactor",
+          "name": "Technical debt",
+          "description": "Prioritize behavior-preserving improvement."
+        },
+        {
+          "id": "CSE13B_quality_metrics_sustain",
+          "name": "Sustainability measurement",
+          "description": "Distinguish power, energy and carbon under controlled workloads."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Metrics locate questions, not automatic verdicts",
+          "paragraphs": [
+            "Cyclomatic complexity for a connected control-flow graph is E-N+2. Under a simple binary-decision model it is decision points plus one; specify how compound Boolean expressions are counted. The measure estimates independent control-flow paths, not a complete test suite or proof of bug count.",
+            "For the LCOM1 variant, let P be method pairs sharing no accessed instance field and Q pairs sharing at least one; LCOM=max(P-Q,0). Other LCOM variants differ, so name the formula. High lack of cohesion may suggest unrelated responsibilities, but inspect the domain and method roles before splitting classes."
+          ]
+        },
+        {
+          "title": "Worked metric and debt reasoning",
+          "paragraphs": [
+            "Suppose methods m1,m2 access field x and m3 accesses y. There are three unordered pairs: m1/m2 share a field, while m1/m3 and m2/m3 do not. Thus P=2,Q=1 and LCOM1=1. This is evidence to inspect whether y belongs to a separate concern, not a command to create three classes.",
+            "Technical debt describes choices that create future change cost. Refactoring preserves externally observable behavior while improving internal design. Protect behavior with relevant tests, make a small structural change and verify again. Prioritize debt by its effect on likely changes and defects, not simply by lines of code removed."
+          ]
+        },
+        {
+          "title": "Measure sustainability at a defined boundary",
+          "paragraphs": [
+            "Power is a rate, energy is power integrated over time, and carbon estimates also depend on the emissions intensity and system boundary. A lower-power implementation that runs much longer can use more energy. Include a functional unit such as energy per correctly processed batch, and keep workload and hardware comparable.",
+            "Worked example: 20 W for 30 s uses 600 J; 12 W for 60 s uses 720 J. The lower-power run uses more energy. For a hypothetical grid factor of 200 g per kWh, 0.5 kWh corresponds to 100 g for that operational boundary. State whether embodied hardware, networking and idle power are excluded before comparing totals."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_quality_metrics_cc",
+          "title": "Cyclomatic graph count",
+          "prompt": "A connected control-flow graph has 12 edges and 9 nodes. Using V=E-N+2, what is its cyclomatic complexity?",
+          "skillId": "CSE13B_quality_metrics_measure",
+          "sourceIds": [
+            "CSE13B_src_metrics",
+            "CSE13B_src_recap",
+            "CSE13B_src_sustainable"
+          ],
+          "kind": "integer",
+          "explanation": "12-9+2=5 under the stated connected-graph formula.",
+          "answer": "5"
+        },
+        {
+          "id": "CSE13B_quality_metrics_lcom",
+          "title": "LCOM with an explicit variant",
+          "prompt": "Three methods access fields as follows: m1={a}, m2={a}, m3={b}. Using LCOM1=max(P-Q,0), where P counts disjoint method pairs and Q sharing pairs, what is LCOM1?",
+          "skillId": "CSE13B_quality_metrics_measure",
+          "sourceIds": [
+            "CSE13B_src_metrics",
+            "CSE13B_src_recap",
+            "CSE13B_src_sustainable"
+          ],
+          "kind": "integer",
+          "explanation": "There are two disjoint pairs and one sharing pair, so max(2-1,0)=1.",
+          "answer": "1"
+        },
+        {
+          "id": "CSE13B_quality_metrics_debt",
+          "title": "Prioritize a refactoring",
+          "prompt": "A frequently changed payment module has duplicated validation; a stable utility has a high line count but few defects. Explain what evidence would prioritize refactoring and outline a behavior-preserving first step.",
+          "skillId": "CSE13B_quality_metrics_refactor",
+          "sourceIds": [
+            "CSE13B_src_metrics",
+            "CSE13B_src_recap",
+            "CSE13B_src_sustainable"
+          ],
+          "kind": "open",
+          "explanation": "The value of debt reduction depends on future change cost and risk; a metric is only a starting signal.",
+          "rubric": [
+            "Use change frequency, defect history, coupling and business impact, not size alone.",
+            "Add or confirm tests for existing validation behavior.",
+            "Extract or consolidate a narrowly defined rule while preserving semantics and checking callers."
+          ]
+        },
+        {
+          "id": "CSE13B_quality_metrics_energy",
+          "title": "Integrate constant power",
+          "prompt": "A task draws an additional constant 18 W for 40 s above idle. How many joules of additional energy does it consume?",
+          "skillId": "CSE13B_quality_metrics_sustain",
+          "sourceIds": [
+            "CSE13B_src_metrics",
+            "CSE13B_src_recap",
+            "CSE13B_src_sustainable"
+          ],
+          "kind": "integer",
+          "explanation": "Energy=power*time=18*40=720 J under the specified above-idle boundary.",
+          "answer": "720"
+        },
+        {
+          "id": "CSE13B_quality_metrics_comparison",
+          "title": "Audit an energy claim",
+          "prompt": "A developer claims version B is greener because its peak power is lower. Design a controlled comparison and explain what extra information is needed to estimate carbon impact.",
+          "skillId": "CSE13B_quality_metrics_sustain",
+          "sourceIds": [
+            "CSE13B_src_metrics",
+            "CSE13B_src_recap",
+            "CSE13B_src_sustainable"
+          ],
+          "kind": "open",
+          "explanation": "Lower instantaneous power may be offset by longer runtime. Carbon is a separate estimate that depends on context.",
+          "rubric": [
+            "Measure integrated energy for equivalent correct work, not only peak power.",
+            "Control hardware, data, warmup and repeated trials; state idle and system boundaries.",
+            "Use a stated emissions factor and disclose excluded embodied/network effects."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_operations",
+      "name": "Delivery, observability and operation at scale",
+      "description": "Connect release practices, measurements and failure handling to user-visible reliability.",
+      "prerequisites": [
+        "CSE13B_architecture",
+        "CSE13B_process"
+      ],
+      "sourceIds": [
+        "CSE13B_src_scale",
+        "CSE13B_src_delivery",
+        "CSE13B_src_deployment",
+        "CSE13B_src_industry"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_operations_release",
+          "name": "Delivery practices",
+          "description": "Distinguish integration, deployment and user release."
+        },
+        {
+          "id": "CSE13B_operations_observe",
+          "name": "Observability",
+          "description": "Diagnose latency and errors with appropriate evidence."
+        },
+        {
+          "id": "CSE13B_operations_scale",
+          "name": "Scaling and resilience",
+          "description": "Explain caches, replicas, partitioning and failure limits."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Build, deploy and release are different boundaries",
+          "paragraphs": [
+            "Continuous integration combines changes and checks them frequently. A deploy installs a version into an environment; a release exposes behavior to users, sometimes through a feature flag. A passing build does not prove the deployed configuration, database or user workflow is correct.",
+            "Blue-green deployment keeps two environments and switches traffic; a canary exposes a smaller portion first. Both need meaningful health signals and a recovery plan. A database migration can make old code incompatible, so rolling back an application binary alone may not restore operation. Backward-compatible changes and staged migration reduce this risk."
+          ]
+        },
+        {
+          "title": "Worked diagnosis",
+          "paragraphs": [
+            "Suppose the browser reports a 4-second booking page while the app server spends only 200 ms computing. A trace may reveal repeated sequential calls to an upstream service. Measure the request path, call count, waiting and payload size before adding replicas. Logging should include useful correlation without exposing private payloads.",
+            "Metrics show trends and rates, logs give event details, and traces connect work across components. Monitor meaningful latency distributions, errors and saturation rather than only averages. A synthetic check can exercise a critical path; a green process-health check proves only that a process responded, not that users can finish a booking."
+          ]
+        },
+        {
+          "title": "Scale the constraint",
+          "paragraphs": [
+            "Vertical scaling increases resources of an instance; horizontal scaling adds instances. Replication requires handling sessions and shared state. Partitioning distributes subsets of data/work, and decomposition separates responsibilities. Caching can eliminate repeated work but requires a key, lifetime and invalidation policy that respects users and authorization.",
+            "Containers package a process and its dependencies using operating-system isolation; VMs have their own guest OS boundary. Neither guarantees application correctness or absolute isolation. Infrastructure as code makes environments reviewable and repeatable. Timeouts, bounded retries and bulkheads can limit cascading failures, but retries without backoff or idempotency can worsen overload."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_operations_boundaries",
+          "title": "Build is not release evidence",
+          "prompt": "A pipeline passes, but the deployed app cannot access its database. Explain which boundaries were verified and propose one check at each missing boundary.",
+          "skillId": "CSE13B_operations_release",
+          "sourceIds": [
+            "CSE13B_src_scale",
+            "CSE13B_src_delivery",
+            "CSE13B_src_deployment",
+            "CSE13B_src_industry"
+          ],
+          "kind": "open",
+          "explanation": "Success in one environment does not validate the configuration or dependencies of another.",
+          "rubric": [
+            "Separate build/test evidence from deployment/configuration and live workflow evidence.",
+            "Check environment connectivity/configuration without exposing secrets.",
+            "Exercise an authorized representative user workflow and report what it actually proves."
+          ]
+        },
+        {
+          "id": "CSE13B_operations_canary",
+          "title": "Canary decision",
+          "prompt": "A canary serves 5% of traffic. Its error rate rises while CPU stays normal. What is the most defensible immediate release decision?",
+          "skillId": "CSE13B_operations_release",
+          "sourceIds": [
+            "CSE13B_src_scale",
+            "CSE13B_src_delivery",
+            "CSE13B_src_deployment",
+            "CSE13B_src_industry"
+          ],
+          "kind": "choice",
+          "explanation": "User-visible errors are a meaningful regression signal even when a resource metric is healthy.",
+          "options": [
+            {
+              "id": "CSE13B_operations_canary_o1",
+              "text": "Expand because CPU is normal."
+            },
+            {
+              "id": "CSE13B_operations_canary_o2",
+              "text": "Pause expansion and investigate or revert using the release policy."
+            },
+            {
+              "id": "CSE13B_operations_canary_o3",
+              "text": "Ignore errors until every user is migrated."
+            },
+            {
+              "id": "CSE13B_operations_canary_o4",
+              "text": "Delete monitoring to reduce overhead."
+            }
+          ],
+          "answer": "CSE13B_operations_canary_o2"
+        },
+        {
+          "id": "CSE13B_operations_cache",
+          "title": "Cache-key correctness",
+          "prompt": "A service caches 'my bookings' by URL alone. Explain a user-visible failure and design a safer cache policy, including invalidation after cancellation.",
+          "skillId": "CSE13B_operations_scale",
+          "sourceIds": [
+            "CSE13B_src_scale",
+            "CSE13B_src_delivery",
+            "CSE13B_src_deployment",
+            "CSE13B_src_industry"
+          ],
+          "kind": "open",
+          "explanation": "Cache correctness includes identity and freshness, not just speed.",
+          "rubric": [
+            "A shared URL-only key can return another user's result.",
+            "Partition by authenticated identity and relevant query/authorization context, or avoid shared caching.",
+            "Invalidate/update after mutation and specify TTL/staleness behavior."
+          ]
+        },
+        {
+          "id": "CSE13B_operations_trace",
+          "title": "Find the real bottleneck",
+          "prompt": "A request performs six independent remote reads sequentially, each about 150 ms, and 50 ms local work. Estimate the sequential latency in milliseconds.",
+          "skillId": "CSE13B_operations_observe",
+          "sourceIds": [
+            "CSE13B_src_scale",
+            "CSE13B_src_delivery",
+            "CSE13B_src_deployment",
+            "CSE13B_src_industry"
+          ],
+          "kind": "integer",
+          "explanation": "6*150+50=950 ms under the given assumptions. Batching, caching or safe concurrency may help, but must be measured.",
+          "answer": "950"
+        },
+        {
+          "id": "CSE13B_operations_retry",
+          "title": "Prevent retry amplification",
+          "prompt": "An upstream service is overloaded and all clients immediately retry failed requests ten times. Propose a bounded recovery policy and a test that verifies it does not duplicate a successful booking.",
+          "skillId": "CSE13B_operations_scale",
+          "sourceIds": [
+            "CSE13B_src_scale",
+            "CSE13B_src_delivery",
+            "CSE13B_src_deployment",
+            "CSE13B_src_industry"
+          ],
+          "kind": "open",
+          "explanation": "A timeout does not prove the operation failed. Unbounded or immediate retries can multiply load and effects.",
+          "rubric": [
+            "Use bounded retries, backoff/jitter and timeouts or circuit breaking.",
+            "Use a stable idempotency key and define handling of an unknown outcome.",
+            "Simulate a response lost after persistence and verify one booking with a consistent retry result."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_ml4se",
+      "name": "Evaluating AI-assisted development",
+      "description": "Evaluate learned development tools through representative tasks, independent evidence and explicit data boundaries.",
+      "prerequisites": [
+        "CSE13B_quality_metrics",
+        "CSE13B_requirements"
+      ],
+      "sourceIds": [
+        "CSE13B_src_ml",
+        "CSE13B_src_genai"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_ml4se_evaluate",
+          "name": "Evaluation design",
+          "description": "Separate demonstrations from representative held-out evidence."
+        },
+        {
+          "id": "CSE13B_ml4se_use",
+          "name": "Responsible assistance",
+          "description": "Provide useful context and independently review generated outputs."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Code tools learn from software artifacts",
+          "paragraphs": [
+            "ML for software engineering includes completion, generation, bug detection and other developer tasks. Data can include source code, issues, tests and change history. Code has syntax and relationships such as control flow and data flow that plain token similarity may not capture.",
+            "The supplied lectures discuss language models and structural representations as approaches, not guarantees of semantic correctness. A generated method can compile while violating its contract. A tool that helps a user finish a realistic task must also fit latency, context, interaction and maintenance needs."
+          ]
+        },
+        {
+          "title": "Worked evaluation design",
+          "paragraphs": [
+            "Suppose a tool proposes unit tests. Select held-out functions with clear specifications and evaluate whether tests compile, pass on correct implementations and detect meaningful faults. Compare with a simple baseline under the same budget. Count false failures and redundant tests as well as detected faults.",
+            "A random file split can leak almost-identical code from the same project into training and evaluation. Split by project or other relevant grouping, remove duplicates and keep the evaluation set out of prompt tuning. Test-based evaluation establishes agreement with those tests; it does not prove all behavior, security or maintainability."
+          ]
+        },
+        {
+          "title": "Use assistance with a review boundary",
+          "paragraphs": [
+            "A useful prompt states the required behavior, domain constraints, available interfaces and representative examples, including edge cases. Do not supply confidential data just because extra context may improve output. Inspect suggested dependencies and generated calls against the actual codebase before adopting them.",
+            "Worked review: a generated parser handles the example but silently accepts invalid dates. Read the contract, add an independently derived invalid-date test and require deliberate error behavior. If the same tool writes implementation and tests, shared misconceptions can make both agree. Report measured quality, latency and limitations instead of repeating historical productivity claims as universal facts."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_ml4se_leakage",
+          "title": "Prevent evaluation leakage",
+          "prompt": "An evaluation randomly splits individual functions from one repository, including near-duplicates. Explain why results may be optimistic and propose a stronger split and duplicate policy.",
+          "skillId": "CSE13B_ml4se_evaluate",
+          "sourceIds": [
+            "CSE13B_src_ml",
+            "CSE13B_src_genai"
+          ],
+          "kind": "open",
+          "explanation": "The evaluation should measure performance on genuinely held-out work, not recognition of closely related examples.",
+          "rubric": [
+            "Identify shared/near-identical code leaking across train and test.",
+            "Use project/time or another task-appropriate grouping and deduplication.",
+            "Keep test data separate from prompt/model selection and document remaining overlap risks."
+          ]
+        },
+        {
+          "id": "CSE13B_ml4se_agreement",
+          "title": "Generated tests agree",
+          "prompt": "A generated implementation and generated tests all pass. Which conclusion follows?",
+          "skillId": "CSE13B_ml4se_evaluate",
+          "sourceIds": [
+            "CSE13B_src_ml",
+            "CSE13B_src_genai"
+          ],
+          "kind": "choice",
+          "explanation": "Agreement is evidence only for the checked cases and their possibly shared assumptions.",
+          "options": [
+            {
+              "id": "CSE13B_ml4se_agreement_o1",
+              "text": "The specification is satisfied for all inputs."
+            },
+            {
+              "id": "CSE13B_ml4se_agreement_o2",
+              "text": "Security is proven."
+            },
+            {
+              "id": "CSE13B_ml4se_agreement_o3",
+              "text": "The implementation agrees with those test assertions on those runs."
+            },
+            {
+              "id": "CSE13B_ml4se_agreement_o4",
+              "text": "Human review is unnecessary."
+            }
+          ],
+          "answer": "CSE13B_ml4se_agreement_o3"
+        },
+        {
+          "id": "CSE13B_ml4se_context",
+          "title": "Improve a code-generation request",
+          "prompt": "Rewrite 'make a validator' as a bounded prompt for a booking-date validator. Include input/output behavior, boundary cases and limits on supplied data.",
+          "skillId": "CSE13B_ml4se_use",
+          "sourceIds": [
+            "CSE13B_src_ml",
+            "CSE13B_src_genai"
+          ],
+          "kind": "open",
+          "explanation": "Precise contracts and representative cases make outputs reviewable; private data is not required to describe the validation rule.",
+          "rubric": [
+            "State accepted format/domain and invalid-input behavior.",
+            "Include timezone/range or equal-date boundaries where relevant.",
+            "Use synthetic examples, specify existing interfaces and require independently checked tests."
+          ]
+        },
+        {
+          "id": "CSE13B_ml4se_metrics",
+          "title": "Measure useful assistance",
+          "prompt": "A completion tool has higher benchmark accuracy but takes five seconds per suggestion. Propose an evaluation that can determine whether it helps users more than a faster baseline.",
+          "skillId": "CSE13B_ml4se_evaluate",
+          "sourceIds": [
+            "CSE13B_src_ml",
+            "CSE13B_src_genai"
+          ],
+          "kind": "open",
+          "explanation": "A technically accurate suggestion can still interrupt the workflow enough to reduce its practical value.",
+          "rubric": [
+            "Measure latency distribution and actual task completion/correction effort.",
+            "Control task difficulty, users and comparison budget.",
+            "Include acceptance, correctness and downstream review cost rather than accuracy alone."
+          ]
+        },
+        {
+          "id": "CSE13B_ml4se_oracle",
+          "title": "Independent test oracle",
+          "prompt": "An assistant produces a tax calculation and tests derived by copying its formula. Explain the circularity and propose two independent sources of expected behavior in a hypothetical course exercise.",
+          "skillId": "CSE13B_ml4se_use",
+          "sourceIds": [
+            "CSE13B_src_ml",
+            "CSE13B_src_genai"
+          ],
+          "kind": "open",
+          "explanation": "A test oracle must be justified independently of the code being tested.",
+          "rubric": [
+            "Identify shared implementation/test mistakes.",
+            "Use the supplied exercise specification and manually worked boundary examples or an independently validated reference.",
+            "Compare outputs and investigate disagreements instead of accepting mutual agreement."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_testing_foundations",
+      "name": "Systematic testing and trustworthy oracles",
+      "description": "Design tests from risks and contracts, distinguish levels and explain the limits of passing results.",
+      "prerequisites": [
+        "CSE13B_requirements",
+        "CSE13B_contracts"
+      ],
+      "sourceIds": [
+        "CSE13B_src_testing"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_testing_foundations_principles",
+          "name": "Testing principles",
+          "description": "Distinguish verification, validation and finite evidence."
+        },
+        {
+          "id": "CSE13B_testing_foundations_oracle",
+          "name": "Test oracles",
+          "description": "Specify expected outcomes and meaningful assertions."
+        },
+        {
+          "id": "CSE13B_testing_foundations_levels",
+          "name": "Test strategy",
+          "description": "Choose scope and level based on the failure risk."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Testing is a structured investigation",
+          "paragraphs": [
+            "Testing samples behavior to find failures, build justified confidence and communicate intended behavior. Exhaustive testing is usually infeasible: even small inputs combine into enormous spaces. Repeating the same examples can stop finding new faults, so vary techniques and use risk to guide further work.",
+            "Verification asks whether implementation satisfies the specified behavior; validation asks whether that specified behavior meets users' needs. A perfectly implemented workflow can still solve the wrong problem. A passing finite suite does not prove defect freedom, and a percentage called coverage does not measure the proportion of bugs found."
+          ]
+        },
+        {
+          "title": "Worked test with an oracle",
+          "paragraphs": [
+            "For a fee function defined as 0 for cancellations at least 24 hours before a booking and 10 otherwise, test exactly 24 hours with expected fee 0, just below with 10, and a representative larger value with 0. The expected values come from the contract, not from observing today's implementation.",
+            "Separate arrange, act and assert. Set up inputs and collaborators, invoke one meaningful behavior, then check the relevant result, state or external effect. A test that merely invokes a method may detect crashes but miss wrong results. Assertion messages should make the expected versus observed difference understandable."
+          ]
+        },
+        {
+          "title": "Choose test scope for the risk",
+          "paragraphs": [
+            "Small tests give fast, localized feedback on calculations and rules. Integration tests exercise boundaries such as persistence mapping; system tests check a user workflow through assembled components. The testing pyramid is a cost-and-feedback heuristic, not a fixed required ratio.",
+            "For booking, use small tests for date rules, integration tests for transactional uniqueness and a few system tests for confirmation and cancellation. Add exploratory or nonfunctional tests for risks not addressed by these levels. Decide what to stop testing by remaining risk and evidence, not by an arbitrary count of tests."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_testing_foundations_validation",
+          "title": "Correct system, wrong need",
+          "prompt": "A room tool faithfully implements the written requirements but excludes staff who manage emergency closures. Is the main problem verification or validation, and what activity could reveal it earlier?",
+          "skillId": "CSE13B_testing_foundations_principles",
+          "sourceIds": [
+            "CSE13B_src_testing"
+          ],
+          "kind": "open",
+          "explanation": "The implementation may conform to an incomplete specification while the product still fails its users.",
+          "rubric": [
+            "Identify validation of stakeholder needs as the central gap.",
+            "Include affected staff in elicitation and realistic scenarios.",
+            "Do not claim more unit tests alone would discover a missing stakeholder requirement."
+          ]
+        },
+        {
+          "id": "CSE13B_testing_foundations_oracle_exercise",
+          "title": "A test without an assertion",
+          "prompt": "A test calls calculateTotal([4,7]) and passes whenever no exception is thrown. Explain what it misses and propose a meaningful assertion under a sum contract.",
+          "skillId": "CSE13B_testing_foundations_oracle",
+          "sourceIds": [
+            "CSE13B_src_testing"
+          ],
+          "kind": "open",
+          "explanation": "No exception is one observable property; it is not the same as the correct result.",
+          "rubric": [
+            "It cannot detect an incorrect returned total.",
+            "Assert a total of 11 from an independent calculation.",
+            "Add separate tests for documented exceptional inputs rather than conflating all behavior."
+          ]
+        },
+        {
+          "id": "CSE13B_testing_foundations_level",
+          "title": "Test a database constraint",
+          "prompt": "Which test most directly checks that two competing real database writes cannot create duplicate reservations?",
+          "skillId": "CSE13B_testing_foundations_levels",
+          "sourceIds": [
+            "CSE13B_src_testing"
+          ],
+          "kind": "choice",
+          "explanation": "The constraint and transaction behavior require the real persistence boundary or a faithful equivalent.",
+          "options": [
+            {
+              "id": "CSE13B_testing_foundations_level_o1",
+              "text": "A mock repository configured to reject the second write."
+            },
+            {
+              "id": "CSE13B_testing_foundations_level_o2",
+              "text": "An integration test against the relevant database constraint/transaction behavior."
+            },
+            {
+              "id": "CSE13B_testing_foundations_level_o3",
+              "text": "A unit test of a date formatter."
+            },
+            {
+              "id": "CSE13B_testing_foundations_level_o4",
+              "text": "A screenshot of an empty booking page."
+            }
+          ],
+          "answer": "CSE13B_testing_foundations_level_o2"
+        },
+        {
+          "id": "CSE13B_testing_foundations_pesticide",
+          "title": "Refresh an unproductive suite",
+          "prompt": "A mature suite keeps passing while recent bugs cluster around timezone transitions. Propose a risk-driven extension and explain why adding more ordinary midday examples is weak.",
+          "skillId": "CSE13B_testing_foundations_principles",
+          "sourceIds": [
+            "CSE13B_src_testing"
+          ],
+          "kind": "open",
+          "explanation": "New tests should explore a plausible missing failure class, not merely increase the count.",
+          "rubric": [
+            "Use failure history to focus on transitions, boundaries and ambiguous/missing times.",
+            "Choose representative contract-based cases and environment assumptions.",
+            "Explain marginal value of new partitions versus redundant interior examples."
+          ]
+        },
+        {
+          "id": "CSE13B_testing_foundations_strategy",
+          "title": "Allocate testing effort",
+          "prompt": "For an export feature with a pure formatter, database query and browser download, propose a layered test strategy with one failure each layer should catch.",
+          "skillId": "CSE13B_testing_foundations_levels",
+          "sourceIds": [
+            "CSE13B_src_testing"
+          ],
+          "kind": "open",
+          "explanation": "Different boundaries fail differently, so one test level cannot stand in for all others.",
+          "rubric": [
+            "Unit tests check precise formatting/escaping.",
+            "Integration tests check query mapping and persistence assumptions.",
+            "System tests check a representative download workflow; state limits and keep scope proportionate."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_spec_testing",
+      "name": "Specification-based testing and boundaries",
+      "description": "Derive partitions and representative tests from stated behavior rather than guessing inputs.",
+      "prerequisites": [
+        "CSE13B_testing_foundations"
+      ],
+      "sourceIds": [
+        "CSE13B_src_spec",
+        "CSE13B_src_sqt_exercises"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_spec_testing_partition",
+          "name": "Input partitions",
+          "description": "Identify equivalent and invalid regions and meaningful combinations."
+        },
+        {
+          "id": "CSE13B_spec_testing_boundary",
+          "name": "Boundary analysis",
+          "description": "Distinguish on/off points and interaction boundaries."
+        },
+        {
+          "id": "CSE13B_spec_testing_cases",
+          "name": "Test-case design",
+          "description": "Produce independently justified inputs and expected outcomes."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Work from the specification",
+          "paragraphs": [
+            "Read the contract, identify inputs and outputs, list behaviorally different regions, and select representative values. Include absent, empty, singleton and ordinary cases when the domain admits them. Distinguish null from an empty collection if the contract does. Do not invent exceptions or acceptance behavior that the specification leaves unresolved.",
+            "Category partitioning also identifies constraints between choices. For intersection of two lists, relevant categories include emptiness, overlap, duplicates and element positions. Testing every Cartesian combination may be wasteful or impossible; select combinations that exercise plausible interaction risks and record excluded or infeasible combinations."
+          ]
+        },
+        {
+          "title": "Worked boundaries",
+          "paragraphs": [
+            "For integer age accepted when 18<=age<=65, useful boundary values are 17,18,19 and 64,65,66. They separate just-outside, on-boundary and just-inside behavior. Testing only 30 and 40 stays in one partition. For x>100 over integers, 100 and 101 straddle the transition.",
+            "Floating-point boundaries require domain-aware values: there is no universal 'one unit below' for every real-valued threshold. Use the closest representable values when testing the machine boundary, or a stated tolerance when the contract is approximate. A date boundary may depend on timezone and inclusivity, not just numeric subtraction."
+          ]
+        },
+        {
+          "title": "Oracles and test tables",
+          "paragraphs": [
+            "Write a test table with purpose, input and expected outcome. For lastIndexOf([4,7,4],4), expected 2 tests duplicate handling and last-occurrence behavior; an absent key should yield the specified absent marker. A test of only a unique middle occurrence cannot distinguish firstIndexOf from lastIndexOf.",
+            "Parameterized tests can share execution structure while each row remains a distinct specified case. Avoid computing expected results with the same algorithm being tested. When the contract is ambiguous, state the question and obtain or choose an explicit exercise assumption rather than hiding uncertainty in an assertion."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_spec_testing_threshold",
+          "title": "An on-point boundary",
+          "prompt": "A function accepts integer x exactly when x>100. What is the smallest accepted integer?",
+          "skillId": "CSE13B_spec_testing_boundary",
+          "sourceIds": [
+            "CSE13B_src_spec",
+            "CSE13B_src_sqt_exercises"
+          ],
+          "kind": "integer",
+          "explanation": "100 is rejected because the comparison is strict; 101 is the first accepted integer.",
+          "answer": "101"
+        },
+        {
+          "id": "CSE13B_spec_testing_partitions",
+          "title": "Partition a bounded quantity",
+          "prompt": "A booking allows integer party sizes 1 through 6 inclusive and rejects all others. Give a compact boundary-focused test table with expected outcomes and explain each region.",
+          "skillId": "CSE13B_spec_testing_partition",
+          "sourceIds": [
+            "CSE13B_src_spec",
+            "CSE13B_src_sqt_exercises"
+          ],
+          "kind": "open",
+          "explanation": "The transitions at 1 and 6 are likely sites for off-by-one errors.",
+          "rubric": [
+            "Include below, within and above valid range.",
+            "Cover 0,1,2,5,6,7 or an equally justified boundary set.",
+            "State expected accept/reject results and avoid treating interior tests as boundary coverage."
+          ]
+        },
+        {
+          "id": "CSE13B_spec_testing_lastindex",
+          "title": "Expose first-versus-last confusion",
+          "prompt": "A method must return the last index of a target, or -1 if absent. Design three tests that distinguish a first-occurrence implementation, handle absence and handle an empty array.",
+          "skillId": "CSE13B_spec_testing_cases",
+          "sourceIds": [
+            "CSE13B_src_spec",
+            "CSE13B_src_sqt_exercises"
+          ],
+          "kind": "open",
+          "explanation": "Duplicate placement makes the erroneous first-occurrence behavior observable.",
+          "rubric": [
+            "Use a duplicate target with different first/last positions, such as [4,7,4],4 -> 2.",
+            "Include a nonempty absent case -> -1.",
+            "Include empty input -> -1 under the given contract."
+          ]
+        },
+        {
+          "id": "CSE13B_spec_testing_intersection",
+          "title": "Reason about interactions",
+          "prompt": "For set-style intersection that returns distinct shared values, design tests covering duplicates, disjoint inputs and one empty input. State whether output order is specified.",
+          "skillId": "CSE13B_spec_testing_partition",
+          "sourceIds": [
+            "CSE13B_src_spec",
+            "CSE13B_src_sqt_exercises"
+          ],
+          "kind": "open",
+          "explanation": "An order-sensitive assertion can falsely reject a correct set-style result.",
+          "rubric": [
+            "Give concrete cases with independently calculated shared sets.",
+            "Ensure duplicate values appear only once in expected output.",
+            "Treat order as irrelevant unless the contract explicitly requires it."
+          ]
+        },
+        {
+          "id": "CSE13B_spec_testing_float",
+          "title": "Floating-point boundary",
+          "prompt": "A double-valued predicate accepts finite x when x<=2.0. Explain tests at 2.0 and its immediate representable neighbors, and why 1.0 alone is insufficient.",
+          "skillId": "CSE13B_spec_testing_boundary",
+          "sourceIds": [
+            "CSE13B_src_spec",
+            "CSE13B_src_sqt_exercises"
+          ],
+          "kind": "open",
+          "explanation": "The closest representable neighbors directly challenge the machine-level boundary.",
+          "rubric": [
+            "Test 2.0 accepted, nextDown(2.0) accepted and nextUp(2.0) rejected.",
+            "Explain that 1.0 is far inside the region.",
+            "Keep NaN/infinity policy separate because the stated contract restricts to finite values."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_structural_testing",
+      "name": "Coverage, MC/DC, mutation and regression selection",
+      "description": "Use program structure to expose missing tests without confusing execution with fault detection.",
+      "prerequisites": [
+        "CSE13B_spec_testing"
+      ],
+      "sourceIds": [
+        "CSE13B_src_coverage",
+        "CSE13B_src_metrics",
+        "CSE13B_src_regression"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_structural_testing_coverage",
+          "name": "Coverage criteria",
+          "description": "Distinguish statements, decisions, conditions and independence."
+        },
+        {
+          "id": "CSE13B_structural_testing_mutation",
+          "name": "Mutation analysis",
+          "description": "Find tests that reveal changed behavior and recognize equivalent mutants."
+        },
+        {
+          "id": "CSE13B_structural_testing_selection",
+          "name": "Regression selection",
+          "description": "Use additional coverage while recognizing selection limits."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Coverage is evidence of execution",
+          "paragraphs": [
+            "Statement coverage asks whether statements ran; branch or decision coverage asks whether each decision outcome occurred. Basic condition coverage asks whether each atomic Boolean condition took both values. These are related but not interchangeable, especially with compound and short-circuit expressions.",
+            "For decision A||B, tests (true,false) and (false,true) make the decision always true. Even if both abstract inputs vary, they do not cover the false decision. Under short-circuit evaluation, B is not evaluated when A is true; distinguish specified input truth assignments from actually evaluated conditions."
+          ]
+        },
+        {
+          "title": "Worked independence and mutation",
+          "paragraphs": [
+            "MC/DC requires evidence that each condition can independently affect the decision while other conditions are held fixed under the chosen definition. For A&&B, tests (true,true), (false,true), (true,false) supply independence pairs for A and B and exercise both decision outcomes.",
+            "Mutation testing deliberately changes a program and asks whether a test fails. Changing x>=10 to x>10 is killed by x=10 with an assertion of the specified result. A test must reach the mutation, cause a different internal state and observe a propagated difference. Equivalent mutants change syntax without changing observable behavior in the stated domain and cannot be killed by a valid behavioral test."
+          ]
+        },
+        {
+          "title": "Use coverage to focus, not certify",
+          "paragraphs": [
+            "A surviving mutant may indicate a missing test, weak assertion, unreachable code or an equivalent change; investigate before adding tests blindly. Report the denominator used for a mutation score. For example, killing 15 of 20 non-equivalent mutants gives 75%, not a measure that 75% of all possible faults are eliminated.",
+            "Regression selection can prioritize tests adding the most uncovered branches. With t1={a,b}, t2={b,c}, t3={c,d}, choosing t1 then t3 covers all four branches. Such a greedy cover need not be a globally minimal or semantically sufficient suite. A branch-preserving change can still break values or interactions, so coverage alone is not a complete regression policy."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_structural_testing_mcdc",
+          "title": "Build independence pairs",
+          "prompt": "For decision A&&B, give a minimal set of Boolean input pairs for unique-cause MC/DC and name the pair demonstrating each condition's independent effect. Discuss short-circuit evaluation of B.",
+          "skillId": "CSE13B_structural_testing_coverage",
+          "sourceIds": [
+            "CSE13B_src_coverage",
+            "CSE13B_src_metrics"
+          ],
+          "kind": "open",
+          "explanation": "The true decision requires TT; independently disabling each condition requires FT and TF.",
+          "rubric": [
+            "Use TT,FT,TF.",
+            "A independence: TT versus FT; B independence: TT versus TF.",
+            "Explain B is skipped in FT under short-circuit evaluation, while TT/TF exercise B and isolate its effect."
+          ]
+        },
+        {
+          "id": "CSE13B_structural_testing_branch",
+          "title": "Decision coverage is missing",
+          "prompt": "Tests for A||B use inputs (true,false) and (false,true). Which decision outcome is missing?",
+          "skillId": "CSE13B_structural_testing_coverage",
+          "sourceIds": [
+            "CSE13B_src_coverage",
+            "CSE13B_src_metrics"
+          ],
+          "kind": "choice",
+          "explanation": "Both inputs make the OR expression true; false requires both inputs false.",
+          "options": [
+            {
+              "id": "CSE13B_structural_testing_branch_o1",
+              "text": "True"
+            },
+            {
+              "id": "CSE13B_structural_testing_branch_o2",
+              "text": "False"
+            },
+            {
+              "id": "CSE13B_structural_testing_branch_o3",
+              "text": "Both outcomes"
+            },
+            {
+              "id": "CSE13B_structural_testing_branch_o4",
+              "text": "Neither; both outcomes occur"
+            }
+          ],
+          "answer": "CSE13B_structural_testing_branch_o2"
+        },
+        {
+          "id": "CSE13B_structural_testing_kill",
+          "title": "Kill a boundary mutant",
+          "prompt": "Original code returns 1 if x>=10, otherwise 0. A mutant uses x>10. What integer input kills it when the test asserts the correct result?",
+          "skillId": "CSE13B_structural_testing_mutation",
+          "sourceIds": [
+            "CSE13B_src_coverage",
+            "CSE13B_src_metrics"
+          ],
+          "kind": "integer",
+          "explanation": "At x=10 the original returns 1 and the mutant 0; other inputs do not distinguish this mutation.",
+          "answer": "10"
+        },
+        {
+          "id": "CSE13B_structural_testing_equivalent",
+          "title": "Investigate a survivor",
+          "prompt": "A method has contract x>=0 and returns abs(x). A mutant returns x. Explain equivalence on this domain and what would change if negative integers were valid inputs.",
+          "skillId": "CSE13B_structural_testing_mutation",
+          "sourceIds": [
+            "CSE13B_src_coverage",
+            "CSE13B_src_metrics"
+          ],
+          "kind": "open",
+          "explanation": "Equivalence is relative to the valid input domain and observable contract.",
+          "rubric": [
+            "On x>=0, abs(x)=x, so the mutant is behaviorally equivalent.",
+            "No valid-domain test can distinguish them.",
+            "If negatives are allowed, use a negative input with the positive absolute-value oracle, considering integer overflow policy separately."
+          ]
+        },
+        {
+          "id": "CSE13B_structural_testing_greedy",
+          "title": "Additional coverage selection",
+          "prompt": "Tests cover t1={a,b,c}, t2={b,c,d}, t3={d,e}, t4={e}. Greedily choose the test adding the most uncovered branches, breaking ties by lower test number. Give the chosen sequence until all branches are covered and one limitation of this selection.",
+          "skillId": "CSE13B_structural_testing_selection",
+          "sourceIds": [
+            "CSE13B_src_coverage",
+            "CSE13B_src_metrics",
+            "CSE13B_src_regression"
+          ],
+          "kind": "open",
+          "explanation": "t1 contributes three branches and t3 the two remaining branches. Re-running covered branches may still be necessary for value-sensitive faults.",
+          "rubric": [
+            "Choose t1 first from the initial tie.",
+            "Choose t3 next because it adds d,e, then stop.",
+            "Explain that coverage of all branches does not prove strong assertions or all relevant behaviors."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_property_testing",
+      "name": "Property-based and metamorphic testing",
+      "description": "State general behavior, construct representative valid data and use shrinking to explain failures.",
+      "prerequisites": [
+        "CSE13B_spec_testing",
+        "CSE13B_contracts"
+      ],
+      "sourceIds": [
+        "CSE13B_src_pbt"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_property_testing_properties",
+          "name": "Property design",
+          "description": "Use invariants, round trips and metamorphic relations without weak or circular oracles."
+        },
+        {
+          "id": "CSE13B_property_testing_generators",
+          "name": "Generator design",
+          "description": "Construct representative domains with reproducible framework randomness."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "A property includes a domain",
+          "paragraphs": [
+            "An example test fixes one input and expected result; a property states a rule for many generated inputs. A sorting property should check nondecreasing order and preservation of the input multiset. Checking only order permits the broken implementation that always returns an empty array.",
+            "Common families include round trips, idempotence, commutativity where valid, invariants, differential comparison and metamorphic relations. A round trip encode/decode may still let two mutually wrong functions agree. Add independent known examples and structural checks. State exclusions such as arithmetic overflow or invalid values rather than letting a property accidentally make false universal claims."
+          ]
+        },
+        {
+          "title": "Worked constructive generation",
+          "paragraphs": [
+            "To generate even bounded integers, generate k in a range where 2*k is representable and map to 2*k. To generate a palindrome, generate a half and mirror it with a deliberate odd/even policy. These approaches produce useful cases without rejecting almost every arbitrary input.",
+            "Avoid generating a narrow accidental subset, such as lists of only length three when arbitrary lengths are valid. Include empty, singleton, duplicates, extremes and larger structures as appropriate. Relational inputs should be generated together: for valid intervals generate start and a positive duration rather than two unrelated endpoints followed by heavy filtering."
+          ]
+        },
+        {
+          "title": "Shrinking and diagnosis",
+          "paragraphs": [
+            "A property framework records a seed or reproducible failure and tries to shrink it to a smaller counterexample. Shrinking helps understanding; it does not make an invalid property correct. Keep randomness inside the framework so generation and shrinking cooperate instead of using hidden ad hoc random calls.",
+            "Example: a faulty list reversal drops the first element. A generated length-20 failure may shrink to a one-element list, immediately exposing lost data. Report the minimal counterexample and the violated rule, then add a focused regression example and repair the implementation. Do not simply exclude the counterexample from the generator."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_property_testing_sort",
+          "title": "Strengthen a sorting property",
+          "prompt": "A property asserts only that sort(xs) is nondecreasing. Give a broken implementation that passes and two complementary properties that rule it out.",
+          "skillId": "CSE13B_property_testing_properties",
+          "sourceIds": [
+            "CSE13B_src_pbt"
+          ],
+          "kind": "open",
+          "explanation": "Sortedness alone says nothing about whether the input's elements survived.",
+          "rubric": [
+            "The always-empty implementation passes nondecreasing order.",
+            "Require output length and/or full multiset preservation, with duplicates handled.",
+            "Combine permutation preservation with ordering and include empty/singleton cases."
+          ]
+        },
+        {
+          "id": "CSE13B_property_testing_even",
+          "title": "Construct even inputs",
+          "prompt": "To generate nonnegative even Java ints without overflow by computing 2*k, what is the largest integer k allowed, given Integer.MAX_VALUE=2147483647?",
+          "skillId": "CSE13B_property_testing_generators",
+          "sourceIds": [
+            "CSE13B_src_pbt"
+          ],
+          "kind": "integer",
+          "explanation": "floor(2147483647/2)=1073741823, whose double is 2147483646.",
+          "answer": "1073741823"
+        },
+        {
+          "id": "CSE13B_property_testing_palindrome",
+          "title": "Avoid rejection-heavy generation",
+          "prompt": "Describe a generator covering both odd- and even-length palindromes, including the empty string, without filtering random strings for palindrome status.",
+          "skillId": "CSE13B_property_testing_generators",
+          "sourceIds": [
+            "CSE13B_src_pbt"
+          ],
+          "kind": "open",
+          "explanation": "Constructing the invariant ensures useful cases instead of rejecting almost all generated strings.",
+          "rubric": [
+            "Generate a half and optional center character.",
+            "Mirror the half in reverse order; allow empty half and no center.",
+            "Discuss alphabet, length range and reproducibility with framework randomness."
+          ]
+        },
+        {
+          "id": "CSE13B_property_testing_roundtrip",
+          "title": "Round-trip blind spot",
+          "prompt": "Both encode and decode incorrectly reverse their inputs. decode(encode(x)) equals x. Explain why the round-trip property passes and propose an independent check.",
+          "skillId": "CSE13B_property_testing_properties",
+          "sourceIds": [
+            "CSE13B_src_pbt"
+          ],
+          "kind": "open",
+          "explanation": "Round-trip consistency does not establish interoperability or each function's intended semantics.",
+          "rubric": [
+            "Two inverses can agree while violating the external format contract.",
+            "Use known encoded examples or compare one direction to a trusted independent specification.",
+            "Keep round-trip as useful but insufficient evidence."
+          ]
+        },
+        {
+          "id": "CSE13B_property_testing_shrink",
+          "title": "Interpret a shrunken failure",
+          "prompt": "A generated reverse-list failure shrinks from 30 elements to [7], with output []. Explain the likely violated property and how to use the result without narrowing the generator to hide it.",
+          "skillId": "CSE13B_property_testing_properties",
+          "sourceIds": [
+            "CSE13B_src_pbt"
+          ],
+          "kind": "open",
+          "explanation": "The small counterexample makes data loss visible and helps distinguish an algorithm bug from a complicated input interaction.",
+          "rubric": [
+            "Identify length/multiset preservation failure on a singleton.",
+            "Add a focused regression example and inspect boundary handling.",
+            "Retain representative generation and use the seed/counterexample for reproducibility."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_doubles_testability",
+      "name": "Test doubles and design for testability",
+      "description": "Control dependencies and observe meaningful effects while avoiding tests coupled to incidental implementation calls.",
+      "prerequisites": [
+        "CSE13B_contracts",
+        "CSE13B_testing_foundations"
+      ],
+      "sourceIds": [
+        "CSE13B_src_doubles",
+        "CSE13B_src_testability"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_doubles_testability_doubles",
+          "name": "Test-double roles",
+          "description": "Choose dummies, stubs, fakes, spies and mocks based on the test's purpose."
+        },
+        {
+          "id": "CSE13B_doubles_testability_design",
+          "name": "Testable boundaries",
+          "description": "Inject clocks and infrastructure and expose legitimate observations."
+        },
+        {
+          "id": "CSE13B_doubles_testability_verify",
+          "name": "Meaningful verification",
+          "description": "Check command effects and arguments without over-verifying queries."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "The role matters more than the tool",
+          "paragraphs": [
+            "A dummy fills an unused parameter; a stub supplies configured responses; a fake provides a simplified working implementation; a spy records interactions; a mock is used to verify expected interactions. A mocking library can create objects serving several of these roles, so the library name alone does not identify the test design.",
+            "Stub a query such as repository.find(id) when its return value enables the scenario. For a command such as mailer.send(message), the interaction may itself be the externally relevant effect. Prefer observable state or return values when they express the contract directly, and avoid asserting every internal query call merely because the tool can."
+          ]
+        },
+        {
+          "title": "Worked booking notification test",
+          "paragraphs": [
+            "Arrange a repository response containing a confirmed booking and inject a recording mailer. Invoke notifyBooking(id). Assert the sent recipient, booking identifier and relevant content, plus the specified count if exactly once is the contract. Merely verifying send(any()) once misses a message sent to the wrong recipient.",
+            "Add a failure case such as missing booking -> no email, with the specified error/result. A fake repository can preserve state across operations for richer tests, but it may not reproduce real database constraints. Complement fast doubles with boundary tests that check the real integration where fidelity matters."
+          ]
+        },
+        {
+          "title": "Controllability and observability",
+          "paragraphs": [
+            "A function that reads the real clock, opens a database internally and sends a real email is hard to control. Pass collaborators in through constructors or parameters and keep domain calculation separate from infrastructure. Ports/adapters lets the same policy use production or test implementations.",
+            "For a time-based discount, inject a clock and use a fixed instant in tests. Observe returned totals or a legitimate emitted event rather than making private fields public solely for assertions. Better testability should support a coherent design; turning every private method into a mockable public operation can make the system harder to maintain."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_doubles_testability_stub",
+          "title": "Choose a double role",
+          "prompt": "A test configures customerRepository.find(5) to return a fixed customer, then asserts the service's returned display name without verifying query calls. What role is the repository double serving?",
+          "skillId": "CSE13B_doubles_testability_doubles",
+          "sourceIds": [
+            "CSE13B_src_doubles",
+            "CSE13B_src_testability"
+          ],
+          "kind": "choice",
+          "explanation": "It supplies a controlled response used to set up the behavior under test.",
+          "options": [
+            {
+              "id": "CSE13B_doubles_testability_stub_o1",
+              "text": "Dummy only"
+            },
+            {
+              "id": "CSE13B_doubles_testability_stub_o2",
+              "text": "Stub"
+            },
+            {
+              "id": "CSE13B_doubles_testability_stub_o3",
+              "text": "A real integration database"
+            },
+            {
+              "id": "CSE13B_doubles_testability_stub_o4",
+              "text": "An unrelated iterator"
+            }
+          ],
+          "answer": "CSE13B_doubles_testability_stub_o2"
+        },
+        {
+          "id": "CSE13B_doubles_testability_arguments",
+          "title": "Fix a weak command check",
+          "prompt": "A test only verifies mailer.send(any()) once. The production bug sends to the wrong user. Strengthen the test while avoiding assertions about irrelevant formatting details.",
+          "skillId": "CSE13B_doubles_testability_verify",
+          "sourceIds": [
+            "CSE13B_src_doubles",
+            "CSE13B_src_testability"
+          ],
+          "kind": "open",
+          "explanation": "A correct call count with incorrect arguments can still cause the wrong external effect.",
+          "rubric": [
+            "Capture or match the actual recipient and required booking identity/content.",
+            "Verify the count only if the contract specifies it.",
+            "Avoid coupling to unrelated whitespace or internal builder calls."
+          ]
+        },
+        {
+          "id": "CSE13B_doubles_testability_clock",
+          "title": "Control time explicitly",
+          "prompt": "A discount method calls the system clock directly and tests fail near midnight. Propose a refactoring and tests for either side of the discount boundary.",
+          "skillId": "CSE13B_doubles_testability_design",
+          "sourceIds": [
+            "CSE13B_src_doubles",
+            "CSE13B_src_testability"
+          ],
+          "kind": "open",
+          "explanation": "Deterministic control over time exposes the actual boundary rule without waiting for the real clock.",
+          "rubric": [
+            "Inject a clock/time provider while preserving the public business behavior.",
+            "Use fixed instants and a stated timezone around the boundary.",
+            "Keep each test independent of global time and other tests."
+          ]
+        },
+        {
+          "id": "CSE13B_doubles_testability_fake",
+          "title": "Know a fake's limit",
+          "prompt": "An in-memory fake allows duplicate booking identifiers, but the production database rejects them. Explain what confidence fake-based unit tests provide and which integration test is still needed.",
+          "skillId": "CSE13B_doubles_testability_doubles",
+          "sourceIds": [
+            "CSE13B_src_doubles",
+            "CSE13B_src_testability"
+          ],
+          "kind": "open",
+          "explanation": "A convenient fake does not certify that mappings, constraints or transaction semantics match production.",
+          "rubric": [
+            "Fake tests exercise service behavior under the fake's contract.",
+            "Acknowledge the missing persistence constraint/fidelity.",
+            "Test duplicate handling against the real relevant database behavior and align the fake where useful."
+          ]
+        },
+        {
+          "id": "CSE13B_doubles_testability_oververify",
+          "title": "Remove brittle verification",
+          "prompt": "A test asserts a correct invoice total and also requires exactly two calls to an internal price query. A harmless cache reduces the calls to one. Explain whether to keep that assertion and give an exception where call count matters.",
+          "skillId": "CSE13B_doubles_testability_verify",
+          "sourceIds": [
+            "CSE13B_src_doubles",
+            "CSE13B_src_testability"
+          ],
+          "kind": "open",
+          "explanation": "Interaction assertions should protect behavior or constraints, not freeze an implementation accident.",
+          "rubric": [
+            "Drop incidental query-count verification if not part of the contract.",
+            "Preserve assertions on the returned total.",
+            "Keep counts when they express a real requirement such as one charge or a documented resource limit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_tdd_quality",
+      "name": "TDD and maintainable test code",
+      "description": "Use small feedback cycles and behavior-focused tests that remain understandable and independent.",
+      "prerequisites": [
+        "CSE13B_spec_testing",
+        "CSE13B_doubles_testability"
+      ],
+      "sourceIds": [
+        "CSE13B_src_tdd",
+        "CSE13B_src_quality"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_tdd_quality_tdd",
+          "name": "TDD cycle",
+          "description": "Use red, green and refactor with meaningful failing tests."
+        },
+        {
+          "id": "CSE13B_tdd_quality_maintain",
+          "name": "Test maintainability",
+          "description": "Keep fixtures clear, independent and focused on behavior."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Red, green, refactor",
+          "paragraphs": [
+            "In test-driven development, write a small test expressing the next behavior and confirm it fails for the expected reason. Implement enough to satisfy it, then improve structure while the suite remains green. A test failing because of a broken test setup does not supply the same information as a failure exposing missing behavior.",
+            "Worked example: for a basket total, first test an empty basket -> 0, then a single item, then multiple items and any explicit quantity/discount rule. Each step should add behavior rather than changing many rules at once. TDD provides design feedback and regression examples; it does not replace specification analysis, integration testing or user validation."
+          ]
+        },
+        {
+          "title": "Make the test's story visible",
+          "paragraphs": [
+            "A useful name states behavior and context, such as rejectsCancellationAfterStart. Arrange-act-assert or given-when-then structure separates relevant setup, action and observation. Use concrete expected results and clear failure messages so a failing test explains the discrepancy.",
+            "DAMP emphasizes descriptive and meaningful tests. Removing every repeated value can hide intent behind elaborate helpers; a small amount of local repetition may be clearer. Test data builders can hide irrelevant defaults while showing the fields that matter to the behavior. Avoid reproducing the production algorithm inside the expected-value calculation."
+          ]
+        },
+        {
+          "title": "Independence and proportionate abstraction",
+          "paragraphs": [
+            "Fresh fixtures prevent one test from changing another's inputs. Shared immutable constants can be fine; shared mutable lists, repositories or clocks can make results depend on execution order. Parameterize cases with the same behavior and structure, but do not combine unrelated scenarios into a single branching test.",
+            "Test through the public behavior where possible so internal refactoring remains possible. A focused test can contain several related assertions, such as both the returned result and resulting balance. The relevant rule is a coherent behavior, not a ritual that every test must have exactly one assertion."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_tdd_quality_cycle",
+          "title": "TDD sequence",
+          "prompt": "Which sequence best describes the standard small TDD feedback cycle?",
+          "skillId": "CSE13B_tdd_quality_tdd",
+          "sourceIds": [
+            "CSE13B_src_tdd",
+            "CSE13B_src_quality"
+          ],
+          "kind": "choice",
+          "explanation": "First establish a meaningful failing test, make it pass, then improve structure while preserving behavior.",
+          "options": [
+            {
+              "id": "CSE13B_tdd_quality_cycle_o1",
+              "text": "Red test, minimal green implementation, refactor."
+            },
+            {
+              "id": "CSE13B_tdd_quality_cycle_o2",
+              "text": "Write all production code, delete failing tests, deploy."
+            },
+            {
+              "id": "CSE13B_tdd_quality_cycle_o3",
+              "text": "Refactor without tests, then invent expected outputs from the code."
+            },
+            {
+              "id": "CSE13B_tdd_quality_cycle_o4",
+              "text": "Keep every test failing until the project ends."
+            }
+          ],
+          "answer": "CSE13B_tdd_quality_cycle_o1"
+        },
+        {
+          "id": "CSE13B_tdd_quality_red_reason",
+          "title": "A misleading red test",
+          "prompt": "A new test fails because its fixture has a null repository, before reaching the behavior it intends to test. Explain why this is not the desired TDD signal and how to repair the test.",
+          "skillId": "CSE13B_tdd_quality_tdd",
+          "sourceIds": [
+            "CSE13B_src_tdd",
+            "CSE13B_src_quality"
+          ],
+          "kind": "open",
+          "explanation": "The red phase should demonstrate the missing behavior, not merely that something in the test throws.",
+          "rubric": [
+            "Distinguish setup failure from missing specified behavior.",
+            "Create a valid fixture/control dependencies.",
+            "Verify the failure then occurs at the intended assertion before implementation."
+          ]
+        },
+        {
+          "id": "CSE13B_tdd_quality_shared",
+          "title": "Order-dependent fixtures",
+          "prompt": "Test A removes an item from a static mutable list; Test B expects the original list contents. Explain the failure mode and two sound fixture strategies.",
+          "skillId": "CSE13B_tdd_quality_maintain",
+          "sourceIds": [
+            "CSE13B_src_tdd",
+            "CSE13B_src_quality"
+          ],
+          "kind": "open",
+          "explanation": "Independent tests should not rely on another test restoring shared state.",
+          "rubric": [
+            "Execution order changes B's starting state.",
+            "Construct fresh mutable fixtures per test or use immutable shared data with copies.",
+            "Do not fix by enforcing a fragile global test order."
+          ]
+        },
+        {
+          "id": "CSE13B_tdd_quality_oracledup",
+          "title": "Avoid a duplicated implementation",
+          "prompt": "A discount test computes expected by copying the same nested if statements as production. Explain the risk and replace it with a clearer test design.",
+          "skillId": "CSE13B_tdd_quality_maintain",
+          "sourceIds": [
+            "CSE13B_src_tdd",
+            "CSE13B_src_quality"
+          ],
+          "kind": "open",
+          "explanation": "Tests should independently challenge implementation behavior, not restate it in another location.",
+          "rubric": [
+            "Both copies can share the same mistake.",
+            "Use explicit specification-derived cases and expected values.",
+            "Parameterize clear rows if useful and keep the reason for each case visible."
+          ]
+        },
+        {
+          "id": "CSE13B_tdd_quality_names",
+          "title": "Refactor a test's presentation",
+          "prompt": "A test named testMethod3 creates 25 fields through a generic fixture and checks a canceled booking cannot be confirmed. Propose a better name and focused setup while preserving its intent.",
+          "skillId": "CSE13B_tdd_quality_maintain",
+          "sourceIds": [
+            "CSE13B_src_tdd",
+            "CSE13B_src_quality"
+          ],
+          "kind": "open",
+          "explanation": "A reader should understand the protected behavior without decoding a large shared fixture.",
+          "rubric": [
+            "Name the rejected state transition explicitly.",
+            "Show canceled state and required identity, hiding irrelevant safe defaults only.",
+            "Assert the documented failure and unchanged state through the public API."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CSE13B_larger_tests",
+      "name": "Integration, SQL and system testing",
+      "description": "Test real boundaries with controlled data, reliable synchronization and assertions that reflect user outcomes.",
+      "prerequisites": [
+        "CSE13B_structural_testing",
+        "CSE13B_property_testing",
+        "CSE13B_doubles_testability",
+        "CSE13B_tdd_quality",
+        "CSE13B_operations"
+      ],
+      "sourceIds": [
+        "CSE13B_src_larger",
+        "CSE13B_src_book_larger"
+      ],
+      "skills": [
+        {
+          "id": "CSE13B_larger_tests_database",
+          "name": "Database integration",
+          "description": "Design query partitions and isolate persistent test data."
+        },
+        {
+          "id": "CSE13B_larger_tests_system",
+          "name": "System workflows",
+          "description": "Test user-visible behavior with meaningful synchronization."
+        },
+        {
+          "id": "CSE13B_larger_tests_balance",
+          "name": "Evidence and scope",
+          "description": "Combine automated and exploratory checks and report limits."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Integration tests target an actual boundary",
+          "paragraphs": [
+            "A repository test should exercise the query, mapping and relevant database semantics. An in-memory replacement may differ in SQL dialect, constraints, transactions, null handling or collation. Choose an environment sufficiently faithful to the risk, and make setup/cleanup reliable so reruns start from a known state.",
+            "Worked SQL case: WHERE active=true AND score>=50 needs rows covering active/inactive and below/on/above threshold. Include a row that would pass except for one condition to expose each filter. If nullable columns are allowed, account for SQL's three-valued logic: comparison with NULL is unknown and does not pass WHERE."
+          ]
+        },
+        {
+          "title": "Worked browser workflow",
+          "paragraphs": [
+            "For booking cancellation, create an isolated booking through a supported setup path, sign in as its owner, cancel it, wait for the observable completion state and verify it no longer appears as active. A robust test checks the persisted or refreshed outcome, not only a temporary toast.",
+            "Use stable meaningful locators and wait for a specific condition rather than a fixed sleep. Page objects can centralize interaction details, but assertions should keep business intent visible. A test that passes only on a fast laptop can be a synchronization failure; retrying indefinitely hides rather than explains it."
+          ]
+        },
+        {
+          "title": "Isolation, realism and limits",
+          "paragraphs": [
+            "Give tests unique data and clean it up with transactions or explicit teardown suited to the scenario. A rollback fixture may not cover behavior performed through another connection or an asynchronous worker, so state that boundary. Avoid sharing real user accounts or production data in a teaching fixture.",
+            "Keep a small set of representative system workflows and support them with faster lower-level tests. Exploratory testing can uncover interaction and usability problems that scripted checks did not anticipate. Report what was exercised, the environment, failures and untested boundaries; a local system test is not proof that a production deployment is healthy."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "CSE13B_larger_tests_sql",
+          "title": "Query-result count",
+          "prompt": "Rows (active,score) are (true,50), (true,49), (false,70), (true,NULL). For WHERE active=true AND score>=50, how many rows are selected under SQL three-valued logic?",
+          "skillId": "CSE13B_larger_tests_database",
+          "sourceIds": [
+            "CSE13B_src_larger",
+            "CSE13B_src_book_larger"
+          ],
+          "kind": "integer",
+          "explanation": "Only (true,50) passes both conditions. NULL>=50 is unknown and is not selected.",
+          "answer": "1"
+        },
+        {
+          "id": "CSE13B_larger_tests_independence",
+          "title": "Isolate persistent tests",
+          "prompt": "Two integration tests create the same fixed booking ID and run in parallel. Describe a data-isolation strategy and explain a limitation of transaction rollback when asynchronous workers use separate connections.",
+          "skillId": "CSE13B_larger_tests_database",
+          "sourceIds": [
+            "CSE13B_src_larger",
+            "CSE13B_src_book_larger"
+          ],
+          "kind": "open",
+          "explanation": "A transaction boundary only isolates the work it actually contains.",
+          "rubric": [
+            "Use unique test identifiers or isolated database/schema instances.",
+            "Ensure setup and cleanup handle success and failure.",
+            "Recognize separate worker transactions may commit outside the test transaction and require explicit lifecycle handling."
+          ]
+        },
+        {
+          "id": "CSE13B_larger_tests_wait",
+          "title": "Replace a fixed sleep",
+          "prompt": "A browser test sleeps one second after Cancel and then checks a toast. Propose a more reliable synchronization and a stronger assertion of the canceled state.",
+          "skillId": "CSE13B_larger_tests_system",
+          "sourceIds": [
+            "CSE13B_src_larger",
+            "CSE13B_src_book_larger"
+          ],
+          "kind": "open",
+          "explanation": "A transient message can appear before persistence completes; a fixed delay depends on machine and network speed.",
+          "rubric": [
+            "Wait for a specific completion/status condition with a bounded timeout.",
+            "Check the booking's durable state through refresh or another supported observation.",
+            "Use a stable locator and preserve diagnostic information on timeout."
+          ]
+        },
+        {
+          "id": "CSE13B_larger_tests_pageobject",
+          "title": "Keep page objects useful",
+          "prompt": "A page object includes login, booking and cancellation interactions, but also swallows all exceptions and returns true. Explain the testing problem and a better interface.",
+          "skillId": "CSE13B_larger_tests_system",
+          "sourceIds": [
+            "CSE13B_src_larger",
+            "CSE13B_src_book_larger"
+          ],
+          "kind": "open",
+          "explanation": "A helper that reports success regardless of outcome destroys the test's oracle.",
+          "rubric": [
+            "Do not hide failed interactions or timeouts.",
+            "Expose meaningful operations/results while allowing test assertions to remain visible.",
+            "Keep locators/waits centralized and produce useful failures."
+          ]
+        },
+        {
+          "id": "CSE13B_larger_tests_evidence",
+          "title": "Report a verification boundary",
+          "prompt": "A suite passes against a local database and browser, but no staging or production check ran. Write a concise result report stating what is supported and one important remaining risk.",
+          "skillId": "CSE13B_larger_tests_balance",
+          "sourceIds": [
+            "CSE13B_src_larger",
+            "CSE13B_src_book_larger"
+          ],
+          "kind": "open",
+          "explanation": "Accurate reporting separates tested behavior from deployment assumptions.",
+          "rubric": [
+            "State the local environment and workflows actually exercised.",
+            "Explicitly leave staging/production verification unperformed.",
+            "Name a plausible remaining configuration or integration risk without asserting a live failure."
+          ]
+        }
+      ]
+    }
+  ]
+}

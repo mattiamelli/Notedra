@@ -13,8 +13,10 @@ const sources = new Map(topicStudy.sources.map(source=>[source.id,source]));
 /** Authored atomic practice evidence is separate from assessment mapping/grade eligibility. */
 export function eligibleSkill(exercise:PracticeExercise):SkillContext|undefined {
  const skill=skills.get(exercise.skillId);
- if (!skill || skill.topicId!==exercise.topicId || skill.subjectId!==exercise.subjectId || exercise.authorship!=='AUTHORED_PRACTICE' || exercise.source.kind!=='LECTURE') return;
- if (!skill.sources.some(id=>{const source=sources.get(id);return source?.confidence==='HIGH' && source.kind==='PDF_PAGE_RANGE' && source.documentId===exercise.source.documentId && source.filename===exercise.source.filename && source.locator===exercise.source.locator && source.precision===exercise.source.precision;})) return;
+ if (!skill || skill.topicId!==exercise.topicId || skill.subjectId!==exercise.subjectId || exercise.authorship!=='AUTHORED_PRACTICE') return;
+ const curriculum=exercise.task.kind==='curriculum'&&exercise.source.kind==='CURRICULUM';
+ if(!curriculum&&exercise.source.kind!=='LECTURE')return;
+ if (!skill.sources.some(id=>{const source=sources.get(id);return source?.confidence==='HIGH' && source.kind===(curriculum?'DOCUMENT_SECTION':'PDF_PAGE_RANGE') && source.documentId===exercise.source.documentId && source.filename===exercise.source.filename && source.locator===exercise.source.locator && source.precision===exercise.source.precision;})) return;
  return skill;
 }
 export interface Mistake {

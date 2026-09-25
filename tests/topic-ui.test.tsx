@@ -11,6 +11,7 @@ import { studyModes } from '../src/topic-study/types';
 import { studyPath } from '../src/topic-study/AcademicViews';
 import { catalog,allExercises,exercisePath,attemptPath } from '../src/practice/catalog';
 import { PracticeService } from '../src/practice/service';
+import {curriculumCourses} from '../src/curriculum/registry';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let container:HTMLDivElement,root:Root;
 beforeEach(()=>{container=document.createElement('div');document.body.append(container);root=createRoot(container);vi.spyOn(window,'scrollTo').mockImplementation(()=>{});});
@@ -27,9 +28,11 @@ async function render(path:string,browser=false,repo?:ReturnType<typeof reposito
 }
 async function click(selector:string){const el=container.querySelector<HTMLElement>(selector);expect(el,selector).not.toBeNull();await act(async()=>el!.click());await settleRoutes();}
 async function button(name:string){const el=[...container.querySelectorAll('button')].find(b=>b.textContent===name);expect(el,name).toBeDefined();await act(async()=>el!.click());await settleRoutes();}
-const pilots=lessons.map(l=>topicStudy.topics.find(t=>t.id===l.topicId)!);
+const pilotIds=new Set(catalog.map(exercise=>exercise.topicId));
+const pilots=lessons.filter(lesson=>pilotIds.has(lesson.topicId)).map(l=>topicStudy.topics.find(t=>t.id===l.topicId)!);
+const curriculumTopics=curriculumCourses.flatMap(course=>course.topics);
 describe('topic learning routes and modes',()=>{
- it.each(studyModes)('all 43 topics resolve directly in $id mode',async mode=>{
+ it.each(studyModes)('all registered topics resolve directly in $id mode',async mode=>{
   for(const topic of topicStudy.topics){await render(studyPath(topic,mode.id));expect(container.querySelector('h1')?.textContent).toBe(topic.name);expect(container.querySelectorAll('[role="tab"]')).toHaveLength(7);expect(container.querySelector('[aria-selected="true"]')?.textContent).toBe(mode.label);expect(container.querySelectorAll('main')).toHaveLength(1);}
  },30_000);
  it.each(['/co/CO_T04_DATA_REP_RADIX_INTEGER/nope','/co/IP_T02_CONTROL_FLOW/learn','/ip/MISSING/flashcards','/rl/RL_T01_PROP_LOGIC/learn/extra'])('rejects invalid topic/mode %s',async path=>{await render(path);expect(container.querySelector('h1')?.textContent).toBe('Page not found');});
@@ -47,6 +50,21 @@ describe('topic learning routes and modes',()=>{
   await render(studyPath(topic));await click('#study-mode-1');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(lessonBlocks(topic.id));
   await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.getAttribute('aria-hidden')).toBe('false');
   await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(expected.length);expect([...container.querySelectorAll('.ds-practice-card>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
+ });
+ it.each(curriculumTopics)('renders authored curriculum lessons, recall and registered practice for $id',async authored=>{
+  const topic=topicStudy.topics.find(item=>item.id===authored.id)!;
+  expect(catalog.filter(exercise=>exercise.topicId===topic.id)).toHaveLength(0);
+  await render(studyPath(topic,'learn'));expect(container.querySelectorAll('article.ds-lesson-block')).toHaveLength(authored.lesson.length);
+  for(const block of authored.lesson)expect(container.textContent).toContain(block.title);
+  const cards=flashcards.filter(card=>card.topicId===topic.id);expect(cards.length).toBeGreaterThan(0);
+  await click('#study-mode-3');expect(container.querySelector('#card-prompt')?.textContent).toBe(cards[0].prompt);
+  await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.textContent).toContain(cards[0].answer);
+  await click('#study-mode-4');
+  const expected=allExercises.filter(exercise=>exercise.topicId===topic.id);
+  expect(expected.map(exercise=>exercise.id)).toEqual(authored.exercises.map(exercise=>exercise.id));
+  expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(authored.exercises.length);
+  expect([...container.querySelectorAll('.ds-practice-card>a')].map(link=>link.getAttribute('href'))).toEqual(expected.map(exercisePath));
+  await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
  });
  it('completed IP modes retain overview/map and show real study content with honest unavailable global features',async()=>{
   const t=topicStudy.topics.find(t=>t.id==='IP_T01_JAVA_BASICS')!;await render(studyPath(t));expect(container.textContent).toContain(t.description);

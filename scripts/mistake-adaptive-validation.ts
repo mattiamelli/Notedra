@@ -20,7 +20,7 @@ export function validateMistakes(){
   const {schemaVersion:_schema,content:_content,resume:_resume,attempts:_attempts,...record}=attempt;
   const evidence=deriveEvidence([record],[],now);assert.equal(evidence.limited.length,0);assert.equal(evidence.mistakes.length,0);
  }
- return {schema:3,db:3,atomicItems:allExercises.length};
+ return {schema:STUDENT_SCHEMA_VERSION,db:STUDENT_DB_VERSION,atomicItems:allExercises.length};
 }
 export function validateAdaptive(candidate:unknown=actions){
  assert.deepEqual(candidate,buildAdaptiveActions(),'Adaptive action projection is stale.');const ids=new Set<string>();

@@ -51,6 +51,11 @@ export function collectEvidence(data: Backup, banks: readonly ExamBank[], now: n
     if (!skill) {limit('No eligible exact atomic skill mapping.'); continue;}
     if (time > now) {limit('Submission ahead of this clock.'); continue;}
     const grade = gradeResponse(e, attempt.answer);
+    if (e.task.kind === 'curriculum' && e.task.format === 'open' && grade.status === 'NOT_AUTOGRADABLE') {
+      result.open.push({courseId: e.subjectId, topicId: e.topicId, mechanism: e.skillId,
+        session: attempt.attemptId, timestamp: time, integrated: false, kind: 'Open/rubric practice'});
+      continue;
+    }
     if (grade.status !== 'GRADED') {limit('No deterministic correctness result.'); continue;}
     let source: Observation['source'] = 'Normal practice', difficulty: Observation['difficulty'] = 'Unknown';
     let sessionId = attempt.attemptId;

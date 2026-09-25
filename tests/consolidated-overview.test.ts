@@ -1,8 +1,9 @@
 import {describe,expect,it} from 'vitest';
 import {topicStudy,overviewIntroduction} from '../src/topic-study/content';
+import {academicIndex} from '../src/academic/navigation';
 describe('written topic introductions',()=>{
  it('derives a concise source-linked introduction for every registered lesson',()=>{
-  expect(topicStudy.topics.length).toBe(43);
+  expect(topicStudy.topics.length).toBe(academicIndex.topics.length);
   for(const topic of topicStudy.topics){
    const overview=overviewIntroduction(topic.id);
    expect(overview,topic.id).not.toBeNull();

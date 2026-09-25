@@ -73,8 +73,9 @@ describe('application routes and canonical navigation', () => {
   });
   it('renders the Dashboard at /dashboard', async () => {
     await renderRoute('/dashboard'); expect(heading()).toBe('Dashboard');
-    expect(container.querySelectorAll('.ds-course-card')).toHaveLength(3);
-    expect(container.textContent).toContain('3 courses · 43 topics');
+    expect(container.querySelectorAll('.ds-course-card')).toHaveLength(courses.filter(course=>course.trimester===1).length);
+    expect(container.textContent).toContain(`${courses.length} courses · ${academicIndex.topics.length} topics`);
+    expect([...container.querySelectorAll('.ds-course-card')].map(link=>link.getAttribute('href'))).toEqual(['/co','/rl','/ip']);
   });
   it.each(courses)('renders $path from canonical course data', async course => {
     await renderRoute(course.path);
@@ -98,8 +99,9 @@ describe('application routes and canonical navigation', () => {
     expect(heading()).toBe(area.title);
     // Step 4 intentionally replaces only the Practice placeholder with authored items, expanded for CO in Step 6.
     if (area.path === '/practice') {
-      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);
-      expect(allExercises.every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
+      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(Math.min(48,allExercises.length));
+      expect(allExercises.slice(0,48).every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
+      expect(container.textContent).toContain(`${allExercises.length} authored exercises`);
       expect(container.textContent).toContain('Authored practice');
     } else if (area.path === '/mistakes' || area.path === '/study-plan' || area.path === '/exams' || area.path === '/progress') {
       expect(container.querySelector('[role="status"]')?.textContent).toContain('Student storage is not connected.');
@@ -116,7 +118,7 @@ describe('application routes and canonical navigation', () => {
 describe('shell interaction and browser history', () => {
   it('provides the desktop navigation, landmark, skip link and all six primary destinations', async () => {
     await renderRoute('/dashboard');
-    const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')];
+    const links = [...container.querySelectorAll('nav[aria-label="Primary navigation"] a')].filter(link=>!link.closest('.ds-curriculum-nav'));
     expect(links.map(link => link.getAttribute('href'))).toEqual(['/dashboard','/dashboard#courses','/practice','/progress','/study-plan','/account#settings']);
     expect(container.querySelectorAll('main')).toHaveLength(1);
     expect(container.querySelector('.ds-skip-link')?.getAttribute('href')).toBe('#ds-content');

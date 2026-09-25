@@ -2,6 +2,7 @@ import { LearningError, validateAttempt, type Answer, type Attempt, type LoadedS
 import type { StudentRepository } from '../learning/repository';
 import { getExercise, versionBinding } from './catalog';
 import { gradeResponse, initialAnswer, validateResponse } from './runtime';
+import {isCurriculumRubricFeedback} from '../curriculum/grading';
 import type { GradeResult } from './types';
 import type { PracticeExercise as Exercise } from './registered-types';
 export type Resolution = {status: 'AVAILABLE'; exercise: Exercise} | {status: 'UNAVAILABLE'; message: string};
@@ -48,6 +49,7 @@ export class PracticeService {
   retry(attempt: Attempt, newId: string, token: WriteToken) {
     const exercise = requireExercise(attempt);
     if (attempt.status !== 'SUBMITTED') return Promise.reject(new LearningError('INVALID', 'Submit this attempt before retrying.'));
-    return this.start(exercise.id, newId, token, feedbackFor(attempt).status === 'GRADED' ? true : null);
+    const feedback = feedbackFor(attempt);
+    return this.start(exercise.id, newId, token, feedback.status === 'GRADED' || isCurriculumRubricFeedback(feedback) ? true : null);
   }
 }

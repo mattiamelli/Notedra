@@ -14,8 +14,8 @@ describe('public release privacy and response preparation',()=>{
     expect(()=>validateEnrichmentBundle(chunks,[{file:'robots.txt',prefix:content.slice(0,16),content:content+'source text'}])).toThrow();
     expect(()=>validateEnrichmentBundle(chunks,[{file:'source.txt',prefix:content.slice(0,16),content}])).toThrow();
   });
-  it('contains only the landing/legal pages, 3 courses, 43 topic overviews and the Assembly tool',()=>{
-    const pages=publicReleasePages();expect(pages).toHaveLength(50);expect(new Set(pages.map(p=>p.path)).size).toBe(50);
+  it('contains only the landing/legal pages, 11 courses, 148 topic overviews and the Assembly tool',()=>{
+    const pages=publicReleasePages();expect(pages).toHaveLength(163);expect(new Set(pages.map(p=>p.path)).size).toBe(163);
     expect(pages.some(p=>/^\/(account|progress|practice|exams|mistakes|study-plan|dashboard)(\/|$)/.test(p.path))).toBe(false);
     expect(pages.filter(p=>['/','/privacy','/terms'].includes(p.path))).toHaveLength(3);
     expect(pages.map(p=>p.path)).toEqual([...pages.map(p=>p.path)].sort());
@@ -24,7 +24,7 @@ describe('public release privacy and response preparation',()=>{
   it('generates valid absolute HTTPS sitemap without learner IDs or query state',()=>{
     const doc=new DOMParser().parseFromString(sitemap(publicReleasePages()),'application/xml');
     const locations=[...doc.querySelectorAll('loc')].map(node=>node.textContent!);
-    expect(locations).toHaveLength(50);expect(locations.every(url=>url.startsWith(productionOrigin+'/')&&!url.includes('?'))).toBe(true);
+    expect(locations).toHaveLength(163);expect(locations.every(url=>url.startsWith(productionOrigin+'/')&&!url.includes('?'))).toBe(true);
   });
   it('escapes academic titles and descriptions as text',()=>{
     const html=releaseHtml(template,{path:'/co',title:'A < B & C',description:'"quoted" <script>bad</script>'});const doc=new DOMParser().parseFromString(html,'text/html');
@@ -38,7 +38,7 @@ describe('public release privacy and response preparation',()=>{
     expect(doc.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex,follow');expect(doc.querySelector('link[rel="canonical"]')).toBeNull();
   });
   it('does not rewrite missing assets or SEO files into application HTML',()=>{
-    const lines=releaseRedirects(publicReleasePages()).trim().split('\n');expect(lines.length).toBeLessThan(100);
+    const lines=releaseRedirects(publicReleasePages()).trim().split('\n');expect(lines).toHaveLength(publicReleasePages().length+12);
     expect(lines.some(line=>line.startsWith('/* ')||line.startsWith('/assets/')||line.startsWith('/robots.txt')||line.startsWith('/sitemap.xml'))).toBe(false);
     expect(lines.findIndex(line=>line.startsWith('/co/CO_T01_HISTORY '))).toBeLessThan(lines.findIndex(line=>line.startsWith('/co/* ')));
   });

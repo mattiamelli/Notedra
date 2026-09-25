@@ -479,7 +479,7 @@
   "common.no": "nein",
   "dashboard.exerciseProgress": "{completed} / {total} Übungen · {percentage} %",
   "dashboard.exerciseProgressAria": "Übungsfortschritt für {course}",
-  "dashboard.exerciseProgressHint": "Nach einer gültigen bewerteten Abgabe abgeschlossen; getrennt von Lernstand und Prüfungsbereitschaft.",
+  "dashboard.exerciseProgressHint": "Nach einer gültigen Abgabe abgeschlossen; unbewertete Arbeit belegt weder Beherrschung noch Prüfungsbereitschaft.",
   "dashboard.noExercises": "Keine geeigneten Übungen",
   "assemblyTrace.snapshot": "Angeforderte Werte am Prüfpunkt",
   "assemblyTrace.savedAnswer": "Gespeicherte Prüfpunktantwort",

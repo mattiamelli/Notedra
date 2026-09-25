@@ -4,6 +4,7 @@ import type {Course} from '../academic/navigation';
 /** Original vector headers: hardware traces, logic gates, and Java source. */
 export function CourseArtwork({course}: {course: Course}) {
   const id = useId();
+  if(course.trimester!==1)return <div className={`ds-course-art ds-curriculum-art ds-curriculum-art-${course.trimester}`} aria-hidden="true"><span className="ds-curriculum-symbol">{({CSE12A_CALC:'\u222b',CSE12B_HCIAP:'HCI',CSE12C_DM:'SQL',CSE13A_LA:'Ax = b',CSE13B_SDE:'{ }',CSE13C_ADS:'O(n)',CSE14A_PTS:'P(A)',CSE14B_CN:'TCP/IP'} as Record<string,string>)[course.subject_id]}</span><span className="ds-course-tag">{course.code}</span></div>;
   const co = course.subject_id === 'CSE1400_CO', rl = course.subject_id === 'CSE1300_RL';
   const color = co ? '#31baff' : rl ? '#25e5cd' : '#a78aff';
   return <div className="ds-course-art"><svg viewBox="0 0 320 112" preserveAspectRatio="xMidYMid slice" aria-hidden="true">

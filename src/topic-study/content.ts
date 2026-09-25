@@ -1,11 +1,12 @@
 import projection from '../generated/topic-study.json';
 import authoredLessons from './lessons.json';
 import authoredCards from './flashcards.json';
+import {curriculumProjection, curriculumLessons, curriculumFlashcards} from '../curriculum/study';
 import type { Flashcard, Lesson, StudyProjection, StudyTopic } from './types';
 function freeze<T>(value:T):T{if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
-export const topicStudy:StudyProjection=freeze(projection);
-export const lessons=freeze(authoredLessons as Lesson[]);
-export const flashcards=freeze(authoredCards as Flashcard[]);
+export const topicStudy:StudyProjection=freeze({subjects:[...projection.subjects,...curriculumProjection.subjects],topics:[...projection.topics,...curriculumProjection.topics],sources:[...projection.sources,...curriculumProjection.sources]});
+export const lessons=freeze([...authoredLessons as Lesson[],...curriculumLessons]);
+export const flashcards=freeze([...authoredCards as Flashcard[],...curriculumFlashcards]);
 export const lessonFor=(topicId:string)=>lessons.find(l=>l.topicId===topicId);
 /** Builds Overview copy only from already-authored, source-linked lesson prose. */
 export function overviewIntroduction(topicId:string){

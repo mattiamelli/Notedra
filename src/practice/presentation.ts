@@ -5,6 +5,7 @@ import type {PracticeExercise} from './registered-types';
 
 /** Presentation contract only. Persisted IDs, versions and grader bindings are unchanged. */
 export const exerciseFormats={
+ curriculum:{label:'Curriculum practice',renderer:'choice-integer-or-reasoning',validator:'curriculum',feedback:'exact answer or ungraded rubric'},
  'logic-build':{label:'Logical construction',renderer:'formula-slots',validator:'structured-logic',feedback:'truth counterexample'},
  'kmap-fill':{label:'Karnaugh map',renderer:'gray-cells',validator:'structured-logic',feedback:'cell assignments'},
  radix:{label:'Base conversion',renderer:'digits',validator:'radix-exact',feedback:'normalized reference'},
@@ -28,6 +29,7 @@ export function tupleFields(value:string,parts:number):string[]|null {
 /** Human-readable answer values; persisted canonical option identifiers stay internal. */
 export function displayAnswer(exercise:PracticeExercise,answer:import('../learning/contracts').Answer):string {
  const task=exercise.task;
+ if(task.kind==='curriculum'&&task.format==='choice'&&answer.kind==='choice')return answer.value.map(id=>task.options.find(option=>option.id===id)?.text??'Original option unavailable').join('\n');
  if(task.kind==='logic-build'&&answer.kind==='choice'){try{return booleanText(selectedFormula(task,answer.value));}catch{return 'Incomplete or unavailable structured answer';}}
  if(isInteractive(task))return displayInteractive(task,answer);
  if(typeof answer.value==='string'){

@@ -7,6 +7,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "generate:curriculum": "node --import tsx scripts/generate-curriculum.ts",
+    "validate:curriculum": "node --import tsx scripts/generate-curriculum.ts --check",
     "build:hosting": "node --import tsx scripts/build-hosting.ts",
     "build:sites": "pnpm build && pnpm build:hosting",
     "dev": "node --import tsx scripts/generate-academic-index.ts && node --import tsx scripts/generate-student-references.ts && node --import tsx scripts/validate-practice.ts && node --import tsx scripts/generate-topic-study.ts && node --import tsx scripts/validate-topic-content.ts && node --import tsx scripts/validate-co.ts && node --import tsx scripts/validate-rl.ts && node --import tsx scripts/validate-enrichment.ts && node --import tsx scripts/validate-ip.ts && vite --host 127.0.0.1",

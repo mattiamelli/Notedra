@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 import { projectTopicStudy,validateTopicProjection,checkTopicStudy,MAX_TOPIC_BYTES } from '../scripts/topic-projection';
 import { loadPackFiles,readDocuments } from '../scripts/content/manifest';
 import type { ContentPack } from '../scripts/content/types';
-import { topicStudy,mapStructure } from '../src/topic-study/content';
+import { mapStructure } from '../src/topic-study/content';
+import topicStudy from '../src/generated/topic-study.json';
 const pack=readDocuments(loadPackFiles()).pack as ContentPack;
 describe('canonical topic study projection',()=>{
  it('matches all canonical fields, counts, ownership and projected artifact',()=>{

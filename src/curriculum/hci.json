@@ -1,0 +1,3328 @@
+{
+  "id": "CSE12B_HCIAP",
+  "code": "CSE12B",
+  "name": "Human Computer Interaction and AI-Assisted Prototyping",
+  "short": "HCIAP",
+  "trimester": 2,
+  "slug": "hci",
+  "description": "Archive-grounded preparation in user-centred requirements, interaction design, prototyping and evaluation, with separately labelled legacy web implementation practice. The new Generative-AI prototyping component is a documented source gap, not an invented tool syllabus.",
+  "limitations": [
+    "The supplied README and HCIAP instructions describe a new first-year course formally replacing CSE1500 WDT. The CSE3500 HCI material is subject-matter background, not evidence that the entire former third-year elective survives.",
+    "The archive provides no teaching material, approved-tool list, prompting workflow, assessment rubric or worked project for the new Generative-AI-assisted prototyping component. The final topic applies inherited HCI methods to project planning and explicitly records this gap; it does not teach or certify unsupported GenAI techniques.",
+    "HTML/CSS, JavaScript, REST, Node/Express, React and WebSockets are optional predecessor implementation background. Their presence, including old WDT texts relabelled CSE12B, does not establish that they are on the new syllabus.",
+    "Old HCI and WDT marks, dates, pass rules and exam formats are not transferred to CSE12B. Statistical evaluation and adaptive-interface theory are included as legacy extensions with unconfirmed new-course depth.",
+    "Design and evaluation tasks use open rubrics. Alternative defensible answers are expected; the material does not claim objective automatic grading of designs, usability or research conclusions.",
+    "All 52 supplied non-hidden PDF/Markdown files were inventoried and text-extracted; document-level contents and relevant course passages were inspected. The 674-page textbook was consulted selectively, not read cover to cover. Not every illustration or historical solution was independently verified.",
+    "Lessons and exercises are original adaptations, not copied exam questions. Supplied summaries contain OCR errors, broad claims and speculation; examples avoid relying on disputed historical technical claims or presenting them as current standards."
+  ],
+  "sources": [
+    {
+      "id": "HCI_SRC_001",
+      "filename": "From HCI/Designing User Experience.pdf",
+      "locator": "PDF pages 1-674; reference textbook; course-relevant chapters only, not a new-course reading requirement"
+    },
+    {
+      "id": "HCI_SRC_002",
+      "filename": "From HCI/HCI Exam Practice/HCI Expert Analysis Practice Solutions.pdf",
+      "locator": "PDF pages 1-4; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_003",
+      "filename": "From HCI/HCI Exam Practice/HCI General Exam Practice Solutions.pdf",
+      "locator": "PDF pages 1-6; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_004",
+      "filename": "From HCI/HCI Exam Practice/HCI Inclusivity Practice Solutions.pdf",
+      "locator": "PDF pages 1-5; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_005",
+      "filename": "From HCI/HCI LLM Files/Instructions.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    },
+    {
+      "id": "HCI_SRC_006",
+      "filename": "From HCI/HCI LLM Files/Knowledge Files/Assignments.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_007",
+      "filename": "From HCI/HCI LLM Files/Knowledge Files/Course Overview.md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "HCI_SRC_008",
+      "filename": "From HCI/HCI LLM Files/Knowledge Files/Designing User Experience.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_009",
+      "filename": "From HCI/HCI LLM Files/Knowledge Files/Exams.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_010",
+      "filename": "From HCI/HCI LLM Files/Knowledge Files/Lectures.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_011",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 1 - Introduction to HCI.pdf",
+      "locator": "PDF pages 1-69; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_012",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 2 - Requirements and Information Architecture.pdf",
+      "locator": "PDF pages 1-83; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_013",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 3 - User Experience and Accessibility.pdf",
+      "locator": "PDF pages 1-41; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_014",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 4 - Design and Prototyping.pdf",
+      "locator": "PDF pages 1-69; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_015",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 5 - Expert Evaluation.pdf",
+      "locator": "PDF pages 1-61; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_016",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 6 - User Evaluation and Controlled Experiments.pdf",
+      "locator": "PDF pages 1-66; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_017",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 7 - Interactive Systems.pdf",
+      "locator": "PDF pages 1-45; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_018",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 8 - Conversational Interfaces.pdf",
+      "locator": "PDF pages 1-102; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_019",
+      "filename": "From HCI/HCI Lectures/HCI Lecture 9 - Exam Prep.pdf",
+      "locator": "PDF pages 1-11; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_020",
+      "filename": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Endterm 2020.pdf",
+      "locator": "PDF pages 1-22; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_021",
+      "filename": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Endterm 2022.pdf",
+      "locator": "PDF pages 1-14; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_022",
+      "filename": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Endterm 2024.pdf",
+      "locator": "PDF pages 1-33; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_023",
+      "filename": "From WDT WEB/WDT WEB Exams/WDT WEB Endterms/WDT WEB Practice Endterm.pdf",
+      "locator": "PDF pages 1-24; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_024",
+      "filename": "From WDT WEB/WDT WEB Exams/WDT WEB Resits/WDT WEB Resit 2024.pdf",
+      "locator": "PDF pages 1-34; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_025",
+      "filename": "From WDT WEB/WDT WEB LLM Files/Instructions.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    },
+    {
+      "id": "HCI_SRC_026",
+      "filename": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Course Overview.md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "HCI_SRC_027",
+      "filename": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Exams.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_028",
+      "filename": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Exercises.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_029",
+      "filename": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Lab Assignments.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_030",
+      "filename": "From WDT WEB/WDT WEB LLM Files/Knowledge Files/Lectures.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_031",
+      "filename": "From WDT WEB/WDT WEB Lab Assignment Solutions/WDT WEB Lab Assignment 4 Solutions.pdf",
+      "locator": "PDF pages 1-6; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_032",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 1 - Why Web Technology & HTTP.pdf",
+      "locator": "PDF pages 1-128; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_033",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 2 - HTML and CSS.pdf",
+      "locator": "PDF pages 1-76; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_034",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 3 - JavaScript.pdf",
+      "locator": "PDF pages 1-20; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_035",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 4 - REST and RESTful APIs.pdf",
+      "locator": "PDF pages 1-41; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_036",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 5 - NodeJS and Express.pdf",
+      "locator": "PDF pages 1-21; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_037",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 6 - NodeJS & Postgres & Design Patterns.pdf",
+      "locator": "PDF pages 1-17; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_038",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 7 - More About React.pdf",
+      "locator": "PDF pages 1-8; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_039",
+      "filename": "From WDT WEB/WDT WEB Lectures/WDT WEB Lecture 8 - Real-time Applications with Web Sockets.pdf",
+      "locator": "PDF pages 1-22; lecture title identifies the subject; printed slide numbers may differ from PDF pages"
+    },
+    {
+      "id": "HCI_SRC_040",
+      "filename": "From WDT WEB/WDT WEB Notes.pdf",
+      "locator": "PDF pages 1-18; legacy exercises, solutions or notes; not current assessment rules"
+    },
+    {
+      "id": "HCI_SRC_041",
+      "filename": "HCIAP LLM Files/Instructions.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    },
+    {
+      "id": "HCI_SRC_042",
+      "filename": "HCIAP LLM Files/Knowledge Files/Assignments (HCI).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_043",
+      "filename": "HCIAP LLM Files/Knowledge Files/Course Overview (HCI).md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "HCI_SRC_044",
+      "filename": "HCIAP LLM Files/Knowledge Files/Course Overview (WDT WEB).md",
+      "locator": "Local Markdown; legacy course overview; assessment and speculative additions are not new-course requirements"
+    },
+    {
+      "id": "HCI_SRC_045",
+      "filename": "HCIAP LLM Files/Knowledge Files/Designing User Experience.md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_046",
+      "filename": "HCIAP LLM Files/Knowledge Files/Exams (HCI).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_047",
+      "filename": "HCIAP LLM Files/Knowledge Files/Exams (WDT WEB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_048",
+      "filename": "HCIAP LLM Files/Knowledge Files/Exercises (WDT WEB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_049",
+      "filename": "HCIAP LLM Files/Knowledge Files/Lab Assignments (WDT WEB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_050",
+      "filename": "HCIAP LLM Files/Knowledge Files/Lectures (HCI).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_051",
+      "filename": "HCIAP LLM Files/Knowledge Files/Lectures (WDT WEB).md",
+      "locator": "Local Markdown; named chapter, lecture or task headings; transcription may contain OCR errors"
+    },
+    {
+      "id": "HCI_SRC_052",
+      "filename": "README.md",
+      "locator": "Local Markdown; curriculum-status and scope notes"
+    }
+  ],
+  "topics": [
+    {
+      "id": "HCI_PACT",
+      "name": "People, activities, contexts and technologies",
+      "description": "Inherited HCI foundations for user-centred analysis; not a claim about official assessment. ",
+      "prerequisites": [],
+      "sourceIds": [
+        "HCI_SRC_011",
+        "HCI_SRC_006",
+        "HCI_SRC_001",
+        "HCI_SRC_041",
+        "HCI_SRC_052"
+      ],
+      "skills": [
+        {
+          "id": "HCI_PACT_S1",
+          "name": "Apply PACT",
+          "description": "Connect differences in people, activities, contexts and technologies to design consequences."
+        },
+        {
+          "id": "HCI_PACT_S2",
+          "name": "Model tasks and users",
+          "description": "Build evidence-aware personas, scenarios and task decompositions."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Start with the activity, not the screen",
+          "paragraphs": [
+            "Human-computer interaction studies how people use systems to achieve goals and how to design that interaction. A technically functioning application may still be unusable when its labels, sequence or assumptions conflict with the user's situation. Usability concerns effectiveness, efficiency and satisfaction in a context of use; user experience includes broader perceptions before, during and after use.",
+            "PACT separates People, Activities, Contexts and Technologies while keeping their interactions visible. For a visitor finding an accessible route, consider mobility and language, the goal of reaching a destination, outdoor glare and time pressure, and a phone with intermittent connectivity. Each observation should lead to a design implication or a question for research rather than a generic list of features."
+          ]
+        },
+        {
+          "title": "Represent users without inventing evidence",
+          "paragraphs": [
+            "A persona is a concrete representation of a relevant user pattern, not a licence to invent demographic stereotypes. Distinguish observed facts from assumptions. A scenario explains who is trying to achieve what, in which setting and with which obstacles. Two personas are useful when their needs create materially different design constraints, not merely when their names differ.",
+            "For example, a frequent commuter may value fast repeated actions while a first-time visitor needs orientation and explanation. Those are hypotheses until supported by evidence. Write scenarios that include interruptions and recovery: the visitor chooses a route, loses connectivity, then checks whether the previous choice was saved. This makes hidden requirements visible."
+          ]
+        },
+        {
+          "title": "Decompose a task while preserving its goal",
+          "paragraphs": [
+            "Hierarchical task analysis starts with a goal, decomposes it into subgoals/actions and adds a plan explaining order, repetition or conditions. For reserving a study room: find available rooms, compare suitability, choose a slot, confirm and verify the reservation. A plan can say to repeat search if no room meets the requirements.",
+            "A task model describes what the person must accomplish, not just the current interface's clicks. Avoid automating every existing step before asking whether it is necessary. Validate the model with plausible exceptions, such as no available room or a cancelled booking, and use it later to choose prototype tasks and evaluation measures."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Context factor",
+          "prompt": "A traveller cannot read a screen in direct sunlight. Which PACT category most directly captures the sunlight?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PACT_E01_O1",
+              "text": "People"
+            },
+            {
+              "id": "HCI_PACT_E01_O2",
+              "text": "Activities"
+            },
+            {
+              "id": "HCI_PACT_E01_O3",
+              "text": "Contexts"
+            },
+            {
+              "id": "HCI_PACT_E01_O4",
+              "text": "Database schemas"
+            }
+          ],
+          "explanation": "Sunlight is a physical context condition that interacts with display technology.",
+          "id": "HCI_PACT_E01",
+          "skillId": "HCI_PACT_S1",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ],
+          "answer": "HCI_PACT_E01_O3"
+        },
+        {
+          "title": "Station PACT",
+          "prompt": "Analyse a first-time visitor buying a ticket on a phone at a noisy station with weak connectivity. Give one observation and design implication for each PACT category.",
+          "kind": "open",
+          "explanation": "Relevant dimensions include experience/language, ticket purchase, noise/time pressure, and phone/network constraints.",
+          "rubric": [
+            "Cover all four categories.",
+            "Connect each observation to a concrete implication.",
+            "Mark assumptions instead of presenting invented user evidence."
+          ],
+          "id": "HCI_PACT_E02",
+          "skillId": "HCI_PACT_S1",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ]
+        },
+        {
+          "title": "Goal or interface step",
+          "prompt": "Which statement best describes a user goal?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PACT_E03_O1",
+              "text": "Press the blue rectangle"
+            },
+            {
+              "id": "HCI_PACT_E03_O2",
+              "text": "Open menu number three"
+            },
+            {
+              "id": "HCI_PACT_E03_O3",
+              "text": "Call the click handler"
+            },
+            {
+              "id": "HCI_PACT_E03_O4",
+              "text": "Reserve a quiet room for tomorrow"
+            }
+          ],
+          "explanation": "The reservation expresses the intended outcome independent of a particular interface.",
+          "id": "HCI_PACT_E03",
+          "skillId": "HCI_PACT_S2",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ],
+          "answer": "HCI_PACT_E03_O4"
+        },
+        {
+          "title": "Contrasting personas",
+          "prompt": "For a campus navigation service, propose two user patterns with different needs. Identify which details require research.",
+          "kind": "open",
+          "explanation": "A frequent campus user and a first-time visitor with an accessibility requirement can reveal different needs, but the proposal remains provisional.",
+          "rubric": [
+            "Make differences relevant to navigation tasks.",
+            "Avoid unsupported demographic stereotypes.",
+            "Name evidence needed to validate the patterns."
+          ],
+          "id": "HCI_PACT_E04",
+          "skillId": "HCI_PACT_S2",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ]
+        },
+        {
+          "title": "Task hierarchy",
+          "prompt": "Decompose booking a room into a goal, at least four subgoals and a plan that handles no suitable availability.",
+          "kind": "open",
+          "explanation": "A useful hierarchy covers search, comparison, choice, confirmation and verification, with a conditional return to search or a clear no-result outcome.",
+          "rubric": [
+            "Separate goal and actions.",
+            "Give a meaningful ordering/conditional plan.",
+            "Handle the failure case without pretending a booking succeeded."
+          ],
+          "id": "HCI_PACT_E05",
+          "skillId": "HCI_PACT_S2",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ]
+        },
+        {
+          "title": "Usability evidence",
+          "prompt": "Which observation most directly measures effectiveness for a booking task?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PACT_E06_O1",
+              "text": "The number of colours used"
+            },
+            {
+              "id": "HCI_PACT_E06_O2",
+              "text": "Whether the intended booking was successfully completed"
+            },
+            {
+              "id": "HCI_PACT_E06_O3",
+              "text": "The developer's preferred framework"
+            },
+            {
+              "id": "HCI_PACT_E06_O4",
+              "text": "The number of source files"
+            }
+          ],
+          "explanation": "Effectiveness concerns successful achievement of the specified goal.",
+          "id": "HCI_PACT_E06",
+          "skillId": "HCI_PACT_S1",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ],
+          "answer": "HCI_PACT_E06_O2"
+        },
+        {
+          "title": "Scenario interruption",
+          "prompt": "Write a short scenario in which a visitor starts a route, receives a call and then resumes navigation. Derive two requirements.",
+          "kind": "open",
+          "explanation": "Interruption exposes needs for preserved state and a clear current location/next step.",
+          "rubric": [
+            "Include an actual goal and context.",
+            "Describe interruption and resumption.",
+            "Derive two traceable requirements rather than unrelated features."
+          ],
+          "id": "HCI_PACT_E07",
+          "skillId": "HCI_PACT_S2",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ]
+        },
+        {
+          "title": "Technology-first critique",
+          "prompt": "A team starts with: We must use a conversational interface. Explain what PACT evidence should be gathered before accepting that choice.",
+          "kind": "open",
+          "explanation": "Task structure, language, environment, user preferences and available input/output channels determine suitability.",
+          "rubric": [
+            "Question task and context fit.",
+            "Consider alternatives for noisy or private settings.",
+            "Propose evidence that could support or reject the choice."
+          ],
+          "id": "HCI_PACT_E08",
+          "skillId": "HCI_PACT_S1",
+          "sourceIds": [
+            "HCI_SRC_011",
+            "HCI_SRC_006",
+            "HCI_SRC_001",
+            "HCI_SRC_041",
+            "HCI_SRC_052"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_REQUIREMENTS",
+      "name": "User research and requirements",
+      "description": "Inherited HCI elicitation and analysis methods, with explicit evidence-to-requirement traceability.",
+      "prerequisites": [
+        "HCI_PACT"
+      ],
+      "sourceIds": [
+        "HCI_SRC_012",
+        "HCI_SRC_006",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_REQUIREMENTS_S1",
+          "name": "Select research methods",
+          "description": "Choose interviews, observation and group methods for a stated uncertainty."
+        },
+        {
+          "id": "HCI_REQUIREMENTS_S2",
+          "name": "Write testable requirements",
+          "description": "Transform evidence into specific requirements and acceptance criteria."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Ask what you need to learn",
+          "paragraphs": [
+            "Requirements work starts with uncertainty about users' goals, constraints and current practices. Interviews reveal explanations and experiences; observation exposes behaviour and workarounds people may forget to mention. A focus group can surface contrasting views but its discussion is influenced by group dynamics. Choose the method for the question instead of treating every method as interchangeable.",
+            "A neutral interview prompt asks about a recent concrete event: Tell me about the last time you could not find a room. A leading question such as Would our excellent map help you? supplies the desired answer. Ask follow-ups about actions, obstacles and consequences, and separate what was observed from the researcher's interpretation."
+          ]
+        },
+        {
+          "title": "Move from evidence to requirements",
+          "paragraphs": [
+            "A user need describes the underlying problem: I need confidence that my booking exists. A functional requirement might be that the system displays a reservation reference after successful confirmation. A usability requirement could specify that at least 90% of first-time participants retrieve that reference without help within 30 seconds in a defined study; that threshold is an illustrative project decision, not an archive requirement. A proposed button or animation is a design solution, not the need itself.",
+            "Create a short chain from observation to interpretation to requirement to evaluation. For example, three observed duplicate booking attempts suggest unclear feedback; a saved booking status becomes a requirement; a later test checks whether participants can correctly tell whether a booking exists. Counts in a small qualitative study describe that sample, not a population estimate."
+          ]
+        },
+        {
+          "title": "Resolve ambiguity before implementation",
+          "paragraphs": [
+            "Make requirements specific enough to inspect: state actor, conditions, action and observable outcome. Replace the interface must be intuitive with a task and criterion, such as first-time users locating a reservation reference without help during a defined study. The threshold is a project decision to justify, not a number supplied by the archive.",
+            "Different stakeholders can have conflicting needs. Visitors may want minimal account creation while administrators need accountability. Record the conflict, explain alternatives and choose a justified compromise with affected users. Do not collapse a design tradeoff into a yes/no quiz; use a rubric that checks evidence, reasoning and testability."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Neutral interview",
+          "prompt": "Which prompt is least leading?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_REQUIREMENTS_E01_O1",
+              "text": "Would our improved menu save you time?"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E01_O2",
+              "text": "Why is the old system so terrible?"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E01_O3",
+              "text": "Tell me about the last time you changed a booking."
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E01_O4",
+              "text": "Do you agree that chat is the best interface?"
+            }
+          ],
+          "explanation": "It invites a concrete account without supplying an evaluation or preferred solution.",
+          "id": "HCI_REQUIREMENTS_E01",
+          "skillId": "HCI_REQUIREMENTS_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_REQUIREMENTS_E01_O3"
+        },
+        {
+          "title": "Choose observation",
+          "prompt": "Staff say they follow a standard check-in procedure, but delays remain unexplained. Propose a research method and what it could reveal that a questionnaire might miss.",
+          "kind": "open",
+          "explanation": "Contextual observation can expose interruptions, handoffs and unofficial workarounds that recalled descriptions omit.",
+          "rubric": [
+            "Match the method to the uncertainty.",
+            "Name specific observable behaviour.",
+            "Acknowledge observer effects and the need for an appropriate study setup."
+          ],
+          "id": "HCI_REQUIREMENTS_E02",
+          "skillId": "HCI_REQUIREMENTS_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Need versus feature",
+          "prompt": "A participant says Add a big green save button. Reframe this as an underlying need and a testable requirement without assuming the button is the only solution.",
+          "kind": "open",
+          "explanation": "The need may be confidence that work is preserved; an observable saved/unsaved state can be evaluated independently of colour or size.",
+          "rubric": [
+            "Separate proposed solution from need.",
+            "State an observable requirement.",
+            "Explain how evidence could confirm the interpretation."
+          ],
+          "id": "HCI_REQUIREMENTS_E03",
+          "skillId": "HCI_REQUIREMENTS_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Requirement quality",
+          "prompt": "Which requirement is most testable as written?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_REQUIREMENTS_E04_O1",
+              "text": "Make it delightful"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E04_O2",
+              "text": "Support exporting the current booking list as a CSV file"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E04_O3",
+              "text": "Use modern technology"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E04_O4",
+              "text": "Ensure everyone always likes it"
+            }
+          ],
+          "explanation": "The export action and output can be inspected; the others lack operational definitions.",
+          "id": "HCI_REQUIREMENTS_E04",
+          "skillId": "HCI_REQUIREMENTS_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_REQUIREMENTS_E04_O2"
+        },
+        {
+          "title": "Trace the evidence",
+          "prompt": "In a pilot, four participants repeatedly reopen a confirmation page to check whether a booking succeeded. Construct an evidence-to-requirement-to-test chain.",
+          "kind": "open",
+          "explanation": "Uncertain status motivates persistent confirmation and a test of whether users can state and retrieve the saved booking status.",
+          "rubric": [
+            "Keep observation separate from inference.",
+            "Connect the requirement to that inference.",
+            "Define an evaluation task with observable success."
+          ],
+          "id": "HCI_REQUIREMENTS_E05",
+          "skillId": "HCI_REQUIREMENTS_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Conflicting stakeholders",
+          "prompt": "Visitors want anonymous room booking; administrators need to prevent repeated no-shows. Present two design options and evidence needed to compare them.",
+          "kind": "open",
+          "explanation": "Options might include low-friction verified contact or a limited anonymous flow. The choice needs evidence on burden, abuse and target-user access.",
+          "rubric": [
+            "Represent both needs fairly.",
+            "Give two concrete options with tradeoffs.",
+            "Identify evidence instead of declaring one universally correct."
+          ],
+          "id": "HCI_REQUIREMENTS_E06",
+          "skillId": "HCI_REQUIREMENTS_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Focus-group limitation",
+          "prompt": "Which risk is especially relevant when eliciting views in a group discussion?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_REQUIREMENTS_E07_O1",
+              "text": "All participants necessarily behave independently"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E07_O2",
+              "text": "Dominant participants can influence what others say"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E07_O3",
+              "text": "No one can express opinions"
+            },
+            {
+              "id": "HCI_REQUIREMENTS_E07_O4",
+              "text": "The method measures database throughput"
+            }
+          ],
+          "explanation": "Group dynamics can silence or steer some participants.",
+          "id": "HCI_REQUIREMENTS_E07",
+          "skillId": "HCI_REQUIREMENTS_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_REQUIREMENTS_E07_O2"
+        },
+        {
+          "title": "Ambiguous ease",
+          "prompt": "Rewrite The app must be easy for older users into a bounded evaluation requirement. Do not invent an official pass threshold.",
+          "kind": "open",
+          "explanation": "Specify the target group, task, context and observable success/assistance measures; justify a project threshold separately.",
+          "rubric": [
+            "Avoid treating age as a complete description of capability.",
+            "Operationalise a concrete task and context.",
+            "State that the threshold is a design/study choice."
+          ],
+          "id": "HCI_REQUIREMENTS_E08",
+          "skillId": "HCI_REQUIREMENTS_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_INFORMATION",
+      "name": "Information architecture and navigation",
+      "description": "Inherited organisation, labelling and card-sorting methods.",
+      "prerequisites": [
+        "HCI_REQUIREMENTS"
+      ],
+      "sourceIds": [
+        "HCI_SRC_012",
+        "HCI_SRC_006",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_INFORMATION_S1",
+          "name": "Structure information",
+          "description": "Match classification, labelling and navigation to information needs."
+        },
+        {
+          "id": "HCI_INFORMATION_S2",
+          "name": "Evaluate findability",
+          "description": "Use card sorting and task-based checks while recognising their limits."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Organise for the information need",
+          "paragraphs": [
+            "Information architecture concerns organisation, labels, navigation and search. A person looking for a known booking reference has a different need from someone exploring possible study spaces. Alphabetical order works when the user knows the name; task-oriented categories can better support a goal such as change a reservation. No organisation scheme is best for every information need.",
+            "A classification should make items predictable to find. Labels such as Services and Resources can overlap so much that users cannot distinguish them. Use terms meaningful to the target group, consider synonyms and avoid exposing the organisation's internal department structure when it does not match user expectations."
+          ]
+        },
+        {
+          "title": "Use card sorting for the right question",
+          "paragraphs": [
+            "In an open card sort, participants group items and create category labels. In a closed sort, categories are supplied and participants assign items to them. Open sorting can reveal possible groupings; closed sorting can test fit with a proposed structure. In either case, collect the reasoning behind uncertain placements and items participants cannot place.",
+            "For a tourism service, cards such as bicycle rental, accessible toilets and museum tickets may fit several plausible groups. Ambiguity is useful evidence, not participant failure. A hybrid structure or cross-links may be justified. Results from a few team members do not establish how all visitors categorise the information."
+          ]
+        },
+        {
+          "title": "Check the structure through real tasks",
+          "paragraphs": [
+            "A tidy hierarchy is not sufficient evidence of findability. Give representative users a goal such as find a step-free museum entrance and inspect their path, uncertainty and success. A tree-style navigation test can isolate labels and structure before detailed visual styling; a prototype test additionally reveals interaction and layout effects.",
+            "Avoid treating depth or click count as the sole quality metric. A short path with misleading labels can be harder than a longer predictable one. Record where users expected to find an item and why, revise the architecture, and retest the specific problem. Search, navigation and contextual links can complement each other rather than replacing user-centred organisation."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Open sort",
+          "prompt": "In which method do participants create their own category labels?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_INFORMATION_E01_O1",
+              "text": "Closed card sorting"
+            },
+            {
+              "id": "HCI_INFORMATION_E01_O2",
+              "text": "Open card sorting"
+            },
+            {
+              "id": "HCI_INFORMATION_E01_O3",
+              "text": "A load test"
+            },
+            {
+              "id": "HCI_INFORMATION_E01_O4",
+              "text": "A database join"
+            }
+          ],
+          "explanation": "Open card sorting allows participants to propose groups and their names.",
+          "id": "HCI_INFORMATION_E01",
+          "skillId": "HCI_INFORMATION_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_INFORMATION_E01_O2"
+        },
+        {
+          "title": "Closed sort",
+          "prompt": "Participants place attraction cards into predefined Food, Museums and Outdoors groups. What method is this?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_INFORMATION_E02_O1",
+              "text": "Closed card sorting"
+            },
+            {
+              "id": "HCI_INFORMATION_E02_O2",
+              "text": "A controlled within-subject experiment by definition"
+            },
+            {
+              "id": "HCI_INFORMATION_E02_O3",
+              "text": "An ER diagram"
+            },
+            {
+              "id": "HCI_INFORMATION_E02_O4",
+              "text": "A cognitive architecture model"
+            }
+          ],
+          "explanation": "The supplied categories make it a closed card sort.",
+          "id": "HCI_INFORMATION_E02",
+          "skillId": "HCI_INFORMATION_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_INFORMATION_E02_O1"
+        },
+        {
+          "title": "Overlapping labels",
+          "prompt": "A campus site has Help, Support and Services as top-level categories. Explain a findability risk and propose a way to investigate better labels.",
+          "kind": "open",
+          "explanation": "The labels may not predict distinct contents. Card sorting and task-based navigation checks can reveal expectations and overlap.",
+          "rubric": [
+            "Explain the ambiguity from a user perspective.",
+            "Choose a suitable investigation.",
+            "Do not claim a renamed category is validated without evidence."
+          ],
+          "id": "HCI_INFORMATION_E03",
+          "skillId": "HCI_INFORMATION_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Ambiguous card",
+          "prompt": "Participants disagree whether bicycle rental belongs under Transport or Activities. Give two design responses and explain how to choose.",
+          "kind": "open",
+          "explanation": "Cross-linking or a task-based grouping can support both interpretations. Test representative finding tasks and examine the reasons for disagreement.",
+          "rubric": [
+            "Treat disagreement as evidence.",
+            "Offer two plausible responses.",
+            "Specify a comparison tied to findability."
+          ],
+          "id": "HCI_INFORMATION_E04",
+          "skillId": "HCI_INFORMATION_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Known-item need",
+          "prompt": "Which organisation is most directly useful when users know an exact contact surname?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_INFORMATION_E05_O1",
+              "text": "An alphabetical staff index"
+            },
+            {
+              "id": "HCI_INFORMATION_E05_O2",
+              "text": "Random placement"
+            },
+            {
+              "id": "HCI_INFORMATION_E05_O3",
+              "text": "A hierarchy of unpublished internal codes"
+            },
+            {
+              "id": "HCI_INFORMATION_E05_O4",
+              "text": "Only a promotional carousel"
+            }
+          ],
+          "explanation": "Alphabetical indexing supports known-name lookup.",
+          "id": "HCI_INFORMATION_E05",
+          "skillId": "HCI_INFORMATION_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_INFORMATION_E05_O1"
+        },
+        {
+          "title": "Navigation test",
+          "prompt": "Design a brief test of whether new students can find how to change a booking in a proposed menu tree.",
+          "kind": "open",
+          "explanation": "Give a neutral goal, observe selected paths and whether the correct destination is reached, then ask about expectations.",
+          "rubric": [
+            "Use a goal that does not reveal menu labels.",
+            "Define success and record wrong paths.",
+            "Recruit relevant users or label a peer pilot as a pilot."
+          ],
+          "id": "HCI_INFORMATION_E06",
+          "skillId": "HCI_INFORMATION_S2",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Click-count claim",
+          "prompt": "A redesign reduces a task from four clicks to two but uses unfamiliar labels. Explain why this is insufficient evidence of improvement.",
+          "kind": "open",
+          "explanation": "Fewer actions can be offset by greater search and interpretation effort. Measure success, time and confusion in context.",
+          "rubric": [
+            "Distinguish action count from usability.",
+            "Name the label-related risk.",
+            "Propose evidence that could compare the designs."
+          ],
+          "id": "HCI_INFORMATION_E07",
+          "skillId": "HCI_INFORMATION_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Architecture for two needs",
+          "prompt": "A library service serves people searching an exact title and people exploring books on a topic. Propose complementary access paths.",
+          "kind": "open",
+          "explanation": "Exact-title search or indexing can coexist with meaningful topic browsing and useful filters.",
+          "rubric": [
+            "Address both known-item and exploratory needs.",
+            "Explain labels or filters.",
+            "Avoid assuming one navigation mechanism satisfies every task."
+          ],
+          "id": "HCI_INFORMATION_E08",
+          "skillId": "HCI_INFORMATION_S1",
+          "sourceIds": [
+            "HCI_SRC_012",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_UX",
+      "name": "Interaction principles, accessibility and inclusion",
+      "description": "Inherited HCI design principles and exclusion analysis; no claim of formal accessibility certification.",
+      "prerequisites": [
+        "HCI_PACT"
+      ],
+      "sourceIds": [
+        "HCI_SRC_013",
+        "HCI_SRC_015",
+        "HCI_SRC_002",
+        "HCI_SRC_004",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_UX_S1",
+          "name": "Diagnose interaction problems",
+          "description": "Use visibility, feedback, consistency, mapping and error recovery."
+        },
+        {
+          "id": "HCI_UX_S2",
+          "name": "Analyse exclusion",
+          "description": "Connect capability and context barriers to inclusive alternatives."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Make action and state understandable",
+          "paragraphs": [
+            "Visibility helps a person discover available actions and current state. Feedback shows what happened after an action. Consistency reduces the need to relearn similar interactions, while mapping connects a control to its effect. A form can look attractive yet fail if Save produces no indication of progress or success.",
+            "Distinguish a problem from its cause and proposed fix. Users press Save repeatedly is an observation; missing feedback is a possible explanation; showing saving, saved and failed states is a proposed remedy. A meaningful critique connects the observation to the principle and predicts how the remedy changes the task. Multiple principles can apply to one problem."
+          ]
+        },
+        {
+          "title": "Design for differences and situations",
+          "paragraphs": [
+            "Accessibility concerns whether people with varied capabilities can perceive, understand and operate the system. Inclusion also involves economic, cultural, social and conceptual barriers. A service available only on an expensive new phone can exclude users even if its visual contrast is excellent. A confusing metaphor can create a conceptual barrier without any motor limitation.",
+            "Consider persistent, temporary and situational constraints. Keyboard operation, meaningful control names and alternatives to colour-only signals support different users and circumstances. For a status display, pair colour with text or another meaningful cue. A design exercise can reason about barriers, but formal conformance claims require an appropriate current standard and a broader evaluation than these archived lessons provide."
+          ]
+        },
+        {
+          "title": "Support prevention and recovery",
+          "paragraphs": [
+            "Prevent errors where possible through clear constraints and sensible choices, but also support correction. A destructive action may need an appropriate confirmation or undo; adding confirmations to every harmless action can create fatigue. Preserve valid input when a form fails and explain what needs correction near the relevant field.",
+            "Universal-design principles such as equitable use, perceptible information and tolerance for error prompt questions, not mechanical checkboxes. Evaluate a complete task with relevant users and interaction methods. An expert inspection can find a barrier before user testing, but absence of a found problem does not prove universal usability."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Missing feedback",
+          "prompt": "After pressing Save, the screen does not change for several seconds. Which principle is most directly at issue?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_UX_E01_O1",
+              "text": "Feedback"
+            },
+            {
+              "id": "HCI_UX_E01_O2",
+              "text": "Relational integrity"
+            },
+            {
+              "id": "HCI_UX_E01_O3",
+              "text": "Alphabetical ordering"
+            },
+            {
+              "id": "HCI_UX_E01_O4",
+              "text": "File compression"
+            }
+          ],
+          "explanation": "The user lacks information about whether the action was received or completed.",
+          "id": "HCI_UX_E01",
+          "skillId": "HCI_UX_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_UX_E01_O1"
+        },
+        {
+          "title": "Colour-only status",
+          "prompt": "A timetable marks cancellations only in red and confirmations only in green. Explain the barrier and design an alternative.",
+          "kind": "open",
+          "explanation": "Users who cannot distinguish the colours or see the display clearly need an additional meaningful status cue.",
+          "rubric": [
+            "Identify reliance on colour alone.",
+            "Add text, symbols with labels or another understandable distinction.",
+            "Retain a clear association between status and the relevant booking."
+          ],
+          "id": "HCI_UX_E02",
+          "skillId": "HCI_UX_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Economic exclusion",
+          "prompt": "A public service requires ownership of the newest expensive phone and offers no alternative. Which exclusion category is most directly illustrated?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_UX_E03_O1",
+              "text": "Economic"
+            },
+            {
+              "id": "HCI_UX_E03_O2",
+              "text": "Only grammatical"
+            },
+            {
+              "id": "HCI_UX_E03_O3",
+              "text": "Only visual"
+            },
+            {
+              "id": "HCI_UX_E03_O4",
+              "text": "Database-level"
+            }
+          ],
+          "explanation": "The access cost excludes people without that device.",
+          "id": "HCI_UX_E03",
+          "skillId": "HCI_UX_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_UX_E03_O1"
+        },
+        {
+          "title": "Inconsistent action",
+          "prompt": "One dialog uses a checkmark to save and another uses the same icon to delete. Analyse the issue and propose a correction.",
+          "kind": "open",
+          "explanation": "Conflicting mappings and inconsistent meanings undermine predictable action. Use clear, consistent action semantics and appropriate destructive-action treatment.",
+          "rubric": [
+            "Connect the same symbol to conflicting outcomes.",
+            "Name consistency or mapping with reasoning.",
+            "Offer a correction that reduces mistaken deletion."
+          ],
+          "id": "HCI_UX_E04",
+          "skillId": "HCI_UX_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Keyboard booking",
+          "prompt": "A room selector can only be operated by dragging with a mouse. Propose an alternative interaction and a task-level check.",
+          "kind": "open",
+          "explanation": "Provide an operable selection method such as keyboard-accessible controls, and verify a complete booking without a pointing device.",
+          "rubric": [
+            "Provide an equivalent way to select the room/time.",
+            "Consider focus and control names.",
+            "Evaluate end-to-end completion, not only whether a key event fires."
+          ],
+          "id": "HCI_UX_E05",
+          "skillId": "HCI_UX_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Conceptual barrier",
+          "prompt": "A system labels all actions using unexplained database terminology unfamiliar to its users. Which barrier is most direct?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_UX_E06_O1",
+              "text": "Only a network partition"
+            },
+            {
+              "id": "HCI_UX_E06_O2",
+              "text": "Conceptual exclusion"
+            },
+            {
+              "id": "HCI_UX_E06_O3",
+              "text": "A page-capacity issue"
+            },
+            {
+              "id": "HCI_UX_E06_O4",
+              "text": "A lack of physical floor space"
+            }
+          ],
+          "explanation": "Users may be unable to understand the concepts and labels even when they can physically operate the controls.",
+          "id": "HCI_UX_E06",
+          "skillId": "HCI_UX_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_UX_E06_O2"
+        },
+        {
+          "title": "Recovery after error",
+          "prompt": "A registration form clears every field after one invalid date. Explain the usability cost and propose better recovery.",
+          "kind": "open",
+          "explanation": "The user repeats correct work. Preserve valid values and identify the specific date issue with a clear correction path.",
+          "rubric": [
+            "Identify unnecessary repeated effort.",
+            "Preserve appropriate valid input.",
+            "Provide actionable, local error feedback."
+          ],
+          "id": "HCI_UX_E07",
+          "skillId": "HCI_UX_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Confirmation fatigue",
+          "prompt": "A team adds an Are you sure? dialog to every click. Explain why this may harm error prevention and propose a targeted policy.",
+          "kind": "open",
+          "explanation": "Frequent low-value interruptions encourage habitual dismissal; reserve stronger intervention for meaningful risk and use reversible actions where suitable.",
+          "rubric": [
+            "Explain habituation or interruption cost.",
+            "Distinguish low-risk from consequential actions.",
+            "Justify confirmation, constraints or undo for a concrete example."
+          ],
+          "id": "HCI_UX_E08",
+          "skillId": "HCI_UX_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_004",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_ETHICS",
+      "name": "Human-research ethics and responsible evidence",
+      "description": "Inherited study-planning concepts, not current institutional procedure or legal advice.",
+      "prerequisites": [
+        "HCI_REQUIREMENTS"
+      ],
+      "sourceIds": [
+        "HCI_SRC_013",
+        "HCI_SRC_006",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_ETHICS_S1",
+          "name": "Plan participant-centred studies",
+          "description": "Address consent, withdrawal, burden and data minimisation."
+        },
+        {
+          "id": "HCI_ETHICS_S2",
+          "name": "Report evidence responsibly",
+          "description": "Separate observations, interpretations and limits without invented results."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Agreement precedes participation",
+          "paragraphs": [
+            "A user study involves people, not merely a stream of measurements. Explain the purpose, tasks, expected duration, recording plans and relevant risks in language participants can understand. Participation should be voluntary; recruitment through a teacher or manager can create pressure even without explicit coercion. The archived course discusses ethics procedures, but its forms and dates are not treated here as current institutional instructions.",
+            "Consent is a process of informed agreement, not just a signature. Participants should understand that they can decline or stop according to the stated study arrangements. A participant agreeing to a usability task has not automatically agreed to public release of identifiable recordings or unrelated reuse. Plan how to handle questions and withdrawal before a session begins."
+          ]
+        },
+        {
+          "title": "Collect only evidence the study needs",
+          "paragraphs": [
+            "Start from the research question and identify the smallest useful set of data. A room-booking test may need completion, errors and short observations without requiring real personal schedules. Use fictional task data when it serves the question. Recording a screen can unintentionally capture names, messages and account information, so the recording setup belongs in the risk analysis.",
+            "Removing a name does not necessarily make a record anonymous: an unusual role, timestamp or detailed quote may identify someone. Keep raw evidence access limited to the appropriate study team and distinguish pseudonymisation from anonymity. Decide retention and sharing arrangements before collection rather than improvising them after the report is written."
+          ]
+        },
+        {
+          "title": "Document limits and treat people respectfully",
+          "paragraphs": [
+            "Use neutral prompts and avoid framing a failure as the participant's incompetence. A struggling participant often reveals a design problem. Define stopping criteria if the task becomes distressing or unreasonable; a useful study does not require collecting every possible observation at any cost.",
+            "When reporting, separate behaviour observed in the session from explanations and broader claims. A simulated test, expert walkthrough or peer pilot must be labelled as such. Never fabricate quotations, participants, consent or success rates. A small sample can expose important failures while still being insufficient to estimate how frequently they occur across the whole population."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Consent outline",
+          "prompt": "Outline the information needed before a volunteer tests a room-booking prototype with screen recording.",
+          "kind": "open",
+          "explanation": "Participants need a clear account of purpose, tasks, duration, recording, use/access of data, relevant risks and how to stop or ask questions.",
+          "rubric": [
+            "Cover both task and recording arrangements.",
+            "Explain voluntary participation.",
+            "Avoid claiming that a template alone establishes current institutional approval."
+          ],
+          "id": "HCI_ETHICS_E01",
+          "skillId": "HCI_ETHICS_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Scope of consent",
+          "prompt": "A participant agrees to a private usability session. Which inference is justified?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_ETHICS_E02_O1",
+              "text": "Their face recording may automatically be posted publicly"
+            },
+            {
+              "id": "HCI_ETHICS_E02_O2",
+              "text": "Their agreement applies to the described study arrangements"
+            },
+            {
+              "id": "HCI_ETHICS_E02_O3",
+              "text": "Their data can be used for every future project"
+            },
+            {
+              "id": "HCI_ETHICS_E02_O4",
+              "text": "They cannot stop once a task begins"
+            }
+          ],
+          "explanation": "Consent is tied to what was explained and agreed.",
+          "id": "HCI_ETHICS_E02",
+          "skillId": "HCI_ETHICS_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_ETHICS_E02_O2"
+        },
+        {
+          "title": "Minimise study data",
+          "prompt": "A prototype test can use fictional bookings. A teammate proposes collecting real addresses and personal calendars anyway. Explain the issue and an alternative.",
+          "kind": "open",
+          "explanation": "The extra personal data are not justified by the stated task and introduce avoidable exposure. Use fictional task records and collect relevant observations.",
+          "rubric": [
+            "Connect collection to the research question.",
+            "Identify unnecessary data.",
+            "Propose a lower-data way to answer the same question."
+          ],
+          "id": "HCI_ETHICS_E03",
+          "skillId": "HCI_ETHICS_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Anonymity claim",
+          "prompt": "Names are replaced with participant numbers, but a separate key links numbers to names. Which description is most accurate?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_ETHICS_E04_O1",
+              "text": "Fully anonymous by definition"
+            },
+            {
+              "id": "HCI_ETHICS_E04_O2",
+              "text": "No data exist"
+            },
+            {
+              "id": "HCI_ETHICS_E04_O3",
+              "text": "Pseudonymised rather than anonymous"
+            },
+            {
+              "id": "HCI_ETHICS_E04_O4",
+              "text": "Automatically public"
+            }
+          ],
+          "explanation": "The linking key allows re-identification.",
+          "id": "HCI_ETHICS_E04",
+          "skillId": "HCI_ETHICS_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_ETHICS_E04_O3"
+        },
+        {
+          "title": "Recruitment pressure",
+          "prompt": "A manager recruits direct reports to evaluate the manager's own design. Identify a voluntariness risk and propose mitigation.",
+          "kind": "open",
+          "explanation": "Participants may fear that refusal or criticism affects their standing. Use an independent invitation/process and make nonparticipation genuinely acceptable.",
+          "rubric": [
+            "Name the power relationship.",
+            "Address both participation and criticism pressure.",
+            "Propose concrete mitigation without claiming the risk vanishes completely."
+          ],
+          "id": "HCI_ETHICS_E05",
+          "skillId": "HCI_ETHICS_S1",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Observation versus interpretation",
+          "prompt": "A note says Participant 3 clicked Back twice; therefore all older users dislike our menu. Rewrite it into observation, tentative interpretation and limitation.",
+          "kind": "open",
+          "explanation": "Only the two Back actions were observed. Confusion is a hypothesis; one participant cannot support the general age-based claim.",
+          "rubric": [
+            "Preserve the observable fact.",
+            "Label the explanation as tentative.",
+            "Reject unsupported population generalisation."
+          ],
+          "id": "HCI_ETHICS_E06",
+          "skillId": "HCI_ETHICS_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Pilot reporting",
+          "prompt": "Three teammates rehearse the task without target-user recruitment. How should this be described?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_ETHICS_E07_O1",
+              "text": "A completed representative user study"
+            },
+            {
+              "id": "HCI_ETHICS_E07_O2",
+              "text": "A peer pilot or rehearsal"
+            },
+            {
+              "id": "HCI_ETHICS_E07_O3",
+              "text": "Proof of universal usability"
+            },
+            {
+              "id": "HCI_ETHICS_E07_O4",
+              "text": "A statistically significant trial by definition"
+            }
+          ],
+          "explanation": "The provenance and purpose of the rehearsal must be reported honestly.",
+          "id": "HCI_ETHICS_E07",
+          "skillId": "HCI_ETHICS_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_ETHICS_E07_O2"
+        },
+        {
+          "title": "Unexpected personal information",
+          "prompt": "During a recorded prototype task, a participant opens an unrelated personal message. Explain how this should affect the study record and process.",
+          "kind": "open",
+          "explanation": "Follow the disclosed handling arrangements, minimise unrelated capture and discuss appropriate removal or restricted handling rather than using the material as study evidence.",
+          "rubric": [
+            "Recognise the information as unrelated to the question.",
+            "Respect the agreed recording/withdrawal arrangements.",
+            "Improve the setup to reduce recurrence."
+          ],
+          "id": "HCI_ETHICS_E08",
+          "skillId": "HCI_ETHICS_S2",
+          "sourceIds": [
+            "HCI_SRC_013",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_PROTOTYPING",
+      "name": "Design alternatives and prototypes",
+      "description": "Inherited low/high fidelity, horizontal/vertical and Wizard-of-Oz methods.",
+      "prerequisites": [
+        "HCI_REQUIREMENTS",
+        "HCI_INFORMATION",
+        "HCI_UX"
+      ],
+      "sourceIds": [
+        "HCI_SRC_014",
+        "HCI_SRC_006",
+        "HCI_SRC_003",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_PROTOTYPING_S1",
+          "name": "Select prototype scope",
+          "description": "Choose fidelity and breadth/depth for a specific design uncertainty."
+        },
+        {
+          "id": "HCI_PROTOTYPING_S2",
+          "name": "Plan prototype evaluation",
+          "description": "Specify realistic behaviour and avoid overstating implementation evidence."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Prototype to answer a question",
+          "paragraphs": [
+            "A prototype is an intentionally partial representation of an interactive system. It can be a paper sketch, clickable screen sequence, physical model or working software. Choose the representation according to what must be learned. Paper can reveal whether labels and task sequence make sense; it cannot establish real server latency or reliable data persistence.",
+            "Fidelity has several dimensions. A visually polished mock-up may have shallow interaction, while a plain interface may implement one complete workflow. A horizontal prototype covers many functions with little depth. A vertical prototype implements a narrow slice deeply. Neither is automatically better; select breadth or depth to match the uncertainty."
+          ]
+        },
+        {
+          "title": "Explore before committing",
+          "paragraphs": [
+            "Generate more than one plausible design, compare them against user needs, and prototype the riskiest assumptions first. A throwaway prototype is intended for learning and may be discarded; an evolutionary prototype is developed further. Reusing a prototype can preserve useful work but can also carry experimental shortcuts into later stages.",
+            "For room booking, a horizontal sketch can compare search, calendar and list navigation. A vertical slice can implement finding one real slot, confirming and recovering from an error. Record what is simulated and what is functional. Participants' success with a manually advanced screen is evidence about that represented interaction, not proof that the full service works."
+          ]
+        },
+        {
+          "title": "Control simulated intelligence",
+          "paragraphs": [
+            "Wizard-of-Oz prototyping uses a human to simulate a component. Define what the wizard can observe, which actions are permitted, how inputs map to outputs and what timing constraints apply. If the wizard uses extra information unavailable to the future system, the test can overestimate feasibility or quality.",
+            "The inherited method does not constitute a course-specific Generative-AI tooling workflow. It helps separate interface questions from implementation questions, but evaluation must acknowledge the simulation. Use consistent scripts and appropriate participant arrangements, then retest the real implementation when the claim depends on actual performance or system behaviour."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Horizontal scope",
+          "prompt": "A prototype covers many different product functions through ten screens, but implements each function only superficially and no complete underlying workflow. Which scope is most characteristic?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PROTOTYPING_E01_O1",
+              "text": "Vertical"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E01_O2",
+              "text": "Horizontal"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E01_O3",
+              "text": "A verified production system"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E01_O4",
+              "text": "A database backup"
+            }
+          ],
+          "explanation": "It covers a broad surface with shallow functionality.",
+          "id": "HCI_PROTOTYPING_E01",
+          "skillId": "HCI_PROTOTYPING_S1",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_PROTOTYPING_E01_O2"
+        },
+        {
+          "title": "Vertical scope",
+          "prompt": "A prototype implements one complete booking flow including confirmation and failure handling. Which description fits best?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PROTOTYPING_E02_O1",
+              "text": "A vertical slice"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E02_O2",
+              "text": "An alphabetical index"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E02_O3",
+              "text": "A universal finished product"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E02_O4",
+              "text": "Only a static logo"
+            }
+          ],
+          "explanation": "The scope is narrow but functionally deep.",
+          "id": "HCI_PROTOTYPING_E02",
+          "skillId": "HCI_PROTOTYPING_S1",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_PROTOTYPING_E02_O1"
+        },
+        {
+          "title": "Choose low fidelity",
+          "prompt": "A team is uncertain whether users understand three navigation categories. Propose a low-cost prototype and explain what it cannot establish.",
+          "kind": "open",
+          "explanation": "A paper/clickable navigation prototype can test labels and structure but cannot validate backend performance or durability.",
+          "rubric": [
+            "Match the prototype to the uncertainty.",
+            "Specify the task users attempt.",
+            "State at least one unsupported implementation claim."
+          ],
+          "id": "HCI_PROTOTYPING_E03",
+          "skillId": "HCI_PROTOTYPING_S1",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Polish versus function",
+          "prompt": "A realistic mock-up passes a visual review. Why does this not establish that users can recover from a failed booking? Design the missing test.",
+          "kind": "open",
+          "explanation": "Visual realism does not ensure error-state behaviour. Represent or implement a failure and observe whether users understand and recover.",
+          "rubric": [
+            "Distinguish visual from functional fidelity.",
+            "Include a concrete failure state.",
+            "Define observable recovery success."
+          ],
+          "id": "HCI_PROTOTYPING_E04",
+          "skillId": "HCI_PROTOTYPING_S2",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Throwaway intent",
+          "prompt": "What distinguishes a throwaway prototype?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PROTOTYPING_E05_O1",
+              "text": "It must be ugly"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E05_O2",
+              "text": "It is built primarily to learn and may be discarded"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E05_O3",
+              "text": "It contains no user interaction"
+            },
+            {
+              "id": "HCI_PROTOTYPING_E05_O4",
+              "text": "It is always less useful than production code"
+            }
+          ],
+          "explanation": "Its planned role is exploration rather than direct evolution into the final system.",
+          "id": "HCI_PROTOTYPING_E05",
+          "skillId": "HCI_PROTOTYPING_S1",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_PROTOTYPING_E05_O2"
+        },
+        {
+          "title": "Wizard protocol",
+          "prompt": "A human simulates a route assistant. Define what they may observe, allowed responses and timing rules so sessions are comparable.",
+          "kind": "open",
+          "explanation": "A bounded protocol prevents the wizard from silently providing capabilities or information the intended system lacks.",
+          "rubric": [
+            "Specify inputs available to the wizard.",
+            "Constrain outputs and decision rules.",
+            "Control or record response timing and deviations."
+          ],
+          "id": "HCI_PROTOTYPING_E06",
+          "skillId": "HCI_PROTOTYPING_S2",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Two alternatives",
+          "prompt": "Propose two ways to let a student select a study room and explain which uncertainty each prototype should test.",
+          "kind": "open",
+          "explanation": "A map and a filtered list may reveal different spatial and comparison advantages; evaluation must relate them to user tasks.",
+          "rubric": [
+            "Give materially different interaction alternatives.",
+            "Tie each to a researchable uncertainty.",
+            "Define a comparison rather than choosing purely by preference."
+          ],
+          "id": "HCI_PROTOTYPING_E07",
+          "skillId": "HCI_PROTOTYPING_S1",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Prototype claim boundary",
+          "prompt": "A facilitator manually changes screens after every action, and users complete the task. State one supported and two unsupported conclusions.",
+          "kind": "open",
+          "explanation": "The represented sequence may be understandable; actual interaction reliability and backend completion have not been demonstrated.",
+          "rubric": [
+            "Name evidence about the represented interaction.",
+            "Reject at least two implementation/performance claims.",
+            "Specify what further test would support one missing claim."
+          ],
+          "id": "HCI_PROTOTYPING_E08",
+          "skillId": "HCI_PROTOTYPING_S2",
+          "sourceIds": [
+            "HCI_SRC_014",
+            "HCI_SRC_006",
+            "HCI_SRC_003",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_EXPERT",
+      "name": "Expert evaluation and cognitive walkthroughs",
+      "description": "Inherited inspection methods, with reasoned severity rather than false objective design scoring.",
+      "prerequisites": [
+        "HCI_PROTOTYPING"
+      ],
+      "sourceIds": [
+        "HCI_SRC_015",
+        "HCI_SRC_002",
+        "HCI_SRC_006",
+        "HCI_SRC_019"
+      ],
+      "skills": [
+        {
+          "id": "HCI_EXPERT_S1",
+          "name": "Perform structured inspections",
+          "description": "Apply walkthrough questions and heuristic evidence to a concrete task."
+        },
+        {
+          "id": "HCI_EXPERT_S2",
+          "name": "Prioritise findings",
+          "description": "Justify impact, scope and repair without treating expert opinion as user evidence."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Match inspection to the question",
+          "paragraphs": [
+            "Expert evaluation can identify likely problems before involving users in an unfinished system. Heuristic evaluation checks an interface against design principles; a cognitive walkthrough concentrates on whether a specified user can learn and complete a task step by step. Both rely on explicit assumptions about the user and task.",
+            "For a walkthrough, define the starting state, anticipated user knowledge, goal and action sequence. At each step ask whether the user will try the right effect, notice the correct action, associate that action with the desired effect, and recognise progress after acting. A designer knowing where every control is cannot substitute for reasoning about the novice's knowledge."
+          ]
+        },
+        {
+          "title": "Write an actionable finding",
+          "paragraphs": [
+            "A useful finding names the location/state, observed or anticipated problem, relevant principle, task consequence and proposed remedy. For example, after Confirm, the page still looks editable and gives no status; users may retry and create duplicates; add clear pending and confirmed states. The principle is feedback, while the consequence explains why it matters.",
+            "Severity should be justified using impact, frequency or likely exposure, and persistence/recoverability. State the scale used. The same visual inconsistency may be minor in a decorative heading but serious when it changes the meaning of a destructive action. A severity number without explanation cannot guide reliable prioritisation."
+          ]
+        },
+        {
+          "title": "Combine reviewers without manufacturing certainty",
+          "paragraphs": [
+            "Have reviewers inspect independently before consolidating findings, so an early opinion does not determine every review. Merge duplicate manifestations carefully while preserving distinct causes or tasks. A single problem may involve more than one principle; do not multiply the finding count simply by attaching extra labels.",
+            "Expert inspection is a prediction about potential problems, not a measured completion rate. Validate important issues with representative tasks and users where appropriate. If an inspection finds no issue, report the reviewed scope and method rather than declaring the entire product usable, accessible or safe for every population."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Walkthrough setup",
+          "prompt": "Prepare a walkthrough setup for a first-time student cancelling a room booking. Include start state, goal, knowledge assumptions and action sequence.",
+          "kind": "open",
+          "explanation": "A bounded scenario enables stepwise learnability reasoning rather than a general tour of the interface.",
+          "rubric": [
+            "Specify the initial interface state.",
+            "Describe novice knowledge and cancellation goal.",
+            "Give an ordered sequence including confirmation of outcome."
+          ],
+          "id": "HCI_EXPERT_E01",
+          "skillId": "HCI_EXPERT_S1",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ]
+        },
+        {
+          "title": "Notice the action",
+          "prompt": "A novice wants to save but the save control is invisible until hover. Which walkthrough question is most directly threatened?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_EXPERT_E02_O1",
+              "text": "Will they notice the correct action?"
+            },
+            {
+              "id": "HCI_EXPERT_E02_O2",
+              "text": "How many rows fit on disk?"
+            },
+            {
+              "id": "HCI_EXPERT_E02_O3",
+              "text": "Has the server committed a distributed transaction?"
+            },
+            {
+              "id": "HCI_EXPERT_E02_O4",
+              "text": "Is the font installed locally?"
+            }
+          ],
+          "explanation": "The relevant action may not be discoverable in the initial state.",
+          "id": "HCI_EXPERT_E02",
+          "skillId": "HCI_EXPERT_S1",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ],
+          "answer": "HCI_EXPERT_E02_O1"
+        },
+        {
+          "title": "Actionable finding",
+          "prompt": "A booking page silently returns to the list after confirmation. Write a finding with principle, consequence and proposed remedy.",
+          "kind": "open",
+          "explanation": "Missing confirmation can leave users unsure and trigger repetition. State the location, feedback problem and a clear outcome signal.",
+          "rubric": [
+            "Locate the issue precisely.",
+            "Explain its effect on the booking task.",
+            "Suggest a concrete improvement and a way to check it."
+          ],
+          "id": "HCI_EXPERT_E03",
+          "skillId": "HCI_EXPERT_S1",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ]
+        },
+        {
+          "title": "Independent review",
+          "prompt": "Why inspect independently before a consolidation meeting?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_EXPERT_E04_O1",
+              "text": "To guarantee identical opinions"
+            },
+            {
+              "id": "HCI_EXPERT_E04_O2",
+              "text": "To reduce early group influence and broaden discovery"
+            },
+            {
+              "id": "HCI_EXPERT_E04_O3",
+              "text": "To replace every user study"
+            },
+            {
+              "id": "HCI_EXPERT_E04_O4",
+              "text": "To avoid recording evidence"
+            }
+          ],
+          "explanation": "Independent passes can expose different problems before discussion anchors reviewers.",
+          "id": "HCI_EXPERT_E04",
+          "skillId": "HCI_EXPERT_S1",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ],
+          "answer": "HCI_EXPERT_E04_O2"
+        },
+        {
+          "title": "Severity comparison",
+          "prompt": "Compare a slightly inconsistent heading font with a cancellation control that looks like confirmation. Explain priority using an explicit severity rationale.",
+          "kind": "open",
+          "explanation": "The second risks an unintended consequential action; the first may be cosmetic unless it changes comprehension. Context and recovery affect severity.",
+          "rubric": [
+            "Use impact and recoverability, not appearance alone.",
+            "Justify the relative priority.",
+            "State uncertainty about frequency or actual user behaviour."
+          ],
+          "id": "HCI_EXPERT_E05",
+          "skillId": "HCI_EXPERT_S2",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ]
+        },
+        {
+          "title": "Duplicate findings",
+          "prompt": "Three reviewers report missing save feedback, each naming a different heuristic. Explain how to consolidate them.",
+          "kind": "open",
+          "explanation": "Merge the shared underlying issue, retain complementary reasoning and avoid counting it three times as separate defects.",
+          "rubric": [
+            "Identify common state/cause.",
+            "Preserve useful evidence.",
+            "Separate distinct manifestations only when they matter to repair or evaluation."
+          ],
+          "id": "HCI_EXPERT_E06",
+          "skillId": "HCI_EXPERT_S2",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ]
+        },
+        {
+          "title": "Inspection evidence",
+          "prompt": "An expert predicts that users will miss a control. Which statement is warranted?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_EXPERT_E07_O1",
+              "text": "Measured failure rate is 100%"
+            },
+            {
+              "id": "HCI_EXPERT_E07_O2",
+              "text": "The interface has passed all user testing"
+            },
+            {
+              "id": "HCI_EXPERT_E07_O3",
+              "text": "This is a hypothesised usability issue requiring appropriate follow-up"
+            },
+            {
+              "id": "HCI_EXPERT_E07_O4",
+              "text": "Every target user has already been observed"
+            }
+          ],
+          "explanation": "Inspection supports a prediction, not an observed population failure rate.",
+          "id": "HCI_EXPERT_E07",
+          "skillId": "HCI_EXPERT_S2",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ],
+          "answer": "HCI_EXPERT_E07_O3"
+        },
+        {
+          "title": "No findings",
+          "prompt": "One reviewer spends 15 minutes on two screens and finds no problems. Write a defensible conclusion and a next evaluation step.",
+          "kind": "open",
+          "explanation": "No issues were found in that bounded inspection; other tasks, states and users remain untested.",
+          "rubric": [
+            "State the actual scope and method.",
+            "Avoid universal usability claims.",
+            "Choose a follow-up addressing an untested important task."
+          ],
+          "id": "HCI_EXPERT_E08",
+          "skillId": "HCI_EXPERT_S2",
+          "sourceIds": [
+            "HCI_SRC_015",
+            "HCI_SRC_002",
+            "HCI_SRC_006",
+            "HCI_SRC_019"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_USER_STUDIES",
+      "name": "User evaluation and controlled experiments",
+      "description": "Inherited usability studies and introductory experiment reasoning; statistical depth is unconfirmed for CSE12B.",
+      "prerequisites": [
+        "HCI_ETHICS",
+        "HCI_EXPERT"
+      ],
+      "sourceIds": [
+        "HCI_SRC_016",
+        "HCI_SRC_015",
+        "HCI_SRC_006",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_USER_STUDIES_S1",
+          "name": "Plan a user evaluation",
+          "description": "Specify question, tasks, participants, conditions and measures."
+        },
+        {
+          "id": "HCI_USER_STUDIES_S2",
+          "name": "Interpret study results",
+          "description": "Recognise confounding, order effects and limits of small samples."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Define success before observing",
+          "paragraphs": [
+            "Start with a focused question, such as whether a revised confirmation page helps first-time users determine that their booking succeeded. Choose tasks, participants and measures that answer it. Completion measures effectiveness; time and effort relate to efficiency; ratings and interviews add subjective experience. A pleasant rating does not prove that a task succeeded.",
+            "A formative study aims to improve the design; a summative evaluation assesses it against stated criteria. Lab sessions give control, while field studies reveal real context and interruptions. Think-aloud can expose reasoning but may change timing and behaviour. Select a method for the claim and document the conditions under which the observations were collected."
+          ]
+        },
+        {
+          "title": "Design a fair comparison",
+          "paragraphs": [
+            "An independent variable is the manipulated condition, such as interface version. A dependent variable is the measured outcome, such as task completion time. A confound changes systematically with the condition and may explain the effect instead. Testing version A on slow phones and B on fast computers mixes interface and device effects.",
+            "In a between-subject design, different participants use different conditions; group differences can matter. In a within-subject design, participants use multiple conditions; learning and fatigue can matter. Counterbalancing order helps distribute order effects but does not erase every carryover effect. Pilot tasks and record exclusions or failures using a plan rather than changing rules after seeing favourable results."
+          ]
+        },
+        {
+          "title": "Report what the data support",
+          "paragraphs": [
+            "Summarise completion counts with denominators, describe time distributions and report failures rather than silently removing them. Means can be dominated by a long delay; medians answer a different question. Qualitative observations help explain the pattern but are not interchangeable with population estimates.",
+            "A small observed advantage does not alone establish a reliable general improvement or a causal effect. Consider sample, assignment, measurement, confounds and uncertainty. The inherited course discusses statistical analysis; this preparation focuses on sound design and cautious interpretation, without inventing official significance thresholds or teaching unsupported advanced test requirements."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Independent variable",
+          "prompt": "A study deliberately changes only the booking confirmation design and measures errors. What is the independent variable?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_USER_STUDIES_E01_O1",
+              "text": "Error count"
+            },
+            {
+              "id": "HCI_USER_STUDIES_E01_O2",
+              "text": "Confirmation design"
+            },
+            {
+              "id": "HCI_USER_STUDIES_E01_O3",
+              "text": "Participant id by definition"
+            },
+            {
+              "id": "HCI_USER_STUDIES_E01_O4",
+              "text": "The conclusion"
+            }
+          ],
+          "explanation": "The manipulated condition is the confirmation design.",
+          "id": "HCI_USER_STUDIES_E01",
+          "skillId": "HCI_USER_STUDIES_S1",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_USER_STUDIES_E01_O2"
+        },
+        {
+          "title": "Dependent variable",
+          "prompt": "In a comparison of two menus, which is a dependent measure?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_USER_STUDIES_E02_O1",
+              "text": "The assigned menu version"
+            },
+            {
+              "id": "HCI_USER_STUDIES_E02_O2",
+              "text": "The research hypothesis"
+            },
+            {
+              "id": "HCI_USER_STUDIES_E02_O3",
+              "text": "Time needed to find the target item"
+            },
+            {
+              "id": "HCI_USER_STUDIES_E02_O4",
+              "text": "The name of the designer"
+            }
+          ],
+          "explanation": "Task time is an outcome measured after the assigned condition.",
+          "id": "HCI_USER_STUDIES_E02",
+          "skillId": "HCI_USER_STUDIES_S1",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_USER_STUDIES_E02_O3"
+        },
+        {
+          "title": "Device confound",
+          "prompt": "Menu A is tested on old phones; menu B on fast laptops. B is faster. Explain why the interface effect is not isolated and propose a repair.",
+          "kind": "open",
+          "explanation": "Device and interface vary together. Hold device conditions constant or balance them appropriately across versions.",
+          "rubric": [
+            "Identify the systematic confound.",
+            "Explain its possible effect on time.",
+            "Propose a design separating device and interface effects."
+          ],
+          "id": "HCI_USER_STUDIES_E03",
+          "skillId": "HCI_USER_STUDIES_S2",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Order effects",
+          "prompt": "All participants test A then B using the same task. B is faster. Explain two possible order-related explanations and a mitigation.",
+          "kind": "open",
+          "explanation": "Practice may favour B, while fatigue can also change later performance. Counterbalance order and consider equivalent tasks.",
+          "rubric": [
+            "Discuss learning and fatigue/carryover.",
+            "Propose counterbalancing or another justified design.",
+            "Acknowledge that counterbalancing does not guarantee all carryover disappears."
+          ],
+          "id": "HCI_USER_STUDIES_E04",
+          "skillId": "HCI_USER_STUDIES_S2",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Completion count",
+          "prompt": "In a pilot, 12 of 15 participants complete the defined task without assistance. How many do not meet that success definition?",
+          "kind": "integer",
+          "answer": "3",
+          "explanation": "15 minus 12 equals 3; assisted completions do not meet the stated criterion.",
+          "id": "HCI_USER_STUDIES_E05",
+          "skillId": "HCI_USER_STUDIES_S2",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Think-aloud timing",
+          "prompt": "A team compares task times from a silent session with times from a think-aloud session. Explain a measurement problem and propose a better comparison.",
+          "kind": "open",
+          "explanation": "Speaking can affect performance, so method differs along with the condition. Keep the protocol comparable or separate timing and verbal insight goals.",
+          "rubric": [
+            "Identify the protocol difference.",
+            "Explain its effect on interpretation.",
+            "Propose comparable measurement conditions."
+          ],
+          "id": "HCI_USER_STUDIES_E06",
+          "skillId": "HCI_USER_STUDIES_S1",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Median time",
+          "prompt": "Five successful task times are 20, 22, 24, 26 and 108 seconds. What is the median in seconds?",
+          "kind": "integer",
+          "answer": "24",
+          "explanation": "The middle of five ordered values is 24; the large final time affects the mean much more.",
+          "id": "HCI_USER_STUDIES_E07",
+          "skillId": "HCI_USER_STUDIES_S2",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Small pilot conclusion",
+          "prompt": "Version A succeeds for 4 of 5 participants and B for 5 of 5. Write a cautious conclusion and identify evidence needed before a broad improvement claim.",
+          "kind": "open",
+          "explanation": "B performed better in this small sample, but assignment, participants, uncertainty and task equivalence limit generalisation.",
+          "rubric": [
+            "Report both numerators and denominators.",
+            "Do not infer statistical significance from the counts alone.",
+            "Identify a design or sample improvement for follow-up."
+          ],
+          "id": "HCI_USER_STUDIES_E08",
+          "skillId": "HCI_USER_STUDIES_S2",
+          "sourceIds": [
+            "HCI_SRC_016",
+            "HCI_SRC_015",
+            "HCI_SRC_006",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_ADAPTIVE",
+      "name": "Interactive and conversational systems",
+      "description": "Legacy HCI extension: layered evaluation, user models and conversational interaction; not a GenAI-building tutorial.",
+      "prerequisites": [
+        "HCI_USER_STUDIES"
+      ],
+      "sourceIds": [
+        "HCI_SRC_017",
+        "HCI_SRC_018",
+        "HCI_SRC_014",
+        "HCI_SRC_001"
+      ],
+      "skills": [
+        {
+          "id": "HCI_ADAPTIVE_S1",
+          "name": "Analyse adaptive interaction",
+          "description": "Separate observations, inferred user state and adaptation decisions."
+        },
+        {
+          "id": "HCI_ADAPTIVE_S2",
+          "name": "Evaluate conversation",
+          "description": "Assess repair, expectations and task success across system layers."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Separate observation from inference",
+          "paragraphs": [
+            "An adaptive system collects inputs, interprets them, models a user or world state, selects an adaptation and applies it. Each step can fail differently. A navigation assistant may capture speech clearly, misrecognise a place name, infer the wrong destination and still render an excellent route to that wrong place.",
+            "A user model is a representation, not direct access to a person's intentions or feelings. A long pause could indicate confusion, distraction or careful reading. Treat the mapping from signals to states as an assumption to evaluate. Do not equate an observed facial expression or interaction trace with a guaranteed emotional state."
+          ]
+        },
+        {
+          "title": "Evaluate layers and the complete interaction",
+          "paragraphs": [
+            "Layered evaluation tests components separately when useful: input accuracy, interpretation validity, appropriateness of the user model, decision quality and the final adaptation. A Wizard-of-Oz component can hold one layer stable while investigating another. Its protocol should use only inputs and outputs the proposed system could support.",
+            "Component quality does not guarantee whole-system quality because errors and timing interact. Evaluate whether the adaptation actually helps the user's goal, not just whether a classifier produces an output. An accurate recommendation can still arrive too late or interrupt a task. Combine diagnostic layer tests with an end-to-end evaluation of the represented task."
+          ]
+        },
+        {
+          "title": "Conversation adds interaction obligations",
+          "paragraphs": [
+            "A conversational interface must help users understand what they can ask, communicate progress and recover from misunderstandings. When a request is ambiguous, a targeted clarification can be better than silently guessing. Repeating the same unhelpful error message does not repair the dialogue. Alternative controls or a fallback route can matter when speech or chat is unsuitable.",
+            "Humanlike presentation can create expectations beyond the system's actual capabilities. Evaluate task success, recovery, user understanding and appropriate reliance rather than assuming friendliness guarantees quality. The archive contains conversational-HCI material, but that is not evidence of a new-course workflow for using Generative AI to build software prototypes. Keep that source gap explicit."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Layer distinction",
+          "prompt": "Audio is captured clearly but transcribed to the wrong destination. Which layer most directly failed?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_ADAPTIVE_E01_O1",
+              "text": "Raw audio capture"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E01_O2",
+              "text": "Interpretation of input"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E01_O3",
+              "text": "Button colouring only"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E01_O4",
+              "text": "The participant's consent form"
+            }
+          ],
+          "explanation": "The signal was captured, but its meaning was extracted incorrectly.",
+          "id": "HCI_ADAPTIVE_E01",
+          "skillId": "HCI_ADAPTIVE_S1",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_ADAPTIVE_E01_O2"
+        },
+        {
+          "title": "Pause inference",
+          "prompt": "An adaptive tutor treats every ten-second pause as confusion. Give two other explanations and propose validation.",
+          "kind": "open",
+          "explanation": "The user might be reading carefully or distracted. Compare inferred states with appropriate observations/user reports and contextual evidence.",
+          "rubric": [
+            "Offer two plausible alternative causes.",
+            "Distinguish behaviour from inferred state.",
+            "Propose a check that does not assume the inference is already correct."
+          ],
+          "id": "HCI_ADAPTIVE_E02",
+          "skillId": "HCI_ADAPTIVE_S1",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Layered route evaluation",
+          "prompt": "Break evaluation of a voice route assistant into at least three layers and an end-to-end task measure.",
+          "kind": "open",
+          "explanation": "Possible layers are audio capture, destination recognition and route decision; end-to-end evaluation checks reaching the intended destination or a valid route selection.",
+          "rubric": [
+            "Give distinct layers.",
+            "Associate each with a suitable criterion.",
+            "Include a complete user-goal measure."
+          ],
+          "id": "HCI_ADAPTIVE_E03",
+          "skillId": "HCI_ADAPTIVE_S1",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Whole-system claim",
+          "prompt": "Every component passes a separate test. What still needs evaluation?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_ADAPTIVE_E04_O1",
+              "text": "Nothing, usability is proven"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E04_O2",
+              "text": "Only whether the code has comments"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E04_O3",
+              "text": "Interactions between components and end-to-end user outcomes"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E04_O4",
+              "text": "Whether all components use the same font"
+            }
+          ],
+          "explanation": "Integration, timing and compounded errors can change the overall experience.",
+          "id": "HCI_ADAPTIVE_E04",
+          "skillId": "HCI_ADAPTIVE_S1",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_ADAPTIVE_E04_O3"
+        },
+        {
+          "title": "Ambiguous request",
+          "prompt": "A user asks a booking assistant for a room next Friday near the lab. Explain what may need clarification and design a concise repair.",
+          "kind": "open",
+          "explanation": "Date interpretation, which lab and room requirements may be ambiguous. Ask targeted questions while preserving known information.",
+          "rubric": [
+            "Identify relevant ambiguity.",
+            "Avoid silently guessing consequential details.",
+            "Provide a focused clarification and confirmation path."
+          ],
+          "id": "HCI_ADAPTIVE_E05",
+          "skillId": "HCI_ADAPTIVE_S2",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "Repeated misunderstanding",
+          "prompt": "A chatbot replies I did not understand three times. Propose a recovery flow and a success measure.",
+          "kind": "open",
+          "explanation": "Provide examples or constrained choices, preserve context and offer an alternative path. Measure successful task continuation after failure.",
+          "rubric": [
+            "Change the recovery strategy instead of repeating the same message.",
+            "Keep the user's goal central.",
+            "Define an observable recovery outcome."
+          ],
+          "id": "HCI_ADAPTIVE_E06",
+          "skillId": "HCI_ADAPTIVE_S2",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ]
+        },
+        {
+          "title": "GenAI scope distinction",
+          "prompt": "Do inherited lectures about conversational interfaces establish the approved GenAI coding tools for CSE12B?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_ADAPTIVE_E07_O1",
+              "text": "Yes, every chatbot lecture is a coding-tool syllabus"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E07_O2",
+              "text": "No, that specific tooling evidence is absent"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E07_O3",
+              "text": "Yes, if a chatbot is mentioned in an example"
+            },
+            {
+              "id": "HCI_ADAPTIVE_E07_O4",
+              "text": "Only if the slide uses a diagram"
+            }
+          ],
+          "explanation": "Conversational interaction theory and AI-assisted software prototyping are different topics; the supplied archive explicitly reports the latter gap.",
+          "id": "HCI_ADAPTIVE_E07",
+          "skillId": "HCI_ADAPTIVE_S2",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ],
+          "answer": "HCI_ADAPTIVE_E07_O2"
+        },
+        {
+          "title": "Humanlike expectations",
+          "prompt": "An assistant uses highly humanlike language but cannot remember previous sessions. Explain an expectation risk and a design/evaluation response.",
+          "kind": "open",
+          "explanation": "Users may assume continuity the system cannot provide. Communicate the relevant boundary and evaluate whether people understand and recover from it.",
+          "rubric": [
+            "Connect presentation to a specific false expectation.",
+            "Offer an understandable boundary or continuity mechanism.",
+            "Evaluate user understanding, not only satisfaction."
+          ],
+          "id": "HCI_ADAPTIVE_E08",
+          "skillId": "HCI_ADAPTIVE_S2",
+          "sourceIds": [
+            "HCI_SRC_017",
+            "HCI_SRC_018",
+            "HCI_SRC_014",
+            "HCI_SRC_001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_WEB_FOUNDATIONS",
+      "name": "Web prototype foundations: HTTP, HTML, CSS and JavaScript",
+      "description": "Optional legacy WDT WEB implementation background; not confirmed CSE12B requirements.",
+      "prerequisites": [
+        "HCI_PROTOTYPING"
+      ],
+      "sourceIds": [
+        "HCI_SRC_032",
+        "HCI_SRC_033",
+        "HCI_SRC_034",
+        "HCI_SRC_028",
+        "HCI_SRC_040"
+      ],
+      "skills": [
+        {
+          "id": "HCI_WEB_FOUNDATIONS_S1",
+          "name": "Reason about web structure",
+          "description": "Separate resources, semantic structure, layout and interaction."
+        },
+        {
+          "id": "HCI_WEB_FOUNDATIONS_S2",
+          "name": "Trace browser behaviour",
+          "description": "Analyse simple JavaScript, events and box-model examples."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Separate a resource from its presentation",
+          "paragraphs": [
+            "In the inherited web material, a browser requests resources identified by URLs and receives responses. Distinguish the scheme, host, path and query. Relative references depend on the base URL; a fragment identifies a location within a representation and is not the same thing as a query parameter. HTTP is a request/response protocol, not a guarantee that the application stores each request.",
+            "HTML provides document structure and semantic elements, CSS controls presentation, and JavaScript can implement behaviour. A prototype can combine all three, but framework choice is not an HCI requirement. This entire topic is predecessor implementation background; the new-course archive does not confirm a required stack."
+          ]
+        },
+        {
+          "title": "Use structure that supports the task",
+          "paragraphs": [
+            "Choose a heading for a heading, a link for navigation and a button for an action. Associate form labels with inputs so that the purpose is conveyed independently of placeholder text. Visual resemblance alone does not give an element the interaction semantics of a native control. These choices support maintainability and usable prototypes without constituting a formal accessibility certification.",
+            "In the content-box model, rendered width includes content width, horizontal padding and border. With width 120px, padding 10px on each side and border 2px on each side, the border-box width is 144px. Margin lies outside that box. Layout systems such as flex and grid help arrange content, but their presence does not prove the arrangement fits every viewport or task."
+          ]
+        },
+        {
+          "title": "Trace behaviour before adding complexity",
+          "paragraphs": [
+            "JavaScript event handlers respond to user or system events; the DOM represents the document being manipulated. A handler changing a value in memory is distinct from saving it to durable storage. Decide how pending, success and failure states affect what users can do. An interface that silently loses input can fail the task even when every event handler runs.",
+            "For small code traces, identify scope, operation order and type conversion. Use explicit comparisons and clear data types when implementing prototype logic. A successful local demonstration establishes only the tested state and path; it does not establish that every browser, screen size or error path behaves correctly."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Resource path",
+          "prompt": "In https://example.test/rooms?floor=2, which part is the path?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E01_O1",
+              "text": "https"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E01_O2",
+              "text": "example.test"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E01_O3",
+              "text": "/rooms"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E01_O4",
+              "text": "floor=2"
+            }
+          ],
+          "explanation": "The path is /rooms; floor=2 is the query component.",
+          "id": "HCI_WEB_FOUNDATIONS_E01",
+          "skillId": "HCI_WEB_FOUNDATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ],
+          "answer": "HCI_WEB_FOUNDATIONS_E01_O3"
+        },
+        {
+          "title": "Document structure",
+          "prompt": "Which technology primarily provides semantic document elements?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E02_O1",
+              "text": "HTML"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E02_O2",
+              "text": "CSS only"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E02_O3",
+              "text": "A transaction log"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E02_O4",
+              "text": "An index file"
+            }
+          ],
+          "explanation": "HTML describes structural elements such as headings, links and forms.",
+          "id": "HCI_WEB_FOUNDATIONS_E02",
+          "skillId": "HCI_WEB_FOUNDATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ],
+          "answer": "HCI_WEB_FOUNDATIONS_E02_O1"
+        },
+        {
+          "title": "Semantic action",
+          "prompt": "A prototype uses a clickable span for submitting a form. Explain why a native button is a better starting point and what still needs checking.",
+          "kind": "open",
+          "explanation": "A native button supplies established action semantics and interaction behaviour; its label, form behaviour and full workflow still need verification.",
+          "rubric": [
+            "Distinguish visual appearance from semantics.",
+            "Discuss keyboard/action behaviour.",
+            "Avoid claiming one element makes the whole form accessible."
+          ],
+          "id": "HCI_WEB_FOUNDATIONS_E03",
+          "skillId": "HCI_WEB_FOUNDATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        },
+        {
+          "title": "Content-box width",
+          "prompt": "A content-box element has width 120px, left/right padding 10px each and left/right border 2px each. Excluding margins, what is its border-box width in pixels?",
+          "kind": "integer",
+          "answer": "144",
+          "explanation": "120+10+10+2+2=144 pixels.",
+          "id": "HCI_WEB_FOUNDATIONS_E04",
+          "skillId": "HCI_WEB_FOUNDATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        },
+        {
+          "title": "Form label",
+          "prompt": "A room-name input only has placeholder text that disappears while typing. Propose a clearer semantic structure and explain the user benefit.",
+          "kind": "open",
+          "explanation": "Use a persistent associated label, with optional supplementary hint text. The purpose remains available when a value is present.",
+          "rubric": [
+            "Associate a label with the input.",
+            "Keep the purpose identifiable during entry.",
+            "Do not rely solely on visual positioning."
+          ],
+          "id": "HCI_WEB_FOUNDATIONS_E05",
+          "skillId": "HCI_WEB_FOUNDATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        },
+        {
+          "title": "Synchronous state trace",
+          "prompt": "In a simple synchronous JavaScript trace, let count=2; count=count+3; count=count*2. What integer is count at the end?",
+          "kind": "integer",
+          "answer": "10",
+          "explanation": "After addition count is 5, then multiplication makes it 10.",
+          "id": "HCI_WEB_FOUNDATIONS_E06",
+          "skillId": "HCI_WEB_FOUNDATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        },
+        {
+          "title": "CSS responsibility",
+          "prompt": "Which change is primarily presentational?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E07_O1",
+              "text": "Declaring a database transaction"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E07_O2",
+              "text": "Changing the gap between displayed form rows"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E07_O3",
+              "text": "Changing which booking the user owns"
+            },
+            {
+              "id": "HCI_WEB_FOUNDATIONS_E07_O4",
+              "text": "Defining a server authorisation rule"
+            }
+          ],
+          "explanation": "Spacing is a presentation/layout concern.",
+          "id": "HCI_WEB_FOUNDATIONS_E07",
+          "skillId": "HCI_WEB_FOUNDATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ],
+          "answer": "HCI_WEB_FOUNDATIONS_E07_O2"
+        },
+        {
+          "title": "Local state is not saved",
+          "prompt": "Clicking Save updates a JavaScript array but sends no request and uses no persistent storage. What claim can the interface make, and what would be needed to claim durable saving?",
+          "kind": "open",
+          "explanation": "It has changed local in-memory state only. A durable path and verified success/failure handling are needed before reporting persistent saving.",
+          "rubric": [
+            "Distinguish memory from persistence.",
+            "Identify the missing save boundary.",
+            "Explain truthful UI feedback."
+          ],
+          "id": "HCI_WEB_FOUNDATIONS_E08",
+          "skillId": "HCI_WEB_FOUNDATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        },
+        {
+          "title": "Relative URL",
+          "prompt": "A document is at https://example.test/campus/rooms/index.html. Explain where ../help.html resolves and why.",
+          "kind": "open",
+          "explanation": "It resolves to https://example.test/campus/help.html because .. moves up from the rooms directory.",
+          "rubric": [
+            "Identify the base directory.",
+            "Resolve one parent step.",
+            "Keep the same scheme and host unless explicitly changed."
+          ],
+          "id": "HCI_WEB_FOUNDATIONS_E09",
+          "skillId": "HCI_WEB_FOUNDATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        },
+        {
+          "title": "Responsive prototype check",
+          "prompt": "A form works on a wide screen but its confirm button falls outside a narrow viewport. Propose layout checks and one repair approach.",
+          "kind": "open",
+          "explanation": "Inspect the actual narrow task flow, constrain widths or allow wrapping, and verify the action remains reachable with readable text.",
+          "rubric": [
+            "Check the full task at narrow size.",
+            "Address overflow rather than merely shrinking all text.",
+            "Retest interaction and labels after the change."
+          ],
+          "id": "HCI_WEB_FOUNDATIONS_E10",
+          "skillId": "HCI_WEB_FOUNDATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_032",
+            "HCI_SRC_033",
+            "HCI_SRC_034",
+            "HCI_SRC_028",
+            "HCI_SRC_040"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_WEB_APPLICATIONS",
+      "name": "Web prototype applications and state",
+      "description": "Optional legacy WDT WEB: APIs, server routing, MVC, React concepts and WebSockets.",
+      "prerequisites": [
+        "HCI_WEB_FOUNDATIONS"
+      ],
+      "sourceIds": [
+        "HCI_SRC_035",
+        "HCI_SRC_036",
+        "HCI_SRC_037",
+        "HCI_SRC_038",
+        "HCI_SRC_039",
+        "HCI_SRC_031",
+        "HCI_SRC_029",
+        "HCI_SRC_028"
+      ],
+      "skills": [
+        {
+          "id": "HCI_WEB_APPLICATIONS_S1",
+          "name": "Explain application boundaries",
+          "description": "Distinguish client, server, model and persistence responsibilities."
+        },
+        {
+          "id": "HCI_WEB_APPLICATIONS_S2",
+          "name": "Design interaction states",
+          "description": "Reason about async responses, component state and real-time failures."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "Follow a request across boundaries",
+          "paragraphs": [
+            "A client initiates an interaction; a server route handles a request; application logic works with a model or persistence layer and returns a response. MVC separates model responsibilities, presentation and request/control flow. The pattern is a way of organising responsibilities, not a guarantee that the implementation is correct or that every file must fit one rigid shape.",
+            "An API contract describes resources, inputs, outcomes and error behaviour. For a read request, a missing room differs from an empty list of rooms, and both differ from a network failure. Legacy slides contain simplified method descriptions; exercises focus on stable conceptual distinctions and explicitly stated contracts rather than presenting a slide shortcut as an exhaustive current HTTP standard."
+          ]
+        },
+        {
+          "title": "Make asynchronous state visible",
+          "paragraphs": [
+            "Non-blocking I/O allows other work while a request waits, but it does not make every computation parallel or eliminate ordering problems. Two searches can finish in the opposite order from submission. A prototype should associate a response with the request that still matters so stale results do not overwrite the user's newer choice.",
+            "A component-based interface represents state and derives visible output from it. Changing state and handling events are separate from server persistence. Show appropriate loading, empty, error and success states and keep retry behaviour consistent with the server contract. Do not claim that a framework's existence validates the user workflow or protects server data."
+          ]
+        },
+        {
+          "title": "Choose real-time communication only when needed",
+          "paragraphs": [
+            "WebSockets provide an ongoing bidirectional channel after connection setup, useful when updates need to reach the client without repeated client polling. The inherited lecture describes open, message, error and close events. A live connection can fail; reconnecting does not automatically reconstruct every missed state change.",
+            "For a shared booking display, define how the client obtains a fresh authoritative snapshot after disconnection and avoids displaying stale availability as certain. TLS-protected transport and application authorisation address different concerns. This material supplies implementation background for prototypes, not an assertion that Express, React or WebSockets are required in CSE12B."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Server responsibility",
+          "prompt": "Which responsibility must not be trusted solely to a hidden client-side button?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_APPLICATIONS_E01_O1",
+              "text": "Choosing a display colour"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E01_O2",
+              "text": "Enforcing who may modify a stored booking"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E01_O3",
+              "text": "Displaying a loading message"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E01_O4",
+              "text": "Choosing a paragraph font"
+            }
+          ],
+          "explanation": "Server-side access decisions must be enforced at the protected data/action boundary.",
+          "id": "HCI_WEB_APPLICATIONS_E01",
+          "skillId": "HCI_WEB_APPLICATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ],
+          "answer": "HCI_WEB_APPLICATIONS_E01_O2"
+        },
+        {
+          "title": "MVC trace",
+          "prompt": "Describe how a room search can pass through a controller, model and view. Keep database access out of the view in your explanation.",
+          "kind": "open",
+          "explanation": "The controller handles input, the model supplies domain/data operations and the view presents the result.",
+          "rubric": [
+            "Assign meaningful responsibilities to all three.",
+            "Explain the data flow.",
+            "Avoid equating MVC with a specific mandatory framework."
+          ],
+          "id": "HCI_WEB_APPLICATIONS_E02",
+          "skillId": "HCI_WEB_APPLICATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ]
+        },
+        {
+          "title": "Non-blocking I/O",
+          "prompt": "What does non-blocking I/O chiefly allow in the inherited Node model?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_APPLICATIONS_E03_O1",
+              "text": "Every CPU task runs simultaneously automatically"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E03_O2",
+              "text": "Other work can proceed while waiting for I/O"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E03_O3",
+              "text": "All requests always finish in arrival order"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E03_O4",
+              "text": "Errors become impossible"
+            }
+          ],
+          "explanation": "Waiting for I/O need not block all progress; ordering and CPU limits still matter.",
+          "id": "HCI_WEB_APPLICATIONS_E03",
+          "skillId": "HCI_WEB_APPLICATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ],
+          "answer": "HCI_WEB_APPLICATIONS_E03_O2"
+        },
+        {
+          "title": "Stale search result",
+          "prompt": "A user searches A, then B. Response B arrives first and A arrives later. Propose a way to keep the current results correct.",
+          "kind": "open",
+          "explanation": "Track request identity/current query or cancel obsolete work; only the result for the current request should update the visible search state.",
+          "rubric": [
+            "Explain the race.",
+            "Associate responses with intended state.",
+            "Handle errors/loading without reviving obsolete results."
+          ],
+          "id": "HCI_WEB_APPLICATIONS_E04",
+          "skillId": "HCI_WEB_APPLICATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ]
+        },
+        {
+          "title": "Four request states",
+          "prompt": "For loading room availability, describe distinct loading, empty, error and success states and what the user should be able to do in each.",
+          "kind": "open",
+          "explanation": "An empty successful response is not a network error. Clear states support waiting, changing filters, retrying or selecting a room.",
+          "rubric": [
+            "Distinguish all four states.",
+            "Provide appropriate actions.",
+            "Avoid reporting successful availability before a valid response."
+          ],
+          "id": "HCI_WEB_APPLICATIONS_E05",
+          "skillId": "HCI_WEB_APPLICATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ]
+        },
+        {
+          "title": "WebSocket role",
+          "prompt": "Which need most directly motivates a WebSocket-style channel?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_APPLICATIONS_E06_O1",
+              "text": "Making headings bold"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E06_O2",
+              "text": "Repeated bidirectional updates over an ongoing connection"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E06_O3",
+              "text": "Normalising a table"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E06_O4",
+              "text": "Proving a design usable"
+            }
+          ],
+          "explanation": "The channel supports ongoing messages in both directions.",
+          "id": "HCI_WEB_APPLICATIONS_E06",
+          "skillId": "HCI_WEB_APPLICATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ],
+          "answer": "HCI_WEB_APPLICATIONS_E06_O2"
+        },
+        {
+          "title": "Reconnect correctness",
+          "prompt": "A shared booking screen disconnects for a minute. Explain why reconnect alone may not make displayed availability correct, and propose reconciliation.",
+          "kind": "open",
+          "explanation": "Updates may have been missed; request a current snapshot or use an explicit replay/version protocol supported by the application.",
+          "rubric": [
+            "Identify possible missed events.",
+            "Use an authoritative reconciliation mechanism.",
+            "Show uncertainty or prevent actions based solely on stale state."
+          ],
+          "id": "HCI_WEB_APPLICATIONS_E07",
+          "skillId": "HCI_WEB_APPLICATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ]
+        },
+        {
+          "title": "Component state boundary",
+          "prompt": "A React-style component updates its selectedRoom state. Explain why this does not prove the room is reserved on the server.",
+          "kind": "open",
+          "explanation": "Selection is local UI state; reservation requires a separate server operation and confirmed outcome.",
+          "rubric": [
+            "Separate selection from reservation.",
+            "Describe the request/response boundary.",
+            "Include failure handling and truthful feedback."
+          ],
+          "id": "HCI_WEB_APPLICATIONS_E08",
+          "skillId": "HCI_WEB_APPLICATIONS_S2",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ]
+        },
+        {
+          "title": "Model responsibility",
+          "prompt": "In an MVC explanation, where do domain data operations most naturally belong?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_WEB_APPLICATIONS_E09_O1",
+              "text": "Model"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E09_O2",
+              "text": "Only the CSS stylesheet"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E09_O3",
+              "text": "Browser history"
+            },
+            {
+              "id": "HCI_WEB_APPLICATIONS_E09_O4",
+              "text": "The decorative background"
+            }
+          ],
+          "explanation": "The model represents domain/data responsibilities.",
+          "id": "HCI_WEB_APPLICATIONS_E09",
+          "skillId": "HCI_WEB_APPLICATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ],
+          "answer": "HCI_WEB_APPLICATIONS_E09_O1"
+        },
+        {
+          "title": "Contract before implementation",
+          "prompt": "Define a small conceptual contract for requesting rooms on a given date: input, successful result, empty result and invalid-input behaviour. Do not implement a server.",
+          "kind": "open",
+          "explanation": "A useful contract states the date format/meaning, room fields and distinguishable outcomes so both client and server can be checked.",
+          "rubric": [
+            "Define input semantics.",
+            "Separate an empty valid result from an invalid request.",
+            "Specify enough output for the intended user task."
+          ],
+          "id": "HCI_WEB_APPLICATIONS_E10",
+          "skillId": "HCI_WEB_APPLICATIONS_S1",
+          "sourceIds": [
+            "HCI_SRC_035",
+            "HCI_SRC_036",
+            "HCI_SRC_037",
+            "HCI_SRC_038",
+            "HCI_SRC_039",
+            "HCI_SRC_031",
+            "HCI_SRC_029",
+            "HCI_SRC_028"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HCI_PROJECT",
+      "name": "Prototype-and-evaluation project: evidence and source gaps",
+      "description": "Applies inherited HCI methods to the supplied new-course framing; GenAI tooling and assessment remain unsupported.",
+      "prerequisites": [
+        "HCI_USER_STUDIES",
+        "HCI_ADAPTIVE",
+        "HCI_PROTOTYPING"
+      ],
+      "sourceIds": [
+        "HCI_SRC_041",
+        "HCI_SRC_052",
+        "HCI_SRC_006",
+        "HCI_SRC_014",
+        "HCI_SRC_016"
+      ],
+      "skills": [
+        {
+          "id": "HCI_PROJECT_S1",
+          "name": "Plan an evidence-led prototype",
+          "description": "Connect user needs, scope, design decisions and target-user evaluation."
+        },
+        {
+          "id": "HCI_PROJECT_S2",
+          "name": "Audit scope and claims",
+          "description": "Distinguish archive-supported methods, optional background and missing GenAI requirements."
+        }
+      ],
+      "lesson": [
+        {
+          "title": "What the supplied new-course framing establishes",
+          "paragraphs": [
+            "The local HCIAP instructions describe a small-group software prototype created using Generative AI and evaluated with the target user. They also explicitly say that the archive contains no teaching material for this new component. This establishes a broad activity framing within the supplied evidence, not a specific approved tool, prompting method, deliverable list or marking scheme.",
+            "The preparation in earlier topics can support requirements, design choices, prototyping and evaluation. It cannot certify a GenAI implementation workflow that is absent from the sources. Before treating a project plan as the official assignment, obtain the current brief and its tool/data/assessment requirements. The exercises here assess that distinction and the inherited HCI reasoning only."
+          ]
+        },
+        {
+          "title": "Build a traceable preparation plan",
+          "paragraphs": [
+            "Choose a bounded target-user task, identify the uncertainty to resolve and select a prototype whose scope can answer it. Record requirement, supporting observation or assumption, prototype feature and evaluation measure in a traceability table. A room-booking project might focus on understanding availability and knowing whether confirmation succeeded, rather than implementing an entire campus platform.",
+            "Assign group responsibilities for research preparation, design, implementation and evaluation while keeping shared understanding of the user goal. Record which parts are simulated and which function. Do not invent user sessions or present a classmate rehearsal as target-user validation. A prototype that looks complete can still leave the central task or an important failure state untested."
+          ]
+        },
+        {
+          "title": "Close the loop with evidence, not promises",
+          "paragraphs": [
+            "Define realistic tasks, participant criteria and the evidence that would prompt a revision. Keep a record of observed failures, proposed explanations, design changes and retest outcomes. If the prototype's implementation method is still unknown, state that dependency instead of filling it with unsupported instructions about AI tools.",
+            "A defensible report separates completed work, observed results, unresolved limitations and next steps. The legacy web topics are optional background choices, not prescribed technology. Conversational-interface lectures are not a substitute for GenAI coding materials. The result of this preparation is a source-grounded HCI plan with a visible curriculum gap, not a claim that the full new AI-assisted syllabus has been supplied."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "title": "Supported scope",
+          "prompt": "Which statement is supported by the supplied new-course instructions?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PROJECT_E01_O1",
+              "text": "React is mandatory"
+            },
+            {
+              "id": "HCI_PROJECT_E01_O2",
+              "text": "A specific model must generate all code"
+            },
+            {
+              "id": "HCI_PROJECT_E01_O3",
+              "text": "The group prototype uses Generative AI and is evaluated with target users, but detailed materials are absent"
+            },
+            {
+              "id": "HCI_PROJECT_E01_O4",
+              "text": "The old HCI exam weights apply unchanged"
+            }
+          ],
+          "explanation": "The broad activity is described; tooling, assessment details and the new-component teaching material are missing.",
+          "id": "HCI_PROJECT_E01",
+          "skillId": "HCI_PROJECT_S2",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ],
+          "answer": "HCI_PROJECT_E01_O3"
+        },
+        {
+          "title": "Bound a project",
+          "prompt": "Define a small room-booking prototype project around one user goal, two requirements and an evaluation question.",
+          "kind": "open",
+          "explanation": "A bounded confirmation or availability task supports a coherent prototype and measurable evaluation.",
+          "rubric": [
+            "Keep the scope feasible and task-centred.",
+            "Connect two requirements to the goal.",
+            "Ask an evaluation question the prototype can answer."
+          ],
+          "id": "HCI_PROJECT_E02",
+          "skillId": "HCI_PROJECT_S1",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ]
+        },
+        {
+          "title": "Traceability row",
+          "prompt": "Create one row containing user evidence or a labelled assumption, requirement, prototype behaviour and evaluation measure.",
+          "kind": "open",
+          "explanation": "The chain should allow a reviewer to see why the behaviour exists and how its contribution will be assessed.",
+          "rubric": [
+            "Label unverified assumptions.",
+            "Keep all fields causally connected.",
+            "Use an observable measure."
+          ],
+          "id": "HCI_PROJECT_E03",
+          "skillId": "HCI_PROJECT_S1",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ]
+        },
+        {
+          "title": "Missing AI brief",
+          "prompt": "List the unresolved information needed before claiming compliance with the new AI-assisted project, and distinguish it from HCI methods already supported by the archive.",
+          "kind": "open",
+          "explanation": "Missing items include the actual brief, allowed/expected tooling, data-use rules, deliverables and marking criteria. HCI research/prototyping/evaluation methods are present as background.",
+          "rubric": [
+            "Identify concrete missing requirements.",
+            "Separate them from supported inherited methods.",
+            "Do not invent answers to the missing requirements."
+          ],
+          "id": "HCI_PROJECT_E04",
+          "skillId": "HCI_PROJECT_S2",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ]
+        },
+        {
+          "title": "Legacy web lineage",
+          "prompt": "A WDT exercise transcript is headed CSE12B but its content is an old web exam. How should it be treated?",
+          "kind": "choice",
+          "options": [
+            {
+              "id": "HCI_PROJECT_E05_O1",
+              "text": "As definitive proof of the new assessment"
+            },
+            {
+              "id": "HCI_PROJECT_E05_O2",
+              "text": "As legacy background despite the changed heading"
+            },
+            {
+              "id": "HCI_PROJECT_E05_O3",
+              "text": "As newly created GenAI teaching material"
+            },
+            {
+              "id": "HCI_PROJECT_E05_O4",
+              "text": "As a reason to copy all historical deadlines"
+            }
+          ],
+          "explanation": "Provenance and the explicit scope notes outweigh a relabelled heading.",
+          "id": "HCI_PROJECT_E05",
+          "skillId": "HCI_PROJECT_S2",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ],
+          "answer": "HCI_PROJECT_E05_O2"
+        },
+        {
+          "title": "Evaluation failure loop",
+          "prompt": "Two pilot participants fail to notice confirmation. Describe a design revision and a retest plan without inventing future results.",
+          "kind": "open",
+          "explanation": "Improve the confirmation feedback and repeat a comparable task, observing whether participants can identify the saved state.",
+          "rubric": [
+            "Connect the change to the observed failure.",
+            "Specify what the retest measures.",
+            "Report the outcome as pending until observed."
+          ],
+          "id": "HCI_PROJECT_E06",
+          "skillId": "HCI_PROJECT_S1",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ]
+        },
+        {
+          "title": "Honest project status",
+          "prompt": "A team has a clickable prototype, one expert review and no target-user sessions. Write a status statement that distinguishes evidence and pending work.",
+          "kind": "open",
+          "explanation": "The represented flow and expert findings exist; target-user usability and fully working implementation have not yet been demonstrated.",
+          "rubric": [
+            "Name completed artifacts and review accurately.",
+            "State missing target-user evaluation.",
+            "Avoid claiming that prototype polish establishes successful implementation or user outcomes."
+          ],
+          "id": "HCI_PROJECT_E07",
+          "skillId": "HCI_PROJECT_S2",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ]
+        },
+        {
+          "title": "Source-grounded boundary",
+          "prompt": "Explain why a full lesson on prompting an AI coding tool cannot be attributed to the supplied HCI/WDT archive, while a lesson on evaluating its resulting interface can.",
+          "kind": "open",
+          "explanation": "The archive explicitly lacks GenAI-prototyping teaching material but includes user-centred evaluation methods applicable to interfaces regardless of construction method.",
+          "rubric": [
+            "Identify the stated source gap.",
+            "Distinguish construction method from evaluation method.",
+            "Keep any later tool-specific content dependent on additional sources."
+          ],
+          "id": "HCI_PROJECT_E08",
+          "skillId": "HCI_PROJECT_S2",
+          "sourceIds": [
+            "HCI_SRC_041",
+            "HCI_SRC_052",
+            "HCI_SRC_006",
+            "HCI_SRC_014",
+            "HCI_SRC_016"
+          ]
+        }
+      ]
+    }
+  ]
+}

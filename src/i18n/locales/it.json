@@ -479,7 +479,7 @@
   "common.no": "no",
   "dashboard.exerciseProgress": "{completed} / {total} esercizi · {percentage}%",
   "dashboard.exerciseProgressAria": "Completamento esercizi per {course}",
-  "dashboard.exerciseProgressHint": "Completato dopo un invio valido e valutato; separato da padronanza e preparazione.",
+  "dashboard.exerciseProgressHint": "Completato dopo un invio valido; il lavoro non valutato non dimostra padronanza o preparazione.",
   "dashboard.noExercises": "Nessun esercizio idoneo",
   "assemblyTrace.snapshot": "Valori richiesti al checkpoint",
   "assemblyTrace.savedAnswer": "Risposta al checkpoint salvata",

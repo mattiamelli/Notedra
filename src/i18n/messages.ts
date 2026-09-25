@@ -491,7 +491,7 @@ export const en = {
   'common.no': 'no',
   'dashboard.exerciseProgress': '{completed} / {total} exercises · {percentage}%',
   'dashboard.exerciseProgressAria': 'Exercise completion for {course}',
-  'dashboard.exerciseProgressHint': 'Completed after a valid graded submission; separate from mastery and readiness.',
+  'dashboard.exerciseProgressHint': 'Completed after a valid submission; ungraded work does not establish mastery or readiness.',
   'dashboard.noExercises': 'No eligible exercises',
   'assemblyTrace.snapshot': 'Requested checkpoint values',
   'assemblyTrace.savedAnswer': 'Saved checkpoint answer',

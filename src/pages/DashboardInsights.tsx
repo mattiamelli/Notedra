@@ -1,11 +1,14 @@
 import {type ReactNode} from 'react';
-import {Link} from 'react-router';
-import {courses} from '../academic/navigation';
+import {Link,useSearchParams} from 'react-router';
+import {courses as allCourses,trimesters} from '../academic/navigation';
 import {useProgress} from '../progress/useProgress';
 import {ShellIcon} from '../shell/ShellIcon';
 import {useI18n} from '../i18n/i18n';
 export default function DashboardInsights({children}:{children?:ReactNode}) {
   const {t}=useI18n();
+  const [params]=useSearchParams();
+  const trimester=trimesters.find(value=>value===Number(params.get('trimester')??1))??1;
+  const courses=allCourses.filter(course=>course.trimester===trimester);
   const {result,message}=useProgress();
   return <>
     <section className="ds-dash-panel ds-dash-plan"><div className="ds-section-heading"><h2><ShellIcon name="calendar"/>{t('dashboard.studyPath')}</h2></div>

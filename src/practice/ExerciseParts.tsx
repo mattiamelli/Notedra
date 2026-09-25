@@ -1,4 +1,6 @@
 import {BooleanFormula} from '../interactive/BooleanFormula';
+import {CurriculumControls} from '../curriculum/Controls';
+import {isCurriculumRubricFeedback} from '../curriculum/grading';
 import {selectedFormula} from '../interactive/boolean-notation';
 import InteractiveControls,{InteractiveSpecification} from '../interactive/Controls';
 import {isInteractive} from '../interactive/types';
@@ -20,7 +22,7 @@ export function ExerciseSource({exercise}: {exercise: Exercise}) {
   const topic = academicIndex.topics.find(topic => topic.topic_id === exercise.topicId)!;
   return <><p className="ds-practice-label">{t('practice.sourceLabel',{mode:t('mode' in exercise&&exercise.mode==='exam'?'practice.authoredExam':'practice.authored'),version:exercise.version})}</p>
     <p><Link className="ds-text-link" to={topicPath(topic)}>{topic.name}</Link></p>
-    <details className="ds-practice-source"><summary>{t('learning.sourcesScope')}</summary><p>{exercise.source.filename}</p><p>{t('practice.sourceDocument')}</p><p>{t('practice.formatClaim',{format:exerciseFormat(exercise.task.kind)?.label??t('practice.unavailable')})}</p></details></>;
+    <details className="ds-practice-source"><summary>{t('learning.sourcesScope')}</summary><p>{exercise.source.filename}</p>{exercise.source.kind==='CURRICULUM'?<><p>{exercise.source.locator}</p><p>Authored practice grounded in the referenced curriculum material.</p></>:<p>{t('practice.sourceDocument')}</p>}<p>{t('practice.formatClaim',{format:exerciseFormat(exercise.task.kind)?.label??t('practice.unavailable')})}</p></details></>;
 }
 export function ExercisePrompt({exercise,mode='practice',attemptId}: {exercise: Exercise;mode?:'practice'|'exam';attemptId?:string}) {
   const {t,lt}=useI18n();
@@ -33,6 +35,7 @@ export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: E
   const {t}=useI18n();
   const task=exercise.task;
   if(!exerciseFormat(task.kind))return <p role="status">{t('practice.answerFormatUnavailable')}</p>;
+  if(task.kind==='curriculum')return <CurriculumControls task={task} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(isInteractive(task))return <InteractiveControls task={task} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(task.kind==='enrichment-exact')return <TupleControls parts={task.parts} answer={answer} onChange={onChange} disabled={disabled}/>;
   if(task.kind==='assembly-trace')return <AssemblyTraceControls fields={task.fields} answer={answer} onChange={onChange} disabled={disabled}/>;
@@ -49,6 +52,7 @@ function PresentedAnswer({exercise,answer}:{exercise:Exercise;answer:Answer}) {
 }
 export function Feedback({result,exercise,answer}: {result: GradeResult; exercise: Exercise; answer:Answer}) {
   const {t,lt}=useI18n();
+  if(exercise.task.kind==='curriculum'&&exercise.task.format==='open'&&isCurriculumRubricFeedback(result))return <section className="ds-practice-feedback" role="status"><h2>Ungraded response</h2><p>{t('practice.noScore')}</p><h3>{t('practice.submitted')}</h3><PresentedAnswer exercise={exercise} answer={answer}/><h3>Self-review rubric</h3><ul>{exercise.task.rubric.map((item,index)=><li key={index}>{item}</li>)}</ul><p>{exercise.explanation}</p></section>;
   if(result.status!=='GRADED') return <section className="ds-practice-feedback" role="status"><h2>{t('practice.feedbackUnavailable')}</h2><p>{lt(result.message)}</p><p>{t('practice.noScore')}</p></section>;
   const explanation=explainAnswer(exercise,answer,result)!;
 

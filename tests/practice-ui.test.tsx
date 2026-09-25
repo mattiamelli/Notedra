@@ -2,7 +2,7 @@
 import { IDBFactory } from 'fake-indexeddb';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, useLocation } from 'react-router';
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AppRoutes } from '../src/App';
 import { LearningProvider } from '../src/learning/LearningProvider';
@@ -22,7 +22,11 @@ afterEach(async()=>{await act(async()=>root.unmount());container.remove();vi.res
 async function settleRoutes(){const loading=()=>[...container.querySelectorAll('[role="status"]')].some(n=>/^Loading /.test(n.textContent??''));for(let i=0;i<150&&loading();i++)await act(async()=>{await new Promise(r=>setTimeout(r,10));});expect(loading(),'lazy route resolved').toBe(false);}
 async function settle(){await act(async()=>{await new Promise(resolve=>setTimeout(resolve,30));});await settleRoutes();}
 async function load(repo:StudentRepository){let state!:LoadedState;await act(async()=>{state=await repo.load();});return state;}
-async function mount(repo:StudentRepository,path='/practice'){await act(async()=>root.render(<MemoryRouter initialEntries={[path]}><LearningProvider createRepository={()=>repo}><AppRoutes/></LearningProvider></MemoryRouter>));await settle();}
+function LocationProbe(){return <output data-testid="location">{useLocation().search}</output>;}
+async function mount(repo:StudentRepository,path='/practice'){await act(async()=>root.render(<MemoryRouter initialEntries={[path]}><LocationProbe/><LearningProvider createRepository={()=>repo}><AppRoutes/></LearningProvider></MemoryRouter>));await settle();}
+function expectPage(items:readonly typeof allExercises[number][],page=1){const shown=items.slice((page-1)*48,page*48);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(shown.length);expect(shown.every(exercise=>container.querySelector(`.ds-practice-card a[href="${exercisePath(exercise)}"]`))).toBe(true);expect(container.textContent).toContain(`${items.length} authored exercises`);}
+const queryParams=()=>new URLSearchParams(container.querySelector('[data-testid=location]')!.textContent!);
+async function search(value:string){const input=container.querySelector<HTMLInputElement>('input[type=search]')!;await act(async()=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));});}
 function select(label:string){const field=[...container.querySelectorAll('label')].find(item=>item.childNodes[0]?.textContent===label);expect(field,label).toBeDefined();return field!.querySelector('select')!;}
 async function choose(label:string,value:string){const control=select(label);await act(async()=>{control.value=value;control.dispatchEvent(new Event('change',{bubbles:true}));});}
 function button(name:string){const found=[...container.querySelectorAll('button')].find(item=>item.textContent===name);expect(found,name).toBeDefined();return found!;}
@@ -31,18 +35,46 @@ async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
   it('browsing/filtering the expanded catalog creates no attempts',async()=>{
-    const repo=repository();await mount(repo);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);expect(allExercises.every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
-    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.filter(e=>e.subjectId==='CSE1300_RL').length);expect((await load(repo)).data.attempts).toEqual([]);
+    const repo=repository();await mount(repo);expectPage(allExercises);
+    const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expectPage(allExercises.filter(e=>e.subjectId==='CSE1300_RL'));expect((await load(repo)).data.attempts).toEqual([]);
   },15_000);
   it('renders difficulty options and combines course and difficulty filters',async()=>{
     const repo=repository();await mount(repo);
     expect([...select('Difficulty').options].map(option=>option.textContent)).toEqual(['All difficulties','Low','Medium','High','Exam level']);
     await choose('Course','CSE1300_RL');await choose('Difficulty','medium');
     const expected=allExercises.filter(exercise=>exercise.subjectId==='CSE1300_RL'&&difficultyCategory(exercise)==='medium');
-    expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(expected.length);expect(container.textContent).toContain(`${expected.length} authored exercises`);
-    expect(expected.every(exercise=>container.querySelector(`a[href="${exercisePath(exercise)}"]`))).toBe(true);
-    await choose('Course','');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.filter(exercise=>difficultyCategory(exercise)==='medium').length);
-    await choose('Difficulty','');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.length);expect((await load(repo)).data.attempts).toEqual([]);
+    expectPage(expected);
+    await choose('Course','');expectPage(allExercises.filter(exercise=>difficultyCategory(exercise)==='medium'));
+    await choose('Difficulty','');expectPage(allExercises);expect((await load(repo)).data.attempts).toEqual([]);
+  });
+  it('paginates stable results through URL state and resets the page on search or filter changes',async()=>{
+    const repo=repository();await mount(repo,'/practice?q=DS.PRACTICE&page=2');
+    const expected=allExercises.filter(item=>item.id.startsWith('ds.practice.'));
+    expectPage(expected,2);expect(container.querySelector('#practice-results-count')?.textContent).toBe(`Showing 49-96 of ${expected.length} exercises`);
+    await click('Next');expectPage(expected,3);expect(queryParams().get('page')).toBe('3');expect(queryParams().get('q')).toBe('DS.PRACTICE');
+    await click('Previous');expectPage(expected,2);
+    await choose('Course','CSE1300_RL');expect(queryParams().has('page')).toBe(false);expect(queryParams().get('q')).toBe('DS.PRACTICE');
+    await click('Next');await choose('Difficulty','medium');expect(queryParams().has('page')).toBe(false);
+    await search('  DOES-NOT-EXIST-12345  ');expect(queryParams().get('q')).toBe('  DOES-NOT-EXIST-12345  ');expect(queryParams().has('page')).toBe(false);
+    expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(0);expect(container.querySelector('nav[aria-label="Exercise pages"]')).toBeNull();
+    expect((await load(repo)).data.attempts).toEqual([]);
+  });
+  it('searches across courses and topics, preserves history, and resets a later page when typing',async()=>{
+    const repo=repository(),service=new PracticeService(repo),state=await load(repo);
+    await service.start(catalog[0].id,'search-history',state.data);
+    await mount(repo,'/practice?page=2');await search(catalog[0].id.toUpperCase());
+    expect(queryParams().has('page')).toBe(false);expectPage([catalog[0]]);
+    expect(button('Previous').disabled).toBe(true);expect(button('Next').disabled).toBe(true);
+    await search('logic');expect(container.querySelectorAll('.ds-practice-card').length).toBeGreaterThan(0);
+    await search('no-such-exercise-12345');expect(container.querySelector('.ds-attempt-list a')?.getAttribute('href')).toBe(attemptPath(catalog[0],'search-history'));
+  });
+  it.each(['0','-2','1.5','garbage','Infinity'])('uses the first page for invalid page=%s',async page=>{
+    await mount(repository(),`/practice?page=${page}`);expectPage(allExercises);expect(button('Previous').disabled).toBe(true);
+  });
+  it('clamps out-of-range pages to the last page without losing filters',async()=>{
+    const expected=allExercises.filter(item=>item.subjectId==='CSE1300_RL');
+    await mount(repository(),'/practice?subject=CSE1300_RL&page=999999');expectPage(expected,Math.ceil(expected.length/48));expect(button('Next').disabled).toBe(true);
+    await click('Previous');expect(queryParams().get('subject')).toBe('CSE1300_RL');
   });
   it('shows a useful empty state for filters with no matching topic',async()=>{
     await mount(repository(),'/practice?subject=CSE1400_CO&topic=CSE1100_IP_T01&difficulty=exam');
