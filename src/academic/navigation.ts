@@ -30,6 +30,16 @@ const courseRoutes = [
   {subject_id: 'CSE1300_RL', path: '/rl', tone: 'violet', icon: 'logic'},
   {subject_id: 'CSE1100_IP', path: '/ip', tone: 'blue', icon: 'code'},
 ] as const;
+const curriculumCourseIcons = {
+  CSE12A_CALC: 'function',
+  CSE12B_HCIAP: 'cursor',
+  CSE12C_DM: 'database',
+  CSE13A_LA: 'matrix',
+  CSE13B_SDE: 'components',
+  CSE13C_ADS: 'tree',
+  CSE14A_PTS: 'distribution',
+  CSE14B_CN: 'network',
+} as const;
 const originalCourses = courseRoutes.map(route => {
   const subject = academicIndex.subjects.find(item => item.subject_id === route.subject_id);
   if (!subject) throw new Error(`Missing canonical course ${route.subject_id}.`);
@@ -41,7 +51,8 @@ export const courses = [...originalCourses, ...curriculumMetadata.map(course => 
   subject_id: course.id, code: course.code, name: course.name, short: course.short,
   publicName: course.name, compactName: course.short, description: course.description,
   descriptionKey: 'course.cardIp' as const, trimester: course.trimester,
-  path: `/${course.slug}`, tone: (course.trimester === 2 ? 'mint' : course.trimester === 3 ? 'violet' : 'blue') as 'mint' | 'violet' | 'blue', icon: 'book' as const,
+  path: `/${course.slug}`, tone: (course.trimester === 2 ? 'mint' : course.trimester === 3 ? 'violet' : 'blue') as 'mint' | 'violet' | 'blue',
+  icon: curriculumCourseIcons[course.id as keyof typeof curriculumCourseIcons],
 }))];
 export type Course = typeof courses[number];
 export const topicsFor = (subjectId: string) => academicIndex.topics.filter(topic => topic.subject_id === subjectId).sort((a, b) => a.order - b.order);

@@ -531,7 +531,7 @@
   },
   "src/shell/ShellIcon.tsx": {
     "before": "212b405839214b6f6ae6aaa0dfed237cb1d29163fd64437eea86f895ee1826b8",
-    "after": "f1c97b8c6dc74785201a3951c0ca28b50c0ceb0a86b13c20ce357992071d524f"
+    "after": "0154897a6e70d97b8a66a15feaf7251fce926bc0639a9bcf1f527ebdc65d4581"
   },
   "src/shell/shell.css": {
     "before": "a61c03d57aecf559dabb930d5494624c4b975c59dde813c49aff74f4bc5a2268",
@@ -684,7 +684,7 @@
   },
   "src/academic/navigation.ts": {
     "before": "54bf0a8290b3006c2bc672a712e75893c118e161253689c4aae0ab61e11fcf4c",
-    "after": "3d5f8a00628e6eda0ff7c82cc17d283b3dd6aa25b92e092bf8f16f1606cbcb73",
+    "after": "c351d206cd4b89fb379e6b20f4bb055a0c677ec536d3432cbb14bfa77d36cfda",
     "original": "54bf0a8290b3006c2bc672a712e75893c118e161253689c4aae0ab61e11fcf4c"
   },
   "src/components/Header.tsx": {

@@ -17,6 +17,15 @@ let container:HTMLDivElement,root:Root;
 beforeEach(()=>{container=document.createElement('div');document.body.append(container);root=createRoot(container);});
 afterEach(async()=>{await act(async()=>root.unmount());container.remove();});
 
+it('uses distinct small sidebar icons while preserving the original trimester icons',()=>{
+  expect(courses.map(course=>[course.subject_id,course.icon])).toEqual([
+    ['CSE1400_CO','cpu'],['CSE1300_RL','logic'],['CSE1100_IP','code'],
+    ['CSE12A_CALC','function'],['CSE12B_HCIAP','cursor'],['CSE12C_DM','database'],
+    ['CSE13A_LA','matrix'],['CSE13B_SDE','components'],['CSE13C_ADS','tree'],
+    ['CSE14A_PTS','distribution'],['CSE14B_CN','network'],
+  ]);
+});
+
 it('keeps original paths and resolves every new topic mode and breadcrumb',()=>{
   expect(courses.filter(course=>course.trimester===1).map(course=>course.path)).toEqual(['/co','/rl','/ip']);
   expect(courses).toHaveLength(11);
