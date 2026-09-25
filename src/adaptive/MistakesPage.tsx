@@ -12,6 +12,8 @@ import {skills,type Mistake,type SkillEvidence} from './evidence';
 import {selectReviewNow,type ReviewNowReason} from './review-queue';
 import './adaptive.css';
 import {useI18n} from '../i18n/i18n';
+import {track} from '../analytics/analytics';
+import {useTrackOnce} from '../analytics/react';
 export function answerText(answer:Answer,mistake:Mistake){
  if(answer.kind!=='choice')return answer.value;
  const task=mistake.exercise.task;
@@ -26,7 +28,7 @@ function MistakeCard({mistake:m,group,reason}:{mistake:Mistake;group?:SkillEvide
  async function act(kind:'review'|'retry'){
   if(pending.current)return;pending.current=true;setBusy(true);setError('');const expected=learning.snapshot!.data;
   try{if(kind==='review')await learning.changeStudentData(repo=>repo.setReviewed(m.attempt.attemptId,review?.revision??0,!review?.reviewedAt,expected));
-   else {retryId.current??=crypto.randomUUID();const id=retryId.current;await learning.changeStudentData(repo=>new PracticeService(repo).retry(m.attempt,id,expected));navigate(attemptPath(m.exercise,id));}
+   else {retryId.current??=crypto.randomUUID();const id=retryId.current;await learning.changeStudentData(repo=>new PracticeService(repo).retry(m.attempt,id,expected));track('review_started',{course_id:m.attempt.subjectId,topic_id:m.attempt.topicId,activity_type:'practice',source_surface:'mistake_book'});navigate(attemptPath(m.exercise,id));}
   }catch(e){setError(errorMessage(e));}finally{pending.current=false;setBusy(false);}
  }
  const topic=academicIndex.topics.find(t=>t.topic_id===m.attempt.topicId)!;
@@ -53,6 +55,8 @@ function MistakeCard({mistake:m,group,reason}:{mistake:Mistake;group?:SkillEvide
 export function MistakesPage({topicId}:{topicId?:string}){
  const {learning,evidence,refresh}=useEvidence();const {t,lt}=useI18n();const [params,setParams]=useSearchParams();const [shown,setShown]=useState(20);
  const filter={course:params.get('course')??'',topic:topicId??params.get('topic')??'',skill:params.get('skill')??'',pattern:params.get('pattern')??'',days:params.get('days')??'all',view:params.get('view')??'all'};
+ const openedCourse=filter.course||academicIndex.topics.find(topic=>topic.topic_id===filter.topic)?.subject_id;
+ useTrackOnce(`mistake-book:${topicId?'topic':'global'}`,()=>track('mistake_book_opened',{source_surface:topicId?'topic':'mistake_book',...(openedCourse?{course_id:openedCourse}:{}),...(filter.topic?{topic_id:filter.topic}:{})}));
  const filtered=filterMistakes(evidence,filter),groups=useMemo(()=>new Map(evidence.groups.map(g=>[g.skill.id,g])),[evidence]);
  const reviewNow=useMemo(()=>selectReviewNow(evidence,{topicId}),[evidence,topicId]);
  const visibleSkills=new Set(filtered.flatMap(m=>m.skill?[m.skill.id]:[]));

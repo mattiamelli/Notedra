@@ -49,7 +49,7 @@
   },
   "src/adaptive/MistakesPage.tsx": {
     "before": "00eb7e8bff18f16189e0a5c75a2dc6fd0c57356f43b65c3775714ffc803bd514",
-    "after": "4ce4cf1645eee0a9647349fe09eb15323233aae7ce2c320f1d8d85286c6379e2",
+    "after": "d4bb17b8bfb6978b3096cbce34539ff1b5474d7eb5512397b0fd5ecd47a1c021",
     "original": "ad5ef4a526709acda7968f9a3cedb824cab93cb8f8d001b9e2a013c42c49b9fd"
   },
   "src/adaptive/StudyPathPage.tsx": {
@@ -135,7 +135,7 @@
   },
   "tests/adaptive-ui.test.tsx": {
     "before": "27e0de4cf6eef0a8c6606808b7ac835ec4a7db375bf447a59d4045091fd6f01d",
-    "after": "e67977db015f238c3cdb8de6cf2ce429c084037fe2560e8585e7de688ca23248",
+    "after": "1f3f1c23efbb411f52f6b48de16bbac81020494117ee6abe4088266c7a1320ce",
     "original": "61a2518a89a140b16887e9b4c076e53a172c9bfd7cbab7abd13637ffcdf19ef8"
   },
   "tests/rl-topic-ui.test.tsx": {

@@ -4,7 +4,7 @@
 
 Events are typed and validated against an explicit allowlist. Development and tests use the volatile in-memory sink. Production uses the lazy PostHog sink only when both `VITE_POSTHOG_KEY` and the approved EU host `VITE_POSTHOG_HOST=https://eu.i.posthog.com` are configured; otherwise analytics is a safe no-op. Events describe product interactions, never academic responses.
 
-The PostHog boundary disables autocapture, automatic pageviews/page-leave, session replay, surveys, flags, heatmaps, performance and exception capture, person profiles, device-model enrichment and browser persistence. It never calls `identify`. A final `before_send` filter rejects unknown events and removes unapproved properties, including full URLs and browser/device metadata. PostHog still assigns a non-persistent anonymous browser identifier required to ingest an event; Notedra does not correlate it with an account or learner record.
+The PostHog boundary disables autocapture, automatic pageviews/page-leave, session replay, surveys, flags, heatmaps, performance and exception capture, person profiles and device-model enrichment. It never calls `identify`. A final `before_send` filter rejects unknown events and removes unapproved properties, including full URLs and browser/device metadata. The SDK stores its random anonymous `distinct_id` in `localStorage`, without analytics cookies, so the same browser can be recognized across visits. Notedra does not derive this identifier from or correlate it with an account or learner record. Clearing site storage, changing browser/profile or changing device creates a new anonymous analytics identity.
 
 | Event | Trigger | Required properties | Optional | Metric | Privacy note |
 | --- | --- | --- | --- | --- | --- |
@@ -19,6 +19,8 @@ The PostHog boundary disables autocapture, automatic pageviews/page-leave, sessi
 | `study_method_selected` | A Study Path method is selected | `method_id`, `source_surface` | `selection_source`, `recommended_method_id` | Method adoption and override rate | Enumerated values only |
 | `study_path_generated` | A valid Study Path is built | `course_id`, `activity_type`, `duration_bucket`, `source_surface`, `method_id` | `topic_id` | Study Path adoption | No generated content or evidence details |
 | `study_path_activity_opened` | User opens a generated item | course/topic IDs, activity, surface | None | Path follow-through | Canonical IDs only |
+| `mistake_book_opened` | Mistake Book or a topic-scoped Mistake Book opens | surface | course/topic IDs | Mistake Book adoption | Canonical IDs only |
+| `review_started` | A retry draft is successfully created from Mistake Book | course/topic IDs, activity, surface | None | Review follow-through | No answer, score or mistake details |
 | `exam_started` | Exam session is successfully saved | course ID, exam type, duration bucket, surface | None | Exam use | No seed, item or response |
 | `exam_completed` | Exam submission is successfully saved | course ID, exam type, duration bucket, status, surface | None | Exam completion | No answers or grades |
 | `next_action_shown` | Stable ready recommendation is rendered | activity, surface | None | Recommendation CTR | No reason, title or learner evidence |
@@ -28,19 +30,21 @@ The PostHog boundary disables autocapture, automatic pageviews/page-leave, sessi
 
 ## Derived metrics
 
-- **Activation:** distinct eligible local analytics sessions with `first_practice_completed` / distinct new usable local analytics sessions. A future session-start contract is required before reporting this externally.
-- **Time to value:** timestamp of `first_practice_completed` minus first usable-session timestamp. The usable-session event is not yet implemented, so this is a future metric.
-- **Study Path adoption:** distinct eligible sessions with `study_path_generated` / distinct eligible sessions.
-- **Recommendation CTR:** `next_action_opened` / `next_action_shown`, deduplicated by the same session and impression contract.
+- **7/30-day activity:** unique anonymous `distinct_id` values with at least one allowlisted activity event in the selected window.
+- **D1/D3/D7 retention:** unique anonymous browsers with a qualifying event on day 1, 3 or 7 after their first qualifying event. Qualifying events are practice, course/topic, Study Path, Mistake Book/review, exam and opened next-action events; impressions alone are excluded.
+- **Study Path adoption:** unique anonymous browsers with `study_path_generated`, with follow-through measured by `study_path_activity_opened`.
+- **Mistake Book adoption:** unique anonymous browsers with `mistake_book_opened`, with follow-through measured by `review_started`.
+- **Recommendation CTR:** `next_action_opened` / `next_action_shown` within the same analysis window.
 - **Practice completion:** `practice_completed` / `practice_started` for the same analysis window.
-- **Return measurement:** future D1 means a qualifying study event on calendar day 1 after first usable session; D7 means one on calendar day 7. Do not call either metric retention until consented durable identity and persistence make the denominator and return observable.
+- **Most-used content:** event counts and unique anonymous browsers grouped only by canonical `course_id` and `topic_id`.
+
+These are browser-level product metrics, not people or account metrics. They do not connect activity across devices and undercount users who clear storage.
 
 ## FUTURE
 
-- Additional consent controls if required by the owner's documented lawful-basis assessment.
-- A first-party, rotating analytics session ID separate from account and learner records.
-- Clear deletion/export behavior, retention period, environment controls and provider approval.
-- First usable-session event needed for activation denominators, time to value and D1/D7 return measurement.
+- Owner-approved consent or documented jurisdiction-specific exception, plus matching refusal/withdrawal controls, before deployment.
+- Clear provider retention period, environment controls and provider approval.
+- A first usable-session event if a separate activation denominator or time-to-value metric is later required.
 
 ## DO NOT TRACK
 
@@ -50,6 +54,6 @@ Answer text, submitted code, uploaded document content, email, name, account IDs
 
 The pinned 1.434.0 integration loads the official `dist/module.slim.no-external` entrypoint. Optional replay, console-log, metrics and feature-flag extensions are absent, external dependency loading is disabled, and explicit SDK options disable each optional product. Configuration is checked against the installed SDK types; the unsupported `disable_device_id_rotation` option is not used.
 
-`before_send` retains the event UUID/timestamp, project ingestion token and ephemeral `distinct_id`, plus approved event properties. It strips top-level person updates and other enrichment, forces `$process_person_profile: false`, and sets `$geoip_disable: true`. No device or session identifiers are transmitted separately. The `ip` option is deprecated and ineffective in this SDK and is deliberately not used. Network connections necessarily expose an IP to the receiving infrastructure; the owner's reported IP-anonymization setting governs server-side storage and has not been independently verified here.
+`before_send` retains the event UUID/timestamp, project ingestion token and random persistent `distinct_id`, plus approved event properties. It strips top-level person updates and other enrichment, forces `$process_person_profile: false`, and sets `$geoip_disable: true`. No device or session identifiers are transmitted separately. The `ip` option is deprecated and ineffective in this SDK and is deliberately not used. Network connections necessarily expose an IP to the receiving infrastructure; the owner's reported IP-anonymization setting governs server-side storage and has not been independently verified here.
 
-Targeted tests run the actual SDK up to an intercepted transport dispatch, verify allowed capture and automatic-event rejection, and create independent instances to prove different anonymous IDs with no cookie/localStorage/sessionStorage writes. They do not verify live ingestion.
+Targeted tests run the actual SDK up to an intercepted transport dispatch, verify allowed capture and automatic-event rejection, and create independent instances to prove the same random anonymous ID survives a reload through `localStorage` without setting a cookie. They do not verify live ingestion.

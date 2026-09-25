@@ -9,7 +9,7 @@ const config={key:'phc_test_public_key',host:POSTHOG_EU_HOST} as const;
 const properties={course_id:'CSE1400_CO',topic_id:'CO_T01',activity_type:'practice',source_surface:'practice_attempt',completion_status:'completed'} as const;
 const automatic=['$pageview','$pageleave','$autocapture','$snapshot','$heatmaps_data','$$heatmap','$dead_click','$rageclick','$web_vitals','$exception','$identify','$set','$feature_flag_called'];
 const envelope=(event='practice_completed'):CaptureResult=>({uuid:'01995990-1234-7000-8000-000000000001',event,timestamp:new Date('2026-09-19'),properties:{...properties,token:config.key,distinct_id:'anonymous'}});
-afterEach(()=>{vi.restoreAllMocks();vi.unstubAllGlobals();});
+afterEach(()=>{localStorage.clear();vi.restoreAllMocks();vi.unstubAllGlobals();});
 
 describe('PostHog privacy boundary',()=>{
   it('enables only production with complete EU configuration',()=>{
@@ -19,7 +19,8 @@ describe('PostHog privacy boundary',()=>{
     expect(resolvePostHogConfig({VITE_POSTHOG_KEY:config.key,VITE_POSTHOG_HOST:'https://us.i.posthog.com'},true)).toBeNull();
   });
   it('pins supported controls independently of project defaults',()=>{
-    expect(postHogOptions(config)).toMatchObject({autocapture:false,capture_pageview:false,capture_pageleave:false,capture_dead_clicks:false,capture_exceptions:false,capture_heatmaps:false,capture_performance:false,disable_session_recording:true,disable_surveys:true,advanced_disable_flags:true,advanced_disable_feature_flags:true,remote_config_refresh_interval_ms:0,person_profiles:'never',disable_persistence:true,persistence:'memory',disableDeviceModel:true,enable_recording_console_log:false,logs:{captureConsoleLogs:false},metrics:{network:false},disable_external_dependency_loading:true,disable_product_tours:true,disable_conversations:true,disable_web_experiments:true,internal_or_test_user_hostname:null});
+    expect(postHogOptions(config)).toMatchObject({autocapture:false,capture_pageview:false,capture_pageleave:false,capture_dead_clicks:false,capture_exceptions:false,capture_heatmaps:false,capture_performance:false,disable_session_recording:true,disable_surveys:true,advanced_disable_flags:true,advanced_disable_feature_flags:true,remote_config_refresh_interval_ms:0,person_profiles:'never',persistence:'localStorage',disableDeviceModel:true,enable_recording_console_log:false,logs:{captureConsoleLogs:false},metrics:{network:false},disable_external_dependency_loading:true,disable_product_tours:true,disable_conversations:true,disable_web_experiments:true,internal_or_test_user_hostname:null});
+    expect(postHogOptions(config)).not.toHaveProperty('disable_persistence');
   });
   it.each(automatic)('rejects automatic event %s',event=>expect(filterPostHogEvent(envelope(event))).toBeNull());
   it('preserves ingestion fields, enforces GeoIP/person opt-outs and strips top-level enrichment',()=>{
@@ -41,7 +42,8 @@ describe('PostHog privacy boundary',()=>{
     const reset=setAnalyticsSinkForTests({capture(){throw Error('unavailable');}});
     try {expect(track('practice_completed',properties)).toBe(true);} finally {reset();}
   });
-  it('uses the real SDK capture path without identify, storage or external requests',async()=>{
+  it('uses the real SDK capture path with a random reusable localStorage identity and no cookies',async()=>{
+    localStorage.clear();
     const fetch=vi.fn().mockRejectedValue(new Error('unexpected network'));
     vi.stubGlobal('fetch',fetch);
     const xhr=vi.spyOn(XMLHttpRequest.prototype,'send');
@@ -68,14 +70,15 @@ describe('PostHog privacy boundary',()=>{
       expect(client.metrics).toBeUndefined();
       expect(client.featureFlags).toBeUndefined();
     }
-    expect(identities[0]).not.toBe(identities[1]);
+    expect(identities[0]).toBe(identities[1]);
+    expect(identities[0]).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
     expect(requests).toHaveLength(2);
     for(const request of requests){
       expect(request.event).toBe('practice_completed');
       expect(request.uuid).toBeTruthy();expect(request.timestamp).toBeInstanceOf(Date);
       expect(request.properties).toEqual({...properties,token:config.key,distinct_id:expect.any(String),$geoip_disable:true,$process_person_profile:false});
     }
-    expect(writes).not.toHaveBeenCalled();expect(cookie).not.toHaveBeenCalled();
+    expect(writes).toHaveBeenCalled();expect(cookie).not.toHaveBeenCalled();
     expect(fetch).not.toHaveBeenCalled();expect(xhr).not.toHaveBeenCalled();
   });
 });

@@ -17,6 +17,8 @@ export interface AnalyticsEventMap {
  study_method_selected:{method_id:StudyMethodId;source_surface:'study_path';selection_source?:'manual'|'recommended';recommended_method_id?:StudyMethodId};
  study_path_generated:{course_id:string;topic_id?:string;activity_type:'study_path';duration_bucket:DurationBucket;source_surface:'study_path';method_id:StudyMethodId};
  study_path_activity_opened:{course_id:string;topic_id:string;activity_type:ActivityType;source_surface:'study_path'};
+ mistake_book_opened:{course_id?:string;topic_id?:string;source_surface:'mistake_book'|'topic'};
+ review_started:{course_id:string;topic_id:string;activity_type:'practice';source_surface:'mistake_book'};
  exam_started:{course_id:string;activity_type:'quick_exam'|'full_mock';duration_bucket:DurationBucket;source_surface:'exam_setup'};
  exam_completed:{course_id:string;activity_type:'quick_exam'|'full_mock';duration_bucket:DurationBucket;completion_status:CompletionStatus;source_surface:'exam'};
  next_action_shown:{activity_type:ActivityType;source_surface:'dashboard'};
@@ -31,6 +33,7 @@ export const analyticsEventRegistry={
  first_practice_started:{required:['course_id','topic_id','activity_type','source_surface']},first_practice_completed:{required:['course_id','topic_id','activity_type','completion_status','source_surface']},
  practice_started:{required:['course_id','topic_id','activity_type','source_surface']},practice_completed:{required:['course_id','topic_id','activity_type','completion_status','source_surface']},
  study_method_recommended:{required:['method_id','reason_code','duration_bucket','course_id','source_surface']},study_method_selected:{required:['method_id','source_surface'],optional:['selection_source','recommended_method_id']},study_path_generated:{required:['course_id','activity_type','duration_bucket','source_surface','method_id'],optional:['topic_id']},study_path_activity_opened:{required:['course_id','topic_id','activity_type','source_surface']},
+ mistake_book_opened:{required:['source_surface'],optional:['course_id','topic_id']},review_started:{required:['course_id','topic_id','activity_type','source_surface']},
  exam_started:{required:['course_id','activity_type','duration_bucket','source_surface']},exam_completed:{required:['course_id','activity_type','duration_bucket','completion_status','source_surface']},
  next_action_shown:{required:['activity_type','source_surface']},next_action_opened:{required:['activity_type','source_surface']},
  course_opened:{required:['course_id','activity_type','source_surface']},topic_opened:{required:['course_id','topic_id','activity_type','source_surface']},
