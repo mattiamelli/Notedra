@@ -694,7 +694,7 @@
   },
   "src/shell/CourseArtwork.tsx": {
     "before": "3f42cfbab551598d243de79d6858d6dbfbb5a506250f1f714e1fcea1152280e0",
-    "after": "99ff7b3e2c3e5a5927231ce425887bb23c245f8382a3e7df527abc3539f03a54",
+    "after": "6872f82f909fe0f8bfe57c90373c1f8dbf52779eb26e6bff5979b90ec773c9e1",
     "original": "3f42cfbab551598d243de79d6858d6dbfbb5a506250f1f714e1fcea1152280e0"
   },
   "src/ip/IPStudyMode.tsx": {

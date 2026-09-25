@@ -1,24 +1,24 @@
 import {useId} from 'react';
 import type {Course} from '../academic/navigation';
 
-const courseImages: Record<string, string> = {
-  CSE12A_CALC: 'calculus',
-  CSE12B_HCIAP: 'hci',
-  CSE12C_DM: 'data-management',
-  CSE13A_LA: 'linear-algebra',
-  CSE13B_SDE: 'software-engineering',
-  CSE13C_ADS: 'algorithms',
-  CSE14A_PTS: 'probability',
-  CSE14B_CN: 'networks',
+const courseImages: Record<string, {image: string; label: string}> = {
+  CSE12A_CALC: {image: 'calculus', label: 'Calculus'},
+  CSE12B_HCIAP: {image: 'hci', label: 'Interaction'},
+  CSE12C_DM: {image: 'data-management', label: 'Data'},
+  CSE13A_LA: {image: 'linear-algebra', label: 'Linear Algebra'},
+  CSE13B_SDE: {image: 'software-engineering', label: 'Software Design'},
+  CSE13C_ADS: {image: 'algorithms', label: 'Algorithms'},
+  CSE14A_PTS: {image: 'probability', label: 'Probability'},
+  CSE14B_CN: {image: 'networks', label: 'Networks'},
 };
 
 /** Decorative course headers; the adjacent heading supplies the accessible name. */
 export function CourseArtwork({course}: {course: Course}) {
   const id = useId();
-  const image = courseImages[course.subject_id];
-  if (image) return <div className="ds-course-art ds-curriculum-art" aria-hidden="true">
-    <img src={`/course-artwork/${image}.png`} alt="" width="768" height="256" loading="lazy" decoding="async" />
-    <span className="ds-course-tag">{course.code}</span>
+  const artwork = courseImages[course.subject_id];
+  if (artwork) return <div className="ds-course-art ds-curriculum-art" aria-hidden="true">
+    <img src={`/course-artwork/${artwork.image}.png`} alt="" width="768" height="256" loading="lazy" decoding="async" />
+    <span className="ds-course-tag">{artwork.label}</span>
   </div>;
   const co = course.subject_id === 'CSE1400_CO', rl = course.subject_id === 'CSE1300_RL';
   const color = co ? '#31baff' : rl ? '#25e5cd' : '#a78aff';

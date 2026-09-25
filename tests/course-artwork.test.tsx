@@ -6,6 +6,7 @@ import {courses} from '../src/academic/navigation';
 import {CourseArtwork} from '../src/shell/CourseArtwork';
 
 it('gives each added course a distinct local, valid and lightweight decorative image', () => {
+  const labels = ['Calculus', 'Interaction', 'Data', 'Linear Algebra', 'Software Design', 'Algorithms', 'Probability', 'Networks'];
   const paths = new Set<string>();
   let totalBytes = 0;
   for (const course of courses.filter(course => course.trimester !== 1)) {
@@ -21,7 +22,9 @@ it('gives each added course a distinct local, valid and lightweight decorative i
     expect(image.parentElement?.getAttribute('aria-hidden')).toBe('true');
     const src = image.getAttribute('src')!;
     expect(src).toMatch(/^\/course-artwork\/[a-z-]+\.png$/);
-    expect(container.querySelector('.ds-course-tag')?.textContent).toBe(course.code);
+    const label = container.querySelector('.ds-course-tag')?.textContent;
+    expect(label).toBe(labels[paths.size]);
+    expect(label).not.toMatch(/^CSE/);
     paths.add(src);
     const file = readFileSync(`public${src}`);
     expect(file.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
