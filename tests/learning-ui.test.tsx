@@ -48,6 +48,7 @@ describe('student data UI', () => {
   });
   it('records only valid topic visits and never an invalid route', async () => {
     const repo = repository(); await mount(repo, '/co/MISSING'); expect((await loaded(repo)).data.resume).toBeNull();
+    await vi.waitFor(()=>expect(container.querySelector<HTMLAnchorElement>('.ds-not-found a')).not.toBeNull());
     await act(async () => container.querySelector<HTMLAnchorElement>('.ds-not-found a')!.click());
     const href = '/co/CO_T06_ASSEMBLY_X86_64';
     await act(async () => { container.querySelector<HTMLAnchorElement>(`a[href="${href}/visualizer"]`)!.click(); await import('../src/AssemblyWorkbench'); }); await settle();
@@ -83,7 +84,7 @@ describe('student data UI', () => {
     expect(replace.disabled).toBe(true); expect(await repo.exportBackup()).toEqual(original);
     await click('Cancel restore'); expect(container.querySelector('.ds-restore-confirm')).toBeNull();
     await choose(JSON.stringify({...emptyBackup(), resume: position}));
-    await act(async () => container.querySelector<HTMLInputElement>('input[type=checkbox]')!.click());
+    await act(async () => container.querySelector<HTMLInputElement>('.ds-restore-confirm input[type=checkbox]')!.click());
     await click('Replace student data');
     expect((await repo.exportBackup()).resume).toEqual(position);
     expect(await repo.exportRecovery()).toEqual(original); expect(container.textContent).toContain('Export pre-restore recovery');
@@ -96,7 +97,7 @@ describe('student data UI', () => {
   });
   it('shows a failed restore without claiming it was saved', async () => {
     const repo = repository(); await mount(repo, '/account'); vi.spyOn(repo, 'restore').mockRejectedValue(new DOMException('Full', 'QuotaExceededError'));
-    await choose(JSON.stringify(emptyBackup())); await act(async () => container.querySelector<HTMLInputElement>('input[type=checkbox]')!.click());
+    await choose(JSON.stringify(emptyBackup())); await act(async () => container.querySelector<HTMLInputElement>('.ds-restore-confirm input[type=checkbox]')!.click());
     await click('Replace student data'); expect(container.querySelector('[role=alert]')?.textContent).toContain('Local storage failed');
     expect(container.textContent).not.toContain('Backup restored in this browser');
   });

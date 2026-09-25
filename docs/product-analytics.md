@@ -2,9 +2,9 @@
 
 ## NOW
 
-Events are typed and validated against an explicit allowlist. Development and tests use the volatile in-memory sink. Production uses the lazy PostHog sink only when both `VITE_POSTHOG_KEY` and the approved EU host `VITE_POSTHOG_HOST=https://eu.i.posthog.com` are configured; otherwise analytics is a safe no-op. Events describe product interactions, never academic responses.
+Events are typed and validated against an explicit allowlist. Development and tests use the volatile in-memory sink after consent. Production uses the lazy PostHog sink only after explicit consent and only when both `VITE_POSTHOG_KEY` and the approved EU host `VITE_POSTHOG_HOST=https://eu.i.posthog.com` are configured; otherwise analytics is a safe no-op. Events describe product interactions, never academic responses.
 
-The PostHog boundary disables autocapture, automatic pageviews/page-leave, session replay, surveys, flags, heatmaps, performance and exception capture, person profiles and device-model enrichment. It never calls `identify`. A final `before_send` filter rejects unknown events and removes unapproved properties, including full URLs and browser/device metadata. The SDK stores its random anonymous `distinct_id` in `localStorage`, without analytics cookies, so the same browser can be recognized across visits. Notedra does not derive this identifier from or correlate it with an account or learner record. Clearing site storage, changing browser/profile or changing device creates a new anonymous analytics identity.
+The PostHog boundary disables autocapture, automatic pageviews/page-leave, session replay, surveys, flags, heatmaps, performance and exception capture, person profiles and device-model enrichment. It never calls `identify`. A final `before_send` filter rejects unknown events and removes unapproved properties, including full URLs and browser/device metadata. After opt-in, the SDK stores its random anonymous `distinct_id` in a dedicated `localStorage` namespace, without analytics cookies, so the same browser can be recognized across visits. Before a decision or after refusal, PostHog is not initialized. Withdrawal stops capture and clears only current and legacy PostHog persistence. Notedra does not derive the identifier from or correlate it with an account or learner record. Clearing analytics storage, changing browser/profile or changing device creates a new anonymous analytics identity.
 
 | Event | Trigger | Required properties | Optional | Metric | Privacy note |
 | --- | --- | --- | --- | --- | --- |
@@ -42,7 +42,6 @@ These are browser-level product metrics, not people or account metrics. They do 
 
 ## FUTURE
 
-- Owner-approved consent or documented jurisdiction-specific exception, plus matching refusal/withdrawal controls, before deployment.
 - Clear provider retention period, environment controls and provider approval.
 - A first usable-session event if a separate activation denominator or time-to-value metric is later required.
 

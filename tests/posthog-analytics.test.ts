@@ -3,7 +3,7 @@ import {afterEach,describe,expect,it,vi} from 'vitest';
 import {PostHog} from 'posthog-js/dist/module.slim.no-external';
 import type {CaptureResult} from 'posthog-js';
 import {setAnalyticsSinkForTests,track} from '../src/analytics/analytics';
-import {POSTHOG_EU_HOST,createPostHogSink,filterPostHogEvent,postHogOptions,resolvePostHogConfig} from '../src/analytics/posthog';
+import {POSTHOG_EU_HOST,POSTHOG_PERSISTENCE_NAME,createPostHogSink,filterPostHogEvent,postHogOptions,resolvePostHogConfig} from '../src/analytics/posthog';
 
 const config={key:'phc_test_public_key',host:POSTHOG_EU_HOST} as const;
 const properties={course_id:'CSE1400_CO',topic_id:'CO_T01',activity_type:'practice',source_surface:'practice_attempt',completion_status:'completed'} as const;
@@ -19,7 +19,7 @@ describe('PostHog privacy boundary',()=>{
     expect(resolvePostHogConfig({VITE_POSTHOG_KEY:config.key,VITE_POSTHOG_HOST:'https://us.i.posthog.com'},true)).toBeNull();
   });
   it('pins supported controls independently of project defaults',()=>{
-    expect(postHogOptions(config)).toMatchObject({autocapture:false,capture_pageview:false,capture_pageleave:false,capture_dead_clicks:false,capture_exceptions:false,capture_heatmaps:false,capture_performance:false,disable_session_recording:true,disable_surveys:true,advanced_disable_flags:true,advanced_disable_feature_flags:true,remote_config_refresh_interval_ms:0,person_profiles:'never',persistence:'localStorage',disableDeviceModel:true,enable_recording_console_log:false,logs:{captureConsoleLogs:false},metrics:{network:false},disable_external_dependency_loading:true,disable_product_tours:true,disable_conversations:true,disable_web_experiments:true,internal_or_test_user_hostname:null});
+    expect(postHogOptions(config)).toMatchObject({autocapture:false,capture_pageview:false,capture_pageleave:false,capture_dead_clicks:false,capture_exceptions:false,capture_heatmaps:false,capture_performance:false,disable_session_recording:true,disable_surveys:true,advanced_disable_flags:true,advanced_disable_feature_flags:true,remote_config_refresh_interval_ms:0,person_profiles:'never',persistence:'localStorage',persistence_name:POSTHOG_PERSISTENCE_NAME,disableDeviceModel:true,enable_recording_console_log:false,logs:{captureConsoleLogs:false},metrics:{network:false},disable_external_dependency_loading:true,disable_product_tours:true,disable_conversations:true,disable_web_experiments:true,internal_or_test_user_hostname:null});
     expect(postHogOptions(config)).not.toHaveProperty('disable_persistence');
   });
   it.each(automatic)('rejects automatic event %s',event=>expect(filterPostHogEvent(envelope(event))).toBeNull());

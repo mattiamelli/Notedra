@@ -3,6 +3,7 @@ import {analyticsEventRegistry,type AnalyticsEventMap} from './events';
 import type {AnalyticsRecord,AnalyticsSink} from './analytics';
 
 export const POSTHOG_EU_HOST='https://eu.i.posthog.com';
+export const POSTHOG_PERSISTENCE_NAME='notedra_analytics';
 
 export type PostHogRuntimeConfig={key:string;host:typeof POSTHOG_EU_HOST};
 export type PostHogEnvironment={VITE_POSTHOG_KEY?:string;VITE_POSTHOG_HOST?:string};
@@ -12,9 +13,11 @@ export type PostHogOptions=Partial<PostHogConfig>;
 export type PostHogClient={
   init:(key:string,options:PostHogOptions)=>unknown;
   capture:(event:string,properties:Record<string,unknown>)=>unknown;
+  shutdown?:()=>Promise<void>;
 };
 
 export type PostHogLoader=()=>Promise<PostHogClient>;
+export type DisposableAnalyticsSink=AnalyticsSink&{dispose:()=>Promise<void>};
 
 // Required ingestion identity and project routing; no device/session enrichment.
 const technicalProperties=new Set(['token','distinct_id']);
@@ -55,6 +58,7 @@ export function postHogOptions(config:PostHogRuntimeConfig):PostHogOptions {
     advanced_disable_flags:true,
     person_profiles:'never',
     persistence:'localStorage',
+    persistence_name:POSTHOG_PERSISTENCE_NAME,
     enable_recording_console_log:false,
     logs:{captureConsoleLogs:false,beforeSend:()=>null},
     metrics:{network:false,beforeSend:()=>null},
@@ -77,18 +81,22 @@ export function postHogOptions(config:PostHogRuntimeConfig):PostHogOptions {
 }
 
 const loadPostHog:PostHogLoader=async()=>{
-  const {default:posthog}=await import('posthog-js/dist/module.slim.no-external');
+  const {PostHog}=await import('posthog-js/dist/module.slim.no-external');
+  const posthog=new PostHog();
   return {
     init:(key,options)=>posthog.init(key,options),
     capture:(event,properties)=>posthog.capture(event,properties),
+    shutdown:()=>posthog.shutdown(),
   };
 };
 
-export function createPostHogSink(config:PostHogRuntimeConfig,loader:PostHogLoader=loadPostHog):AnalyticsSink {
+export function createPostHogSink(config:PostHogRuntimeConfig,loader:PostHogLoader=loadPostHog):DisposableAnalyticsSink {
   let client:Promise<PostHogClient|null>|null=null;
+  let disposed=false;
   const getClient=()=>client??=(async()=>{
     try {
       const loaded=await loader();
+      if(disposed)return null;
       loaded.init(config.key,postHogOptions(config));
       return loaded;
     } catch {
@@ -96,14 +104,18 @@ export function createPostHogSink(config:PostHogRuntimeConfig,loader:PostHogLoad
     }
   })();
   return {capture(record:AnalyticsRecord){
+    if(disposed)return;
     void getClient().then(loaded=>{
-      if(!loaded)return;
+      if(!loaded||disposed)return;
       try {loaded.capture(record.event,{...record.properties});} catch { /* Analytics must never affect product behavior. */ }
     }).catch(()=>undefined);
+  },async dispose(){
+    disposed=true;
+    try {await (await client)?.shutdown?.();} catch { /* Consent withdrawal remains fail-closed. */ }
   }};
 }
 
-export function createConfiguredPostHogSink(env:PostHogEnvironment,production:boolean,loader?:PostHogLoader):AnalyticsSink|null {
+export function createConfiguredPostHogSink(env:PostHogEnvironment,production:boolean,loader?:PostHogLoader):DisposableAnalyticsSink|null {
   const config=resolvePostHogConfig(env,production);
   return config?createPostHogSink(config,loader):null;
 }

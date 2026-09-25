@@ -13,6 +13,8 @@ import {useAccount} from './accounts/context';
 import { ThemeProvider } from './appearance/theme';
 import {LanguageProvider} from './i18n/i18n';
 import {useI18n} from './i18n/i18n';
+import {AnalyticsConsentProvider} from './analytics/consent';
+import {AnalyticsConsentBanner} from './analytics/ConsentBanner';
 const AccountPage=lazy(()=>import('./accounts/AccountPage').then(m=>({default:m.AccountPage})));
 const LegalPage=lazy(()=>import('./pages/LegalPage').then(m=>({default:m.LegalPage})));
 const CoursePage=lazy(()=>import('./pages/CoursePage').then(m=>({default:m.CoursePage})));
@@ -77,5 +79,5 @@ export function AppRoutes() {
 }
 
 export default function App() {
-  return <LanguageProvider><ThemeProvider><BrowserRouter><AccountRoot><AppRoutes/></AccountRoot></BrowserRouter></ThemeProvider></LanguageProvider>;
+  return <LanguageProvider><ThemeProvider><AnalyticsConsentProvider><BrowserRouter><AccountRoot><AppRoutes/><AnalyticsConsentBanner/></AccountRoot></BrowserRouter></AnalyticsConsentProvider></ThemeProvider></LanguageProvider>;
 }

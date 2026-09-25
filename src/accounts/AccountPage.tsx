@@ -6,20 +6,21 @@ import {profileInitials} from './profile';
 import './accounts.css';
 import {languageOptions,useI18n} from '../i18n/i18n';
 import type {MessageKey} from '../i18n/messages';
+import {useAnalyticsConsent} from '../analytics/consent';
 
 const syncStatusKeys:Record<string,MessageKey>={
   'Local only':'account.localOnly','Pending':'account.syncPending','Offline':'account.syncOffline','Syncing':'account.syncing','Synced':'account.synced','Sync error':'account.syncError','Conflict requires attention':'account.syncConflict',
 };
 
 export function AccountPage() {
-  const account=useAccount(),theme=useTheme(),{language,setLanguage,t}=useI18n();
+  const account=useAccount(),theme=useTheme(),{language,setLanguage,t}=useI18n(),analytics=useAnalyticsConsent();
   const syncStatusKey=syncStatusKeys[account.syncStatus],syncStatusLabel=syncStatusKey?t(syncStatusKey):account.syncStatus;
   const themes: {value: ThemePreference; label: string; description: string}[] = [
     {value:'light',label:t('theme.light'),description:t('theme.lightDescription')},
     {value:'dark',label:t('theme.dark'),description:t('theme.darkDescription')},
     {value:'system',label:t('theme.system'),description:t('theme.systemDescription')},
   ];
-  const [email,setEmail]=useState(''),[password,setPassword]=useState(''),[displayName,setDisplayName]=useState(''),[editingName,setEditingName]=useState(false),[profileDraft,setProfileDraft]=useState(''),[creating,setCreating]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[consent,setConsent]=useState(false),[restoreConsent,setRestoreConsent]=useState(false);
+  const [email,setEmail]=useState(''),[password,setPassword]=useState(''),[displayName,setDisplayName]=useState(''),[editingName,setEditingName]=useState(false),[profileDraft,setProfileDraft]=useState(''),[creating,setCreating]=useState(false),[busy,setBusy]=useState(false),[analyticsBusy,setAnalyticsBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[consent,setConsent]=useState(false),[restoreConsent,setRestoreConsent]=useState(false);
   const feedback=useRef<HTMLParagraphElement>(null),user=account.state.user;
   useEffect(()=>{if(error)feedback.current?.focus();},[error]);
   useEffect(()=>{setProfileDraft(user?.displayName?.trim()??'');setEditingName(false);},[user?.id,user?.displayName]);
@@ -46,6 +47,10 @@ export function AccountPage() {
       <section className="ds-account-card ds-account-language" aria-labelledby="language-heading"><p className="ds-eyebrow">{t('account.personalization')}</p><h2 id="language-heading">{t('language.title')}</h2><p>{t('language.description')}</p>
         <label className="ds-language-select">{t('language.label')}<select value={language} onChange={event=>setLanguage(event.target.value as typeof language)}>{languageOptions.map(option=><option key={option.value} value={option.value}>{option.nativeLabel}</option>)}</select></label>
         <p className="ds-account-meta">{t('language.saved')}</p>
+      </section>
+
+      <section className="ds-account-card" aria-labelledby="analytics-heading"><p className="ds-eyebrow">{t('analyticsConsent.privacy')}</p><h2 id="analytics-heading">{t('analyticsConsent.settingsTitle')}</h2><p>{t('analyticsConsent.settingsBody')}</p>
+        <div className="ds-analytics-setting"><div><strong>{t(analytics.decision==='granted'?'analyticsConsent.enabled':'analyticsConsent.disabled')}</strong><p>{t('analyticsConsent.withdrawNote')}</p></div><label><input type="checkbox" checked={analytics.decision==='granted'} disabled={analyticsBusy} onChange={event=>{const enabled=event.target.checked;setAnalyticsBusy(true);void (enabled?analytics.allow():analytics.withdraw()).finally(()=>setAnalyticsBusy(false));}}/>{t('analyticsConsent.toggle')}</label></div>
       </section>
 
       <section className="ds-account-card" aria-labelledby="security-heading"><p className="ds-eyebrow">{t('account.access')}</p><h2 id="security-heading">{t('account.security')}</h2>
