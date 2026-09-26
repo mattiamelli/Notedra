@@ -33,7 +33,7 @@ try{for(const width of [1280,375]){
   if(topicId==='RL_T09_TRANSFER_CONSTRAINT_PUZZLES'&&mode==='exam'){await page.locator('#p7-guided-heading').scrollIntoViewIfNeeded();await page.screenshot({path:`/tmp/p7-completion-${width}-guides.png`});}
   // Dedicated exam list must expose exactly the authored exam-tagged objectives, with no fabricated timed grading.
   if(mode==='exam'){
-   const links=await page.locator('.ds-practice-card > a').evaluateAll(es=>es.map(e=>e.getAttribute('href')));
+   const links=await page.locator('.ds-exercise-list-item > a').evaluateAll(es=>es.map(e=>e.getAttribute('href')));
    for(const e of items.filter(e=>e.topicId===topicId&&e.mode==='exam'))assert(links.includes('/practice/'+e.id));
    for(const e of items.filter(e=>e.topicId===topicId&&e.mode==='practice'))assert(!links.includes('/practice/'+e.id));
   }

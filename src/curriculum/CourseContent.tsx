@@ -6,13 +6,15 @@ import {ShellIcon} from '../shell/ShellIcon';
 import {ProgressLoader} from '../progress/ProgressLoader';
 import {CanonicalLink} from '../topic-study/AcademicViews';
 import './curriculum.css';
-import {allExercises, exercisePath} from '../practice/catalog';
+import {allExercises} from '../practice/catalog';
 import {useI18n} from '../i18n/i18n';
 import {CalculusExamPractice} from './CalculusExamPractice';
+import {ExerciseListRow} from '../practice/ExerciseListRow';
+import {useLearning} from '../learning/LearningProvider';
 import {MathText} from '../math/MathText';
 
 export function CurriculumRevision({courseId,topicId}:{courseId:string;topicId:string}) {
-  const {t}=useI18n();
+  const learning=useLearning();
   const course=curriculumCourseFor(courseId);
   const topic=course?.topics.find(item=>item.id===topicId);
   if(!topic)return null;
@@ -20,11 +22,11 @@ export function CurriculumRevision({courseId,topicId}:{courseId:string;topicId:s
   const reasoning=topic.exercises.filter(item=>item.kind==='open');
   const exerciseLink=(id:string)=>{
     const exercise=allExercises.find(item=>item.id===id&&item.topicId===topicId);
-    return exercise?<Link className="ds-button" to={exercisePath(exercise)}>{t('practice.openExercise')} <ShellIcon name="arrow" size={16}/></Link>:<p>Practice is not available for this item.</p>;
+    return exercise?<ExerciseListRow exercise={exercise} attempts={learning?.snapshot?.data.attempts} headingLevel={4} history/>:<p>Practice is not available for this item.</p>;
   };
   return <section className="ds-curriculum-revision"><h2>Authored revision</h2><p>Independent revision, not an official mock exam. These questions revisit the topic's practice material. Open reasoning uses self-review rubrics and does not establish exam readiness.</p>
-    {selected.length>0&&<><h3>Mixed practice</h3><ol className="ds-curriculum-revision-list">{selected.map(item=><li key={item.id}><h4>{item.title}</h4><p><MathText text={item.prompt}/></p>{exerciseLink(item.id)}</li>)}</ol></>}
-    {reasoning.length>0&&<><h3>Open reasoning</h3><ol className="ds-curriculum-revision-list">{reasoning.map(item=><li key={item.id}><h4>{item.title}</h4><p><MathText text={item.prompt}/></p>{exerciseLink(item.id)}<details><summary>Self-review rubric</summary><ul>{item.rubric?.map((criterion,index)=><li key={index}><MathText text={criterion}/></li>)}</ul><p><MathText text={item.explanation}/></p></details></li>)}</ol></>}
+    {selected.length>0&&<><h3>Mixed practice</h3><ol className="ds-curriculum-revision-list ds-exercise-list">{selected.map(item=><li key={item.id}>{exerciseLink(item.id)}</li>)}</ol></>}
+    {reasoning.length>0&&<><h3>Open reasoning</h3><ol className="ds-curriculum-revision-list ds-exercise-list">{reasoning.map(item=><li key={item.id}>{exerciseLink(item.id)}<details><summary>Self-review rubric</summary><ul>{item.rubric?.map((criterion,index)=><li key={index}><MathText text={criterion}/></li>)}</ul><p><MathText text={item.explanation}/></p></details></li>)}</ol></>}
     <Link className="ds-text-link" to={course?`/${course.slug}`:'/dashboard'}>Course coverage and source limitations</Link>
   </section>;
 }

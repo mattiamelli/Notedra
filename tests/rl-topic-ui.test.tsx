@@ -96,12 +96,12 @@ describe('complete R&L topic learning routes', () => {
     expect(await repo.exportBackup()).toEqual(before);
 
     await render('practice');
-    expect(host.querySelectorAll('.ds-practice-card')).toHaveLength(expectedExercises.length);
+    expect(host.querySelectorAll('.ds-exercise-list-item')).toHaveLength(expectedExercises.length);
     expect(expectedExercises.filter(e=>!e.id.startsWith('ds.practice.advanced-')&&!e.id.startsWith('ds.practice.p7-')&&!e.id.startsWith('ds.practice.interactive-')&&e.task.kind!=='enrichment-exact').length).toBe(capability.exerciseCount);expect(expectedExercises.length).toBe(capability.exerciseCount+(enrichment.find(e=>e.topicId===topic.id)?.exercises??0)+expectedExercises.filter(e=>e.id.startsWith('ds.practice.interactive-')).length+expectedExercises.filter(e=>e.id.startsWith('ds.practice.p7-')).length+expectedExercises.filter(e=>e.id.startsWith('ds.practice.advanced-')).length);
     expect(host.querySelectorAll('.ds-rl-guided')).toHaveLength(content.guided.length);
     expect(content.guided.length).toBe(capability.guidedCount);
     for (const exercise of expectedExercises) {
-      const card = [...host.querySelectorAll('.ds-practice-card')].find(item => item.querySelector('h3')?.textContent === exercise.title)!;
+      const card = [...host.querySelectorAll('.ds-exercise-list-item')].find(item => item.querySelector('h3')?.textContent === exercise.title)!;
       expect(card).toBeDefined(); expect(card.querySelector('a')?.getAttribute('href')).toBe(exercisePath(exercise));
     }
     expect(host.textContent).toContain('shared Practice catalog');
@@ -186,7 +186,7 @@ describe('complete R&L topic learning routes', () => {
       await settle();
       expect(host.querySelector('h1')?.textContent).toBe(topic.name);
       const exam=allExercises.filter(e=>e.topicId===topic.id&&'mode' in e&&e.mode==='exam');
-      expect([...host.querySelectorAll('.ds-practice-card > a')].map(a=>a.getAttribute('href'))).toEqual(exam.map(exercisePath));
+      expect([...host.querySelectorAll('.ds-exercise-list-item > a')].map(a=>a.getAttribute('href'))).toEqual(exam.map(exercisePath));
       expect(host.querySelectorAll('.ds-rl-guided')).toHaveLength(expansionGuides.filter(g=>g.topicId===topic.id&&g.mode==='exam').length);
       expect(host.querySelector('#rl-workspace')).toBeNull();
       expect(host.textContent).toContain('No automatic correctness, numeric score or academic evidence is assigned.');

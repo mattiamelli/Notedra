@@ -68,12 +68,12 @@
   },
   "src/pages/TopicPage.tsx": {
     "before": "11fa931616f2a50d7d3cb70d23a04b941c7f560778216ac08e2997d07fa5cb4b",
-    "after": "8edbdda4e856a8de07727f1cd660312ade68c3fbea93cbbf9cfce41b920882be",
+    "after": "8e2c61ae42025ba0b00d7eec37f77c6038d1728a7eb2a0df48f8cded61aeff15",
     "original": "bb0f6bd83ac756f229fce674c76e290b633c292026033de1859797740c37f3eb"
   },
   "src/practice/AttemptPage.tsx": {
     "before": "65dfcbb51eb4b81fbf41fdd704e08caa6cf1365cad93a1887786b5b764d48084",
-    "after": "4c3dd1a72e853ce15040c163fe72056c9b34e00242d4b0e38abc64df739720b8"
+    "after": "da1ab8e0263db73cccbb14ea50efdd63063df84e84e63bca3359de48831ef7fb"
   },
   "src/progress/IndexCard.tsx": {
     "before": "396fb4d1e1b7cdce9474252a00c04d4877393245c6d0b8bc0ff0a91f5637854d",
@@ -130,7 +130,7 @@
   },
   "tests/application-routing.test.tsx": {
     "before": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902",
-    "after": "91d21c2c05f1c01cef46408a357ea7f8714a82ba783247317da8fd3601e1810a",
+    "after": "70abacd970e2a9d661157910cd3317c5cd7c0eaf2e34dee2679d0699ef07d033",
     "original": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902"
   },
   "tests/adaptive-ui.test.tsx": {
@@ -140,11 +140,11 @@
   },
   "tests/rl-topic-ui.test.tsx": {
     "before": "ee876fcd94ef7b53da3d4eecb4a67f15da1170e42050d129febb699e935dfc88",
-    "after": "e4564eaedf3dcd4f7427928437dfa5361a850cdbcccd9930681a5359a60e5bc3"
+    "after": "47a630acbc619ce8d7a103e3e6ef5d9a6761632121aa17122c7e476236eb8de6"
   },
   "tests/topic-ui.test.tsx": {
     "before": "5f83f95873e13948d0a5ebaad2869396ea328fc1d0929b23eb30d22516e339f0",
-    "after": "8ef1b14a83c1ec47c04bfd0123b14335ad91a7f325763a2532800b0db4fcbd0c",
+    "after": "88e9c5a9872f5d4162a5376566d943c7accace7c0d3ebc2bfb30393714481fad",
     "original": "983d5b842297087d1745375866abb230e7b3cb9dd4db9a0534ebdaf3fb266a6d"
   },
   "src/cloud/merge.ts": {
@@ -277,7 +277,7 @@
   },
   "src/practice/ExerciseParts.tsx": {
     "before": "091132322fcaa24391163b49036f388f95f69c00fb8d787ec9b2fa1a08554e22",
-    "after": "688808f6270de67961b4c41b6490c0f2cf12ca2e5bad4cfa2f5f80fd07f9e648",
+    "after": "e0ca4be673e8a973da06bf767e736a9b56617eb5c9b82c98534a65df12965b1e",
     "original": "fa00b7abf670772fa3eb7ae4dde5904fd20b451b6a1164c17be221cdb05afb53"
   },
   "src/exams/ExamSessionPage.tsx": {
@@ -286,16 +286,16 @@
   },
   "src/practice/PracticePage.tsx": {
     "before": "85769264eaed472fc59d2c973a311f3dd0849759bebc78dc1fd6f3fe45db1f56",
-    "after": "7c5ccda7b95ff1182b1aa27f83975e52fc9b0b6367dc9fd67c91f6a391170f2c",
+    "after": "4223d326b96c4b5acba825e79a2dab5943219bf75f6c843c9b43c88cae20b384",
     "original": "9d2a746bfeb5db88fef68382f198f331c1f5878c399f285a6ddbfe56894b6d12"
   },
   "tests/enrichment-ui.test.tsx": {
     "before": "f5672c6677b986dbad2369173251a3c2ffbbd7b32c897863098d223566bba4ef",
-    "after": "5d94aacd233c53314c773d6d7cf15e4ef6af6f864f63eb9985edc67bbbe9c07d"
+    "after": "2063c4b6580e24460c343c05d737140951819ed36b478e5f27b59d46b0e03f87"
   },
   "tests/practice-ui.test.tsx": {
     "before": "3f7f6d300c42919836b679491797c2caba94e661acc75e545c4db26ee12bbecf",
-    "after": "c058658a14c1f15471fad0e83be7e47d1f480817c80b947fb330aafabcf60da7"
+    "after": "67dcb6a4bf87e7f47d9247e5fe2a3b1f5a5462a1957eef308dec3e8bdb0623c9"
   },
   "src/exams/ExamsPage.tsx": {
     "before": "c5eb7b5e59fc5c7a1f3f14c3f9f67a1f44fddfb3f4e8c00e167bf0d50a3e16c3",
@@ -328,7 +328,7 @@
   },
   "src/pages/CoursePage.tsx": {
     "before": "f096d3eea31fefb86ddacc915ec116e4dee0e32940b1f1f322619d482c959103",
-    "after": "628022b7abcc11ac79d9d100160091a5fb464b06cdb283db7cb1bad8c093b499",
+    "after": "89a041043f44cc3b8a79fecdb2997d9deb636a99a90ae2590baad1261a05192b",
     "original": "33bcc0d09480098058fbfa4835a6fa35810281ce5f93b672924a8dd3de204cd7"
   },
   "tests/adaptive-validation.test.ts": {
@@ -366,7 +366,7 @@
   },
   "src/topic-study/TopicPractice.tsx": {
     "before": "28553acc7e2dae5f2d7cd48e7816501a25b88069a78151332129bf313e99011e",
-    "after": "da6d82838a33713fa6c00649589e2af456fe4d32255b22246de4208df5f6f2e8",
+    "after": "6ac60b56480439b6e4ff68a469a8c4b198d75356a76082967a5dbb7b87108e8f",
     "original": "ba2c4e290289eb7bdc14bf486ba3d35e25493b5df3fc501152b3984402ce6c86"
   },
   "tests/adaptive-engine.test.ts": {
@@ -572,7 +572,7 @@
   },
   "tests/co-ui.test.tsx": {
     "before": "9b1fd41c56cfa12c691d3981a42072a08d14b146e713bc5367497fcdd33df0b0",
-    "after": "ae3879c38946292852f39d0d642c98a41d272afda5e4d1f297cdda1c97f05020"
+    "after": "0957a302093ec354cf65af3d8e05c4a4389fba7ed85037f4c4213cea616b52a6"
   },
   "docs/ip-java-evidence.json": {
     "before": "8c583e236af7cf4e515866d9519ef1909260ee5690678a60ff479bcf625a7823",

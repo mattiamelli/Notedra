@@ -1,0 +1,32 @@
+.ds-app .ds-main .ds-exercise-list{display:block;padding:0;margin:20px 0 32px;border-top:1px solid var(--ds-line);list-style:none}
+.ds-exercise-list-item{min-width:0;border-bottom:1px solid var(--ds-line)}
+.ds-app .ds-main .ds-exercise-row{display:grid;grid-template-columns:18px minmax(0,1fr) 16px;gap:14px;align-items:center;min-height:64px;padding:12px 8px;color:var(--ds-ink);text-decoration:none;border-radius:4px;background:transparent}
+.ds-app .ds-main .ds-exercise-row:hover{background:var(--ds-soft)}
+.ds-exercise-row:focus-visible{outline:2px solid var(--ds-primary);outline-offset:2px}
+.ds-exercise-row>svg{flex-shrink:0;color:var(--ds-support)}
+.ds-exercise-row-copy{min-width:0}
+.ds-app .ds-main .ds-exercise-row-copy :is(h2,h3,h4){font-size:1rem;line-height:1.45;font-weight:600;letter-spacing:0;margin:0;overflow-wrap:anywhere}
+.ds-exercise-row-meta{display:block;font-size:.8125rem;line-height:1.5;color:var(--ds-support);margin-top:3px;overflow-wrap:anywhere}
+.ds-exercise-history{font-size:.8125rem;padding:0 8px 12px 40px;color:var(--ds-support)}
+.ds-exercise-history summary{cursor:pointer}
+.ds-app .ds-main .ds-curriculum-revision-list>li{padding:0;border:0}
+.ds-curriculum-revision-list>li>details{margin:0;padding:0 8px 12px 40px;font-size:.875rem;border-bottom:1px solid var(--ds-line)}
+.ds-exercise-history li{margin:8px 0}
+.ds-app .ds-main .ds-exam-question{box-shadow:none}
+.ds-app .ds-main .exam-card .ds-exam-question{border:0;border-radius:0;padding:0;background:transparent}
+.ds-exam-question form{margin-top:24px;padding-top:20px;border-top:1px solid var(--ds-line)}
+.ds-exam-question .ds-practice-prompt{margin:0}
+.ds-exam-question .ds-practice-prompt>p:first-child{white-space:pre-line;overflow-wrap:anywhere;line-height:1.8;color:var(--ds-ink)}
+.ds-exam-question>header h2{overflow-wrap:anywhere}
+.ds-app .ds-main :is(.ds-topic-study,[data-course]) a.ds-button,
+.ds-app .ds-main .ds-learning-nav{display:inline-flex;align-items:center;gap:8px;width:auto;min-height:40px;padding:6px 0;border:0;border-radius:0;background:transparent!important;box-shadow:none!important;color:var(--ds-primary)!important;text-align:left;transform:none;font-weight:600;white-space:normal}
+.ds-app .ds-main :is(.ds-topic-study,[data-course]) a.ds-button:hover,
+.ds-app .ds-main .ds-learning-nav:hover{text-decoration:underline;text-underline-offset:4px}
+.ds-app .ds-main .ds-topic-list{border:0;border-radius:0;background:transparent}
+.ds-app .ds-main .ds-topic-list>li{padding:12px 0;border-bottom:1px solid var(--ds-line)}
+.ds-app .ds-main .ds-topic-list>li+li{border-top:0}
+.ds-app .ds-main .ds-topic-list>li>a{padding:10px 12px;gap:16px;border-radius:4px}
+.ds-app .ds-main .ds-topic-list :is(.ds-curriculum-topic-summary,.ds-co-capability,.ds-rl-capability){padding:0 12px 8px 60px;font-size:.875rem;line-height:1.6;color:var(--ds-support)}
+.ds-app .ds-main .ds-topic-list :is(.ds-curriculum-topic-summary,.ds-co-capability,.ds-rl-capability) a{display:inline;padding:0;background:transparent;color:var(--ds-primary);text-underline-offset:3px}
+.ds-app .ds-main .ds-curriculum-topic-summary>a{display:inline-flex;gap:6px;align-items:center;min-height:36px}
+@media(max-width:650px){.ds-app .ds-main .ds-exercise-row{gap:10px;padding:12px 4px}.ds-app .ds-main .ds-topic-list :is(.ds-curriculum-topic-summary,.ds-co-capability,.ds-rl-capability){padding-left:12px}.ds-exercise-history{padding-left:32px}}

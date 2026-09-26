@@ -1,8 +1,9 @@
+import {ExerciseListRow} from './ExerciseListRow';
 import { Link, useSearchParams } from 'react-router';
 import { academicIndex, courses } from '../academic/navigation';
 import { PageHeading } from '../shell/PageParts';
 import { useLearning } from '../learning/LearningProvider';
-import { allExercises as catalog, exercisePath, attemptPath } from './catalog';
+import { allExercises as catalog, attemptPath } from './catalog';
 import { resolveAttempt } from './service';
 import {difficultyCategories,difficultyCategory,type DifficultyCategory} from './difficulty';
 import {useI18n} from '../i18n/i18n';
@@ -40,7 +41,7 @@ export function PracticePage() {
     </div>
     {topic&&<p>{t('practice.topicFilter')} <Link className="ds-text-link" to="/practice">{t('practice.showAll')}</Link></p>}
     <p id="practice-results-count" aria-live="polite" aria-atomic="true">{filtered.length?`Showing ${offset+1}-${offset+visible.length} of ${filtered.length} exercises`:'0 exercises'}</p>
-    <section id="practice-results" className="ds-practice-grid" aria-label={t('practice.title')} aria-describedby="practice-results-count">{visible.map(exercise=><article className="ds-practice-card" key={exercise.id}><p className="ds-practice-label">{courseById.get(exercise.subjectId)!.compactName} · {t('practice.authored')}</p><h2>{lt(exercise.title)}</h2><p>{topicById.get(exercise.topicId)!.name}</p><Link className="ds-button" to={exercisePath(exercise)}>{t('practice.openExercise')}<span className="sr-only">: {lt(exercise.title)}</span></Link></article>)}</section>
+    <section id="practice-results" className="ds-exercise-list" aria-label={t('practice.title')} aria-describedby="practice-results-count">{visible.map(exercise=><ExerciseListRow key={exercise.id} exercise={exercise} attempts={attempts} showTopic headingLevel={2}/>)}</section>
     {filtered.length>0&&<nav className="ds-storage-actions" aria-label="Exercise pages"><button type="button" className="ds-button" aria-label="Previous page" disabled={page===1} onClick={()=>changePage(page-1)}>Previous</button><span>Page {page} of {pageCount}</span><button type="button" className="ds-button" aria-label="Next page" disabled={page===pageCount} onClick={()=>changePage(page+1)}>Next</button></nav>}
     {filtered.length===0&&<div className="ds-practice-empty" role="status"><strong>{t('practice.noMatch')}</strong><p>{t('practice.noMatchHint')}</p><Link className="ds-text-link" to="/practice">{t('practice.returnCatalog')}</Link></div>}
     <section className="ds-section" aria-labelledby="attempts-heading"><h2 id="attempts-heading">{t('practice.attempts')}</h2>{!learning?.snapshot?<p role="status">{learning?.message??t('practice.connectStorage')}</p>:attempts.length===0?<p>{t('practice.noAttempts')}</p>:<ul className="ds-attempt-list">{[...attempts].reverse().map(attempt=>{const resolved=resolveAttempt(attempt);return <li key={attempt.attemptId}><Link to={resolved.status==='AVAILABLE'?attemptPath(resolved.exercise,attempt.attemptId):`/practice/${encodeURIComponent(attempt.templateRef!)}/attempts/${encodeURIComponent(attempt.attemptId)}`}><span>{resolved.status==='AVAILABLE'?lt(resolved.exercise.title):t('practice.originalUnavailable')}</span><span>{attempt.status==='DRAFT'?t('practice.resumeDraft'):attempt.status==='SUBMITTED'?t('practice.reviewSubmission'):t('practice.viewAbandoned')} · {new Date(attempt.createdAt).toLocaleString(language)}</span></Link></li>;})}</ul>}</section>

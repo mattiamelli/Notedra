@@ -13,7 +13,6 @@ import type { PracticeExercise as Exercise } from './registered-types';
 import {useI18n} from '../i18n/i18n';
 import {track} from '../analytics/analytics';
 import {isFirstPracticeCompletion} from '../analytics/milestones';
-import {calculusQuestion} from '../curriculum/calculus-expansion';
 export function AttemptPage() {
   const {t}=useI18n(); const {exerciseId,attemptId}=useParams();const learning=useLearning();
   if(!learning?.snapshot)return <p role="status">{learning?.message??t('data.notConnected')}</p>;
@@ -52,11 +51,9 @@ function AttemptRunner({attempt,exercise}: {attempt:Attempt;exercise:Exercise}) 
       <p role="status" className="ds-practice-save">{message}</p>{error&&<p role="alert" className="ds-storage-error">{error}</p>}
       {attempt.status==='DRAFT'&&<div className="ds-storage-actions"><button type="button" className="ds-button" disabled={busy||!editable||!dirty} onClick={()=>void write(false)}>{t('practice.saveDraft')}</button><button type="submit" className="ds-button ds-practice-primary" disabled={busy||!editable}>{t('practice.submit')}</button></div>}
     </form>;
-  const panel=Boolean(calculusQuestion(exercise.id));
-  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalogSaved')}</Link><PageHeading title={lt(exercise.title)} eyebrow={t(submitted?'practice.submittedEyebrow':'practice.draftEyebrow')}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise} attemptId={attempt.attemptId}>{panel?form:null}</ExercisePrompt>
+  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalogSaved')}</Link><PageHeading title={lt(exercise.title)} eyebrow={t(submitted?'practice.submittedEyebrow':'practice.draftEyebrow')}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise} attemptId={attempt.attemptId}>{form}</ExercisePrompt>
     {invalidated&&<div className="ds-storage-error" role="alert"><p>{t('practice.replacedData')}</p><pre aria-label={t('practice.unsavedRecovery')}>{answer.kind==='choice'?answer.value.join('\n'):answer.value}</pre><button className="ds-button" onClick={()=>window.location.reload()}>{t('practice.reloadSafely')}</button></div>}
-    {!panel&&form}
-    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>{t('practice.retryCreates')}</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>{t('practice.retry')}</button><p>{next?<Link className="ds-button" to={exercisePath(next)}>{t('practice.next',{title:lt(next.title)})}</Link>:<Link className="ds-button" to={topicPath(topic)+'/practice'}>{t('practice.more')}</Link>}</p></>}
+    {submitted&&!invalidated&&<><Feedback result={feedbackFor(attempt)} exercise={exercise} answer={attempt.answer}/><p>{t('practice.retryCreates')}</p><button className="ds-button" disabled={busy} onClick={()=>void retry()}>{t('practice.retry')}</button><p>{next?<Link className="ds-learning-nav" to={exercisePath(next)}>{t('practice.next',{title:lt(next.title)})}</Link>:<Link className="ds-learning-nav" to={topicPath(topic)+'/practice'}>{t('practice.more')}</Link>}</p></>}
     {attempt.status==='ABANDONED'&&<p>{t('practice.abandoned')}</p>}
     <details className="ds-storage-note"><summary>{t('practice.aboutSaved')}</summary><p>{t('practice.savedMetadata',{hints:attempt.hintsUsed===null?t('learning.noneRecorded'):attempt.hintsUsed,solution:attempt.solutionViewed===null?t('learning.noneRecorded'):t(attempt.solutionViewed?'common.yes':'common.no')})}</p></details></>;
 }

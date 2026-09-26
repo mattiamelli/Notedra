@@ -46,6 +46,6 @@ it('review regression: shows the selected Java output rather than an internal op
 });
 
 it('review regression: long exercise prompts wrap at narrow widths',async()=>{
- const style=document.createElement('style');style.textContent=readFileSync('src/enrichment/enrichment.css','utf8');document.head.append(style);
- try{await act(async()=>root.render(<MemoryRouter><ExercisePrompt exercise={allExercises.find(e=>e.id==='ds.practice.enrich-carry-overflow')!}/></MemoryRouter>));expect(getComputedStyle(host.querySelector('h2')!).whiteSpace).toBe('normal');expect(getComputedStyle(host.querySelector('h2')!).overflowWrap).toBe('anywhere');}finally{style.remove();}
+ const style=document.createElement('style');style.textContent=readFileSync('src/practice/exercise-ui.css','utf8');document.head.append(style);
+ try{await act(async()=>root.render(<MemoryRouter><ExercisePrompt exercise={allExercises.find(e=>e.id==='ds.practice.enrich-carry-overflow')!}/></MemoryRouter>));expect(getComputedStyle(host.querySelector('.ds-exam-stem')!).whiteSpace).toBe('pre-line');expect(getComputedStyle(host.querySelector('.ds-exam-stem')!).overflowWrap).toBe('anywhere');}finally{style.remove();}
 });

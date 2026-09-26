@@ -1,3 +1,4 @@
+import '../practice/exercise-ui.css';
 import {ProgressLoader} from '../progress/ProgressLoader';
 import {SummaryLoader} from '../adaptive/SummaryLoader';
 import {IPStudyMode} from '../ip/IPStudyMode';

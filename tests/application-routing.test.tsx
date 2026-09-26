@@ -100,10 +100,10 @@ describe('application routes and canonical navigation', () => {
     expect(heading()).toBe(area.title);
     // Step 4 intentionally replaces only the Practice placeholder with authored items, expanded for CO in Step 6.
     if (area.path === '/practice') {
-      expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(Math.min(48,allExercises.length));
+      expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(Math.min(48,allExercises.length));
       expect(allExercises.slice(0,48).every(exercise=>container.querySelector(`a[href="/practice/${exercise.id}"]`))).toBe(true);
       expect(container.textContent).toContain(`${allExercises.length} authored exercises`);
-      expect(container.textContent).toContain('Authored practice');
+      expect(container.textContent).toContain('AUTHORED PRACTICE');
     } else if (area.path === '/mistakes' || area.path === '/study-plan' || area.path === '/exams' || area.path === '/progress') {
       expect(container.querySelector('[role="status"]')?.textContent).toContain('Student storage is not connected.');
       expect(container.querySelectorAll('.ds-mistake-card,.ds-path-card')).toHaveLength(0);

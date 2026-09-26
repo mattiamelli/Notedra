@@ -1,3 +1,4 @@
+import '../practice/exercise-ui.css';
 import expansionGuides from '../expansion/guided-capabilities.json';
 import expansionCapabilities from '../expansion/capabilities.json';
 import interactiveCapabilities from '../interactive/capabilities.json';

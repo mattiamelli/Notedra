@@ -49,7 +49,7 @@ describe('topic learning routes and modes',()=>{
  it.each(pilots)('runs the complete $subjectId topic modes and retains its two original Practice items alongside new course items',async topic=>{
   await render(studyPath(topic));await click('#study-mode-1');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(lessonBlocks(topic.id));
   await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.getAttribute('aria-hidden')).toBe('false');
-  await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(expected.length);expect([...container.querySelectorAll('.ds-practice-card>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
+  await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(expected.length);expect([...container.querySelectorAll('.ds-exercise-list-item>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
  });
  it.each(curriculumTopics)('renders authored curriculum lessons, recall and registered practice for $id',async authored=>{
   const topic=topicStudy.topics.find(item=>item.id===authored.id)!;
@@ -62,14 +62,14 @@ describe('topic learning routes and modes',()=>{
   await click('#study-mode-4');
   const expected=allExercises.filter(exercise=>exercise.topicId===topic.id);
   expect(expected.map(exercise=>exercise.id)).toEqual(authored.exercises.map(exercise=>exercise.id));
-  expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(authored.exercises.length);
-  expect([...container.querySelectorAll('.ds-practice-card>a')].map(link=>link.getAttribute('href'))).toEqual(expected.map(exercisePath));
+  expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(authored.exercises.length);
+  expect([...container.querySelectorAll('.ds-exercise-list-item>a')].map(link=>link.getAttribute('href'))).toEqual(expected.map(exercisePath));
   await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
  });
  it('completed IP modes retain overview/map and show real study content with honest unavailable global features',async()=>{
   const t=topicStudy.topics.find(t=>t.id==='IP_T01_JAVA_BASICS')!;await render(studyPath(t));expect(container.textContent).toContain(t.description);
   await click('#study-mode-1');expect(container.textContent).toContain('Track both the value and its type');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(8);await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();
-  await click('#study-mode-3');expect(container.textContent).toContain('Card 1 of 10');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('#study-mode-4');expect(container.querySelectorAll('.ds-practice-card')).toHaveLength(allExercises.filter(e=>e.topicId===t.id).length);
+  await click('#study-mode-3');expect(container.textContent).toContain('Card 1 of 10');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('#study-mode-4');expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(allExercises.filter(e=>e.topicId===t.id).length);
   await click('#study-mode-5');expect(container.textContent).toContain('Authored exam-style practice');expect(container.textContent).toContain('No authored 60-minute assignment targets this topic');await click('#study-mode-6');expect(container.textContent).toContain('Student storage is not connected.');expect(container.textContent).not.toMatch(/Step \d|mastery:|streak/);
  });
  it('Learn and Flashcards deep links survive remount and BrowserRouter Back/Forward',async()=>{
