@@ -23,15 +23,20 @@ import {repository,time} from './helpers/learning';
 const course=curriculumCourses.find(item=>item.id==='CSE12A_CALC')!;
 const registered=(id:string)=>curriculumExercises.find(item=>item.id===id)!;
 describe('Calculus original exam practice',()=>{
- it('has 120 unique exercises, two additions in every supported topic and four original sets',()=>{
+ it('has 200 unique exercises, twenty in every supported topic and four preserved original sets',()=>{
   expect(course.topics).toHaveLength(10);
-  expect(course.topics.flatMap(topic=>topic.exercises)).toHaveLength(120);
-  expect(calculusAdditions).toHaveLength(20);
-  for(const topic of course.topics){expect(topic.exercises).toHaveLength(12);expect(calculusAdditions.filter(item=>item.topicId===topic.id)).toHaveLength(2);}
-  expect(new Set(course.topics.flatMap(topic=>topic.exercises.map(item=>item.prompt))).size).toBe(120);
+  expect(course.topics.flatMap(topic=>topic.exercises)).toHaveLength(200);
+  expect(calculusAdditions).toHaveLength(100);
+  for(const topic of course.topics){expect(topic.exercises).toHaveLength(20);expect(calculusAdditions.filter(item=>item.topicId===topic.id)).toHaveLength(10);}
+  expect(new Set(course.topics.flatMap(topic=>topic.exercises.map(item=>item.prompt))).size).toBe(200);
   expect(calculusExamSets).toHaveLength(4);
   expect(new Set(calculusExamSets.flatMap(set=>set.ids)).size).toBe(20);
   expect(new Set(calculusExamSets[3].ids.map(id=>registered(id).topicId)).size).toBe(10);
+ });
+ it('preserves every one of the 840 pre-expansion curriculum bindings',()=>{
+  const legacy=Object.entries(bindings.exercises).filter(([id])=>!/^CALC_E/.test(id)||Number(id.slice(6))<=120).sort(([a],[b])=>a.localeCompare(b));
+  expect(legacy).toHaveLength(840);
+  expect(createHash('sha256').update(JSON.stringify(legacy)).digest('hex')).toBe('faa3cfa7812762a57f999b0db7a83d8e628e962d1d1febc421ba5fe6ed104200');
  });
  it('preserves all original Calculus identities and the shared curriculum grader',()=>{
   const legacy=Object.entries(bindings.exercises).filter(([id])=>/^CALC_E/.test(id)&&Number(id.slice(6))<=100).sort(([a],[b])=>a.localeCompare(b));
