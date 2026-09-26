@@ -1,8 +1,8 @@
 import {BooleanFormula} from '../interactive/BooleanFormula';
 import type {ReactNode} from 'react';
 import {calculusQuestion} from '../curriculum/calculus-expansion';
-import {ExercisePanel} from './ExercisePanel';
-import {ExamQuestionContent} from './ExamQuestionPanel';
+import {ExamQuestionPanel,ExamQuestionContent} from './ExamQuestionPanel';
+import {questionNumber} from './question-number';
 import {difficultyCategory} from './difficulty';
 import {WrittenPartsControls,writtenParts} from './WrittenPartsControls';
 import {MathText} from '../math/MathText';
@@ -31,16 +31,17 @@ export function ExerciseSource({exercise}: {exercise: Exercise}) {
     <p><Link className="ds-text-link" to={topicPath(topic)}>{topic.name}</Link></p>
     <details className="ds-practice-source"><summary>{t('learning.sourcesScope')}</summary><p>{exercise.source.filename}</p>{exercise.source.kind==='CURRICULUM'?<><p>{exercise.source.locator}</p><p>Authored practice grounded in the referenced curriculum material.</p></>:<p>{t('practice.sourceDocument')}</p>}<p>{t('practice.formatClaim',{format:exerciseFormat(exercise.task.kind)?.label??t('practice.unavailable')})}</p></details></>;
 }
-export function ExercisePrompt({exercise,mode='practice',attemptId,children,embedded=false}: {exercise: Exercise;mode?:'practice'|'exam';attemptId?:string;children?:ReactNode;embedded?:boolean}) {
+export function ExercisePrompt({exercise,mode='practice',attemptId,children,embedded=false,headingLevel=2}: {exercise: Exercise;mode?:'practice'|'exam';attemptId?:string;children?:ReactNode;embedded?:boolean;headingLevel?:1|2}) {
   const {t,lt}=useI18n();
   const topic=academicIndex.topics.find(t=>t.topic_id===exercise.topicId);
   const exam=calculusQuestion(exercise.id);
   if('mode' in exercise&&exercise.mode==='exam')mode='exam';
   const stimulus=exercise.task.kind==='assembly-trace'?{language:'assembly',code:exercise.task.code}:'stimulus' in exercise?exercise.stimulus as {language:string;code:string}:null;
-  const content=<><div className="ds-practice-prompt">{exam?<ExamQuestionContent question={exam.question}/>:<p className="ds-exam-stem"><MathText text={lt(exercise.prompt)}/></p>}{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{exercise.task.kind==='assembly-trace'&&<p><Link className="ds-text-link" to={assemblyVisualizerPath(exercise.id,attemptId)}>{t('practice.exploreAssembly')}</Link></p>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules" className="ds-assignment-instructions">{lt(exercise.rules)}</p>{!exam&&mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:topic.name})}</Link></details>}</div>{children}</>;
-  if(embedded)return content;
   const selfCheck=exercise.task.kind==='curriculum'&&exercise.task.format==='open';
-  return <ExercisePanel title={lt(exercise.title)} metadata={<>{t(`practice.difficulty.${difficultyCategory(exercise)}`)}{exam&&<> · {exam.question.points} {exam.question.points===1?'pt':'pts'}</>}{selfCheck&&<> · {t('practice.selfCheckLabel')}</>}{mode==='exam'&&<> · {t('practice.examChallenges')}</>}</>}>{content}</ExercisePanel>;
+  const question=exam?.question??{stem:lt(exercise.prompt),selfCheck};
+  const content=<><div className="ds-practice-prompt">{stimulus?.language==='assembly'&&<pre aria-label="Assembly fragment"><code>{stimulus.code}</code></pre>}{exercise.task.kind==='assembly-trace'&&<p><Link className="ds-text-link" to={assemblyVisualizerPath(exercise.id,attemptId)}>{t('practice.exploreAssembly')}</Link></p>}{(exercise.task.kind === 'java-output'||exercise.task.kind === 'ip-fixed') && <pre aria-label="Fixed Java snippet"><code>{exercise.task.code}</code></pre>}{isInteractive(exercise.task)&&<InteractiveSpecification task={exercise.task}/>}<p id="answer-rules" className="ds-assignment-instructions">{lt(exercise.rules)}</p></div>{children}{!exam&&mode==='practice'&&topic&&<details><summary>{t('practice.prepare')}</summary><p>{t('practice.prepareBody')}</p><Link to={topicPath(topic)+'/learn'}>{t('practice.reviewTopic',{topic:topic.name})}</Link></details>}</>;
+  if(embedded)return <><ExamQuestionContent question={question}/>{content}</>;
+  return <ExamQuestionPanel question={question} number={questionNumber(exercise)} headingLevel={headingLevel} metadata={exam?undefined:t(`practice.difficulty.${difficultyCategory(exercise)}`)}>{content}</ExamQuestionPanel>;
 }
 export function AnswerControls({exercise,answer,onChange,disabled}: {exercise: Exercise; answer: Answer; onChange: (answer: Answer)=>void; disabled: boolean}) {
   const {t}=useI18n();

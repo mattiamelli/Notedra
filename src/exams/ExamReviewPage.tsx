@@ -24,7 +24,7 @@ export function ExamReviewPage({session,bank}:{session:ExamSession;bank:ExamBank
   {resolution.status==='UNAVAILABLE'&&<p role="alert">{resolution.message}</p>}
   <nav className="exam-jump" aria-label="Review question navigation">{session.items.map((i,n)=><button key={i.id} aria-current={n===index?'step':undefined} onClick={()=>setParams({q:String(n+1)})} aria-label={`Review question ${n+1}`}>{n+1}</button>)}</nav>
   <div className="exam-review-assignment"><p>Component {index+1} / {session.items.length} · Exact item version {binding.version} · {binding.weight} authored {binding.evaluation==='RUBRIC'?'rubric weight':'objective points'}</p>
-   {item?<ExamAssignment item={item}/>:<h2>Original item unavailable</h2>}
+   {item?<ExamAssignment item={item} number={index+1}/>:<h2>Original item unavailable</h2>}
    <h3>Immutable submitted response</h3><pre className="exam-response">{fixed?displayAnswer(fixed,response.answer)||'Unanswered':typeof response.answer.value==='string'?response.answer.value||'Unanswered':'Original answer options unavailable'}</pre>
    <p>{evaluation?.status==='AUTO_SCORED'?`Automatically verified: ${evaluation.earned} / ${evaluation.max} points`:evaluation?.status==='UNANSWERED'?'Unanswered':evaluation?.status==='RUBRIC_REVIEW_REQUIRED'?(review?.reviewedAt?'Self-reviewed — correctness remains unverified':'Rubric review required — no automatic points'):evaluation?.status==='NOT_AUTOGRADABLE'?evaluation.reason:'Abandoned — no evaluation'}</p>
    {fixed&&evaluation?.status==='AUTO_SCORED'&&<><p>The practice feedback below uses its original one-point scale. This exam component has {binding.weight} objective points.</p><Feedback exercise={fixed} answer={response.answer} result={gradeResponse(fixed,response.answer)}/></>}

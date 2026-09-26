@@ -21,9 +21,10 @@ export function ExercisePage() {
     catch(failure){setError(errorMessage(failure));}
     finally{pending.current=false;setBusy(false);}
   }
-  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalog')}</Link><PageHeading title={lt(exercise.title)} eyebrow={t('practice.title').toUpperCase()}/><ExerciseSource exercise={exercise}/><ExercisePrompt exercise={exercise}/>
+  return <><Link className="ds-text-link" to="/practice">← {t('practice.catalog')}</Link><ExercisePrompt exercise={exercise} headingLevel={1}>
     <p>{t('practice.newAttempt')}</p>
     {error&&<p className="ds-storage-error" role="alert">{error}</p>}
     <button className="ds-button" disabled={busy||!learning?.snapshot||learning.phase==='error'||learning.phase==='busy'} onClick={()=>void start()}>{t(busy?'practice.creating':'practice.start')}</button>
-    {!learning?.snapshot&&<p role="status">{learning?.message??t('mistakes.storage')}</p>}</>;
+    {!learning?.snapshot&&<p role="status">{learning?.message??t('mistakes.storage')}</p>}
+    </ExercisePrompt><details className="ds-question-details"><summary>{lt(exercise.title)} · {t('learning.sourcesScope')}</summary><ExerciseSource exercise={exercise}/></details></>;
 }

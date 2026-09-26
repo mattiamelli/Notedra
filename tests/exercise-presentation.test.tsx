@@ -10,6 +10,9 @@ import {PracticeService} from '../src/practice/service';
 import {repository} from './helpers/learning';
 import type {Attempt} from '../src/learning/contracts';
 import {ExamAssignment} from '../src/exams/ExamAssignment';
+import {ExamQuestionPanel} from '../src/practice/ExamQuestionPanel';
+import {questionNumber} from '../src/practice/question-number';
+import {calculusQuestion} from '../src/curriculum/calculus-expansion';
 import type {ExamBank} from '../src/exams/types';
 import coExam from '../src/exams/banks/co.json';
 import rlExam from '../src/exams/banks/rl.json';
@@ -19,9 +22,10 @@ function dom(node:React.ReactNode){const host=document.createElement('div');host
 describe('shared exercise presentation',()=>{
  it.each([coExam,rlExam,ipExam] as ExamBank[])('uses one titled shell for every $course mock assignment',bank=>{
   for(const item of bank.items){
-   const host=dom(<ExamAssignment item={item} actions={<button>Flag for review</button>}><textarea aria-label="Response"/></ExamAssignment>);
+   const host=dom(<ExamAssignment item={item} number={bank.items.indexOf(item)+1} actions={<button>Flag for review</button>}><textarea aria-label="Response"/></ExamAssignment>);
    expect(host.querySelectorAll('.ds-assignment')).toHaveLength(1);
-   expect(host.querySelector('h2')?.textContent).toBe(item.title);
+   expect(host.querySelector('h2')?.textContent).toBe(`Question ${bank.items.indexOf(item)+1}`);
+   expect(host.textContent).toContain(item.title);
    expect(host.querySelector('.ds-assignment-meta')?.textContent).toContain(String(item.weight));
    expect(host.querySelector('.ds-assignment-meta')?.textContent).toContain(item.evaluation==='RUBRIC'?'self-check':'objective points');
    expect(host.querySelector('.ds-assignment-header-actions button')?.textContent).toBe('Flag for review');
@@ -44,9 +48,18 @@ describe('shared exercise presentation',()=>{
   expect(shell.querySelector('#answer-rules')?.textContent).toBe(exercise.rules);
   expect(shell.querySelector('input,textarea,select')).not.toBeNull();
   expect(shell.querySelector('header h2')?.id).toBe(shell.getAttribute('aria-labelledby'));
-  expect(shell.querySelector('header h2')?.textContent).toBe(exercise.title);
+  expect(shell.querySelector('header h2')?.textContent).toBe(`Question ${questionNumber(exercise)}`);
   expect(panel.querySelectorAll('.ds-assignment')).toHaveLength(1);
   expect(shell.querySelector('.ds-assignment-meta')?.textContent).toBeTruthy();
+ });
+ it('renders Calculus 101 through the original numbered panel, not a parallel practice shell',()=>{
+  const exercise=allExercises.find(item=>item.id==='CALC_E101')!,question=calculusQuestion(exercise.id)!.question;
+  const reference=dom(<ExamQuestionPanel question={question} number={101}/>),practice=dom(<ExercisePrompt exercise={exercise}/>);
+  for(const selector of ['header','.ds-exam-stem','.ds-exam-parts'])expect(practice.querySelector(selector)?.outerHTML).toBe(reference.querySelector(selector)?.outerHTML);
+  expect(practice.querySelector('header')?.textContent).toBe('Question 1016 pts · self-check');
+ });
+ it('keeps display numbering positive and unique within every course without changing bindings',()=>{
+  for(const course of courses){const values=allExercises.filter(e=>e.subjectId===course.subject_id).map(questionNumber);expect(values.every(n=>Number.isInteger(n)&&n>0)).toBe(true);expect(new Set(values).size).toBe(values.length);}
  });
  it('prefers a compatible draft, retains every historical link and never mutates saved work',async()=>{
   const repo=repository(),service=new PracticeService(repo),exercise=allExercises[0];

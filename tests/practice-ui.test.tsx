@@ -10,6 +10,8 @@ import { LearningError, emptyBackup, type LoadedState } from '../src/learning/co
 import { allExercises, catalog, exercisePath, attemptPath } from '../src/practice/catalog';
 import { PracticeService } from '../src/practice/service';
 import {difficultyCategory} from '../src/practice/difficulty';
+import {courses} from '../src/academic/navigation';
+import {questionNumber} from '../src/practice/question-number';
 import { repository } from './helpers/learning';
 import type { StudentRepository } from '../src/learning/repository';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
@@ -34,6 +36,15 @@ async function click(name:string){await act(async()=>button(name).click());await
 async function fill(value:string){await vi.waitFor(async()=>{await act(async()=>{await new Promise(resolve=>setTimeout(resolve,0));});expect(container.querySelector('.ds-practice-answer input')).not.toBeNull();});const input=container.querySelector<HTMLInputElement>('.ds-practice-answer input')!;await act(async()=>{Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));});}
 async function chooseRows(){for(const select of container.querySelectorAll<HTMLSelectElement>('.ds-truth-table select')){await act(async()=>{select.value=select.getAttribute('aria-label')==='Result when p is T and q is T'?'T':'F';select.dispatchEvent(new Event('change',{bubbles:true}));});}}
 describe('shared practice UI',()=>{
+  it.each(courses)('opens $publicName inside the numbered exam panel without the old practice hero',async course=>{
+    const exercise=allExercises.find(item=>item.subjectId===course.subject_id)!,repo=repository();
+    await mount(repo,exercisePath(exercise));
+    expect(container.querySelectorAll('h1')).toHaveLength(1);
+    expect(container.querySelector('.ds-exam-question header h1')?.textContent).toBe(`Question ${questionNumber(exercise)}`);
+    expect(container.querySelector('.ds-exam-question button')?.textContent).toBe('Start exercise');
+    expect(container.querySelector('.ds-question-details')?.textContent).toContain(exercise.title);
+    expect((await load(repo)).data.attempts).toEqual([]);
+  });
   it('browsing/filtering the expanded catalog creates no attempts',async()=>{
     const repo=repository();await mount(repo);expectPage(allExercises);
     const select=container.querySelector<HTMLSelectElement>('.ds-practice-filter select')!;await act(async()=>{select.value='CSE1300_RL';select.dispatchEvent(new Event('change',{bubbles:true}));});expectPage(allExercises.filter(e=>e.subjectId==='CSE1300_RL'));expect((await load(repo)).data.attempts).toEqual([]);

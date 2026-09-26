@@ -11,6 +11,7 @@ import { studyModes } from '../src/topic-study/types';
 import { studyPath } from '../src/topic-study/AcademicViews';
 import { catalog,allExercises,exercisePath,attemptPath } from '../src/practice/catalog';
 import { PracticeService } from '../src/practice/service';
+import { questionNumber } from '../src/practice/question-number';
 import {curriculumCourses} from '../src/curriculum/registry';
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let container:HTMLDivElement,root:Root;
@@ -49,7 +50,7 @@ describe('topic learning routes and modes',()=>{
  it.each(pilots)('runs the complete $subjectId topic modes and retains its two original Practice items alongside new course items',async topic=>{
   await render(studyPath(topic));await click('#study-mode-1');expect(container.querySelectorAll('.ds-lesson-block')).toHaveLength(lessonBlocks(topic.id));
   await click('#study-mode-2');expect(container.querySelector('.ds-study-map')).not.toBeNull();await click('#study-mode-3');expect(container.querySelector('#card-prompt')).not.toBeNull();await click('.ds-flashcard-flip');expect(container.querySelector('#card-answer')?.getAttribute('aria-hidden')).toBe('false');
-  await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(expected.length);expect([...container.querySelectorAll('.ds-exercise-list-item>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
+  await click('#study-mode-4');const expected=allExercises.filter(e=>e.topicId===topic.id);expect(catalog.filter(e=>e.topicId===topic.id)).toHaveLength(2);expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(expected.length);expect([...container.querySelectorAll('.ds-exercise-list-item>a')].map(a=>a.getAttribute('href'))).toEqual(expected.map(exercisePath));await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('.ds-exam-question h1')?.textContent).toBe(`Question ${questionNumber(expected[0])}`);expect(container.querySelector('.ds-question-details')?.textContent).toContain(expected[0].title);
  });
  it.each(curriculumTopics)('renders authored curriculum lessons, recall and registered practice for $id',async authored=>{
   const topic=topicStudy.topics.find(item=>item.id===authored.id)!;
@@ -64,7 +65,7 @@ describe('topic learning routes and modes',()=>{
   expect(expected.map(exercise=>exercise.id)).toEqual(authored.exercises.map(exercise=>exercise.id));
   expect(container.querySelectorAll('.ds-exercise-list-item')).toHaveLength(authored.exercises.length);
   expect([...container.querySelectorAll('.ds-exercise-list-item>a')].map(link=>link.getAttribute('href'))).toEqual(expected.map(exercisePath));
-  await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('h1')?.textContent).toBe(expected[0].title);
+  await click(`a[href="${exercisePath(expected[0])}"]`);expect(container.querySelector('.ds-exam-question h1')?.textContent).toBe(`Question ${questionNumber(expected[0])}`);expect(container.querySelector('.ds-question-details')?.textContent).toContain(expected[0].title);
  });
  it('completed IP modes retain overview/map and show real study content with honest unavailable global features',async()=>{
   const t=topicStudy.topics.find(t=>t.id==='IP_T01_JAVA_BASICS')!;await render(studyPath(t));expect(container.textContent).toContain(t.description);
@@ -95,7 +96,7 @@ describe('topic learning routes and modes',()=>{
  });
  it('topic Practice resumes/reviews the same immutable saved attempt, without another service',async()=>{
   const repo=repository();const state=await repo.load();const service=new PracticeService(repo);const exercise=catalog[0];const saved=await service.start(exercise.id,'topic-test',state.data);
-  await render(studyPath(pilots[0],'practice'),false,repo);const path=attemptPath(exercise,'topic-test');expect(container.querySelector(`a[href="${path}"]`)?.textContent).toContain('Resume draft');await click(`a[href="${path}"]`);expect(container.querySelector('h1')?.textContent).toBe(exercise.title);
+  await render(studyPath(pilots[0],'practice'),false,repo);const path=attemptPath(exercise,'topic-test');expect(container.querySelector(`a[href="${path}"]`)?.textContent).toContain('Resume draft');await click(`a[href="${path}"]`);expect(container.querySelector('.ds-exam-question h1')?.textContent).toBe(`Question ${questionNumber(exercise)}`);expect(container.querySelector('.ds-question-details')?.textContent).toContain(exercise.title);
   expect((await repo.load()).data.attempts).toHaveLength(1);expect(saved.data.attempts[0].exercise?.version).toBe((await repo.load()).data.attempts[0].exercise?.version);
  });
 });

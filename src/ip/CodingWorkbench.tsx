@@ -1,7 +1,7 @@
 import {useEffect,useRef,useState,type KeyboardEvent} from 'react';
 import {CanonicalLink,Sources} from '../topic-study/AcademicViews';
 import {EvidenceView} from '../enrichment/EvidenceView';
-import {ExercisePanel} from '../practice/ExercisePanel';
+import {ExamQuestionPanel} from '../practice/ExamQuestionPanel';
 import type {IPAssignment,IPReference} from './types';
 const references=import.meta.glob<IPReference>('./references/*.json',{import:'default'});
 export default function CodingWorkbench({assignment}:{assignment:IPAssignment}){
@@ -30,7 +30,7 @@ export default function CodingWorkbench({assignment}:{assignment:IPAssignment}){
   if(event.key==='ArrowRight')next=(index+1)%length;else if(event.key==='ArrowLeft')next=(index+length-1)%length;else if(event.key==='Home')next=0;else if(event.key==='End')next=length-1;else return;
   event.preventDefault();setActive(next);document.getElementById(`ip-file-${next}`)?.focus();
  }
- return <ExercisePanel className="ds-ip-workbench" headingLevel={3} title={assignment.title} metadata={<>Coding workbench · unscored self-check · {assignment.minutes} minutes</>}>
+ return <ExamQuestionPanel className="ds-ip-workbench" headingLevel={3} number={1} question={{stem:'',selfCheck:true}} metadata={<>Coding workbench · {assignment.minutes} minutes</>}><p className="ds-study-muted">{assignment.title}</p>
  <p className="ds-ip-boundary">Drafts stay on this page only. Copy each file before changing task, navigating or reloading. Java code is not executed or automatically graded here. No tests have been run on your answer.</p>
  {assignment.instructions.map((p,i)=><p key={i}>{p}</p>)}<h4>Requirements</h4><ol>{assignment.requirements.map(r=><li key={r.id}><strong>{r.id}</strong> — {r.text}</li>)}</ol>
  <div className="ds-ip-files" role="tablist" aria-label="Starter files">{assignment.starterFiles.map((f,i)=><button key={f.name} id={`ip-file-${i}`} role="tab" aria-selected={active===i} aria-controls="ip-code-panel" tabIndex={active===i?0:-1} onClick={()=>{setActive(i);setMessage('');}} onKeyDown={e=>move(e,i)}>{f.name}</button>)}</div>
@@ -41,5 +41,5 @@ export default function CodingWorkbench({assignment}:{assignment:IPAssignment}){
  <section id="ip-reference-tests" hidden={!tests}>{reference&&<><h4>Reference test specifications · not executed on your code</h4>{reference.tests.map(t=><article key={t.id}><h5>{t.id} · {t.name}</h5><p>{t.description}</p><p>Expected: {t.expected}</p><small>Requirements: {t.requirementIds.join(', ')}</small></article>)}</>}</section>
  <section id="ip-reference-solution" hidden={!solution}>{reference&&<><h4>One reference implementation</h4>{reference.reasoning.map((p,i)=><p key={i}>{p}</p>)}{reference.files.map(f=><details key={f.name} open><summary>{f.name}</summary><pre><code>{f.content}</code></pre></details>)}</>}</section>
  <Sources ids={assignment.sourceIds}/><EvidenceView ids={assignment.evidenceIds}/><p className="ds-study-muted">{assignment.id} · version {assignment.version}. Integrated work stays integrated; revealing a solution does not imply mastery of its component skills.</p>
- </ExercisePanel>;
+ </ExamQuestionPanel>;
 }

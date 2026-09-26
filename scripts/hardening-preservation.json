@@ -73,7 +73,7 @@
   },
   "src/practice/AttemptPage.tsx": {
     "before": "65dfcbb51eb4b81fbf41fdd704e08caa6cf1365cad93a1887786b5b764d48084",
-    "after": "da1ab8e0263db73cccbb14ea50efdd63063df84e84e63bca3359de48831ef7fb"
+    "after": "8ddee62253a5a981fb9b60a3172fc3646944b4c4e7891a500ef30e00b4d901a1"
   },
   "src/progress/IndexCard.tsx": {
     "before": "396fb4d1e1b7cdce9474252a00c04d4877393245c6d0b8bc0ff0a91f5637854d",
@@ -144,7 +144,7 @@
   },
   "tests/topic-ui.test.tsx": {
     "before": "5f83f95873e13948d0a5ebaad2869396ea328fc1d0929b23eb30d22516e339f0",
-    "after": "88e9c5a9872f5d4162a5376566d943c7accace7c0d3ebc2bfb30393714481fad",
+    "after": "36665c4bdc6222d8350a0d05cd7b666fb93441b7285a42050c1005f04f207f77",
     "original": "983d5b842297087d1745375866abb230e7b3cb9dd4db9a0534ebdaf3fb266a6d"
   },
   "src/cloud/merge.ts": {
@@ -277,12 +277,12 @@
   },
   "src/practice/ExerciseParts.tsx": {
     "before": "091132322fcaa24391163b49036f388f95f69c00fb8d787ec9b2fa1a08554e22",
-    "after": "8a559e907f6eb728f4c23193ad536349e19aa0af5b258c1cfb2a691cf03c037e",
+    "after": "197667f1159ed10e465914f225958dfe62bb2a8a75d1360cb9c0afb129d516cf",
     "original": "fa00b7abf670772fa3eb7ae4dde5904fd20b451b6a1164c17be221cdb05afb53"
   },
   "src/exams/ExamSessionPage.tsx": {
     "before": "de2e31aa349b41a7fdf7170b3bc7ae063d02fe71540d06c75cd0d8aabcb94f51",
-    "after": "6b8b63d10be793a78cd9309d748916351c9735df5386d46b7e2903266ca17090"
+    "after": "9acf437c2b9a54cfb965ff0aa9938abfc4ec4884a159ec7c0827c330867cc3b1"
   },
   "src/practice/PracticePage.tsx": {
     "before": "85769264eaed472fc59d2c973a311f3dd0849759bebc78dc1fd6f3fe45db1f56",
@@ -291,11 +291,11 @@
   },
   "tests/enrichment-ui.test.tsx": {
     "before": "f5672c6677b986dbad2369173251a3c2ffbbd7b32c897863098d223566bba4ef",
-    "after": "2063c4b6580e24460c343c05d737140951819ed36b478e5f27b59d46b0e03f87"
+    "after": "2f207840cb1acda5f11b1fe666689fd9dd8142ae336608b302aa203190a711e1"
   },
   "tests/practice-ui.test.tsx": {
     "before": "3f7f6d300c42919836b679491797c2caba94e661acc75e545c4db26ee12bbecf",
-    "after": "67dcb6a4bf87e7f47d9247e5fe2a3b1f5a5462a1957eef308dec3e8bdb0623c9"
+    "after": "5822266905d20dea6362cc1a714d0e0c6d475d28a3bc8070c2f654c84b16598b"
   },
   "src/exams/ExamsPage.tsx": {
     "before": "c5eb7b5e59fc5c7a1f3f14c3f9f67a1f44fddfb3f4e8c00e167bf0d50a3e16c3",
@@ -304,7 +304,7 @@
   },
   "src/exams/ExamReviewPage.tsx": {
     "before": "e16906de650d050749093eb49ad5b430259220b374c2165bf5ee6ac8fe1ccc3a",
-    "after": "f33c67bee231c84b2215967f6690eb8891e81db9492ea36f1306fa7a40956227",
+    "after": "e03ad203051151f56460315e3853ad11783cbd90d3ffbe55513a8a6c18232037",
     "original": "e16906de650d050749093eb49ad5b430259220b374c2165bf5ee6ac8fe1ccc3a"
   },
   "scripts/validate-practice.ts": {
@@ -362,7 +362,7 @@
   },
   "src/rl/GuidedPractice.tsx": {
     "before": "2780fc5d007b2a0453254c4d13544708585361e1fc9e832fae2a538a9c5f7004",
-    "after": "9b1c5690ca31d7f9ecda44af8a1dc401034002868a8d11f9d0f8b94fef777123"
+    "after": "6929e641efff03ee28841427a4c1a037fd99e0f765e88fee9be427eb2891faf5"
   },
   "src/topic-study/TopicPractice.tsx": {
     "before": "28553acc7e2dae5f2d7cd48e7816501a25b88069a78151332129bf313e99011e",
@@ -526,7 +526,7 @@
   },
   "src/practice/ExercisePage.tsx": {
     "before": "7be6a4eff64be263ed2ea6334fb1b57238c219a1f179a24ec111f9cec105e1c9",
-    "after": "cd831638f7e8538af5a49ce5cbd4ac37381ef4a806900bb7708afd8ff0bbd18f",
+    "after": "ec002f1d529c03e010598ba59af4c8c76dfb8af3378667b5b70b7091654e8ba1",
     "original": "5b3b9fe1e23012a26668f016a022f93642619eda960037a9878ce7652dcdc5da"
   },
   "src/shell/ShellIcon.tsx": {
@@ -655,7 +655,7 @@
   },
   "src/co/TopicContent.tsx": {
     "before": "7fefb248c30845b7bc8aed334a621f4fd71948ea4c68b493355e7318b50bb57b",
-    "after": "a4d3dd38ba526223470e630fc7d406222b51795dadb1c9103b3e5a697ee0e044"
+    "after": "d33e62f0141861fb446c7bdca61da773dcaf55ce6800b5927a0d81df405078f2"
   },
   "src/co/COStudyMode.tsx": {
     "before": "9e0abe220a3c9a188df0edc36d9783f6371f1f2526eeef789b2172002da08c3a",
@@ -741,6 +741,6 @@
   },
   "src/ip/CodingWorkbench.tsx": {
     "before": "06bfb672740482857cfc4cb1337146ae78adf1d6200f2a01904c535824adf610",
-    "after": "34a79e7123be26a575594b84907e9d95625d4497f0c3141ddfd8b3d61747d7c8"
+    "after": "07582f0fe88dc62e2f3657eab395860b56f855c5d212b7a6c73eee43a43b3d89"
   }
 }

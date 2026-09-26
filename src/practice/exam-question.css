@@ -1,8 +1,8 @@
-.ds-exam-question{border:1px solid var(--ds-line-strong);border-radius:6px;background:var(--ds-paper);padding:24px;margin:20px 0;min-width:0;color:var(--ds-ink)}
+.ds-app .ds-main .ds-exam-question{display:block;border:1px solid var(--ds-line-strong);border-radius:6px;background:var(--ds-paper);padding:24px;margin:20px 0;min-width:0;color:var(--ds-ink)}
 .ds-exam-question>header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--ds-line);padding-bottom:12px;margin-bottom:20px;flex-wrap:wrap}
-.ds-app .ds-exam-question>header h2{font-size:1.125rem;letter-spacing:0;margin:0}
+.ds-app .ds-main .ds-exam-question>header :is(h1,h2,h3){font-size:1.125rem;line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere}
 .ds-exam-question>header>span,.ds-exam-points{font-size:.875rem;color:var(--ds-support)}
-.ds-app .ds-exam-question .ds-exam-stem{font-size:1rem;line-height:1.8;font-weight:400;margin:0 0 16px;white-space:pre-line}
+.ds-app .ds-exam-question .ds-exam-stem{font-size:1rem;line-height:1.8;font-weight:400;margin:0 0 16px;white-space:pre-line;overflow-wrap:anywhere}
 .ds-inline-math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle;padding:3px 1px}
 .ds-inline-math math{font-size:1.1em;font-family:math}
 .ds-exam-parts{list-style:none;padding:0;margin:0;display:grid;gap:18px}
@@ -20,4 +20,21 @@
 .ds-exam-set .ds-exam-question{box-shadow:none}
 .ds-exam-question .ds-button{margin-top:16px}
 .ds-written-preview p{white-space:pre-wrap;overflow-wrap:anywhere}
-@media(max-width:650px){.ds-exam-question{padding:16px}.ds-exam-parts li{grid-template-columns:22px minmax(0,1fr)}.ds-exam-points{grid-column:2}.ds-exam-question .ds-button{white-space:normal;text-align:left}}
+.ds-app .ds-main .ds-exam-question{box-shadow:none}
+.ds-exam-question form{margin-top:24px;padding-top:20px;border-top:1px solid var(--ds-line)}
+.ds-exam-question .ds-practice-prompt{margin:0}
+.ds-exam-question .ds-practice-prompt>p:first-child{white-space:pre-line;overflow-wrap:anywhere;line-height:1.8;color:var(--ds-ink)}
+.ds-assignment-header-actions{flex:0 1 auto}
+.ds-assignment-body{min-width:0;line-height:1.7}
+.ds-assignment-body>details{margin:16px 0}
+.ds-assignment-body summary{cursor:pointer;min-height:36px;line-height:1.6}
+.ds-app .ds-main .ds-assignment :is(.ds-assignment-instructions,.ds-ip-boundary){padding:8px 0 8px 14px;border:0;border-left:2px solid var(--ds-line-strong);border-radius:0;background:transparent;color:var(--ds-support);font-size:.875rem;line-height:1.7;margin:18px 0}
+.ds-app .ds-main .ds-assignment .ds-button{width:auto;max-width:100%;min-height:44px;margin-top:0;padding:8px 14px;border-radius:6px;font-size:.875rem;line-height:1.5;white-space:normal;box-shadow:none}
+.ds-app .ds-main .ds-assignment :is(pre,.ds-ip-editor),.ds-app .ds-main .exam-review-assignment pre{max-width:100%;padding:16px;border:1px solid var(--ds-line);border-radius:6px;background:var(--ds-code-bg);color:var(--ds-code-text);font:14px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre;overflow-x:auto;tab-size:4}
+.ds-assignment-body fieldset{min-width:0}
+.ds-app .ds-main .ds-assignment textarea{max-width:100%;box-sizing:border-box;border:1px solid var(--ds-line-strong);border-radius:6px;padding:12px;background:var(--ds-paper);color:var(--ds-ink);font:inherit;line-height:1.7;resize:vertical}
+.ds-app .ds-main .ds-assignment textarea.ds-ip-editor{background:var(--ds-code-bg);color:var(--ds-code-text);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap}
+.ds-assignment .exam-answer{margin-top:20px}
+.ds-question-details{margin:20px 0;color:var(--ds-support);font-size:.875rem}
+.ds-question-details>summary{cursor:pointer;line-height:1.7}
+@media(max-width:650px){.ds-app .ds-main .ds-exam-question{padding:16px}.ds-exam-parts li{grid-template-columns:22px minmax(0,1fr)}.ds-exam-points{grid-column:2}.ds-exam-question .ds-button{white-space:normal;text-align:left}.ds-assignment-meta{max-width:100%;overflow-wrap:anywhere}.ds-assignment-header-actions{max-width:100%}}
