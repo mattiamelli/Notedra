@@ -1,3 +1,4 @@
+import {MathText} from '../math/MathText';
 import {useMemo,useRef,useState} from 'react';
 import {Link,useNavigate,useSearchParams} from 'react-router';
 import {courses,academicIndex,topicPath} from '../academic/navigation';
@@ -46,7 +47,7 @@ function MistakeCard({mistake:m,group,reason}:{mistake:Mistake;group?:SkillEvide
   <p>{lt(m.explanation?.why??m.exercise.explanation)}</p>
   {m.explanation?.misconception&&<p className="ds-pattern">{t('mistakes.matchedPattern',{pattern:lt(m.explanation.misconception.label)})}</p>}
   {group&&<p>{t('mistakes.groupSummary',{count:group.recent.length,submissionLabel:t(group.recent.length===1?'mistakes.submissionOne':'mistakes.submissionMany'),exercises:group.distinctExercises,exerciseLabel:t(group.distinctExercises===1?'mistakes.exerciseOne':'mistakes.exerciseMany'),date:new Date(group.latest.timestamp).toLocaleDateString(language)})} {group.laterSuccesses>0&&t('mistakes.laterSuccess',{count:group.laterSuccesses})}</p>}
-  <details><summary>{t('mistakes.reviewReasoning')}</summary><p>{lt(m.explanation?.reasoning??m.exercise.explanation)}</p><p>{lt(m.explanation?.remember??m.exercise.rules)}</p><p><Link to={attemptPath(m.exercise,m.attempt.attemptId)}>{t('mistakes.openSaved')}</Link></p></details>
+  <details><summary>{t('mistakes.reviewReasoning')}</summary><p><MathText text={lt(m.explanation?.reasoning??m.exercise.explanation)}/></p><p><MathText text={lt(m.explanation?.remember??m.exercise.rules)}/></p><p><Link to={attemptPath(m.exercise,m.attempt.attemptId)}>{t('mistakes.openSaved')}</Link></p></details>
   {review?.reviewedAt&&<p>{t('mistakes.marked',{date:new Date(review.reviewedAt).toLocaleDateString(language)})}</p>}
   <div className="ds-storage-actions"><button className="ds-button" disabled={busy||learning.phase!=='ready'} onClick={()=>void act('retry')}>{t('mistakes.retry')}</button><button className="ds-button" disabled={busy||learning.phase!=='ready'} onClick={()=>void act('review')}>{t(review?.reviewedAt?'mistakes.undo':'mistakes.mark')}</button></div>
   {error&&<p role="alert">{error}</p>}

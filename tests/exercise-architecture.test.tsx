@@ -2,6 +2,7 @@
 import {describe,it,expect} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {MemoryRouter} from 'react-router';
+import {MathText} from '../src/math/MathText';
 import {AnswerControls,ExerciseSource} from '../src/practice/ExerciseParts';
 import {allExercises} from '../src/practice/catalog';
 import type {PracticeExercise} from '../src/practice/registered-types';
@@ -67,7 +68,9 @@ describe('Explicit exercise contracts',()=>{
    expect(feedback.textContent).toContain('Self-review rubric');
    expect(feedback.querySelector('pre')?.textContent).toBe(answer.value);
    expect(Array.from(feedback.querySelectorAll('li'),item=>item.textContent)).toEqual(e.task.rubric);
-   expect(feedback.textContent).toContain(e.explanation);
+   const explanation=document.createElement('div');
+   explanation.innerHTML=renderToStaticMarkup(<MathText text={e.explanation}/>);
+   expect(feedback.textContent).toContain(explanation.textContent);
    expect(feedback.textContent).not.toContain('Reference answer');
    expect(feedback.textContent).not.toContain(e.skillId);
    expect(feedback.querySelector('.is-correct,.is-incorrect')).toBeNull();

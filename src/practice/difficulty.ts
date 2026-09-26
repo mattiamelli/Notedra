@@ -1,4 +1,5 @@
 import type {PracticeExercise} from './registered-types';
+import {calculusQuestion} from '../curriculum/calculus-expansion';
 
 export const difficultyCategories = ['low','medium','high','exam'] as const;
 export type DifficultyCategory = typeof difficultyCategories[number];
@@ -11,7 +12,7 @@ export type DifficultyCategory = typeof difficultyCategories[number];
  * Medium-high, Hard, High and Very high are grouped under High.
  */
 export function difficultyCategory(exercise: PracticeExercise): DifficultyCategory {
-  const difficulty = 'difficulty' in exercise ? exercise.difficulty : undefined;
+  const difficulty = calculusQuestion(exercise.id)?.difficulty ?? ('difficulty' in exercise ? exercise.difficulty : undefined);
   if (difficulty === 'Medium') return 'medium';
   if (difficulty === 'Exam-level') return 'exam';
   if (difficulty === undefined) return 'low';

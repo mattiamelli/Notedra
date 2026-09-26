@@ -49,7 +49,7 @@
   },
   "src/adaptive/MistakesPage.tsx": {
     "before": "00eb7e8bff18f16189e0a5c75a2dc6fd0c57356f43b65c3775714ffc803bd514",
-    "after": "d4bb17b8bfb6978b3096cbce34539ff1b5474d7eb5512397b0fd5ecd47a1c021",
+    "after": "769c4f4eba361d182ee2c24773568b43d5378a67190544f808a2f7e4a2db24a7",
     "original": "ad5ef4a526709acda7968f9a3cedb824cab93cb8f8d001b9e2a013c42c49b9fd"
   },
   "src/adaptive/StudyPathPage.tsx": {
@@ -73,7 +73,7 @@
   },
   "src/practice/AttemptPage.tsx": {
     "before": "65dfcbb51eb4b81fbf41fdd704e08caa6cf1365cad93a1887786b5b764d48084",
-    "after": "f22278d48578cd76b1d3775d025ecb97c9cf213e872a55c358ef6db8a8cea282"
+    "after": "4c3dd1a72e853ce15040c163fe72056c9b34e00242d4b0e38abc64df739720b8"
   },
   "src/progress/IndexCard.tsx": {
     "before": "396fb4d1e1b7cdce9474252a00c04d4877393245c6d0b8bc0ff0a91f5637854d",
@@ -277,7 +277,7 @@
   },
   "src/practice/ExerciseParts.tsx": {
     "before": "091132322fcaa24391163b49036f388f95f69c00fb8d787ec9b2fa1a08554e22",
-    "after": "e796b731b9a06a979f2b4070c8a3d5333b28dbb649d0061c771b6b90a6d1f8f2",
+    "after": "688808f6270de67961b4c41b6490c0f2cf12ca2e5bad4cfa2f5f80fd07f9e648",
     "original": "fa00b7abf670772fa3eb7ae4dde5904fd20b451b6a1164c17be221cdb05afb53"
   },
   "src/exams/ExamSessionPage.tsx": {
@@ -509,7 +509,7 @@
   },
   "scripts/storage-migration-preservation.ts": {
     "before": "d7d6d496b7ca1a8179c25b435ac05422bdf1549a5f7fa3717f162c041085aad5",
-    "after": "eb079df91198c48d22512ad4dbcbc14a2ed98ef11a38f4fce20113368ee278d5"
+    "after": "03afd5fa44fa7ee24054f438bc2dfe44c2085f79fa746b5837af92340784513f"
   },
   "src/ip/content-lock.json": {
     "before": "967121c0c59dc2957826ea0b5af9529d18368ab64d99d6a9f20746bf5b405ae9",
@@ -581,7 +581,7 @@
   },
   "package.json": {
     "before": "1bb5e003e956531a1a99bd6d9b7c9e29896442a8928a684a7ee86dc7245aa494",
-    "after": "2076201deff6cc913ea17c21eb5cbb64eed7966b89683c4abaaa8f95fef82a2f",
+    "after": "0b15aec5d48bb407c1c676880da387fffd69db64c7a276f1c143ae41afe2848a",
     "original": "eb44af354f5cc337fd8f29f8434c1c83ec2d08442fdb1617674fa787d76de54b"
   },
   "scripts/ip-practice-oracles.json": {

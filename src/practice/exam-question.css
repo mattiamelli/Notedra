@@ -1,0 +1,23 @@
+.ds-exam-question{border:1px solid var(--ds-line-strong);border-radius:6px;background:var(--ds-paper);padding:24px;margin:20px 0;min-width:0;color:var(--ds-ink)}
+.ds-exam-question>header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--ds-line);padding-bottom:12px;margin-bottom:20px;flex-wrap:wrap}
+.ds-app .ds-exam-question>header h2{font-size:1.125rem;letter-spacing:0;margin:0}
+.ds-exam-question>header>span,.ds-exam-points{font-size:.875rem;color:var(--ds-support)}
+.ds-app .ds-exam-question .ds-exam-stem{font-size:1rem;line-height:1.8;font-weight:400;margin:0 0 16px;white-space:pre-line}
+.ds-inline-math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle;padding:3px 1px}
+.ds-inline-math math{font-size:1.1em;font-family:math}
+.ds-exam-parts{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+.ds-exam-parts li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:baseline;gap:8px;line-height:1.7}
+.ds-exam-part-label{font-weight:600}
+.ds-written-parts{border:0;padding:0;margin:20px 0;display:grid;gap:18px;min-width:0}
+.ds-written-parts legend{font-weight:600;margin-bottom:12px}
+.ds-written-parts label{display:grid;gap:8px;min-width:0}
+.ds-written-parts textarea{width:100%;min-height:110px;resize:vertical;font:inherit;padding:12px;color:var(--ds-ink);background:var(--ds-paper);border:1px solid var(--ds-line-strong);border-radius:6px}
+.ds-exam-sets{padding:24px 0;border-top:1px solid var(--ds-line);margin-top:24px}
+.ds-exam-set{border-bottom:1px solid var(--ds-line);padding:16px 0}
+.ds-exam-set>summary{cursor:pointer;font-weight:600;line-height:1.6}
+.ds-exam-set>summary small{display:block;font-weight:400;color:var(--ds-support)}
+.ds-exam-set-progress{font-size:.875rem;color:var(--ds-support)}
+.ds-exam-set .ds-exam-question{box-shadow:none}
+.ds-exam-question .ds-button{margin-top:16px}
+.ds-written-preview p{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:650px){.ds-exam-question{padding:16px}.ds-exam-parts li{grid-template-columns:22px minmax(0,1fr)}.ds-exam-points{grid-column:2}.ds-exam-question .ds-button{white-space:normal;text-align:left}}

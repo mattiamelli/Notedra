@@ -1,0 +1,5 @@
+{
+  "before": "c733dd664fd278729948b37998ab299d3e7c903a9a3b360043789dfe90aa4aef",
+  "after": "7abae08bda272a0e65d0187ff0abb7eb3ebcaef60321b98967b280097498e09b",
+  "purpose": "Build-only KaTeX MathML generation; no runtime math engine."
+}
