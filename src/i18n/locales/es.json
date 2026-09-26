@@ -697,6 +697,7 @@
   "practice.guided": "Práctica guiada sin calificación",
   "practice.guidedBody": "Resuelve estas preguntas y compara después tu razonamiento con los criterios. Puede haber varias respuestas válidas. No se asigna una calificación automática ni se guarda un intento.",
   "practice.selfCheck": "Mostrar criterios de autoevaluación",
+  "practice.selfCheckLabel": "Autoevaluación · sin puntuación",
   "course.exploreTool": "Explorar {tool}",
   "evidence.recentAria": "Datos de práctica reciente",
   "evidence.recent": "Errores recientes: {count}",

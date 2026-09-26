@@ -697,6 +697,7 @@
   "practice.guided": "Exercice guidé non noté",
   "practice.guidedBody": "Traitez ces questions, puis comparez votre raisonnement aux critères. Plusieurs réponses valides peuvent exister. Aucune note automatique ni tentative enregistrée n’est créée.",
   "practice.selfCheck": "Afficher les critères d’auto-évaluation",
+  "practice.selfCheckLabel": "Auto-évaluation · sans note",
   "course.exploreTool": "Explorer {tool}",
   "evidence.recentAria": "Données d’exercice récentes",
   "evidence.recent": "Erreurs récentes : {count}",

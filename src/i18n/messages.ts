@@ -710,6 +710,7 @@ export const en = {
   "practice.guided": "Unscored guided practice",
   "practice.guidedBody": "Work through these prompts, then compare your reasoning with the criteria. Multiple valid answers may exist. No automatic grade or saved attempt is created.",
   "practice.selfCheck": "Show self-check criteria",
+  "practice.selfCheckLabel": "Self-check · unscored",
   "course.exploreTool": "Explore {tool}",
   "evidence.recentAria": "Recent practice evidence",
   "evidence.recent": "Recent mistakes: {count}",

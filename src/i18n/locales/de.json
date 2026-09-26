@@ -697,6 +697,7 @@
   "practice.guided": "Unbewertete geführte Übung",
   "practice.guidedBody": "Bearbeite diese Fragen und vergleiche deine Begründung anschließend mit den Kriterien. Mehrere gültige Antworten sind möglich. Es wird weder automatisch bewertet noch ein Versuch gespeichert.",
   "practice.selfCheck": "Kriterien zur Selbstkontrolle anzeigen",
+  "practice.selfCheckLabel": "Selbstkontrolle · unbenotet",
   "course.exploreTool": "{tool} erkunden",
   "evidence.recentAria": "Aktuelle Übungsdaten",
   "evidence.recent": "Aktuelle Fehler: {count}",

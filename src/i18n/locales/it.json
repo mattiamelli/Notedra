@@ -697,6 +697,7 @@
   "practice.guided": "Esercitazione guidata non valutata",
   "practice.guidedBody": "Svolgi queste domande, poi confronta il tuo ragionamento con i criteri. Possono esistere più risposte valide. Non viene assegnato alcun voto automatico e non viene salvato alcun tentativo.",
   "practice.selfCheck": "Mostra i criteri di autoverifica",
+  "practice.selfCheckLabel": "Autoverifica · senza punteggio",
   "course.exploreTool": "Esplora {tool}",
   "evidence.recentAria": "Dati degli esercizi recenti",
   "evidence.recent": "Errori recenti: {count}",

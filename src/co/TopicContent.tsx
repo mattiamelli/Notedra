@@ -7,6 +7,8 @@ import type {COTopicContent} from './types';
 import type {COStudyProps} from './COStudyMode';
 import tools from './tools.json';
 import {useI18n} from '../i18n/i18n';
+import {ExercisePanel} from '../practice/ExercisePanel';
+import {MathText} from '../math/MathText';
 import {assemblyPresetVisualizerPath} from '../assembly-practice/navigation';
 import './co.css';
 const TopicPractice=lazy(()=>import('../topic-study/TopicPractice').then(m=>({default:m.TopicPractice})));
@@ -20,6 +22,6 @@ export function TopicContent({topic,mode,content}:{content:COTopicContent}&COStu
  return <div className="ds-co-practice">
  {tool?.id==='assembly'?<AssemblyToolCard/>:tool&&<Suspense fallback={<p role="status">{t('common.loadingWorkspace')}</p>}><Workspace tool={tool}/></Suspense>}
  <Suspense fallback={<p role="status">{t('common.loadingPractice')}</p>}><TopicPractice topicId={topic.id} hasStudyActivities={content.guided.length>0||Boolean(tool)}/></Suspense>
- {content.guided.length>0&&<section className="ds-section ds-study-reading" aria-labelledby="guided-heading"><h2 id="guided-heading">{t('practice.guided')}</h2><p>{t('practice.guidedBody')}</p>{content.guided.map(g=><article className="ds-lesson-block" key={g.id}><h3>{lt(g.title)}</h3><p>{lt(g.prompt)}</p><details><summary>{t('practice.selfCheck')}</summary><ul>{g.rubric.map((r,i)=><li key={i}>{lt(r)}</li>)}</ul></details><AuthoredSources item={g}/></article>)}</section>}
+ {content.guided.length>0&&<section className="ds-section ds-study-reading" aria-labelledby="guided-heading"><h2 id="guided-heading">{t('practice.guided')}</h2><p>{t('practice.guidedBody')}</p>{content.guided.map(g=><ExercisePanel headingLevel={3} title={lt(g.title)} metadata={t('practice.selfCheckLabel')} key={g.id}><p className="ds-exam-stem"><MathText text={lt(g.prompt)}/></p><details><summary>{t('practice.selfCheck')}</summary><ul>{g.rubric.map((r,i)=><li key={i}>{lt(r)}</li>)}</ul></details><AuthoredSources item={g}/></ExercisePanel>)}</section>}
  </div>;
 }
