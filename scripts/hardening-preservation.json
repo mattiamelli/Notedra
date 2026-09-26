@@ -63,7 +63,7 @@
   },
   "src/pages/DashboardInsights.tsx": {
     "before": "002bf190bcd8fff9b45ec09e5bd66f5af324a42707cac5e2fb7f491d039cfeb9",
-    "after": "fa8e07e0cfc6473db4504242ca35577e982dcf53b399cd036311a592ae65f5a3",
+    "after": "0ef551c9e1b40af773b6a344b374f07a318118d27c3ebf1cd71dbde0c483ec31",
     "original": "039b68a3165d9450075b9cf67b58c6a8c34c8dabd793ab613de7f6e73750ce26"
   },
   "src/pages/TopicPage.tsx": {
@@ -130,7 +130,7 @@
   },
   "tests/application-routing.test.tsx": {
     "before": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902",
-    "after": "8b300124705173446e4693c39ce60177f011f109d487072a7d88dbc0ed4ce5b3",
+    "after": "91d21c2c05f1c01cef46408a357ea7f8714a82ba783247317da8fd3601e1810a",
     "original": "d3473c09b2556b8fe8aa53dc347dcb8bc345c906198c1658d7ba345417da9902"
   },
   "tests/adaptive-ui.test.tsx": {
@@ -174,7 +174,7 @@
   },
   "src/pages/DashboardPage.tsx": {
     "before": "9f4244e75fd688499bd121e6022d60f2a20fb5c2f62c125ada14a08981ea8616",
-    "after": "6a343f789a20c6bc2db7cccbae78bf878df9381a8c73fc49dfa0465a29acbd38",
+    "after": "a4eb807bf7e554d3612de9ae5294c52fa87d5780a1849de7126315a98a35ac95",
     "original": "05806c0742ed853abea68744fbc94beccff8635b7d1e980f123f21431f46bceb"
   },
   "src/cloud/auth.ts": {

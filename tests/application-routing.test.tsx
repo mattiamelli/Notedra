@@ -74,7 +74,8 @@ describe('application routes and canonical navigation', () => {
   it('renders the Dashboard at /dashboard', async () => {
     await renderRoute('/dashboard'); expect(heading()).toBe('Dashboard');
     expect(container.querySelectorAll('.ds-course-card')).toHaveLength(courses.filter(course=>course.trimester===1).length);
-    expect(container.textContent).toContain(`${courses.length} courses · ${academicIndex.topics.length} topics`);
+    expect(container.textContent).toContain('Current trimester');
+    expect(container.querySelectorAll('.ds-other-trimester li')).toHaveLength(courses.length-3);
     expect([...container.querySelectorAll('.ds-course-card')].map(link=>link.getAttribute('href'))).toEqual(['/co','/rl','/ip']);
   });
   it.each(courses)('renders $path from canonical course data', async course => {

@@ -14,7 +14,7 @@ vi.mock('../src/progress/ProgressLoader',()=>({ProgressLoader:()=>null}));
 vi.mock('../src/learning/LearningProvider',()=>({useLearning:()=>({snapshot:{data:{attempts:[],exams:[],examReviews:[]}}})}));
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true});
 let container:HTMLDivElement,root:Root;
-beforeEach(()=>{container=document.createElement('div');document.body.append(container);root=createRoot(container);});
+beforeEach(()=>{localStorage.clear();container=document.createElement('div');document.body.append(container);root=createRoot(container);});
 afterEach(async()=>{await act(async()=>root.unmount());container.remove();});
 
 it('uses distinct small sidebar icons while preserving the original trimester icons',()=>{
@@ -41,11 +41,32 @@ it('switches the dashboard course group and restores a linked trimester',async()
   const links=()=>[...container.querySelectorAll<HTMLAnchorElement>('.ds-course-grid > a')].map(link=>link.getAttribute('href'));
   expect(links()).toEqual(courses.filter(course=>course.trimester===3).map(course=>course.path));
   expect(container.querySelectorAll('.ds-course-subtitle-compact')).toHaveLength(3);
-  const button=[...container.querySelectorAll('button')].find(button=>button.textContent?.startsWith('Trimester 4'))!;
-  await act(async()=>button.click());
-  expect(button.getAttribute('aria-pressed')).toBe('true');
+  const select=container.querySelector('select')!;
+  await act(async()=>{select.value='4';select.dispatchEvent(new Event('change',{bubbles:true}));});
+  expect(select.value).toBe('4');
   expect(links()).toEqual(['/probability','/networks']);
   expect(container.querySelectorAll('.ds-course-subtitle-compact')).toHaveLength(2);
+});
+
+it('keeps all eleven courses reachable for each current trimester and persists the choice',async()=>{
+ for(const trimester of [1,2,3,4]){
+  await act(async()=>root.render(<MemoryRouter key={trimester} initialEntries={[`/dashboard?trimester=${trimester}`]}><DashboardCourses/></MemoryRouter>));
+  expect(container.querySelectorAll('.ds-course-card')).toHaveLength(trimester===4?2:3);
+  expect(container.querySelectorAll('.ds-other-trimester')).toHaveLength(3);
+  for(const course of courses)expect(container.querySelector(`a[href="${course.path}"]`)).not.toBeNull();
+  expect(localStorage.getItem('notedra.current-trimester')).toBe(String(trimester));
+ }
+ await act(async()=>root.render(<MemoryRouter key="revisit" initialEntries={['/dashboard']}><DashboardCourses/></MemoryRouter>));
+ expect(container.querySelector('select')?.value).toBe('4');
+ expect(container.querySelector('.ds-current-action a')?.getAttribute('href')).toBe('/probability');
+});
+
+it('defaults to trimester one for an invalid saved selection without touching study storage',async()=>{
+ localStorage.setItem('notedra.current-trimester','99');
+ localStorage.setItem('study-test-sentinel','preserved');
+ await act(async()=>root.render(<MemoryRouter initialEntries={['/dashboard?trimester=invalid']}><DashboardCourses/></MemoryRouter>));
+ expect(container.querySelector('select')?.value).toBe('1');
+ expect(localStorage.getItem('study-test-sentinel')).toBe('preserved');
 });
 
 it('does not compact the original trimester-one descriptions',async()=>{

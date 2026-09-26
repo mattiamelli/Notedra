@@ -23,11 +23,11 @@ export function DashboardPage() {
   const {state}=useAccount(); const profileName=state.user?.displayName?.trim(); const {t}=useI18n();
   return <div className="ds-dashboard">
     <header className="ds-dashboard-greeting" data-tour="welcome"><div><h1 className="ds-dashboard-label">{t('dashboard.title')}</h1><p className="ds-greeting-title">{profileName?t('dashboard.hello',{name:profileName}):t('dashboard.welcome')}</p><p>{t('dashboard.subtitle')}</p></div><p className="ds-greeting-note">{t('dashboard.motto')}</p></header>
+    <Suspense fallback={<NextActionSkeleton/>}><DashboardCourses/></Suspense>
     <Suspense fallback={<NextActionSkeleton/>}><DashboardNextAction/></Suspense>
     <div className="ds-dashboard-grid">
       <Suspense fallback={<DashboardSkeleton/>}><DashboardInsights>
       <DashboardExams/>
-      <DashboardCourses/>
       <section className="ds-dash-panel ds-dash-practice" data-tour="practice-panel"><h2><ShellIcon name="practice"/>{t('dashboard.practiceTitle')}</h2><p>{t('dashboard.practiceBody')}</p><Link className="ds-button" to="/practice">{t('dashboard.openPractice')} <ShellIcon name="arrow" size={17}/></Link><div className="ds-dash-links" data-tour="assessment"><Link to="/mistakes">{t('dashboard.reviewMistakes')}</Link><Link to="/exams">{t('dashboard.mockExam')}</Link></div></section>
       </DashboardInsights></Suspense>
       <section className="ds-dash-panel ds-dash-continue" data-tour="progress-panel"><h2><ShellIcon name="calendar"/>{t('dashboard.continue')}</h2><ResumeLink/><SummaryLoader/><p className="ds-continue-hint">{t('dashboard.continueHint')}</p><Link to="/progress">{t('dashboard.viewEvidence')} →</Link></section>
